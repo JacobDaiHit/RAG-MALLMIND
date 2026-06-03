@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-05-26T06:50:14+00:00",
+  "field_spec_source": "docs\\advice_pc.md",
+  "parts_path": "data\\jd_pc_products\\gpu\\parts.json",
+  "part_count": 12,
+  "part_type_counts": {
+    "gpu": 12
+  },
+  "core_part_types": [
+    "cpu",
+    "motherboard",
+    "gpu",
+    "memory",
+    "storage",
+    "psu",
+    "cooler",
+    "case"
+  ]
+}

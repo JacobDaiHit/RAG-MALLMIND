@@ -1,0 +1,1352 @@
+[
+  {
+    "part_id": "psu_great_wall_hope_5000ds_500w",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "HOPE 5000DS 500W",
+    "title": "Great Wall HOPE 5000DS 500W 电源",
+    "price": 249.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 500,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 500,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "500W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model HOPE 5000DS 500W；wattage_w 500；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_cooler_master_mwe_550_bronze",
+    "part_type": "pc_psu",
+    "brand": "Cooler Master",
+    "model": "MWE 550 Bronze",
+    "title": "Cooler Master MWE 550 Bronze 电源",
+    "price": 329.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 550,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 550,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "550W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MWE 550 Bronze；wattage_w 550；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_huntkey_wd650k_650w_gold",
+    "part_type": "pc_psu",
+    "brand": "Huntkey",
+    "model": "WD650K 650W Gold",
+    "title": "Huntkey WD650K 650W Gold 电源",
+    "price": 449.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 650,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "semi_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 3,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 650,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "650W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Huntkey；model WD650K 650W Gold；wattage_w 650；efficiency_rating 80Plus Gold；modular semi_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 3；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_super_flower_leadex_g_750w",
+    "part_type": "pc_psu",
+    "brand": "Super Flower",
+    "model": "LEADEX G 750W",
+    "title": "Super Flower LEADEX G 750W 电源",
+    "price": 729.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 750,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 750,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "750W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Super Flower；model LEADEX G 750W；wattage_w 750；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_gx850_atx3_0",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "GX850 ATX3.0",
+    "title": "Great Wall GX850 ATX3.0 电源",
+    "price": 699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 850,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 850,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "850W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model GX850 ATX3.0；wattage_w 850；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_seasonic_focus_gx_1000_atx3",
+    "part_type": "pc_psu",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX3",
+    "title": "Seasonic FOCUS GX-1000 ATX3 电源",
+    "price": 1399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 1000,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 5,
+      "length_mm": 160
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 1000,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 160
+    },
+    "tags": [
+      "1000W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Seasonic；model FOCUS GX-1000 ATX3；wattage_w 1000；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 5；length_mm 160",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_hope_5000ds_500w_v2",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "HOPE 5000DS 500W V2",
+    "title": "Great Wall HOPE 5000DS 500W V2 电源",
+    "price": 274.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 500,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 500,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "500W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model HOPE 5000DS 500W V2；wattage_w 500；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_cooler_master_mwe_550_bronze_v2",
+    "part_type": "pc_psu",
+    "brand": "Cooler Master",
+    "model": "MWE 550 Bronze V2",
+    "title": "Cooler Master MWE 550 Bronze V2 电源",
+    "price": 354.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 550,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 550,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "550W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MWE 550 Bronze V2；wattage_w 550；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_huntkey_wd650k_650w_gold_v2",
+    "part_type": "pc_psu",
+    "brand": "Huntkey",
+    "model": "WD650K 650W Gold V2",
+    "title": "Huntkey WD650K 650W Gold V2 电源",
+    "price": 474.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 650,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "semi_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 3,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 650,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "650W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Huntkey；model WD650K 650W Gold V2；wattage_w 650；efficiency_rating 80Plus Gold；modular semi_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 3；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_super_flower_leadex_g_750w_v2",
+    "part_type": "pc_psu",
+    "brand": "Super Flower",
+    "model": "LEADEX G 750W V2",
+    "title": "Super Flower LEADEX G 750W V2 电源",
+    "price": 754.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 750,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 750,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "750W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Super Flower；model LEADEX G 750W V2；wattage_w 750；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_gx850_atx3_0_v2",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "GX850 ATX3.0 V2",
+    "title": "Great Wall GX850 ATX3.0 V2 电源",
+    "price": 724.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 850,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 850,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "850W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model GX850 ATX3.0 V2；wattage_w 850；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_seasonic_focus_gx_1000_atx3_v2",
+    "part_type": "pc_psu",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX3 V2",
+    "title": "Seasonic FOCUS GX-1000 ATX3 V2 电源",
+    "price": 1424.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 1000,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 5,
+      "length_mm": 160
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 1000,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 160
+    },
+    "tags": [
+      "1000W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Seasonic；model FOCUS GX-1000 ATX3 V2；wattage_w 1000；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 5；length_mm 160",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_hope_5000ds_500w_v3",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "HOPE 5000DS 500W V3",
+    "title": "Great Wall HOPE 5000DS 500W V3 电源",
+    "price": 299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 500,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 500,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "500W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model HOPE 5000DS 500W V3；wattage_w 500；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_cooler_master_mwe_550_bronze_v3",
+    "part_type": "pc_psu",
+    "brand": "Cooler Master",
+    "model": "MWE 550 Bronze V3",
+    "title": "Cooler Master MWE 550 Bronze V3 电源",
+    "price": 379.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 550,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 550,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "550W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MWE 550 Bronze V3；wattage_w 550；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_huntkey_wd650k_650w_gold_v3",
+    "part_type": "pc_psu",
+    "brand": "Huntkey",
+    "model": "WD650K 650W Gold V3",
+    "title": "Huntkey WD650K 650W Gold V3 电源",
+    "price": 499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 650,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "semi_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 3,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 650,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "650W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Huntkey；model WD650K 650W Gold V3；wattage_w 650；efficiency_rating 80Plus Gold；modular semi_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 3；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_super_flower_leadex_g_750w_v3",
+    "part_type": "pc_psu",
+    "brand": "Super Flower",
+    "model": "LEADEX G 750W V3",
+    "title": "Super Flower LEADEX G 750W V3 电源",
+    "price": 779.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 750,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 750,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "750W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Super Flower；model LEADEX G 750W V3；wattage_w 750；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_gx850_atx3_0_v3",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "GX850 ATX3.0 V3",
+    "title": "Great Wall GX850 ATX3.0 V3 电源",
+    "price": 749.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 850,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 850,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "850W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model GX850 ATX3.0 V3；wattage_w 850；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_seasonic_focus_gx_1000_atx3_v3",
+    "part_type": "pc_psu",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX3 V3",
+    "title": "Seasonic FOCUS GX-1000 ATX3 V3 电源",
+    "price": 1449.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 1000,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 5,
+      "length_mm": 160
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 1000,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 160
+    },
+    "tags": [
+      "1000W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Seasonic；model FOCUS GX-1000 ATX3 V3；wattage_w 1000；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 5；length_mm 160",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_hope_5000ds_500w_v4",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "HOPE 5000DS 500W V4",
+    "title": "Great Wall HOPE 5000DS 500W V4 电源",
+    "price": 324.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 500,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 500,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "500W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model HOPE 5000DS 500W V4；wattage_w 500；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_cooler_master_mwe_550_bronze_v4",
+    "part_type": "pc_psu",
+    "brand": "Cooler Master",
+    "model": "MWE 550 Bronze V4",
+    "title": "Cooler Master MWE 550 Bronze V4 电源",
+    "price": 404.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 550,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 550,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "550W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MWE 550 Bronze V4；wattage_w 550；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_huntkey_wd650k_650w_gold_v4",
+    "part_type": "pc_psu",
+    "brand": "Huntkey",
+    "model": "WD650K 650W Gold V4",
+    "title": "Huntkey WD650K 650W Gold V4 电源",
+    "price": 524.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 650,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "semi_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 3,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 650,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "650W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Huntkey；model WD650K 650W Gold V4；wattage_w 650；efficiency_rating 80Plus Gold；modular semi_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 3；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_super_flower_leadex_g_750w_v4",
+    "part_type": "pc_psu",
+    "brand": "Super Flower",
+    "model": "LEADEX G 750W V4",
+    "title": "Super Flower LEADEX G 750W V4 电源",
+    "price": 804.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 750,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 750,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "750W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Super Flower；model LEADEX G 750W V4；wattage_w 750；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_gx850_atx3_0_v4",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "GX850 ATX3.0 V4",
+    "title": "Great Wall GX850 ATX3.0 V4 电源",
+    "price": 774.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 850,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 850,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "850W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model GX850 ATX3.0 V4；wattage_w 850；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_seasonic_focus_gx_1000_atx3_v4",
+    "part_type": "pc_psu",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX3 V4",
+    "title": "Seasonic FOCUS GX-1000 ATX3 V4 电源",
+    "price": 1474.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 1000,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 5,
+      "length_mm": 160
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 1000,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 160
+    },
+    "tags": [
+      "1000W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Seasonic；model FOCUS GX-1000 ATX3 V4；wattage_w 1000；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 5；length_mm 160",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_hope_5000ds_500w_v5",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "HOPE 5000DS 500W V5",
+    "title": "Great Wall HOPE 5000DS 500W V5 电源",
+    "price": 349.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 500,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 500,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "500W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model HOPE 5000DS 500W V5；wattage_w 500；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_cooler_master_mwe_550_bronze_v5",
+    "part_type": "pc_psu",
+    "brand": "Cooler Master",
+    "model": "MWE 550 Bronze V5",
+    "title": "Cooler Master MWE 550 Bronze V5 电源",
+    "price": 429.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 550,
+      "efficiency_rating": "80Plus Bronze",
+      "modular_type": "non_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 2,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 550,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "550W",
+      "80Plus Bronze",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MWE 550 Bronze V5；wattage_w 550；efficiency_rating 80Plus Bronze；modular non_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 2；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_huntkey_wd650k_650w_gold_v5",
+    "part_type": "pc_psu",
+    "brand": "Huntkey",
+    "model": "WD650K 650W Gold V5",
+    "title": "Huntkey WD650K 650W Gold V5 电源",
+    "price": 549.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 650,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "semi_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 3,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 650,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "650W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Huntkey；model WD650K 650W Gold V5；wattage_w 650；efficiency_rating 80Plus Gold；modular semi_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 3；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_super_flower_leadex_g_750w_v5",
+    "part_type": "pc_psu",
+    "brand": "Super Flower",
+    "model": "LEADEX G 750W V5",
+    "title": "Super Flower LEADEX G 750W V5 电源",
+    "price": 829.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 750,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": false,
+      "has_12v_2x6": false,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 750,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": false,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "750W",
+      "80Plus Gold",
+      "ATX 2.52"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Super Flower；model LEADEX G 750W V5；wattage_w 750；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr False；has_12vhpwr False；atx_version ATX 2.52；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_great_wall_gx850_atx3_0_v5",
+    "part_type": "pc_psu",
+    "brand": "Great Wall",
+    "model": "GX850 ATX3.0 V5",
+    "title": "Great Wall GX850 ATX3.0 V5 电源",
+    "price": 799.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 850,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 4,
+      "length_mm": 150
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 850,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 150
+    },
+    "tags": [
+      "850W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Great Wall；model GX850 ATX3.0 V5；wattage_w 850；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 4；length_mm 150",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "psu_seasonic_focus_gx_1000_atx3_v5",
+    "part_type": "pc_psu",
+    "brand": "Seasonic",
+    "model": "FOCUS GX-1000 ATX3 V5",
+    "title": "Seasonic FOCUS GX-1000 ATX3 V5 电源",
+    "price": 1499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "wattage": 1000,
+      "efficiency_rating": "80Plus Gold",
+      "modular_type": "full_modular",
+      "has_12vhpwr": true,
+      "has_12v_2x6": true,
+      "pcie_8pin_count": 5,
+      "length_mm": 160
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_required_total_wattage": 1000,
+      "supports_pcie_8pin_gpu": true,
+      "supports_12v_2x6_gpu": true,
+      "requires_case_psu_length_mm": 160
+    },
+    "tags": [
+      "1000W",
+      "80Plus Gold",
+      "ATX 3.0"
+    ],
+    "selling_points": [
+      "功率和供电接口字段完整",
+      "覆盖入门到高端"
+    ],
+    "limitations": [
+      "高端显卡优先 ATX3.0",
+      "12VHPWR"
+    ],
+    "recommendation_text": "用于判断显卡供电、安全余量和机箱电源长度。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Seasonic；model FOCUS GX-1000 ATX3 V5；wattage_w 1000；efficiency_rating 80Plus Gold；modular full_modular；native_12vhpwr True；has_12vhpwr True；atx_version ATX 3.0；pcie_8pin_connectors 5；length_mm 160",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

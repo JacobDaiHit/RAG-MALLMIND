@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Integrated No discrete GPU / use CPU iGPU 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 0</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: iGPU|核显|核显方案</tspan>
+<tspan x="36" dy="24">brand: Integrated</tspan>
+<tspan x="36" dy="24">model: No discrete GPU / use CPU iGPU</tspan>
+<tspan x="36" dy="24">chipset: iGPU</tspan>
+<tspan x="36" dy="24">vram_gb: 0</tspan>
+<tspan x="36" dy="24">memory_type: </tspan>
+<tspan x="36" dy="24">bus_width_bit: 128</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 0</tspan>
+<tspan x="36" dy="24">power_w: 0</tspan>
+<tspan x="36" dy="24">tdp_w: 0</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_integrated_no_discrete_gpu_use_cpu_igpu</text>
+  <metadata>Integrated No discrete GPU / use CPU iGPU 显卡
+Price: CNY 0
+Category: gpu
+Tags: iGPU|核显|核显方案
+brand: Integrated
+model: No discrete GPU / use CPU iGPU
+chipset: iGPU
+vram_gb: 0
+memory_type: 
+bus_width_bit: 128
+interface: PCIe 4.0 x16
+length_mm: 0
+power_w: 0
+tdp_w: 0</metadata>
+</svg>

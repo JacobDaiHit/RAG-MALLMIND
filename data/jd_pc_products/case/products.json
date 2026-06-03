@@ -1,0 +1,2068 @@
+{
+  "generated_at": "2026-05-28T09:03:04+00:00",
+  "source_note": "Curated PC demo records with structured compatibility fields. Records should be reviewed before production use.",
+  "field_spec_source": "balanced_pc_seed_dataset",
+  "component_families": [
+    {
+      "key": "cpu",
+      "name_zh": "处理器",
+      "fields": [
+        "brand",
+        "model",
+        "socket",
+        "cores",
+        "threads",
+        "base_clock_ghz",
+        "boost_clock_ghz",
+        "tdp_w",
+        "integrated_graphics",
+        "generation"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "gpu",
+      "name_zh": "显卡",
+      "fields": [
+        "brand",
+        "model",
+        "chipset",
+        "vram_gb",
+        "memory_type",
+        "bus_width_bit",
+        "interface",
+        "length_mm",
+        "power_w",
+        "recommended_psu_w"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "motherboard",
+      "name_zh": "主板",
+      "fields": [
+        "brand",
+        "model",
+        "socket",
+        "chipset",
+        "form_factor",
+        "memory_type",
+        "max_memory_gb",
+        "m2_slots",
+        "pcie_version",
+        "wifi"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "memory",
+      "name_zh": "内存",
+      "fields": [
+        "brand",
+        "model",
+        "capacity_gb",
+        "modules",
+        "memory_type",
+        "speed_mhz",
+        "latency",
+        "voltage_v",
+        "rgb"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "ssd",
+      "name_zh": "固态硬盘",
+      "fields": [
+        "brand",
+        "model",
+        "capacity_gb",
+        "form_factor",
+        "interface",
+        "protocol",
+        "read_mb_s",
+        "write_mb_s",
+        "endurance_tbw"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "hdd",
+      "name_zh": "机械硬盘",
+      "fields": [
+        "brand",
+        "model",
+        "capacity_gb",
+        "size_inch",
+        "interface",
+        "rpm",
+        "cache_mb",
+        "warranty_years"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "psu",
+      "name_zh": "电源",
+      "fields": [
+        "brand",
+        "model",
+        "wattage_w",
+        "efficiency_rating",
+        "modular",
+        "atx_version",
+        "pcie_8pin_connectors",
+        "native_12vhpwr",
+        "warranty_years"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "case",
+      "name_zh": "机箱",
+      "fields": [
+        "brand",
+        "model",
+        "case_size",
+        "motherboard_support",
+        "gpu_clearance_mm",
+        "cooler_clearance_mm",
+        "radiator_support_mm",
+        "fans_included",
+        "drive_bays"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "cpu_cooler",
+      "name_zh": "散热器",
+      "fields": [
+        "brand",
+        "model",
+        "cooler_type",
+        "socket_support",
+        "radiator_size_mm",
+        "height_mm",
+        "fan_size_mm",
+        "tdp_w",
+        "argb"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "case_fan",
+      "name_zh": "机箱风扇",
+      "fields": [
+        "brand",
+        "model",
+        "fan_size_mm",
+        "rpm",
+        "airflow_cfm",
+        "noise_dba",
+        "pwm",
+        "argb",
+        "pack_count"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "monitor",
+      "name_zh": "显示器",
+      "fields": [
+        "brand",
+        "model",
+        "size_inch",
+        "resolution",
+        "refresh_rate_hz",
+        "panel_type",
+        "response_ms",
+        "color_gamut",
+        "ports",
+        "sync"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "keyboard",
+      "name_zh": "键盘",
+      "fields": [
+        "brand",
+        "model",
+        "connection",
+        "layout",
+        "switch_type",
+        "backlight",
+        "hot_swappable",
+        "keycap_material"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "mouse",
+      "name_zh": "鼠标",
+      "fields": [
+        "brand",
+        "model",
+        "connection",
+        "dpi",
+        "weight_g",
+        "sensor",
+        "buttons",
+        "battery_hours"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "headset",
+      "name_zh": "耳机",
+      "fields": [
+        "brand",
+        "model",
+        "connection",
+        "driver_mm",
+        "impedance_ohm",
+        "microphone",
+        "surround",
+        "weight_g"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "speaker",
+      "name_zh": "音箱",
+      "fields": [
+        "brand",
+        "model",
+        "channels",
+        "power_w",
+        "connection",
+        "frequency_response",
+        "bluetooth_version"
+      ],
+      "advice_pc_field_labels": []
+    },
+    {
+      "key": "network_card",
+      "name_zh": "网卡",
+      "fields": [
+        "brand",
+        "model",
+        "interface",
+        "wireless_standard",
+        "bluetooth_version",
+        "speed_mbps",
+        "antennas"
+      ],
+      "advice_pc_field_labels": []
+    }
+  ],
+  "products": [
+    {
+      "id": "pc_seed_case_sama_quzao_air_m_atx",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "SAMA Quzao Air M-ATX 机箱",
+      "brand": "SAMA",
+      "model": "Quzao Air M-ATX",
+      "price_cny": 159.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 335,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 180,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 0,
+        "max_fans": 8,
+        "has_front_usb_c": false
+      },
+      "advice_pc_fields": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX",
+        "title": "SAMA Quzao Air M-ATX 机箱",
+        "price": "159",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand SAMA；model Quzao Air M-ATX；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      },
+      "raw": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX",
+        "title": "SAMA Quzao Air M-ATX 机箱",
+        "price": "159",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand SAMA；model Quzao Air M-ATX；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      }
+    },
+    {
+      "id": "pc_seed_case_jonsbo_d31_mesh",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "JONSBO D31 MESH 机箱",
+      "brand": "JONSBO",
+      "model": "D31 MESH",
+      "price_cny": 399.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "JONSBO",
+        "model": "D31 MESH",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 330,
+        "cooler_clearance_mm": 168,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "JONSBO",
+        "model": "D31 MESH",
+        "title": "JONSBO D31 MESH 机箱",
+        "price": "399",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand JONSBO；model D31 MESH；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "JONSBO",
+        "model": "D31 MESH",
+        "title": "JONSBO D31 MESH 机箱",
+        "price": "399",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand JONSBO；model D31 MESH；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_lian_li_a3_matx",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "LIAN LI A3-mATX 机箱",
+      "brand": "LIAN LI",
+      "model": "A3-mATX",
+      "price_cny": 499.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 415,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX",
+        "title": "LIAN LI A3-mATX 机箱",
+        "price": "499",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand LIAN LI；model A3-mATX；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX",
+        "title": "LIAN LI A3-mATX 机箱",
+        "price": "499",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand LIAN LI；model A3-mATX；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_phanteks_p360a",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Phanteks P360A 机箱",
+      "brand": "Phanteks",
+      "model": "P360A",
+      "price_cny": 399.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Phanteks",
+        "model": "P360A",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 400,
+        "cooler_clearance_mm": 160,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          280,
+          360
+        ],
+        "radiator_support": [
+          240,
+          280,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Phanteks",
+        "model": "P360A",
+        "title": "Phanteks P360A 机箱",
+        "price": "399",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Phanteks；model P360A；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Phanteks",
+        "model": "P360A",
+        "title": "Phanteks P360A 机箱",
+        "price": "399",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Phanteks；model P360A；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_nzxt_h5_flow",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "NZXT H5 Flow 机箱",
+      "brand": "NZXT",
+      "model": "H5 Flow",
+      "price_cny": 599.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "NZXT",
+        "model": "H5 Flow",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 365,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "NZXT",
+        "model": "H5 Flow",
+        "title": "NZXT H5 Flow 机箱",
+        "price": "599",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand NZXT；model H5 Flow；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "NZXT",
+        "model": "H5 Flow",
+        "title": "NZXT H5 Flow 机箱",
+        "price": "599",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand NZXT；model H5 Flow；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_fractal_design_north",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Fractal Design North 机箱",
+      "brand": "Fractal Design",
+      "model": "North",
+      "price_cny": 999.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Fractal Design",
+        "model": "North",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 355,
+        "cooler_clearance_mm": 170,
+        "max_psu_length_mm": 255,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Fractal Design",
+        "model": "North",
+        "title": "Fractal Design North 机箱",
+        "price": "999",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Fractal Design；model North；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Fractal Design",
+        "model": "North",
+        "title": "Fractal Design North 机箱",
+        "price": "999",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Fractal Design；model North；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_sama_quzao_air_m_atx_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "SAMA Quzao Air M-ATX V2 机箱",
+      "brand": "SAMA",
+      "model": "Quzao Air M-ATX V2",
+      "price_cny": 177.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V2",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 335,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 180,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 0,
+        "max_fans": 8,
+        "has_front_usb_c": false
+      },
+      "advice_pc_fields": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V2",
+        "title": "SAMA Quzao Air M-ATX V2 机箱",
+        "price": "177",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand SAMA；model Quzao Air M-ATX V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      },
+      "raw": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V2",
+        "title": "SAMA Quzao Air M-ATX V2 机箱",
+        "price": "177",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand SAMA；model Quzao Air M-ATX V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      }
+    },
+    {
+      "id": "pc_seed_case_jonsbo_d31_mesh_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "JONSBO D31 MESH V2 机箱",
+      "brand": "JONSBO",
+      "model": "D31 MESH V2",
+      "price_cny": 417.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V2",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 330,
+        "cooler_clearance_mm": 168,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V2",
+        "title": "JONSBO D31 MESH V2 机箱",
+        "price": "417",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand JONSBO；model D31 MESH V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V2",
+        "title": "JONSBO D31 MESH V2 机箱",
+        "price": "417",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand JONSBO；model D31 MESH V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_lian_li_a3_matx_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "LIAN LI A3-mATX V2 机箱",
+      "brand": "LIAN LI",
+      "model": "A3-mATX V2",
+      "price_cny": 517.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V2",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 415,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V2",
+        "title": "LIAN LI A3-mATX V2 机箱",
+        "price": "517",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand LIAN LI；model A3-mATX V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V2",
+        "title": "LIAN LI A3-mATX V2 机箱",
+        "price": "517",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand LIAN LI；model A3-mATX V2；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_phanteks_p360a_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Phanteks P360A V2 机箱",
+      "brand": "Phanteks",
+      "model": "P360A V2",
+      "price_cny": 417.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Phanteks",
+        "model": "P360A V2",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 400,
+        "cooler_clearance_mm": 160,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          280,
+          360
+        ],
+        "radiator_support": [
+          240,
+          280,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Phanteks",
+        "model": "P360A V2",
+        "title": "Phanteks P360A V2 机箱",
+        "price": "417",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Phanteks；model P360A V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Phanteks",
+        "model": "P360A V2",
+        "title": "Phanteks P360A V2 机箱",
+        "price": "417",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Phanteks；model P360A V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_nzxt_h5_flow_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "NZXT H5 Flow V2 机箱",
+      "brand": "NZXT",
+      "model": "H5 Flow V2",
+      "price_cny": 617.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "NZXT",
+        "model": "H5 Flow V2",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 365,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "NZXT",
+        "model": "H5 Flow V2",
+        "title": "NZXT H5 Flow V2 机箱",
+        "price": "617",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand NZXT；model H5 Flow V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "NZXT",
+        "model": "H5 Flow V2",
+        "title": "NZXT H5 Flow V2 机箱",
+        "price": "617",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand NZXT；model H5 Flow V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_fractal_design_north_v2",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Fractal Design North V2 机箱",
+      "brand": "Fractal Design",
+      "model": "North V2",
+      "price_cny": 1000.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Fractal Design",
+        "model": "North V2",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 355,
+        "cooler_clearance_mm": 170,
+        "max_psu_length_mm": 255,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Fractal Design",
+        "model": "North V2",
+        "title": "Fractal Design North V2 机箱",
+        "price": "1000",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Fractal Design；model North V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Fractal Design",
+        "model": "North V2",
+        "title": "Fractal Design North V2 机箱",
+        "price": "1000",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Fractal Design；model North V2；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_sama_quzao_air_m_atx_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "SAMA Quzao Air M-ATX V3 机箱",
+      "brand": "SAMA",
+      "model": "Quzao Air M-ATX V3",
+      "price_cny": 195.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V3",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 335,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 180,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 0,
+        "max_fans": 8,
+        "has_front_usb_c": false
+      },
+      "advice_pc_fields": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V3",
+        "title": "SAMA Quzao Air M-ATX V3 机箱",
+        "price": "195",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand SAMA；model Quzao Air M-ATX V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      },
+      "raw": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V3",
+        "title": "SAMA Quzao Air M-ATX V3 机箱",
+        "price": "195",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand SAMA；model Quzao Air M-ATX V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      }
+    },
+    {
+      "id": "pc_seed_case_jonsbo_d31_mesh_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "JONSBO D31 MESH V3 机箱",
+      "brand": "JONSBO",
+      "model": "D31 MESH V3",
+      "price_cny": 435.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V3",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 330,
+        "cooler_clearance_mm": 168,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V3",
+        "title": "JONSBO D31 MESH V3 机箱",
+        "price": "435",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand JONSBO；model D31 MESH V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V3",
+        "title": "JONSBO D31 MESH V3 机箱",
+        "price": "435",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand JONSBO；model D31 MESH V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_lian_li_a3_matx_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "LIAN LI A3-mATX V3 机箱",
+      "brand": "LIAN LI",
+      "model": "A3-mATX V3",
+      "price_cny": 535.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V3",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 415,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V3",
+        "title": "LIAN LI A3-mATX V3 机箱",
+        "price": "535",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand LIAN LI；model A3-mATX V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V3",
+        "title": "LIAN LI A3-mATX V3 机箱",
+        "price": "535",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand LIAN LI；model A3-mATX V3；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_phanteks_p360a_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Phanteks P360A V3 机箱",
+      "brand": "Phanteks",
+      "model": "P360A V3",
+      "price_cny": 435.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Phanteks",
+        "model": "P360A V3",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 400,
+        "cooler_clearance_mm": 160,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          280,
+          360
+        ],
+        "radiator_support": [
+          240,
+          280,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Phanteks",
+        "model": "P360A V3",
+        "title": "Phanteks P360A V3 机箱",
+        "price": "435",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Phanteks；model P360A V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Phanteks",
+        "model": "P360A V3",
+        "title": "Phanteks P360A V3 机箱",
+        "price": "435",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Phanteks；model P360A V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_nzxt_h5_flow_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "NZXT H5 Flow V3 机箱",
+      "brand": "NZXT",
+      "model": "H5 Flow V3",
+      "price_cny": 635.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "NZXT",
+        "model": "H5 Flow V3",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 365,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "NZXT",
+        "model": "H5 Flow V3",
+        "title": "NZXT H5 Flow V3 机箱",
+        "price": "635",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand NZXT；model H5 Flow V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "NZXT",
+        "model": "H5 Flow V3",
+        "title": "NZXT H5 Flow V3 机箱",
+        "price": "635",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand NZXT；model H5 Flow V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_fractal_design_north_v3",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Fractal Design North V3 机箱",
+      "brand": "Fractal Design",
+      "model": "North V3",
+      "price_cny": 1000.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Fractal Design",
+        "model": "North V3",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 355,
+        "cooler_clearance_mm": 170,
+        "max_psu_length_mm": 255,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Fractal Design",
+        "model": "North V3",
+        "title": "Fractal Design North V3 机箱",
+        "price": "1000",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Fractal Design；model North V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Fractal Design",
+        "model": "North V3",
+        "title": "Fractal Design North V3 机箱",
+        "price": "1000",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Fractal Design；model North V3；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_sama_quzao_air_m_atx_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "SAMA Quzao Air M-ATX V4 机箱",
+      "brand": "SAMA",
+      "model": "Quzao Air M-ATX V4",
+      "price_cny": 213.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V4",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 335,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 180,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 0,
+        "max_fans": 8,
+        "has_front_usb_c": false
+      },
+      "advice_pc_fields": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V4",
+        "title": "SAMA Quzao Air M-ATX V4 机箱",
+        "price": "213",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand SAMA；model Quzao Air M-ATX V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      },
+      "raw": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V4",
+        "title": "SAMA Quzao Air M-ATX V4 机箱",
+        "price": "213",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand SAMA；model Quzao Air M-ATX V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      }
+    },
+    {
+      "id": "pc_seed_case_jonsbo_d31_mesh_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "JONSBO D31 MESH V4 机箱",
+      "brand": "JONSBO",
+      "model": "D31 MESH V4",
+      "price_cny": 453.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V4",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 330,
+        "cooler_clearance_mm": 168,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V4",
+        "title": "JONSBO D31 MESH V4 机箱",
+        "price": "453",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand JONSBO；model D31 MESH V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "JONSBO",
+        "model": "D31 MESH V4",
+        "title": "JONSBO D31 MESH V4 机箱",
+        "price": "453",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU330mm|风冷168mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand JONSBO；model D31 MESH V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 330；cooler_clearance_mm 168；max_psu_length_mm 200；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_lian_li_a3_matx_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "LIAN LI A3-mATX V4 机箱",
+      "brand": "LIAN LI",
+      "model": "A3-mATX V4",
+      "price_cny": 553.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V4",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 415,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V4",
+        "title": "LIAN LI A3-mATX V4 机箱",
+        "price": "553",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand LIAN LI；model A3-mATX V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "LIAN LI",
+        "model": "A3-mATX V4",
+        "title": "LIAN LI A3-mATX V4 机箱",
+        "price": "553",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU415mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand LIAN LI；model A3-mATX V4；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 415；cooler_clearance_mm 165；max_psu_length_mm 220；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_phanteks_p360a_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Phanteks P360A V4 机箱",
+      "brand": "Phanteks",
+      "model": "P360A V4",
+      "price_cny": 453.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Phanteks",
+        "model": "P360A V4",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 400,
+        "cooler_clearance_mm": 160,
+        "max_psu_length_mm": 220,
+        "supported_radiator_sizes": [
+          240,
+          280,
+          360
+        ],
+        "radiator_support": [
+          240,
+          280,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Phanteks",
+        "model": "P360A V4",
+        "title": "Phanteks P360A V4 机箱",
+        "price": "453",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Phanteks；model P360A V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Phanteks",
+        "model": "P360A V4",
+        "title": "Phanteks P360A V4 机箱",
+        "price": "453",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU400mm|风冷160mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Phanteks；model P360A V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 400；cooler_clearance_mm 160；max_psu_length_mm 220；supported_radiator_sizes [240, 280, 360]；radiator_support [240, 280, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_nzxt_h5_flow_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "NZXT H5 Flow V4 机箱",
+      "brand": "NZXT",
+      "model": "H5 Flow V4",
+      "price_cny": 653.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "NZXT",
+        "model": "H5 Flow V4",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 365,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 200,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "NZXT",
+        "model": "H5 Flow V4",
+        "title": "NZXT H5 Flow V4 机箱",
+        "price": "653",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand NZXT；model H5 Flow V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "NZXT",
+        "model": "H5 Flow V4",
+        "title": "NZXT H5 Flow V4 机箱",
+        "price": "653",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU365mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand NZXT；model H5 Flow V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 365；cooler_clearance_mm 165；max_psu_length_mm 200；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_fractal_design_north_v4",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "Fractal Design North V4 机箱",
+      "brand": "Fractal Design",
+      "model": "North V4",
+      "price_cny": 1000.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "Fractal Design",
+        "model": "North V4",
+        "case_size": "ATX",
+        "motherboard_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "ATX",
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 355,
+        "cooler_clearance_mm": 170,
+        "max_psu_length_mm": 255,
+        "supported_radiator_sizes": [
+          240,
+          360
+        ],
+        "radiator_support": [
+          240,
+          360
+        ],
+        "fans_included": 2,
+        "max_fans": 8,
+        "has_front_usb_c": true
+      },
+      "advice_pc_fields": {
+        "brand": "Fractal Design",
+        "model": "North V4",
+        "title": "Fractal Design North V4 机箱",
+        "price": "1000",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand Fractal Design；model North V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      },
+      "raw": {
+        "brand": "Fractal Design",
+        "model": "North V4",
+        "title": "Fractal Design North V4 机箱",
+        "price": "1000",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "ATX|GPU355mm|风冷170mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand Fractal Design；model North V4；case_size ATX；motherboard_support ['ATX', 'M-ATX', 'Mini-ITX']；form_factor_support ['ATX', 'M-ATX', 'Mini-ITX']；gpu_clearance_mm 355；cooler_clearance_mm 170；max_psu_length_mm 255；supported_radiator_sizes [240, 360]；radiator_support [240, 360]；fans_included 2；max_fans 8；has_front_usb_c True"
+      }
+    },
+    {
+      "id": "pc_seed_case_sama_quzao_air_m_atx_v5",
+      "source": {
+        "type": "curated_seed",
+        "url": "scripts/build_pc_parts_dataset.py",
+        "captured_at": "2026-05-28T09:03:04+00:00",
+        "source_note": "Curated seed row for balanced JD PC parts demo coverage; replace product_url with live JD item URL when available."
+      },
+      "component_type": "pc_case",
+      "component_name_zh": "机箱",
+      "title": "SAMA Quzao Air M-ATX V5 机箱",
+      "brand": "SAMA",
+      "model": "Quzao Air M-ATX V5",
+      "price_cny": 231.0,
+      "currency": "CNY",
+      "shop": "JD demo seed",
+      "sku": "",
+      "product_url": "",
+      "standardized_specs": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V5",
+        "case_size": "M-ATX",
+        "motherboard_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "form_factor_support": [
+          "M-ATX",
+          "Mini-ITX"
+        ],
+        "gpu_clearance_mm": 335,
+        "cooler_clearance_mm": 165,
+        "max_psu_length_mm": 180,
+        "supported_radiator_sizes": [
+          240,
+          280
+        ],
+        "radiator_support": [
+          240,
+          280
+        ],
+        "fans_included": 0,
+        "max_fans": 8,
+        "has_front_usb_c": false
+      },
+      "advice_pc_fields": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V5",
+        "title": "SAMA Quzao Air M-ATX V5 机箱",
+        "price": "231",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "source.platform": "JD",
+        "source.raw_specs_text": "brand SAMA；model Quzao Air M-ATX V5；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      },
+      "raw": {
+        "brand": "SAMA",
+        "model": "Quzao Air M-ATX V5",
+        "title": "SAMA Quzao Air M-ATX V5 机箱",
+        "price": "231",
+        "platform": "JD",
+        "category": "pc_case",
+        "tags": "M-ATX|GPU335mm|风冷165mm",
+        "selling_points": "机箱兼容字段完整|覆盖入门到高端价位",
+        "limitations": "需核对显卡长度、散热器高度和电源长度",
+        "recommendation_text": "用于避免显卡、风冷、水冷和主板尺寸不兼容。",
+        "raw_specs_text": "brand SAMA；model Quzao Air M-ATX V5；case_size M-ATX；motherboard_support ['M-ATX', 'Mini-ITX']；form_factor_support ['M-ATX', 'Mini-ITX']；gpu_clearance_mm 335；cooler_clearance_mm 165；max_psu_length_mm 180；supported_radiator_sizes [240, 280]；radiator_support [240, 280]；fans_included 0；max_fans 8；has_front_usb_c False"
+      }
+    }
+  ]
+}

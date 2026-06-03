@@ -1,0 +1,12 @@
+{
+  "source_zip": "data\\ecommerce_agent_dataset_供参考.zip",
+  "catalog": "data\\ecommerce_products\\products.json",
+  "image_dir": "data\\ecommerce_products\\images",
+  "product_count": 100,
+  "categories": {
+    "美妆护肤": 25,
+    "服饰运动": 25,
+    "数码电子": 25,
+    "食品饮料": 25
+  }
+}

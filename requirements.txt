@@ -1,0 +1,27 @@
+# Core web API
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+pillow>=9.0.0
+
+# Recommendation API and LLM calls
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-openai>=0.1.0
+
+# Local embedding models
+sentence-transformers>=2.7.0
+torch>=2.0.0
+langchain-huggingface>=0.0.3
+
+# Retrieval, ecommerce product ingestion, and vector store integration
+pymilvus>=2.4.0
+
+# Optional storage helpers used by parent chunk/cache modules
+redis>=5.0.0
+sqlalchemy>=2.0.0
+
+# Test tooling
+pytest>=8.0.0

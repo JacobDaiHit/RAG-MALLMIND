@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">ZHITAI TiPlus7100 1TB NVMe SSD</tspan>
+<tspan x="36" dy="24">Price: CNY 499</tspan>
+<tspan x="36" dy="24">Category: ssd</tspan>
+<tspan x="36" dy="24">Tags: 1000GB|NVMe|PCIe 4.0 NVMe</tspan>
+<tspan x="36" dy="24">brand: ZHITAI</tspan>
+<tspan x="36" dy="24">model: TiPlus7100 1TB</tspan>
+<tspan x="36" dy="24">storage_type: SSD</tspan>
+<tspan x="36" dy="24">capacity_gb: 1000</tspan>
+<tspan x="36" dy="24">interface: M.2</tspan>
+<tspan x="36" dy="24">protocol: PCIe 4.0 NVMe</tspan>
+<tspan x="36" dy="24">form_factor: M.2 2280</tspan>
+<tspan x="36" dy="24">read_mb_s: 7000</tspan>
+<tspan x="36" dy="24">write_mb_s: 6000</tspan>
+<tspan x="36" dy="24">has_dram_cache: False</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_ssd_zhitai_tiplus7100_1tb</text>
+  <metadata>ZHITAI TiPlus7100 1TB NVMe SSD
+Price: CNY 499
+Category: ssd
+Tags: 1000GB|NVMe|PCIe 4.0 NVMe
+brand: ZHITAI
+model: TiPlus7100 1TB
+storage_type: SSD
+capacity_gb: 1000
+interface: M.2
+protocol: PCIe 4.0 NVMe
+form_factor: M.2 2280
+read_mb_s: 7000
+write_mb_s: 6000
+has_dram_cache: False</metadata>
+</svg>

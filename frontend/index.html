@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MallMind 智能导购</title>
+    <link rel="stylesheet" href="/static/styles.css?v=mallmind-redesign-20260601-pc-detail-v2" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="nav-inner">
+        <button class="brand-button" type="button" data-go-screen="demand" aria-label="返回导购首页">
+          <span class="brand-mark">M</span>
+          <span>MallMind</span>
+        </button>
+
+        <nav class="site-nav" aria-label="主导航">
+          <button type="button" data-nav-screen="demand" class="nav-link active">智能导购</button>
+          <button type="button" data-nav-screen="products" class="nav-link">商品库</button>
+          <button type="button" data-nav-screen="cart" class="nav-link">购物车</button>
+        </nav>
+
+        <div class="header-actions">
+          <label class="header-search" for="catalogSearchInput">
+            <span aria-hidden="true">搜索</span>
+            <input id="catalogSearchInput" type="search" placeholder="搜索商品、品牌或场景" />
+          </label>
+          <button class="cart-button" type="button" data-go-screen="cart">
+            购物车
+            <span id="cartCountBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-shell">
+      <section class="screen active" id="screen-demand" data-screen="demand">
+        <section class="hero-section">
+          <div class="hero-copy">
+            <div class="hero-kicker">智能精选 · 真实商品库</div>
+            <h1>用一句话找到值得买的商品</h1>
+            <p>
+              说出预算、用途、偏好和限制，MallMind 会检索本地商品库，给出可对比的商品卡片、整机配置和购物车闭环。
+            </p>
+            <div class="hero-actions">
+              <button class="primary-button" type="button" data-focus-composer>开始提需求</button>
+              <button class="secondary-button" type="button" data-go-screen="products">浏览商品库</button>
+            </div>
+          </div>
+          <div class="hero-showcase" aria-label="导购能力概览">
+            <div class="showcase-card main">
+              <span class="showcase-label">今日推荐流程</span>
+              <strong>需求理解 → RAG 检索 → 结构化对比 → 加入购物车</strong>
+            </div>
+            <div class="showcase-grid">
+              <div><span>预算</span><strong>精确筛选</strong></div>
+              <div><span>证据</span><strong>商品库命中</strong></div>
+              <div><span>方案</span><strong>PC 装机</strong></div>
+              <div><span>闭环</span><strong>购物车</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="service-strip" aria-label="服务保障">
+          <div><strong>正品保障</strong><span>本地商品数据可追溯</span></div>
+          <div><strong>快速检索</strong><span>按预算、用途、标签筛选</span></div>
+          <div><strong>可持续追问</strong><span>支持多轮调整偏好</span></div>
+          <div><strong>一键加购</strong><span>推荐结果直接进入购物车</span></div>
+        </section>
+
+        <section class="guide-layout">
+          <section class="chat-panel" aria-label="智能导购对话">
+            <div class="panel-head">
+              <div>
+                <span class="section-eyebrow">Shopping Assistant</span>
+                <h2>智能导购助手</h2>
+              </div>
+              <div class="status-pill">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">等待需求</span>
+              </div>
+            </div>
+
+            <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+
+            <section id="recommendedProducts" class="recommendation-strip empty-state">
+              推荐商品和对比表会显示在这里。
+            </section>
+
+            <form id="chatForm" class="composer-panel">
+              <label class="field-label" for="goalInput">告诉我你想买什么</label>
+              <textarea id="goalInput" rows="4" placeholder="例如：帮我配一台 7000 元以内的游戏电脑，白色、低噪音">帮我配一台 7000 元以内的游戏电脑，白色、低噪音</textarea>
+              <div class="composer-actions">
+                <div>
+                  <label class="upload-button" for="attachmentInput">添加图片</label>
+                  <input id="attachmentInput" class="file-input" type="file" accept="image/*" multiple />
+                </div>
+                <button id="sendButton" class="primary-button" type="submit">发送需求</button>
+              </div>
+              <div id="attachmentList" class="attachment-list"></div>
+              <div class="prompt-suggestions" aria-label="需求示例">
+                <button type="button" class="chip" data-example="帮我配一台 7000 元以内的游戏电脑，白色、低噪音">7000 元游戏主机</button>
+                <button type="button" class="chip" data-example="显卡再强一点，预算可以贵 500">显卡升级</button>
+                <button type="button" class="chip" data-example="再便宜 500 元">降低预算</button>
+                <button type="button" class="chip" data-example="帮我找一款送女生的数码小礼物，预算 500 元以内">数码礼物</button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="guide-side">
+            <section class="side-card">
+              <span class="section-eyebrow">Categories</span>
+              <h3>热门分类</h3>
+              <div class="category-grid" id="categoryQuickLinks">
+                <button type="button" data-category="digital"><span>数码电子</span><strong>Digital</strong></button>
+                <button type="button" data-category="beauty"><span>美妆护肤</span><strong>Beauty</strong></button>
+                <button type="button" data-category="clothing"><span>服饰运动</span><strong>Sports</strong></button>
+                <button type="button" data-category="food"><span>食品生活</span><strong>Food</strong></button>
+              </div>
+            </section>
+
+            <section class="side-card">
+              <span class="section-eyebrow">Flow</span>
+              <h3>导购闭环</h3>
+              <ol class="flow-list">
+                <li>理解预算、用途与否定条件</li>
+                <li>检索本地真实商品与 PC 配件库</li>
+                <li>输出推荐理由、风险和取舍</li>
+                <li>生成商品卡片、对比表和购物车</li>
+              </ol>
+            </section>
+
+            <section class="side-card cart-mini">
+              <div class="side-card-head">
+                <div>
+                  <span class="section-eyebrow">Cart</span>
+                  <h3>购物车摘要</h3>
+                </div>
+                <button type="button" data-go-screen="cart">查看</button>
+              </div>
+              <p id="cartMiniText">暂未添加商品。</p>
+            </section>
+          </aside>
+        </section>
+      </section>
+
+      <section class="screen" id="screen-products" data-screen="products">
+        <div class="page-head">
+          <span class="section-eyebrow">Product Catalog</span>
+          <h1>全部商品</h1>
+          <p>浏览本地商品库。商品名称、价格、图片、SKU、评价与推荐标签均来自项目数据。</p>
+        </div>
+        <div id="productMarketContent" class="product-market"></div>
+      </section>
+
+      <section class="screen" id="screen-plans" data-screen="plans">
+        <div class="page-head">
+          <span class="section-eyebrow">PC Build</span>
+          <h1>整机方案</h1>
+          <p>展示预算、用途、配件列表、兼容性校验、替换建议和整机加购。</p>
+        </div>
+        <div id="pcBuildPlanContent" class="placeholder-board"></div>
+      </section>
+
+      <section class="screen" id="screen-cart" data-screen="cart">
+        <div class="page-head">
+          <span class="section-eyebrow">Cart</span>
+          <h1>购物车</h1>
+          <p>这里展示通过对话、商品卡片或整机方案加入的商品，支持删除、改数量和清空。</p>
+        </div>
+        <div id="cartContent" class="cart-panel"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js?v=mallmind-redesign-20260601-pc-detail-v2"></script>
+  </body>
+</html>

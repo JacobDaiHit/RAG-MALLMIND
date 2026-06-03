@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Samsung 990 PRO 2TB Rev4 NVMe SSD</tspan>
+<tspan x="36" dy="24">Price: CNY 1174</tspan>
+<tspan x="36" dy="24">Category: ssd</tspan>
+<tspan x="36" dy="24">Tags: 2000GB|NVMe|PCIe 4.0 NVMe</tspan>
+<tspan x="36" dy="24">brand: Samsung</tspan>
+<tspan x="36" dy="24">model: 990 PRO 2TB Rev4</tspan>
+<tspan x="36" dy="24">storage_type: SSD</tspan>
+<tspan x="36" dy="24">capacity_gb: 2000</tspan>
+<tspan x="36" dy="24">interface: M.2</tspan>
+<tspan x="36" dy="24">protocol: PCIe 4.0 NVMe</tspan>
+<tspan x="36" dy="24">form_factor: M.2 2280</tspan>
+<tspan x="36" dy="24">read_mb_s: 7450</tspan>
+<tspan x="36" dy="24">write_mb_s: 6900</tspan>
+<tspan x="36" dy="24">has_dram_cache: True</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_ssd_samsung_990_pro_2tb_rev4</text>
+  <metadata>Samsung 990 PRO 2TB Rev4 NVMe SSD
+Price: CNY 1174
+Category: ssd
+Tags: 2000GB|NVMe|PCIe 4.0 NVMe
+brand: Samsung
+model: 990 PRO 2TB Rev4
+storage_type: SSD
+capacity_gb: 2000
+interface: M.2
+protocol: PCIe 4.0 NVMe
+form_factor: M.2 2280
+read_mb_s: 7450
+write_mb_s: 6900
+has_dram_cache: True</metadata>
+</svg>

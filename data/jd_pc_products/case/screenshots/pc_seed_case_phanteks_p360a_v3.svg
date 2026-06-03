@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Phanteks P360A V3 机箱</tspan>
+<tspan x="36" dy="24">Price: CNY 435</tspan>
+<tspan x="36" dy="24">Category: case</tspan>
+<tspan x="36" dy="24">Tags: ATX|GPU400mm|风冷160mm</tspan>
+<tspan x="36" dy="24">brand: Phanteks</tspan>
+<tspan x="36" dy="24">model: P360A V3</tspan>
+<tspan x="36" dy="24">case_size: ATX</tspan>
+<tspan x="36" dy="24">motherboard_support: [&#x27;ATX&#x27;, &#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">form_factor_support: [&#x27;ATX&#x27;, &#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">gpu_clearance_mm: 400</tspan>
+<tspan x="36" dy="24">cooler_clearance_mm: 160</tspan>
+<tspan x="36" dy="24">max_psu_length_mm: 220</tspan>
+<tspan x="36" dy="24">supported_radiator_sizes: [240, 280, 360]</tspan>
+<tspan x="36" dy="24">radiator_support: [240, 280, 360]</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_case_phanteks_p360a_v3</text>
+  <metadata>Phanteks P360A V3 机箱
+Price: CNY 435
+Category: case
+Tags: ATX|GPU400mm|风冷160mm
+brand: Phanteks
+model: P360A V3
+case_size: ATX
+motherboard_support: [&#x27;ATX&#x27;, &#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+form_factor_support: [&#x27;ATX&#x27;, &#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+gpu_clearance_mm: 400
+cooler_clearance_mm: 160
+max_psu_length_mm: 220
+supported_radiator_sizes: [240, 280, 360]
+radiator_support: [240, 280, 360]</metadata>
+</svg>

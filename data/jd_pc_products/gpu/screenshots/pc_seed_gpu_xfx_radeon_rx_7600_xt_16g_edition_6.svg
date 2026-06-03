@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">XFX Radeon RX 7600 XT 16G Edition 6 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 3039</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: RX 7600 XT|16GB|1080p游戏</tspan>
+<tspan x="36" dy="24">brand: XFX</tspan>
+<tspan x="36" dy="24">model: Radeon RX 7600 XT 16G Edition 6</tspan>
+<tspan x="36" dy="24">chipset: RX 7600 XT</tspan>
+<tspan x="36" dy="24">vram_gb: 16</tspan>
+<tspan x="36" dy="24">memory_type: GDDR6</tspan>
+<tspan x="36" dy="24">bus_width_bit: 256</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 284</tspan>
+<tspan x="36" dy="24">power_w: 195</tspan>
+<tspan x="36" dy="24">tdp_w: 195</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_xfx_radeon_rx_7600_xt_16g_edition_6</text>
+  <metadata>XFX Radeon RX 7600 XT 16G Edition 6 显卡
+Price: CNY 3039
+Category: gpu
+Tags: RX 7600 XT|16GB|1080p游戏
+brand: XFX
+model: Radeon RX 7600 XT 16G Edition 6
+chipset: RX 7600 XT
+vram_gb: 16
+memory_type: GDDR6
+bus_width_bit: 256
+interface: PCIe 4.0 x16
+length_mm: 284
+power_w: 195
+tdp_w: 195</metadata>
+</svg>

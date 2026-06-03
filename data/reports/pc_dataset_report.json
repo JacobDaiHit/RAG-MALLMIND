@@ -1,0 +1,986 @@
+{
+  "summary": {
+    "total_products": 484,
+    "total_parts": 242,
+    "component_counts": {
+      "pc_case": 75,
+      "pc_cooler": 75,
+      "pc_cpu": 66,
+      "pc_gpu": 120,
+      "pc_memory": 90,
+      "pc_motherboard": 120,
+      "pc_psu": 90,
+      "pc_storage": 90
+    },
+    "error_count": 0,
+    "warning_count": 8
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "file": "data/jd_pc_products/case/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/cooler/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/cpu/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/gpu/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/memory/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/motherboard/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/psu/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    },
+    {
+      "file": "data/jd_pc_products/storage/manifest.json",
+      "code": "manifest_windows_path",
+      "message": "manifest contains historical Windows paths; runtime loaders must ignore them"
+    }
+  ],
+  "duplicates": [
+    {
+      "base_model_key": "sama|pc_case|quzao air m atx",
+      "count": 10,
+      "ids": [
+        "case_sama_quzao_air_m_atx",
+        "case_sama_quzao_air_m_atx_v2",
+        "case_sama_quzao_air_m_atx_v3",
+        "case_sama_quzao_air_m_atx_v4",
+        "case_sama_quzao_air_m_atx_v5",
+        "pc_seed_case_sama_quzao_air_m_atx",
+        "pc_seed_case_sama_quzao_air_m_atx_v2",
+        "pc_seed_case_sama_quzao_air_m_atx_v3",
+        "pc_seed_case_sama_quzao_air_m_atx_v4",
+        "pc_seed_case_sama_quzao_air_m_atx_v5"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cooler|wraith stealth",
+      "count": 10,
+      "ids": [
+        "cooler_amd_wraith_stealth",
+        "cooler_amd_wraith_stealth_v2",
+        "cooler_amd_wraith_stealth_v3",
+        "cooler_amd_wraith_stealth_v4",
+        "cooler_amd_wraith_stealth_v5",
+        "pc_seed_cpu_cooler_amd_wraith_stealth",
+        "pc_seed_cpu_cooler_amd_wraith_stealth_v2",
+        "pc_seed_cpu_cooler_amd_wraith_stealth_v3",
+        "pc_seed_cpu_cooler_amd_wraith_stealth_v4",
+        "pc_seed_cpu_cooler_amd_wraith_stealth_v5"
+      ]
+    },
+    {
+      "base_model_key": "kioxia|pc_storage|exceria g2 rc20 500gb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_kioxia_exceria_g2_rc20_500gb",
+        "pc_seed_ssd_kioxia_exceria_g2_rc20_500gb_rev2",
+        "pc_seed_ssd_kioxia_exceria_g2_rc20_500gb_rev3",
+        "pc_seed_ssd_kioxia_exceria_g2_rc20_500gb_rev4",
+        "pc_seed_ssd_kioxia_exceria_g2_rc20_500gb_rev5",
+        "storage_kioxia_exceria_g2_rc20_500gb",
+        "storage_kioxia_exceria_g2_rc20_500gb_rev2",
+        "storage_kioxia_exceria_g2_rc20_500gb_rev3",
+        "storage_kioxia_exceria_g2_rc20_500gb_rev4",
+        "storage_kioxia_exceria_g2_rc20_500gb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "zhitai|pc_storage|tiplus7100 1tb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_zhitai_tiplus7100_1tb",
+        "pc_seed_ssd_zhitai_tiplus7100_1tb_rev2",
+        "pc_seed_ssd_zhitai_tiplus7100_1tb_rev3",
+        "pc_seed_ssd_zhitai_tiplus7100_1tb_rev4",
+        "pc_seed_ssd_zhitai_tiplus7100_1tb_rev5",
+        "storage_zhitai_tiplus7100_1tb",
+        "storage_zhitai_tiplus7100_1tb_rev2",
+        "storage_zhitai_tiplus7100_1tb_rev3",
+        "storage_zhitai_tiplus7100_1tb_rev4",
+        "storage_zhitai_tiplus7100_1tb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "wd|pc_storage|blue sn580 1tb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_wd_blue_sn580_1tb",
+        "pc_seed_ssd_wd_blue_sn580_1tb_rev2",
+        "pc_seed_ssd_wd_blue_sn580_1tb_rev3",
+        "pc_seed_ssd_wd_blue_sn580_1tb_rev4",
+        "pc_seed_ssd_wd_blue_sn580_1tb_rev5",
+        "storage_wd_blue_sn580_1tb",
+        "storage_wd_blue_sn580_1tb_rev2",
+        "storage_wd_blue_sn580_1tb_rev3",
+        "storage_wd_blue_sn580_1tb_rev4",
+        "storage_wd_blue_sn580_1tb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "samsung|pc_storage|990 pro 2tb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_samsung_990_pro_2tb",
+        "pc_seed_ssd_samsung_990_pro_2tb_rev2",
+        "pc_seed_ssd_samsung_990_pro_2tb_rev3",
+        "pc_seed_ssd_samsung_990_pro_2tb_rev4",
+        "pc_seed_ssd_samsung_990_pro_2tb_rev5",
+        "storage_samsung_990_pro_2tb",
+        "storage_samsung_990_pro_2tb_rev2",
+        "storage_samsung_990_pro_2tb_rev3",
+        "storage_samsung_990_pro_2tb_rev4",
+        "storage_samsung_990_pro_2tb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "wd|pc_storage|black sn850x 2tb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_wd_black_sn850x_2tb",
+        "pc_seed_ssd_wd_black_sn850x_2tb_rev2",
+        "pc_seed_ssd_wd_black_sn850x_2tb_rev3",
+        "pc_seed_ssd_wd_black_sn850x_2tb_rev4",
+        "pc_seed_ssd_wd_black_sn850x_2tb_rev5",
+        "storage_wd_black_sn850x_2tb",
+        "storage_wd_black_sn850x_2tb_rev2",
+        "storage_wd_black_sn850x_2tb_rev3",
+        "storage_wd_black_sn850x_2tb_rev4",
+        "storage_wd_black_sn850x_2tb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "crucial|pc_storage|p3 plus 4tb",
+      "count": 10,
+      "ids": [
+        "pc_seed_ssd_crucial_p3_plus_4tb",
+        "pc_seed_ssd_crucial_p3_plus_4tb_rev2",
+        "pc_seed_ssd_crucial_p3_plus_4tb_rev3",
+        "pc_seed_ssd_crucial_p3_plus_4tb_rev4",
+        "pc_seed_ssd_crucial_p3_plus_4tb_rev5",
+        "storage_crucial_p3_plus_4tb",
+        "storage_crucial_p3_plus_4tb_rev2",
+        "storage_crucial_p3_plus_4tb_rev3",
+        "storage_crucial_p3_plus_4tb_rev4",
+        "storage_crucial_p3_plus_4tb_rev5"
+      ]
+    },
+    {
+      "base_model_key": "great wall|pc_psu|hope 5000ds 500w",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_great_wall_hope_5000ds_500w",
+        "pc_seed_psu_great_wall_hope_5000ds_500w_v2",
+        "pc_seed_psu_great_wall_hope_5000ds_500w_v3",
+        "pc_seed_psu_great_wall_hope_5000ds_500w_v4",
+        "pc_seed_psu_great_wall_hope_5000ds_500w_v5",
+        "psu_great_wall_hope_5000ds_500w",
+        "psu_great_wall_hope_5000ds_500w_v2",
+        "psu_great_wall_hope_5000ds_500w_v3",
+        "psu_great_wall_hope_5000ds_500w_v4",
+        "psu_great_wall_hope_5000ds_500w_v5"
+      ]
+    },
+    {
+      "base_model_key": "cooler master|pc_psu|mwe 550 bronze",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_cooler_master_mwe_550_bronze",
+        "pc_seed_psu_cooler_master_mwe_550_bronze_v2",
+        "pc_seed_psu_cooler_master_mwe_550_bronze_v3",
+        "pc_seed_psu_cooler_master_mwe_550_bronze_v4",
+        "pc_seed_psu_cooler_master_mwe_550_bronze_v5",
+        "psu_cooler_master_mwe_550_bronze",
+        "psu_cooler_master_mwe_550_bronze_v2",
+        "psu_cooler_master_mwe_550_bronze_v3",
+        "psu_cooler_master_mwe_550_bronze_v4",
+        "psu_cooler_master_mwe_550_bronze_v5"
+      ]
+    },
+    {
+      "base_model_key": "huntkey|pc_psu|wd650k 650w gold",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_huntkey_wd650k_650w_gold",
+        "pc_seed_psu_huntkey_wd650k_650w_gold_v2",
+        "pc_seed_psu_huntkey_wd650k_650w_gold_v3",
+        "pc_seed_psu_huntkey_wd650k_650w_gold_v4",
+        "pc_seed_psu_huntkey_wd650k_650w_gold_v5",
+        "psu_huntkey_wd650k_650w_gold",
+        "psu_huntkey_wd650k_650w_gold_v2",
+        "psu_huntkey_wd650k_650w_gold_v3",
+        "psu_huntkey_wd650k_650w_gold_v4",
+        "psu_huntkey_wd650k_650w_gold_v5"
+      ]
+    },
+    {
+      "base_model_key": "super flower|pc_psu|leadex g 750w",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_super_flower_leadex_g_750w",
+        "pc_seed_psu_super_flower_leadex_g_750w_v2",
+        "pc_seed_psu_super_flower_leadex_g_750w_v3",
+        "pc_seed_psu_super_flower_leadex_g_750w_v4",
+        "pc_seed_psu_super_flower_leadex_g_750w_v5",
+        "psu_super_flower_leadex_g_750w",
+        "psu_super_flower_leadex_g_750w_v2",
+        "psu_super_flower_leadex_g_750w_v3",
+        "psu_super_flower_leadex_g_750w_v4",
+        "psu_super_flower_leadex_g_750w_v5"
+      ]
+    },
+    {
+      "base_model_key": "great wall|pc_psu|gx850 atx3 0",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_great_wall_gx850_atx3_0",
+        "pc_seed_psu_great_wall_gx850_atx3_0_v2",
+        "pc_seed_psu_great_wall_gx850_atx3_0_v3",
+        "pc_seed_psu_great_wall_gx850_atx3_0_v4",
+        "pc_seed_psu_great_wall_gx850_atx3_0_v5",
+        "psu_great_wall_gx850_atx3_0",
+        "psu_great_wall_gx850_atx3_0_v2",
+        "psu_great_wall_gx850_atx3_0_v3",
+        "psu_great_wall_gx850_atx3_0_v4",
+        "psu_great_wall_gx850_atx3_0_v5"
+      ]
+    },
+    {
+      "base_model_key": "seasonic|pc_psu|focus gx 1000 atx3",
+      "count": 10,
+      "ids": [
+        "pc_seed_psu_seasonic_focus_gx_1000_atx3",
+        "pc_seed_psu_seasonic_focus_gx_1000_atx3_v2",
+        "pc_seed_psu_seasonic_focus_gx_1000_atx3_v3",
+        "pc_seed_psu_seasonic_focus_gx_1000_atx3_v4",
+        "pc_seed_psu_seasonic_focus_gx_1000_atx3_v5",
+        "psu_seasonic_focus_gx_1000_atx3",
+        "psu_seasonic_focus_gx_1000_atx3_v2",
+        "psu_seasonic_focus_gx_1000_atx3_v3",
+        "psu_seasonic_focus_gx_1000_atx3_v4",
+        "psu_seasonic_focus_gx_1000_atx3_v5"
+      ]
+    },
+    {
+      "base_model_key": "jonsbo|pc_case|d31 mesh",
+      "count": 8,
+      "ids": [
+        "case_jonsbo_d31_mesh",
+        "case_jonsbo_d31_mesh_v2",
+        "case_jonsbo_d31_mesh_v3",
+        "case_jonsbo_d31_mesh_v4",
+        "pc_seed_case_jonsbo_d31_mesh",
+        "pc_seed_case_jonsbo_d31_mesh_v2",
+        "pc_seed_case_jonsbo_d31_mesh_v3",
+        "pc_seed_case_jonsbo_d31_mesh_v4"
+      ]
+    },
+    {
+      "base_model_key": "lian li|pc_case|a3 matx",
+      "count": 8,
+      "ids": [
+        "case_lian_li_a3_matx",
+        "case_lian_li_a3_matx_v2",
+        "case_lian_li_a3_matx_v3",
+        "case_lian_li_a3_matx_v4",
+        "pc_seed_case_lian_li_a3_matx",
+        "pc_seed_case_lian_li_a3_matx_v2",
+        "pc_seed_case_lian_li_a3_matx_v3",
+        "pc_seed_case_lian_li_a3_matx_v4"
+      ]
+    },
+    {
+      "base_model_key": "phanteks|pc_case|p360a",
+      "count": 8,
+      "ids": [
+        "case_phanteks_p360a",
+        "case_phanteks_p360a_v2",
+        "case_phanteks_p360a_v3",
+        "case_phanteks_p360a_v4",
+        "pc_seed_case_phanteks_p360a",
+        "pc_seed_case_phanteks_p360a_v2",
+        "pc_seed_case_phanteks_p360a_v3",
+        "pc_seed_case_phanteks_p360a_v4"
+      ]
+    },
+    {
+      "base_model_key": "nzxt|pc_case|h5 flow",
+      "count": 8,
+      "ids": [
+        "case_nzxt_h5_flow",
+        "case_nzxt_h5_flow_v2",
+        "case_nzxt_h5_flow_v3",
+        "case_nzxt_h5_flow_v4",
+        "pc_seed_case_nzxt_h5_flow",
+        "pc_seed_case_nzxt_h5_flow_v2",
+        "pc_seed_case_nzxt_h5_flow_v3",
+        "pc_seed_case_nzxt_h5_flow_v4"
+      ]
+    },
+    {
+      "base_model_key": "fractal design|pc_case|north",
+      "count": 8,
+      "ids": [
+        "case_fractal_design_north",
+        "case_fractal_design_north_v2",
+        "case_fractal_design_north_v3",
+        "case_fractal_design_north_v4",
+        "pc_seed_case_fractal_design_north",
+        "pc_seed_case_fractal_design_north_v2",
+        "pc_seed_case_fractal_design_north_v3",
+        "pc_seed_case_fractal_design_north_v4"
+      ]
+    },
+    {
+      "base_model_key": "thermalright|pc_cooler|ax120 r se",
+      "count": 8,
+      "ids": [
+        "cooler_thermalright_ax120_r_se",
+        "cooler_thermalright_ax120_r_se_v2",
+        "cooler_thermalright_ax120_r_se_v3",
+        "cooler_thermalright_ax120_r_se_v4",
+        "pc_seed_cpu_cooler_thermalright_ax120_r_se",
+        "pc_seed_cpu_cooler_thermalright_ax120_r_se_v2",
+        "pc_seed_cpu_cooler_thermalright_ax120_r_se_v3",
+        "pc_seed_cpu_cooler_thermalright_ax120_r_se_v4"
+      ]
+    },
+    {
+      "base_model_key": "thermalright|pc_cooler|peerless assassin 120",
+      "count": 8,
+      "ids": [
+        "cooler_thermalright_peerless_assassin_120",
+        "cooler_thermalright_peerless_assassin_120_v2",
+        "cooler_thermalright_peerless_assassin_120_v3",
+        "cooler_thermalright_peerless_assassin_120_v4",
+        "pc_seed_cpu_cooler_thermalright_peerless_assassin_120",
+        "pc_seed_cpu_cooler_thermalright_peerless_assassin_120_v2",
+        "pc_seed_cpu_cooler_thermalright_peerless_assassin_120_v3",
+        "pc_seed_cpu_cooler_thermalright_peerless_assassin_120_v4"
+      ]
+    },
+    {
+      "base_model_key": "deepcool|pc_cooler|ak620",
+      "count": 8,
+      "ids": [
+        "cooler_deepcool_ak620",
+        "cooler_deepcool_ak620_v2",
+        "cooler_deepcool_ak620_v3",
+        "cooler_deepcool_ak620_v4",
+        "pc_seed_cpu_cooler_deepcool_ak620",
+        "pc_seed_cpu_cooler_deepcool_ak620_v2",
+        "pc_seed_cpu_cooler_deepcool_ak620_v3",
+        "pc_seed_cpu_cooler_deepcool_ak620_v4"
+      ]
+    },
+    {
+      "base_model_key": "thermalright|pc_cooler|frozen magic 240",
+      "count": 8,
+      "ids": [
+        "cooler_thermalright_frozen_magic_240",
+        "cooler_thermalright_frozen_magic_240_v2",
+        "cooler_thermalright_frozen_magic_240_v3",
+        "cooler_thermalright_frozen_magic_240_v4",
+        "pc_seed_cpu_cooler_thermalright_frozen_magic_240",
+        "pc_seed_cpu_cooler_thermalright_frozen_magic_240_v2",
+        "pc_seed_cpu_cooler_thermalright_frozen_magic_240_v3",
+        "pc_seed_cpu_cooler_thermalright_frozen_magic_240_v4"
+      ]
+    },
+    {
+      "base_model_key": "cooler master|pc_cooler|masterliquid 360",
+      "count": 8,
+      "ids": [
+        "cooler_cooler_master_masterliquid_360",
+        "cooler_cooler_master_masterliquid_360_v2",
+        "cooler_cooler_master_masterliquid_360_v3",
+        "cooler_cooler_master_masterliquid_360_v4",
+        "pc_seed_cpu_cooler_cooler_master_masterliquid_360",
+        "pc_seed_cpu_cooler_cooler_master_masterliquid_360_v2",
+        "pc_seed_cpu_cooler_cooler_master_masterliquid_360_v3",
+        "pc_seed_cpu_cooler_cooler_master_masterliquid_360_v4"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_motherboard|prime a520m k",
+      "count": 8,
+      "ids": [
+        "motherboard_asus_prime_a520m_k",
+        "motherboard_asus_prime_a520m_k_v2",
+        "motherboard_asus_prime_a520m_k_v3",
+        "motherboard_asus_prime_a520m_k_v4",
+        "pc_seed_motherboard_asus_prime_a520m_k",
+        "pc_seed_motherboard_asus_prime_a520m_k_v2",
+        "pc_seed_motherboard_asus_prime_a520m_k_v3",
+        "pc_seed_motherboard_asus_prime_a520m_k_v4"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_motherboard|pro h610m e ddr4",
+      "count": 8,
+      "ids": [
+        "motherboard_msi_pro_h610m_e_ddr4",
+        "motherboard_msi_pro_h610m_e_ddr4_v2",
+        "motherboard_msi_pro_h610m_e_ddr4_v3",
+        "motherboard_msi_pro_h610m_e_ddr4_v4",
+        "pc_seed_motherboard_msi_pro_h610m_e_ddr4",
+        "pc_seed_motherboard_msi_pro_h610m_e_ddr4_v2",
+        "pc_seed_motherboard_msi_pro_h610m_e_ddr4_v3",
+        "pc_seed_motherboard_msi_pro_h610m_e_ddr4_v4"
+      ]
+    },
+    {
+      "base_model_key": "gigabyte|pc_motherboard|b550m ds3h ac",
+      "count": 8,
+      "ids": [
+        "motherboard_gigabyte_b550m_ds3h_ac",
+        "motherboard_gigabyte_b550m_ds3h_ac_v2",
+        "motherboard_gigabyte_b550m_ds3h_ac_v3",
+        "motherboard_gigabyte_b550m_ds3h_ac_v4",
+        "pc_seed_motherboard_gigabyte_b550m_ds3h_ac",
+        "pc_seed_motherboard_gigabyte_b550m_ds3h_ac_v2",
+        "pc_seed_motherboard_gigabyte_b550m_ds3h_ac_v3",
+        "pc_seed_motherboard_gigabyte_b550m_ds3h_ac_v4"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_motherboard|tuf gaming b550m plus wifi ii",
+      "count": 8,
+      "ids": [
+        "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii",
+        "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v2",
+        "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v3",
+        "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v4",
+        "pc_seed_motherboard_asus_tuf_gaming_b550m_plus_wifi_ii",
+        "pc_seed_motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v2",
+        "pc_seed_motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v3",
+        "pc_seed_motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v4"
+      ]
+    },
+    {
+      "base_model_key": "asrock|pc_gpu|radeon rx 6500 xt 4gb",
+      "count": 6,
+      "ids": [
+        "gpu_asrock_radeon_rx_6500_xt_4gb",
+        "gpu_asrock_radeon_rx_6500_xt_4gb_edition_1",
+        "gpu_asrock_radeon_rx_6500_xt_4gb_oc",
+        "pc_seed_gpu_asrock_radeon_rx_6500_xt_4gb",
+        "pc_seed_gpu_asrock_radeon_rx_6500_xt_4gb_edition_1",
+        "pc_seed_gpu_asrock_radeon_rx_6500_xt_4gb_oc"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_gpu|geforce gtx 1650 d6 ventus",
+      "count": 6,
+      "ids": [
+        "gpu_msi_geforce_gtx_1650_d6_ventus",
+        "gpu_msi_geforce_gtx_1650_d6_ventus_edition_2",
+        "gpu_msi_geforce_gtx_1650_d6_ventus_oc",
+        "pc_seed_gpu_msi_geforce_gtx_1650_d6_ventus",
+        "pc_seed_gpu_msi_geforce_gtx_1650_d6_ventus_edition_2",
+        "pc_seed_gpu_msi_geforce_gtx_1650_d6_ventus_oc"
+      ]
+    },
+    {
+      "base_model_key": "sapphire|pc_gpu|radeon rx 6600 8g",
+      "count": 6,
+      "ids": [
+        "gpu_sapphire_radeon_rx_6600_8g",
+        "gpu_sapphire_radeon_rx_6600_8g_edition_3",
+        "gpu_sapphire_radeon_rx_6600_8g_oc",
+        "pc_seed_gpu_sapphire_radeon_rx_6600_8g",
+        "pc_seed_gpu_sapphire_radeon_rx_6600_8g_edition_3",
+        "pc_seed_gpu_sapphire_radeon_rx_6600_8g_oc"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_gpu|dual geforce rtx 4060 o8g",
+      "count": 6,
+      "ids": [
+        "gpu_asus_dual_geforce_rtx_4060_o8g",
+        "gpu_asus_dual_geforce_rtx_4060_o8g_edition_4",
+        "gpu_asus_dual_geforce_rtx_4060_o8g_oc",
+        "pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g",
+        "pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_edition_4",
+        "pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_oc"
+      ]
+    },
+    {
+      "base_model_key": "sapphire|pc_gpu|radeon rx 7600 8g",
+      "count": 6,
+      "ids": [
+        "gpu_sapphire_radeon_rx_7600_8g",
+        "gpu_sapphire_radeon_rx_7600_8g_edition_5",
+        "gpu_sapphire_radeon_rx_7600_8g_oc",
+        "pc_seed_gpu_sapphire_radeon_rx_7600_8g",
+        "pc_seed_gpu_sapphire_radeon_rx_7600_8g_edition_5",
+        "pc_seed_gpu_sapphire_radeon_rx_7600_8g_oc"
+      ]
+    },
+    {
+      "base_model_key": "xfx|pc_gpu|radeon rx 7600 xt 16g",
+      "count": 6,
+      "ids": [
+        "gpu_xfx_radeon_rx_7600_xt_16g",
+        "gpu_xfx_radeon_rx_7600_xt_16g_edition_6",
+        "gpu_xfx_radeon_rx_7600_xt_16g_oc",
+        "pc_seed_gpu_xfx_radeon_rx_7600_xt_16g",
+        "pc_seed_gpu_xfx_radeon_rx_7600_xt_16g_edition_6",
+        "pc_seed_gpu_xfx_radeon_rx_7600_xt_16g_oc"
+      ]
+    },
+    {
+      "base_model_key": "nvidia|pc_gpu|geforce rtx 4060 ti 8g",
+      "count": 6,
+      "ids": [
+        "gpu_nvidia_geforce_rtx_4060_ti_8g",
+        "gpu_nvidia_geforce_rtx_4060_ti_8g_edition_7",
+        "gpu_nvidia_geforce_rtx_4060_ti_8g_oc",
+        "pc_seed_gpu_nvidia_geforce_rtx_4060_ti_8g",
+        "pc_seed_gpu_nvidia_geforce_rtx_4060_ti_8g_edition_7",
+        "pc_seed_gpu_nvidia_geforce_rtx_4060_ti_8g_oc"
+      ]
+    },
+    {
+      "base_model_key": "zotac|pc_gpu|geforce rtx 4060 ti 16g twin edge",
+      "count": 6,
+      "ids": [
+        "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge",
+        "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_edition_8",
+        "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_oc",
+        "pc_seed_gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge",
+        "pc_seed_gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_edition_8",
+        "pc_seed_gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_oc"
+      ]
+    },
+    {
+      "base_model_key": "maxsun|pc_gpu|geforce rtx 4070 icraft oc12g",
+      "count": 6,
+      "ids": [
+        "gpu_maxsun_geforce_rtx_4070_icraft_oc12g",
+        "gpu_maxsun_geforce_rtx_4070_icraft_oc12g_edition_9",
+        "gpu_maxsun_geforce_rtx_4070_icraft_oc12g_oc",
+        "pc_seed_gpu_maxsun_geforce_rtx_4070_icraft_oc12g",
+        "pc_seed_gpu_maxsun_geforce_rtx_4070_icraft_oc12g_edition_9",
+        "pc_seed_gpu_maxsun_geforce_rtx_4070_icraft_oc12g_oc"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_motherboard|pro b650m b",
+      "count": 6,
+      "ids": [
+        "motherboard_msi_pro_b650m_b",
+        "motherboard_msi_pro_b650m_b_v2",
+        "motherboard_msi_pro_b650m_b_v3",
+        "pc_seed_motherboard_msi_pro_b650m_b",
+        "pc_seed_motherboard_msi_pro_b650m_b_v2",
+        "pc_seed_motherboard_msi_pro_b650m_b_v3"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_motherboard|b650m mortar wifi",
+      "count": 6,
+      "ids": [
+        "motherboard_msi_b650m_mortar_wifi",
+        "motherboard_msi_b650m_mortar_wifi_v2",
+        "motherboard_msi_b650m_mortar_wifi_v3",
+        "pc_seed_motherboard_msi_b650m_mortar_wifi",
+        "pc_seed_motherboard_msi_b650m_mortar_wifi_v2",
+        "pc_seed_motherboard_msi_b650m_mortar_wifi_v3"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_motherboard|tuf gaming b650m plus wifi",
+      "count": 6,
+      "ids": [
+        "motherboard_asus_tuf_gaming_b650m_plus_wifi",
+        "motherboard_asus_tuf_gaming_b650m_plus_wifi_v2",
+        "motherboard_asus_tuf_gaming_b650m_plus_wifi_v3",
+        "pc_seed_motherboard_asus_tuf_gaming_b650m_plus_wifi",
+        "pc_seed_motherboard_asus_tuf_gaming_b650m_plus_wifi_v2",
+        "pc_seed_motherboard_asus_tuf_gaming_b650m_plus_wifi_v3"
+      ]
+    },
+    {
+      "base_model_key": "gigabyte|pc_motherboard|b760m aorus elite ax ddr5",
+      "count": 6,
+      "ids": [
+        "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5",
+        "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2",
+        "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v3",
+        "pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5",
+        "pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2",
+        "pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v3"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_motherboard|pro b760m a wifi ddr5",
+      "count": 6,
+      "ids": [
+        "motherboard_msi_pro_b760m_a_wifi_ddr5",
+        "motherboard_msi_pro_b760m_a_wifi_ddr5_v2",
+        "motherboard_msi_pro_b760m_a_wifi_ddr5_v3",
+        "pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5",
+        "pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5_v2",
+        "pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5_v3"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_motherboard|rog strix b760 g gaming wifi",
+      "count": 6,
+      "ids": [
+        "motherboard_asus_rog_strix_b760_g_gaming_wifi",
+        "motherboard_asus_rog_strix_b760_g_gaming_wifi_v2",
+        "motherboard_asus_rog_strix_b760_g_gaming_wifi_v3",
+        "pc_seed_motherboard_asus_rog_strix_b760_g_gaming_wifi",
+        "pc_seed_motherboard_asus_rog_strix_b760_g_gaming_wifi_v2",
+        "pc_seed_motherboard_asus_rog_strix_b760_g_gaming_wifi_v3"
+      ]
+    },
+    {
+      "base_model_key": "asus|pc_motherboard|tuf gaming x670e plus wifi",
+      "count": 6,
+      "ids": [
+        "motherboard_asus_tuf_gaming_x670e_plus_wifi",
+        "motherboard_asus_tuf_gaming_x670e_plus_wifi_v2",
+        "motherboard_asus_tuf_gaming_x670e_plus_wifi_v3",
+        "pc_seed_motherboard_asus_tuf_gaming_x670e_plus_wifi",
+        "pc_seed_motherboard_asus_tuf_gaming_x670e_plus_wifi_v2",
+        "pc_seed_motherboard_asus_tuf_gaming_x670e_plus_wifi_v3"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_motherboard|mag z790 tomahawk wifi",
+      "count": 6,
+      "ids": [
+        "motherboard_msi_mag_z790_tomahawk_wifi",
+        "motherboard_msi_mag_z790_tomahawk_wifi_v2",
+        "motherboard_msi_mag_z790_tomahawk_wifi_v3",
+        "pc_seed_motherboard_msi_mag_z790_tomahawk_wifi",
+        "pc_seed_motherboard_msi_mag_z790_tomahawk_wifi_v2",
+        "pc_seed_motherboard_msi_mag_z790_tomahawk_wifi_v3"
+      ]
+    },
+    {
+      "base_model_key": "sapphire|pc_gpu|radeon rx 7700 xt 12g",
+      "count": 4,
+      "ids": [
+        "gpu_sapphire_radeon_rx_7700_xt_12g",
+        "gpu_sapphire_radeon_rx_7700_xt_12g_oc",
+        "pc_seed_gpu_sapphire_radeon_rx_7700_xt_12g",
+        "pc_seed_gpu_sapphire_radeon_rx_7700_xt_12g_oc"
+      ]
+    },
+    {
+      "base_model_key": "sapphire|pc_gpu|radeon rx 7800 xt 16g",
+      "count": 4,
+      "ids": [
+        "gpu_sapphire_radeon_rx_7800_xt_16g",
+        "gpu_sapphire_radeon_rx_7800_xt_16g_oc",
+        "pc_seed_gpu_sapphire_radeon_rx_7800_xt_16g",
+        "pc_seed_gpu_sapphire_radeon_rx_7800_xt_16g_oc"
+      ]
+    },
+    {
+      "base_model_key": "zotac|pc_gpu|geforce rtx 4070 super x gaming",
+      "count": 4,
+      "ids": [
+        "gpu_zotac_geforce_rtx_4070_super_x_gaming",
+        "gpu_zotac_geforce_rtx_4070_super_x_gaming_oc",
+        "pc_seed_gpu_zotac_geforce_rtx_4070_super_x_gaming",
+        "pc_seed_gpu_zotac_geforce_rtx_4070_super_x_gaming_oc"
+      ]
+    },
+    {
+      "base_model_key": "colorful|pc_gpu|geforce rtx 4070 ti super 16g",
+      "count": 4,
+      "ids": [
+        "gpu_colorful_geforce_rtx_4070_ti_super_16g",
+        "gpu_colorful_geforce_rtx_4070_ti_super_16g_oc",
+        "pc_seed_gpu_colorful_geforce_rtx_4070_ti_super_16g",
+        "pc_seed_gpu_colorful_geforce_rtx_4070_ti_super_16g_oc"
+      ]
+    },
+    {
+      "base_model_key": "msi|pc_gpu|geforce rtx 4080 super 16g",
+      "count": 4,
+      "ids": [
+        "gpu_msi_geforce_rtx_4080_super_16g",
+        "gpu_msi_geforce_rtx_4080_super_16g_oc",
+        "pc_seed_gpu_msi_geforce_rtx_4080_super_16g",
+        "pc_seed_gpu_msi_geforce_rtx_4080_super_16g_oc"
+      ]
+    },
+    {
+      "base_model_key": "xfx|pc_gpu|radeon rx 7900 xtx 24g",
+      "count": 4,
+      "ids": [
+        "gpu_xfx_radeon_rx_7900_xtx_24g",
+        "gpu_xfx_radeon_rx_7900_xtx_24g_oc",
+        "pc_seed_gpu_xfx_radeon_rx_7900_xtx_24g",
+        "pc_seed_gpu_xfx_radeon_rx_7900_xtx_24g_oc"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i3 12100f",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i3_12100f",
+        "pc_seed_cpu_intel_core_i3_12100f"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 4500",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_4500",
+        "pc_seed_cpu_amd_ryzen_5_4500"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 5500",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_5500",
+        "pc_seed_cpu_amd_ryzen_5_5500"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 5600g",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_5600g",
+        "pc_seed_cpu_amd_ryzen_5_5600g"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i5 12400f",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i5_12400f",
+        "pc_seed_cpu_intel_core_i5_12400f"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 5600",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_5600",
+        "pc_seed_cpu_amd_ryzen_5_5600"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 7500f",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_7500f",
+        "pc_seed_cpu_amd_ryzen_5_7500f"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i5 13400f",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i5_13400f",
+        "pc_seed_cpu_intel_core_i5_13400f"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 7600",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_7600",
+        "pc_seed_cpu_amd_ryzen_5_7600"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i5 14400f",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i5_14400f",
+        "pc_seed_cpu_intel_core_i5_14400f"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 5 9600x",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_5_9600x",
+        "pc_seed_cpu_amd_ryzen_5_9600x"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 7 7700",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_7_7700",
+        "pc_seed_cpu_amd_ryzen_7_7700"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i5 14600kf",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i5_14600kf",
+        "pc_seed_cpu_intel_core_i5_14600kf"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 7 9700x",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_7_9700x",
+        "pc_seed_cpu_amd_ryzen_7_9700x"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i7 14700f",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i7_14700f",
+        "pc_seed_cpu_intel_core_i7_14700f"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 9 7900",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_9_7900",
+        "pc_seed_cpu_amd_ryzen_9_7900"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 7 7800x3d",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_7_7800x3d",
+        "pc_seed_cpu_amd_ryzen_7_7800x3d"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i7 14700kf",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i7_14700kf",
+        "pc_seed_cpu_intel_core_i7_14700kf"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 9 9900x",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_9_9900x",
+        "pc_seed_cpu_amd_ryzen_9_9900x"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 9 7950x",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_9_7950x",
+        "pc_seed_cpu_amd_ryzen_9_7950x"
+      ]
+    },
+    {
+      "base_model_key": "intel|pc_cpu|core i9 14900kf",
+      "count": 2,
+      "ids": [
+        "cpu_intel_core_i9_14900kf",
+        "pc_seed_cpu_intel_core_i9_14900kf"
+      ]
+    },
+    {
+      "base_model_key": "amd|pc_cpu|ryzen 9 9950x",
+      "count": 2,
+      "ids": [
+        "cpu_amd_ryzen_9_9950x",
+        "pc_seed_cpu_amd_ryzen_9_9950x"
+      ]
+    },
+    {
+      "base_model_key": "integrated|pc_gpu|no discrete gpu use cpu igpu",
+      "count": 2,
+      "ids": [
+        "gpu_integrated_no_discrete_gpu_use_cpu_igpu",
+        "pc_seed_gpu_integrated_no_discrete_gpu_use_cpu_igpu"
+      ]
+    },
+    {
+      "base_model_key": "kingbank|pc_memory|silver ddr4 16gb 3200",
+      "count": 2,
+      "ids": [
+        "memory_kingbank_silver_ddr4_16gb_3200",
+        "pc_seed_memory_kingbank_silver_ddr4_16gb_3200"
+      ]
+    },
+    {
+      "base_model_key": "kingston|pc_memory|fury beast ddr4 32gb 3600",
+      "count": 2,
+      "ids": [
+        "memory_kingston_fury_beast_ddr4_32gb_3600",
+        "pc_seed_memory_kingston_fury_beast_ddr4_32gb_3600"
+      ]
+    },
+    {
+      "base_model_key": "crucial|pc_memory|ddr5 16gb 5600",
+      "count": 2,
+      "ids": [
+        "memory_crucial_ddr5_16gb_5600",
+        "pc_seed_memory_crucial_ddr5_16gb_5600"
+      ]
+    },
+    {
+      "base_model_key": "kingston|pc_memory|fury beast ddr5 32gb 6000",
+      "count": 2,
+      "ids": [
+        "memory_kingston_fury_beast_ddr5_32gb_6000",
+        "pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000"
+      ]
+    },
+    {
+      "base_model_key": "g.skill|pc_memory|trident z5 rgb ddr5 32gb 6400",
+      "count": 2,
+      "ids": [
+        "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400",
+        "pc_seed_memory_g_skill_trident_z5_rgb_ddr5_32gb_6400"
+      ]
+    },
+    {
+      "base_model_key": "corsair|pc_memory|vengeance ddr5 64gb 6000",
+      "count": 2,
+      "ids": [
+        "memory_corsair_vengeance_ddr5_64gb_6000",
+        "pc_seed_memory_corsair_vengeance_ddr5_64gb_6000"
+      ]
+    }
+  ],
+  "coverage": {
+    "can_build_office": true,
+    "can_build_mainstream_gaming": true,
+    "can_build_high_end_gaming": true,
+    "can_build_productivity": true,
+    "notes": []
+  }
+}

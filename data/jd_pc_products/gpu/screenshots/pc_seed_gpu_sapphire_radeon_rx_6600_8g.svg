@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Sapphire Radeon RX 6600 8G 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 1399</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: RX 6600|8GB|入门独显</tspan>
+<tspan x="36" dy="24">brand: Sapphire</tspan>
+<tspan x="36" dy="24">model: Radeon RX 6600 8G</tspan>
+<tspan x="36" dy="24">chipset: RX 6600</tspan>
+<tspan x="36" dy="24">vram_gb: 8</tspan>
+<tspan x="36" dy="24">memory_type: GDDR6</tspan>
+<tspan x="36" dy="24">bus_width_bit: 128</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 240</tspan>
+<tspan x="36" dy="24">power_w: 132</tspan>
+<tspan x="36" dy="24">tdp_w: 132</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_sapphire_radeon_rx_6600_8g</text>
+  <metadata>Sapphire Radeon RX 6600 8G 显卡
+Price: CNY 1399
+Category: gpu
+Tags: RX 6600|8GB|入门独显
+brand: Sapphire
+model: Radeon RX 6600 8G
+chipset: RX 6600
+vram_gb: 8
+memory_type: GDDR6
+bus_width_bit: 128
+interface: PCIe 4.0 x16
+length_mm: 240
+power_w: 132
+tdp_w: 132</metadata>
+</svg>

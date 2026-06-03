@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">XFX Radeon RX 7900 XTX 24G OC 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 7179</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: RX 7900 XTX|24GB|高端游戏/AI</tspan>
+<tspan x="36" dy="24">brand: XFX</tspan>
+<tspan x="36" dy="24">model: Radeon RX 7900 XTX 24G OC</tspan>
+<tspan x="36" dy="24">chipset: RX 7900 XTX</tspan>
+<tspan x="36" dy="24">vram_gb: 24</tspan>
+<tspan x="36" dy="24">memory_type: GDDR6</tspan>
+<tspan x="36" dy="24">bus_width_bit: 256</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 352</tspan>
+<tspan x="36" dy="24">power_w: 365</tspan>
+<tspan x="36" dy="24">tdp_w: 365</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_xfx_radeon_rx_7900_xtx_24g_oc</text>
+  <metadata>XFX Radeon RX 7900 XTX 24G OC 显卡
+Price: CNY 7179
+Category: gpu
+Tags: RX 7900 XTX|24GB|高端游戏/AI
+brand: XFX
+model: Radeon RX 7900 XTX 24G OC
+chipset: RX 7900 XTX
+vram_gb: 24
+memory_type: GDDR6
+bus_width_bit: 256
+interface: PCIe 4.0 x16
+length_mm: 352
+power_w: 365
+tdp_w: 365</metadata>
+</svg>

@@ -1,0 +1,1352 @@
+[
+  {
+    "part_id": "memory_kingbank_silver_ddr4_16gb_3200",
+    "part_type": "pc_memory",
+    "brand": "Kingbank",
+    "model": "Silver DDR4 16GB 3200",
+    "title": "Kingbank Silver DDR4 16GB 3200 内存套装",
+    "price": 189.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 16,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 8,
+      "speed_mhz": 3200,
+      "latency_cl": 16,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "16GB",
+      "3200MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingbank；model Silver DDR4 16GB 3200；memory_type DDR4；capacity_gb 16；modules 2；speed_mhz 3200；latency CL16；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr4_32gb_3600",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR4 32GB 3600",
+    "title": "Kingston FURY Beast DDR4 32GB 3600 内存套装",
+    "price": 399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 3600,
+      "latency_cl": 18,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "32GB",
+      "3600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR4 32GB 3600；memory_type DDR4；capacity_gb 32；modules 2；speed_mhz 3600；latency CL18；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_crucial_ddr5_16gb_5600",
+    "part_type": "pc_memory",
+    "brand": "Crucial",
+    "model": "DDR5 16GB 5600",
+    "title": "Crucial DDR5 16GB 5600 内存套装",
+    "price": 299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 16,
+      "stick_count": 1,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 5600,
+      "latency_cl": 46,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 1,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "16GB",
+      "5600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Crucial；model DDR5 16GB 5600；memory_type DDR5；capacity_gb 16；modules 1；speed_mhz 5600；latency CL46；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr5_32gb_6000",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR5 32GB 6000",
+    "title": "Kingston FURY Beast DDR5 32GB 6000 内存套装",
+    "price": 699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6000,
+      "latency_cl": 30,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR5 32GB 6000；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6000；latency CL30；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400",
+    "part_type": "pc_memory",
+    "brand": "G.SKILL",
+    "model": "Trident Z5 RGB DDR5 32GB 6400",
+    "title": "G.SKILL Trident Z5 RGB DDR5 32GB 6400 内存套装",
+    "price": 899.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6400,
+      "latency_cl": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6400MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand G.SKILL；model Trident Z5 RGB DDR5 32GB 6400；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6400；latency CL32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_corsair_vengeance_ddr5_64gb_6000",
+    "part_type": "pc_memory",
+    "brand": "Corsair",
+    "model": "Vengeance DDR5 64GB 6000",
+    "title": "Corsair Vengeance DDR5 64GB 6000 内存套装",
+    "price": 1099.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 64,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 32,
+      "speed_mhz": 6000,
+      "latency_cl": 36,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": true
+    },
+    "tags": [
+      "DDR5",
+      "64GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Corsair；model Vengeance DDR5 64GB 6000；memory_type DDR5；capacity_gb 64；modules 2；speed_mhz 6000；latency CL36；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingbank_silver_ddr4_16gb_3200_kit_2",
+    "part_type": "pc_memory",
+    "brand": "Kingbank",
+    "model": "Silver DDR4 16GB 3200 Kit 2",
+    "title": "Kingbank Silver DDR4 16GB 3200 Kit 2 内存套装",
+    "price": 209.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 16,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 8,
+      "speed_mhz": 3200,
+      "latency_cl": 16,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "16GB",
+      "3200MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingbank；model Silver DDR4 16GB 3200 Kit 2；memory_type DDR4；capacity_gb 16；modules 2；speed_mhz 3200；latency CL16；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr4_32gb_3600_kit_2",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR4 32GB 3600 Kit 2",
+    "title": "Kingston FURY Beast DDR4 32GB 3600 Kit 2 内存套装",
+    "price": 419.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 3600,
+      "latency_cl": 18,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "32GB",
+      "3600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR4 32GB 3600 Kit 2；memory_type DDR4；capacity_gb 32；modules 2；speed_mhz 3600；latency CL18；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_crucial_ddr5_16gb_5600_kit_2",
+    "part_type": "pc_memory",
+    "brand": "Crucial",
+    "model": "DDR5 16GB 5600 Kit 2",
+    "title": "Crucial DDR5 16GB 5600 Kit 2 内存套装",
+    "price": 319.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 16,
+      "stick_count": 1,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 5600,
+      "latency_cl": 46,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 1,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "16GB",
+      "5600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Crucial；model DDR5 16GB 5600 Kit 2；memory_type DDR5；capacity_gb 16；modules 1；speed_mhz 5600；latency CL46；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr5_32gb_6000_kit_2",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR5 32GB 6000 Kit 2",
+    "title": "Kingston FURY Beast DDR5 32GB 6000 Kit 2 内存套装",
+    "price": 719.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6000,
+      "latency_cl": 30,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR5 32GB 6000 Kit 2；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6000；latency CL30；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400_kit_2",
+    "part_type": "pc_memory",
+    "brand": "G.SKILL",
+    "model": "Trident Z5 RGB DDR5 32GB 6400 Kit 2",
+    "title": "G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 2 内存套装",
+    "price": 919.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6400,
+      "latency_cl": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6400MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand G.SKILL；model Trident Z5 RGB DDR5 32GB 6400 Kit 2；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6400；latency CL32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_corsair_vengeance_ddr5_64gb_6000_kit_2",
+    "part_type": "pc_memory",
+    "brand": "Corsair",
+    "model": "Vengeance DDR5 64GB 6000 Kit 2",
+    "title": "Corsair Vengeance DDR5 64GB 6000 Kit 2 内存套装",
+    "price": 1119.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 64,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 32,
+      "speed_mhz": 6000,
+      "latency_cl": 36,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": true
+    },
+    "tags": [
+      "DDR5",
+      "64GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Corsair；model Vengeance DDR5 64GB 6000 Kit 2；memory_type DDR5；capacity_gb 64；modules 2；speed_mhz 6000；latency CL36；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingbank_silver_ddr4_16gb_3200_kit_3",
+    "part_type": "pc_memory",
+    "brand": "Kingbank",
+    "model": "Silver DDR4 16GB 3200 Kit 3",
+    "title": "Kingbank Silver DDR4 16GB 3200 Kit 3 内存套装",
+    "price": 229.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 16,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 8,
+      "speed_mhz": 3200,
+      "latency_cl": 16,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "16GB",
+      "3200MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingbank；model Silver DDR4 16GB 3200 Kit 3；memory_type DDR4；capacity_gb 16；modules 2；speed_mhz 3200；latency CL16；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr4_32gb_3600_kit_3",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR4 32GB 3600 Kit 3",
+    "title": "Kingston FURY Beast DDR4 32GB 3600 Kit 3 内存套装",
+    "price": 439.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 3600,
+      "latency_cl": 18,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "32GB",
+      "3600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR4 32GB 3600 Kit 3；memory_type DDR4；capacity_gb 32；modules 2；speed_mhz 3600；latency CL18；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_crucial_ddr5_16gb_5600_kit_3",
+    "part_type": "pc_memory",
+    "brand": "Crucial",
+    "model": "DDR5 16GB 5600 Kit 3",
+    "title": "Crucial DDR5 16GB 5600 Kit 3 内存套装",
+    "price": 339.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 16,
+      "stick_count": 1,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 5600,
+      "latency_cl": 46,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 1,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "16GB",
+      "5600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Crucial；model DDR5 16GB 5600 Kit 3；memory_type DDR5；capacity_gb 16；modules 1；speed_mhz 5600；latency CL46；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr5_32gb_6000_kit_3",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR5 32GB 6000 Kit 3",
+    "title": "Kingston FURY Beast DDR5 32GB 6000 Kit 3 内存套装",
+    "price": 739.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6000,
+      "latency_cl": 30,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR5 32GB 6000 Kit 3；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6000；latency CL30；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400_kit_3",
+    "part_type": "pc_memory",
+    "brand": "G.SKILL",
+    "model": "Trident Z5 RGB DDR5 32GB 6400 Kit 3",
+    "title": "G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 3 内存套装",
+    "price": 939.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6400,
+      "latency_cl": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6400MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand G.SKILL；model Trident Z5 RGB DDR5 32GB 6400 Kit 3；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6400；latency CL32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_corsair_vengeance_ddr5_64gb_6000_kit_3",
+    "part_type": "pc_memory",
+    "brand": "Corsair",
+    "model": "Vengeance DDR5 64GB 6000 Kit 3",
+    "title": "Corsair Vengeance DDR5 64GB 6000 Kit 3 内存套装",
+    "price": 1139.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 64,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 32,
+      "speed_mhz": 6000,
+      "latency_cl": 36,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": true
+    },
+    "tags": [
+      "DDR5",
+      "64GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Corsair；model Vengeance DDR5 64GB 6000 Kit 3；memory_type DDR5；capacity_gb 64；modules 2；speed_mhz 6000；latency CL36；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingbank_silver_ddr4_16gb_3200_kit_4",
+    "part_type": "pc_memory",
+    "brand": "Kingbank",
+    "model": "Silver DDR4 16GB 3200 Kit 4",
+    "title": "Kingbank Silver DDR4 16GB 3200 Kit 4 内存套装",
+    "price": 249.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 16,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 8,
+      "speed_mhz": 3200,
+      "latency_cl": 16,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "16GB",
+      "3200MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingbank；model Silver DDR4 16GB 3200 Kit 4；memory_type DDR4；capacity_gb 16；modules 2；speed_mhz 3200；latency CL16；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr4_32gb_3600_kit_4",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR4 32GB 3600 Kit 4",
+    "title": "Kingston FURY Beast DDR4 32GB 3600 Kit 4 内存套装",
+    "price": 459.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 3600,
+      "latency_cl": 18,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "32GB",
+      "3600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR4 32GB 3600 Kit 4；memory_type DDR4；capacity_gb 32；modules 2；speed_mhz 3600；latency CL18；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_crucial_ddr5_16gb_5600_kit_4",
+    "part_type": "pc_memory",
+    "brand": "Crucial",
+    "model": "DDR5 16GB 5600 Kit 4",
+    "title": "Crucial DDR5 16GB 5600 Kit 4 内存套装",
+    "price": 359.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 16,
+      "stick_count": 1,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 5600,
+      "latency_cl": 46,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 1,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "16GB",
+      "5600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Crucial；model DDR5 16GB 5600 Kit 4；memory_type DDR5；capacity_gb 16；modules 1；speed_mhz 5600；latency CL46；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr5_32gb_6000_kit_4",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR5 32GB 6000 Kit 4",
+    "title": "Kingston FURY Beast DDR5 32GB 6000 Kit 4 内存套装",
+    "price": 759.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6000,
+      "latency_cl": 30,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR5 32GB 6000 Kit 4；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6000；latency CL30；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400_kit_4",
+    "part_type": "pc_memory",
+    "brand": "G.SKILL",
+    "model": "Trident Z5 RGB DDR5 32GB 6400 Kit 4",
+    "title": "G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 4 内存套装",
+    "price": 959.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6400,
+      "latency_cl": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6400MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand G.SKILL；model Trident Z5 RGB DDR5 32GB 6400 Kit 4；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6400；latency CL32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_corsair_vengeance_ddr5_64gb_6000_kit_4",
+    "part_type": "pc_memory",
+    "brand": "Corsair",
+    "model": "Vengeance DDR5 64GB 6000 Kit 4",
+    "title": "Corsair Vengeance DDR5 64GB 6000 Kit 4 内存套装",
+    "price": 1159.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 64,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 32,
+      "speed_mhz": 6000,
+      "latency_cl": 36,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": true
+    },
+    "tags": [
+      "DDR5",
+      "64GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Corsair；model Vengeance DDR5 64GB 6000 Kit 4；memory_type DDR5；capacity_gb 64；modules 2；speed_mhz 6000；latency CL36；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingbank_silver_ddr4_16gb_3200_kit_5",
+    "part_type": "pc_memory",
+    "brand": "Kingbank",
+    "model": "Silver DDR4 16GB 3200 Kit 5",
+    "title": "Kingbank Silver DDR4 16GB 3200 Kit 5 内存套装",
+    "price": 269.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 16,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 8,
+      "speed_mhz": 3200,
+      "latency_cl": 16,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "16GB",
+      "3200MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingbank；model Silver DDR4 16GB 3200 Kit 5；memory_type DDR4；capacity_gb 16；modules 2；speed_mhz 3200；latency CL16；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr4_32gb_3600_kit_5",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR4 32GB 3600 Kit 5",
+    "title": "Kingston FURY Beast DDR4 32GB 3600 Kit 5 内存套装",
+    "price": 479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR4",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 3600,
+      "latency_cl": 18,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR4",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR4",
+      "32GB",
+      "3600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR4 32GB 3600 Kit 5；memory_type DDR4；capacity_gb 32；modules 2；speed_mhz 3600；latency CL18；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_crucial_ddr5_16gb_5600_kit_5",
+    "part_type": "pc_memory",
+    "brand": "Crucial",
+    "model": "DDR5 16GB 5600 Kit 5",
+    "title": "Crucial DDR5 16GB 5600 Kit 5 内存套装",
+    "price": 379.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 16,
+      "stick_count": 1,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 5600,
+      "latency_cl": 46,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 1,
+      "recommended_for_development": false,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "16GB",
+      "5600MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Crucial；model DDR5 16GB 5600 Kit 5；memory_type DDR5；capacity_gb 16；modules 1；speed_mhz 5600；latency CL46；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_kingston_fury_beast_ddr5_32gb_6000_kit_5",
+    "part_type": "pc_memory",
+    "brand": "Kingston",
+    "model": "FURY Beast DDR5 32GB 6000 Kit 5",
+    "title": "Kingston FURY Beast DDR5 32GB 6000 Kit 5 内存套装",
+    "price": 779.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6000,
+      "latency_cl": 30,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Kingston；model FURY Beast DDR5 32GB 6000 Kit 5；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6000；latency CL30；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_g_skill_trident_z5_rgb_ddr5_32gb_6400_kit_5",
+    "part_type": "pc_memory",
+    "brand": "G.SKILL",
+    "model": "Trident Z5 RGB DDR5 32GB 6400 Kit 5",
+    "title": "G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 5 内存套装",
+    "price": 979.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 32,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 16,
+      "speed_mhz": 6400,
+      "latency_cl": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": false
+    },
+    "tags": [
+      "DDR5",
+      "32GB",
+      "6400MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand G.SKILL；model Trident Z5 RGB DDR5 32GB 6400 Kit 5；memory_type DDR5；capacity_gb 32；modules 2；speed_mhz 6400；latency CL32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "memory_corsair_vengeance_ddr5_64gb_6000_kit_5",
+    "part_type": "pc_memory",
+    "brand": "Corsair",
+    "model": "Vengeance DDR5 64GB 6000 Kit 5",
+    "title": "Corsair Vengeance DDR5 64GB 6000 Kit 5 内存套装",
+    "price": 1179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "memory_type": "DDR5",
+      "total_capacity_gb": 64,
+      "stick_count": 2,
+      "capacity_per_stick_gb": 32,
+      "speed_mhz": 6000,
+      "latency_cl": 36,
+      "has_rgb": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_memory_type": "DDR5",
+      "requires_memory_slots": 2,
+      "recommended_for_development": true,
+      "recommended_for_heavy_development": true
+    },
+    "tags": [
+      "DDR5",
+      "64GB",
+      "6000MHz"
+    ],
+    "selling_points": [
+      "明确 DDR4",
+      "DDR5",
+      "容量覆盖开发和游戏需求"
+    ],
+    "limitations": [
+      "必须匹配主板内存类型"
+    ],
+    "recommendation_text": "用于按容量、代际和频率筛选内存。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Corsair；model Vengeance DDR5 64GB 6000 Kit 5；memory_type DDR5；capacity_gb 64；modules 2；speed_mhz 6000；latency CL36；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

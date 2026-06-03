@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Thermalright Frozen Magic 240 CPU 散热器</tspan>
+<tspan x="36" dy="24">Price: CNY 399</tspan>
+<tspan x="36" dy="24">Category: cpu_cooler</tspan>
+<tspan x="36" dy="24">Tags: liquid|250W|240mm</tspan>
+<tspan x="36" dy="24">brand: Thermalright</tspan>
+<tspan x="36" dy="24">model: Frozen Magic 240</tspan>
+<tspan x="36" dy="24">cooler_type: liquid</tspan>
+<tspan x="36" dy="24">socket_support: [&#x27;AM4&#x27;, &#x27;AM5&#x27;, &#x27;LGA1700&#x27;, &#x27;LGA1851&#x27;]</tspan>
+<tspan x="36" dy="24">tdp_w: 250</tspan>
+<tspan x="36" dy="24">cooling_capacity_w: 250</tspan>
+<tspan x="36" dy="24">height_mm: 0</tspan>
+<tspan x="36" dy="24">radiator_size_mm: 240</tspan>
+<tspan x="36" dy="24">fan_count: 2</tspan>
+<tspan x="36" dy="24">noise_db: 28</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_cpu_cooler_thermalright_frozen_magic_240</text>
+  <metadata>Thermalright Frozen Magic 240 CPU 散热器
+Price: CNY 399
+Category: cpu_cooler
+Tags: liquid|250W|240mm
+brand: Thermalright
+model: Frozen Magic 240
+cooler_type: liquid
+socket_support: [&#x27;AM4&#x27;, &#x27;AM5&#x27;, &#x27;LGA1700&#x27;, &#x27;LGA1851&#x27;]
+tdp_w: 250
+cooling_capacity_w: 250
+height_mm: 0
+radiator_size_mm: 240
+fan_count: 2
+noise_db: 28</metadata>
+</svg>

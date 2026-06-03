@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">MSI PRO H610M-E DDR4 V4 主板</tspan>
+<tspan x="36" dy="24">Price: CNY 619</tspan>
+<tspan x="36" dy="24">Category: motherboard</tspan>
+<tspan x="36" dy="24">Tags: LGA1700|H610|DDR4|M-ATX|no-wifi</tspan>
+<tspan x="36" dy="24">brand: MSI</tspan>
+<tspan x="36" dy="24">model: PRO H610M-E DDR4 V4</tspan>
+<tspan x="36" dy="24">socket: LGA1700</tspan>
+<tspan x="36" dy="24">chipset: H610</tspan>
+<tspan x="36" dy="24">form_factor: M-ATX</tspan>
+<tspan x="36" dy="24">memory_type: DDR4</tspan>
+<tspan x="36" dy="24">memory_slots: 2</tspan>
+<tspan x="36" dy="24">max_memory_gb: 128</tspan>
+<tspan x="36" dy="24">m2_slots: 1</tspan>
+<tspan x="36" dy="24">pcie_version: PCIe 4.0</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_motherboard_msi_pro_h610m_e_ddr4_v4</text>
+  <metadata>MSI PRO H610M-E DDR4 V4 主板
+Price: CNY 619
+Category: motherboard
+Tags: LGA1700|H610|DDR4|M-ATX|no-wifi
+brand: MSI
+model: PRO H610M-E DDR4 V4
+socket: LGA1700
+chipset: H610
+form_factor: M-ATX
+memory_type: DDR4
+memory_slots: 2
+max_memory_gb: 128
+m2_slots: 1
+pcie_version: PCIe 4.0</metadata>
+</svg>

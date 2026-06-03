@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Kingston FURY Beast DDR4 32GB 3600 Kit 3 内存套装</tspan>
+<tspan x="36" dy="24">Price: CNY 439</tspan>
+<tspan x="36" dy="24">Category: memory</tspan>
+<tspan x="36" dy="24">Tags: DDR4|32GB|3600MHz</tspan>
+<tspan x="36" dy="24">brand: Kingston</tspan>
+<tspan x="36" dy="24">model: FURY Beast DDR4 32GB 3600 Kit 3</tspan>
+<tspan x="36" dy="24">memory_type: DDR4</tspan>
+<tspan x="36" dy="24">capacity_gb: 32</tspan>
+<tspan x="36" dy="24">modules: 2</tspan>
+<tspan x="36" dy="24">speed_mhz: 3600</tspan>
+<tspan x="36" dy="24">latency: CL18</tspan>
+<tspan x="36" dy="24">rgb: False</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_memory_kingston_fury_beast_ddr4_32gb_3600_kit_3</text>
+  <metadata>Kingston FURY Beast DDR4 32GB 3600 Kit 3 内存套装
+Price: CNY 439
+Category: memory
+Tags: DDR4|32GB|3600MHz
+brand: Kingston
+model: FURY Beast DDR4 32GB 3600 Kit 3
+memory_type: DDR4
+capacity_gb: 32
+modules: 2
+speed_mhz: 3600
+latency: CL18
+rgb: False</metadata>
+</svg>

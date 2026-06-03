@@ -1,0 +1,2002 @@
+[
+  {
+    "part_id": "motherboard_asus_prime_a520m_k",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "PRIME A520M-K",
+    "title": "ASUS PRIME A520M-K 主板",
+    "price": 449.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "A520",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "A520",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model PRIME A520M-K；socket AM4；chipset A520；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 3.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_h610m_e_ddr4",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO H610M-E DDR4",
+    "title": "MSI PRO H610M-E DDR4 主板",
+    "price": 499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "H610",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO H610M-E DDR4；socket LGA1700；chipset H610；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b550m_ds3h_ac",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B550M DS3H AC",
+    "title": "GIGABYTE B550M DS3H AC 主板",
+    "price": 699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B550M DS3H AC；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B550M-PLUS WIFI II",
+    "title": "ASUS TUF GAMING B550M-PLUS WIFI II 主板",
+    "price": 899.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B550M-PLUS WIFI II；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b650m_b",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B650M-B",
+    "title": "MSI PRO B650M-B 主板",
+    "price": 799.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B650M-B；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_b650m_mortar_wifi",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "B650M MORTAR WIFI",
+    "title": "MSI B650M MORTAR WIFI 主板",
+    "price": 1299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model B650M MORTAR WIFI；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b650m_plus_wifi",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B650M-PLUS WIFI",
+    "title": "ASUS TUF GAMING B650M-PLUS WIFI 主板",
+    "price": 1399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B650M-PLUS WIFI；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B760M AORUS ELITE AX DDR5",
+    "title": "GIGABYTE B760M AORUS ELITE AX DDR5 主板",
+    "price": 1199.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B760M AORUS ELITE AX DDR5；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b760m_a_wifi_ddr5",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B760M-A WIFI DDR5",
+    "title": "MSI PRO B760M-A WIFI DDR5 主板",
+    "price": 1099.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B760M-A WIFI DDR5；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_rog_strix_b760_g_gaming_wifi",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "ROG STRIX B760-G GAMING WIFI",
+    "title": "ASUS ROG STRIX B760-G GAMING WIFI 主板",
+    "price": 1699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 3,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model ROG STRIX B760-G GAMING WIFI；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 3；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_x670e_plus_wifi",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING X670E-PLUS WIFI",
+    "title": "ASUS TUF GAMING X670E-PLUS WIFI 主板",
+    "price": 2399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "X670E",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING X670E-PLUS WIFI；socket AM5；chipset X670E；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_mag_z790_tomahawk_wifi",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "MAG Z790 TOMAHAWK WIFI",
+    "title": "MSI MAG Z790 TOMAHAWK WIFI 主板",
+    "price": 2299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "Z790",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model MAG Z790 TOMAHAWK WIFI；socket LGA1700；chipset Z790；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_prime_a520m_k_v2",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "PRIME A520M-K V2",
+    "title": "ASUS PRIME A520M-K V2 主板",
+    "price": 489.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "A520",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "A520",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model PRIME A520M-K V2；socket AM4；chipset A520；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 3.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_h610m_e_ddr4_v2",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO H610M-E DDR4 V2",
+    "title": "MSI PRO H610M-E DDR4 V2 主板",
+    "price": 539.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "H610",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO H610M-E DDR4 V2；socket LGA1700；chipset H610；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b550m_ds3h_ac_v2",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B550M DS3H AC V2",
+    "title": "GIGABYTE B550M DS3H AC V2 主板",
+    "price": 739.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B550M DS3H AC V2；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v2",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B550M-PLUS WIFI II V2",
+    "title": "ASUS TUF GAMING B550M-PLUS WIFI II V2 主板",
+    "price": 939.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B550M-PLUS WIFI II V2；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b650m_b_v2",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B650M-B V2",
+    "title": "MSI PRO B650M-B V2 主板",
+    "price": 839.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B650M-B V2；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_b650m_mortar_wifi_v2",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "B650M MORTAR WIFI V2",
+    "title": "MSI B650M MORTAR WIFI V2 主板",
+    "price": 1339.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model B650M MORTAR WIFI V2；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b650m_plus_wifi_v2",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B650M-PLUS WIFI V2",
+    "title": "ASUS TUF GAMING B650M-PLUS WIFI V2 主板",
+    "price": 1439.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B650M-PLUS WIFI V2；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B760M AORUS ELITE AX DDR5 V2",
+    "title": "GIGABYTE B760M AORUS ELITE AX DDR5 V2 主板",
+    "price": 1239.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B760M AORUS ELITE AX DDR5 V2；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b760m_a_wifi_ddr5_v2",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B760M-A WIFI DDR5 V2",
+    "title": "MSI PRO B760M-A WIFI DDR5 V2 主板",
+    "price": 1139.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B760M-A WIFI DDR5 V2；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_rog_strix_b760_g_gaming_wifi_v2",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "ROG STRIX B760-G GAMING WIFI V2",
+    "title": "ASUS ROG STRIX B760-G GAMING WIFI V2 主板",
+    "price": 1739.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 3,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model ROG STRIX B760-G GAMING WIFI V2；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 3；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_x670e_plus_wifi_v2",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING X670E-PLUS WIFI V2",
+    "title": "ASUS TUF GAMING X670E-PLUS WIFI V2 主板",
+    "price": 2439.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "X670E",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING X670E-PLUS WIFI V2；socket AM5；chipset X670E；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_mag_z790_tomahawk_wifi_v2",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "MAG Z790 TOMAHAWK WIFI V2",
+    "title": "MSI MAG Z790 TOMAHAWK WIFI V2 主板",
+    "price": 2339.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "Z790",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model MAG Z790 TOMAHAWK WIFI V2；socket LGA1700；chipset Z790；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_prime_a520m_k_v3",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "PRIME A520M-K V3",
+    "title": "ASUS PRIME A520M-K V3 主板",
+    "price": 529.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "A520",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "A520",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model PRIME A520M-K V3；socket AM4；chipset A520；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 3.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_h610m_e_ddr4_v3",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO H610M-E DDR4 V3",
+    "title": "MSI PRO H610M-E DDR4 V3 主板",
+    "price": 579.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "H610",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO H610M-E DDR4 V3；socket LGA1700；chipset H610；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b550m_ds3h_ac_v3",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B550M DS3H AC V3",
+    "title": "GIGABYTE B550M DS3H AC V3 主板",
+    "price": 779.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B550M DS3H AC V3；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v3",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B550M-PLUS WIFI II V3",
+    "title": "ASUS TUF GAMING B550M-PLUS WIFI II V3 主板",
+    "price": 979.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B550M-PLUS WIFI II V3；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b650m_b_v3",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B650M-B V3",
+    "title": "MSI PRO B650M-B V3 主板",
+    "price": 879.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B650M-B V3；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_b650m_mortar_wifi_v3",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "B650M MORTAR WIFI V3",
+    "title": "MSI B650M MORTAR WIFI V3 主板",
+    "price": 1379.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model B650M MORTAR WIFI V3；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b650m_plus_wifi_v3",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B650M-PLUS WIFI V3",
+    "title": "ASUS TUF GAMING B650M-PLUS WIFI V3 主板",
+    "price": 1479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "B650",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "B650",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B650M-PLUS WIFI V3；socket AM5；chipset B650；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v3",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B760M AORUS ELITE AX DDR5 V3",
+    "title": "GIGABYTE B760M AORUS ELITE AX DDR5 V3 主板",
+    "price": 1279.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B760M AORUS ELITE AX DDR5 V3；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_b760m_a_wifi_ddr5_v3",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO B760M-A WIFI DDR5 V3",
+    "title": "MSI PRO B760M-A WIFI DDR5 V3 主板",
+    "price": 1179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO B760M-A WIFI DDR5 V3；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_rog_strix_b760_g_gaming_wifi_v3",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "ROG STRIX B760-G GAMING WIFI V3",
+    "title": "ASUS ROG STRIX B760-G GAMING WIFI V3 主板",
+    "price": 1779.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "B760",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 3,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "B760",
+      "DDR5",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model ROG STRIX B760-G GAMING WIFI V3；socket LGA1700；chipset B760；form_factor M-ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 3；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level mid",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_x670e_plus_wifi_v3",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING X670E-PLUS WIFI V3",
+    "title": "ASUS TUF GAMING X670E-PLUS WIFI V3 主板",
+    "price": 2479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "chipset": "X670E",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM5",
+      "X670E",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING X670E-PLUS WIFI V3；socket AM5；chipset X670E；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_mag_z790_tomahawk_wifi_v3",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "MAG Z790 TOMAHAWK WIFI V3",
+    "title": "MSI MAG Z790 TOMAHAWK WIFI V3 主板",
+    "price": 2379.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "Z790",
+      "form_factor": "ATX",
+      "memory_type": "DDR5",
+      "memory_slots": 4,
+      "max_memory_gb": 192,
+      "m2_slots": 4,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "case_form_factor_required": "ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "Z790",
+      "DDR5",
+      "ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model MAG Z790 TOMAHAWK WIFI V3；socket LGA1700；chipset Z790；form_factor ATX；memory_type DDR5；memory_slots 4；max_memory_gb 192；m2_slots 4；pcie_version PCIe 5.0；wifi True；bluetooth True；vrm_level high",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_prime_a520m_k_v4",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "PRIME A520M-K V4",
+    "title": "ASUS PRIME A520M-K V4 主板",
+    "price": 569.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "A520",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "A520",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model PRIME A520M-K V4；socket AM4；chipset A520；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 3.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_msi_pro_h610m_e_ddr4_v4",
+    "part_type": "pc_motherboard",
+    "brand": "MSI",
+    "model": "PRO H610M-E DDR4 V4",
+    "title": "MSI PRO H610M-E DDR4 V4 主板",
+    "price": 619.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "chipset": "H610",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 2,
+      "max_memory_gb": 128,
+      "m2_slots": 1,
+      "has_wifi": false,
+      "has_bluetooth": false
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "LGA1700",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "LGA1700",
+      "H610",
+      "DDR4",
+      "M-ATX",
+      "no-wifi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model PRO H610M-E DDR4 V4；socket LGA1700；chipset H610；form_factor M-ATX；memory_type DDR4；memory_slots 2；max_memory_gb 128；m2_slots 1；pcie_version PCIe 4.0；wifi False；bluetooth False；vrm_level entry",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_gigabyte_b550m_ds3h_ac_v4",
+    "part_type": "pc_motherboard",
+    "brand": "GIGABYTE",
+    "model": "B550M DS3H AC V4",
+    "title": "GIGABYTE B550M DS3H AC V4 主板",
+    "price": 819.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand GIGABYTE；model B550M DS3H AC V4；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "motherboard_asus_tuf_gaming_b550m_plus_wifi_ii_v4",
+    "part_type": "pc_motherboard",
+    "brand": "ASUS",
+    "model": "TUF GAMING B550M-PLUS WIFI II V4",
+    "title": "ASUS TUF GAMING B550M-PLUS WIFI II V4 主板",
+    "price": 1019.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "chipset": "B550",
+      "form_factor": "M-ATX",
+      "memory_type": "DDR4",
+      "memory_slots": 4,
+      "max_memory_gb": 128,
+      "m2_slots": 2,
+      "has_wifi": true,
+      "has_bluetooth": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "case_form_factor_required": "M-ATX",
+      "supports_pcie_gpu": true
+    },
+    "tags": [
+      "AM4",
+      "B550",
+      "DDR4",
+      "M-ATX",
+      "Wi-Fi"
+    ],
+    "selling_points": [
+      "接口字段完整",
+      "用于 CPU",
+      "内存",
+      "机箱兼容判断"
+    ],
+    "limitations": [
+      "需匹配 CPU 插槽与内存类型"
+    ],
+    "recommendation_text": "适合按平台、芯片组和扩展能力筛选。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model TUF GAMING B550M-PLUS WIFI II V4；socket AM4；chipset B550；form_factor M-ATX；memory_type DDR4；memory_slots 4；max_memory_gb 128；m2_slots 2；pcie_version PCIe 4.0；wifi True；bluetooth True；vrm_level mainstream",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

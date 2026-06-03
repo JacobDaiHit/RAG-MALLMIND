@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 5 内存套装</tspan>
+<tspan x="36" dy="24">Price: CNY 979</tspan>
+<tspan x="36" dy="24">Category: memory</tspan>
+<tspan x="36" dy="24">Tags: DDR5|32GB|6400MHz</tspan>
+<tspan x="36" dy="24">brand: G.SKILL</tspan>
+<tspan x="36" dy="24">model: Trident Z5 RGB DDR5 32GB 6400 Kit 5</tspan>
+<tspan x="36" dy="24">memory_type: DDR5</tspan>
+<tspan x="36" dy="24">capacity_gb: 32</tspan>
+<tspan x="36" dy="24">modules: 2</tspan>
+<tspan x="36" dy="24">speed_mhz: 6400</tspan>
+<tspan x="36" dy="24">latency: CL32</tspan>
+<tspan x="36" dy="24">rgb: True</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_memory_g_skill_trident_z5_rgb_ddr5_32gb_6400_kit_5</text>
+  <metadata>G.SKILL Trident Z5 RGB DDR5 32GB 6400 Kit 5 内存套装
+Price: CNY 979
+Category: memory
+Tags: DDR5|32GB|6400MHz
+brand: G.SKILL
+model: Trident Z5 RGB DDR5 32GB 6400 Kit 5
+memory_type: DDR5
+capacity_gb: 32
+modules: 2
+speed_mhz: 6400
+latency: CL32
+rgb: True</metadata>
+</svg>

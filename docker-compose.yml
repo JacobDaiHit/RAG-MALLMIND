@@ -1,0 +1,37 @@
+services:
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  milvus-standalone:
+    image: milvusdb/milvus:v2.4.3
+    volumes:
+      - ./data/milvus:/var/lib/milvus
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    environment:
+      - ETCD_USE_EMBED=true
+      - ETCD_DATA_DIR=/var/lib/milvus/etcdData
+      - COMMON_STORAGETYPE=local
+    command: ["milvus", "run", "standalone"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  attu:
+    image: zilliz/attu:v2.4
+    environment:
+      - MILVUS_URL=milvus-standalone:19530
+    depends_on:
+      milvus-standalone:
+        condition: service_healthy
+    ports:
+      - "18000:3000"
+    restart: unless-stopped

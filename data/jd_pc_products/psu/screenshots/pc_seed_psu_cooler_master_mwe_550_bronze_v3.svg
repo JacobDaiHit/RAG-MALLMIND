@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Cooler Master MWE 550 Bronze V3 电源</tspan>
+<tspan x="36" dy="24">Price: CNY 379</tspan>
+<tspan x="36" dy="24">Category: psu</tspan>
+<tspan x="36" dy="24">Tags: 550W|80Plus Bronze|ATX 2.52</tspan>
+<tspan x="36" dy="24">brand: Cooler Master</tspan>
+<tspan x="36" dy="24">model: MWE 550 Bronze V3</tspan>
+<tspan x="36" dy="24">wattage_w: 550</tspan>
+<tspan x="36" dy="24">efficiency_rating: 80Plus Bronze</tspan>
+<tspan x="36" dy="24">modular: non_modular</tspan>
+<tspan x="36" dy="24">native_12vhpwr: False</tspan>
+<tspan x="36" dy="24">has_12vhpwr: False</tspan>
+<tspan x="36" dy="24">atx_version: ATX 2.52</tspan>
+<tspan x="36" dy="24">pcie_8pin_connectors: 2</tspan>
+<tspan x="36" dy="24">length_mm: 150</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_psu_cooler_master_mwe_550_bronze_v3</text>
+  <metadata>Cooler Master MWE 550 Bronze V3 电源
+Price: CNY 379
+Category: psu
+Tags: 550W|80Plus Bronze|ATX 2.52
+brand: Cooler Master
+model: MWE 550 Bronze V3
+wattage_w: 550
+efficiency_rating: 80Plus Bronze
+modular: non_modular
+native_12vhpwr: False
+has_12vhpwr: False
+atx_version: ATX 2.52
+pcie_8pin_connectors: 2
+length_mm: 150</metadata>
+</svg>

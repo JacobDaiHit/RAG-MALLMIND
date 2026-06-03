@@ -1,0 +1,1335 @@
+[
+  {
+    "part_id": "cooler_amd_wraith_stealth",
+    "part_type": "pc_cooler",
+    "brand": "AMD",
+    "model": "Wraith Stealth",
+    "title": "AMD Wraith Stealth CPU 散热器",
+    "price": 49.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 95,
+      "height_mm": 54,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 54,
+      "recommended_cpu_tdp_w_max": 95
+    },
+    "tags": [
+      "air",
+      "95W",
+      "54mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Wraith Stealth；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 95；cooling_capacity_w 95；height_mm 54；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_ax120_r_se",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "AX120 R SE",
+    "title": "Thermalright AX120 R SE CPU 散热器",
+    "price": 89.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 150,
+      "height_mm": 148,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 148,
+      "recommended_cpu_tdp_w_max": 150
+    },
+    "tags": [
+      "air",
+      "150W",
+      "148mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model AX120 R SE；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 150；cooling_capacity_w 150；height_mm 148；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_peerless_assassin_120",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Peerless Assassin 120",
+    "title": "Thermalright Peerless Assassin 120 CPU 散热器",
+    "price": 199.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 220,
+      "height_mm": 155,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 155,
+      "recommended_cpu_tdp_w_max": 220
+    },
+    "tags": [
+      "air",
+      "220W",
+      "155mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Peerless Assassin 120；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 220；cooling_capacity_w 220；height_mm 155；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_deepcool_ak620",
+    "part_type": "pc_cooler",
+    "brand": "DeepCool",
+    "model": "AK620",
+    "title": "DeepCool AK620 CPU 散热器",
+    "price": 299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 260,
+      "height_mm": 160,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 160,
+      "recommended_cpu_tdp_w_max": 260
+    },
+    "tags": [
+      "air",
+      "260W",
+      "160mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand DeepCool；model AK620；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 260；cooling_capacity_w 260；height_mm 160；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_frozen_magic_240",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Frozen Magic 240",
+    "title": "Thermalright Frozen Magic 240 CPU 散热器",
+    "price": 399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 250,
+      "height_mm": 0,
+      "radiator_size_mm": 240,
+      "fan_count": 2,
+      "noise_db": 28,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 250
+    },
+    "tags": [
+      "liquid",
+      "250W",
+      "240mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Frozen Magic 240；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 250；cooling_capacity_w 250；height_mm 0；radiator_size_mm 240；fan_count 2；noise_db 28；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_cooler_master_masterliquid_360",
+    "part_type": "pc_cooler",
+    "brand": "Cooler Master",
+    "model": "MasterLiquid 360",
+    "title": "Cooler Master MasterLiquid 360 CPU 散热器",
+    "price": 699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 300,
+      "height_mm": 0,
+      "radiator_size_mm": 360,
+      "fan_count": 3,
+      "noise_db": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 300
+    },
+    "tags": [
+      "liquid",
+      "300W",
+      "360mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MasterLiquid 360；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 300；cooling_capacity_w 300；height_mm 0；radiator_size_mm 360；fan_count 3；noise_db 32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_amd_wraith_stealth_v2",
+    "part_type": "pc_cooler",
+    "brand": "AMD",
+    "model": "Wraith Stealth V2",
+    "title": "AMD Wraith Stealth V2 CPU 散热器",
+    "price": 64.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 95,
+      "height_mm": 54,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 54,
+      "recommended_cpu_tdp_w_max": 95
+    },
+    "tags": [
+      "air",
+      "95W",
+      "54mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Wraith Stealth V2；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 95；cooling_capacity_w 95；height_mm 54；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_ax120_r_se_v2",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "AX120 R SE V2",
+    "title": "Thermalright AX120 R SE V2 CPU 散热器",
+    "price": 104.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 150,
+      "height_mm": 148,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 148,
+      "recommended_cpu_tdp_w_max": 150
+    },
+    "tags": [
+      "air",
+      "150W",
+      "148mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model AX120 R SE V2；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 150；cooling_capacity_w 150；height_mm 148；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_peerless_assassin_120_v2",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Peerless Assassin 120 V2",
+    "title": "Thermalright Peerless Assassin 120 V2 CPU 散热器",
+    "price": 214.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 220,
+      "height_mm": 155,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 155,
+      "recommended_cpu_tdp_w_max": 220
+    },
+    "tags": [
+      "air",
+      "220W",
+      "155mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Peerless Assassin 120 V2；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 220；cooling_capacity_w 220；height_mm 155；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_deepcool_ak620_v2",
+    "part_type": "pc_cooler",
+    "brand": "DeepCool",
+    "model": "AK620 V2",
+    "title": "DeepCool AK620 V2 CPU 散热器",
+    "price": 314.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 260,
+      "height_mm": 160,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 160,
+      "recommended_cpu_tdp_w_max": 260
+    },
+    "tags": [
+      "air",
+      "260W",
+      "160mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand DeepCool；model AK620 V2；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 260；cooling_capacity_w 260；height_mm 160；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_frozen_magic_240_v2",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Frozen Magic 240 V2",
+    "title": "Thermalright Frozen Magic 240 V2 CPU 散热器",
+    "price": 414.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 250,
+      "height_mm": 0,
+      "radiator_size_mm": 240,
+      "fan_count": 2,
+      "noise_db": 28,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 250
+    },
+    "tags": [
+      "liquid",
+      "250W",
+      "240mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Frozen Magic 240 V2；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 250；cooling_capacity_w 250；height_mm 0；radiator_size_mm 240；fan_count 2；noise_db 28；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_cooler_master_masterliquid_360_v2",
+    "part_type": "pc_cooler",
+    "brand": "Cooler Master",
+    "model": "MasterLiquid 360 V2",
+    "title": "Cooler Master MasterLiquid 360 V2 CPU 散热器",
+    "price": 714.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 300,
+      "height_mm": 0,
+      "radiator_size_mm": 360,
+      "fan_count": 3,
+      "noise_db": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 300
+    },
+    "tags": [
+      "liquid",
+      "300W",
+      "360mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MasterLiquid 360 V2；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 300；cooling_capacity_w 300；height_mm 0；radiator_size_mm 360；fan_count 3；noise_db 32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_amd_wraith_stealth_v3",
+    "part_type": "pc_cooler",
+    "brand": "AMD",
+    "model": "Wraith Stealth V3",
+    "title": "AMD Wraith Stealth V3 CPU 散热器",
+    "price": 79.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 95,
+      "height_mm": 54,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 54,
+      "recommended_cpu_tdp_w_max": 95
+    },
+    "tags": [
+      "air",
+      "95W",
+      "54mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Wraith Stealth V3；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 95；cooling_capacity_w 95；height_mm 54；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_ax120_r_se_v3",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "AX120 R SE V3",
+    "title": "Thermalright AX120 R SE V3 CPU 散热器",
+    "price": 119.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 150,
+      "height_mm": 148,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 148,
+      "recommended_cpu_tdp_w_max": 150
+    },
+    "tags": [
+      "air",
+      "150W",
+      "148mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model AX120 R SE V3；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 150；cooling_capacity_w 150；height_mm 148；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_peerless_assassin_120_v3",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Peerless Assassin 120 V3",
+    "title": "Thermalright Peerless Assassin 120 V3 CPU 散热器",
+    "price": 229.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 220,
+      "height_mm": 155,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 155,
+      "recommended_cpu_tdp_w_max": 220
+    },
+    "tags": [
+      "air",
+      "220W",
+      "155mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Peerless Assassin 120 V3；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 220；cooling_capacity_w 220；height_mm 155；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_deepcool_ak620_v3",
+    "part_type": "pc_cooler",
+    "brand": "DeepCool",
+    "model": "AK620 V3",
+    "title": "DeepCool AK620 V3 CPU 散热器",
+    "price": 329.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 260,
+      "height_mm": 160,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 160,
+      "recommended_cpu_tdp_w_max": 260
+    },
+    "tags": [
+      "air",
+      "260W",
+      "160mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand DeepCool；model AK620 V3；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 260；cooling_capacity_w 260；height_mm 160；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_frozen_magic_240_v3",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Frozen Magic 240 V3",
+    "title": "Thermalright Frozen Magic 240 V3 CPU 散热器",
+    "price": 429.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 250,
+      "height_mm": 0,
+      "radiator_size_mm": 240,
+      "fan_count": 2,
+      "noise_db": 28,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 250
+    },
+    "tags": [
+      "liquid",
+      "250W",
+      "240mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Frozen Magic 240 V3；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 250；cooling_capacity_w 250；height_mm 0；radiator_size_mm 240；fan_count 2；noise_db 28；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_cooler_master_masterliquid_360_v3",
+    "part_type": "pc_cooler",
+    "brand": "Cooler Master",
+    "model": "MasterLiquid 360 V3",
+    "title": "Cooler Master MasterLiquid 360 V3 CPU 散热器",
+    "price": 729.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 300,
+      "height_mm": 0,
+      "radiator_size_mm": 360,
+      "fan_count": 3,
+      "noise_db": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 300
+    },
+    "tags": [
+      "liquid",
+      "300W",
+      "360mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MasterLiquid 360 V3；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 300；cooling_capacity_w 300；height_mm 0；radiator_size_mm 360；fan_count 3；noise_db 32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_amd_wraith_stealth_v4",
+    "part_type": "pc_cooler",
+    "brand": "AMD",
+    "model": "Wraith Stealth V4",
+    "title": "AMD Wraith Stealth V4 CPU 散热器",
+    "price": 94.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 95,
+      "height_mm": 54,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 54,
+      "recommended_cpu_tdp_w_max": 95
+    },
+    "tags": [
+      "air",
+      "95W",
+      "54mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Wraith Stealth V4；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 95；cooling_capacity_w 95；height_mm 54；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_ax120_r_se_v4",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "AX120 R SE V4",
+    "title": "Thermalright AX120 R SE V4 CPU 散热器",
+    "price": 134.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 150,
+      "height_mm": 148,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 148,
+      "recommended_cpu_tdp_w_max": 150
+    },
+    "tags": [
+      "air",
+      "150W",
+      "148mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model AX120 R SE V4；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 150；cooling_capacity_w 150；height_mm 148；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_peerless_assassin_120_v4",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Peerless Assassin 120 V4",
+    "title": "Thermalright Peerless Assassin 120 V4 CPU 散热器",
+    "price": 244.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 220,
+      "height_mm": 155,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 155,
+      "recommended_cpu_tdp_w_max": 220
+    },
+    "tags": [
+      "air",
+      "220W",
+      "155mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Peerless Assassin 120 V4；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 220；cooling_capacity_w 220；height_mm 155；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_deepcool_ak620_v4",
+    "part_type": "pc_cooler",
+    "brand": "DeepCool",
+    "model": "AK620 V4",
+    "title": "DeepCool AK620 V4 CPU 散热器",
+    "price": 344.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 260,
+      "height_mm": 160,
+      "radiator_size_mm": 0,
+      "fan_count": 2,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 160,
+      "recommended_cpu_tdp_w_max": 260
+    },
+    "tags": [
+      "air",
+      "260W",
+      "160mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand DeepCool；model AK620 V4；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 260；cooling_capacity_w 260；height_mm 160；radiator_size_mm 0；fan_count 2；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_thermalright_frozen_magic_240_v4",
+    "part_type": "pc_cooler",
+    "brand": "Thermalright",
+    "model": "Frozen Magic 240 V4",
+    "title": "Thermalright Frozen Magic 240 V4 CPU 散热器",
+    "price": 444.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 250,
+      "height_mm": 0,
+      "radiator_size_mm": 240,
+      "fan_count": 2,
+      "noise_db": 28,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 250
+    },
+    "tags": [
+      "liquid",
+      "250W",
+      "240mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Thermalright；model Frozen Magic 240 V4；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 250；cooling_capacity_w 250；height_mm 0；radiator_size_mm 240；fan_count 2；noise_db 28；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_cooler_master_masterliquid_360_v4",
+    "part_type": "pc_cooler",
+    "brand": "Cooler Master",
+    "model": "MasterLiquid 360 V4",
+    "title": "Cooler Master MasterLiquid 360 V4 CPU 散热器",
+    "price": 744.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "liquid",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 300,
+      "height_mm": 0,
+      "radiator_size_mm": 360,
+      "fan_count": 3,
+      "noise_db": 32,
+      "has_rgb": true
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 0,
+      "recommended_cpu_tdp_w_max": 300
+    },
+    "tags": [
+      "liquid",
+      "300W",
+      "360mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Cooler Master；model MasterLiquid 360 V4；cooler_type liquid；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 300；cooling_capacity_w 300；height_mm 0；radiator_size_mm 360；fan_count 3；noise_db 32；rgb True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cooler_amd_wraith_stealth_v5",
+    "part_type": "pc_cooler",
+    "brand": "AMD",
+    "model": "Wraith Stealth V5",
+    "title": "AMD Wraith Stealth V5 CPU 散热器",
+    "price": 109.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "cooler_type": "air",
+      "supported_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "cooling_capacity_w": 95,
+      "height_mm": 54,
+      "radiator_size_mm": 0,
+      "fan_count": 1,
+      "noise_db": 28
+    },
+    "scores": {},
+    "compatibility": {
+      "supports_cpu_sockets": [
+        "AM4",
+        "AM5",
+        "LGA1700",
+        "LGA1851"
+      ],
+      "requires_case_cpu_cooler_height_mm": 54,
+      "recommended_cpu_tdp_w_max": 95
+    },
+    "tags": [
+      "air",
+      "95W",
+      "54mm"
+    ],
+    "selling_points": [
+      "散热能力和高度",
+      "冷排字段完整"
+    ],
+    "limitations": [
+      "塔式风冷需核对机箱限高；水冷需核对冷排位"
+    ],
+    "recommendation_text": "用于按 CPU TDP、机箱限高和冷排支持匹配。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Wraith Stealth V5；cooler_type air；socket_support ['AM4', 'AM5', 'LGA1700', 'LGA1851']；tdp_w 95；cooling_capacity_w 95；height_mm 54；radiator_size_mm 0；fan_count 1；noise_db 28；rgb False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Seasonic FOCUS GX-1000 ATX3 V2 电源</tspan>
+<tspan x="36" dy="24">Price: CNY 1424</tspan>
+<tspan x="36" dy="24">Category: psu</tspan>
+<tspan x="36" dy="24">Tags: 1000W|80Plus Gold|ATX 3.0</tspan>
+<tspan x="36" dy="24">brand: Seasonic</tspan>
+<tspan x="36" dy="24">model: FOCUS GX-1000 ATX3 V2</tspan>
+<tspan x="36" dy="24">wattage_w: 1000</tspan>
+<tspan x="36" dy="24">efficiency_rating: 80Plus Gold</tspan>
+<tspan x="36" dy="24">modular: full_modular</tspan>
+<tspan x="36" dy="24">native_12vhpwr: True</tspan>
+<tspan x="36" dy="24">has_12vhpwr: True</tspan>
+<tspan x="36" dy="24">atx_version: ATX 3.0</tspan>
+<tspan x="36" dy="24">pcie_8pin_connectors: 5</tspan>
+<tspan x="36" dy="24">length_mm: 160</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_psu_seasonic_focus_gx_1000_atx3_v2</text>
+  <metadata>Seasonic FOCUS GX-1000 ATX3 V2 电源
+Price: CNY 1424
+Category: psu
+Tags: 1000W|80Plus Gold|ATX 3.0
+brand: Seasonic
+model: FOCUS GX-1000 ATX3 V2
+wattage_w: 1000
+efficiency_rating: 80Plus Gold
+modular: full_modular
+native_12vhpwr: True
+has_12vhpwr: True
+atx_version: ATX 3.0
+pcie_8pin_connectors: 5
+length_mm: 160</metadata>
+</svg>

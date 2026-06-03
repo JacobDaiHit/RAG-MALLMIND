@@ -1,0 +1,1098 @@
+[
+  {
+    "part_id": "cpu_intel_core_i3_12100f",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i3-12100F",
+    "series": "Core i3",
+    "title": "Intel Core i3-12100F 处理器",
+    "price": 449.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 4,
+      "thread_count": 8,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.533333333333333,
+      "tdp_w": 58,
+      "has_integrated_gpu": false,
+      "architecture": "Alder Lake",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 58
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "入门办公"
+    ],
+    "selling_points": [
+      "入门办公",
+      "4核8线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合入门办公价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i3-12100F；socket LGA1700；cores 4；threads 8；base_clock_ghz 3.0；boost_clock_ghz 4.533333333333333；tdp_w 58；integrated_graphics False；architecture Alder Lake；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_4500",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 4500",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 4500 处理器",
+    "price": 479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Zen 2",
+      "platform": "AM4"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "requires_cooler_socket": "AM4",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM4",
+      "DDR4",
+      "入门办公"
+    ],
+    "selling_points": [
+      "入门办公",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合入门办公价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 4500；socket AM4；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics False；architecture Zen 2；memory_type DDR4；platform AM4",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_5500",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 5500",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 5500 处理器",
+    "price": 599.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Zen 3",
+      "platform": "AM4"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "requires_cooler_socket": "AM4",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM4",
+      "DDR4",
+      "入门办公"
+    ],
+    "selling_points": [
+      "入门办公",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合入门办公价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 5500；socket AM4；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics False；architecture Zen 3；memory_type DDR4；platform AM4",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_5600g",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 5600G",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 5600G 处理器",
+    "price": 699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 3",
+      "platform": "AM4"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "requires_cooler_socket": "AM4",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM4",
+      "DDR4",
+      "入门办公"
+    ],
+    "selling_points": [
+      "入门办公",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合入门办公价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 5600G；socket AM4；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics True；architecture Zen 3；memory_type DDR4；platform AM4",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i5_12400f",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i5-12400F",
+    "series": "Core i5",
+    "title": "Intel Core i5-12400F 处理器",
+    "price": 799.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Alder Lake",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "入门办公"
+    ],
+    "selling_points": [
+      "入门办公",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合入门办公价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i5-12400F；socket LGA1700；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics False；architecture Alder Lake；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_5600",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 5600",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 5600 处理器",
+    "price": 829.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM4",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Zen 3",
+      "platform": "AM4"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM4",
+      "requires_memory_type": "DDR4",
+      "requires_cooler_socket": "AM4",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM4",
+      "DDR4",
+      "主流游戏"
+    ],
+    "selling_points": [
+      "主流游戏",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合主流游戏价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 5600；socket AM4；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics False；architecture Zen 3；memory_type DDR4；platform AM4",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_7500f",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 7500F",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 7500F 处理器",
+    "price": 999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Zen 4",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "主流游戏"
+    ],
+    "selling_points": [
+      "主流游戏",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合主流游戏价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 7500F；socket AM5；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics False；architecture Zen 4；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i5_13400f",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i5-13400F",
+    "series": "Core i5",
+    "title": "Intel Core i5-13400F 处理器",
+    "price": 1199.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 10,
+      "thread_count": 16,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.033333333333333,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "主流游戏"
+    ],
+    "selling_points": [
+      "主流游戏",
+      "10核16线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合主流游戏价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i5-13400F；socket LGA1700；cores 10；threads 16；base_clock_ghz 3.0；boost_clock_ghz 5.033333333333333；tdp_w 65；integrated_graphics False；architecture Raptor Lake；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_7600",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 7600",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 7600 处理器",
+    "price": 1299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 4",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "主流游戏"
+    ],
+    "selling_points": [
+      "主流游戏",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合主流游戏价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 7600；socket AM5；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics True；architecture Zen 4；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i5_14400f",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i5-14400F",
+    "series": "Core i5",
+    "title": "Intel Core i5-14400F 处理器",
+    "price": 1399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 10,
+      "thread_count": 16,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.033333333333333,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake Refresh",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "主流游戏"
+    ],
+    "selling_points": [
+      "主流游戏",
+      "10核16线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合主流游戏价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i5-14400F；socket LGA1700；cores 10；threads 16；base_clock_ghz 3.0；boost_clock_ghz 5.033333333333333；tdp_w 65；integrated_graphics False；architecture Raptor Lake Refresh；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_5_9600x",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 5 9600X",
+    "series": "Ryzen 5",
+    "title": "AMD Ryzen 5 9600X 处理器",
+    "price": 1599.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 6,
+      "thread_count": 12,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.7,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 5",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "中高端游戏",
+      "开发"
+    ],
+    "selling_points": [
+      "中高端游戏",
+      "开发",
+      "6核12线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合中高端游戏/开发价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 5 9600X；socket AM5；cores 6；threads 12；base_clock_ghz 3.0；boost_clock_ghz 4.7；tdp_w 65；integrated_graphics True；architecture Zen 5；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_7_7700",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 7 7700",
+    "series": "Ryzen 7",
+    "title": "AMD Ryzen 7 7700 处理器",
+    "price": 1699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 8,
+      "thread_count": 16,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.866666666666667,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 4",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "中高端游戏",
+      "开发"
+    ],
+    "selling_points": [
+      "中高端游戏",
+      "开发",
+      "8核16线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合中高端游戏/开发价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 7 7700；socket AM5；cores 8；threads 16；base_clock_ghz 3.0；boost_clock_ghz 4.866666666666667；tdp_w 65；integrated_graphics True；architecture Zen 4；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i5_14600kf",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i5-14600KF",
+    "series": "Core i5",
+    "title": "Intel Core i5-14600KF 处理器",
+    "price": 1799.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 14,
+      "thread_count": 20,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.366666666666667,
+      "tdp_w": 125,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake Refresh",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 125
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "中高端游戏",
+      "开发"
+    ],
+    "selling_points": [
+      "中高端游戏",
+      "开发",
+      "14核20线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合中高端游戏/开发价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i5-14600KF；socket LGA1700；cores 14；threads 20；base_clock_ghz 3.0；boost_clock_ghz 5.366666666666667；tdp_w 125；integrated_graphics False；architecture Raptor Lake Refresh；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_7_9700x",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 7 9700X",
+    "series": "Ryzen 7",
+    "title": "AMD Ryzen 7 9700X 处理器",
+    "price": 2299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 8,
+      "thread_count": 16,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.866666666666667,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 5",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "中高端游戏",
+      "开发"
+    ],
+    "selling_points": [
+      "中高端游戏",
+      "开发",
+      "8核16线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合中高端游戏/开发价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 7 9700X；socket AM5；cores 8；threads 16；base_clock_ghz 3.0；boost_clock_ghz 4.866666666666667；tdp_w 65；integrated_graphics True；architecture Zen 5；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i7_14700f",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i7-14700F",
+    "series": "Core i7",
+    "title": "Intel Core i7-14700F 处理器",
+    "price": 2499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 20,
+      "thread_count": 28,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.533333333333333,
+      "tdp_w": 65,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake Refresh",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "中高端游戏",
+      "开发"
+    ],
+    "selling_points": [
+      "中高端游戏",
+      "开发",
+      "20核28线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合中高端游戏/开发价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i7-14700F；socket LGA1700；cores 20；threads 28；base_clock_ghz 3.0；boost_clock_ghz 5.533333333333333；tdp_w 65；integrated_graphics False；architecture Raptor Lake Refresh；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_9_7900",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 9 7900",
+    "series": "Ryzen 9",
+    "title": "AMD Ryzen 9 7900 处理器",
+    "price": 2699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 12,
+      "thread_count": 24,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.2,
+      "tdp_w": 65,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 4",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 65
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "12核24线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 9 7900；socket AM5；cores 12；threads 24；base_clock_ghz 3.0；boost_clock_ghz 5.2；tdp_w 65；integrated_graphics True；architecture Zen 4；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_7_7800x3d",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 7 7800X3D",
+    "series": "Ryzen 7",
+    "title": "AMD Ryzen 7 7800X3D 处理器",
+    "price": 2999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 8,
+      "thread_count": 16,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 4.866666666666667,
+      "tdp_w": 120,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 4 X3D",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 120
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "8核16线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 7 7800X3D；socket AM5；cores 8；threads 16；base_clock_ghz 3.0；boost_clock_ghz 4.866666666666667；tdp_w 120；integrated_graphics True；architecture Zen 4 X3D；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i7_14700kf",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i7-14700KF",
+    "series": "Core i7",
+    "title": "Intel Core i7-14700KF 处理器",
+    "price": 3099.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 20,
+      "thread_count": 28,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.533333333333333,
+      "tdp_w": 125,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake Refresh",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 125
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "20核28线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i7-14700KF；socket LGA1700；cores 20；threads 28；base_clock_ghz 3.0；boost_clock_ghz 5.533333333333333；tdp_w 125；integrated_graphics False；architecture Raptor Lake Refresh；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_9_9900x",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 9 9900X",
+    "series": "Ryzen 9",
+    "title": "AMD Ryzen 9 9900X 处理器",
+    "price": 3299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 12,
+      "thread_count": 24,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.2,
+      "tdp_w": 120,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 5",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 120
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "12核24线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 9 9900X；socket AM5；cores 12；threads 24；base_clock_ghz 3.0；boost_clock_ghz 5.2；tdp_w 120；integrated_graphics True；architecture Zen 5；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_9_7950x",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 9 7950X",
+    "series": "Ryzen 9",
+    "title": "AMD Ryzen 9 7950X 处理器",
+    "price": 3999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 16,
+      "thread_count": 32,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.533333333333333,
+      "tdp_w": 170,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 4",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 170
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "16核32线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 9 7950X；socket AM5；cores 16；threads 32；base_clock_ghz 3.0；boost_clock_ghz 5.533333333333333；tdp_w 170；integrated_graphics True；architecture Zen 4；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_intel_core_i9_14900kf",
+    "part_type": "pc_cpu",
+    "brand": "Intel",
+    "model": "Core i9-14900KF",
+    "series": "Core i9",
+    "title": "Intel Core i9-14900KF 处理器",
+    "price": 4299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "LGA1700",
+      "core_count": 24,
+      "thread_count": 32,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.533333333333333,
+      "tdp_w": 125,
+      "has_integrated_gpu": false,
+      "architecture": "Raptor Lake Refresh",
+      "platform": "LGA1700"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "LGA1700",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "LGA1700",
+      "recommended_cooling_capacity_w": 125
+    },
+    "tags": [
+      "LGA1700",
+      "DDR4",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "24核32线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Intel；model Core i9-14900KF；socket LGA1700；cores 24；threads 32；base_clock_ghz 3.0；boost_clock_ghz 5.533333333333333；tdp_w 125；integrated_graphics False；architecture Raptor Lake Refresh；memory_type DDR5；platform LGA1700",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "cpu_amd_ryzen_9_9950x",
+    "part_type": "pc_cpu",
+    "brand": "AMD",
+    "model": "Ryzen 9 9950X",
+    "series": "Ryzen 9",
+    "title": "AMD Ryzen 9 9950X 处理器",
+    "price": 4499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "socket": "AM5",
+      "core_count": 16,
+      "thread_count": 32,
+      "base_clock_ghz": 3.0,
+      "boost_clock_ghz": 5.533333333333333,
+      "tdp_w": 170,
+      "has_integrated_gpu": true,
+      "architecture": "Zen 5",
+      "platform": "AM5"
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_motherboard_socket": "AM5",
+      "requires_memory_type": "DDR5",
+      "requires_cooler_socket": "AM5",
+      "recommended_cooling_capacity_w": 170
+    },
+    "tags": [
+      "AM5",
+      "DDR5",
+      "高端生产力"
+    ],
+    "selling_points": [
+      "高端生产力",
+      "16核32线程",
+      "平台覆盖均衡"
+    ],
+    "limitations": [
+      "需匹配主板接口",
+      "高功耗型号需加强散热"
+    ],
+    "recommendation_text": "适合高端生产力价位段的装机方案。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand AMD；model Ryzen 9 9950X；socket AM5；cores 16；threads 32；base_clock_ghz 3.0；boost_clock_ghz 5.533333333333333；tdp_w 170；integrated_graphics True；architecture Zen 5；memory_type DDR5；platform AM5",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Intel Core i5-13400F 处理器</tspan>
+<tspan x="36" dy="24">Price: CNY 1199</tspan>
+<tspan x="36" dy="24">Category: cpu</tspan>
+<tspan x="36" dy="24">Tags: LGA1700|DDR4|DDR5|主流游戏</tspan>
+<tspan x="36" dy="24">brand: Intel</tspan>
+<tspan x="36" dy="24">model: Core i5-13400F</tspan>
+<tspan x="36" dy="24">socket: LGA1700</tspan>
+<tspan x="36" dy="24">cores: 10</tspan>
+<tspan x="36" dy="24">threads: 16</tspan>
+<tspan x="36" dy="24">base_clock_ghz: 3.0</tspan>
+<tspan x="36" dy="24">boost_clock_ghz: 5.033333333333333</tspan>
+<tspan x="36" dy="24">tdp_w: 65</tspan>
+<tspan x="36" dy="24">integrated_graphics: False</tspan>
+<tspan x="36" dy="24">architecture: Raptor Lake</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_cpu_intel_core_i5_13400f</text>
+  <metadata>Intel Core i5-13400F 处理器
+Price: CNY 1199
+Category: cpu
+Tags: LGA1700|DDR4|DDR5|主流游戏
+brand: Intel
+model: Core i5-13400F
+socket: LGA1700
+cores: 10
+threads: 16
+base_clock_ghz: 3.0
+boost_clock_ghz: 5.033333333333333
+tdp_w: 65
+integrated_graphics: False
+architecture: Raptor Lake</metadata>
+</svg>

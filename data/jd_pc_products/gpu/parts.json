@@ -1,0 +1,1979 @@
+[
+  {
+    "part_id": "gpu_integrated_no_discrete_gpu_use_cpu_igpu",
+    "part_type": "pc_gpu",
+    "brand": "Integrated",
+    "model": "No discrete GPU / use CPU iGPU",
+    "title": "Integrated No discrete GPU / use CPU iGPU 显卡",
+    "price": 0.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "gpu_chip": "iGPU",
+      "vram_gb": 0,
+      "memory_bus_bit": 128,
+      "tdp_w": 0,
+      "recommended_psu_w": 0,
+      "power_connector": "8pin x 1",
+      "length_mm": 0,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 0,
+      "requires_case_gpu_length_mm": 0,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "iGPU",
+      "核显",
+      "核显方案"
+    ],
+    "selling_points": [
+      "核显方案",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合核显方案配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Integrated；model No discrete GPU / use CPU iGPU；chipset iGPU；vram_gb 0；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 0；power_w 0；tdp_w 0；recommended_psu_w 0；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asrock_radeon_rx_6500_xt_4gb",
+    "part_type": "pc_gpu",
+    "brand": "ASRock",
+    "model": "Radeon RX 6500 XT 4GB",
+    "series": "RX 6500",
+    "title": "ASRock Radeon RX 6500 XT 4GB 显卡",
+    "price": 899.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6500 XT",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 107,
+      "recommended_psu_w": 400,
+      "power_connector": "8pin x 1",
+      "length_mm": 190,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 400,
+      "requires_case_gpu_length_mm": 190,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6500 XT",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASRock；model Radeon RX 6500 XT 4GB；chipset RX 6500 XT；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 190；power_w 107；tdp_w 107；recommended_psu_w 400；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asrock_radeon_rx_6500_xt_4gb_oc",
+    "part_type": "pc_gpu",
+    "brand": "ASRock",
+    "model": "Radeon RX 6500 XT 4GB OC",
+    "series": "RX 6500",
+    "title": "ASRock Radeon RX 6500 XT 4GB OC 显卡",
+    "price": 1079.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6500 XT",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 117,
+      "recommended_psu_w": 400,
+      "power_connector": "8pin x 1",
+      "length_mm": 198,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 400,
+      "requires_case_gpu_length_mm": 198,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6500 XT",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASRock；model Radeon RX 6500 XT 4GB OC；chipset RX 6500 XT；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 198；power_w 117；tdp_w 117；recommended_psu_w 400；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_msi_geforce_gtx_1650_d6_ventus",
+    "part_type": "pc_gpu",
+    "brand": "MSI",
+    "model": "GeForce GTX 1650 D6 VENTUS",
+    "series": "GTX 16",
+    "title": "MSI GeForce GTX 1650 D6 VENTUS 显卡",
+    "price": 999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "GTX 1650",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 75,
+      "recommended_psu_w": 300,
+      "power_connector": "8pin x 1",
+      "length_mm": 170,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 300,
+      "requires_case_gpu_length_mm": 170,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "GTX 1650",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model GeForce GTX 1650 D6 VENTUS；chipset GTX 1650；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 170；power_w 75；tdp_w 75；recommended_psu_w 300；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_msi_geforce_gtx_1650_d6_ventus_oc",
+    "part_type": "pc_gpu",
+    "brand": "MSI",
+    "model": "GeForce GTX 1650 D6 VENTUS OC",
+    "series": "GTX 16",
+    "title": "MSI GeForce GTX 1650 D6 VENTUS OC 显卡",
+    "price": 1179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "GTX 1650",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 85,
+      "recommended_psu_w": 300,
+      "power_connector": "8pin x 1",
+      "length_mm": 178,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 300,
+      "requires_case_gpu_length_mm": 178,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "GTX 1650",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model GeForce GTX 1650 D6 VENTUS OC；chipset GTX 1650；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 178；power_w 85；tdp_w 85；recommended_psu_w 300；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_6600_8g",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 6600 8G",
+    "series": "RX 6600",
+    "title": "Sapphire Radeon RX 6600 8G 显卡",
+    "price": 1399.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 132,
+      "recommended_psu_w": 450,
+      "power_connector": "8pin x 1",
+      "length_mm": 240,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 450,
+      "requires_case_gpu_length_mm": 240,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6600",
+      "8GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 6600 8G；chipset RX 6600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 240；power_w 132；tdp_w 132；recommended_psu_w 450；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_6600_8g_oc",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 6600 8G OC",
+    "series": "RX 6600",
+    "title": "Sapphire Radeon RX 6600 8G OC 显卡",
+    "price": 1579.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 142,
+      "recommended_psu_w": 450,
+      "power_connector": "8pin x 1",
+      "length_mm": 248,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 450,
+      "requires_case_gpu_length_mm": 248,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6600",
+      "8GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 6600 8G OC；chipset RX 6600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 248；power_w 142；tdp_w 142；recommended_psu_w 450；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asus_dual_geforce_rtx_4060_o8g",
+    "part_type": "pc_gpu",
+    "brand": "ASUS",
+    "model": "Dual GeForce RTX 4060 O8G",
+    "series": "RTX 40",
+    "title": "ASUS Dual GeForce RTX 4060 O8G 显卡",
+    "price": 2199.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 115,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 227,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 227,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model Dual GeForce RTX 4060 O8G；chipset RTX 4060；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 227；power_w 115；tdp_w 115；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asus_dual_geforce_rtx_4060_o8g_oc",
+    "part_type": "pc_gpu",
+    "brand": "ASUS",
+    "model": "Dual GeForce RTX 4060 O8G OC",
+    "series": "RTX 40",
+    "title": "ASUS Dual GeForce RTX 4060 O8G OC 显卡",
+    "price": 2379.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 125,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 235,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 235,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model Dual GeForce RTX 4060 O8G OC；chipset RTX 4060；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 235；power_w 125；tdp_w 125；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7600_8g",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7600 8G",
+    "series": "RX 7600",
+    "title": "Sapphire Radeon RX 7600 8G 显卡",
+    "price": 2099.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 165,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 240,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 240,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7600 8G；chipset RX 7600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 240；power_w 165；tdp_w 165；recommended_psu_w 550；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7600_8g_oc",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7600 8G OC",
+    "series": "RX 7600",
+    "title": "Sapphire Radeon RX 7600 8G OC 显卡",
+    "price": 2279.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 175,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 248,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 248,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7600 8G OC；chipset RX 7600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 248；power_w 175；tdp_w 175；recommended_psu_w 550；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_xfx_radeon_rx_7600_xt_16g",
+    "part_type": "pc_gpu",
+    "brand": "XFX",
+    "model": "Radeon RX 7600 XT 16G",
+    "series": "RX 7600",
+    "title": "XFX Radeon RX 7600 XT 16G 显卡",
+    "price": 2499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600 XT",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 190,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 280,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 280,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600 XT",
+      "16GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand XFX；model Radeon RX 7600 XT 16G；chipset RX 7600 XT；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 280；power_w 190；tdp_w 190；recommended_psu_w 600；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_xfx_radeon_rx_7600_xt_16g_oc",
+    "part_type": "pc_gpu",
+    "brand": "XFX",
+    "model": "Radeon RX 7600 XT 16G OC",
+    "series": "RX 7600",
+    "title": "XFX Radeon RX 7600 XT 16G OC 显卡",
+    "price": 2679.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600 XT",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 200,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 288,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 288,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600 XT",
+      "16GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand XFX；model Radeon RX 7600 XT 16G OC；chipset RX 7600 XT；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 288；power_w 200；tdp_w 200；recommended_psu_w 600；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_nvidia_geforce_rtx_4060_ti_8g",
+    "part_type": "pc_gpu",
+    "brand": "NVIDIA",
+    "model": "GeForce RTX 4060 Ti 8G",
+    "series": "RTX 40",
+    "title": "NVIDIA GeForce RTX 4060 Ti 8G 显卡",
+    "price": 2999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 160,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 244,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 244,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "8GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand NVIDIA；model GeForce RTX 4060 Ti 8G；chipset RTX 4060 Ti；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 244；power_w 160；tdp_w 160；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_nvidia_geforce_rtx_4060_ti_8g_oc",
+    "part_type": "pc_gpu",
+    "brand": "NVIDIA",
+    "model": "GeForce RTX 4060 Ti 8G OC",
+    "series": "RTX 40",
+    "title": "NVIDIA GeForce RTX 4060 Ti 8G OC 显卡",
+    "price": 3179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 170,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 252,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 252,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "8GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand NVIDIA；model GeForce RTX 4060 Ti 8G OC；chipset RTX 4060 Ti；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 252；power_w 170；tdp_w 170；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge",
+    "part_type": "pc_gpu",
+    "brand": "ZOTAC",
+    "model": "GeForce RTX 4060 Ti 16G Twin Edge",
+    "series": "RTX 40",
+    "title": "ZOTAC GeForce RTX 4060 Ti 16G Twin Edge 显卡",
+    "price": 3499.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 165,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 225,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 225,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "16GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ZOTAC；model GeForce RTX 4060 Ti 16G Twin Edge；chipset RTX 4060 Ti；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 225；power_w 165；tdp_w 165；recommended_psu_w 600；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_oc",
+    "part_type": "pc_gpu",
+    "brand": "ZOTAC",
+    "model": "GeForce RTX 4060 Ti 16G Twin Edge OC",
+    "series": "RTX 40",
+    "title": "ZOTAC GeForce RTX 4060 Ti 16G Twin Edge OC 显卡",
+    "price": 3679.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 175,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 233,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 233,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "16GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ZOTAC；model GeForce RTX 4060 Ti 16G Twin Edge OC；chipset RTX 4060 Ti；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 233；power_w 175；tdp_w 175；recommended_psu_w 600；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_maxsun_geforce_rtx_4070_icraft_oc12g",
+    "part_type": "pc_gpu",
+    "brand": "MAXSUN",
+    "model": "GeForce RTX 4070 iCraft OC12G",
+    "series": "RTX 40",
+    "title": "MAXSUN GeForce RTX 4070 iCraft OC12G 显卡",
+    "price": 4299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070",
+      "vram_gb": 12,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 192,
+      "tdp_w": 200,
+      "recommended_psu_w": 650,
+      "power_connector": "8pin x 1",
+      "length_mm": 320,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 650,
+      "requires_case_gpu_length_mm": 320,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4070",
+      "12GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MAXSUN；model GeForce RTX 4070 iCraft OC12G；chipset RTX 4070；vram_gb 12；memory_type GDDR6X；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 320；power_w 200；tdp_w 200；recommended_psu_w 650；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_maxsun_geforce_rtx_4070_icraft_oc12g_oc",
+    "part_type": "pc_gpu",
+    "brand": "MAXSUN",
+    "model": "GeForce RTX 4070 iCraft OC12G OC",
+    "series": "RTX 40",
+    "title": "MAXSUN GeForce RTX 4070 iCraft OC12G OC 显卡",
+    "price": 4479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070",
+      "vram_gb": 12,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 192,
+      "tdp_w": 210,
+      "recommended_psu_w": 650,
+      "power_connector": "8pin x 1",
+      "length_mm": 328,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 650,
+      "requires_case_gpu_length_mm": 328,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4070",
+      "12GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MAXSUN；model GeForce RTX 4070 iCraft OC12G OC；chipset RTX 4070；vram_gb 12；memory_type GDDR6X；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 328；power_w 210；tdp_w 210；recommended_psu_w 650；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7700_xt_12g",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7700 XT 12G",
+    "series": "RX 7700",
+    "title": "Sapphire Radeon RX 7700 XT 12G 显卡",
+    "price": 3299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7700 XT",
+      "vram_gb": 12,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 192,
+      "tdp_w": 245,
+      "recommended_psu_w": 700,
+      "power_connector": "8pin x 1",
+      "length_mm": 280,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 280,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7700 XT",
+      "12GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7700 XT 12G；chipset RX 7700 XT；vram_gb 12；memory_type GDDR6；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 280；power_w 245；tdp_w 245；recommended_psu_w 700；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7700_xt_12g_oc",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7700 XT 12G OC",
+    "series": "RX 7700",
+    "title": "Sapphire Radeon RX 7700 XT 12G OC 显卡",
+    "price": 3479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7700 XT",
+      "vram_gb": 12,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 192,
+      "tdp_w": 255,
+      "recommended_psu_w": 700,
+      "power_connector": "8pin x 1",
+      "length_mm": 288,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 288,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7700 XT",
+      "12GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7700 XT 12G OC；chipset RX 7700 XT；vram_gb 12；memory_type GDDR6；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 288；power_w 255；tdp_w 255；recommended_psu_w 700；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7800_xt_16g",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7800 XT 16G",
+    "series": "RX 7800",
+    "title": "Sapphire Radeon RX 7800 XT 16G 显卡",
+    "price": 3699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7800 XT",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 263,
+      "recommended_psu_w": 700,
+      "power_connector": "8pin x 1",
+      "length_mm": 320,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 320,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7800 XT",
+      "16GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7800 XT 16G；chipset RX 7800 XT；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 320；power_w 263；tdp_w 263；recommended_psu_w 700；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7800_xt_16g_oc",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7800 XT 16G OC",
+    "series": "RX 7800",
+    "title": "Sapphire Radeon RX 7800 XT 16G OC 显卡",
+    "price": 3879.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7800 XT",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 273,
+      "recommended_psu_w": 700,
+      "power_connector": "8pin x 1",
+      "length_mm": 328,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 328,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7800 XT",
+      "16GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7800 XT 16G OC；chipset RX 7800 XT；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 328；power_w 273；tdp_w 273；recommended_psu_w 700；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_zotac_geforce_rtx_4070_super_x_gaming",
+    "part_type": "pc_gpu",
+    "brand": "ZOTAC",
+    "model": "GeForce RTX 4070 SUPER X-GAMING",
+    "series": "RTX 40",
+    "title": "ZOTAC GeForce RTX 4070 SUPER X-GAMING 显卡",
+    "price": 4699.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070 SUPER",
+      "vram_gb": 12,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 192,
+      "tdp_w": 220,
+      "recommended_psu_w": 700,
+      "power_connector": "12VHPWR",
+      "length_mm": 307,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 307,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4070 SUPER",
+      "12GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ZOTAC；model GeForce RTX 4070 SUPER X-GAMING；chipset RTX 4070 SUPER；vram_gb 12；memory_type GDDR6X；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 307；power_w 220；tdp_w 220；recommended_psu_w 700；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_zotac_geforce_rtx_4070_super_x_gaming_oc",
+    "part_type": "pc_gpu",
+    "brand": "ZOTAC",
+    "model": "GeForce RTX 4070 SUPER X-GAMING OC",
+    "series": "RTX 40",
+    "title": "ZOTAC GeForce RTX 4070 SUPER X-GAMING OC 显卡",
+    "price": 4879.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070 SUPER",
+      "vram_gb": 12,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 192,
+      "tdp_w": 230,
+      "recommended_psu_w": 700,
+      "power_connector": "12VHPWR",
+      "length_mm": 315,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 700,
+      "requires_case_gpu_length_mm": 315,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4070 SUPER",
+      "12GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ZOTAC；model GeForce RTX 4070 SUPER X-GAMING OC；chipset RTX 4070 SUPER；vram_gb 12；memory_type GDDR6X；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 315；power_w 230；tdp_w 230；recommended_psu_w 700；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_colorful_geforce_rtx_4070_ti_super_16g",
+    "part_type": "pc_gpu",
+    "brand": "Colorful",
+    "model": "GeForce RTX 4070 Ti SUPER 16G",
+    "series": "RTX 40",
+    "title": "Colorful GeForce RTX 4070 Ti SUPER 16G 显卡",
+    "price": 6299.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070 Ti SUPER",
+      "vram_gb": 16,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 256,
+      "tdp_w": 285,
+      "recommended_psu_w": 750,
+      "power_connector": "12VHPWR",
+      "length_mm": 330,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 750,
+      "requires_case_gpu_length_mm": 330,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4070 Ti SUPER",
+      "16GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Colorful；model GeForce RTX 4070 Ti SUPER 16G；chipset RTX 4070 Ti SUPER；vram_gb 16；memory_type GDDR6X；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 330；power_w 285；tdp_w 285；recommended_psu_w 750；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_colorful_geforce_rtx_4070_ti_super_16g_oc",
+    "part_type": "pc_gpu",
+    "brand": "Colorful",
+    "model": "GeForce RTX 4070 Ti SUPER 16G OC",
+    "series": "RTX 40",
+    "title": "Colorful GeForce RTX 4070 Ti SUPER 16G OC 显卡",
+    "price": 6479.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070 Ti SUPER",
+      "vram_gb": 16,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 256,
+      "tdp_w": 295,
+      "recommended_psu_w": 750,
+      "power_connector": "12VHPWR",
+      "length_mm": 338,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 750,
+      "requires_case_gpu_length_mm": 338,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4070 Ti SUPER",
+      "16GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Colorful；model GeForce RTX 4070 Ti SUPER 16G OC；chipset RTX 4070 Ti SUPER；vram_gb 16；memory_type GDDR6X；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 338；power_w 295；tdp_w 295；recommended_psu_w 750；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_msi_geforce_rtx_4080_super_16g",
+    "part_type": "pc_gpu",
+    "brand": "MSI",
+    "model": "GeForce RTX 4080 SUPER 16G",
+    "series": "RTX 40",
+    "title": "MSI GeForce RTX 4080 SUPER 16G 显卡",
+    "price": 7999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4080 SUPER",
+      "vram_gb": 16,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 256,
+      "tdp_w": 320,
+      "recommended_psu_w": 850,
+      "power_connector": "12VHPWR",
+      "length_mm": 336,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 850,
+      "requires_case_gpu_length_mm": 336,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4080 SUPER",
+      "16GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model GeForce RTX 4080 SUPER 16G；chipset RTX 4080 SUPER；vram_gb 16；memory_type GDDR6X；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 336；power_w 320；tdp_w 320；recommended_psu_w 850；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_msi_geforce_rtx_4080_super_16g_oc",
+    "part_type": "pc_gpu",
+    "brand": "MSI",
+    "model": "GeForce RTX 4080 SUPER 16G OC",
+    "series": "RTX 40",
+    "title": "MSI GeForce RTX 4080 SUPER 16G OC 显卡",
+    "price": 8000.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4080 SUPER",
+      "vram_gb": 16,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 256,
+      "tdp_w": 330,
+      "recommended_psu_w": 850,
+      "power_connector": "12VHPWR",
+      "length_mm": 344,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 850,
+      "requires_case_gpu_length_mm": 344,
+      "requires_power_connector": "12VHPWR"
+    },
+    "tags": [
+      "RTX 4080 SUPER",
+      "16GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model GeForce RTX 4080 SUPER 16G OC；chipset RTX 4080 SUPER；vram_gb 16；memory_type GDDR6X；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 344；power_w 330；tdp_w 330；recommended_psu_w 850；power_connector 12VHPWR；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_xfx_radeon_rx_7900_xtx_24g",
+    "part_type": "pc_gpu",
+    "brand": "XFX",
+    "model": "Radeon RX 7900 XTX 24G",
+    "series": "RX 7900",
+    "title": "XFX Radeon RX 7900 XTX 24G 显卡",
+    "price": 6999.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7900 XTX",
+      "vram_gb": 24,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 355,
+      "recommended_psu_w": 850,
+      "power_connector": "8pin x 1",
+      "length_mm": 344,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 850,
+      "requires_case_gpu_length_mm": 344,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7900 XTX",
+      "24GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand XFX；model Radeon RX 7900 XTX 24G；chipset RX 7900 XTX；vram_gb 24；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 344；power_w 355；tdp_w 355；recommended_psu_w 850；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_xfx_radeon_rx_7900_xtx_24g_oc",
+    "part_type": "pc_gpu",
+    "brand": "XFX",
+    "model": "Radeon RX 7900 XTX 24G OC",
+    "series": "RX 7900",
+    "title": "XFX Radeon RX 7900 XTX 24G OC 显卡",
+    "price": 7179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7900 XTX",
+      "vram_gb": 24,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 365,
+      "recommended_psu_w": 850,
+      "power_connector": "8pin x 1",
+      "length_mm": 352,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 850,
+      "requires_case_gpu_length_mm": 352,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7900 XTX",
+      "24GB",
+      "高端游戏",
+      "AI"
+    ],
+    "selling_points": [
+      "高端游戏",
+      "AI",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合高端游戏/AI配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand XFX；model Radeon RX 7900 XTX 24G OC；chipset RX 7900 XTX；vram_gb 24；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 352；power_w 365；tdp_w 365；recommended_psu_w 850；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asrock_radeon_rx_6500_xt_4gb_edition_1",
+    "part_type": "pc_gpu",
+    "brand": "ASRock",
+    "model": "Radeon RX 6500 XT 4GB Edition 1",
+    "series": "RX 6500",
+    "title": "ASRock Radeon RX 6500 XT 4GB Edition 1 显卡",
+    "price": 989.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6500 XT",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 112,
+      "recommended_psu_w": 400,
+      "power_connector": "8pin x 1",
+      "length_mm": 194,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 400,
+      "requires_case_gpu_length_mm": 194,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6500 XT",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASRock；model Radeon RX 6500 XT 4GB Edition 1；chipset RX 6500 XT；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 194；power_w 112；tdp_w 112；recommended_psu_w 400；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_msi_geforce_gtx_1650_d6_ventus_edition_2",
+    "part_type": "pc_gpu",
+    "brand": "MSI",
+    "model": "GeForce GTX 1650 D6 VENTUS Edition 2",
+    "series": "GTX 16",
+    "title": "MSI GeForce GTX 1650 D6 VENTUS Edition 2 显卡",
+    "price": 1179.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "GTX 1650",
+      "vram_gb": 4,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 80,
+      "recommended_psu_w": 300,
+      "power_connector": "8pin x 1",
+      "length_mm": 174,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 300,
+      "requires_case_gpu_length_mm": 174,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "GTX 1650",
+      "4GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MSI；model GeForce GTX 1650 D6 VENTUS Edition 2；chipset GTX 1650；vram_gb 4；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 174；power_w 80；tdp_w 80；recommended_psu_w 300；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_6600_8g_edition_3",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 6600 8G Edition 3",
+    "series": "RX 6600",
+    "title": "Sapphire Radeon RX 6600 8G Edition 3 显卡",
+    "price": 1669.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 6600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 137,
+      "recommended_psu_w": 450,
+      "power_connector": "8pin x 1",
+      "length_mm": 244,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 450,
+      "requires_case_gpu_length_mm": 244,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 6600",
+      "8GB",
+      "入门独显"
+    ],
+    "selling_points": [
+      "入门独显",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合入门独显配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 6600 8G Edition 3；chipset RX 6600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 244；power_w 137；tdp_w 137；recommended_psu_w 450；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_asus_dual_geforce_rtx_4060_o8g_edition_4",
+    "part_type": "pc_gpu",
+    "brand": "ASUS",
+    "model": "Dual GeForce RTX 4060 O8G Edition 4",
+    "series": "RTX 40",
+    "title": "ASUS Dual GeForce RTX 4060 O8G Edition 4 显卡",
+    "price": 2559.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 120,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 231,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 231,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ASUS；model Dual GeForce RTX 4060 O8G Edition 4；chipset RTX 4060；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 231；power_w 120；tdp_w 120；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_sapphire_radeon_rx_7600_8g_edition_5",
+    "part_type": "pc_gpu",
+    "brand": "Sapphire",
+    "model": "Radeon RX 7600 8G Edition 5",
+    "series": "RX 7600",
+    "title": "Sapphire Radeon RX 7600 8G Edition 5 显卡",
+    "price": 2549.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 170,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 244,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 244,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600",
+      "8GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand Sapphire；model Radeon RX 7600 8G Edition 5；chipset RX 7600；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 244；power_w 170；tdp_w 170；recommended_psu_w 550；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_xfx_radeon_rx_7600_xt_16g_edition_6",
+    "part_type": "pc_gpu",
+    "brand": "XFX",
+    "model": "Radeon RX 7600 XT 16G Edition 6",
+    "series": "RX 7600",
+    "title": "XFX Radeon RX 7600 XT 16G Edition 6 显卡",
+    "price": 3039.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "AMD",
+      "gpu_chip": "RX 7600 XT",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 195,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 284,
+      "cuda_support": false
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 284,
+      "requires_power_connector": "8pin x 1",
+      "cuda_required_workloads": false
+    },
+    "tags": [
+      "RX 7600 XT",
+      "16GB",
+      "1080p游戏"
+    ],
+    "selling_points": [
+      "1080p游戏",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "CUDA 工作流优先 NVIDIA"
+    ],
+    "recommendation_text": "适合1080p游戏配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand XFX；model Radeon RX 7600 XT 16G Edition 6；chipset RX 7600 XT；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 284；power_w 195；tdp_w 195；recommended_psu_w 600；power_connector 8pin x 1；cuda_support False",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_nvidia_geforce_rtx_4060_ti_8g_edition_7",
+    "part_type": "pc_gpu",
+    "brand": "NVIDIA",
+    "model": "GeForce RTX 4060 Ti 8G Edition 7",
+    "series": "RTX 40",
+    "title": "NVIDIA GeForce RTX 4060 Ti 8G Edition 7 显卡",
+    "price": 3629.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 8,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 128,
+      "tdp_w": 165,
+      "recommended_psu_w": 550,
+      "power_connector": "8pin x 1",
+      "length_mm": 248,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 550,
+      "requires_case_gpu_length_mm": 248,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "8GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand NVIDIA；model GeForce RTX 4060 Ti 8G Edition 7；chipset RTX 4060 Ti；vram_gb 8；memory_type GDDR6；bus_width_bit 128；interface PCIe 4.0 x16；length_mm 248；power_w 165；tdp_w 165；recommended_psu_w 550；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_zotac_geforce_rtx_4060_ti_16g_twin_edge_edition_8",
+    "part_type": "pc_gpu",
+    "brand": "ZOTAC",
+    "model": "GeForce RTX 4060 Ti 16G Twin Edge Edition 8",
+    "series": "RTX 40",
+    "title": "ZOTAC GeForce RTX 4060 Ti 16G Twin Edge Edition 8 显卡",
+    "price": 4219.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4060 Ti",
+      "vram_gb": 16,
+      "vram_type": "GDDR6",
+      "memory_bus_bit": 256,
+      "tdp_w": 170,
+      "recommended_psu_w": 600,
+      "power_connector": "8pin x 1",
+      "length_mm": 229,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 600,
+      "requires_case_gpu_length_mm": 229,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4060 Ti",
+      "16GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand ZOTAC；model GeForce RTX 4060 Ti 16G Twin Edge Edition 8；chipset RTX 4060 Ti；vram_gb 16；memory_type GDDR6；bus_width_bit 256；interface PCIe 4.0 x16；length_mm 229；power_w 170；tdp_w 170；recommended_psu_w 600；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  },
+  {
+    "part_id": "gpu_maxsun_geforce_rtx_4070_icraft_oc12g_edition_9",
+    "part_type": "pc_gpu",
+    "brand": "MAXSUN",
+    "model": "GeForce RTX 4070 iCraft OC12G Edition 9",
+    "series": "RTX 40",
+    "title": "MAXSUN GeForce RTX 4070 iCraft OC12G Edition 9 显卡",
+    "price": 5109.0,
+    "currency": "CNY",
+    "is_available": true,
+    "specs": {
+      "chip_vendor": "NVIDIA",
+      "gpu_chip": "RTX 4070",
+      "vram_gb": 12,
+      "vram_type": "GDDR6X",
+      "memory_bus_bit": 192,
+      "tdp_w": 205,
+      "recommended_psu_w": 650,
+      "power_connector": "8pin x 1",
+      "length_mm": 324,
+      "cuda_support": true
+    },
+    "scores": {},
+    "compatibility": {
+      "requires_psu_w": 650,
+      "requires_case_gpu_length_mm": 324,
+      "requires_power_connector": "8pin x 1"
+    },
+    "tags": [
+      "RTX 4070",
+      "12GB",
+      "2K游戏",
+      "AI入门"
+    ],
+    "selling_points": [
+      "2K游戏",
+      "AI入门",
+      "显卡预算分层清晰",
+      "适合按预算过滤"
+    ],
+    "limitations": [
+      "需核对机箱限长"
+    ],
+    "recommendation_text": "适合2K游戏/AI入门配置。",
+    "source": {
+      "platform": "JD",
+      "raw_specs_text": "brand MAXSUN；model GeForce RTX 4070 iCraft OC12G Edition 9；chipset RTX 4070；vram_gb 12；memory_type GDDR6X；bus_width_bit 192；interface PCIe 4.0 x16；length_mm 324；power_w 205；tdp_w 205；recommended_psu_w 650；power_connector 8pin x 1；cuda_support True",
+      "updated_at": "2026-05-28T09:03:04+00:00"
+    }
+  }
+]

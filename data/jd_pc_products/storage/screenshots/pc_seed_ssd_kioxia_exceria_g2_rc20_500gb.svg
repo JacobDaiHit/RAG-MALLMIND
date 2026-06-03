@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Kioxia EXCERIA G2 RC20 500GB NVMe SSD</tspan>
+<tspan x="36" dy="24">Price: CNY 249</tspan>
+<tspan x="36" dy="24">Category: ssd</tspan>
+<tspan x="36" dy="24">Tags: 500GB|NVMe|PCIe 3.0 NVMe</tspan>
+<tspan x="36" dy="24">brand: Kioxia</tspan>
+<tspan x="36" dy="24">model: EXCERIA G2 RC20 500GB</tspan>
+<tspan x="36" dy="24">storage_type: SSD</tspan>
+<tspan x="36" dy="24">capacity_gb: 500</tspan>
+<tspan x="36" dy="24">interface: M.2</tspan>
+<tspan x="36" dy="24">protocol: PCIe 3.0 NVMe</tspan>
+<tspan x="36" dy="24">form_factor: M.2 2280</tspan>
+<tspan x="36" dy="24">read_mb_s: 2100</tspan>
+<tspan x="36" dy="24">write_mb_s: 1700</tspan>
+<tspan x="36" dy="24">has_dram_cache: True</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_ssd_kioxia_exceria_g2_rc20_500gb</text>
+  <metadata>Kioxia EXCERIA G2 RC20 500GB NVMe SSD
+Price: CNY 249
+Category: ssd
+Tags: 500GB|NVMe|PCIe 3.0 NVMe
+brand: Kioxia
+model: EXCERIA G2 RC20 500GB
+storage_type: SSD
+capacity_gb: 500
+interface: M.2
+protocol: PCIe 3.0 NVMe
+form_factor: M.2 2280
+read_mb_s: 2100
+write_mb_s: 1700
+has_dram_cache: True</metadata>
+</svg>

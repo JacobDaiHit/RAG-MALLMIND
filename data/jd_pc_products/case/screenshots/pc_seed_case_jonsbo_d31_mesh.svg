@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">JONSBO D31 MESH 机箱</tspan>
+<tspan x="36" dy="24">Price: CNY 399</tspan>
+<tspan x="36" dy="24">Category: case</tspan>
+<tspan x="36" dy="24">Tags: M-ATX|GPU330mm|风冷168mm</tspan>
+<tspan x="36" dy="24">brand: JONSBO</tspan>
+<tspan x="36" dy="24">model: D31 MESH</tspan>
+<tspan x="36" dy="24">case_size: M-ATX</tspan>
+<tspan x="36" dy="24">motherboard_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">form_factor_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">gpu_clearance_mm: 330</tspan>
+<tspan x="36" dy="24">cooler_clearance_mm: 168</tspan>
+<tspan x="36" dy="24">max_psu_length_mm: 200</tspan>
+<tspan x="36" dy="24">supported_radiator_sizes: [240, 360]</tspan>
+<tspan x="36" dy="24">radiator_support: [240, 360]</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_case_jonsbo_d31_mesh</text>
+  <metadata>JONSBO D31 MESH 机箱
+Price: CNY 399
+Category: case
+Tags: M-ATX|GPU330mm|风冷168mm
+brand: JONSBO
+model: D31 MESH
+case_size: M-ATX
+motherboard_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+form_factor_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+gpu_clearance_mm: 330
+cooler_clearance_mm: 168
+max_psu_length_mm: 200
+supported_radiator_sizes: [240, 360]
+radiator_support: [240, 360]</metadata>
+</svg>

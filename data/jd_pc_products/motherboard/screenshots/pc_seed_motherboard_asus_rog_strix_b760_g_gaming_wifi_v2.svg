@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">ASUS ROG STRIX B760-G GAMING WIFI V2 主板</tspan>
+<tspan x="36" dy="24">Price: CNY 1739</tspan>
+<tspan x="36" dy="24">Category: motherboard</tspan>
+<tspan x="36" dy="24">Tags: LGA1700|B760|DDR5|M-ATX|Wi-Fi</tspan>
+<tspan x="36" dy="24">brand: ASUS</tspan>
+<tspan x="36" dy="24">model: ROG STRIX B760-G GAMING WIFI V2</tspan>
+<tspan x="36" dy="24">socket: LGA1700</tspan>
+<tspan x="36" dy="24">chipset: B760</tspan>
+<tspan x="36" dy="24">form_factor: M-ATX</tspan>
+<tspan x="36" dy="24">memory_type: DDR5</tspan>
+<tspan x="36" dy="24">memory_slots: 4</tspan>
+<tspan x="36" dy="24">max_memory_gb: 192</tspan>
+<tspan x="36" dy="24">m2_slots: 3</tspan>
+<tspan x="36" dy="24">pcie_version: PCIe 5.0</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_motherboard_asus_rog_strix_b760_g_gaming_wifi_v2</text>
+  <metadata>ASUS ROG STRIX B760-G GAMING WIFI V2 主板
+Price: CNY 1739
+Category: motherboard
+Tags: LGA1700|B760|DDR5|M-ATX|Wi-Fi
+brand: ASUS
+model: ROG STRIX B760-G GAMING WIFI V2
+socket: LGA1700
+chipset: B760
+form_factor: M-ATX
+memory_type: DDR5
+memory_slots: 4
+max_memory_gb: 192
+m2_slots: 3
+pcie_version: PCIe 5.0</metadata>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">ASUS Dual GeForce RTX 4060 O8G 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 2199</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: RTX 4060|8GB|1080p游戏</tspan>
+<tspan x="36" dy="24">brand: ASUS</tspan>
+<tspan x="36" dy="24">model: Dual GeForce RTX 4060 O8G</tspan>
+<tspan x="36" dy="24">chipset: RTX 4060</tspan>
+<tspan x="36" dy="24">vram_gb: 8</tspan>
+<tspan x="36" dy="24">memory_type: GDDR6</tspan>
+<tspan x="36" dy="24">bus_width_bit: 128</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 227</tspan>
+<tspan x="36" dy="24">power_w: 115</tspan>
+<tspan x="36" dy="24">tdp_w: 115</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g</text>
+  <metadata>ASUS Dual GeForce RTX 4060 O8G 显卡
+Price: CNY 2199
+Category: gpu
+Tags: RTX 4060|8GB|1080p游戏
+brand: ASUS
+model: Dual GeForce RTX 4060 O8G
+chipset: RTX 4060
+vram_gb: 8
+memory_type: GDDR6
+bus_width_bit: 128
+interface: PCIe 4.0 x16
+length_mm: 227
+power_w: 115
+tdp_w: 115</metadata>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">AMD Ryzen 5 4500 处理器</tspan>
+<tspan x="36" dy="24">Price: CNY 479</tspan>
+<tspan x="36" dy="24">Category: cpu</tspan>
+<tspan x="36" dy="24">Tags: AM4|DDR4|入门办公</tspan>
+<tspan x="36" dy="24">brand: AMD</tspan>
+<tspan x="36" dy="24">model: Ryzen 5 4500</tspan>
+<tspan x="36" dy="24">socket: AM4</tspan>
+<tspan x="36" dy="24">cores: 6</tspan>
+<tspan x="36" dy="24">threads: 12</tspan>
+<tspan x="36" dy="24">base_clock_ghz: 3.0</tspan>
+<tspan x="36" dy="24">boost_clock_ghz: 4.7</tspan>
+<tspan x="36" dy="24">tdp_w: 65</tspan>
+<tspan x="36" dy="24">integrated_graphics: False</tspan>
+<tspan x="36" dy="24">architecture: Zen 2</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_cpu_amd_ryzen_5_4500</text>
+  <metadata>AMD Ryzen 5 4500 处理器
+Price: CNY 479
+Category: cpu
+Tags: AM4|DDR4|入门办公
+brand: AMD
+model: Ryzen 5 4500
+socket: AM4
+cores: 6
+threads: 12
+base_clock_ghz: 3.0
+boost_clock_ghz: 4.7
+tdp_w: 65
+integrated_graphics: False
+architecture: Zen 2</metadata>
+</svg>

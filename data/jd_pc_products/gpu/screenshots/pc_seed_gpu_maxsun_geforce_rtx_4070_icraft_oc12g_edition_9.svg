@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">MAXSUN GeForce RTX 4070 iCraft OC12G Edition 9 显卡</tspan>
+<tspan x="36" dy="24">Price: CNY 5109</tspan>
+<tspan x="36" dy="24">Category: gpu</tspan>
+<tspan x="36" dy="24">Tags: RTX 4070|12GB|2K游戏/AI入门</tspan>
+<tspan x="36" dy="24">brand: MAXSUN</tspan>
+<tspan x="36" dy="24">model: GeForce RTX 4070 iCraft OC12G Edition 9</tspan>
+<tspan x="36" dy="24">chipset: RTX 4070</tspan>
+<tspan x="36" dy="24">vram_gb: 12</tspan>
+<tspan x="36" dy="24">memory_type: GDDR6X</tspan>
+<tspan x="36" dy="24">bus_width_bit: 192</tspan>
+<tspan x="36" dy="24">interface: PCIe 4.0 x16</tspan>
+<tspan x="36" dy="24">length_mm: 324</tspan>
+<tspan x="36" dy="24">power_w: 205</tspan>
+<tspan x="36" dy="24">tdp_w: 205</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_gpu_maxsun_geforce_rtx_4070_icraft_oc12g_edition_9</text>
+  <metadata>MAXSUN GeForce RTX 4070 iCraft OC12G Edition 9 显卡
+Price: CNY 5109
+Category: gpu
+Tags: RTX 4070|12GB|2K游戏/AI入门
+brand: MAXSUN
+model: GeForce RTX 4070 iCraft OC12G Edition 9
+chipset: RTX 4070
+vram_gb: 12
+memory_type: GDDR6X
+bus_width_bit: 192
+interface: PCIe 4.0 x16
+length_mm: 324
+power_w: 205
+tdp_w: 205</metadata>
+</svg>

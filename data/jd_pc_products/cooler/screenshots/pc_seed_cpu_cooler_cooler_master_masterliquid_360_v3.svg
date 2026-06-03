@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">Cooler Master MasterLiquid 360 V3 CPU 散热器</tspan>
+<tspan x="36" dy="24">Price: CNY 729</tspan>
+<tspan x="36" dy="24">Category: cpu_cooler</tspan>
+<tspan x="36" dy="24">Tags: liquid|300W|360mm</tspan>
+<tspan x="36" dy="24">brand: Cooler Master</tspan>
+<tspan x="36" dy="24">model: MasterLiquid 360 V3</tspan>
+<tspan x="36" dy="24">cooler_type: liquid</tspan>
+<tspan x="36" dy="24">socket_support: [&#x27;AM4&#x27;, &#x27;AM5&#x27;, &#x27;LGA1700&#x27;, &#x27;LGA1851&#x27;]</tspan>
+<tspan x="36" dy="24">tdp_w: 300</tspan>
+<tspan x="36" dy="24">cooling_capacity_w: 300</tspan>
+<tspan x="36" dy="24">height_mm: 0</tspan>
+<tspan x="36" dy="24">radiator_size_mm: 360</tspan>
+<tspan x="36" dy="24">fan_count: 3</tspan>
+<tspan x="36" dy="24">noise_db: 32</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_cpu_cooler_cooler_master_masterliquid_360_v3</text>
+  <metadata>Cooler Master MasterLiquid 360 V3 CPU 散热器
+Price: CNY 729
+Category: cpu_cooler
+Tags: liquid|300W|360mm
+brand: Cooler Master
+model: MasterLiquid 360 V3
+cooler_type: liquid
+socket_support: [&#x27;AM4&#x27;, &#x27;AM5&#x27;, &#x27;LGA1700&#x27;, &#x27;LGA1851&#x27;]
+tdp_w: 300
+cooling_capacity_w: 300
+height_mm: 0
+radiator_size_mm: 360
+fan_count: 3
+noise_db: 32</metadata>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <rect width="960" height="540" fill="#f7f8fa"/>
+  <rect x="24" y="24" width="912" height="492" rx="8" fill="#ffffff" stroke="#d8dee8"/>
+  <rect x="24" y="24" width="912" height="76" rx="8" fill="#1f2937"/>
+  <text x="36" y="72" fill="#ffffff" font-family="Arial, sans-serif" font-size="26" font-weight="700">JD PC Parts Evidence Screenshot</text>
+  <text x="36" y="136" fill="#111827" font-family="Consolas, monospace" font-size="18"><tspan x="36" dy="0">LIAN LI A3-mATX V4 机箱</tspan>
+<tspan x="36" dy="24">Price: CNY 553</tspan>
+<tspan x="36" dy="24">Category: case</tspan>
+<tspan x="36" dy="24">Tags: M-ATX|GPU415mm|风冷165mm</tspan>
+<tspan x="36" dy="24">brand: LIAN LI</tspan>
+<tspan x="36" dy="24">model: A3-mATX V4</tspan>
+<tspan x="36" dy="24">case_size: M-ATX</tspan>
+<tspan x="36" dy="24">motherboard_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">form_factor_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]</tspan>
+<tspan x="36" dy="24">gpu_clearance_mm: 415</tspan>
+<tspan x="36" dy="24">cooler_clearance_mm: 165</tspan>
+<tspan x="36" dy="24">max_psu_length_mm: 220</tspan>
+<tspan x="36" dy="24">supported_radiator_sizes: [240, 360]</tspan>
+<tspan x="36" dy="24">radiator_support: [240, 360]</tspan></text>
+  <text x="36" y="492" fill="#6b7280" font-family="Arial, sans-serif" font-size="14">Generated from curated seed data by scripts/build_pc_parts_dataset.py. Content: pc_seed_case_lian_li_a3_matx_v4</text>
+  <metadata>LIAN LI A3-mATX V4 机箱
+Price: CNY 553
+Category: case
+Tags: M-ATX|GPU415mm|风冷165mm
+brand: LIAN LI
+model: A3-mATX V4
+case_size: M-ATX
+motherboard_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+form_factor_support: [&#x27;M-ATX&#x27;, &#x27;Mini-ITX&#x27;]
+gpu_clearance_mm: 415
+cooler_clearance_mm: 165
+max_psu_length_mm: 220
+supported_radiator_sizes: [240, 360]
+radiator_support: [240, 360]</metadata>
+</svg>
