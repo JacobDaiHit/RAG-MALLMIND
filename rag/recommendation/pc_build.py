@@ -557,17 +557,31 @@ def role_name(role: str) -> str:
     return pc_component_name_zh(role)
 
 
-def parse_pc_build_budget(text: str, default: float = 7000) -> float:
-    matches = re.findall(r"(\d+(?:\.\d+)?)\s*(万|千|k|K|元|块|cny|CNY)?", text or "")
-    numeric = [(float(value), unit or "") for value, unit in matches if float(value) >= 10]
-    if not numeric:
-        return default
-    amount, unit = numeric[0]
-    if unit == "万":
-        amount *= 10000
-    elif unit in {"千", "k", "K"}:
-        amount *= 1000
+_PC_MONEY_TOKEN = r"(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|cny|CNY)?"
+
+
+def parse_amount_value(value: str, unit: str = "") -> float:
+    amount = float(value)
+    normalized_unit = (unit or "").strip().lower()
+    if normalized_unit in {"k", "千"}:
+        return amount * 1000
+    if normalized_unit in {"w", "万"}:
+        return amount * 10000
     return amount
+
+
+def parse_pc_build_budget(text: str, default: Optional[float] = 7000) -> Optional[float]:
+    raw = text or ""
+    patterns = [
+        rf"(?:预算|预算在|预算为|控制在|控制到|压到|压在)\s*{_PC_MONEY_TOKEN}",
+        rf"{_PC_MONEY_TOKEN}\s*(?:以内|以下|之内|内)",
+        rf"{_PC_MONEY_TOKEN}\s*(?:元|块|cny|CNY)?\s*(?:配(?:台|一台)?电脑|装(?:台|一台)?电脑|配主机|装主机|配整机|装整机)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, raw, flags=re.I)
+        if match:
+            return parse_amount_value(match.group(1), match.group(2))
+    return default
 
 
 def parse_pc_usage(text: str) -> List[str]:

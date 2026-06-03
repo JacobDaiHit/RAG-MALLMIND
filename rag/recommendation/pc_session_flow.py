@@ -1,10 +1,11 @@
 import re
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from rag.recommendation.pc_build import (
     compare_pc_build_plans,
     generate_pc_build_plan,
     load_pc_parts,
+    parse_amount_value,
     parse_pc_build_budget,
     parse_pc_usage,
 )
@@ -40,8 +41,13 @@ def build_pc_plan_for_message(message: str, session: Any) -> Dict[str, Any]:
         previous_preferences.update(preferences)
         preferences = previous_preferences
         lowered = message.lower()
-        if any(term in message for term in ["便宜", "预算降", "降低预算", "降到", "减少预算"]):
-            budget = max(1, float(previous.get("budget") or budget) - parse_adjustment_amount(message, default=500))
+        target_budget = parse_budget_target_amount(message)
+        delta_budget = parse_budget_delta_amount(message)
+        if target_budget is not None:
+            budget = max(1, target_budget)
+            preferences["adjustment"] = f"预算调整到 {budget:.0f} CNY"
+        elif delta_budget is not None:
+            budget = max(1, float(previous.get("budget") or budget) + delta_budget)
             preferences["adjustment"] = f"预算调整到 {budget:.0f} CNY"
         elif "显卡" in message and any(term in message for term in ["强", "升级", "更好"]):
             preferences["gpu_priority"] = "stronger"
@@ -126,17 +132,38 @@ def validate_pc_part_request(preferences: Dict[str, Any]) -> None:
 
 
 def parse_adjustment_amount(text: str, default: float = 500) -> float:
+    amount = parse_budget_delta_amount(text)
+    if amount is not None:
+        return abs(amount)
+    target = parse_budget_target_amount(text)
+    if target is not None:
+        return target
+    return default
+
+
+def parse_budget_target_amount(text: str) -> Optional[float]:
     raw = text or ""
     patterns = [
-        r"(?:预算降|降低|便宜|少)\s*(\d+(?:\.\d+)?)\s*(?:元|块|CNY|cny)?",
-        r"(?:加|增加|贵)\s*(\d+(?:\.\d+)?)\s*(?:元|块|CNY|cny)?",
-        r"(\d+(?:\.\d+)?)\s*(?:元|块|CNY|cny)\s*(?:左右|以内)?",
+        r"(?:降到|降至|压到|压在|控制到|控制在|改到|改成|提高到|升到)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?",
     ]
     for pattern in patterns:
         match = re.search(pattern, raw, flags=re.I)
         if match:
-            return float(match.group(1))
-    return default
+            return parse_amount_value(match.group(1), match.group(2) or "")
+    return None
+
+
+def parse_budget_delta_amount(text: str) -> Optional[float]:
+    raw = text or ""
+    patterns = [
+        (r"(?:预算降|降低预算|减少预算|降低|减少|少|便宜)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", -1.0),
+        (r"(?:预算加|增加预算|提高|增加|加)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", 1.0),
+    ]
+    for pattern, sign in patterns:
+        match = re.search(pattern, raw, flags=re.I)
+        if match:
+            return sign * parse_amount_value(match.group(1), match.group(2) or "")
+    return None
 
 
 def parse_pc_preferences(text: str) -> Dict[str, Any]:

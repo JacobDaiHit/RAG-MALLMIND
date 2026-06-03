@@ -7,7 +7,7 @@ from rag.api.attachments import analyze_attachment_payloads
 from rag.recommendation.cost_estimator import estimate_product_price
 from rag.recommendation.product_loader import load_product_catalog, upsert_product
 from rag.recommendation.recommendation_graph import stream_recommendation_graph
-from rag.recommendation.recommendation_pipeline import parse_requirement_rule_based, recommend_api_stack
+from rag.recommendation.recommendation_pipeline import extract_price_range, parse_requirement_rule_based, recommend_api_stack
 from rag.recommendation.input_preprocessor import build_preprocessed_goal, preprocess_user_input
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 
@@ -62,6 +62,23 @@ def test_rule_parser_detects_budget_category_and_exclusions():
     assert requirement.price_max == 200
     assert requirement.budget_level == "low"
     assert "白色" in requirement.excluded_terms
+
+
+def test_price_parser_uses_explicit_rule_priority():
+    assert extract_price_range("预算1000到2000元") == (1000, 2000)
+    assert extract_price_range("预算1000以内") == (None, 1000)
+    assert extract_price_range("不超过1000元") == (None, 1000)
+    assert extract_price_range("1000元以上") == (1000, None)
+    assert extract_price_range("1000元左右") == (None, 1100)
+
+
+def test_from_to_phrase_does_not_trigger_bundle_without_bundle_keywords():
+    requirement = parse_requirement_rule_based("从1000到2000元的蓝牙耳机有哪些？")
+
+    assert requirement.price_min == 1000
+    assert requirement.price_max == 2000
+    assert not requirement.need_bundle
+    assert requirement.task_type == "single_product_recommendation"
 
 
 def test_bundle_recommendation_builds_cross_category_plan_without_llm():

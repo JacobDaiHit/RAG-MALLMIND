@@ -15,7 +15,26 @@
 - 附件预处理
 - 普通商品推荐 / 对比 / 购物车 / PC 装机 handler 分发
 - SSE 流式输出
-
+------------
+- POST /api/chat/stream
+        ↓
+- 校验 message
+        ↓
+- 选择 runtime_mode
+        ↓
+- 根据 mode 生成 runtime_policy
+        ↓
+- 调用 route_shopping_tool_call 做工具路由
+        ↓
+- 根据 tool_call.name 分支：
+    apply_cart_instruction  → handle_cart
+    general_chat            → handle_general_chat
+    compare_products        → handle_compare
+    generate_pc_build_plan   → handle_pc_build
+    其他                     → handle_recommend
+        ↓
+safe_stream 包裹后以 SSE 返回
+--------------
 当前仍保留的相关接口：
 
 - `POST /api/chat`

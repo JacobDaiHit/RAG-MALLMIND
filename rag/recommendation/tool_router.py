@@ -230,7 +230,7 @@ PC_PART_CATEGORIES = {
     "ssd": "pc_part",
     "硬盘": "pc_part",
 }
-PC_BUILD_TERMS_ZH = ["整机", "主机", "装机", "配电脑", "电脑配置", "配一台", "游戏主机", "整套配置单", "配置单"]
+PC_BUILD_TERMS_ZH = ["整机", "主机", "装机", "配电脑", "电脑配置", "配一台", "游戏主机", "整套配置单", "配置单", "配置"]
 PC_PART_CATEGORY_TERMS_ZH = {
     "显卡": "pc_part",
     "cpu": "pc_part",

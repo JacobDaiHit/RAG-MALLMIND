@@ -1,9 +1,11 @@
 import json
+from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
 
 from rag.api.recommendation_app import app
-from rag.recommendation.pc_build import generate_pc_build_plan
+from rag.recommendation.pc_build import generate_pc_build_plan, parse_pc_build_budget
+import rag.recommendation.pc_session_flow as pc_session_flow
 
 
 client = TestClient(app)
@@ -23,6 +25,11 @@ def _parse_sse_text(raw: str):
                 data_str = line[len("data: "):]
         events.append((event_name, json.loads(data_str) if data_str else {}))
     return events
+
+
+def _pc_session_with_budget(budget: float):
+    plan = {"type": "pc_build_plan", "budget": budget, "usage": ["游戏"], "preferences": {}}
+    return SimpleNamespace(last_result=plan, pc_build_history=[plan], topic_memory={})
 
 
 def test_generate_pc_build_plan_returns_compatible_real_parts():
@@ -46,6 +53,36 @@ def test_generate_pc_build_plan_returns_compatible_real_parts():
     }
     assert all(item["product_id"].startswith("pc_") for item in plan["items"])
     assert plan["total_price"] > 0
+
+
+def test_parse_pc_build_budget_uses_budget_context_and_ignores_hardware_numbers():
+    assert parse_pc_build_budget("4070 显卡，预算 7000", default=None) == 7000
+    assert parse_pc_build_budget("预算 7000，想要 4070", default=None) == 7000
+    assert parse_pc_build_budget("4070 显卡", default=None) is None
+    assert parse_pc_build_budget("7800X3D + B760 + 32G + 1T + 750W + 2K 144Hz", default=None) is None
+    assert parse_pc_build_budget("预算 7k", default=None) == 7000
+    assert parse_pc_build_budget("控制在 7千", default=None) == 7000
+    assert parse_pc_build_budget("1w 元配台电脑", default=None) == 10000
+
+
+def test_pc_session_budget_update_distinguishes_target_from_delta(monkeypatch):
+    monkeypatch.setattr(pc_session_flow, "validate_pc_part_request", lambda preferences: None)
+    monkeypatch.setattr(
+        pc_session_flow,
+        "generate_pc_build_plan",
+        lambda budget, usage, preferences, previous_plan, comparison_label: {
+            "type": "pc_build_plan",
+            "budget": budget,
+            "usage": usage,
+            "preferences": preferences,
+        },
+    )
+
+    assert pc_session_flow.build_pc_plan_for_message("降到 6000", _pc_session_with_budget(9000))["budget"] == 6000
+    assert pc_session_flow.build_pc_plan_for_message("降低 6000", _pc_session_with_budget(9000))["budget"] == 3000
+    assert pc_session_flow.build_pc_plan_for_message("少 1000", _pc_session_with_budget(9000))["budget"] == 8000
+    assert pc_session_flow.build_pc_plan_for_message("提高到 10000", _pc_session_with_budget(8000))["budget"] == 10000
+    assert pc_session_flow.build_pc_plan_for_message("提高 1000", _pc_session_with_budget(8000))["budget"] == 9000
 
 
 def test_generate_pc_build_plan_respects_strict_budget_cap():

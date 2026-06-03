@@ -58,6 +58,44 @@ SHOPPING_GOAL_KEYWORDS = [
     "下单",
     "对比",
     "预算",
+    "显卡",
+    "CPU",
+    "主板",
+    "内存",
+    "SSD",
+    "电源",
+    "机箱",
+    "散热",
+    "有哪些",
+    "有什么",
+    "有没有",
+    "看看",
+    "查询",
+    "价格",
+    "库存",
+    "参数",
+    "规格",
+    "尺寸",
+    "屏幕",
+    "续航",
+    "材质",
+    "评价",
+    "适合",
+    "送礼",
+    "学生",
+    "通勤",
+    "办公",
+    "游戏",
+    "Apple",
+    "apple",
+    "iPhone",
+    "iphone",
+    "iPad",
+    "ipad",
+    "MacBook",
+    "macbook",
+    "Mac",
+    "mac",
     "ecommerce",
     "shopping",
     "product",
@@ -115,17 +153,7 @@ BRAND_HINTS = [
     "瑞幸",
 ]
 
-SHOPPING_GOAL_KEYWORDS += [
-    "推荐", "购买", "导购", "商品", "手机", "耳机", "电脑", "显卡", "CPU", "主板", "内存", "SSD",
-    "电源", "机箱", "散热", "护肤", "美妆", "衣服", "食品", "饮料", "零食", "咖啡",
-    "有哪些", "有什么", "有没有", "看看", "查询", "价格", "库存", "参数", "规格", "尺寸",
-    "屏幕", "续航", "材质", "评价", "适合", "送礼", "学生", "通勤", "办公", "游戏",
-    "Apple", "apple", "苹果", "iPhone", "iphone", "iPad", "ipad", "MacBook", "macbook", "Mac", "mac",
-]
-CATEGORY_KEYWORDS[ComponentCategory.beauty] += ["美妆", "护肤", "洗面奶", "面霜", "精华", "防晒", "眼霜", "乳液", "敏感肌", "油皮", "干皮", "控油", "补水", "保湿"]
-CATEGORY_KEYWORDS[ComponentCategory.digital] += ["数码", "手机", "耳机", "蓝牙耳机", "电脑", "笔记本", "平板", "拍照", "续航", "游戏", "办公", "电子"]
-CATEGORY_KEYWORDS[ComponentCategory.clothing] += ["服饰", "穿搭", "衣服", "外套", "T恤", "短袖", "裤", "鞋", "跑鞋", "运动鞋", "通勤", "户外"]
-CATEGORY_KEYWORDS[ComponentCategory.food] += ["食品", "饮料", "零食", "咖啡", "坚果", "方便面", "方便食品", "能量", "无糖", "低糖"]
+BUNDLE_KEYWORDS = ["一套", "全套", "搭配", "组合", "套装", "方案", "穿搭", "配齐", "整套"]
 
 
 def recommend_shopping_products(
@@ -426,7 +454,7 @@ def parse_requirement_rule_based(user_goal: str) -> RequirementSpec:
     excluded_terms, excluded_brands = extract_exclusions(normalized)
     must_have_terms = infer_must_have_terms(normalized, lower)
     preferences = infer_preferences(normalized, lower)
-    need_bundle = has_any(lower, ["一套", "全套", "搭配", "组合", "方案", "从", "到", "度假", "出差", "开学", "通勤"])
+    need_bundle = has_any(lower, BUNDLE_KEYWORDS)
     need_comparison = has_any(lower, ["对比", "比较", "哪个", "哪款更", "a和b", "a 和 b"])
     need_cart_action = has_any(lower, ["购物车", "加购", "加入购物车", "下单", "删除第二个", "数量改"])
     need_multimodal = has_any(lower, ["图片", "照片", "拍照", "上传", "同款", "街拍", "截图"])
@@ -507,47 +535,53 @@ def infer_target_sub_categories(raw: str) -> List[str]:
 
 
 def extract_price_range(text: str) -> tuple[Optional[float], Optional[float]]:
-    price_max = None
-    price_min = None
     range_patterns = [
         r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:到|至|-|~)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:左右|附近)",
     ]
-    max_patterns = [
-        r"预算\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
+    upper_bound_patterns = [
         r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以内|以下|之内|内)",
         r"(?:不超过|低于|少于)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
     ]
-    min_patterns = [
+    lower_bound_patterns = [
         r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以上|起)",
         r"(?:高于|超过)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
+    ]
+    fuzzy_patterns = [
+        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:左右|附近)",
+    ]
+    bare_budget_patterns = [
+        r"预算\s*(\d+(?:\.\d+)?)\s*(?:元|块)?(?!\s*(?:左右|附近|以上|以内|以下|之内|内))",
     ]
     for pattern in range_patterns:
         match = re.search(pattern, text)
         if not match:
             continue
         first = float(match.group(1))
-        if len(match.groups()) >= 2 and match.group(2) is not None:
-            second = float(match.group(2))
-            return min(first, second), max(first, second)
-        return None, round(first * 1.1, 2)
-    for pattern in max_patterns:
+        second = float(match.group(2))
+        return min(first, second), max(first, second)
+    for pattern in upper_bound_patterns:
         match = re.search(pattern, text)
         if match:
-            price_max = float(match.group(1))
-            break
-    for pattern in min_patterns:
+            return None, float(match.group(1))
+    for pattern in lower_bound_patterns:
         match = re.search(pattern, text)
         if match:
-            price_min = float(match.group(1))
-            break
-    return price_min, price_max
+            return float(match.group(1)), None
+    for pattern in fuzzy_patterns:
+        match = re.search(pattern, text)
+        if match:
+            return None, round(float(match.group(1)) * 1.1, 2)
+    for pattern in bare_budget_patterns:
+        match = re.search(pattern, text)
+        if match:
+            return None, float(match.group(1))
+    return None, None
 
 
 def extract_exclusions(text: str) -> tuple[List[str], List[str]]:
     excluded_terms: List[str] = []
     excluded_brands: List[str] = []
-    for match in re.finditer(r"(?:不要|不含|别要|排除|除了)\s*([^，。,.；;、 ]+)", text):
+    for match in re.finditer(r"(?:不要|不含|别要|排除|除了)\s*([^，。,.；;、\s]+)", text):
         value = match.group(1).strip()
         if value:
             excluded_terms.append(value)
@@ -836,52 +870,3 @@ def model_to_dict(value: Any) -> Dict[str, Any]:
 
 def json_dumps(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2)
-
-_legacy_extract_price_range = extract_price_range
-_legacy_extract_exclusions = extract_exclusions
-
-
-def extract_price_range(text: str) -> tuple[Optional[float], Optional[float]]:
-    price_min = None
-    price_max = None
-    for pattern in [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:到|至|-|~)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
-    ]:
-        match = re.search(pattern, text)
-        if match:
-            first = float(match.group(1))
-            second = float(match.group(2))
-            return min(first, second), max(first, second)
-    for pattern in [
-        r"预算\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以内|以下|之内|内)",
-        r"(?:不超过|低于|少于)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:左右|附近)",
-    ]:
-        match = re.search(pattern, text)
-        if match:
-            price_max = float(match.group(1))
-            break
-    for pattern in [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以上|起)",
-        r"(?:高于|超过)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
-    ]:
-        match = re.search(pattern, text)
-        if match:
-            price_min = float(match.group(1))
-            break
-    if price_min is not None or price_max is not None:
-        return price_min, price_max
-    return _legacy_extract_price_range(text)
-
-
-def extract_exclusions(text: str) -> tuple[List[str], List[str]]:
-    excluded_terms, excluded_brands = _legacy_extract_exclusions(text)
-    for match in re.finditer(r"(?:不要|不含|别要|排除|除了)\s*([^，。,.；;、]+)", text):
-        value = match.group(1).strip()
-        if value:
-            excluded_terms.append(value)
-    for brand in BRAND_HINTS:
-        if any(prefix + brand in text for prefix in ["不要", "除了", "非", "别买"]):
-            excluded_brands.append(brand)
-    return dedupe_strings(excluded_terms), dedupe_strings(excluded_brands)

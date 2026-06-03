@@ -471,15 +471,6 @@ def build_score_table(components: List[SelectedComponent]) -> List[Dict[str, obj
     return rows
 
 
-def build_component_reason(score: ProductScore) -> str:
-    """Build a short user-facing reason for product cards."""
-
-    product = score.product
-    price = product.min_price or product.base_price
-    reason = f"匹配 {product.sub_category or product.category_name} 需求，参考价约 {price:g} {product.currency}。"
-    if product.rating_avg:
-        reason += f" 用户评分 {product.rating_avg:g}/5。"
-    return reason
 
 
 def build_product_cards(
