@@ -19,6 +19,7 @@ from rag.recommendation.product_loader import load_combined_product_catalog, loa
 from rag.recommendation.query_guards import is_pc_query
 from rag.recommendation.retrieval import retrieve_requirement_evidence
 from rag.recommendation.recommendation_pipeline import parse_requirement
+from rag.ingestion.embedding import create_embedding_provider
 
 
 Case = Dict[str, Any]
@@ -732,11 +733,13 @@ def evaluate_milvus_evidence(
         return {
             "retrieval_status": "skipped",
             "retrieval_error": str(exc),
+            "evidence_total_hits": 0,
             "evidence_matched_product_ids": [],
         }
     payload: Dict[str, Any] = {
         "retrieval_status": status if status == "ok" else "skipped",
         "evidence_raw_status": status,
+        "evidence_total_hits": int(trace.get("total_hits") or 0),
         "evidence_matched_product_ids": matched_ids,
     }
     for k in top_ks:
@@ -823,12 +826,15 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         group_by=args.group_by,
     )
     report["validation_warnings"] = {"invalid_product_ids": invalid_ids}
+    report["retrieval"] = build_retrieval_report(report, milvus_enabled=args.with_milvus)
     report["config"] = {
         "cases": str(args.cases),
         "top_k": top_ks,
         "use_llm": args.use_llm,
         "catalog": args.catalog,
         "with_milvus": args.with_milvus,
+        "milvus_enabled": args.with_milvus,
+        **embedding_report_config(),
         "exclude_pc_from_main": args.exclude_pc_from_main,
         "exclude_negative_from_main": args.exclude_negative_from_main,
         "group_by": args.group_by,
@@ -850,6 +856,33 @@ def parse_top_ks(raw: str) -> List[int]:
     if not values or any(value <= 0 for value in values):
         raise ValueError("--top-k must contain positive integers")
     return values
+
+
+def embedding_report_config() -> Dict[str, Any]:
+    provider = create_embedding_provider()
+    return {
+        "embedding_provider": provider.provider,
+        "embedding_model": provider.model,
+        "embedding_dim": provider.dim,
+    }
+
+
+def build_retrieval_report(report: Dict[str, Any], *, milvus_enabled: bool) -> Dict[str, Any]:
+    per_case = report.get("per_case") or []
+    statuses = [str(case.get("retrieval_status") or "not_requested") for case in per_case]
+    matched_ids: List[str] = []
+    total_hits = 0
+    for case in per_case:
+        total_hits += int(case.get("evidence_total_hits") or 0)
+        for product_id in case.get("evidence_matched_product_ids") or []:
+            if product_id not in matched_ids:
+                matched_ids.append(product_id)
+    return {
+        "milvus_enabled": milvus_enabled,
+        "retrieval_status": "not_requested" if not milvus_enabled else ("ok" if any(status == "ok" for status in statuses) else "skipped"),
+        "evidence_total_hits": total_hits,
+        "evidence_matched_product_ids": matched_ids,
+    }
 
 
 def parse_bool(raw: Any) -> bool:

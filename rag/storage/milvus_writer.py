@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import os
 
 from rag.ingestion.embedding import EmbeddingService, embedding_service as _default_embedding_service
 from rag.storage.milvus_client import MilvusManager
@@ -36,10 +37,17 @@ class MilvusWriter:
             return
 
         try:
+            dense_dim = _embedding_service_dim(self.embedding_service)
+            configured_dim = _parse_positive_int(os.getenv("DENSE_EMBEDDING_DIM", "1024"), default=1024)
+            if dense_dim is not None and dense_dim != configured_dim:
+                raise ValueError(
+                    f"Embedding dimension mismatch: provider dim is {dense_dim}, "
+                    f"but DENSE_EMBEDDING_DIM is {configured_dim}. Align the settings before indexing."
+                )
             if drop_collection:
                 self.milvus_manager.drop_collection()
 
-            self.milvus_manager.init_collection()
+            _init_collection(self.milvus_manager, dense_dim=dense_dim or configured_dim)
 
             all_texts = [doc["text"] for doc in documents]
             if reset_bm25:
@@ -74,6 +82,8 @@ class MilvusWriter:
                         "chunk_type": doc.get("chunk_type") or doc.get("doc_type", ""),
                         "doc_type": doc.get("doc_type") or doc.get("chunk_type", ""),
                         "category": doc.get("category", ""),
+                        "component_type": doc.get("component_type", ""),
+                        "metadata": doc.get("metadata") or {},
                     }
                     for doc, dense_emb, sparse_emb in zip(batch, dense_embeddings, sparse_embeddings)
                 ]
@@ -88,7 +98,39 @@ class MilvusWriter:
             self.milvus_manager.flush()
         except Exception as exc:
             logger.exception("Milvus indexing failed")
+            if "dimension mismatch" in str(exc).lower() or "dense_embedding dim" in str(exc):
+                raise RuntimeError(str(exc)) from exc
             raise RuntimeError(
                 "Milvus indexing failed after BM25 state may have been updated. "
                 "Please rerun a full rebuild with reset_bm25=True and drop_collection=True."
             ) from exc
+
+
+def _embedding_service_dim(embedding_service) -> int | None:
+    dim = getattr(embedding_service, "dim", None)
+    if dim is None:
+        provider = getattr(embedding_service, "provider", None)
+        dim = getattr(provider, "dim", None)
+    if dim is None:
+        return None
+    try:
+        return int(dim)
+    except (TypeError, ValueError):
+        return None
+
+
+def _init_collection(milvus_manager, *, dense_dim: int) -> None:
+    try:
+        milvus_manager.init_collection(dense_dim=dense_dim)
+    except TypeError as exc:
+        if "dense_dim" not in str(exc):
+            raise
+        milvus_manager.init_collection()
+
+
+def _parse_positive_int(value: object, default: int) -> int:
+    try:
+        parsed = int(str(value))
+    except (TypeError, ValueError):
+        return default
+    return parsed if parsed > 0 else default

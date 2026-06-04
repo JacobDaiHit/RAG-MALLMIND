@@ -8,7 +8,9 @@ import re
 import threading
 from collections import Counter
 from pathlib import Path
+from typing import Any
 
+import requests
 from dotenv import load_dotenv
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -17,6 +19,263 @@ load_dotenv()
 _DEFAULT_STATE_PATH = Path(__file__).resolve().parents[2] / "data" / "bm25_state.json"
 _EMPTY_SPARSE_TOKEN = "__empty_sparse__"
 _EMPTY_SPARSE_WEIGHT = 1e-9
+DEFAULT_DENSE_EMBEDDING_DIM = 1024
+DEFAULT_DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+
+
+class EmbeddingProviderError(RuntimeError):
+    """Raised when a configured dense embedding provider cannot return vectors."""
+
+
+def _parse_positive_int(value: object, default: int) -> int:
+    try:
+        parsed = int(str(value))
+    except (TypeError, ValueError):
+        return default
+    return parsed if parsed > 0 else default
+
+
+def get_configured_embedding_dim() -> int:
+    """Return the configured dense embedding dimension.
+
+    EMBEDDING_DIM takes precedence so provider smoke checks and indexing scripts
+    can override the older DENSE_EMBEDDING_DIM name without changing Milvus envs.
+    """
+
+    raw = os.getenv("EMBEDDING_DIM") or os.getenv("DENSE_EMBEDDING_DIM", str(DEFAULT_DENSE_EMBEDDING_DIM))
+    return _parse_positive_int(raw, DEFAULT_DENSE_EMBEDDING_DIM)
+
+
+def get_configured_embedding_batch_size() -> int:
+    return min(10, _parse_positive_int(os.getenv("EMBEDDING_BATCH_SIZE", "10"), 10))
+
+
+class BaseEmbeddingProvider:
+    provider = "base"
+    model = ""
+    dim = DEFAULT_DENSE_EMBEDDING_DIM
+
+    def embed_texts(self, texts: list[str]) -> list[list[float]]:
+        raise NotImplementedError
+
+    def embed_query(self, text: str) -> list[float]:
+        vectors = self.embed_texts([text])
+        if not vectors:
+            raise EmbeddingProviderError(f"Embedding provider {self.provider}/{self.model} returned no query vector.")
+        return vectors[0]
+
+
+class LocalEmbeddingProvider(BaseEmbeddingProvider):
+    provider = "local"
+
+    def __init__(self, model: str | None = None, dim: int | None = None):
+        self.model = model or os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")
+        self.dim = dim or get_configured_embedding_dim()
+        self._embedder: HuggingFaceEmbeddings | None = None
+
+    def _get_embedder(self) -> HuggingFaceEmbeddings:
+        if self._embedder is None:
+            self._embedder = _create_dense_embedder()
+        return self._embedder
+
+    def embed_texts(self, texts: list[str]) -> list[list[float]]:
+        if not texts:
+            return []
+        try:
+            return self._get_embedder().embed_documents(texts)
+        except Exception as exc:
+            raise EmbeddingProviderError(f"Embedding provider local/{self.model} failed: {exc}") from exc
+
+
+class OpenAICompatibleEmbeddingProvider(BaseEmbeddingProvider):
+    """OpenAI-compatible embedding provider used by DashScope compatible mode."""
+
+    def __init__(
+        self,
+        *,
+        provider: str,
+        model: str | None = None,
+        dim: int | None = None,
+        base_url: str | None = None,
+        api_key: str | None = None,
+        batch_size: int | None = None,
+        timeout_seconds: float | None = None,
+        max_retries: int | None = None,
+        client: Any | None = None,
+    ):
+        self.provider = provider
+        self.model = _provider_default_model(provider, model)
+        self.dim = dim or get_configured_embedding_dim()
+        self.base_url = base_url or (
+            os.getenv("EMBEDDING_BASE_URL") or DEFAULT_DASHSCOPE_BASE_URL
+            if provider == "dashscope"
+            else os.getenv("EMBEDDING_BASE_URL") or os.getenv("BASE_URL", "")
+        )
+        self.api_key = api_key or _embedding_api_key(provider)
+        self.batch_size = min(10, batch_size or get_configured_embedding_batch_size())
+        self.timeout_seconds = float(timeout_seconds or os.getenv("EMBEDDING_TIMEOUT_SECONDS", "30"))
+        self.max_retries = _parse_positive_int(os.getenv("EMBEDDING_MAX_RETRIES", str(max_retries or 2)), max_retries or 2)
+        self._client = client
+
+    def _get_client(self) -> Any:
+        if self._client is not None:
+            return self._client
+        if not self.api_key:
+            raise EmbeddingProviderError(
+                f"Embedding provider {self.provider}/{self.model} requires EMBEDDING_API_KEY"
+                + (" or DASHSCOPE_API_KEY." if self.provider == "dashscope" else " or OPENAI_API_KEY.")
+            )
+        try:
+            from openai import OpenAI
+        except Exception:
+            self._client = _RequestsCompatibleEmbeddingClient(
+                api_key=self.api_key,
+                base_url=self.base_url,
+                timeout_seconds=self.timeout_seconds,
+                max_retries=self.max_retries,
+            )
+            return self._client
+
+        kwargs: dict[str, Any] = {
+            "api_key": self.api_key,
+            "timeout": self.timeout_seconds,
+            "max_retries": self.max_retries,
+        }
+        if self.base_url:
+            kwargs["base_url"] = self.base_url
+        self._client = OpenAI(**kwargs)
+        return self._client
+
+    def embed_texts(self, texts: list[str]) -> list[list[float]]:
+        cleaned = [_clean_embedding_text(text) for text in texts]
+        if not cleaned:
+            return []
+
+        vectors: list[list[float]] = []
+        for start in range(0, len(cleaned), self.batch_size):
+            batch = cleaned[start : start + self.batch_size]
+            try:
+                response = self._get_client().embeddings.create(
+                    model=self.model,
+                    input=batch,
+                    dimensions=self.dim,
+                )
+            except Exception as exc:
+                raise EmbeddingProviderError(
+                    f"Embedding provider {self.provider}/{self.model} request failed: {self._sanitize_error(exc)}"
+                ) from exc
+
+            batch_vectors = [_embedding_vector(item) for item in _embedding_response_data(response)]
+            for vector in batch_vectors:
+                if len(vector) != self.dim:
+                    raise EmbeddingProviderError(
+                        f"Embedding provider {self.provider}/{self.model} returned dimension {len(vector)}, expected {self.dim}."
+                    )
+            if len(batch_vectors) != len(batch):
+                raise EmbeddingProviderError(
+                    f"Embedding provider {self.provider}/{self.model} returned {len(batch_vectors)} vectors for {len(batch)} inputs."
+                )
+            vectors.extend(batch_vectors)
+        return vectors
+
+    def _sanitize_error(self, exc: Exception) -> str:
+        text = str(exc)
+        if self.api_key:
+            text = text.replace(self.api_key, "[REDACTED]")
+        return text
+
+
+class _RequestsCompatibleEmbeddingClient:
+    def __init__(self, *, api_key: str, base_url: str, timeout_seconds: float, max_retries: int):
+        self.embeddings = _RequestsCompatibleEmbeddings(
+            api_key=api_key,
+            base_url=base_url,
+            timeout_seconds=timeout_seconds,
+            max_retries=max_retries,
+        )
+
+
+class _RequestsCompatibleEmbeddings:
+    def __init__(self, *, api_key: str, base_url: str, timeout_seconds: float, max_retries: int):
+        self.api_key = api_key
+        self.base_url = (base_url or DEFAULT_DASHSCOPE_BASE_URL).rstrip("/")
+        self.timeout_seconds = timeout_seconds
+        self.max_retries = max(0, int(max_retries))
+
+    def create(self, *, model: str, input: list[str], dimensions: int) -> dict[str, Any]:
+        url = f"{self.base_url}/embeddings"
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": model,
+            "input": input,
+            "dimensions": dimensions,
+        }
+        last_exc: Exception | None = None
+        for _ in range(self.max_retries + 1):
+            try:
+                response = requests.post(url, headers=headers, json=payload, timeout=self.timeout_seconds)
+                response.raise_for_status()
+                return response.json()
+            except Exception as exc:
+                last_exc = exc
+        raise last_exc or RuntimeError("embedding request failed")
+
+
+def _embedding_api_key(provider: str) -> str:
+    if provider == "dashscope":
+        return os.getenv("EMBEDDING_API_KEY") or os.getenv("DASHSCOPE_API_KEY", "")
+    return os.getenv("EMBEDDING_API_KEY") or os.getenv("OPENAI_API_KEY", "")
+
+
+def _provider_default_model(provider: str, explicit_model: str | None = None) -> str:
+    if explicit_model:
+        return explicit_model
+    env_model = os.getenv("EMBEDDING_MODEL", "").strip()
+    if provider == "local":
+        return env_model or "BAAI/bge-m3"
+    if env_model and env_model != "BAAI/bge-m3":
+        return env_model
+    return "text-embedding-v4"
+
+
+def _clean_embedding_text(text: str) -> str:
+    cleaned = str(text or "").strip()
+    return cleaned or " "
+
+
+def _embedding_vector(item: Any) -> list[float]:
+    raw = item.get("embedding") if isinstance(item, dict) else getattr(item, "embedding", None)
+    if raw is None:
+        raise EmbeddingProviderError("Embedding response item is missing an embedding vector.")
+    return [float(value) for value in raw]
+
+
+def _embedding_response_data(response: Any) -> list[Any]:
+    if isinstance(response, dict):
+        return list(response.get("data") or [])
+    return list(getattr(response, "data", None) or [])
+
+
+def create_embedding_provider(provider: str | None = None, **overrides: Any) -> BaseEmbeddingProvider:
+    selected = (provider or os.getenv("EMBEDDING_PROVIDER") or "local").strip().lower()
+    if selected in {"", "local"}:
+        return LocalEmbeddingProvider(model=overrides.get("model"), dim=overrides.get("dim"))
+    if selected in {"dashscope", "openai_compatible"}:
+        return OpenAICompatibleEmbeddingProvider(
+            provider=selected,
+            model=overrides.get("model"),
+            dim=overrides.get("dim"),
+            base_url=overrides.get("base_url"),
+            api_key=overrides.get("api_key"),
+            batch_size=overrides.get("batch_size"),
+            timeout_seconds=overrides.get("timeout_seconds"),
+            max_retries=overrides.get("max_retries"),
+            client=overrides.get("client"),
+        )
+    raise ValueError(f"Unsupported EMBEDDING_PROVIDER={selected!r}; expected local, dashscope, or openai_compatible.")
 
 
 # 设计思路：
@@ -45,8 +304,9 @@ def _create_dense_embedder() -> HuggingFaceEmbeddings:
 class EmbeddingService:
     """文本向量化服务 - 密集向量本地模型 + BM25 稀疏向量（持久化统计）"""
 
-    def __init__(self, state_path: Path | str | None = None):
+    def __init__(self, state_path: Path | str | None = None, provider: BaseEmbeddingProvider | None = None):
         """初始化对象状态，保存后续方法会复用的配置、连接或依赖实例。"""
+        self.provider = provider or create_embedding_provider()
         self._embedder = None
         self._state_path = Path(state_path or os.getenv("BM25_STATE_PATH", _DEFAULT_STATE_PATH))# BM25 统计的持久化路径，默认为项目根目录下的 data/bm25_state.json
         self._lock = threading.Lock()# 用于保护 BM25 统计数据的线程安全更新
@@ -65,9 +325,21 @@ class EmbeddingService:
         self._load_state()
 
     def _get_dense_embedder(self) -> HuggingFaceEmbeddings:
-        if self._embedder is None:
-            self._embedder = _create_dense_embedder()
-        return self._embedder
+        if isinstance(self.provider, LocalEmbeddingProvider):
+            return self.provider._get_embedder()
+        raise EmbeddingProviderError(f"Embedding provider {self.provider.provider}/{self.provider.model} does not expose a local embedder.")
+
+    @property
+    def dim(self) -> int:
+        return int(self.provider.dim)
+
+    @property
+    def provider_name(self) -> str:
+        return self.provider.provider
+
+    @property
+    def model(self) -> str:
+        return self.provider.model
 
 # 重新计算平均文档长度，避免在增量更新过程中出现除以零的情况。
     def _recompute_avg_len(self) -> None:
@@ -184,10 +456,7 @@ class EmbeddingService:
         """向量化服务：获取 embeddings，屏蔽配置、缓存或外部依赖细节。"""
         if not texts:
             return []
-        try:
-            return self._get_dense_embedder().embed_documents(texts)
-        except Exception as e:
-            raise Exception(f"本地嵌入模型调用失败: {str(e)}") from e
+        return self.provider.embed_texts(texts)
 
     def tokenize(self, text: str) -> list[str]:
         """向量化服务：封装 tokenize 相关逻辑，供上层流程复用。"""
@@ -312,3 +581,4 @@ class _LazyEmbeddingService:
 # 全进程唯一实例代理：写入与检索共用同一份 BM25 持久化状态。
 # 密集向量模型按需加载，避免 API 启动或 Milvus 管理脚本在缺少 torch 时导入失败。
 embedding_service = _LazyEmbeddingService()
+

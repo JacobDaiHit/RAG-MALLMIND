@@ -28,7 +28,7 @@ from rag.utils.runtime_errors import public_error, sanitize_report
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_IMAGE_INDEX_PATH = ROOT_DIR / "data" / "image_vectors.json"
 IMAGE_EMBEDDING_VERSION = "pixel-hist-v1"
-IMAGE_EMBEDDING_DIM = 53
+IMAGE_EMBEDDING_DIM = 61
 IMAGE_RETRIEVAL_ENABLED = os.getenv("RECOMMENDATION_ENABLE_IMAGE_RETRIEVAL", "true").lower() != "false"
 IMAGE_RETRIEVAL_TOP_K = int(os.getenv("IMAGE_RETRIEVAL_TOP_K", "8"))
 logger = logging.getLogger(__name__)

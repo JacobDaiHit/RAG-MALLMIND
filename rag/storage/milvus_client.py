@@ -88,6 +88,10 @@ class MilvusManager:
             dense_dim = _parse_positive_int(os.getenv("DENSE_EMBEDDING_DIM", "1024"), default=1024)
         def _init(client: MilvusClient) -> None:
             """Milvus 客户端：封装 init 相关逻辑，供上层流程复用。"""
+            if client.has_collection(self.collection_name):
+                self._validate_existing_dense_dim(client, dense_dim)
+                return
+
             if not client.has_collection(self.collection_name):
                 schema = client.create_schema(auto_id=True, enable_dynamic_field=True)
                 
@@ -117,6 +121,8 @@ class MilvusManager:
                 schema.add_field("title", DataType.VARCHAR, max_length=512)
                 schema.add_field("brand", DataType.VARCHAR, max_length=128)
                 schema.add_field("chunk_type", DataType.VARCHAR, max_length=64)
+                schema.add_field("component_type", DataType.VARCHAR, max_length=64)
+                schema.add_field("metadata", DataType.JSON)
 
                 # 为两种向量分别创建索引
                 index_params = client.prepare_index_params()
@@ -144,6 +150,34 @@ class MilvusManager:
                 )
 
         self._run_with_reconnect(_init)
+
+    def _validate_existing_dense_dim(self, client: MilvusClient, expected_dim: int) -> None:
+        existing_dim = self._describe_dense_embedding_dim(client)
+        if existing_dim is None:
+            return
+        if existing_dim != expected_dim:
+            raise ValueError(
+                f"Milvus collection {self.collection_name!r} dense_embedding dim is {existing_dim}, "
+                f"but current embedding dim is {expected_dim}. Rebuild the collection explicitly with --recreate/--rebuild."
+            )
+
+    def _describe_dense_embedding_dim(self, client: MilvusClient) -> int | None:
+        describe = getattr(client, "describe_collection", None)
+        if not callable(describe):
+            return None
+        info = describe(collection_name=self.collection_name)
+        fields = []
+        if isinstance(info, dict):
+            schema = info.get("schema") or {}
+            fields = info.get("fields") or schema.get("fields") or []
+        else:
+            schema = getattr(info, "schema", None)
+            fields = getattr(info, "fields", None) or getattr(schema, "fields", None) or []
+        for field in fields:
+            if _field_value(field, "name") != "dense_embedding":
+                continue
+            return _field_dim(field)
+        return None
 
     def insert(self, data: list[dict]):
         """插入数据到 Milvus"""
@@ -396,3 +430,21 @@ def _parse_positive_int(value: object, default: int) -> int:
     except (TypeError, ValueError):
         return default
     return parsed if parsed > 0 else default
+
+
+def _field_value(field: object, key: str):
+    if isinstance(field, dict):
+        return field.get(key)
+    return getattr(field, key, None)
+
+
+def _field_dim(field: object) -> int | None:
+    params = _field_value(field, "params") or {}
+    if isinstance(params, dict):
+        for key in ("dim", "dimension"):
+            if key in params:
+                return _parse_positive_int(params.get(key), default=0) or None
+    dim = _field_value(field, "dim")
+    if dim is not None:
+        return _parse_positive_int(dim, default=0) or None
+    return None

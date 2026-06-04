@@ -52,7 +52,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 16.57,
+      "latency_ms": 12.26,
       "trace_debug": {
         "route_tool_name": "multimodal_product_recommendation",
         "parsed_category": [
@@ -70,12 +70,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 16.57,
+        "latency_ms": 12.26,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -157,7 +159,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.55,
+      "latency_ms": 3.81,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -175,12 +177,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.55,
+        "latency_ms": 3.81,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 1.0,
@@ -268,7 +272,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 16.86,
+      "latency_ms": 11.28,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -287,12 +291,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 16.86,
+        "latency_ms": 11.28,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -390,7 +396,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 8.58,
+      "latency_ms": 5.86,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -408,12 +414,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 8.58,
+        "latency_ms": 5.86,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -503,7 +511,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.42,
+      "latency_ms": 4.54,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -521,12 +529,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.42,
+        "latency_ms": 4.54,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -616,7 +626,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.86,
+      "latency_ms": 3.89,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -634,12 +644,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.86,
+        "latency_ms": 3.89,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -733,7 +745,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 12.43,
+      "latency_ms": 8.07,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -752,12 +764,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 12.43,
+        "latency_ms": 8.07,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -845,7 +859,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.1,
+      "latency_ms": 3.68,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -854,21 +868,23 @@
         "candidate_count": 342,
         "filtered_count": null,
         "final_count": 1,
-        "inferred_product_type": "serum",
+        "inferred_product_type": "base_makeup",
         "product_type_filter_applied": false,
-        "product_type_candidate_count": 1,
+        "product_type_candidate_count": 0,
         "pc_part_constraints": {},
         "pc_constraint_filter_applied": false,
         "pc_constraint_candidate_count": 1,
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 6.1,
+        "latency_ms": 3.68,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -967,7 +983,7 @@
         "strict recall@5 is 0"
       ],
       "miss_stage_guess": "recall_or_candidate_generation_error",
-      "latency_ms": 6.53,
+      "latency_ms": 3.92,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -985,12 +1001,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 6.53,
+        "latency_ms": 3.92,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -1089,7 +1107,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.81,
+      "latency_ms": 4.21,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1107,12 +1125,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 6.81,
+        "latency_ms": 4.21,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -1208,7 +1228,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 16.3,
+      "latency_ms": 8.85,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -1227,12 +1247,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 16.3,
+        "latency_ms": 8.85,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -1332,7 +1354,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 29.85,
+      "latency_ms": 10.43,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -1351,12 +1373,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 29.85,
+        "latency_ms": 10.43,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -1446,7 +1470,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 4.29,
+      "latency_ms": 2.95,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1464,12 +1488,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 4.29,
+        "latency_ms": 2.95,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.0,
@@ -1565,7 +1591,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.05,
+      "latency_ms": 3.71,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1583,12 +1609,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 6.05,
+        "latency_ms": 3.71,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -1682,7 +1710,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.83,
+      "latency_ms": 3.87,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1700,12 +1728,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.83,
+        "latency_ms": 3.87,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -1801,7 +1831,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 9.63,
+      "latency_ms": 5.5,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1819,12 +1849,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 9.63,
+        "latency_ms": 5.5,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -1912,7 +1944,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 8.32,
+      "latency_ms": 5.31,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1930,12 +1962,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 8.32,
+        "latency_ms": 5.31,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -2035,7 +2069,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.48,
+      "latency_ms": 4.69,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2053,12 +2087,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 6.48,
+        "latency_ms": 4.69,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -2152,7 +2188,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.74,
+      "latency_ms": 5.37,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2170,12 +2206,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.74,
+        "latency_ms": 5.37,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -2265,7 +2303,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 8.16,
+      "latency_ms": 5.11,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2283,12 +2321,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 8.16,
+        "latency_ms": 5.11,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -2390,7 +2430,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 15.35,
+      "latency_ms": 10.6,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2409,12 +2449,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 15.35,
+        "latency_ms": 10.6,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -2514,7 +2556,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 12.42,
+      "latency_ms": 8.13,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2533,12 +2575,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 12.42,
+        "latency_ms": 8.13,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.2,
@@ -2645,7 +2689,7 @@
         "strict recall@5 is 0"
       ],
       "miss_stage_guess": "recall_or_candidate_generation_error",
-      "latency_ms": 22.78,
+      "latency_ms": 18.19,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2666,12 +2710,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 22.78,
+        "latency_ms": 18.19,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.0,
@@ -2774,7 +2820,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 10.94,
+      "latency_ms": 7.32,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2792,12 +2838,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 10.94,
+        "latency_ms": 7.32,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.2,
@@ -2868,7 +2916,7 @@
         "category mismatch"
       ],
       "miss_stage_guess": "empty_result",
-      "latency_ms": 0.33,
+      "latency_ms": 0.25,
       "trace_debug": {
         "route_tool_name": null,
         "parsed_category": [
@@ -2886,12 +2934,14 @@
         "pc_constraint_relaxed": null,
         "no_match_reason": "预算与目标规格冲突，是否提高预算或降低要求？",
         "fallback_blocked_reason": "预算与目标规格冲突，是否提高预算或降低要求？",
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": null,
         "empty_result": true,
-        "latency_ms": 0.33,
+        "latency_ms": 0.25,
         "metric_eligible": false,
         "precision@1": null,
         "strict_recall@1": null,
@@ -2959,7 +3009,7 @@
         "empty result"
       ],
       "miss_stage_guess": "empty_result",
-      "latency_ms": 0.27,
+      "latency_ms": 0.2,
       "trace_debug": {
         "route_tool_name": null,
         "parsed_category": [
@@ -2980,12 +3030,14 @@
         "pc_constraint_relaxed": null,
         "no_match_reason": "当前商品库暂无该类商品，建议扩大商品库或换一个品类。",
         "fallback_blocked_reason": "当前商品库暂无该类商品，建议扩大商品库或换一个品类。",
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": false
       },
       "metrics": {
         "mrr": null,
         "empty_result": true,
-        "latency_ms": 0.27,
+        "latency_ms": 0.2,
         "metric_eligible": false,
         "precision@1": null,
         "strict_recall@1": null,
@@ -3087,7 +3139,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.86,
+      "latency_ms": 3.17,
       "trace_debug": {
         "route_tool_name": "pc_build_plan",
         "parsed_category": [
@@ -3107,12 +3159,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": true
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.86,
+        "latency_ms": 3.17,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.14285714285714285,
@@ -3209,7 +3263,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 11.22,
+      "latency_ms": 6.33,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -3233,12 +3287,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": true
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 11.22,
+        "latency_ms": 6.33,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -3333,7 +3389,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.33,
+      "latency_ms": 4.95,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -3353,12 +3409,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": true
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.33,
+        "latency_ms": 4.95,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -3452,7 +3510,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 4.94,
+      "latency_ms": 3.42,
       "trace_debug": {
         "route_tool_name": "pc_build_plan",
         "parsed_category": [
@@ -3473,12 +3531,14 @@
         "pc_constraint_relaxed": false,
         "no_match_reason": null,
         "fallback_blocked_reason": null,
+        "requested_product_type": null,
+        "available_neighbor_types": null,
         "pc_route_detected": true
       },
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 4.94,
+        "latency_ms": 3.42,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -3530,8 +3590,8 @@
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 10.7,
-    "avg_latency_ms": 10.7,
+    "latency_ms": 6.73,
+    "avg_latency_ms": 6.73,
     "metric_eligible_count": 24,
     "mrr": 0.9166666666666666,
     "constraint_violation_rate": 0.0,
@@ -3566,8 +3626,8 @@
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 10.7,
-    "avg_latency_ms": 10.7,
+    "latency_ms": 6.73,
+    "avg_latency_ms": 6.73,
     "metric_eligible_count": 24,
     "mrr": 0.9166666666666666,
     "constraint_violation_rate": 0.0,
@@ -3602,8 +3662,8 @@
     "success_count": 30,
     "empty_result_count": 2,
     "empty_result_rate": 0.06666666666666667,
-    "latency_ms": 9.56,
-    "avg_latency_ms": 9.56,
+    "latency_ms": 6.0,
+    "avg_latency_ms": 6.0,
     "metric_eligible_count": 28,
     "mrr": 0.9285714285714286,
     "constraint_violation_rate": 0.0,
@@ -3638,8 +3698,8 @@
     "success_count": 30,
     "empty_result_count": 2,
     "empty_result_rate": 0.06666666666666667,
-    "latency_ms": 9.56,
-    "avg_latency_ms": 9.56,
+    "latency_ms": 6.0,
+    "avg_latency_ms": 6.0,
     "metric_eligible_count": 28,
     "mrr": 0.9285714285714286,
     "constraint_violation_rate": 0.0,
@@ -3674,8 +3734,8 @@
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 10.7,
-    "avg_latency_ms": 10.7,
+    "latency_ms": 6.73,
+    "avg_latency_ms": 6.73,
     "metric_eligible_count": 24,
     "mrr": 0.9166666666666666,
     "constraint_violation_rate": 0.0,
@@ -3710,8 +3770,8 @@
     "success_count": 4,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 7.34,
-    "avg_latency_ms": 7.34,
+    "latency_ms": 4.47,
+    "avg_latency_ms": 4.47,
     "metric_eligible_count": 4,
     "mrr": 1.0,
     "constraint_violation_rate": 0.0,
@@ -3800,8 +3860,8 @@
     "negative_returned_any_rate": 0.0,
     "constraint_violation_rate": 0.0,
     "category_accuracy@5": 0.5,
-    "avg_latency_ms": 0.3,
-    "latency_ms": 0.3
+    "avg_latency_ms": 0.23,
+    "latency_ms": 0.23
   },
   "grouped_summaries": {
     "case_scope": {
@@ -3810,8 +3870,8 @@
         "success_count": 28,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 10.22,
-        "avg_latency_ms": 10.22,
+        "latency_ms": 6.41,
+        "avg_latency_ms": 6.41,
         "metric_eligible_count": 28,
         "mrr": 0.9285714285714286,
         "constraint_violation_rate": 0.0,
@@ -3846,8 +3906,8 @@
         "success_count": 2,
         "empty_result_count": 2,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.3,
-        "avg_latency_ms": 0.3,
+        "latency_ms": 0.23,
+        "avg_latency_ms": 0.23,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -3884,8 +3944,8 @@
         "success_count": 24,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 10.7,
-        "avg_latency_ms": 10.7,
+        "latency_ms": 6.73,
+        "avg_latency_ms": 6.73,
         "metric_eligible_count": 24,
         "mrr": 0.9166666666666666,
         "constraint_violation_rate": 0.0,
@@ -3920,8 +3980,8 @@
         "success_count": 2,
         "empty_result_count": 2,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.3,
-        "avg_latency_ms": 0.3,
+        "latency_ms": 0.23,
+        "avg_latency_ms": 0.23,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -3956,8 +4016,8 @@
         "success_count": 4,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 7.34,
-        "avg_latency_ms": 7.34,
+        "latency_ms": 4.47,
+        "avg_latency_ms": 4.47,
         "metric_eligible_count": 4,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -3994,8 +4054,8 @@
         "success_count": 6,
         "empty_result_count": 1,
         "empty_result_rate": 0.16666666666666666,
-        "latency_ms": 9.22,
-        "avg_latency_ms": 9.22,
+        "latency_ms": 6.33,
+        "avg_latency_ms": 6.33,
         "metric_eligible_count": 5,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4030,8 +4090,8 @@
         "success_count": 7,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 10.42,
-        "avg_latency_ms": 10.42,
+        "latency_ms": 7.16,
+        "avg_latency_ms": 7.16,
         "metric_eligible_count": 7,
         "mrr": 0.9285714285714286,
         "constraint_violation_rate": 0.0,
@@ -4066,8 +4126,8 @@
         "success_count": 5,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 12.46,
-        "avg_latency_ms": 12.46,
+        "latency_ms": 5.96,
+        "avg_latency_ms": 5.96,
         "metric_eligible_count": 5,
         "mrr": 0.9,
         "constraint_violation_rate": 0.0,
@@ -4102,8 +4162,8 @@
         "success_count": 5,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 8.07,
-        "avg_latency_ms": 8.07,
+        "latency_ms": 5.2,
+        "avg_latency_ms": 5.2,
         "metric_eligible_count": 5,
         "mrr": 0.9,
         "constraint_violation_rate": 0.0,
@@ -4138,8 +4198,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 15.35,
-        "avg_latency_ms": 15.35,
+        "latency_ms": 10.6,
+        "avg_latency_ms": 10.6,
         "metric_eligible_count": 1,
         "mrr": 0.5,
         "constraint_violation_rate": 0.0,
@@ -4174,8 +4234,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 10.94,
-        "avg_latency_ms": 10.94,
+        "latency_ms": 7.32,
+        "avg_latency_ms": 7.32,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4210,8 +4270,8 @@
         "success_count": 1,
         "empty_result_count": 1,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.27,
-        "avg_latency_ms": 0.27,
+        "latency_ms": 0.2,
+        "avg_latency_ms": 0.2,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -4246,8 +4306,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 5.86,
-        "avg_latency_ms": 5.86,
+        "latency_ms": 3.17,
+        "avg_latency_ms": 3.17,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4282,8 +4342,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 11.22,
-        "avg_latency_ms": 11.22,
+        "latency_ms": 6.33,
+        "avg_latency_ms": 6.33,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4318,8 +4378,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 7.33,
-        "avg_latency_ms": 7.33,
+        "latency_ms": 4.95,
+        "avg_latency_ms": 4.95,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4354,8 +4414,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 4.94,
-        "avg_latency_ms": 4.94,
+        "latency_ms": 3.42,
+        "avg_latency_ms": 3.42,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4390,8 +4450,14 @@
   "validation_warnings": {
     "invalid_product_ids": {}
   },
+  "retrieval": {
+    "milvus_enabled": false,
+    "retrieval_status": "not_requested",
+    "evidence_total_hits": 0,
+    "evidence_matched_product_ids": []
+  },
   "config": {
-    "cases": "tests\\eval\\golden_retrieval_cases.jsonl",
+    "cases": "D:\\github\\tripmind\\trad_rag\\tests\\eval\\golden_retrieval_cases.jsonl",
     "top_k": [
       1,
       3,
@@ -4401,6 +4467,10 @@
     "use_llm": false,
     "catalog": "combined",
     "with_milvus": false,
+    "milvus_enabled": false,
+    "embedding_provider": "dashscope",
+    "embedding_model": "text-embedding-v4",
+    "embedding_dim": 1024,
     "exclude_pc_from_main": true,
     "exclude_negative_from_main": true,
     "group_by": "case_scope,case_group,expected_categories"

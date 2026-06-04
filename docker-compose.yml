@@ -1,17 +1,22 @@
 services:
   redis:
     image: redis:7-alpine
+    container_name: mallmind-redis
     ports:
       - "6379:6379"
+    volumes:
+      - ./volumes/redis:/data
+    command: ["redis-server", "--appendonly", "yes"]
     restart: unless-stopped
 
   milvus-standalone:
     image: milvusdb/milvus:v2.4.3
+    container_name: mallmind-milvus
     volumes:
-      - ./data/milvus:/var/lib/milvus
+      - ./volumes/milvus:/var/lib/milvus
     ports:
       - "19530:19530"
-      - "9091:9091"
+      - "19091:9091"
     environment:
       - ETCD_USE_EMBED=true
       - ETCD_DATA_DIR=/var/lib/milvus/etcdData
@@ -20,13 +25,14 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9091/healthz"]
       interval: 30s
-      timeout: 10s
+      timeout: 20s
       retries: 5
-      start_period: 30s
+      start_period: 90s
     restart: unless-stopped
 
   attu:
     image: zilliz/attu:v2.4
+    container_name: mallmind-attu
     environment:
       - MILVUS_URL=milvus-standalone:19530
     depends_on:
