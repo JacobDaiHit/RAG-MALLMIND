@@ -8,8 +8,16 @@ still explain the nearest alternatives instead of hallucinating products.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Dict, Iterable, List
+from typing import Any, Dict, Iterable, List
 
+from rag.recommendation.query_guards import (
+    category_for_product_type,
+    infer_product_type,
+    parse_pc_part_constraints,
+    product_matches_pc_constraints,
+    product_query_preference_match,
+    product_matches_type,
+)
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 
 
@@ -22,6 +30,13 @@ class FilterDiagnostics:
     after_target_count: int = 0
     after_must_have_count: int = 0
     after_budget_count: int = 0
+    inferred_product_type: str = ""
+    product_type_filter_applied: bool = False
+    product_type_candidate_count: int = 0
+    pc_part_constraints: Dict[str, Any] = field(default_factory=dict)
+    pc_constraint_filter_applied: bool = False
+    pc_constraint_candidate_count: int = 0
+    pc_constraint_relaxed: bool = False
     returned_count: int = 0
     relaxed_constraints: List[str] = field(default_factory=list)
 
@@ -34,6 +49,13 @@ class FilterDiagnostics:
             "after_target_count": self.after_target_count,
             "after_must_have_count": self.after_must_have_count,
             "after_budget_count": self.after_budget_count,
+            "inferred_product_type": self.inferred_product_type,
+            "product_type_filter_applied": self.product_type_filter_applied,
+            "product_type_candidate_count": self.product_type_candidate_count,
+            "pc_part_constraints": dict(self.pc_part_constraints),
+            "pc_constraint_filter_applied": self.pc_constraint_filter_applied,
+            "pc_constraint_candidate_count": self.pc_constraint_candidate_count,
+            "pc_constraint_relaxed": self.pc_constraint_relaxed,
             "returned_count": self.returned_count,
             "relaxed_constraints": list(self.relaxed_constraints),
         }
@@ -69,15 +91,59 @@ def filter_products_for_requirement(
     if not must_have_filtered:
         must_have_filtered = target_filtered
 
-    budget_filtered = [
+    pc_constraints = parse_pc_part_constraints(requirement.raw_query) if category.value.startswith("pc_") else {}
+    pc_constraint_filtered = [
         product
         for product in must_have_filtered
+        if product_matches_pc_constraints(product, pc_constraints)
+    ]
+    pc_constraint_filter_applied = bool(pc_constraints and pc_constraint_filtered)
+    pc_constraint_relaxed = bool(pc_constraints and not pc_constraint_filtered)
+    constrained_candidates = pc_constraint_filtered if pc_constraint_filter_applied else must_have_filtered
+
+    inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
+    product_type_category = category_for_product_type(inferred_product_type)
+    if product_type_category and category.value != product_type_category:
+        diagnostics = FilterDiagnostics(
+            category=category,
+            raw_count=len(raw),
+            after_stock_count=len(stock_filtered),
+            after_exclusion_count=len(exclusion_filtered),
+            after_target_count=len(target_filtered),
+            after_must_have_count=len(must_have_filtered),
+            after_budget_count=0,
+            inferred_product_type=inferred_product_type or "",
+            product_type_filter_applied=True,
+            product_type_candidate_count=0,
+            pc_part_constraints=pc_constraints,
+            pc_constraint_filter_applied=pc_constraint_filter_applied,
+            pc_constraint_candidate_count=len(pc_constraint_filtered),
+            pc_constraint_relaxed=pc_constraint_relaxed,
+            returned_count=0,
+        )
+        return [], diagnostics
+    product_type_filtered = [
+        product
+        for product in constrained_candidates
+        if product_matches_type(product, inferred_product_type)
+    ]
+    product_type_filter_applied = bool(inferred_product_type and len(product_type_filtered) >= 2)
+    typed_candidates = product_type_filtered if product_type_filter_applied else constrained_candidates
+    preference_filtered = [
+        product
+        for product in typed_candidates
+        if product_query_preference_match(product, requirement.raw_query)
+    ]
+    preferred_candidates = preference_filtered if preference_filtered else typed_candidates
+    budget_filtered = [
+        product
+        for product in preferred_candidates
         if matches_budget(requirement, product)
     ]
     relaxed: List[str] = []
     returned = budget_filtered
-    if requirement.price_max is not None and not budget_filtered and must_have_filtered:
-        returned = must_have_filtered
+    if requirement.price_max is not None and not budget_filtered and preferred_candidates:
+        returned = preferred_candidates
         relaxed.append("price_max")
 
     diagnostics = FilterDiagnostics(
@@ -88,6 +154,13 @@ def filter_products_for_requirement(
         after_target_count=len(target_filtered),
         after_must_have_count=len(must_have_filtered),
         after_budget_count=len(budget_filtered),
+        inferred_product_type=inferred_product_type or "",
+        product_type_filter_applied=product_type_filter_applied,
+        product_type_candidate_count=len(product_type_filtered),
+        pc_part_constraints=pc_constraints,
+        pc_constraint_filter_applied=pc_constraint_filter_applied,
+        pc_constraint_candidate_count=len(pc_constraint_filtered),
+        pc_constraint_relaxed=pc_constraint_relaxed,
         returned_count=len(returned),
         relaxed_constraints=relaxed,
     )

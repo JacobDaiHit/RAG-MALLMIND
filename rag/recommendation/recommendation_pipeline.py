@@ -10,6 +10,7 @@ from typing import Any, Dict, List, Optional
 from rag.recommendation.input_preprocessor import clean_text
 from rag.recommendation.package_builder import build_recommendation_result
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, report_to_dict, run_with_hard_timeout
+from rag.recommendation.query_guards import is_pc_query
 from rag.schemas import BudgetLevel, ComponentCategory, RecommendationResult, RequirementLevel, RequirementSpec
 from rag.utils.runtime_errors import public_error
 
@@ -169,6 +170,8 @@ def recommend_shopping_products(
 
     validate_business_goal(user_goal)
     requirement = parse_requirement(user_goal, use_llm=use_llm)
+    if is_pc_query(user_goal) and catalog_scope != "pc_parts":
+        catalog_scope = "pc_parts"
     result = build_recommendation_result(
         requirement,
         catalog_scope=catalog_scope,

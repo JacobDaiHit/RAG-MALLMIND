@@ -1,0 +1,39 @@
+[
+  {
+    "product_id": "demo-product",
+    "title": "Demo Product Updated",
+    "brand": "Demo Brand",
+    "category": "digital",
+    "category_name": "数码电子",
+    "sub_category": "演示商品",
+    "base_price": 199.0,
+    "min_price": 199.0,
+    "max_price": 299.0,
+    "currency": "CNY",
+    "stock_status": "available_for_demo",
+    "stock_quantity": null,
+    "image_path": "",
+    "image_url": "/product-images/demo.jpg",
+    "skus": [
+      {
+        "sku_id": "demo-sku",
+        "properties": {
+          "颜色": "黑色"
+        },
+        "price": 199.0
+      }
+    ],
+    "description": "用于测试商品库新增。",
+    "faqs": [],
+    "reviews": [],
+    "review_count": 0,
+    "rating_avg": null,
+    "best_for": [],
+    "not_good_for": [],
+    "supported_scenarios": [],
+    "tags": [],
+    "metadata": {},
+    "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+    "risk_notes": []
+  }
+]

@@ -9,6 +9,7 @@ from rag.recommendation.cost_estimator import estimate_plan_cost
 from rag.recommendation.image_retrieval import ImageRetrievalEvidence
 from rag.recommendation.intent_router import route_shopping_intent
 from rag.recommendation.product_loader import ProductCatalog, load_catalog_for_scope
+from rag.recommendation.query_guards import detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
 from rag.recommendation.retrieval import RetrievalEvidence, evidence_summary, retrieve_requirement_evidence
 from rag.recommendation.scorer import ProductScore, score_products
 from rag.recommendation.structured_filter import filter_products_for_requirement
@@ -43,10 +44,34 @@ def build_recommendation_result(
     """Build one ecommerce-native recommendation plan from catalog candidates."""
 
     normalized_scope = normalize_catalog_scope(catalog_scope)
+    pc_route_detected = is_pc_query(requirement.raw_query)
+    if pc_route_detected and normalized_scope != "pc_parts":
+        normalized_scope = "pc_parts"
     catalog = catalog or load_catalog_for_scope(normalized_scope)
     recommendation_domain = recommendation_domain_for_scope(normalized_scope)
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
+    no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
+    if no_match_reason and (normalized_scope != "pc_parts" or "预算" in no_match_reason):
+        return build_no_recommendation_result(
+            requirement=requirement,
+            catalog=catalog,
+            catalog_scope=normalized_scope,
+            recommendation_domain=recommendation_domain,
+            no_match_reason=no_match_reason,
+            pc_route_detected=pc_route_detected,
+        )
+    missing_subcategory = requested_missing_subcategory(requirement.raw_query, catalog.products)
+    if missing_subcategory and normalized_scope != "pc_parts":
+        return build_no_recommendation_result(
+            requirement=requirement,
+            catalog=catalog,
+            catalog_scope=normalized_scope,
+            recommendation_domain=recommendation_domain,
+            no_match_reason=missing_subcategory["no_match_reason"],
+            pc_route_detected=pc_route_detected,
+            trace_extras=missing_subcategory,
+        )
     retrieval_evidence = retrieve_evidence_with_timeout(
         requirement,
         use_milvus_retrieval,
@@ -91,6 +116,8 @@ def build_recommendation_result(
                 category.value: diagnostics.to_trace()
                 for category, diagnostics in filter_diagnostics.items()
             },
+            "inferred_product_type": infer_product_type(requirement.raw_query),
+            "pc_route_detected": pc_route_detected,
             "retrieval": retrieval_evidence.to_trace(),
             "milvus_retrieval": retrieval_evidence.to_trace(),
             "runtime_retrieval_policy": {
@@ -107,6 +134,68 @@ def build_recommendation_result(
             "dynamic_weights": collect_dynamic_weights(grouped_scores),
             "dynamic_weight_reasons": collect_weight_reasons(grouped_scores),
         },
+    )
+
+
+def build_no_recommendation_result(
+    *,
+    requirement: RequirementSpec,
+    catalog: ProductCatalog,
+    catalog_scope: str,
+    recommendation_domain: str,
+    no_match_reason: str,
+    pc_route_detected: bool,
+    trace_extras: Optional[Dict[str, object]] = None,
+) -> RecommendationResult:
+    candidate_scope = {
+        "active_filters": {
+            "categories": [category.value for category in (requirement.desired_categories or requirement.required_components)],
+            "price_min": requirement.price_min,
+            "price_max": requirement.price_max,
+            "brands": list(requirement.brands),
+            "excluded_brands": list(requirement.excluded_brands),
+            "must_have_terms": list(requirement.must_have_terms),
+            "excluded_terms": list(requirement.excluded_terms),
+            "preferences": list(requirement.preferences),
+        },
+        "total_catalog_count": len(catalog.products),
+        "by_category": {},
+        "clarification_needed": [no_match_reason],
+    }
+    trace = {
+        "catalog_source": str(catalog.source_path),
+        "catalog_scope": catalog_scope,
+        "catalog_product_count": len(catalog.products),
+        "recommendation_domain": recommendation_domain,
+        "candidate_scope": candidate_scope,
+        "desired_categories": [item.value for item in requirement.desired_categories],
+        "candidate_counts_by_category": {},
+        "inferred_product_type": infer_product_type(requirement.raw_query),
+        "product_type_filter_applied": False,
+        "product_type_candidate_count": 0,
+        "no_match_reason": no_match_reason,
+        "fallback_blocked_reason": no_match_reason,
+        "pc_route_detected": pc_route_detected,
+    }
+    if trace_extras:
+        trace.update(trace_extras)
+    return RecommendationResult(
+        requirement=requirement,
+        plans=[],
+        candidate_count=len(catalog.products),
+        product_cards=[],
+        candidate_scope=candidate_scope,
+        comparison_table=[],
+        intent_route={
+            "route": "no_recommendation",
+            "task_type": "clarify_or_no_recommendation",
+            "supported_now": True,
+            "reason": no_match_reason,
+        },
+        missing_fields=[no_match_reason],
+        risks=[no_match_reason],
+        follow_up_questions=[no_match_reason],
+        trace=trace,
     )
 
 
@@ -142,6 +231,20 @@ def ensure_pc_part_requirement(requirement: RequirementSpec, catalog: ProductCat
 
 def detect_pc_part_categories(query: str) -> List[ComponentCategory]:
     text = (query or "").lower()
+    compact = "".join(ch.lower() for ch in str(query or "") if ch.isalnum() or "\u4e00" <= ch <= "\u9fff")
+    explicit_role_terms = [
+        (ComponentCategory.pc_motherboard, ["主板", "motherboard"]),
+        (ComponentCategory.pc_case, ["机箱", "case"]),
+        (ComponentCategory.pc_psu, ["电源", "psu"]),
+        (ComponentCategory.pc_memory, ["内存", "memory"]),
+        (ComponentCategory.pc_storage, ["ssd", "固态", "硬盘", "存储"]),
+        (ComponentCategory.pc_cpu, ["cpu", "处理器"]),
+        (ComponentCategory.pc_gpu, ["显卡", "gpu", "rtx", "rx "]),
+        (ComponentCategory.pc_cooler, ["散热", "cooler", "水冷", "风冷"]),
+    ]
+    for category, terms in explicit_role_terms:
+        if any(term in text or "".join(ch.lower() for ch in term if ch.isalnum() or "\u4e00" <= ch <= "\u9fff") in compact for term in terms):
+            return [category]
     mapping = [
         (ComponentCategory.pc_gpu, ["显卡", "gpu", "rtx", "4070", "4060", "4080", "4090", "rx "]),
         (ComponentCategory.pc_cpu, ["cpu", "处理器"]),
@@ -152,7 +255,25 @@ def detect_pc_part_categories(query: str) -> List[ComponentCategory]:
         (ComponentCategory.pc_case, ["机箱", "case"]),
         (ComponentCategory.pc_cooler, ["散热", "cooler", "水冷", "风冷"]),
     ]
-    return [category for category, terms in mapping if any(term in text for term in terms)]
+    mapping.extend(
+        [
+            (ComponentCategory.pc_gpu, ["显卡", "gpu", "rtx", "4070", "4060", "4080", "4090", "rx "]),
+            (ComponentCategory.pc_cpu, ["cpu", "处理器"]),
+            (ComponentCategory.pc_motherboard, ["主板", "motherboard"]),
+            (ComponentCategory.pc_memory, ["内存", "memory", "ddr4", "ddr5"]),
+            (ComponentCategory.pc_storage, ["固态", "硬盘", "存储", "ssd"]),
+            (ComponentCategory.pc_psu, ["电源", "psu"]),
+            (ComponentCategory.pc_case, ["机箱", "case"]),
+            (ComponentCategory.pc_cooler, ["散热", "风冷", "水冷", "cooler"]),
+        ]
+    )
+    detected: List[ComponentCategory] = []
+    for category, terms in mapping:
+        if category in detected:
+            continue
+        if any(term in text for term in terms):
+            detected.append(category)
+    return detected
 
 
 def retrieve_evidence_with_timeout(

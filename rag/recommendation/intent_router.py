@@ -6,7 +6,22 @@ from typing import Any, Dict, List
 from rag.schemas import ComponentCategory, RequirementSpec
 
 
-PC_BUILD_TERMS = ["配电脑", "装机", "整机", "主机配置", "电脑配置", "pc方案", "pc 方案"]
+PC_BUILD_TERMS = [
+    "配电脑",
+    "装机",
+    "整机",
+    "主机配置",
+    "电脑配置",
+    "pc方案",
+    "pc 方案",
+    "游戏主机",
+    "办公主机",
+    "配置单",
+    "整套配置",
+    "装机方案",
+    "配一台电脑",
+    "配一台主机",
+]
 
 
 def route_shopping_intent(requirement: RequirementSpec) -> Dict[str, Any]:

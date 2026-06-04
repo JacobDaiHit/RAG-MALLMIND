@@ -189,6 +189,8 @@ def generate_pc_build_plan(
 
 
 def resolve_budget_limit(budget: float, preferences: Dict[str, Any]) -> float:
+    if preferences.get("budget_max"):
+        return float(preferences["budget_max"])
     return budget if preferences.get("budget_strict") else budget * 1.08
 
 
@@ -219,6 +221,14 @@ def group_parts(parts: List[PcPart]) -> Dict[str, List[PcPart]]:
 def limit_grouped_candidates(grouped: Dict[str, List[PcPart]], budget: float, preferences: Optional[Dict[str, Any]] = None) -> Dict[str, List[PcPart]]:
     preferences = preferences or {}
     gpu_cap = budget * (0.72 if preferences.get("gpu_priority") in {"stronger", "upgrade"} else 0.66)
+    if preferences.get("no_discrete_gpu"):
+        gpu_cap = budget
+    if preferences.get("avoid_overkill_gpu"):
+        gpu_cap = min(gpu_cap, budget * 0.36)
+    if preferences.get("budget_overkill_warning"):
+        gpu_cap = min(gpu_cap, 2500)
+    if preferences.get("workload") in {"music", "development", "photo", "emulator"} and preferences.get("gpu_priority") not in {"stronger", "upgrade", "nvidia_vram"}:
+        gpu_cap = min(gpu_cap, budget * 0.42)
     price_caps = {
         "pc_cpu": budget * 0.38,
         "pc_motherboard": budget * 0.30,
@@ -236,6 +246,12 @@ def limit_grouped_candidates(grouped: Dict[str, List[PcPart]], budget: float, pr
         if role == "pc_gpu" and preferences.get("gpu_price_max"):
             cap = min(cap, float(preferences["gpu_price_max"]))
         affordable = [part for part in role_parts if part.price <= cap]
+        if role == "pc_gpu" and preferences.get("no_discrete_gpu"):
+            no_gpu = [part for part in role_parts if _is_no_discrete_gpu(part)]
+            affordable = no_gpu or affordable
+        if role == "pc_gpu" and preferences.get("gpu_priority") == "nvidia_vram":
+            nvidia = [part for part in affordable if _is_nvidia_gpu(part)]
+            affordable = nvidia or affordable
         if role == "pc_gpu" and preferences.get("gpu_model_terms"):
             terms = [str(term).lower().replace(" ", "") for term in preferences["gpu_model_terms"]]
             matched = [
@@ -245,6 +261,16 @@ def limit_grouped_candidates(grouped: Dict[str, List[PcPart]], budget: float, pr
             affordable = matched
         limited[role] = sample_price_spread(affordable or role_parts, limits.get(role, 8))
     return limited
+
+
+def _is_no_discrete_gpu(part: PcPart) -> bool:
+    text = " ".join([part.product_id, part.title, part.model, *part.tags]).lower()
+    return "integrated" in text or "no discrete" in text or "核显" in text or "集显" in text
+
+
+def _is_nvidia_gpu(part: PcPart) -> bool:
+    text = " ".join([part.title, part.model, part.brand, *part.tags]).lower()
+    return "nvidia" in text or "geforce" in text or "rtx" in text or "gtx" in text
 
 
 def sample_price_spread(parts: List[PcPart], limit: int) -> List[PcPart]:
@@ -277,8 +303,25 @@ def soft_score_breakdown(selected: Dict[str, PcPart], total: float, budget: floa
     }
     if any(term in usage_text_value for term in ["game", "游戏", "3a", "2k"]):
         scores["performance_fit"] += 0.25 if gpu.price >= 1800 else 0.05
+    if preferences.get("avoid_overkill_gpu"):
+        scores["performance_fit"] += 0.2 if gpu.price <= max(total * 0.38, 1) else -0.25
+        scores["value_fit"] += 0.2
+    if preferences.get("no_discrete_gpu"):
+        scores["performance_fit"] += 0.8 if _is_no_discrete_gpu(gpu) else -1.0
+        scores["value_fit"] += 0.3 if _is_no_discrete_gpu(gpu) else -0.5
+    if preferences.get("gpu_priority") == "nvidia_vram":
+        vram = float(gpu.specs.get("vram_gb") or 0)
+        scores["performance_fit"] += (0.35 if _is_nvidia_gpu(gpu) else -0.2) + min(vram / 24, 0.35)
     if preferences.get("gpu_priority") in {"stronger", "upgrade"}:
         scores["performance_fit"] += 0.25
+    if preferences.get("cpu_memory_priority") or preferences.get("cpu_memory_storage_priority"):
+        cores = float(cpu.specs.get("cores") or 0)
+        memory_gb = float(memory.specs.get("capacity_gb") or 0)
+        scores["performance_fit"] += min(cores / 32, 0.3) + (0.2 if memory_gb >= 32 else 0.0)
+    if preferences.get("cpu_memory_storage_priority"):
+        storage_gb = float(storage.specs.get("capacity_gb") or 0)
+        read_speed = float(storage.specs.get("read_mb_s") or 0)
+        scores["value_fit"] += (0.15 if storage_gb >= 1000 else 0.0) + (0.1 if read_speed >= 3000 else 0.0)
     if str(preferences.get("noise") or "").lower() in {"低噪音", "安静", "quiet"} or "低噪" in str(preferences.get("noise") or ""):
         cpu_tdp = float(cpu.specs.get("tdp_w") or 0)
         noise = float(cooler.specs.get("noise_db") or 99)
@@ -357,12 +400,69 @@ def build_plan_reasons(selected: Dict[str, PcPart], total: float, budget: float,
         reasons.append(f"已把外观偏好作为软约束记录：{preferences['color']}。")
     if preferences.get("noise"):
         reasons.append("已把低噪偏好作为软评分，优先低 TDP CPU 和低噪散热字段。")
+    if preferences.get("no_discrete_gpu"):
+        reasons.append("已按无独显/核显偏好过滤独立显卡，不会选择独显 SKU。")
+    if preferences.get("gpu_priority") == "nvidia_vram":
+        reasons.append("AI/深度学习/CUDA 场景优先 NVIDIA 显卡和更大显存。")
+    if preferences.get("cpu_memory_priority"):
+        reasons.append("多开、开发、Docker 或虚拟机场景提高 CPU 核心数和内存容量权重。")
+    if preferences.get("cpu_memory_storage_priority"):
+        reasons.append("后期/音乐制作场景提高 CPU、内存、SSD 权重。")
+    if preferences.get("avoid_overkill_gpu"):
+        reasons.append("网游/电竞/LOL/瓦罗兰特场景避免过度堆显卡，优先均衡和预算利用。")
+    if preferences.get("budget_overkill_warning"):
+        reasons.append("刷网页/办公不需要超高预算，当前需求存在预算过高和性能过剩，可明显降低预算。")
+    if preferences.get("bottleneck_note"):
+        reasons.append("瓶颈判断重点看 CPU 与显卡搭配、游戏负载和性能目标。")
+    if preferences.get("compatibility_question"):
+        terms = "、".join(str(item) for item in preferences.get("compatibility_terms") or [])
+        reasons.append(f"兼容性问题会重点核对 CPU、主板和内存平台{f'：{terms}' if terms else ''}。")
+    if preferences.get("needs_monitor"):
+        monitor_budget = float(preferences.get("monitor_budget") or max(min(budget * 0.2, 2000), 1000))
+        reasons.append(f"显示器暂不在本地 PC 配件库中，建议从总预算预留约 {monitor_budget:.0f} CNY 另配 2K 显示器，不编造显示器 SKU。")
+    if preferences.get("budget_min") or preferences.get("budget_max"):
+        parts = []
+        if preferences.get("budget_min"):
+            parts.append(f"下限/档次 {float(preferences['budget_min']):.0f} CNY")
+        if preferences.get("budget_max"):
+            parts.append(f"上限 {float(preferences['budget_max']):.0f} CNY")
+        reasons.append("预算区间：" + "，".join(parts) + "。")
     return reasons
 
 
 def build_summary(selected: Dict[str, PcPart], total: float, budget: float, usage_terms: List[str], preferences: Dict[str, Any]) -> str:
     adjustment = f"本轮按“{preferences['adjustment']}”重新选择。" if preferences.get("adjustment") else ""
-    return f"{adjustment}为 {usage_text(usage_terms)} 生成一套本地可审计 PC 方案，总价约 {total:.0f} CNY，核心为 {selected['pc_cpu'].model} + {selected['pc_gpu'].model}。"
+    scenario = preferences.get("scenario_note") or usage_text(usage_terms)
+    details = []
+    if preferences.get("gpu_priority") == "nvidia_vram":
+        details.append("CUDA/显存优先")
+    if preferences.get("no_discrete_gpu"):
+        details.append("无独显/核显")
+    if preferences.get("needs_monitor"):
+        monitor_budget = float(preferences.get("monitor_budget") or max(min(budget * 0.2, 2000), 1000))
+        details.append(f"显示器暂不在库中，预算预留约 {monitor_budget:.0f} CNY 另配 2K 显示器")
+    if preferences.get("budget_max"):
+        details.append(f"预算上限 {float(preferences['budget_max']):.0f} CNY")
+    if preferences.get("budget_min"):
+        details.append(f"至少 {float(preferences['budget_min']):.0f} CNY 档次")
+    if preferences.get("workload") == "photo":
+        details.append("重点看 CPU/内存/SSD")
+    if preferences.get("workload") == "music":
+        details.append("重点看静音、CPU/内存/SSD")
+    if preferences.get("workload") == "esports":
+        details.append("网游/电竞/LOL/瓦罗兰特避免过度堆显卡")
+    if preferences.get("budget_overkill_warning"):
+        details.append("刷网页/办公预算过高，性能过剩，可降低预算")
+    if preferences.get("bottleneck_note"):
+        details.append("瓶颈分析：关注显卡、CPU、游戏性能是否均衡")
+    if preferences.get("compatibility_question"):
+        terms = "、".join(str(item) for item in preferences.get("compatibility_terms") or [])
+        details.append(f"兼容性核对{f'：{terms}' if terms else ''}")
+    if "4K" in scenario:
+        details.append("4K 游戏显卡优先")
+    detail_text = "；".join(details)
+    suffix = f"（{detail_text}）" if detail_text else ""
+    return f"{adjustment}为 {scenario} 生成一套本地可审计 PC 方案，总价约 {total:.0f} CNY，核心为 {selected['pc_cpu'].model} + {selected['pc_gpu'].model}{suffix}。"
 
 
 def collect_warnings(selected: Dict[str, PcPart], total: float, budget: float, budget_limit: Optional[float], compatibility: Dict[str, Any]) -> List[str]:
@@ -382,6 +482,10 @@ def build_tradeoffs(selected: Dict[str, PcPart], total: float, budget: float, pr
         tradeoffs.append("白色/黑色外观是软约束，仅在标题或标签有证据时加分，不会覆盖硬兼容。")
     if preferences.get("noise"):
         tradeoffs.append("低噪音依赖本地噪音/TDP 字段，真实噪音仍受风扇曲线和环境影响。")
+    if preferences.get("needs_monitor"):
+        tradeoffs.append("本地 PC 配件库暂不含显示器，主机方案会预留预算但不编造显示器商品。")
+    if preferences.get("avoid_overkill_gpu"):
+        tradeoffs.append("网游/电竞更看重稳定帧率、CPU 和内存，显卡不做无意义堆料。")
     return tradeoffs
 
 
@@ -557,11 +661,11 @@ def role_name(role: str) -> str:
     return pc_component_name_zh(role)
 
 
-_PC_MONEY_TOKEN = r"(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|cny|CNY)?"
+_PC_MONEY_TOKEN = r"(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|cny|CNY)?"
 
 
 def parse_amount_value(value: str, unit: str = "") -> float:
-    amount = float(value)
+    amount = float(re.sub(r"[\s,，]", "", value))
     normalized_unit = (unit or "").strip().lower()
     if normalized_unit in {"k", "千"}:
         return amount * 1000
@@ -574,6 +678,11 @@ def parse_pc_build_budget(text: str, default: Optional[float] = 7000) -> Optiona
     raw = text or ""
     patterns = [
         rf"(?:预算|预算在|预算为|控制在|控制到|压到|压在)\s*{_PC_MONEY_TOKEN}",
+        rf"(?:最多|不超过|不超|上限|封顶)\s*{_PC_MONEY_TOKEN}",
+        rf"{_PC_MONEY_TOKEN}\s*(?:以内|以下|之内|内)",
+        rf"(?:至少|按)\s*{_PC_MONEY_TOKEN}\s*(?:档次|级别|价位)?",
+        rf"{_PC_MONEY_TOKEN}\s*(?:预算|档次|价位)",
+        rf"(?<![A-Za-z]){_PC_MONEY_TOKEN}\s*(?:-|到|至|~|～)\s*{_PC_MONEY_TOKEN}",
         rf"{_PC_MONEY_TOKEN}\s*(?:以内|以下|之内|内)",
         rf"{_PC_MONEY_TOKEN}\s*(?:元|块|cny|CNY)?\s*(?:配(?:台|一台)?电脑|装(?:台|一台)?电脑|配主机|装主机|配整机|装整机)",
     ]
@@ -581,12 +690,43 @@ def parse_pc_build_budget(text: str, default: Optional[float] = 7000) -> Optiona
         match = re.search(pattern, raw, flags=re.I)
         if match:
             return parse_amount_value(match.group(1), match.group(2))
+    chinese = parse_chinese_budget(raw)
+    if chinese is not None:
+        return chinese
     return default
+
+
+def parse_chinese_budget(text: str) -> Optional[float]:
+    match = re.search(r"([一二三四五六七八九十\d]+)\s*万\s*([一二三四五六七八九十\d]*)", text or "")
+    if not match:
+        return None
+    high = _chinese_number(match.group(1))
+    low = _chinese_number(match.group(2)) if match.group(2) else 0
+    return high * 10000 + low * 1000
+
+
+def _chinese_number(value: str) -> int:
+    if not value:
+        return 0
+    if value.isdigit():
+        return int(value)
+    digits = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9}
+    if value == "十":
+        return 10
+    if "十" in value:
+        left, _, right = value.partition("十")
+        return (digits.get(left, 1) * 10) + digits.get(right, 0)
+    return digits.get(value, 0)
 
 
 def parse_pc_usage(text: str) -> List[str]:
     terms = []
-    for keyword in ["3A游戏", "2K游戏", "游戏", "轻度剪辑", "剪辑", "AI", "开发", "办公", "直播", "低噪音", "黑神话"]:
+    for keyword in [
+        "3A游戏", "2K游戏", "4K游戏", "2K", "4K", "光追", "游戏", "网游", "电竞", "LOL", "瓦罗兰特", "CS2",
+        "轻度剪辑", "剪辑", "AI", "深度学习", "CUDA", "大模型", "本地模型", "显存",
+        "多开", "模拟器", "安卓模拟器", "摄影后期", "修图", "Lightroom", "Photoshop",
+        "音乐制作", "编曲", "开发", "Docker", "IDE", "虚拟机", "办公", "网页", "刷网页", "直播", "低噪音", "黑神话",
+    ]:
         if keyword.lower() in (text or "").lower():
             terms.append(keyword)
     return terms or ["日常使用"]

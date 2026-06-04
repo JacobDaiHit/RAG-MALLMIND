@@ -144,7 +144,7 @@ def parse_adjustment_amount(text: str, default: float = 500) -> float:
 def parse_budget_target_amount(text: str) -> Optional[float]:
     raw = text or ""
     patterns = [
-        r"(?:降到|降至|压到|压在|控制到|控制在|改到|改成|提高到|升到)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?",
+        r"(?:降到|降至|压到|压在|控制到|控制在|改到|改成|提高到|升到)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?",
     ]
     for pattern in patterns:
         match = re.search(pattern, raw, flags=re.I)
@@ -156,8 +156,8 @@ def parse_budget_target_amount(text: str) -> Optional[float]:
 def parse_budget_delta_amount(text: str) -> Optional[float]:
     raw = text or ""
     patterns = [
-        (r"(?:预算降|降低预算|减少预算|降低|减少|少|便宜)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", -1.0),
-        (r"(?:预算加|增加预算|提高|增加|加)\s*(\d+(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", 1.0),
+        (r"(?:预算降|降低预算|减少预算|降低|减少|少|便宜|压低)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", -1.0),
+        (r"(?:预算加|增加预算|提高|增加|加)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|CNY|cny)?", 1.0),
     ]
     for pattern, sign in patterns:
         match = re.search(pattern, raw, flags=re.I)
@@ -178,6 +178,69 @@ def parse_pc_preferences(text: str) -> Dict[str, Any]:
         preferences["color"] = "白色"
     if any(term in raw_text for term in ["低噪", "安静", "静音", "降噪"]):
         preferences["noise"] = "低噪音"
+    if any(term in raw_text for term in ["无独显", "核显", "集显", "不需要独立显卡", "不想要独立显卡", "不要独立显卡"]):
+        preferences["no_discrete_gpu"] = True
+        preferences["scenario_note"] = "无独显/核显办公"
+    if any(term.lower() in lowered for term in ["ai", "cuda", "深度学习", "本地模型", "大模型", "llm", "显存"]):
+        preferences["workload"] = "ai"
+        preferences["gpu_priority"] = "nvidia_vram"
+        preferences["scenario_note"] = "AI/CUDA/显存优先"
+    if any(term in raw_text for term in ["多开", "模拟器", "安卓模拟器"]):
+        preferences["workload"] = "emulator"
+        preferences["cpu_memory_priority"] = True
+        preferences["scenario_note"] = "多开模拟器"
+    if any(term.lower() in lowered for term in ["摄影后期", "修图", "lightroom", "photoshop", "ps", "lr"]):
+        preferences["workload"] = "photo"
+        preferences["cpu_memory_storage_priority"] = True
+        preferences["scenario_note"] = "Lightroom/Photoshop 修图"
+    if any(term.lower() in lowered for term in ["音乐制作", "编曲", "daw", "录音"]):
+        preferences["workload"] = "music"
+        preferences["cpu_memory_storage_priority"] = True
+        preferences["noise"] = preferences.get("noise") or "低噪音"
+        preferences["scenario_note"] = "音乐制作/编曲"
+    if any(term.lower() in lowered for term in ["程序开发", "开发", "编译", "docker", "ide", "虚拟机"]):
+        preferences["workload"] = "development"
+        preferences["cpu_memory_priority"] = True
+        preferences["scenario_note"] = "开发/Docker/虚拟机"
+    if any(term in raw_text for term in ["网游", "电竞", "LOL", "瓦罗兰特", "CS2"]):
+        preferences["workload"] = "esports"
+        preferences["avoid_overkill_gpu"] = True
+        preferences["scenario_note"] = "网游/电竞/LOL/瓦罗兰特"
+    if any(term in raw_text for term in ["刷网页", "网页"]) and any(term in raw_text for term in ["预算", "配电脑", "电脑"]):
+        preferences["workload"] = "office_web"
+        preferences["avoid_overkill_gpu"] = True
+        preferences["budget_overkill_warning"] = True
+        preferences["scenario_note"] = "刷网页/办公"
+    if any(term in raw_text for term in ["瓶颈", "带得动", "压得住"]):
+        preferences["workload"] = "bottleneck"
+        preferences["scenario_note"] = "CPU/GPU 瓶颈分析"
+        preferences["bottleneck_note"] = True
+    if "兼容" in raw_text:
+        preferences["compatibility_question"] = True
+        compatibility_terms = []
+        for match in re.findall(r"(i[3579][-\s]?\d+[A-Za-z]*|B\d{3}|Z\d{3}|DDR[45])", raw_text, flags=re.I):
+            compatibility_terms.append(match)
+        if compatibility_terms:
+            preferences["compatibility_terms"] = compatibility_terms
+    if "4K" in raw_text or "4k" in lowered:
+        preferences["gpu_priority"] = "stronger"
+        preferences["scenario_note"] = "4K 游戏显卡优先"
+    if any(term in raw_text for term in ["主机加显示器", "主机和显示器", "电脑加显示器", "整机加显示器", "台式机加显示器", "主机+显示器", "主机加屏幕"]) or ("显示器" in raw_text and any(term in raw_text for term in ["主机", "电脑", "整机", "装机"])):
+        preferences["needs_monitor"] = True
+        preferences["monitor_note"] = "显示器暂不在本地 PC 配件库中，主机方案不编造显示器 SKU。"
+        monitor_budget = re.search(r"显示器(?:控制在|预算|不超过|最多)?\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)", raw_text)
+        if monitor_budget:
+            preferences["monitor_budget"] = parse_amount_value(monitor_budget.group(1), "")
+    range_match = re.search(r"(?<![A-Za-z])(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块)?\s*(?:-|到|至|~|～)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块)?", raw_text)
+    if range_match:
+        preferences["budget_min"] = parse_amount_value(range_match.group(1), range_match.group(2) or "")
+        preferences["budget_max"] = parse_amount_value(range_match.group(3), range_match.group(4) or "")
+    max_match = re.search(r"(?:最多|不超过|不超|上限|封顶)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块)?", raw_text)
+    if max_match:
+        preferences["budget_max"] = parse_amount_value(max_match.group(1), max_match.group(2) or "")
+    min_match = re.search(r"(?:至少|按)\s*(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块)?\s*(?:档次|级别|价位)?", raw_text)
+    if min_match:
+        preferences["budget_min"] = parse_amount_value(min_match.group(1), min_match.group(2) or "")
     if any(term in raw_text for term in ["以内", "不超过", "低于", "小于", "最多", "封顶", "<="]) or any(
         term in lowered for term in ["within", "under", "no more than"]
     ):
@@ -185,6 +248,9 @@ def parse_pc_preferences(text: str) -> Dict[str, Any]:
     clean_gpu_requested = "显卡" in raw_text or "gpu" in lowered
     if clean_gpu_requested and any(term in raw_text for term in ["强", "升级", "更好"]):
         preferences["gpu_priority"] = "stronger"
+    if "保留显卡" in raw_text:
+        preferences["keep_gpu"] = True
+        preferences["adjustment"] = "保留显卡，调整其他配件"
     if clean_gpu_requested and any(term in raw_text for term in ["换", "替换", "更换", "升级到"]):
         preferences["gpu_priority"] = "upgrade"
         preferences["adjustment"] = "替换显卡"

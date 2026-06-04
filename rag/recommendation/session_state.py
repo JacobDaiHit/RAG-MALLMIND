@@ -1,12 +1,15 @@
-"""In-memory demo session state for multi-turn shopping, topic memory, and cart actions."""
+"""Session state for multi-turn shopping, topic memory, and cart actions."""
 from __future__ import annotations
 
+import json
+import logging
 import re
 import os
+import threading
 import time
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field, fields
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Protocol
 
 from rag.recommendation.product_loader import ProductCatalog
 
@@ -14,6 +17,9 @@ from rag.recommendation.product_loader import ProductCatalog
 DEFAULT_SESSION_TTL_SECONDS = 7200
 DEFAULT_MAX_IN_MEMORY_SESSIONS = 500
 SESSION_CLEANUP_INTERVAL_SECONDS = 60
+SESSION_KEY_PREFIX = "mallmind:session:"
+
+logger = logging.getLogger(__name__)
 
 
 def _now_seconds() -> float:
@@ -32,85 +38,167 @@ class ShoppingSession:
     updated_at: float = field(default_factory=_now_seconds)
     messages: List[str] = field(default_factory=list)
     last_goal: str = ""
-    last_result: Dict[str, Any] = field(default_factory=dict)
+    last_result: Any = field(default_factory=dict)
     pc_build_history: List[Dict[str, Any]] = field(default_factory=list)
     cart: Dict[str, CartItem] = field(default_factory=dict)
     topic_memory: Dict[str, Any] = field(default_factory=dict)
     tool_history: List[Dict[str, Any]] = field(default_factory=list)
 
 
-class SessionStore:
+class BaseSessionStore(Protocol):
     def get(self, session_id: str) -> Optional[ShoppingSession]:
-        raise NotImplementedError
+        ...
 
-    def set(self, session: ShoppingSession) -> None:
-        raise NotImplementedError
+    def save(self, session: ShoppingSession) -> None:
+        ...
+
+    def delete(self, session_id: str) -> None:
+        ...
 
     def cleanup(self, *, ttl_seconds: int, max_sessions: int, now: Optional[float] = None) -> int:
-        raise NotImplementedError
+        ...
+
+
+SessionStore = BaseSessionStore
 
 
 class InMemorySessionStore(SessionStore):
     def __init__(self, sessions: Optional[Dict[str, ShoppingSession]] = None) -> None:
         self.sessions = sessions if sessions is not None else {}
+        self._lock = threading.RLock()
 
     def get(self, session_id: str) -> Optional[ShoppingSession]:
-        return self.sessions.get(session_id)
+        with self._lock:
+            return self.sessions.get(session_id)
+
+    def save(self, session: ShoppingSession) -> None:
+        with self._lock:
+            self.sessions[session.session_id] = session
 
     def set(self, session: ShoppingSession) -> None:
-        self.sessions[session.session_id] = session
+        self.save(session)
+
+    def delete(self, session_id: str) -> None:
+        with self._lock:
+            self.sessions.pop(session_id, None)
 
     def cleanup(self, *, ttl_seconds: int, max_sessions: int, now: Optional[float] = None) -> int:
-        current = _now_seconds() if now is None else now
-        removed = 0
-        if ttl_seconds > 0:
-            expired = [
-                session_id
-                for session_id, session in self.sessions.items()
-                if current - float(getattr(session, "updated_at", 0.0) or 0.0) > ttl_seconds
-            ]
-            for session_id in expired:
-                self.sessions.pop(session_id, None)
-                removed += 1
+        with self._lock:
+            current = _now_seconds() if now is None else now
+            removed = 0
+            if ttl_seconds > 0:
+                expired = [
+                    session_id
+                    for session_id, session in self.sessions.items()
+                    if current - float(getattr(session, "updated_at", 0.0) or 0.0) > ttl_seconds
+                ]
+                for session_id in expired:
+                    self.sessions.pop(session_id, None)
+                    removed += 1
 
-        if max_sessions > 0 and len(self.sessions) > max_sessions:
-            overflow = len(self.sessions) - max_sessions
-            oldest = sorted(
-                self.sessions.items(),
-                key=lambda item: float(getattr(item[1], "updated_at", 0.0) or 0.0),
-            )[:overflow]
-            for session_id, _session in oldest:
-                self.sessions.pop(session_id, None)
-                removed += 1
+            if max_sessions > 0 and len(self.sessions) > max_sessions:
+                overflow = len(self.sessions) - max_sessions
+                oldest = sorted(
+                    self.sessions.items(),
+                    key=lambda item: float(getattr(item[1], "updated_at", 0.0) or 0.0),
+                )[:overflow]
+                for session_id, _session in oldest:
+                    self.sessions.pop(session_id, None)
+                    removed += 1
+        if removed:
+            logger.info("Cleaned up %s expired or overflow in-memory sessions", removed)
         return removed
+
+
+class RedisSessionStore(SessionStore):
+    def __init__(self, redis_url: str, *, ttl_seconds: int) -> None:
+        import redis
+
+        self.redis_url = redis_url
+        self.ttl_seconds = ttl_seconds
+        self._client = redis.Redis.from_url(redis_url, decode_responses=True)
+        self._client.ping()
+
+    def get(self, session_id: str) -> Optional[ShoppingSession]:
+        key = self._key(session_id)
+        payload = self._client.get(key)
+        if not payload:
+            return None
+        try:
+            data = json.loads(payload)
+            return session_from_dict(data)
+        except Exception as exc:
+            logger.warning("Session deserialization failed for %s: %s", session_id, exc)
+            self.delete(session_id)
+            return None
+
+    def save(self, session: ShoppingSession) -> None:
+        ttl = _session_ttl_seconds()
+        payload = json.dumps(session_to_dict(session), ensure_ascii=False, separators=(",", ":"))
+        if ttl > 0:
+            self._client.setex(self._key(session.session_id), ttl, payload)
+        else:
+            self._client.set(self._key(session.session_id), payload)
+
+    def delete(self, session_id: str) -> None:
+        self._client.delete(self._key(session_id))
+
+    def cleanup(self, *, ttl_seconds: int, max_sessions: int, now: Optional[float] = None) -> int:
+        return 0
+
+    def _key(self, session_id: str) -> str:
+        return f"{SESSION_KEY_PREFIX}{session_id}"
 
 
 _SESSIONS: Dict[str, ShoppingSession] = {}
 _SESSION_STORE = InMemorySessionStore(_SESSIONS)
+_SESSION_STORE_CONFIG = ("memory", "", DEFAULT_SESSION_TTL_SECONDS)
 _LAST_SESSION_CLEANUP_AT = 0.0
 
 
 def get_session(session_id: Optional[str]) -> ShoppingSession:
     _maybe_cleanup_sessions()
-    key = (session_id or "default").strip() or "default"
-    session = _SESSION_STORE.get(key)
+    key = _normalize_session_id(session_id)
+    store = get_session_store()
+    session = store.get(key)
     if session is None:
         session = ShoppingSession(session_id=key, topic_memory=default_topic_memory())
-        _SESSION_STORE.set(session)
     if not session.topic_memory:
         session.topic_memory = default_topic_memory()
     session.updated_at = _now_seconds()
-    if len(_SESSIONS) > _int_env("MAX_IN_MEMORY_SESSIONS", DEFAULT_MAX_IN_MEMORY_SESSIONS):
+    save_session(session)
+    if isinstance(store, InMemorySessionStore) and len(_SESSIONS) > _session_max_count():
         cleanup_expired_sessions(now=session.updated_at)
     return session
 
 
+def save_session(session: ShoppingSession) -> None:
+    session.updated_at = _now_seconds()
+    get_session_store().save(session)
+
+
+def reset_session(session_id: Optional[str]) -> ShoppingSession:
+    key = _normalize_session_id(session_id)
+    get_session_store().delete(key)
+    session = ShoppingSession(session_id=key, topic_memory=default_topic_memory())
+    save_session(session)
+    return session
+
+
+def clear_session(session_id: Optional[str]) -> None:
+    key = _normalize_session_id(session_id)
+    get_session_store().delete(key)
+
+
 def cleanup_expired_sessions(now: Optional[float] = None) -> int:
-    return _SESSION_STORE.cleanup(
-        ttl_seconds=_int_env("SESSION_TTL_SECONDS", DEFAULT_SESSION_TTL_SECONDS),
-        max_sessions=_int_env("MAX_IN_MEMORY_SESSIONS", DEFAULT_MAX_IN_MEMORY_SESSIONS),
+    removed = get_session_store().cleanup(
+        ttl_seconds=_session_ttl_seconds(),
+        max_sessions=_session_max_count(),
         now=now,
     )
+    if removed:
+        logger.info("Session cleanup removed %s sessions", removed)
+    return removed
 
 
 def _maybe_cleanup_sessions() -> None:
@@ -128,6 +216,115 @@ def _int_env(name: str, default: int) -> int:
     except (TypeError, ValueError):
         return default
     return max(value, 0)
+
+
+def _session_ttl_seconds() -> int:
+    return _int_env("SESSION_TTL_SECONDS", DEFAULT_SESSION_TTL_SECONDS)
+
+
+def _session_max_count() -> int:
+    return _int_env("SESSION_MAX_COUNT", _int_env("MAX_IN_MEMORY_SESSIONS", DEFAULT_MAX_IN_MEMORY_SESSIONS))
+
+
+def _app_env() -> str:
+    return os.getenv("APP_ENV", os.getenv("ENV", "development")).strip().lower()
+
+
+def _is_production_env() -> bool:
+    return _app_env() in {"production", "prod"}
+
+
+def _normalize_session_id(session_id: Optional[str]) -> str:
+    key = str(session_id or "").strip()
+    if key:
+        return key
+    if _is_production_env():
+        logger.error("Missing session_id in production environment")
+        raise ValueError("session_id is required in production; refusing to use shared default session")
+    return "default"
+
+
+def _session_backend() -> str:
+    backend = os.getenv("SESSION_BACKEND")
+    if backend:
+        return backend.strip().lower()
+    return "redis" if _is_production_env() and os.getenv("REDIS_URL") else "memory"
+
+
+def get_session_store() -> SessionStore:
+    global _SESSION_STORE, _SESSION_STORE_CONFIG
+
+    backend = _session_backend()
+    redis_url = os.getenv("REDIS_URL", "").strip()
+    ttl = _session_ttl_seconds()
+    config = (backend, redis_url, ttl)
+    if config == _SESSION_STORE_CONFIG:
+        return _SESSION_STORE
+
+    if backend not in {"memory", "redis"}:
+        logger.error("Session backend initialization failed for %s: unsupported backend", backend)
+        raise RuntimeError(f"Unsupported SESSION_BACKEND: {backend}")
+
+    try:
+        if backend == "memory":
+            _SESSION_STORE = InMemorySessionStore(_SESSIONS)
+        else:
+            if not redis_url:
+                raise RuntimeError("SESSION_BACKEND=redis requires REDIS_URL")
+            _SESSION_STORE = RedisSessionStore(redis_url, ttl_seconds=ttl)
+    except Exception as exc:
+        logger.error("Session backend initialization failed for %s: %s", backend, exc)
+        if _is_production_env():
+            raise
+        logger.warning("Falling back to in-memory session store after backend initialization failure")
+        _SESSION_STORE = InMemorySessionStore(_SESSIONS)
+    _SESSION_STORE_CONFIG = config
+    return _SESSION_STORE
+
+
+def session_to_dict(session: ShoppingSession) -> Dict[str, Any]:
+    return asdict(session)
+
+
+def session_from_dict(data: Any) -> ShoppingSession:
+    if not isinstance(data, dict):
+        raise ValueError("session payload must be a JSON object")
+
+    known_fields = {item.name for item in fields(ShoppingSession)}
+    kwargs = {key: value for key, value in data.items() if key in known_fields}
+    kwargs.setdefault("session_id", "")
+    if not str(kwargs["session_id"]).strip():
+        raise ValueError("session payload is missing session_id")
+
+    cart_payload = kwargs.get("cart") or {}
+    cart: Dict[str, CartItem] = {}
+    if isinstance(cart_payload, dict):
+        for product_id, item in cart_payload.items():
+            try:
+                if isinstance(item, CartItem):
+                    cart[str(product_id)] = item
+                elif isinstance(item, dict):
+                    cart[str(product_id)] = CartItem(
+                        product_id=str(item.get("product_id") or product_id),
+                        quantity=max(int(item.get("quantity", 1)), 1),
+                    )
+            except (TypeError, ValueError):
+                continue
+    kwargs["cart"] = cart
+
+    for key in ("messages", "pc_build_history", "tool_history"):
+        if not isinstance(kwargs.get(key), list):
+            kwargs[key] = []
+    for key in ("topic_memory",):
+        if not isinstance(kwargs.get(key), dict):
+            kwargs[key] = default_topic_memory()
+    if kwargs.get("last_result") is None:
+        kwargs["last_result"] = {}
+    try:
+        kwargs["updated_at"] = float(kwargs.get("updated_at") or _now_seconds())
+    except (TypeError, ValueError):
+        kwargs["updated_at"] = _now_seconds()
+    return ShoppingSession(**kwargs)
 
 
 def default_topic_memory() -> Dict[str, Any]:
@@ -154,6 +351,7 @@ def default_topic_memory() -> Dict[str, Any]:
 def current_topic_json(session: ShoppingSession) -> Dict[str, Any]:
     if not session.topic_memory:
         session.topic_memory = default_topic_memory()
+        save_session(session)
     return dict(session.topic_memory)
 
 
@@ -192,6 +390,7 @@ def update_topic_memory(session: ShoppingSession, tool_call: Dict[str, Any], *, 
         "updated_at": now,
         "history": history,
     }
+    save_session(session)
     return current_topic_json(session)
 
 
@@ -208,6 +407,7 @@ def remember_tool_call(session: ShoppingSession, tool_call: Dict[str, Any], *, r
     }
     session.tool_history.append(entry)
     del session.tool_history[:-12]
+    save_session(session)
 
 
 def build_contextual_goal(session: ShoppingSession, message: str) -> str:
@@ -226,6 +426,10 @@ def should_start_new_product_topic(session: ShoppingSession, message: str) -> bo
     if topic not in {"pc_build", "single_pc_part"}:
         return False
     text = message or ""
+    if topic == "pc_build" and "显示器" in text and any(term in text for term in ["再加", "加一个", "总预算", "主机", "2K", "4K"]):
+        return False
+    if topic == "pc_build" and any(term in text for term in ["保留显卡", "其他配件", "压低"]):
+        return False
     product_terms = [
         "手机",
         "耳机",
@@ -252,12 +456,14 @@ def remember_recommendation(session: ShoppingSession, goal: str, result_payload:
     session.last_result = result_payload
     session.messages.append(goal)
     del session.messages[:-12]
+    save_session(session)
 
 
 def remember_pc_build_plan(session: ShoppingSession, goal: str, plan: Dict[str, Any]) -> None:
     remember_recommendation(session, goal, plan)
     session.pc_build_history.append(plan)
     del session.pc_build_history[:-6]
+    save_session(session)
 
 
 def has_last_pc_build_plan(session: ShoppingSession) -> bool:
@@ -349,6 +555,7 @@ def apply_cart_instruction(
             session.cart[product_id] = item
             changed.append(f"已将 {product.title} 加入购物车，数量 {max(quantity, 1)}。")
 
+    save_session(session)
     return {
         "session_id": session.session_id,
         "action": action,

@@ -223,6 +223,21 @@ def test_gpu_query_routes_to_pc_parts_scope_not_pc_build():
     assert call["arguments"]["category"] == "pc_part"
 
 
+def test_gpu_model_with_bundle_words_routes_to_pc_build():
+    call = route_shopping_tool_call("4070 显卡，预算 7000，帮我配一套", _session(), use_llm=False)
+
+    assert call["name"] == "generate_pc_build_plan"
+    assert call["arguments"]["budget"] == 7000
+
+
+def test_plain_gpu_budget_routes_to_pc_part_not_pc_build():
+    call = route_shopping_tool_call("推荐一款 4000 元以内的 RTX 4070 显卡", _session(), use_llm=False)
+
+    assert call["name"] == "recommend_shopping_products"
+    assert call["arguments"]["catalog_scope"] == "pc_parts"
+    assert call["arguments"]["category"] == "pc_part"
+
+
 def test_pc_topic_gpu_upgrade_stays_pc_build():
     call = route_shopping_tool_call("显卡强一点", _session("pc_build"), use_llm=False)
 
@@ -234,3 +249,85 @@ def test_pc_topic_explicit_phone_switches_to_ecommerce():
 
     assert call["name"] == "recommend_shopping_products"
     assert call["arguments"]["catalog_scope"] == "ecommerce"
+
+
+def test_phone_config_does_not_route_to_pc_build():
+    call = route_shopping_tool_call("这款手机配置怎么样？", _session(), use_llm=False)
+
+    assert call["name"] == "recommend_shopping_products"
+    assert call["arguments"]["catalog_scope"] == "ecommerce"
+
+
+def test_office_quiet_config_routes_to_pc_build():
+    call = route_shopping_tool_call("4000 预算，办公用，要求安静省电，给我一套配置", _session(), use_llm=False)
+
+    assert call["name"] == "generate_pc_build_plan"
+    assert call["arguments"]["budget"] == 4000
+
+
+def test_local_route_scores_are_returned():
+    call = route_shopping_tool_call("推荐一款手机", _session(), use_llm=False)
+
+    assert "route_scores" in call
+    assert "routing_trace" in call
+    assert call["route_scores"]["top_name"] == "recommend_shopping_products"
+
+
+def test_route_scores_keep_separate_confidence_fields():
+    call = route_shopping_tool_call("推荐一款手机", _session(), use_llm=False)
+
+    assert "route_scores" in call
+    assert "local_rule_confidence" in call
+    assert "route_score_confidence" in call
+    assert call["route_score_confidence"] == call["route_scores"]["confidence"]
+
+
+def test_ambiguous_bundle_uses_route_score_confidence_not_hardcoded_confidence():
+    session = _session()
+    session.runtime_mode = "balanced"
+
+    call = route_shopping_tool_call("4000 预算，给我一套", session, use_llm=False)
+
+    assert "route_scores" in call
+    assert call["route_score_confidence"] == call["route_scores"]["confidence"]
+
+
+def test_fast_mode_never_uses_router_llm():
+    session = _session()
+    session.runtime_mode = "fast"
+
+    call = route_shopping_tool_call("4000 预算，给我一套", session, use_llm=True)
+
+    assert call["routing_trace"]["runtime_mode"] == "fast"
+    assert call["routing_trace"]["llm_skipped"] is True
+
+
+def test_global_llm_off_forces_local_route(monkeypatch):
+    monkeypatch.setenv("MALLMIND_LLM_ENABLED", "false")
+    session = _session()
+    session.runtime_mode = "full"
+
+    call = route_shopping_tool_call("4000 预算，给我一套", session, use_llm=True)
+
+    assert call["routing_trace"]["llm_skipped"] is True
+    assert call["routing_trace"]["llm_skipped_reason"] == "global_llm_disabled"
+
+
+def test_router_llm_concurrency_limit_records_reason(monkeypatch):
+    session = _session()
+    session.runtime_mode = "full"
+
+    class FakeSemaphore:
+        def acquire(self, timeout=None):
+            return False
+
+        def release(self):
+            raise AssertionError("release should not be called when acquire failed")
+
+    monkeypatch.setenv("MALLMIND_LLM_ENABLED", "true")
+    monkeypatch.setattr("rag.recommendation.tool_router._ROUTER_LLM_SEMAPHORE", FakeSemaphore())
+
+    call = route_shopping_tool_call("4000 预算，给我一套", session, use_llm=True)
+
+    assert call["routing_trace"]["llm_skipped"] is True
+    assert call["routing_trace"]["llm_skipped_reason"] == "concurrency_limit"

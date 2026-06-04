@@ -2,7 +2,9 @@ from rag.recommendation.runtime_mode import runtime_policy_for_mode
 from rag.recommendation.runtime_mode_selector import choose_runtime_mode
 
 
-def test_runtime_policy_fast_disables_optional_services():
+def test_runtime_policy_fast_disables_optional_services(monkeypatch):
+    monkeypatch.delenv("MALLMIND_LLM_ENABLED", raising=False)
+
     policy = runtime_policy_for_mode("fast")
 
     assert policy.use_router_llm is False
@@ -13,10 +15,12 @@ def test_runtime_policy_fast_disables_optional_services():
     assert policy.use_milvus_retrieval is False
 
 
-def test_runtime_policy_balanced_only_allows_requirement_llm_and_milvus():
+def test_runtime_policy_balanced_allows_router_requirement_llm_and_milvus(monkeypatch):
+    monkeypatch.delenv("MALLMIND_LLM_ENABLED", raising=False)
+
     policy = runtime_policy_for_mode("balanced", llm_configured=True)
 
-    assert policy.use_router_llm is False
+    assert policy.use_router_llm is True
     assert policy.use_requirement_llm is True
     assert policy.use_guidance_llm is False
     assert policy.use_vision_llm is False
@@ -24,7 +28,9 @@ def test_runtime_policy_balanced_only_allows_requirement_llm_and_milvus():
     assert policy.use_milvus_retrieval is True
 
 
-def test_runtime_policy_full_allows_all_when_llm_configured():
+def test_runtime_policy_full_allows_all_when_llm_configured(monkeypatch):
+    monkeypatch.delenv("MALLMIND_LLM_ENABLED", raising=False)
+
     policy = runtime_policy_for_mode("full", llm_configured=True)
 
     assert policy.use_router_llm is True
@@ -35,8 +41,23 @@ def test_runtime_policy_full_allows_all_when_llm_configured():
     assert policy.use_milvus_retrieval is True
 
 
-def test_runtime_policy_full_without_llm_keeps_milvus_but_disables_llm_features():
+def test_runtime_policy_full_without_llm_keeps_milvus_but_disables_llm_features(monkeypatch):
+    monkeypatch.delenv("MALLMIND_LLM_ENABLED", raising=False)
+
     policy = runtime_policy_for_mode("full", llm_configured=False)
+
+    assert policy.use_router_llm is False
+    assert policy.use_requirement_llm is False
+    assert policy.use_guidance_llm is False
+    assert policy.use_vision_llm is False
+    assert policy.use_rag_query_expansion is False
+    assert policy.use_milvus_retrieval is True
+
+
+def test_runtime_policy_global_llm_off_disables_all_llm_features(monkeypatch):
+    monkeypatch.setenv("MALLMIND_LLM_ENABLED", "false")
+
+    policy = runtime_policy_for_mode("full", llm_configured=True)
 
     assert policy.use_router_llm is False
     assert policy.use_requirement_llm is False

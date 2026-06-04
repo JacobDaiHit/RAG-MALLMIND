@@ -162,6 +162,12 @@ REDIS_URL=redis://localhost:6379/0
 
 ### 3. 启动后端
 
+启动前请先激活虚拟环境
+
+```bash
+d:\github\.venv\Scripts\Activate.ps1
+```
+
 项目内已有脚本：
 
 ```bash
@@ -172,6 +178,11 @@ python scripts/run_recommendation_api.py
 
 ```bash
 uvicorn rag.api.recommendation_app:app --reload --host 0.0.0.0 --port 8000
+```
+
+或者
+```bash
+$env:PORT="8011"; $env:HOST="127.0.0.1"; python scripts\run_recommendation_api.py  
 ```
 
 其中：

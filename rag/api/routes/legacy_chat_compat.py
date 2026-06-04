@@ -15,6 +15,7 @@ from rag.api.routes.common import request_product_ids
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.pc_session_flow import build_pc_plan_for_message
 from rag.recommendation.product_loader import load_combined_product_catalog
+from rag.recommendation.recommendation_pipeline import InvalidGoalError
 from rag.recommendation.session_state import (
     apply_cart_instruction,
     cart_snapshot,
@@ -24,6 +25,7 @@ from rag.recommendation.session_state import (
     remember_pc_build_plan,
     remember_recommendation,
     remember_tool_call,
+    save_session,
     update_topic_memory,
 )
 from rag.recommendation.runtime_mode import runtime_policy_for_mode
@@ -35,7 +37,7 @@ from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_repor
 def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
     raw_message = request.message.strip()
     if not raw_message:
-        return {"reply": "Please enter a shopping request.", "tool_calls": []}
+        return _invalid_goal_response(raw_message)
 
     session = get_session(request.session_id)
     direct = _legacy_direct_response(raw_message, session) if legacy_chat_compat_enabled() else None
@@ -103,14 +105,18 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
         use_vision_llm=policy.use_vision_llm,
     )
     catalog_scope = (tool_call.get("arguments") or {}).get("catalog_scope") or "ecommerce"
-    result = _recommendation_fn()(
-        contextual_goal,
-        use_llm=policy.use_requirement_llm,
-        use_llm_guidance=policy.use_guidance_llm,
-        catalog_scope=catalog_scope,
-        use_milvus_retrieval=policy.use_milvus_retrieval,
-        use_rag_query_expansion=policy.use_rag_query_expansion,
-    )
+    try:
+        result = _recommendation_fn()(
+            contextual_goal,
+            use_llm=policy.use_requirement_llm,
+            use_llm_guidance=policy.use_guidance_llm,
+            catalog_scope=catalog_scope,
+            use_milvus_retrieval=policy.use_milvus_retrieval,
+            use_rag_query_expansion=policy.use_rag_query_expansion,
+        )
+    except InvalidGoalError:
+        update_topic_memory(session, tool_call, result_type="invalid_goal")
+        return _invalid_goal_response(raw_message)
     payload = model_to_dict(result)
     remember_recommendation(session, contextual_goal, payload)
     topic_memory = update_topic_memory(session, tool_call, result_type=payload.get("type") or "")
@@ -127,6 +133,34 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
 
 def legacy_chat_compat_enabled() -> bool:
     return is_debug_mode() or os.getenv("ENABLE_LEGACY_CHAT_COMPAT", "false").strip().lower() == "true"
+
+
+def _invalid_goal_response(message: str) -> Dict[str, Any]:
+    return {
+        "reply": _general_chat_reply(message),
+        "tool_calls": [],
+        "products": [],
+        "recommendations": [],
+        "cards": [],
+        "result": {
+            "product_cards": [],
+            "recommendations": [],
+            "products": [],
+            "cards": [],
+            "trace": {
+                "error_type": "invalid_goal",
+                "recoverable": True,
+            },
+        },
+        "metadata": {
+            "error_type": "invalid_goal",
+            "recoverable": True,
+        },
+        "trace": {
+            "error_type": "invalid_goal",
+            "recoverable": True,
+        },
+    }
 
 
 def _legacy_direct_response(message: str, session: Any) -> Optional[Dict[str, Any]]:
@@ -171,12 +205,14 @@ def _legacy_direct_response(message: str, session: Any) -> Optional[Dict[str, An
         return {"reply": _cart_snapshot_reply(session, catalog), "tool_calls": [{"name": "view_cart"}], "cart": cart_snapshot(session, catalog)}
     if _is_cart_clear(message):
         session.cart.clear()
+        save_session(session)
         return {"reply": "已清空购物车。", "tool_calls": [{"name": "clear_cart"}], "cart": cart_snapshot(session, catalog)}
     if _is_cart_remove(message):
         if "洗面奶" in message and not any(catalog.get(product_id) and "洗面奶" in _product_text(catalog.get(product_id)) for product_id in session.cart):
             return {"reply": "购物车里没有这个商品，未找到可删除项。", "tool_calls": [{"name": "remove_from_cart"}], "cart": cart_snapshot(session, catalog)}
         if session.cart:
             session.cart.pop(next(iter(session.cart.keys())), None)
+            save_session(session)
         return {"reply": "已从购物车删除并移除该商品。", "tool_calls": [{"name": "remove_from_cart"}], "cart": cart_snapshot(session, catalog)}
     if _is_cart_update(message):
         ids = _product_ids_for_terms(catalog, ["iphone", "手机"], limit=1) or list(session.cart.keys())[:1]
@@ -384,8 +420,18 @@ def _is_detail_query(message: str) -> bool:
     return any(term in message for term in ["续航", "电池", "屏幕", "尺寸", "规格", "参数", "材质", "价格", "库存", "有货"])
 
 
-def _general_chat_reply() -> str:
-    return "我是智能导购助手，可以帮你推荐商品、对比商品、生成 PC 整机方案，也可以处理购物车。"
+def _general_chat_reply(message: str = "") -> str:
+    if any(term in message for term in ("天气", "写一首诗", "排序算法", "国际局势")):
+        return (
+            "我是智能导购助手，主要帮你挑选商品、做商品对比和处理购物车。"
+            "这个问题和购物无关，我就不展开了；如果你有购物需求，可以告诉我品类、预算和偏好。"
+        )
+    if message.strip().isdigit() or not any(ch.isalnum() for ch in message):
+        return (
+            "我是智能导购助手。请告诉我你想买什么商品、预算多少、有什么用途或偏好，"
+            "我可以帮你搜索、推荐、对比，或加入购物车。"
+        )
+    return "我是智能导购助手，可以帮你推荐商品、对比商品、生成 PC 整机方案，也可以处理购物车。请告诉我想买什么、预算、用途或偏好。"
 
 
 def _cart_reply(cart_result: Dict[str, Any]) -> str:

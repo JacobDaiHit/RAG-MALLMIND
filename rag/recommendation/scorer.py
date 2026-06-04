@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from rag.recommendation.cost_estimator import estimate_product_price
+from rag.recommendation.query_guards import parse_pc_part_constraints, product_pc_constraint_bonus
 from rag.schemas import ApiProduct, BudgetLevel, ComponentCategory, RequirementLevel, RequirementSpec, ScoreBreakdown
 from rag.schemas.recommendation import price_to_price_tier, rating_to_quality_tier
 
@@ -86,6 +87,7 @@ def score_products(
         if not violates_exclusions(requirement, product)
     ]
     scored = apply_price_aware_price_fit(requirement, scored)
+    scored = apply_pc_constraint_boost(requirement, scored)
     return sorted(scored, key=lambda item: item.score.final_score, reverse=True)
 
 
@@ -116,6 +118,35 @@ def apply_price_aware_price_fit(requirement: RequirementSpec, scored: List[Produ
         price, currency = price_infos[item.product.product_id]
         price_fit = price_fit_from_product_price(requirement, price, min_cost, max_cost)
         adjusted.append(rebuild_product_score_with_price_fit(item, price_fit, price, currency))
+    return adjusted
+
+
+def apply_pc_constraint_boost(requirement: RequirementSpec, scored: List[ProductScore]) -> List[ProductScore]:
+    constraints = parse_pc_part_constraints(requirement.raw_query)
+    if not constraints:
+        return scored
+    adjusted: List[ProductScore] = []
+    for item in scored:
+        bonus = product_pc_constraint_bonus(item.product, constraints)
+        if bonus <= 0:
+            adjusted.append(item)
+            continue
+        old = item.score
+        new_score = old.model_copy(
+            update={
+                "final_score": round(clamp(old.final_score + bonus), 4),
+                "reasons": [*old.reasons, "结构化规格与用户明确 PC 配件属性更匹配。"],
+            }
+        )
+        adjusted.append(
+            ProductScore(
+                product=item.product,
+                score=new_score,
+                weights=item.weights,
+                weight_reasons=item.weight_reasons,
+                evidence=item.evidence,
+            )
+        )
     return adjusted
 
 
