@@ -45,7 +45,7 @@ PRODUCT_TYPE_TERMS: Dict[str, Iterable[str]] = {
     "coffee": ["咖啡"],
     "nuts_snack": ["坚果", "零食礼盒", "每日坚果", "混合坚果"],
     "serum": ["精华", "护肤精华"],
-    "cleanser": ["洁面", "洗面奶"],
+    "cleanser": ["洁面", "洗面奶", "cleanser", "facial cleanser"],
     "cream": ["面霜", "保湿霜", "修护霜"],
     "base_makeup": ["底妆", "粉底", "持妆", "遮瑕", "蜜粉", "散粉", "粉饼", "定妆"],
     "sunscreen": ["防晒"],
@@ -64,7 +64,7 @@ PRODUCT_TYPE_SUBCATEGORY_TERMS: Dict[str, Iterable[str]] = {
     "coffee": ["咖啡"],
     "nuts_snack": ["坚果", "零食", "坚果/零食"],
     "serum": ["精华"],
-    "cleanser": ["洁面"],
+    "cleanser": ["洁面", "洗面奶", "cleanser", "facial cleanser"],
     "cream": ["面霜"],
     "base_makeup": ["底妆", "粉底", "遮瑕", "蜜粉", "散粉", "粉饼", "定妆"],
     "sunscreen": ["防晒"],
@@ -72,6 +72,25 @@ PRODUCT_TYPE_SUBCATEGORY_TERMS: Dict[str, Iterable[str]] = {
     "jacket": ["外套", "冲锋衣", "夹克", "防风衣", "风衣"],
     "hat": ["帽", "帽子", "遮阳帽", "鸭舌帽"],
     "shoes": ["鞋", "跑步鞋", "篮球鞋", "徒步鞋", "运动鞋"],
+}
+
+PRODUCT_TYPE_LABELS: Dict[str, str] = {
+    "phone": "手机",
+    "earphone": "耳机",
+    "laptop": "笔记本",
+    "tablet": "平板",
+    "beverage": "饮料",
+    "coffee": "咖啡",
+    "nuts_snack": "坚果/零食",
+    "serum": "精华",
+    "cleanser": "洗面奶",
+    "cream": "面霜",
+    "base_makeup": "底妆",
+    "sunscreen": "防晒",
+    "tshirt": "T恤",
+    "jacket": "外套",
+    "hat": "帽子",
+    "shoes": "鞋",
 }
 
 PRODUCT_TYPE_CATEGORY: Dict[str, str] = {
@@ -91,6 +110,13 @@ PRODUCT_TYPE_CATEGORY: Dict[str, str] = {
     "jacket": "clothing",
     "hat": "clothing",
     "shoes": "clothing",
+}
+
+NEIGHBOR_TYPE_TERMS: Dict[str, Dict[str, Iterable[str]]] = {
+    "clothing": {
+        "pants": ["裤", "长裤", "瑜伽裤", "户外裤"],
+        "backpack": ["背包", "双肩包"],
+    }
 }
 
 
@@ -226,34 +252,41 @@ def product_query_preference_match(product: Any, query: str) -> bool:
 
 
 def requested_missing_subcategory(query: str, products: Iterable[Any]) -> Optional[Dict[str, Any]]:
-    text = normalize_text(query)
-    jacket_terms = ["外套", "冲锋衣", "夹克", "防风衣", "风衣"]
-    if not any(term in text for term in jacket_terms):
+    requested_type = infer_product_type(query)
+    requested_category = category_for_product_type(requested_type)
+    if not requested_type or not requested_category:
         return None
-    available = {
-        "pants": ["裤", "长裤", "瑜伽裤"],
-        "backpack": ["背包", "双肩包"],
-        "hat": ["帽", "遮阳帽", "鸭舌帽"],
-        "shoes": ["鞋", "跑步鞋", "篮球鞋"],
-        "tshirt": ["t恤", "短袖"],
-    }
-    has_jacket = False
-    neighbor_types: List[str] = []
-    for product in products:
-        product_text = product_type_text(product)
-        if any(term in product_text for term in jacket_terms):
-            has_jacket = True
-            break
-        for neighbor, terms in available.items():
-            if neighbor not in neighbor_types and any(term in product_text for term in terms):
-                neighbor_types.append(neighbor)
-    if has_jacket:
+    products = list(products)
+    scoped_products = [
+        product
+        for product in products
+        if str(getattr(_get(product, "category"), "value", _get(product, "category")) or "") == requested_category
+    ]
+    if any(product_matches_type(product, requested_type) for product in scoped_products):
         return None
+    neighbor_types = available_neighbor_product_types(scoped_products, requested_category, exclude=requested_type)
     return {
         "no_match_reason": "missing_subcategory",
-        "requested_product_type": "jacket",
+        "requested_product_type": requested_type,
+        "requested_product_type_label": PRODUCT_TYPE_LABELS.get(requested_type, requested_type),
         "available_neighbor_types": neighbor_types,
     }
+
+
+def available_neighbor_product_types(products: Iterable[Any], category: str, *, exclude: str = "") -> List[str]:
+    products = list(products)
+    neighbors: List[str] = []
+    for product_type, product_category in PRODUCT_TYPE_CATEGORY.items():
+        if product_type == exclude or product_category != category:
+            continue
+        if any(product_matches_type(product, product_type) for product in products):
+            label = PRODUCT_TYPE_LABELS.get(product_type, product_type)
+            if label not in neighbors:
+                neighbors.append(label)
+    for neighbor, terms in NEIGHBOR_TYPE_TERMS.get(category, {}).items():
+        if neighbor not in neighbors and any(any(term in product_type_text(product) for term in terms) for product in products):
+            neighbors.append(neighbor)
+    return neighbors
 
 
 def _parse_capacity_gb(text: str, compact: str) -> Optional[int]:
@@ -429,6 +462,47 @@ def product_specs(product: Any) -> Dict[str, Any]:
 
 def normalize_text(value: object) -> str:
     return "".join(ch.lower() for ch in str(value or "") if ch.isalnum() or "\u4e00" <= ch <= "\u9fff")
+
+
+def clarification_required(query: str) -> Optional[Dict[str, Any]]:
+    """Return a proactive clarification payload for broad covered requests."""
+
+    text = normalize_text(query)
+    raw = str(query or "")
+    if not text or _allows_loose_recommendation(raw):
+        return None
+    product_type = infer_product_type(raw)
+    if product_type == "phone" and _is_broad_single_recommendation(text):
+        return {
+            "no_match_reason": "clarification_required",
+            "clarification_required": True,
+            "clarification_questions": [
+                "预算大概是多少？",
+                "更看重拍照、续航、性能还是性价比？",
+                "是否有品牌、系统或尺寸偏好？",
+            ],
+            "requested_product_type": "phone",
+        }
+    return None
+
+
+def budget_relaxation_allowed(query: str) -> bool:
+    text = normalize_text(query)
+    return any(
+        normalize_text(term) in text
+        for term in ["可以贵一点", "预算可放宽", "预算可以放宽", "看看相近", "附近价位", "差不多也行", "相近价位"]
+    )
+
+
+def _is_broad_single_recommendation(text: str) -> bool:
+    return any(term in text for term in ["推荐一款手机", "推荐个手机", "推荐手机", "买个手机"]) and not any(
+        term in text
+        for term in ["预算", "以内", "以下", "拍照", "续航", "性能", "游戏", "老人", "学生", "性价比", "旗舰", "小屏", "大屏"]
+    )
+
+
+def _allows_loose_recommendation(query: str) -> bool:
+    return any(term in str(query or "") for term in ["先随便推荐", "直接推荐", "不用问", "随便推荐"])
 
 
 def _get(value: Any, key: str) -> Any:

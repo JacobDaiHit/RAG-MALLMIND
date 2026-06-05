@@ -17,6 +17,7 @@ from rag.recommendation.query_guards import (
     product_matches_pc_constraints,
     product_query_preference_match,
     product_matches_type,
+    budget_relaxation_allowed,
 )
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 
@@ -39,6 +40,8 @@ class FilterDiagnostics:
     pc_constraint_relaxed: bool = False
     returned_count: int = 0
     relaxed_constraints: List[str] = field(default_factory=list)
+    budget_filter_strict: bool = True
+    budget_gap_reason: str = ""
 
     def to_trace(self) -> Dict[str, object]:
         return {
@@ -58,6 +61,8 @@ class FilterDiagnostics:
             "pc_constraint_relaxed": self.pc_constraint_relaxed,
             "returned_count": self.returned_count,
             "relaxed_constraints": list(self.relaxed_constraints),
+            "budget_filter_strict": self.budget_filter_strict,
+            "budget_gap_reason": self.budget_gap_reason,
         }
 
 
@@ -83,13 +88,45 @@ def filter_products_for_requirement(
     if not target_filtered:
         target_filtered = exclusion_filtered
 
-    must_have_filtered = [
+    inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
+    product_type_category = category_for_product_type(inferred_product_type)
+    if product_type_category and category.value != product_type_category:
+        allow_cross_category_bundle = bool(
+            requirement.need_bundle
+            and len(requirement.desired_categories or requirement.required_components) > 1
+        )
+        if not allow_cross_category_bundle:
+            diagnostics = FilterDiagnostics(
+                category=category,
+                raw_count=len(raw),
+                after_stock_count=len(stock_filtered),
+                after_exclusion_count=len(exclusion_filtered),
+                after_target_count=len(target_filtered),
+                after_must_have_count=0,
+                after_budget_count=0,
+                inferred_product_type=inferred_product_type or "",
+                product_type_filter_applied=True,
+                product_type_candidate_count=0,
+                pc_part_constraints={},
+                returned_count=0,
+            )
+            return [], diagnostics
+        inferred_product_type = None
+    product_type_filtered = [
         product
         for product in target_filtered
+        if product_matches_type(product, inferred_product_type)
+    ]
+    product_type_filter_applied = bool(inferred_product_type and product_type_filtered)
+    typed_candidates = product_type_filtered if product_type_filter_applied else target_filtered
+
+    must_have_filtered = [
+        product
+        for product in typed_candidates
         if matches_all_required_terms(requirement, product)
     ]
     if not must_have_filtered:
-        must_have_filtered = target_filtered
+        must_have_filtered = typed_candidates
 
     pc_constraints = parse_pc_part_constraints(requirement.raw_query) if category.value.startswith("pc_") else {}
     pc_constraint_filtered = [
@@ -101,33 +138,29 @@ def filter_products_for_requirement(
     pc_constraint_relaxed = bool(pc_constraints and not pc_constraint_filtered)
     constrained_candidates = pc_constraint_filtered if pc_constraint_filter_applied else must_have_filtered
 
-    inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
-    product_type_category = category_for_product_type(inferred_product_type)
-    if product_type_category and category.value != product_type_category:
-        inferred_product_type = None
-    product_type_filtered = [
-        product
-        for product in constrained_candidates
-        if product_matches_type(product, inferred_product_type)
-    ]
-    product_type_filter_applied = bool(inferred_product_type and len(product_type_filtered) >= 2)
-    typed_candidates = product_type_filtered if product_type_filter_applied else constrained_candidates
     preference_filtered = [
         product
-        for product in typed_candidates
+        for product in constrained_candidates
         if product_query_preference_match(product, requirement.raw_query)
     ]
-    preferred_candidates = preference_filtered if preference_filtered else typed_candidates
+    preferred_candidates = preference_filtered if preference_filtered else constrained_candidates
     budget_filtered = [
         product
         for product in preferred_candidates
         if matches_budget(requirement, product)
     ]
     relaxed: List[str] = []
+    budget_filter_strict = not budget_relaxation_allowed(requirement.raw_query)
+    budget_gap_reason = ""
     returned = budget_filtered
     if requirement.price_max is not None and not budget_filtered and preferred_candidates:
-        returned = preferred_candidates
-        relaxed.append("price_max")
+        if budget_filter_strict:
+            returned = []
+            budget_gap_reason = "budget_catalog_gap"
+        else:
+            returned = preferred_candidates
+            relaxed.append("price_max")
+            budget_gap_reason = "explicit_budget_relaxation"
 
     diagnostics = FilterDiagnostics(
         category=category,
@@ -146,6 +179,8 @@ def filter_products_for_requirement(
         pc_constraint_relaxed=pc_constraint_relaxed,
         returned_count=len(returned),
         relaxed_constraints=relaxed,
+        budget_filter_strict=budget_filter_strict,
+        budget_gap_reason=budget_gap_reason,
     )
     return returned, diagnostics
 

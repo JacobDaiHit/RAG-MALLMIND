@@ -8,6 +8,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from rag.recommendation.input_preprocessor import clean_text
+from rag.recommendation.explanation_builder import build_evidence_grounded_explanation
 from rag.recommendation.package_builder import build_recommendation_result
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, report_to_dict, run_with_hard_timeout
 from rag.recommendation.query_guards import is_pc_query
@@ -165,6 +166,7 @@ def recommend_shopping_products(
     catalog_scope: str = "ecommerce",
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
+    use_llm_explanation: Optional[bool] = None,
 ) -> RecommendationResult:
     """Recommend ecommerce products and bundles from a shopping goal."""
 
@@ -184,7 +186,10 @@ def recommend_shopping_products(
     result.trace["llm_requirement_parse_used"] = requirement_parse_trace["llm_parse_used"]
     result.trace["rule_parse_used"] = requirement_parse_trace["rule_parse_used"]
     guidance_enabled = should_use_llm_guidance(user_goal) if use_llm_guidance is None else use_llm_guidance
-    return enrich_recommendation_result(result, use_llm=use_llm and guidance_enabled)
+    result = enrich_recommendation_result(result, use_llm=use_llm and guidance_enabled)
+    explanation_enabled = guidance_enabled if use_llm_explanation is None else bool(use_llm_explanation)
+    attach_grounded_explanation(result, use_llm=use_llm and explanation_enabled)
+    return result
 
 
 def recommend_api_stack(user_goal: str, use_llm: bool = True, catalog_scope: str = "ecommerce") -> RecommendationResult:
@@ -195,6 +200,28 @@ def recommend_api_stack(user_goal: str, use_llm: bool = True, catalog_scope: str
 
 def recommend_shopping_bundle(user_goal: str, use_llm: bool = True, catalog_scope: str = "ecommerce") -> RecommendationResult:
     return recommend_shopping_products(user_goal, use_llm=use_llm, catalog_scope=catalog_scope)
+
+
+def attach_grounded_explanation(result: RecommendationResult, *, use_llm: bool) -> None:
+    requirement = model_to_dict(result.requirement)
+    if not result.product_cards and not result.comparison_table:
+        result.trace["explanation_mode"] = "skipped"
+        result.trace["llm_used_for_explanation"] = False
+        return
+    explanation = build_evidence_grounded_explanation(
+        user_need=result.requirement.raw_query,
+        parsed_requirement=requirement,
+        selected_products=result.product_cards,
+        comparison_table=result.comparison_table if result.requirement.need_comparison else None,
+        use_llm=use_llm,
+    )
+    mode = explanation.get("mode") or "template"
+    result.trace["explanation_mode"] = mode
+    result.trace["llm_used_for_explanation"] = mode == "llm_evidence_grounded"
+    result.trace["explanation_llm_input_fields"] = sorted((explanation.get("llm_input") or {}).keys())
+    if explanation.get("fallback_reason"):
+        result.trace["explanation_fallback_reason"] = explanation["fallback_reason"]
+    result.feedback_summary["grounded_explanation"] = explanation.get("explanation") or {}
 
 
 def parse_requirement(user_goal: str, use_llm: bool = True) -> RequirementSpec:
@@ -432,8 +459,9 @@ def requirement_from_llm_payload(payload: Dict[str, Any], fallback: RequirementS
 
 def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = True) -> RecommendationResult:
     fallback = build_rule_based_guidance(result)
+    clarification_questions = list((result.trace or {}).get("clarification_questions") or [])
     result.teaching_guidance = fallback["teaching_guidance"]
-    result.follow_up_questions = fallback["follow_up_questions"]
+    result.follow_up_questions = clarification_questions or fallback["follow_up_questions"]
     result.optimization_suggestions = fallback["optimization_suggestions"]
     result.feedback_summary = fallback["feedback_summary"]
 
@@ -461,7 +489,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
             "guidance",
         )
         result.teaching_guidance = normalize_string_list(payload.get("teaching_guidance"), fallback["teaching_guidance"])[:6]
-        result.follow_up_questions = normalize_string_list(payload.get("follow_up_questions"), fallback["follow_up_questions"])[:6]
+        result.follow_up_questions = clarification_questions or normalize_string_list(payload.get("follow_up_questions"), fallback["follow_up_questions"])[:6]
         result.optimization_suggestions = normalize_string_list(payload.get("optimization_suggestions"), fallback["optimization_suggestions"])[:6]
         result.trace["llm_guidance"] = "enabled"
         result.trace["llm_guidance_call"] = report_to_dict(report)

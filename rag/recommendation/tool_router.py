@@ -459,7 +459,7 @@ CART_STRONG_TERMS = [
     "把这个加入",
     "把它加入",
 ]
-COMPARE_TERMS = ["对比", "比较", "哪个好", "区别", "差别", "提升在哪"]
+COMPARE_TERMS = ["对比", "比较", "哪个好", "哪个更", "哪款更", "区别", "差别", "提升在哪", "vs", "PK", "pk"]
 GENERAL_CHAT_TERMS = [
     "你是谁",
     "你能做什么",
@@ -772,7 +772,7 @@ def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]
     if _looks_like_compare_request(text):
         if pc_followup or pc_intent:
             scores["generate_pc_build_plan"] += 0.15
-        elif _should_compare_products(text, topic, slots, session):
+        else:
             scores["compare_products"] += 0.55
     if _is_general_chat(text, lowered, topic):
         scores["general_chat"] += 0.80
@@ -819,7 +819,7 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
 
     if _has_cart_intent(text):
         return _attach_route_scores(_tool_call("apply_cart_instruction", slots, 0.95, "本地规则识别到购物车操作。", "rules"), score_info)
-    if _looks_like_compare_request(text) and _should_compare_products(text, topic, slots, session):
+    if _looks_like_compare_request(text):
         slots["compare_with_previous"] = _mentions_previous(text)
         return _attach_route_scores(_tool_call("compare_products", slots, 0.88, "本地规则识别到商品或历史方案对比请求。", "rules"), score_info)
     if _has_pc_intent(text, lowered):
@@ -965,7 +965,7 @@ def validate_and_guard_tool_call(
             if local_call.get("name") == "apply_cart_instruction"
             else _tool_call("apply_cart_instruction", arguments, 0.96, "后端兜底：购物车指令优先。", "guard")
         )
-    elif _looks_like_compare_request(text) and _should_compare_products(text, topic, arguments, session):
+    elif _looks_like_compare_request(text):
         arguments["compare_with_previous"] = _mentions_previous(text)
         guarded = _tool_call("compare_products", arguments, max(call["confidence"], 0.88), "后端兜底：明确对比请求走 compare_products。", "guard")
         call.update(guarded)
@@ -1182,7 +1182,7 @@ def _runtime_mode_from_session(session: ShoppingSession) -> str:
     value = str(value).lower()
     if value == "auto":
         return "balanced"
-    return value if value in {"fast", "balanced", "full"} else "balanced"
+    return value if value in {"fast", "balanced", "full", "degraded_fast"} else "balanced"
 
 
 def _has_pc_intent(text: str, lowered: str) -> bool:

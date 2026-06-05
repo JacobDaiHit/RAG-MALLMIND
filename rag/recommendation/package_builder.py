@@ -9,7 +9,7 @@ from rag.recommendation.cost_estimator import estimate_plan_cost
 from rag.recommendation.image_retrieval import ImageRetrievalEvidence
 from rag.recommendation.intent_router import route_shopping_intent
 from rag.recommendation.product_loader import ProductCatalog, load_catalog_for_scope
-from rag.recommendation.query_guards import detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
+from rag.recommendation.query_guards import clarification_required, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
 from rag.recommendation.retrieval import RetrievalEvidence, evidence_summary, retrieve_requirement_evidence
 from rag.recommendation.scorer import ProductScore, score_products
 from rag.recommendation.structured_filter import filter_products_for_requirement
@@ -49,6 +49,17 @@ def build_recommendation_result(
         normalized_scope = "pc_parts"
     catalog = catalog or load_catalog_for_scope(normalized_scope)
     recommendation_domain = recommendation_domain_for_scope(normalized_scope)
+    clarification = clarification_required(requirement.raw_query)
+    if clarification and normalized_scope != "pc_parts":
+        return build_no_recommendation_result(
+            requirement=requirement,
+            catalog=catalog,
+            catalog_scope=normalized_scope,
+            recommendation_domain=recommendation_domain,
+            no_match_reason="clarification_required",
+            pc_route_detected=pc_route_detected,
+            trace_extras=clarification,
+        )
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
     no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
@@ -79,6 +90,28 @@ def build_recommendation_result(
     )
     fused_evidence = fuse_text_and_image_evidence(retrieval_evidence, image_retrieval_evidence)
     grouped_scores, filter_diagnostics = score_required_components(requirement, catalog, fused_evidence)
+    budget_gap_categories = [
+        category.value
+        for category, diagnostics in filter_diagnostics.items()
+        if diagnostics.budget_gap_reason == "budget_catalog_gap"
+    ]
+    if budget_gap_categories and not any(grouped_scores.values()):
+        return build_no_recommendation_result(
+            requirement=requirement,
+            catalog=catalog,
+            catalog_scope=normalized_scope,
+            recommendation_domain=recommendation_domain,
+            no_match_reason="budget_catalog_gap",
+            pc_route_detected=pc_route_detected,
+            trace_extras={
+                "budget_gap_reason": "budget_catalog_gap",
+                "budget_gap_categories": budget_gap_categories,
+                "structured_filter": {
+                    category.value: diagnostics.to_trace()
+                    for category, diagnostics in filter_diagnostics.items()
+                },
+            },
+        )
     intent_route = route_shopping_intent(requirement)
     plan = build_recommendation_plan(requirement, grouped_scores)
     plans = [plan]
@@ -179,6 +212,7 @@ def build_no_recommendation_result(
     }
     if trace_extras:
         trace.update(trace_extras)
+    follow_up_questions = list((trace_extras or {}).get("clarification_questions") or [no_match_reason])
     return RecommendationResult(
         requirement=requirement,
         plans=[],
@@ -194,7 +228,7 @@ def build_no_recommendation_result(
         },
         missing_fields=[no_match_reason],
         risks=[no_match_reason],
-        follow_up_questions=[no_match_reason],
+        follow_up_questions=follow_up_questions,
         trace=trace,
     )
 

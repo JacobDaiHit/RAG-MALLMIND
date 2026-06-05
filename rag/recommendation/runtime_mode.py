@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass
 
 
-VALID_RUNTIME_MODES = {"auto", "fast", "balanced", "full"}
+VALID_RUNTIME_MODES = {"auto", "fast", "balanced", "full", "degraded_fast"}
 
 
 @dataclass(frozen=True)
@@ -41,9 +41,9 @@ def runtime_policy_for_mode(mode: str | None, *, llm_configured: bool = True) ->
     if normalized == "auto":
         normalized = "balanced"
 
-    if normalized == "fast":
+    if normalized in {"fast", "degraded_fast"}:
         return RuntimeModePolicy(
-            mode="fast",
+            mode=normalized,
             use_router_llm=False,
             use_requirement_llm=False,
             use_guidance_llm=False,

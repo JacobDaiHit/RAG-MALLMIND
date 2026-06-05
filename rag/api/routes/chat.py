@@ -1,5 +1,4 @@
 import os
-from dataclasses import asdict
 from typing import Any, Dict, List
 
 from fastapi import APIRouter, HTTPException
@@ -7,6 +6,7 @@ from fastapi.responses import StreamingResponse
 
 from rag.api.app_context import prepare_recommendation_context
 from rag.api.request_models import CartActionRequest, ChatStreamRequest, ProductCompareRequest
+from rag.api.runtime_context import build_adaptive_runtime_context, decision_reason, decision_signals, runtime_event_payload
 from rag.api.routes.common import request_product_ids
 from rag.api.routes.legacy_chat_compat import chat_compat_response
 from rag.api.sse import safe_stream, sse_event
@@ -26,8 +26,7 @@ from rag.recommendation.tool_handlers import (
     handle_pc_build,
     handle_recommend,
 )
-from rag.recommendation.runtime_mode import runtime_policy_for_mode
-from rag.recommendation.runtime_mode_selector import choose_runtime_mode
+from rag.recommendation.runtime_mode_selector import RuntimeModeDecision
 from rag.recommendation.tool_router import route_shopping_tool_call
 from rag.utils.runtime_errors import sanitize_report
 
@@ -70,8 +69,9 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
 
     def unsafe_generate():
         llm_configured = stream_llm_enabled()
-        decision = choose_runtime_mode(
+        runtime_context = build_adaptive_runtime_context(
             raw_message,
+            session,
             requested_mode=getattr(request, "mode", None),
             has_attachments=bool(raw_attachments),
             has_image_data=_has_image_data(raw_attachments),
@@ -79,20 +79,34 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             is_test_env=_is_test_env(),
             system_degraded=_system_degraded(),
         )
-        policy = runtime_policy_for_mode(decision.mode, llm_configured=llm_configured)
+        adaptive_decision = runtime_context["decision"]
+        policy = runtime_context["policy"]
+        session.runtime_mode = adaptive_decision.selected_mode
+        decision = RuntimeModeDecision(
+            mode=adaptive_decision.selected_mode,  # type: ignore[arg-type]
+            reason=decision_reason(adaptive_decision),
+            signals=decision_signals(
+                adaptive_decision,
+                requested_mode=getattr(request, "mode", None),
+                llm_configured=llm_configured,
+                has_attachments=bool(raw_attachments),
+                has_image_data=_has_image_data(raw_attachments),
+                is_test_env=_is_test_env(),
+                system_degraded=_system_degraded(),
+            ),
+        )
         yield sse_event(
             "runtime_mode",
-            {
-                "requested_mode": getattr(request, "mode", None) or "auto",
-                "selected_mode": decision.mode,
-                "mode": decision.mode,
-                "reason": decision.reason,
-                "signals": decision.signals,
-                "llm_configured": llm_configured,
-                "use_milvus_retrieval": policy.use_milvus_retrieval,
-                "use_rag_query_expansion": policy.use_rag_query_expansion,
-                "policy": asdict(policy),
-            },
+            runtime_event_payload(
+                decision=adaptive_decision,
+                policy=policy,
+                requested_mode=getattr(request, "mode", None),
+                llm_configured=llm_configured,
+                has_attachments=bool(raw_attachments),
+                has_image_data=_has_image_data(raw_attachments),
+                is_test_env=_is_test_env(),
+                system_degraded=_system_degraded(),
+            ),
         )
         tool_call = route_shopping_tool_call(raw_message, session, use_llm=policy.use_router_llm)
         remember_tool_call(session, tool_call)

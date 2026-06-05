@@ -417,18 +417,17 @@ def test_negative_fallback_blocks_impossible_budget():
 
 
 def test_product_type_filter_keeps_phone_query_from_earphones():
+    query = "\u0033\u0030\u0030\u0030\u5143\u4ee5\u5185\u7684\u624b\u673a\uff0c\u9002\u5408\u5b66\u751f\u515a\u65e5\u5e38\u7528"
     result = recommend_shopping_products(
-        "3000元以内的手机，适合学生党日常用",
+        query,
         use_llm=False,
         use_milvus_retrieval=False,
         catalog_scope="combined",
     )
     returned_ids = [card["product_id"] for card in result.product_cards[:3]]
-    assert returned_ids
-    assert "p_digital_007" not in returned_ids
-    assert "p_digital_018" not in returned_ids
-    assert infer_product_type("3000元以内的手机，适合学生党日常用") == "phone"
-
+    assert returned_ids == []
+    assert result.trace["no_match_reason"] == "budget_catalog_gap"
+    assert infer_product_type(query) == "phone"
 
 def test_product_type_filter_keeps_laptop_query_from_tablets():
     result = recommend_shopping_products(

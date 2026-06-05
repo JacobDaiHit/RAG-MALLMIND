@@ -64,6 +64,8 @@ def handle_general_chat(session: Any, tool_call: Dict[str, Any]) -> Iterable[str
 def handle_compare(session: Any, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
     if not product_ids:
         product_ids = last_recommended_product_ids(session)
+    if not product_ids:
+        product_ids = comparison_candidate_ids((tool_call.get("arguments") or {}).get("query") or "")
     compare_result = compare_products(load_combined_product_catalog(), product_ids) if product_ids else {
         "count": 0,
         "rows": [],
@@ -75,6 +77,25 @@ def handle_compare(session: Any, product_ids: List[str], tool_call: Dict[str, An
     yield sse_event("comparison_table", {"rows": compare_result.get("rows") or []})
     yield sse_event("result", {"type": "comparison", "comparison": compare_result, "tool_call": tool_call, "topic_memory": topic_memory})
     yield sse_event("done", {"session_id": session.session_id})
+
+
+def comparison_candidate_ids(query: str, limit: int = 2) -> List[str]:
+    try:
+        result = recommend_shopping_products(
+            query,
+            use_llm=False,
+            use_llm_guidance=False,
+            catalog_scope="combined",
+            use_milvus_retrieval=False,
+        )
+    except Exception:
+        return []
+    payload = model_to_dict(result)
+    return [
+        str(card.get("product_id"))
+        for card in payload.get("product_cards") or []
+        if card.get("product_id")
+    ][:limit]
 
 
 def handle_pc_build(session: Any, message: str, contextual_goal: str, tool_call: Dict[str, Any]) -> Iterable[str]:
@@ -175,8 +196,21 @@ def handle_recommend(
     if runtime_mode_decision is not None:
         result.trace["runtime_mode"] = runtime_mode_decision.mode
         result.trace["requested_mode"] = (runtime_mode_decision.signals or {}).get("requested_mode", "auto")
+        result.trace["requested_runtime_mode"] = (runtime_mode_decision.signals or {}).get("requested_mode", "auto")
         result.trace["selected_mode"] = runtime_mode_decision.mode
+        result.trace["selected_runtime_mode"] = runtime_mode_decision.mode
         result.trace["llm_configured"] = bool((runtime_mode_decision.signals or {}).get("llm_configured", llm_stream_enabled))
+        adaptive_decision = (runtime_mode_decision.signals or {}).get("adaptive_decision") or {}
+        result.trace["adaptive_decision"] = adaptive_decision
+        result.trace["reason_codes"] = list((runtime_mode_decision.signals or {}).get("reason_codes") or adaptive_decision.get("reason_codes") or [])
+        result.trace["route_confidence"] = adaptive_decision.get("route_confidence")
+        result.trace["route_margin"] = adaptive_decision.get("route_margin")
+        result.trace["requirement_completeness"] = adaptive_decision.get("requirement_completeness")
+        result.trace["query_complexity"] = adaptive_decision.get("query_complexity")
+        result.trace["history_dependency"] = adaptive_decision.get("history_dependency")
+        result.trace["fallback_used"] = bool(adaptive_decision.get("fallback_used"))
+        result.trace["fallback_reason"] = adaptive_decision.get("fallback_reason")
+        result.trace["llm_used_for_route"] = bool(((tool_call.get("routing_trace") or {}).get("llm") or {}).get("name"))
         result.trace["runtime_mode_decision"] = {
             "mode": runtime_mode_decision.mode,
             "reason": runtime_mode_decision.reason,
@@ -192,6 +226,16 @@ def handle_recommend(
         "use_milvus_retrieval": use_milvus_retrieval,
         "use_rag_query_expansion": use_rag_query_expansion,
     }
+    result.trace["clarification_required"] = bool(result.trace.get("clarification_required"))
+    result.trace["catalog_guard_result"] = result.trace.get("no_match_reason") or result.trace.get("fallback_blocked_reason") or "ok"
+    result.trace["retrieval_used"] = bool((result.trace.get("retrieval") or {}).get("retrieved_chunk_count"))
+    result.trace["milvus_used"] = bool((result.trace.get("milvus_retrieval") or {}).get("retrieval_backend") == "milvus")
+    result.trace["candidate_count_before"] = result.trace.get("catalog_product_count")
+    result.trace["candidate_count_after"] = len(result.product_cards or [])
+    result.trace["selected_product_ids"] = [str(card.get("product_id")) for card in result.product_cards if card.get("product_id")]
+    result.trace["llm_used_for_parse"] = bool(result.trace.get("llm_requirement_parse_used"))
+    result.trace.setdefault("llm_used_for_explanation", False)
+    result.trace["session_updated"] = True
     payload = model_to_dict(result)
     remember_recommendation(session, contextual_goal, payload)
     topic_memory = update_topic_memory(session, tool_call, result_type=payload.get("type") or "")
@@ -236,6 +280,8 @@ def call_recommendation_fn(
         parameters = {}
     if "use_llm_guidance" in parameters:
         kwargs["use_llm_guidance"] = use_llm_guidance
+    if "use_llm_explanation" in parameters:
+        kwargs["use_llm_explanation"] = use_llm_guidance
     if "catalog_scope" in parameters:
         kwargs["catalog_scope"] = catalog_scope
     if "use_milvus_retrieval" in parameters:

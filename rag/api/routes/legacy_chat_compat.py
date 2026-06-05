@@ -15,7 +15,7 @@ from rag.api.routes.common import request_product_ids
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.pc_session_flow import build_pc_plan_for_message
 from rag.recommendation.product_loader import load_combined_product_catalog
-from rag.recommendation.recommendation_pipeline import InvalidGoalError
+from rag.recommendation.recommendation_pipeline import InvalidGoalError, recommend_shopping_products
 from rag.recommendation.session_state import (
     apply_cart_instruction,
     cart_snapshot,
@@ -81,6 +81,8 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
         product_ids = list((tool_call.get("arguments") or {}).get("product_ids") or request_product_ids(request))
         if not product_ids:
             product_ids = last_recommended_product_ids(session)
+        if not product_ids:
+            product_ids = _comparison_candidate_ids(raw_message)
         comparison = compare_products(load_combined_product_catalog(), product_ids) if product_ids else {
             "count": 0,
             "rows": [],
@@ -129,6 +131,21 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
         "attachments": sanitize_report(attachments),
         "attachment_analysis": sanitize_report(attachment_report),
     }
+
+
+def _comparison_candidate_ids(message: str, limit: int = 2) -> List[str]:
+    try:
+        result = recommend_shopping_products(
+            message,
+            use_llm=False,
+            use_llm_guidance=False,
+            catalog_scope="combined",
+            use_milvus_retrieval=False,
+        )
+    except Exception:
+        return []
+    cards = model_to_dict(result).get("product_cards") or []
+    return dedupe_strings([str(card.get("product_id") or "") for card in cards if card.get("product_id")])[:limit]
 
 
 def legacy_chat_compat_enabled() -> bool:

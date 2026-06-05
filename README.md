@@ -222,19 +222,115 @@ python scripts/index_ecommerce_products.py --rebuild
 
 ## 测试
 
-默认测试命令：
+项目里测试分为“稳定回归测试”和“业务评估报告”两类。前者用于 CI 判断代码是否崩，后者用于暴露推荐链路、数据集和能力边界，不一定要求全部 case 通过。
+
+### 1. 快速本地回归
+
+用于开发时确认核心 Python 单测是否通过。建议显式指定 `--basetemp`，避免 Windows 默认临时目录权限问题。
 
 ```bash
-pytest
+python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
 ```
 
-部分能力若涉及 LLM、Milvus、Redis 或数据库连通性，是否完全通过会受本地环境影响。比赛演示前建议至少跑：
+如果只想验证新增的典型用户场景评估脚本结构：
+
+```bash
+python -m pytest tests/test_user_scenarios_eval.py -q --basetemp .pytest_tmp/user_scenarios
+```
+
+### 2. 数据集校验
+
+用于确认本地 PC 配件数据、兼容字段和基础数据结构没有破坏。适合 CI 和发版前执行。
+
+```bash
+python scripts/validate_pc_dataset.py --strict
+```
+
+### 3. 商品索引 dry-run
+
+用于确认普通电商商品能正确构建 RAG chunk，但不写入 Milvus。适合没有外部服务的本地检查。
+
+```bash
+python scripts/index_ecommerce_products.py --dry-run
+```
+
+需要重建 Milvus 索引时再运行：
+
+```bash
+python scripts/index_ecommerce_products.py --rebuild
+```
+
+### 4. 典型用户场景评估
+
+用于覆盖比赛说明中的典型用户场景，包括单轮推荐、条件筛选、多轮细化、对比、主动澄清、反选约束、跨类目组合、购物车 CRUD 和多模态边界。该脚本会先做 catalog probe，把结果区分为业务失败、数据集缺口和能力边界。
+
+默认命令不走外部大模型，`use_llm=False`，`runtime_mode=balanced`，适合稳定 CI：
+
+```bash
+python scripts/eval_user_scenarios.py --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+```
+
+如果要测试 full 链路和外部大模型，可显式开启：
+
+```bash
+python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+```
+
+说明：
+
+- `failed` 表示当前业务行为和验收口径不一致，通常需要修代码。
+- `catalog_gap` / `budget_catalog_gap` 表示当前商品库缺品或预算内缺货，不应算普通代码错误。
+- `capability_gap` / `capability_partial` 表示当前能力未实现或只实现了部分能力，例如真实图片语义理解。
+
+### 5. RAG / 检索评估
+
+用于评估商品召回、约束违例、catalog gap 和 negative case 的检索质量。默认更适合离线评估。
+
+```bash
+python scripts/eval_retrieval.py --output reports/retrieval_eval.json --markdown reports/retrieval_eval.md
+```
+
+如果要验证 Milvus 集合和向量索引健康：
+
+```bash
+python scripts/check_vector_index_health.py --output reports/vector_index_health.json
+```
+
+### 6. Full 链路消融评估
+
+用于比较 fast / rag_only / llm_only / full 等模式下，路由、RAG、LLM 解析和最终链路的有效率。该报告用于定位 Agent 层、RAG 层、LLM 层分别贡献了什么。
+
+```bash
+python scripts/eval_full_chain_ablation.py --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
+```
+
+只跑某个模式：
+
+```bash
+python scripts/eval_full_chain_ablation.py --mode rag_only --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
+```
+
+### 7. 比赛演示前建议组合
+
+无外部服务的稳定检查：
 
 ```bash
 python scripts/validate_pc_dataset.py --strict
 python scripts/index_ecommerce_products.py --dry-run
-pytest
+python scripts/eval_user_scenarios.py --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
 ```
+
+接近线上增强链路的检查：
+
+```bash
+python scripts/index_ecommerce_products.py --rebuild
+python scripts/check_vector_index_health.py --output reports/vector_index_health.json
+python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+python scripts/eval_full_chain_ablation.py --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
+```
+
+部分能力若涉及 LLM、Milvus、Redis 或数据库连通性，是否完全通过会受本地环境影响。
 
 ## 部署说明
 

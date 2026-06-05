@@ -89,13 +89,13 @@ def test_choose_runtime_mode_image_search_uses_full():
 def test_choose_runtime_mode_without_llm_uses_fast():
     decision = choose_runtime_mode("推荐一款手机", llm_configured=False)
 
-    assert decision.mode == "fast"
+    assert decision.mode == "degraded_fast"
 
 
 def test_choose_runtime_mode_test_env_uses_fast():
     decision = choose_runtime_mode("推荐一款手机", is_test_env=True)
 
-    assert decision.mode == "fast"
+    assert decision.mode == "degraded_fast"
 
 
 def test_choose_runtime_mode_respects_explicit_full():

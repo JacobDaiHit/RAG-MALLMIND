@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Protocol
 
 from rag.recommendation.product_loader import ProductCatalog
+from rag.recommendation.session_context import merge_requirement_memory, record_turn, requirement_to_delta
 
 
 DEFAULT_SESSION_TTL_SECONDS = 7200
@@ -43,6 +44,10 @@ class ShoppingSession:
     cart: Dict[str, CartItem] = field(default_factory=dict)
     topic_memory: Dict[str, Any] = field(default_factory=dict)
     tool_history: List[Dict[str, Any]] = field(default_factory=list)
+    last_requirement: Dict[str, Any] = field(default_factory=dict)
+    recent_turns: List[Dict[str, Any]] = field(default_factory=list)
+    recent_turns_summary: str = ""
+    failure_state: Dict[str, Any] = field(default_factory=dict)
 
 
 class BaseSessionStore(Protocol):
@@ -312,12 +317,14 @@ def session_from_dict(data: Any) -> ShoppingSession:
                 continue
     kwargs["cart"] = cart
 
-    for key in ("messages", "pc_build_history", "tool_history"):
+    for key in ("messages", "pc_build_history", "tool_history", "recent_turns"):
         if not isinstance(kwargs.get(key), list):
             kwargs[key] = []
-    for key in ("topic_memory",):
+    for key in ("topic_memory", "last_requirement", "failure_state"):
         if not isinstance(kwargs.get(key), dict):
-            kwargs[key] = default_topic_memory()
+            kwargs[key] = default_topic_memory() if key == "topic_memory" else {}
+    if not isinstance(kwargs.get("recent_turns_summary"), str):
+        kwargs["recent_turns_summary"] = ""
     if kwargs.get("last_result") is None:
         kwargs["last_result"] = {}
     try:
@@ -456,6 +463,20 @@ def remember_recommendation(session: ShoppingSession, goal: str, result_payload:
     session.last_result = result_payload
     session.messages.append(goal)
     del session.messages[:-12]
+    requirement = (result_payload or {}).get("requirement") or {}
+    if requirement:
+        merge_requirement_memory(session, requirement, goal)
+    trace = (result_payload or {}).get("trace") or {}
+    record_turn(
+        session,
+        role="user",
+        content=goal,
+        tool_name=((trace.get("tool_call") or {}).get("name") or ""),
+        selected_runtime_mode=str(trace.get("selected_runtime_mode") or trace.get("selected_mode") or trace.get("runtime_mode") or ""),
+        requirement_delta=requirement_to_delta(requirement),
+        selected_product_ids=last_recommended_product_ids(session),
+        failure_type=str(trace.get("no_match_reason") or trace.get("fallback_blocked_reason") or ""),
+    )
     save_session(session)
 
 
@@ -523,8 +544,9 @@ def apply_cart_instruction(
     product_ids: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     instruction = " ".join(str(instruction or "").split())
-    ids = product_ids or extract_product_ids(instruction) or last_recommended_product_ids(session)
     action = infer_cart_action(instruction)
+    index = None if action == "set_quantity" else extract_item_index(instruction)
+    ids = resolve_cart_product_ids(session, instruction, action, product_ids=product_ids, index=index)
     quantity = extract_quantity(instruction) or 1
     changed: List[str] = []
 
@@ -532,6 +554,8 @@ def apply_cart_instruction(
         session.cart.clear()
         changed.append("已清空购物车。")
     elif action == "remove":
+        if index is not None and not ids:
+            changed.append(f"购物车里没有第 {index + 1} 个商品，未删除任何商品。")
         for product_id in ids:
             if product_id in session.cart:
                 product = catalog.get(product_id)
@@ -556,6 +580,14 @@ def apply_cart_instruction(
             changed.append(f"已将 {product.title} 加入购物车，数量 {max(quantity, 1)}。")
 
     save_session(session)
+    record_turn(
+        session,
+        role="user",
+        content=instruction,
+        tool_name="apply_cart_instruction",
+        cart_delta={"action": action, "product_ids": ids, "changed": changed},
+        failure_type="" if changed else "cart_no_target",
+    )
     return {
         "session_id": session.session_id,
         "action": action,
@@ -594,9 +626,9 @@ def cart_snapshot(session: ShoppingSession, catalog: ProductCatalog) -> Dict[str
 
 
 def infer_cart_action(instruction: str) -> str:
-    if any(keyword in instruction for keyword in ["清空", "全部删除"]):
+    if any(keyword in instruction for keyword in ["清空", "全部删除", "删光"]):
         return "clear"
-    if any(keyword in instruction for keyword in ["删除", "移除", "不要了"]):
+    if any(keyword in instruction for keyword in ["删除", "删掉", "删了", "移除", "不要了"]):
         return "remove"
     if any(keyword in instruction for keyword in ["数量", "改成", "改为", "修改"]):
         return "set_quantity"
@@ -613,6 +645,56 @@ def extract_quantity(instruction: str) -> Optional[int]:
 def extract_product_ids(text: str) -> List[str]:
     pattern = r"(?:p_(?:beauty|digital|clothes|food)_\d{3}|pc_[A-Za-z0-9_]+)"
     return re.findall(pattern, text)
+
+
+def resolve_cart_product_ids(
+    session: ShoppingSession,
+    instruction: str,
+    action: str,
+    *,
+    product_ids: Optional[List[str]] = None,
+    index: Optional[int] = None,
+) -> List[str]:
+    explicit_ids = product_ids or extract_product_ids(instruction)
+    if explicit_ids:
+        return select_by_index(explicit_ids, index)
+    if action == "remove":
+        cart_ids = list(session.cart.keys())
+        if index is not None:
+            return [cart_ids[index]] if 0 <= index < len(cart_ids) else []
+        return cart_ids[:1] if references_previous_item(instruction) else last_recommended_product_ids(session)
+    recommended_ids = last_recommended_product_ids(session)
+    if index is not None:
+        return select_by_index(recommended_ids, index)
+    if references_previous_item(instruction):
+        return recommended_ids[:1]
+    return recommended_ids
+
+
+def select_by_index(ids: List[str], index: Optional[int]) -> List[str]:
+    if index is None:
+        return ids
+    return [ids[index]] if 0 <= index < len(ids) else []
+
+
+def references_previous_item(instruction: str) -> bool:
+    return any(term in instruction for term in ["刚才那款", "上一个", "上个", "这个", "这款", "第一款", "第一个", "第二款", "第二个", "第三款", "第三个"])
+
+
+def extract_item_index(instruction: str) -> Optional[int]:
+    text = instruction or ""
+    patterns = [
+        (r"(?:第\s*)?1\s*(?:个|款|号)", 0),
+        (r"(?:第\s*)?2\s*(?:个|款|号)", 1),
+        (r"(?:第\s*)?3\s*(?:个|款|号)", 2),
+        (r"第一\s*(?:个|款|号)?", 0),
+        (r"第二\s*(?:个|款|号)?", 1),
+        (r"第三\s*(?:个|款|号)?", 2),
+    ]
+    for pattern, index in patterns:
+        if re.search(pattern, text):
+            return index
+    return None
 
 
 def last_recommended_product_ids(session: ShoppingSession) -> List[str]:

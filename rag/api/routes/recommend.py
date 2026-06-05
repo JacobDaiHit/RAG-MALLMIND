@@ -1,6 +1,5 @@
 import json
 import os
-from dataclasses import asdict
 from typing import Any, Dict, Optional
 
 from fastapi import APIRouter, HTTPException, Query
@@ -16,12 +15,11 @@ from rag.api.app_context import (
 )
 from rag.api.attachments import prepare_attachments_for_recommendation
 from rag.api.request_models import GoalRequest, PromptFinalizeRequest
+from rag.api.runtime_context import apply_runtime_trace, build_adaptive_runtime_context, runtime_event_payload
 from rag.api.sse import sse_event
 from rag.recommendation import InvalidGoalError, parse_requirement, parse_requirement_rule_based, recommend_shopping_products
 from rag.recommendation.input_preprocessor import preprocess_user_input
 from rag.recommendation.recommendation_graph import stream_recommendation_graph
-from rag.recommendation.runtime_mode import runtime_policy_for_mode
-from rag.recommendation.runtime_mode_selector import choose_runtime_mode
 from rag.recommendation.session_state import get_session
 from rag.recommendation.tool_router import route_shopping_tool_call
 from rag.utils.runtime_errors import public_error, sanitize_report, sanitize_result_for_response
@@ -87,8 +85,10 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
 
     session = get_session(request.session_id) if request.session_id else None
     llm_configured = stream_llm_enabled()
-    decision = choose_runtime_mode(
+    route_session = session or get_session(None)
+    runtime_context = build_adaptive_runtime_context(
         request.goal,
+        route_session,
         requested_mode=getattr(request, "mode", None) or "auto",
         has_attachments=bool(request.attachments),
         has_image_data=_has_image_data(request.attachments),
@@ -96,7 +96,10 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
         is_test_env=_is_test_env(),
         system_degraded=_system_degraded(),
     )
-    policy = runtime_policy_for_mode(decision.mode, llm_configured=llm_configured)
+    decision = runtime_context["decision"]
+    policy = runtime_context["policy"]
+    if session is not None:
+        session.runtime_mode = decision.selected_mode
     goal, attachments, attachment_report = prepare_recommendation_context(
         request.goal,
         request.attachments,
@@ -105,7 +108,7 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
     )
     try:
         validate_goal(goal)
-        catalog_scope = infer_recommend_catalog_scope(request.goal, session)
+        catalog_scope = infer_recommend_catalog_scope(request.goal, session, local_route=runtime_context["local_route"])
         result = recommend_shopping_products(
             goal,
             use_llm=policy.use_requirement_llm,
@@ -120,26 +123,27 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
     trace = payload.setdefault("trace", {})
     trace["attachments"] = attachments
     trace["attachment_analysis"] = sanitize_report(attachment_report)
-    trace["runtime_mode"] = decision.mode
-    trace["requested_mode"] = getattr(request, "mode", None) or "auto"
-    trace["selected_mode"] = decision.mode
-    trace["llm_configured"] = llm_configured
-    trace["use_milvus_retrieval"] = policy.use_milvus_retrieval
-    trace["use_rag_query_expansion"] = policy.use_rag_query_expansion
-    trace["runtime_mode_decision"] = {
-        "mode": decision.mode,
-        "reason": decision.reason,
-        "signals": decision.signals,
-    }
-    trace["runtime_policy"] = asdict(policy)
+    apply_runtime_trace(
+        trace,
+        decision=decision,
+        policy=policy,
+        requested_mode=getattr(request, "mode", None) or "auto",
+        llm_configured=llm_configured,
+        has_attachments=bool(request.attachments),
+        has_image_data=_has_image_data(request.attachments),
+        is_test_env=_is_test_env(),
+        system_degraded=_system_degraded(),
+    )
+    trace["llm_used_for_parse"] = bool(trace.get("llm_requirement_parse_used"))
+    trace.setdefault("llm_used_for_explanation", False)
     return payload
 
 
-def infer_recommend_catalog_scope(goal: str, session: Any = None) -> str:
+def infer_recommend_catalog_scope(goal: str, session: Any = None, *, local_route: Optional[Dict[str, Any]] = None) -> str:
     """Use the same router rules as chat to choose the recommendation catalog."""
 
     route_session = session or get_session(None)
-    tool_call = route_shopping_tool_call(goal, route_session, use_llm=False)
+    tool_call = local_route or route_shopping_tool_call(goal, route_session, use_llm=False)
     if tool_call.get("name") != "recommend_shopping_products":
         return "ecommerce"
     scope = (tool_call.get("arguments") or {}).get("catalog_scope") or "ecommerce"
@@ -180,8 +184,10 @@ def stream_recommend(
 
     session = get_session(session_id) if session_id else None
     llm_configured = stream_llm_enabled()
-    decision = choose_runtime_mode(
+    route_session = session or get_session(None)
+    runtime_context = build_adaptive_runtime_context(
         goal,
+        route_session,
         requested_mode=mode,
         has_attachments=bool(attachments),
         has_image_data=_has_image_data(attachments),
@@ -189,7 +195,10 @@ def stream_recommend(
         is_test_env=_is_test_env(),
         system_degraded=_system_degraded(),
     )
-    policy = runtime_policy_for_mode(decision.mode, llm_configured=llm_configured)
+    decision = runtime_context["decision"]
+    policy = runtime_context["policy"]
+    if session is not None:
+        session.runtime_mode = decision.selected_mode
     parse_goal, attachment_items, attachment_report = prepare_recommendation_context(
         goal,
         attachments,
@@ -210,17 +219,16 @@ def stream_recommend(
     def generate():
         yield sse_event(
             "runtime_mode",
-            {
-                "mode": decision.mode,
-                "requested_mode": mode or "auto",
-                "selected_mode": decision.mode,
-                "reason": decision.reason,
-                "signals": decision.signals,
-                "llm_configured": llm_configured,
-                "use_milvus_retrieval": policy.use_milvus_retrieval,
-                "use_rag_query_expansion": policy.use_rag_query_expansion,
-                "policy": asdict(policy),
-            },
+            runtime_event_payload(
+                decision=decision,
+                policy=policy,
+                requested_mode=mode,
+                llm_configured=llm_configured,
+                has_attachments=bool(attachments),
+                has_image_data=_has_image_data(attachments),
+                is_test_env=_is_test_env(),
+                system_degraded=_system_degraded(),
+            ),
         )
         yield sse_event(
             "step",
@@ -243,18 +251,17 @@ def stream_recommend(
                 trace["attachments"] = attachment_items
                 trace["attachment_analysis"] = sanitize_report(attachment_report)
                 trace["preprocessed_input"] = preprocess_user_input(goal, attachment_items).to_trace()
-                trace["runtime_mode"] = decision.mode
-                trace["requested_mode"] = mode or "auto"
-                trace["selected_mode"] = decision.mode
-                trace["llm_configured"] = llm_configured
-                trace["use_milvus_retrieval"] = policy.use_milvus_retrieval
-                trace["use_rag_query_expansion"] = policy.use_rag_query_expansion
-                trace["runtime_mode_decision"] = {
-                    "mode": decision.mode,
-                    "reason": decision.reason,
-                    "signals": decision.signals,
-                }
-                trace["runtime_policy"] = asdict(policy)
+                apply_runtime_trace(
+                    trace,
+                    decision=decision,
+                    policy=policy,
+                    requested_mode=mode,
+                    llm_configured=llm_configured,
+                    has_attachments=bool(attachments),
+                    has_image_data=_has_image_data(attachments),
+                    is_test_env=_is_test_env(),
+                    system_degraded=_system_degraded(),
+                )
                 payload["trace"] = trace
                 payload = sanitize_result_for_response(payload)
             yield sse_event(item.event, payload)

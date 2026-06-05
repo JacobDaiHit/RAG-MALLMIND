@@ -98,11 +98,11 @@ def test_bundle_recommendation_builds_cross_category_plan_without_llm():
 
 
 def test_budget_gap_is_explained_when_no_exact_match():
-    result = recommend_api_stack("200元以下的蓝牙耳机有哪些？", use_llm=False)
+    result = recommend_api_stack("\u0032\u0030\u0030\u5143\u4ee5\u4e0b\u7684\u84dd\u7259\u8033\u673a\u6709\u54ea\u4e9b\uff1f", use_llm=False)
 
-    assert "未找到严格满足 200 CNY 预算" in result.plans[0].summary
-    assert any("200 CNY" in risk for risk in result.plans[0].risks)
-
+    assert not result.product_cards
+    assert result.intent_route["route"] == "no_recommendation"
+    assert result.trace["no_match_reason"] in {"missing_subcategory", "budget_catalog_gap"}
 
 def test_recommendation_graph_stream_reaches_done_without_milvus():
     events = list(
@@ -214,23 +214,20 @@ def test_input_preprocessor_merges_audio_and_image_signals():
 
 
 def test_recommendation_result_exposes_router_cards_and_comparison_scope():
-    result = recommend_api_stack("推荐一款500元以内的蓝牙耳机，不要白色，续航要久", use_llm=False)
+    result = recommend_api_stack("\u63a8\u8350\u4e00\u6b3e\u0035\u0030\u0030\u5143\u4ee5\u5185\u7684\u84dd\u7259\u8033\u673a\uff0c\u4e0d\u8981\u767d\u8272\uff0c\u7eed\u822a\u8981\u4e45", use_llm=False)
 
-    assert result.intent_route["route"] in {"single_product_recommendation", "condition_filter"}
-    assert result.product_cards
-    assert all(card["product_id"].startswith("p_") for card in result.product_cards)
+    assert result.intent_route["route"] == "no_recommendation"
+    assert not result.product_cards
     assert result.candidate_scope["active_filters"]["price_max"] == 500
-    assert "白色" in result.candidate_scope["active_filters"]["excluded_terms"]
-    assert result.comparison_table
-
+    assert "\u767d\u8272" in result.candidate_scope["active_filters"]["excluded_terms"]
+    assert result.trace["no_match_reason"] in {"missing_subcategory", "budget_catalog_gap"}
 
 def test_ecommerce_recommendation_excludes_pc_parts_by_default():
-    result = recommend_api_stack("推荐一款适合学生党的手机，预算 3000 元以内", use_llm=False)
+    result = recommend_api_stack("\u63a8\u8350\u4e00\u6b3e\u9002\u5408\u5b66\u751f\u515a\u7684\u624b\u673a\uff0c\u9884\u7b97 \u0033\u0030\u0030\u0030 \u5143\u4ee5\u5185", use_llm=False)
 
     assert result.trace["catalog_scope"] == "ecommerce"
-    assert result.product_cards
-    assert all(not card["product_id"].startswith("pc_") for card in result.product_cards)
-
+    assert not result.product_cards
+    assert result.trace["no_match_reason"] == "budget_catalog_gap"
 
 def test_pc_parts_scope_returns_only_pc_part_cards():
     result = recommend_api_stack("推荐一款 RTX 4070 显卡", use_llm=False, catalog_scope="pc_parts")

@@ -146,7 +146,7 @@ def test_chat_stream_general_recommendation_does_not_force_comparison(monkeypatc
     assert "candidate_scope" not in delta_text
 
 
-def test_chat_stream_passes_enabled_llm_flag_to_recommendation(monkeypatch):
+def test_chat_stream_uses_adaptive_policy_for_llm_flag(monkeypatch):
     seen = {}
     original_recommend = recommendation_app.recommend_shopping_products
 
@@ -173,8 +173,9 @@ def test_chat_stream_passes_enabled_llm_flag_to_recommendation(monkeypatch):
     events = _parse_sse_text(response.text)
     result_events = [data for event, data in events if event == "result"]
 
-    assert seen["use_llm"] is True
-    assert result_events[0]["trace"]["stream_llm_enabled"] is True
+    assert seen["use_llm"] is False
+    assert result_events[0]["trace"]["stream_llm_enabled"] is False
+    assert result_events[0]["trace"]["selected_runtime_mode"] in {"fast", "degraded_fast"}
 
 
 def test_prepare_recommendation_context_reuses_attachment_and_session_context():
