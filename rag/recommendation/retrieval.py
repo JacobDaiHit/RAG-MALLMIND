@@ -54,12 +54,44 @@ class RetrievalEvidence:
         return list(self.by_product_id.get(product_id, []))
 
     def to_trace(self) -> Dict[str, Any]:
+        provider = os.getenv("EMBEDDING_PROVIDER", "local")
+        model = os.getenv("EMBEDDING_MODEL", "BAAI/bge-m3")
+        dim = os.getenv("EMBEDDING_DIM") or os.getenv("DENSE_EMBEDDING_DIM", "1024")
+        collection = os.getenv("MILVUS_COLLECTION", "embeddings_collection")
+        raw_hit_count = sum(_safe_int(item.get("raw_hits")) or 0 for item in self.postprocess)
+        before_postprocess = sum(_safe_int(item.get("retrieved_chunk_count_before_postprocess") or item.get("raw_hits")) or 0 for item in self.postprocess)
+        after_postprocess = sum(_safe_int(item.get("retrieved_chunk_count_after_postprocess") or item.get("final_hits")) or 0 for item in self.postprocess)
+        filters = _dedupe_strings(str(item.get("retrieval_filter") or item.get("filter_expr") or "") for item in self.postprocess)
+        retrieval_queries = _dedupe_strings(str(item.get("retrieval_query") or "") for item in self.postprocess)
+        postprocess_errors = [
+            str(item.get("rag_postprocess_error") or item.get("rerank_error") or "")
+            for item in self.postprocess
+            if item.get("rag_postprocess_error") or item.get("rerank_error")
+        ]
         return sanitize_report({
             "status": self.status,
+            "rag_used": self.status in {"ok", "empty", "partial"},
+            "retrieval_backend": "milvus" if self.status in {"ok", "empty", "partial", "failed", "timeout", "no_collection"} else "structured_catalog",
+            "retrieval_query": retrieval_queries[0] if retrieval_queries else "",
+            "retrieval_queries": retrieval_queries,
+            "retrieval_filters": filters,
+            "embedding_provider": provider,
+            "embedding_model": model,
+            "embedding_dim": _safe_int(dim),
+            "milvus_collection": collection,
+            "milvus_raw_hit_count": raw_hit_count,
+            "retrieved_chunk_count_before_postprocess": before_postprocess,
+            "retrieved_chunk_count_after_postprocess": after_postprocess,
+            "retrieved_chunk_count": self.total_hits,
             "total_hits": self.total_hits,
             "hits_by_category": self.by_category,
             "matched_product_ids": sorted(self.by_product_id.keys()),
+            "retrieved_product_ids": sorted(self.by_product_id.keys()),
             "error": self.error,
+            "retrieval_error": self.error,
+            "retrieval_timeout": self.status == "timeout",
+            "postprocess_error": "; ".join(postprocess_errors),
+            "auto_merge_status": _auto_merge_status(self.postprocess),
             "query_expansion_enabled": self.query_expansion_enabled,
             "rag_postprocess_enabled": RAG_POSTPROCESS_ENABLED,
             "query_variants": self.query_variants,
@@ -137,6 +169,7 @@ class EvidenceRetriever:
                         {
                             "component": category.value,
                             "kind": variant.kind,
+                            "retrieval_query": variant.query,
                             "query_preview": variant.query[:240],
                             **variant.metadata,
                         }
@@ -231,10 +264,14 @@ class EvidenceRetriever:
         meta: Dict[str, Any] = {
             "component": category.value,
             "query_kind": variant.kind,
+            "retrieval_query": variant.query,
             "candidate_k": candidate_k,
             "filter_expr": filter_expr,
+            "retrieval_filter": filter_expr,
             "retrieval_mode": "unknown",
             "raw_hits": 0,
+            "retrieved_chunk_count_before_postprocess": 0,
+            "retrieved_chunk_count_after_postprocess": 0,
         }
 
         dense_embedding = embedding_service.get_embeddings([variant.query])[0]
@@ -261,9 +298,12 @@ class EvidenceRetriever:
                 logger.exception("Dense fallback retrieval failed")
                 meta["dense_error"] = public_error(dense_exc, fallback="dense_fallback_failed")
                 meta["retrieval_mode"] = "failed"
+                meta["retrieval_error"] = meta["dense_error"]
                 return [], meta
 
         meta["raw_hits"] = len(hits)
+        meta["milvus_raw_hit_count"] = len(hits)
+        meta["retrieved_chunk_count_before_postprocess"] = len(hits)
         processed, post_meta = self._apply_rag_postprocess(variant.query, hits)
         meta.update(post_meta)
 
@@ -274,6 +314,7 @@ class EvidenceRetriever:
             item["retrieval_mode"] = meta["retrieval_mode"]
             compacted.append(item)
         meta["final_hits"] = len(compacted)
+        meta["retrieved_chunk_count_after_postprocess"] = len(compacted)
         return compacted, meta
 
     def _apply_rag_postprocess(
@@ -463,3 +504,35 @@ def _milvus_port_available(manager: Any) -> bool:
             return True
     except OSError:
         return False
+
+
+def _safe_int(value: Any) -> int | None:
+    try:
+        parsed = int(str(value))
+    except (TypeError, ValueError):
+        return None
+    return parsed if parsed > 0 else None
+
+
+def _dedupe_strings(items: Iterable[str]) -> List[str]:
+    seen = set()
+    result = []
+    for item in items:
+        text = str(item or "").strip()
+        if not text or text in seen:
+            continue
+        seen.add(text)
+        result.append(text)
+    return result
+
+
+def _auto_merge_status(items: List[Dict[str, Any]]) -> str:
+    if not items:
+        return "not_run"
+    if any(item.get("rag_postprocess_error") for item in items):
+        return "error"
+    if any(item.get("auto_merge_applied") for item in items):
+        return "applied"
+    if any("auto_merge_applied" in item for item in items):
+        return "not_applied"
+    return "unknown"

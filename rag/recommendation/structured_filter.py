@@ -104,24 +104,7 @@ def filter_products_for_requirement(
     inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
     product_type_category = category_for_product_type(inferred_product_type)
     if product_type_category and category.value != product_type_category:
-        diagnostics = FilterDiagnostics(
-            category=category,
-            raw_count=len(raw),
-            after_stock_count=len(stock_filtered),
-            after_exclusion_count=len(exclusion_filtered),
-            after_target_count=len(target_filtered),
-            after_must_have_count=len(must_have_filtered),
-            after_budget_count=0,
-            inferred_product_type=inferred_product_type or "",
-            product_type_filter_applied=True,
-            product_type_candidate_count=0,
-            pc_part_constraints=pc_constraints,
-            pc_constraint_filter_applied=pc_constraint_filter_applied,
-            pc_constraint_candidate_count=len(pc_constraint_filtered),
-            pc_constraint_relaxed=pc_constraint_relaxed,
-            returned_count=0,
-        )
-        return [], diagnostics
+        inferred_product_type = None
     product_type_filtered = [
         product
         for product in constrained_candidates

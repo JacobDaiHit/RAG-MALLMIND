@@ -1,0 +1,178 @@
+{
+  "status": "failed",
+  "errors": [
+    "Embedding provider dashscope/text-embedding-v4 request failed: HTTPSConnectionPool(host='dashscope.aliyuncs.com', port=443): Max retries exceeded with url: /compatible-mode/v1/embeddings (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000019A7CB6BE80>: Failed to establish a new connection: [WinError 10013] 以一种访问权限不允许的方式做了一个访问套接字的尝试。'))"
+  ],
+  "warnings": [],
+  "config": {
+    "milvus_host": "127.0.0.1",
+    "milvus_port": "19530",
+    "milvus_collection": "mallmind_product_chunks_qwen_v1",
+    "embedding_provider": "dashscope",
+    "embedding_model": "text-embedding-v4",
+    "embedding_dim": 1024,
+    "milvus_uri": "http://localhost:19530"
+  },
+  "collection": {
+    "name": "mallmind_product_chunks_qwen_v1",
+    "exists": true,
+    "entity_count": 884,
+    "dense_vector_dim": 1024,
+    "indexes": [
+      {
+        "M": "16",
+        "efConstruction": "256",
+        "metric_type": "IP",
+        "index_type": "HNSW",
+        "field_name": "dense_embedding",
+        "index_name": "dense_embedding",
+        "total_rows": 884,
+        "indexed_rows": 884,
+        "pending_index_rows": 0,
+        "state": "Finished"
+      },
+      {
+        "drop_ratio_build": "0.2",
+        "metric_type": "IP",
+        "index_type": "SPARSE_INVERTED_INDEX",
+        "field_name": "sparse_embedding",
+        "index_name": "sparse_embedding",
+        "total_rows": 884,
+        "indexed_rows": 884,
+        "pending_index_rows": 0,
+        "state": "Finished"
+      }
+    ],
+    "description": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "dense_embedding",
+          "type": "101",
+          "params": {
+            "dim": 1024
+          }
+        },
+        {
+          "name": "sparse_embedding",
+          "type": "104",
+          "params": {}
+        },
+        {
+          "name": "text",
+          "type": "21",
+          "params": {
+            "max_length": 8192
+          }
+        },
+        {
+          "name": "filename",
+          "type": "21",
+          "params": {
+            "max_length": 255
+          }
+        },
+        {
+          "name": "file_type",
+          "type": "21",
+          "params": {
+            "max_length": 50
+          }
+        },
+        {
+          "name": "file_path",
+          "type": "21",
+          "params": {
+            "max_length": 1024
+          }
+        },
+        {
+          "name": "page_number",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "chunk_idx",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "parent_chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "root_chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "chunk_level",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "product_id",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "title",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "brand",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "chunk_type",
+          "type": "21",
+          "params": {
+            "max_length": 64
+          }
+        },
+        {
+          "name": "component_type",
+          "type": "21",
+          "params": {
+            "max_length": 64
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "23",
+          "params": {}
+        }
+      ]
+    }
+  },
+  "smoke_tests": [],
+  "latency_ms": 470.16,
+  "infrastructure_status": "failed",
+  "positive_smoke_status": "ok",
+  "catalog_gap_warning_status": "ok",
+  "overall_status": "failed"
+}

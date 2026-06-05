@@ -52,7 +52,7 @@ def build_recommendation_result(
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
     no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
-    if no_match_reason and (normalized_scope != "pc_parts" or "预算" in no_match_reason):
+    if no_match_reason and (normalized_scope != "pc_parts" or no_match_reason == "budget_impossible"):
         return build_no_recommendation_result(
             requirement=requirement,
             catalog=catalog,

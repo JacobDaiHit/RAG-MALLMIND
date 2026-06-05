@@ -8,7 +8,7 @@ _Default main summary includes in_catalog_exact and in_catalog_attribute_gap cas
 - Success cases: 24
 - Metric-eligible cases: 24
 - Empty results: 0 (0.000)
-- Average latency: 6.73 ms
+- Average latency: 26.09 ms
 - precision@1: 0.833 / precision@3: 0.667 / precision@5: 0.400 / precision@10: 0.200
 - strict_recall@1: 0.274 / strict_recall@3: 0.568 / strict_recall@5: 0.568 / strict_recall@10: 0.568
 - relaxed_recall@1: 0.256 / relaxed_recall@3: 0.550 / relaxed_recall@5: 0.550 / relaxed_recall@10: 0.550
@@ -26,7 +26,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - Success cases: 30
 - Metric-eligible cases: 28
 - Empty results: 2 (0.067)
-- Average latency: 6.00 ms
+- Average latency: 21.94 ms
 - precision@1: 0.857 / precision@3: 0.655 / precision@5: 0.393 / precision@10: 0.196
 - strict_recall@1: 0.287 / strict_recall@3: 0.561 / strict_recall@5: 0.561 / strict_recall@10: 0.561
 - relaxed_recall@1: 0.253 / relaxed_recall@3: 0.522 / relaxed_recall@5: 0.522 / relaxed_recall@10: 0.522
@@ -43,7 +43,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - relaxed_recall@5: 0.550
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 1.000
-- avg_latency_ms: 6.73
+- avg_latency_ms: 26.09
 
 ## PC Summary
 
@@ -52,7 +52,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - relaxed_recall@5: 0.353
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 1.000
-- avg_latency_ms: 4.47
+- avg_latency_ms: 7.83
 
 ## Ambiguous Summary
 
@@ -83,7 +83,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - negative_returned_any_rate: 0.000
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 0.500
-- avg_latency_ms: 0.23
+- avg_latency_ms: 0.31
 
 ## Worst Cases
 

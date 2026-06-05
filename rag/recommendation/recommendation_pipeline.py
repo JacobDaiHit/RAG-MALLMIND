@@ -170,6 +170,7 @@ def recommend_shopping_products(
 
     validate_business_goal(user_goal)
     requirement = parse_requirement(user_goal, use_llm=use_llm)
+    requirement_parse_trace = build_requirement_parse_trace(requirement, use_llm=use_llm)
     if is_pc_query(user_goal) and catalog_scope != "pc_parts":
         catalog_scope = "pc_parts"
     result = build_recommendation_result(
@@ -179,6 +180,9 @@ def recommend_shopping_products(
         use_milvus_retrieval=use_milvus_retrieval,
         use_rag_query_expansion=use_rag_query_expansion,
     )
+    result.trace["requirement_parsing"] = requirement_parse_trace
+    result.trace["llm_requirement_parse_used"] = requirement_parse_trace["llm_parse_used"]
+    result.trace["rule_parse_used"] = requirement_parse_trace["rule_parse_used"]
     guidance_enabled = should_use_llm_guidance(user_goal) if use_llm_guidance is None else use_llm_guidance
     return enrich_recommendation_result(result, use_llm=use_llm and guidance_enabled)
 
@@ -320,6 +324,26 @@ def should_use_llm_guidance(message: str) -> bool:
         return False
     detail_terms = ["详细解释", "完整分析", "购买建议", "为什么推荐", "解释一下", "详细分析"]
     return any(term in (message or "") for term in detail_terms)
+
+
+def build_requirement_parse_trace(requirement: RequirementSpec, *, use_llm: bool) -> Dict[str, Any]:
+    assumptions = list(getattr(requirement, "assumptions", []) or [])
+    llm_used = any("生成式大模型已参与需求理解" in item for item in assumptions)
+    fallback_reason = ""
+    if not use_llm:
+        fallback_reason = "llm_disabled_by_runtime_policy"
+    elif any("未配置生成式大模型" in item for item in assumptions):
+        fallback_reason = "llm_not_configured"
+    elif any("生成式大模型需求解析失败" in item for item in assumptions):
+        fallback_reason = "llm_parse_failed"
+    elif not llm_used:
+        fallback_reason = "rule_parse_sufficient_or_auto_skipped"
+    return {
+        "rule_parse_used": True,
+        "llm_parse_requested": bool(use_llm),
+        "llm_parse_used": llm_used,
+        "parse_fallback_reason": fallback_reason,
+    }
 
 
 def _env_bool(name: str, *, default: bool) -> bool:
@@ -528,8 +552,20 @@ def infer_desired_categories(raw: str, lower: str) -> List[ComponentCategory]:
     for category, keywords in CATEGORY_KEYWORDS.items():
         if has_any(lower, keywords):
             categories.append(category)
-    if has_any(lower, ["三亚", "度假", "防晒穿搭", "穿搭方案"]):
+
+    travel_bundle_terms = [
+        "三亚",
+        "度假",
+        "旅行",
+        "海边",
+        "防晒到穿搭",
+        "防晒穿搭",
+        "穿搭方案",
+        "从防晒到穿搭",
+    ]
+    if has_any(lower, travel_bundle_terms):
         categories.extend([ComponentCategory.beauty, ComponentCategory.clothing])
+
     return dedupe_categories(categories)
 
 

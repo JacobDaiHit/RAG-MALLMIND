@@ -10,6 +10,7 @@ pillow>=9.0.0
 langchain>=0.2.0
 langchain-core>=0.2.0
 langchain-openai>=0.1.0
+openai>=1.30.0
 
 # Local embedding models
 sentence-transformers>=2.7.0
@@ -18,6 +19,7 @@ langchain-huggingface>=0.0.3
 
 # Retrieval, ecommerce product ingestion, and vector store integration
 pymilvus>=2.4.0
+numexpr>=2.7.3
 
 # Optional storage helpers used by parent chunk/cache modules
 redis>=5.0.0

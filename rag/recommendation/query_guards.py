@@ -32,7 +32,8 @@ PC_QUERY_TERMS = [
 
 PC_QUERY_TERMS.extend(["主机", "整机", "核显", "电脑配置"])
 
-UNSUPPORTED_CATEGORY_TERMS = ["宠物", "猫粮", "狗粮", "自动喂食器", "家电", "冰箱", "洗衣机", "医药", "处方药", "感冒药", "电动车", "摩托车"]
+UNSUPPORTED_CATEGORY_TERMS = ["宠物", "猫粮", "狗粮", "自动喂食器", "家电", "冰箱", "洗衣机", "汽车", "轿车", "suv", "电动车", "摩托车"]
+SAFETY_RESTRICTED_CATEGORY_TERMS = ["医药", "处方药", "感冒药"]
 PREMIUM_TERMS = ["旗舰", "高端", "顶配", "拍照旗舰", "影像旗舰", "rtx 4090", "4090"]
 
 PRODUCT_TYPE_TERMS: Dict[str, Iterable[str]] = {
@@ -389,12 +390,16 @@ def product_matches_type(product: Any, product_type: Optional[str]) -> bool:
 def detect_no_match_reason(query: str, *, price_max: Optional[float] = None) -> Optional[str]:
     text = normalize_text(query)
     effective_price_max = price_max if price_max is not None else _parse_budget_amount(str(query or ""))
+    if any(normalize_text(term) in text for term in SAFETY_RESTRICTED_CATEGORY_TERMS):
+        return "safety_restricted_category"
     if any(normalize_text(term) in text for term in UNSUPPORTED_CATEGORY_TERMS):
-        return "当前商品库暂无该类商品，建议扩大商品库或换一个品类。"
+        return "unsupported_category"
+    if effective_price_max is not None and effective_price_max <= 100 and any(term in text for term in ("iphone", "苹果手机")):
+        return "budget_impossible"
     if effective_price_max is not None and effective_price_max <= 500 and any(normalize_text(term) in text for term in PREMIUM_TERMS):
-        return "预算与目标规格冲突，是否提高预算或降低要求？"
+        return "budget_impossible"
     if effective_price_max is not None and effective_price_max <= 1000 and ("rtx4090" in text or "4090" in text):
-        return "预算与目标规格冲突，是否提高预算或降低要求？"
+        return "budget_impossible"
     return None
 
 
