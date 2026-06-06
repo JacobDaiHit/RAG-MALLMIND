@@ -29,19 +29,30 @@ logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
-class LLMConfig:
-    """大模型连接配置，集中保存 base_url、model、api_key 等环境变量结果。"""
-    api_key: str
+class LLMProviderConfig:
+    """OpenAI-compatible chat provider config resolved from environment."""
+    provider: str
     base_url: str
+    api_key: str
     model: str
     fast_model: str
-    timeout_seconds: int = 60
+    timeout_seconds: int = 30
+    supports_json_mode: bool = False
+    supports_tool_calls: bool = False
+    extra_headers: Dict[str, str] = field(default_factory=dict)
+    configured: bool = True
+    config_error_code: str = ""
+    config_error_reason: str = ""
+
+
+LLMConfig = LLMProviderConfig
 
 
 @dataclass
 class LLMCallReport:
     """大模型调用诊断报告，用来记录耗时、状态码和脱敏错误信息。"""
     configured: bool
+    provider: str = ""
     success: bool = False
     url: str = ""
     model: str = ""
@@ -50,19 +61,26 @@ class LLMCallReport:
     error: str = ""
     usage: Dict[str, Any] = field(default_factory=dict)
     response_preview: str = ""
+    config_error_code: str = ""
 
     def to_public_dict(self) -> Dict[str, Any]:
-        return {
+        payload = {
             "configured": self.configured,
             "success": self.success,
             "status_code": self.status_code,
             "elapsed_ms": self.elapsed_ms,
             "has_error": bool(self.error),
         }
+        if self.provider:
+            payload["provider"] = self.provider
+        if self.config_error_code:
+            payload["config_error_code"] = self.config_error_code
+        return payload
 
     def to_debug_dict(self) -> Dict[str, Any]:
         return {
             "configured": self.configured,
+            "provider": self.provider,
             "success": self.success,
             "url": self.url,
             "model": self.model,
@@ -71,6 +89,7 @@ class LLMCallReport:
             "error": sanitize_text(self.error),
             "usage": self.usage,
             "response_preview": sanitize_text(self.response_preview),
+            "config_error_code": self.config_error_code,
         }
 
 
@@ -82,34 +101,67 @@ class LLMClientError(RuntimeError):
         self.report = report
 
 
-def get_llm_config() -> Optional[LLMConfig]:
-    """Read an OpenAI-compatible generation model config from .env."""
+def build_llm_provider_config(provider: Optional[str] = None) -> LLMProviderConfig:
+    """Resolve provider settings without exposing secrets."""
 
-    api_key = _clean_env(
-        "ARK_API_KEY",
-        "OPENAI_API_KEY",
-        "API_KEY",
-        "LLM_API_KEY",
-    )
-    base_url = _clean_env(
-        "BASE_URL",
-        "OPENAI_BASE_URL",
-        "LLM_BASE_URL",
-        default="https://api.openai.com/v1",
-    )
-    model = _clean_env("MODEL", "LLM_MODEL")
-    fast_model = _clean_env("FAST_MODEL", "GRADE_MODEL", "MODEL", "LLM_FAST_MODEL")
-    timeout = _clean_int_env("LLM_TIMEOUT_SECONDS", default=60)
+    requested = (provider or _clean_env("MALLMIND_LLM_PROVIDER")).strip().lower()
+    if not requested:
+        requested = "ark" if _clean_env("ARK_API_KEY") else "openai_compatible"
+    if requested not in {"ark", "deepseek", "mimo", "openai_compatible"}:
+        requested = "openai_compatible"
 
-    if not api_key or not model:
-        return None
-    return LLMConfig(
+    timeout = _clean_int_env("MALLMIND_LLM_TIMEOUT_SECONDS", default=_clean_int_env("LLM_TIMEOUT_SECONDS", default=30))
+    base_url = _provider_base_url(requested)
+    api_key = _provider_api_key(requested)
+    model = _provider_model(requested)
+    fast_model = _provider_fast_model(requested, model)
+    missing = []
+    if not base_url:
+        missing.append("base_url")
+    if not api_key:
+        missing.append("api_key")
+    if not model:
+        missing.append("model")
+    configured = not missing
+    error_code = "missing_" + "_".join(missing) if missing else ""
+    reason = f"LLM provider '{requested}' missing required setting(s): {', '.join(missing)}." if missing else ""
+    return LLMProviderConfig(
+        provider=requested,
+        base_url=base_url,
         api_key=api_key,
-        base_url=base_url or "https://api.openai.com/v1",
         model=model,
         fast_model=fast_model or model,
         timeout_seconds=timeout,
+        supports_json_mode=requested in {"ark", "deepseek", "openai_compatible"},
+        supports_tool_calls=requested in {"ark", "deepseek", "openai_compatible"},
+        configured=configured,
+        config_error_code=error_code,
+        config_error_reason=reason,
     )
+
+
+def get_llm_config() -> Optional[LLMConfig]:
+    """Read a configured OpenAI-compatible generation model config from .env."""
+
+    config = build_llm_provider_config()
+    return config if config.configured else None
+
+
+def get_llm_provider_trace() -> Dict[str, Any]:
+    """Return a public, secret-free provider trace."""
+
+    config = build_llm_provider_config()
+    return {
+        "llm_provider": config.provider,
+        "llm_model": config.model,
+        "router_model": _role_model("MALLMIND_ROUTER_MODEL", config.fast_model or config.model),
+        "parse_model": _role_model("MALLMIND_PARSE_MODEL", config.fast_model or config.model),
+        "guidance_model": _role_model("MALLMIND_GUIDANCE_MODEL", config.model),
+        "llm_configured": config.configured,
+        "llm_config_error_code": config.config_error_code,
+        "llm_provider_fallback": "" if config.configured else "local_rule",
+        "llm_error_sanitized": config.config_error_reason,
+    }
 
 
 def is_llm_configured() -> bool:
@@ -118,14 +170,14 @@ def is_llm_configured() -> bool:
 
 
 class OpenAICompatibleChatClient:
-    """Minimal chat-completions client for Ark, DashScope, OpenAI, and compatible APIs."""
+    """Minimal chat-completions client for OpenAI-compatible providers."""
 
     def __init__(self, config: Optional[LLMConfig] = None):
-        self.config = config or get_llm_config()
+        self.config = config if config is not None else build_llm_provider_config()
 
     @property
     def configured(self) -> bool:
-        return self.config is not None
+        return bool(self.config and self.config.configured)
 
     def chat_text(
         self,
@@ -184,8 +236,15 @@ class OpenAICompatibleChatClient:
         temperature: float = 0.2,
         max_tokens: int = 1200,
     ) -> Tuple[Dict[str, Any], LLMCallReport]:
-        if not self.config:
-            report = LLMCallReport(configured=False, error="Generation model is not configured.")
+        if not self.config or not self.config.configured:
+            config = self.config or build_llm_provider_config()
+            report = LLMCallReport(
+                configured=False,
+                provider=config.provider,
+                model=config.model,
+                error=config.config_error_reason or "Generation model is not configured.",
+                config_error_code=config.config_error_code or "not_configured",
+            )
             raise LLMClientError(report.error, report)
 
         request_model = model or self.config.model
@@ -199,16 +258,19 @@ class OpenAICompatibleChatClient:
         url = self._chat_completions_url()
         report = LLMCallReport(
             configured=True,
+            provider=self.config.provider,
             url=url,
             model=request_model,
         )
+        headers = {
+            "Authorization": f"Bearer {self.config.api_key}",
+            "Content-Type": "application/json",
+        }
+        headers.update(self.config.extra_headers or {})
         request = urllib.request.Request(
             url,
             data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
-            headers={
-                "Authorization": f"Bearer {self.config.api_key}",
-                "Content-Type": "application/json",
-            },
+            headers=headers,
             method="POST",
         )
         started_at = time.perf_counter()
@@ -220,17 +282,17 @@ class OpenAICompatibleChatClient:
             report.elapsed_ms = _elapsed_ms(started_at)
             report.status_code = exc.code
             detail = exc.read().decode("utf-8", errors="ignore")[:1000]
-            report.error = f"Generation API returned HTTP {exc.code}: {detail}"
+            report.error = sanitize_text(f"Generation API returned HTTP {exc.code}: {detail}")
             logger.warning("Generation API HTTP error: %s", sanitize_text(report.error))
             raise LLMClientError(report.error, report) from exc
         except urllib.error.URLError as exc:
             report.elapsed_ms = _elapsed_ms(started_at)
-            report.error = f"Generation API request failed: {exc}"
+            report.error = sanitize_text(f"Generation API request failed: {exc.reason if hasattr(exc, 'reason') else exc}")
             logger.warning("Generation API request failed: %s", sanitize_text(report.error))
             raise LLMClientError(report.error, report) from exc
         except (TimeoutError, socket.timeout, OSError) as exc:
             report.elapsed_ms = _elapsed_ms(started_at)
-            report.error = f"Generation API request timed out or was interrupted: {exc}"
+            report.error = sanitize_text(f"Generation API request timed out or was interrupted: {type(exc).__name__}")
             logger.warning("Generation API timeout/interruption: %s", sanitize_text(report.error))
             raise LLMClientError(report.error, report) from exc
 
@@ -254,8 +316,15 @@ class OpenAICompatibleChatClient:
         model: Optional[str] = None,
         prompt: str = "只回复 OK",
     ) -> LLMCallReport:
-        if not self.config:
-            return LLMCallReport(configured=False, error="Generation model is not configured.")
+        if not self.config or not self.config.configured:
+            config = self.config or build_llm_provider_config()
+            return LLMCallReport(
+                configured=False,
+                provider=config.provider,
+                model=config.model,
+                error=config.config_error_reason or "Generation model is not configured.",
+                config_error_code=config.config_error_code or "not_configured",
+            )
         try:
             _data, report = self.chat_completion(
                 [{"role": "user", "content": prompt}],
@@ -267,9 +336,10 @@ class OpenAICompatibleChatClient:
         except LLMClientError as exc:
             return exc.report or LLMCallReport(
                 configured=True,
+                provider=self.config.provider,
                 url=self._chat_completions_url(),
                 model=model or self.config.model,
-                error=str(exc),
+                error=sanitize_text(str(exc)),
             )
 
     def _chat_completions_url(self) -> str:
@@ -345,6 +415,50 @@ def _clean_env(*names: str, default: str = "") -> str:
             continue
         return cleaned
     return default
+
+
+def _provider_base_url(provider: str) -> str:
+    if provider == "ark":
+        return _clean_env("MALLMIND_LLM_BASE_URL", "ARK_BASE_URL", "BASE_URL", "OPENAI_BASE_URL", "LLM_BASE_URL", default="https://ark.cn-beijing.volces.com/api/v3")
+    if provider == "deepseek":
+        return _clean_env("MALLMIND_LLM_BASE_URL", "DEEPSEEK_BASE_URL", default="https://api.deepseek.com")
+    if provider == "mimo":
+        return _clean_env("MALLMIND_LLM_BASE_URL", "MIMO_BASE_URL")
+    return _clean_env("MALLMIND_LLM_BASE_URL", "OPENAI_BASE_URL", "LLM_BASE_URL")
+
+
+def _provider_api_key(provider: str) -> str:
+    if provider == "ark":
+        return _clean_env("MALLMIND_LLM_API_KEY", "ARK_API_KEY", "OPENAI_API_KEY", "API_KEY", "LLM_API_KEY")
+    if provider == "deepseek":
+        return _clean_env("DEEPSEEK_API_KEY", "MALLMIND_LLM_API_KEY")
+    if provider == "mimo":
+        return _clean_env("MIMO_API_KEY", "MALLMIND_LLM_API_KEY")
+    return _clean_env("MALLMIND_LLM_API_KEY", "OPENAI_API_KEY", "API_KEY", "LLM_API_KEY")
+
+
+def _provider_model(provider: str) -> str:
+    if provider == "ark":
+        return _clean_env("MALLMIND_LLM_MODEL", "ARK_MODEL", "MODEL", "LLM_MODEL")
+    if provider == "deepseek":
+        return _clean_env("MALLMIND_LLM_MODEL", "DEEPSEEK_MODEL", "MODEL", "LLM_MODEL")
+    if provider == "mimo":
+        return _clean_env("MALLMIND_LLM_MODEL", "MIMO_MODEL")
+    return _clean_env("MALLMIND_LLM_MODEL", "LLM_MODEL")
+
+
+def _provider_fast_model(provider: str, model: str) -> str:
+    if provider == "ark":
+        return _clean_env("MALLMIND_LLM_FAST_MODEL", "ARK_FAST_MODEL", "FAST_MODEL", "GRADE_MODEL", "MODEL", "LLM_FAST_MODEL", default=model)
+    if provider == "deepseek":
+        return _clean_env("MALLMIND_LLM_FAST_MODEL", "DEEPSEEK_FAST_MODEL", "FAST_MODEL", "LLM_FAST_MODEL", default=model)
+    if provider == "mimo":
+        return _clean_env("MALLMIND_LLM_FAST_MODEL", "MIMO_FAST_MODEL", default=model)
+    return _clean_env("MALLMIND_LLM_FAST_MODEL", "LLM_FAST_MODEL", default=model)
+
+
+def _role_model(name: str, default: str) -> str:
+    return _clean_env(name, default=default)
 
 
 def _clean_int_env(name: str, *, default: int) -> int:

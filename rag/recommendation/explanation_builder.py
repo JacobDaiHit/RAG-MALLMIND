@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from typing import Any, Dict, Iterable, List, Optional
 
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, run_with_hard_timeout
@@ -67,7 +68,7 @@ def build_evidence_grounded_explanation(
                     {"role": "system", "content": "Only output strict JSON. Explain only from the provided evidence. Do not invent product facts."},
                     {"role": "user", "content": json.dumps(llm_input, ensure_ascii=False)},
                 ],
-                model=client.config.fast_model,
+                model=os.getenv("MALLMIND_GUIDANCE_MODEL") or client.config.fast_model,
                 temperature=0.1,
                 max_tokens=700,
             ),

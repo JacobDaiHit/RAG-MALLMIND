@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
-from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, report_to_dict, run_with_hard_timeout
+from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, get_llm_provider_trace, report_to_dict, run_with_hard_timeout
 from rag.recommendation.session_state import (
     ShoppingSession,
     current_topic_json,
@@ -280,7 +280,6 @@ _ROUTER_LLM_FAILURE_TIMES = deque(maxlen=20)
 _ROUTER_LLM_DISABLED_UNTIL = 0.0
 _ROUTER_LLM_CIRCUIT_LOCK = threading.Lock()
 PC_BUILD_STRONG_TERMS_ZH = [
-    "整机",
     "电脑整机",
     "台式整机",
     "游戏整机",
@@ -289,25 +288,18 @@ PC_BUILD_STRONG_TERMS_ZH = [
     "台式主机",
     "游戏主机",
     "办公主机",
-    "装机",
-    "装机单",
-    "装机配置",
-    "装机方案",
     "配电脑",
     "配台电脑",
     "配一台电脑",
-    "配主机",
     "配台主机",
     "配一台主机",
     "组装电脑",
     "组装主机",
-    "攒机",
     "电脑配置",
     "主机配置",
     "台式机配置",
     "整套配置",
     "整套配置单",
-    "配置单",
     "游戏电脑",
     "办公电脑",
     "剪辑电脑",
@@ -318,30 +310,11 @@ PC_BUILD_STRONG_TERMS_ZH = [
     "PC方案",
 ]
 PC_BUILD_WEAK_TERMS_ZH = [
-    "配置",
-    "方案",
-    "搭配",
-    "配一套",
-    "给我一套",
-    "推荐一套",
-    "整套",
-    "全套",
-    "配一台",
     "主机",
     "电脑",
     "台式机",
 ]
 PC_USE_CASE_TERMS_ZH = [
-    "游戏",
-    "3A",
-    "电竞",
-    "办公",
-    "学习",
-    "剪辑",
-    "视频",
-    "直播",
-    "AI",
-    "训练",
     "CUDA",
     "深度学习",
     "安静",
@@ -628,6 +601,7 @@ class RoutedToolCall(BaseModel):
     confidence: float = Field(ge=0.0, le=1.0)
     reason: str = ""
     source: str = "llm"
+    needs_clarification: bool = False
 
     @field_validator("name")
     @classmethod
@@ -645,6 +619,8 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
     mode = _runtime_mode_from_session(session)
     llm_skipped = False
     llm_skipped_reason = ""
+    router_attempted = False
+    router_failure_reason = ""
     if not _router_llm_globally_enabled():
         llm_skipped = True
         llm_skipped_reason = "global_llm_disabled"
@@ -662,6 +638,7 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
         final = validate_and_guard_tool_call(message, session, local, local)
         final["routing_trace"] = {
             "runtime_mode": mode,
+            **get_llm_provider_trace(),
             "local": local,
             "local_route_scores": local.get("route_scores"),
             "llm": None,
@@ -672,19 +649,30 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
             "guard_overridden": final.get("name") != local.get("name"),
             "llm_skipped": True,
             "llm_skipped_reason": llm_skipped_reason,
+            "router_skipped_by_policy": llm_skipped_reason in {"global_llm_disabled", "use_llm_false", "fast_mode", "circuit_open"},
+            "router_skipped_high_confidence_local": llm_skipped_reason == "high_confidence_local",
+            "router_attempted": False,
+            "router_timeout": False,
+            "router_json_invalid": False,
+            "router_success": False,
+            "router_applied": False,
+            "router_final_source": str(final.get("source") or "rules"),
         }
         return final
 
     llm_call, llm_failure_reason = try_llm_route_tool_call(message, session)
+    router_attempted = llm_failure_reason not in {"concurrency_limit", "llm_not_configured"}
     if llm_call is None:
         llm_skipped = True
-        llm_skipped_reason = llm_failure_reason or "llm_unavailable"
+        router_failure_reason = llm_failure_reason or "llm_unavailable"
+        llm_skipped_reason = router_failure_reason if not router_attempted else ""
     chosen = llm_call if llm_call and float(llm_call.get("confidence") or 0) >= 0.62 else local
     final = validate_and_guard_tool_call(message, session, chosen, local)
     route_overridden = final.get("name") != (chosen or {}).get("name")
     arguments_changed = (final.get("arguments") or {}) != ((chosen or {}).get("arguments") or {})
     final["routing_trace"] = {
         "runtime_mode": mode,
+        **get_llm_provider_trace(),
         "local": local,
         "local_route_scores": local.get("route_scores"),
         "llm": llm_call,
@@ -695,6 +683,15 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
         "guard_overridden": route_overridden,
         "llm_skipped": llm_skipped,
         "llm_skipped_reason": llm_skipped_reason,
+        "router_skipped_by_policy": bool(not router_attempted and llm_skipped),
+        "router_skipped_high_confidence_local": False,
+        "router_attempted": router_attempted,
+        "router_timeout": router_failure_reason in {"llm_timeout", "llm_timeout_or_error"},
+        "router_json_invalid": router_failure_reason in {"llm_json_invalid", "llm_validation_error"},
+        "router_success": bool(llm_call),
+        "router_applied": bool(llm_call and chosen is llm_call and final.get("name") == llm_call.get("name") and not route_overridden),
+        "router_final_source": str(final.get("source") or ("llm" if llm_call else "rules")),
+        "router_failure_reason": router_failure_reason,
     }
     return final
 
@@ -709,7 +706,7 @@ def should_skip_llm_route(message: str, session: ShoppingSession, local_call: Di
     name = str(local_call.get("name") or "")
 
     if mode == "fast":
-        return True
+        return confidence >= 0.95 and margin >= 0.50 and name in {"recommend_shopping_products", "apply_cart_instruction", "general_chat"}
 
     if mode == "balanced":
         if confidence >= 0.78 and margin >= 0.20:
@@ -756,6 +753,7 @@ def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]
     pc_intent = _has_pc_intent(text, lowered)
     single_pc_part = _has_single_pc_part_intent(text, lowered)
     pc_followup = topic.get("topic_type") == "pc_build" and _looks_like_pc_followup(text, lowered)
+    pc_history_followup = is_pc_build_followup(text, session)
 
     if _has_cart_intent(text):
         scores["apply_cart_instruction"] += 0.95
@@ -767,7 +765,7 @@ def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]
         scores["recommend_shopping_products"] += 0.60
     if pc_intent:
         scores["generate_pc_build_plan"] += 0.75
-    if pc_followup:
+    if pc_followup or pc_history_followup:
         scores["generate_pc_build_plan"] += 0.65
     if _looks_like_compare_request(text):
         if pc_followup or pc_intent:
@@ -819,6 +817,10 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
 
     if _has_cart_intent(text):
         return _attach_route_scores(_tool_call("apply_cart_instruction", slots, 0.95, "本地规则识别到购物车操作。", "rules"), score_info)
+    if is_pc_build_followup(text, session):
+        slots["followup"] = True
+        slots["source"] = "pc_build_history_guard"
+        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, 0.94, "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard"), score_info)
     if _looks_like_compare_request(text):
         slots["compare_with_previous"] = _mentions_previous(text)
         return _attach_route_scores(_tool_call("compare_products", slots, 0.88, "本地规则识别到商品或历史方案对比请求。", "rules"), score_info)
@@ -879,9 +881,9 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
                         "content": build_route_prompt(message, current_topic_json(session)),
                     },
                 ],
-                model=client.config.fast_model,
+                model=os.getenv("MALLMIND_ROUTER_MODEL") or client.config.fast_model,
                 temperature=0,
-                max_tokens=700,
+                max_tokens=_env_int("RECOMMENDATION_ROUTER_LLM_MAX_TOKENS", 320),
             ),
             _llm_timeout("RECOMMENDATION_LLM_ROUTER_TIMEOUT_SECONDS", 3.0),
             "tool_router",
@@ -894,13 +896,17 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
         return data, ""
     except TimeoutError:
         _record_router_llm_failure()
-        return None, "llm_timeout_or_error"
-    except ValidationError:
+        return None, "llm_timeout"
+    except (ValidationError, json.JSONDecodeError):
         _record_router_llm_failure()
-        return None, "llm_validation_error"
-    except (LLMClientError, ValueError, TypeError):
+        return None, "llm_json_invalid"
+    except LLMClientError as exc:
         _record_router_llm_failure()
-        return None, "llm_timeout_or_error"
+        text = str(exc).lower()
+        return None, "llm_timeout" if "timeout" in text or "timed out" in text else "llm_provider_error"
+    except (ValueError, TypeError):
+        _record_router_llm_failure()
+        return None, "llm_json_invalid"
     finally:
         _ROUTER_LLM_SEMAPHORE.release()
 
@@ -965,6 +971,11 @@ def validate_and_guard_tool_call(
             if local_call.get("name") == "apply_cart_instruction"
             else _tool_call("apply_cart_instruction", arguments, 0.96, "后端兜底：购物车指令优先。", "guard")
         )
+    elif is_pc_build_followup(text, session):
+        arguments["followup"] = True
+        arguments["source"] = "pc_build_history_guard"
+        guarded = _tool_call("generate_pc_build_plan", arguments, max(call["confidence"], 0.94), "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard")
+        call.update(guarded)
     elif _looks_like_compare_request(text):
         arguments["compare_with_previous"] = _mentions_previous(text)
         guarded = _tool_call("compare_products", arguments, max(call["confidence"], 0.88), "后端兜底：明确对比请求走 compare_products。", "guard")
@@ -1195,11 +1206,17 @@ def _has_pc_intent(text: str, lowered: str) -> bool:
 
     part_hits = _pc_part_hits(text)
     has_weak = any(term in raw or term.lower() in lowered for term in PC_BUILD_WEAK_TERMS_ZH)
-    has_budget_value = extract_budget(raw) is not None
+    has_budget_value = extract_budget(raw) is not None or bool(re.search(r"\d{3,6}\s*(?:元|块|rmb|cny)?", raw, flags=re.I))
     has_use_case = any(term.lower() in lowered or term in raw for term in PC_USE_CASE_TERMS_ZH)
     has_device = _has_pc_device_term(raw, lowered)
     has_pc_scenario = any(term.lower() in lowered or term in raw for term in PC_SCENARIO_TERMS_ZH)
     has_strong_pc_scenario = any(term.lower() in lowered or term in raw for term in PC_STRONG_SCENARIO_TERMS_ZH)
+
+    if has_budget_value and part_hits and any(term in raw for term in ["配一套", "装机", "整机", "主机", "台式机", "配置一台", "配台"]):
+        return True
+
+    if has_budget_value and any(term in raw for term in ["配一台", "游戏主机", "主机", "台式机", "整机", "装机"]):
+        return True
 
     if has_budget_value and any(term in raw for term in ["保留显卡", "其他配件"]):
         return True
@@ -1242,6 +1259,33 @@ def _looks_like_single_pc_part_query(text: str, lowered: str) -> bool:
         return False
     single_terms = ["推荐", "买", "一款", "一个", "看看", "显卡", "cpu", "CPU", "主板", "内存", "ssd", "SSD", "电源", "机箱", "散热"]
     return any(term in text or term in lowered for term in single_terms)
+
+
+def is_pc_build_followup(message: str, session: ShoppingSession) -> bool:
+    if not getattr(session, "pc_build_history", None):
+        return False
+    text = "".join(str(message or "").split())
+    lowered = text.lower()
+    if not text:
+        return False
+
+    previous_plan_terms = ["上一套", "上套", "刚才那套", "之前那套", "这套", "现在这套", "方案", "配置", "整机", "装机", "主机"]
+    adjust_terms = ["换成", "换强", "换", "升级", "降到", "降低", "加到", "减到", "压到", "预算", "保留", "其他配件", "强一点", "更强", "便宜点"]
+    pc_part_terms = ["显卡", "gpu", "cpu", "处理器", "主板", "内存", "硬盘", "ssd", "电源", "机箱", "散热", "风冷", "水冷"]
+    compare_terms = ["差别", "区别", "对比", "比较", "哪里不一样", "提升在哪"]
+
+    has_previous_reference = any(term in text for term in previous_plan_terms)
+    has_adjustment = any(term in text or term in lowered for term in adjust_terms)
+    has_pc_part = any(term in text or term in lowered for term in pc_part_terms)
+    has_compare = any(term in text for term in compare_terms)
+
+    if has_previous_reference and (has_adjustment or has_compare or has_pc_part):
+        return True
+    if has_pc_part and has_adjustment:
+        return True
+    if has_adjustment and len(text) <= 32:
+        return True
+    return False
 
 
 def _looks_like_pc_followup(text: str, lowered: str) -> bool:
@@ -1478,3 +1522,21 @@ def _tool_call(name: str, arguments: Dict[str, Any], confidence: float, reason: 
         "reason": reason,
         "source": source,
     }
+
+
+def build_route_prompt(message: str, topic_memory: Dict[str, Any]) -> str:
+    topic = {
+        "topic_type": (topic_memory or {}).get("topic_type", ""),
+        "route": (topic_memory or {}).get("route", ""),
+        "category": (topic_memory or {}).get("category", ""),
+    }
+    return (
+        "You are a lightweight shopping tool router. Output strict JSON only.\n"
+        "Tools: recommend_shopping_products, generate_pc_build_plan, compare_products, apply_cart_instruction, general_chat.\n"
+        "Return only these fields: name, arguments, confidence, needs_clarification.\n"
+        "Arguments may include query, budget, category, product_ids, catalog_scope, compare_with_previous, action, quantity.\n"
+        "Do not explain products, recommend products, invent prices, or expand long history.\n"
+        f"Topic summary: {json.dumps(topic, ensure_ascii=False)}\n"
+        f"User: {str(message or '')[:500]}\n"
+        "Example: {\"name\":\"recommend_shopping_products\",\"arguments\":{\"query\":\"...\",\"catalog_scope\":\"ecommerce\"},\"confidence\":0.8,\"needs_clarification\":false}"
+    )

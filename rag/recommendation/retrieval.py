@@ -14,6 +14,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 from dotenv import load_dotenv
 
 from rag.schemas import ComponentCategory, RequirementSpec
+from rag.recommendation.query_guards import category_for_product_type, infer_product_type
 from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_report
 
 load_dotenv()
@@ -221,7 +222,8 @@ class EvidenceRetriever:
     ) -> List[QueryVariant]:
         """推荐证据检索器：构造 query variants，把分散数据组织成可复用结果。"""
         base_query = _build_component_query(requirement, category)
-        variants = [QueryVariant(kind="base", query=base_query)]
+        injected = _should_inject_category_to_query(requirement, category)
+        variants = [QueryVariant(kind="base", query=base_query, metadata={"category_injected_to_retrieval_query": injected})]
         if not self.use_query_expansion:
             return variants
 
@@ -272,6 +274,7 @@ class EvidenceRetriever:
             "raw_hits": 0,
             "retrieved_chunk_count_before_postprocess": 0,
             "retrieved_chunk_count_after_postprocess": 0,
+            **variant.metadata,
         }
 
         dense_embedding = embedding_service.get_embeddings([variant.query])[0]
@@ -376,18 +379,39 @@ def retrieve_requirement_evidence(
 
 def _build_component_query(requirement: RequirementSpec, category: ComponentCategory) -> str:
     """推荐证据检索器：构造 component query，把分散数据组织成可复用结果。"""
-    parts = [
-        requirement.raw_query,
-        requirement.scenario,
-        requirement.task_type,
-        category.value,
+    inject_category = _should_inject_category_to_query(requirement, category)
+    parts = [requirement.raw_query]
+    if inject_category:
+        parts.extend([requirement.scenario, requirement.task_type, category.value])
+    parts.extend([
         " ".join(requirement.languages),
         " ".join(requirement.input_modalities),
         " ".join(requirement.output_modalities),
-    ]
+    ])
     if requirement.budget_level:
         parts.append(f"budget {requirement.budget_level.value}")
     return "\n".join(item for item in parts if item)
+
+
+def _should_inject_category_to_query(requirement: RequirementSpec, category: ComponentCategory) -> bool:
+    expected = _expected_category_from_query(requirement.raw_query)
+    if expected:
+        return category.value == expected
+    desired = [item.value for item in (requirement.desired_categories or requirement.required_components or [])]
+    if not desired or len(set(desired)) != 1:
+        return False
+    if desired[0] != category.value:
+        return False
+    product_type = infer_product_type(requirement.raw_query)
+    product_category = category_for_product_type(product_type)
+    return not product_category or product_category == category.value
+
+
+def _expected_category_from_query(query: str) -> str:
+    text = str(query or "").lower()
+    if any(term in text for term in ["咖啡", "冲泡", "提神", "饮料", "coffee", "beverage"]):
+        return "food"
+    return category_for_product_type(infer_product_type(query)) or ""
 
 
 def _build_component_filter(category: ComponentCategory) -> str:

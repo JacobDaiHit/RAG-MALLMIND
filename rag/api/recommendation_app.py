@@ -34,7 +34,7 @@ from rag.api.routes.recommend import router as recommendation_router
 from rag.api.sse import sse_event
 from rag.recommendation import recommend_shopping_products
 from rag.recommendation.image_retrieval import retrieve_image_evidence
-from rag.recommendation.llm_client import OpenAICompatibleChatClient, is_llm_configured, report_to_dict
+from rag.recommendation.llm_client import OpenAICompatibleChatClient, get_llm_provider_trace, is_llm_configured, report_to_dict
 from rag.recommendation.pc_session_flow import parse_adjustment_amount
 from rag.recommendation.product_loader import load_catalog_for_scope, load_combined_product_catalog
 from rag.recommendation.session_state import get_session
@@ -83,6 +83,7 @@ def health() -> Dict[str, Any]:
         "pc_product_count": pc_product_count,
         "generation_model_configured": is_llm_configured(),
         "llm_configured": is_llm_configured(),
+        **get_llm_provider_trace(),
         "redis_configured": bool(os.getenv("REDIS_URL")),
         "milvus_enabled": os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false").strip().lower() == "true",
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -154,12 +155,13 @@ def _diagnostics_allowed(x_admin_token: Optional[str]) -> bool:
 
 def _llm_diagnostics() -> Dict[str, Any]:
     configured = is_llm_configured()
+    trace = get_llm_provider_trace()
     if not configured:
-        return {"configured": False}
+        return {"configured": False, **trace}
     try:
-        return {"configured": True, "diagnose": report_to_dict(OpenAICompatibleChatClient().diagnose())}
+        return {"configured": True, **trace, "diagnose": report_to_dict(OpenAICompatibleChatClient().diagnose())}
     except Exception as exc:
-        return {"configured": True, "status": "failed", "error": sanitize_text(exc)}
+        return {"configured": True, **trace, "status": "failed", "error": sanitize_text(exc)}
 
 
 def _redis_diagnostics() -> Dict[str, Any]:

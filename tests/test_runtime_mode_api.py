@@ -97,13 +97,13 @@ def test_recommend_auto_uses_local_route_and_rule_parse_before_fast_policy(monke
 
     assert response.status_code == 200
     trace = response.json()["trace"]
-    assert trace["selected_runtime_mode"] == "fast"
+    assert trace["selected_runtime_mode"] == "balanced"
     assert trace["route_confidence"] >= 0.85
     assert trace["route_margin"] >= 0.25
     assert trace["requirement_completeness"] >= 0.75
     assert trace["query_complexity"] <= 0.45
     assert trace["history_dependency"] < 0.45
-    assert "high_confidence_simple_query" in trace["reason_codes"]
+    assert "default_balanced" in trace["reason_codes"]
 
 
 def test_chat_stream_compare_auto_selects_balanced_with_runtime_signals(monkeypatch):

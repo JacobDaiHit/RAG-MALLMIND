@@ -1,0 +1,355 @@
+[
+  {
+    "case_id": "cap_synonym_commute_noise_beans",
+    "case_group": "ecommerce",
+    "query": "通勤降噪豆，音质好一点",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_007", "p_digital_018"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_synonym_oily_non_stuffy_sunscreen",
+    "case_group": "ecommerce",
+    "query": "油皮不闷脸防晒，夏天通勤用",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_006", "p_beauty_010", "p_beauty_023"],
+    "acceptable_product_ids": ["p_beauty_020"]
+  },
+  {
+    "case_id": "cap_synonym_parent_large_font_phone",
+    "case_group": "ecommerce",
+    "query": "父母用大字续航手机",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_016", "p_digital_009"],
+    "acceptable_product_ids": ["p_digital_002", "p_digital_017"]
+  },
+  {
+    "case_id": "cap_synonym_office_mild_coffee",
+    "case_group": "ecommerce",
+    "query": "办公室提神但别太苦的咖啡，方便冲泡",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_food_001", "p_food_002", "p_food_022", "p_food_023"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_synonym_training_cushion_basketball",
+    "case_group": "ecommerce",
+    "query": "训练穿的缓震篮球鞋，别太重",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_011", "p_clothes_012", "p_clothes_013"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_attr_sensitive_repair_cream",
+    "case_group": "ecommerce",
+    "query": "敏感肌修护面霜，温和一点",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_007", "p_beauty_012"],
+    "acceptable_product_ids": ["p_beauty_022"]
+  },
+  {
+    "case_id": "cap_attr_low_sugar_office_tea",
+    "case_group": "ecommerce",
+    "query": "办公室喝的无糖茶饮，夏天囤货",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_food_003", "p_food_004", "p_food_014", "p_food_015", "p_food_024"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_attr_light_student_laptop",
+    "case_group": "ecommerce",
+    "query": "大学生写论文用轻薄本，不要苹果",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_004", "p_digital_023"],
+    "acceptable_product_ids": ["p_digital_022"],
+    "exclude_brands": ["Apple", "苹果"]
+  },
+  {
+    "case_id": "cap_attr_daily_running_cushion",
+    "case_group": "ecommerce",
+    "query": "日常训练跑步鞋，缓震好一点",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_007", "p_clothes_008", "p_clothes_009", "p_clothes_010"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_attr_black_coffee_low_sugar",
+    "case_group": "ecommerce",
+    "query": "办公室黑咖啡，少糖一点",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_food_001", "p_food_022", "p_food_023"],
+    "acceptable_product_ids": ["p_food_002"]
+  },
+  {
+    "case_id": "cap_multi_phone_no_xiaomi_photo_battery_4000",
+    "case_group": "ecommerce",
+    "query": "4000 内，小米以外，拍照和续航都要稳的手机",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_016", "p_digital_015", "p_digital_017"],
+    "acceptable_product_ids": ["p_digital_002"],
+    "expected_price_max": 4000,
+    "exclude_brands": ["小米", "Xiaomi"]
+  },
+  {
+    "case_id": "cap_multi_basketball_cushion_light_1000",
+    "case_group": "ecommerce",
+    "query": "1000 内，缓震好，别太重的篮球实战鞋",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_011", "p_clothes_012", "p_clothes_013"],
+    "acceptable_product_ids": [],
+    "expected_price_max": 1000
+  },
+  {
+    "case_id": "cap_multi_oily_summer_sunscreen_200",
+    "case_group": "ecommerce",
+    "query": "油皮夏天用，别闷脸，预算 200 左右的防晒",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_006", "p_beauty_010", "p_beauty_023"],
+    "acceptable_product_ids": ["p_beauty_020"],
+    "expected_price_max": 220
+  },
+  {
+    "case_id": "cap_multi_no_apple_office_pc",
+    "case_group": "ecommerce",
+    "query": "不要苹果，办公用电脑，轻薄一点",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_004", "p_digital_023", "p_digital_022"],
+    "acceptable_product_ids": [],
+    "exclude_brands": ["Apple", "苹果"]
+  },
+  {
+    "case_id": "cap_multi_no_nike_sportswear",
+    "case_group": "ecommerce",
+    "query": "运动裤或运动上衣，不要耐克",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_002", "p_clothes_004", "p_clothes_005", "p_clothes_020", "p_clothes_023"],
+    "acceptable_product_ids": ["p_clothes_022"],
+    "exclude_brands": ["Nike", "耐克"]
+  },
+  {
+    "case_id": "cap_gift_girlfriend_open",
+    "case_group": "ecommerce",
+    "query": "送女朋友礼物",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_gift_roommate_birthday",
+    "case_group": "ecommerce",
+    "query": "给室友买生日礼物，不知道买什么",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_gift_parents_digital",
+    "case_group": "ecommerce",
+    "query": "送父母一个实用数码产品",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_gift_colleague_snack_box",
+    "case_group": "ecommerce",
+    "query": "零食礼盒送同事，别太贵",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_food_009", "p_food_019"],
+    "acceptable_product_ids": ["p_food_010"]
+  },
+  {
+    "case_id": "cap_gift_beauty_lip_serum",
+    "case_group": "ecommerce",
+    "query": "送礼体面的口红或精华",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_001", "p_beauty_002", "p_beauty_015", "p_beauty_024"],
+    "acceptable_product_ids": ["p_beauty_009", "p_beauty_014"]
+  },
+  {
+    "case_id": "cap_bundle_sanya_summer",
+    "case_group": "ecommerce",
+    "query": "准备去三亚玩，帮我买几样用得上的东西",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_category_set": ["beauty", "clothing", "food"]
+  },
+  {
+    "case_id": "cap_bundle_school_start",
+    "case_group": "ecommerce",
+    "query": "开学需要学习和宿舍用的东西",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_category_set": ["digital", "food", "clothing"]
+  },
+  {
+    "case_id": "cap_bundle_beginner_running",
+    "case_group": "ecommerce",
+    "query": "开始跑步训练，帮我配一套入门装备",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_007", "p_clothes_008", "p_clothes_009", "p_clothes_010", "p_food_005", "p_food_025"],
+    "acceptable_product_ids": ["p_food_006"]
+  },
+  {
+    "case_id": "cap_bundle_tablet_coffee",
+    "case_group": "ecommerce",
+    "query": "学习平板和办公室咖啡一起推荐",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_digital_011", "p_digital_019", "p_digital_025", "p_food_001", "p_food_022", "p_food_023"],
+    "acceptable_product_ids": ["p_digital_005"]
+  },
+  {
+    "case_id": "cap_bundle_sport_drink",
+    "case_group": "ecommerce",
+    "query": "跑步鞋和运动饮料一起推荐",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_007", "p_clothes_008", "p_clothes_009", "p_clothes_010", "p_food_005", "p_food_025"],
+    "acceptable_product_ids": ["p_food_006"]
+  },
+  {
+    "case_id": "cap_pc_b760_ddr5_wifi",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "B760 DDR5 带 WiFi 主板",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5", "pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5"],
+    "acceptable_product_ids": ["pc_seed_motherboard_asus_rog_strix_b760_g_gaming_wifi"]
+  },
+  {
+    "case_id": "cap_pc_long_gpu_case",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "能装长显卡的机箱",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_case_fractal_design_north", "pc_seed_case_phanteks_p360a", "pc_seed_case_nzxt_h5_flow"],
+    "acceptable_product_ids": ["pc_seed_case_lian_li_a3_matx"]
+  },
+  {
+    "case_id": "cap_pc_750w_gold_atx30_psu",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "750W 金牌全模组 ATX3.0 电源",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_psu_super_flower_leadex_g_750w"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_pc_2tb_fast_nvme",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "2TB NVMe 高速 SSD，适合游戏和剪辑",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_ssd_samsung_990_pro_2tb", "pc_seed_ssd_wd_black_sn850x_2tb"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_pc_ddr5_64gb_editing",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "DDR5 64GB 内存，剪辑用",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_memory_corsair_vengeance_ddr5_64gb_6000"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_pc_gpu_4070_ti",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "RTX 4070 Ti 显卡",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_gpu_colorful_geforce_rtx_4070_ti_super_16g"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_pc_cpu_ryzen7",
+    "case_group": "pc_parts",
+    "catalog_scope": "pc_parts",
+    "query": "Ryzen 7 CPU",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["pc_seed_cpu_amd_ryzen_7_7700", "pc_seed_cpu_amd_ryzen_7_7800x3d", "pc_seed_cpu_amd_ryzen_7_9700x"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_pc_build_multiturn_hard",
+    "case_group": "pc_build",
+    "turns": [
+      {
+        "query": "7000 元配一台游戏主机",
+        "expected_tool": "generate_pc_build_plan",
+        "expected_product_ids": []
+      },
+      {
+        "query": "显卡换强一点",
+        "expected_tool": "generate_pc_build_plan",
+        "expected_product_ids": []
+      },
+      {
+        "query": "预算降到 6000",
+        "expected_tool": "generate_pc_build_plan",
+        "expected_product_ids": []
+      },
+      {
+        "query": "上一套和现在这套差别在哪里",
+        "expected_tool": "generate_pc_build_plan",
+        "expected_product_ids": []
+      }
+    ]
+  },
+  {
+    "case_id": "cap_rag_review_dry_skin_cream",
+    "case_group": "ecommerce",
+    "query": "哪款面霜评价里更适合干皮？",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_007", "p_beauty_012", "p_beauty_022"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_rag_sunscreen_less_oily",
+    "case_group": "ecommerce",
+    "query": "防晒哪个更不油，最好看评价里怎么说",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_beauty_006", "p_beauty_010", "p_beauty_023"],
+    "acceptable_product_ids": ["p_beauty_020"]
+  },
+  {
+    "case_id": "cap_rag_shoe_review_cushion",
+    "case_group": "ecommerce",
+    "query": "这类篮球鞋评论里有没有提到缓震？",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": ["p_clothes_011", "p_clothes_012", "p_clothes_013"],
+    "acceptable_product_ids": []
+  },
+  {
+    "case_id": "cap_negative_pet_food",
+    "case_group": "negative",
+    "query": "想买猫粮",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_no_match_reason": "unsupported"
+  },
+  {
+    "case_id": "cap_negative_fridge",
+    "case_group": "negative",
+    "query": "冰箱推荐",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_no_match_reason": "unsupported"
+  },
+  {
+    "case_id": "cap_negative_4090_budget",
+    "case_group": "negative",
+    "catalog_scope": "pc_parts",
+    "query": "500 元买 RTX 4090",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_no_match_reason": "budget_impossible"
+  },
+  {
+    "case_id": "cap_negative_medicine",
+    "case_group": "negative",
+    "query": "处方药怎么买",
+    "expected_tool": "recommend_shopping_products",
+    "expected_product_ids": [],
+    "expected_no_match_reason": "unsupported"
+  }
+]

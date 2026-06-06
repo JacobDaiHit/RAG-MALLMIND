@@ -8,6 +8,7 @@ from rag.recommendation.cost_estimator import estimate_product_price
 from rag.recommendation.product_loader import load_product_catalog, upsert_product
 from rag.recommendation.recommendation_graph import stream_recommendation_graph
 from rag.recommendation.recommendation_pipeline import extract_price_range, parse_requirement_rule_based, recommend_api_stack
+from rag.recommendation.query_guards import infer_product_type
 from rag.recommendation.input_preprocessor import build_preprocessed_goal, preprocess_user_input
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 
@@ -103,6 +104,18 @@ def test_budget_gap_is_explained_when_no_exact_match():
     assert not result.product_cards
     assert result.intent_route["route"] == "no_recommendation"
     assert result.trace["no_match_reason"] in {"missing_subcategory", "budget_catalog_gap"}
+
+
+def test_basketball_performance_shoes_do_not_fall_back_to_running_shoes():
+    assert infer_product_type("推荐一双篮球实战鞋，缓震好，预算 1000") == "basketball_shoes"
+
+    result = recommend_api_stack("推荐一双篮球实战鞋，缓震好，预算 1000", use_llm=False)
+
+    ids = [card["product_id"] for card in result.product_cards]
+
+    assert set(ids[:3]) & {"p_clothes_011", "p_clothes_012", "p_clothes_013"}
+    assert "p_clothes_007" not in ids[:3]
+
 
 def test_recommendation_graph_stream_reaches_done_without_milvus():
     events = list(

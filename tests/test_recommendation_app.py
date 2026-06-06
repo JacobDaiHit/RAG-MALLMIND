@@ -173,9 +173,9 @@ def test_chat_stream_uses_adaptive_policy_for_llm_flag(monkeypatch):
     events = _parse_sse_text(response.text)
     result_events = [data for event, data in events if event == "result"]
 
-    assert seen["use_llm"] is False
-    assert result_events[0]["trace"]["stream_llm_enabled"] is False
-    assert result_events[0]["trace"]["selected_runtime_mode"] in {"fast", "degraded_fast"}
+    assert seen["use_llm"] is True
+    assert result_events[0]["trace"]["stream_llm_enabled"] is True
+    assert result_events[0]["trace"]["selected_runtime_mode"] == "balanced"
 
 
 def test_prepare_recommendation_context_reuses_attachment_and_session_context():

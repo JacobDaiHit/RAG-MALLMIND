@@ -71,6 +71,24 @@ def test_choose_runtime_mode_auto_defaults_balanced():
     decision = choose_runtime_mode("推荐一款手机", llm_configured=True)
 
     assert decision.mode == "balanced"
+
+
+def test_auto_phone_does_not_use_fast():
+    decision = choose_runtime_mode("推荐手机", llm_configured=True)
+
+    assert decision.mode == "balanced"
+
+
+def test_auto_compare_does_not_use_fast():
+    decision = choose_runtime_mode("对比两款手机哪个更适合拍照", llm_configured=True)
+
+    assert decision.mode == "balanced"
+
+
+def test_auto_image_same_style_uses_full():
+    decision = choose_runtime_mode("根据图片找同款外套", has_attachments=True, has_image_data=True, llm_configured=True)
+
+    assert decision.mode == "full"
     assert decision.signals["requested_mode"] == "auto"
 
 

@@ -453,6 +453,17 @@ def test_product_type_filter_keeps_beverage_query_from_digital():
     assert all(product_id.startswith("p_food_") for product_id in returned_ids)
 
 
+def test_coffee_retrieval_query_does_not_inject_digital(monkeypatch):
+    from rag.recommendation.retrieval import _build_component_query
+    from rag.schemas import ComponentCategory, RequirementSpec
+
+    requirement = RequirementSpec(raw_query="办公室提神但别太苦的咖啡", scenario="device_purchase", task_type="single_product_recommendation")
+    query = _build_component_query(requirement, ComponentCategory.digital)
+
+    assert "digital" not in query
+    assert "device_purchase" not in query
+
+
 def test_product_type_filter_prioritizes_nuts_snack_gift():
     result = recommend_shopping_products(
         "送礼用的坚果零食礼盒，100元左右",

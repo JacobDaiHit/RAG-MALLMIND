@@ -1,6 +1,7 @@
 import pytest
 
 from rag.recommendation.session_state import ShoppingSession
+from rag.recommendation.session_state import remember_tool_call
 from rag.recommendation.tool_router import (
     TOOL_SCHEMAS,
     extract_budget,
@@ -244,6 +245,34 @@ def test_pc_topic_gpu_upgrade_stays_pc_build():
     assert call["name"] == "generate_pc_build_plan"
 
 
+def test_pc_build_history_gpu_adjustment_stays_pc_build_without_topic_memory():
+    session = _session()
+    session.pc_build_history.append({"type": "pc_build_plan", "parts": [{"product_id": "pc_gpu_1"}]})
+
+    call = route_shopping_tool_call("把显卡换强一点", session, use_llm=False)
+
+    assert call["name"] == "generate_pc_build_plan"
+    assert call["source"] == "pc_build_history_guard"
+
+
+def test_pc_build_history_budget_adjustment_stays_pc_build():
+    session = _session()
+    session.pc_build_history.append({"type": "pc_build_plan", "parts": [{"product_id": "pc_cpu_1"}]})
+
+    call = route_shopping_tool_call("预算降到 6000", session, use_llm=False)
+
+    assert call["name"] == "generate_pc_build_plan"
+
+
+def test_pc_build_history_plan_compare_stays_pc_build_before_product_compare():
+    session = _session()
+    session.pc_build_history.append({"type": "pc_build_plan", "parts": [{"product_id": "pc_cpu_1"}]})
+
+    call = route_shopping_tool_call("上一套和现在这套差别在哪里", session, use_llm=False)
+
+    assert call["name"] == "generate_pc_build_plan"
+
+
 def test_pc_topic_explicit_phone_switches_to_ecommerce():
     call = route_shopping_tool_call("那推荐个手机", _session("pc_build"), use_llm=False)
 
@@ -331,3 +360,35 @@ def test_router_llm_concurrency_limit_records_reason(monkeypatch):
 
     assert call["routing_trace"]["llm_skipped"] is True
     assert call["routing_trace"]["llm_skipped_reason"] == "concurrency_limit"
+
+
+def test_router_timeout_trace_is_attempted_not_policy_skip(monkeypatch):
+    session = _session()
+    session.runtime_mode = "full"
+
+    monkeypatch.setenv("MALLMIND_LLM_ENABLED", "true")
+    monkeypatch.setattr("rag.recommendation.tool_router.try_llm_route_tool_call", lambda _message, _session: (None, "llm_timeout"))
+
+    call = route_shopping_tool_call("4000 预算，给我一套", session, use_llm=True)
+    trace = call["routing_trace"]
+
+    assert trace["router_attempted"] is True
+    assert trace["router_timeout"] is True
+    assert trace["llm_skipped_reason"] == ""
+
+
+def test_pc_build_multiturn_hard_t1_to_t4_stays_pc_build():
+    session = _session()
+    turns = [
+        "7000 元配一台游戏主机",
+        "显卡换强一点",
+        "预算降到 6000",
+        "上一套和现在这套差别在哪里",
+    ]
+
+    for message in turns:
+        call = route_shopping_tool_call(message, session, use_llm=False)
+        assert call["name"] == "generate_pc_build_plan"
+        remember_tool_call(session, call)
+        if not session.pc_build_history:
+            session.pc_build_history.append({"type": "pc_build_plan", "parts": [{"product_id": "pc_gpu_1"}]})

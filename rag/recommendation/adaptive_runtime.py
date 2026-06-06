@@ -108,10 +108,64 @@ def select_adaptive_runtime(
     if reason_codes:
         return AdaptiveRuntimeDecision("balanced", _dedupe(reason_codes), route_confidence, route_margin, completeness, complexity, history, llm_allowed, llm_available)
 
-    if route_confidence >= 0.85 and route_margin >= 0.25 and completeness >= 0.75 and complexity <= 0.45 and history < 0.45:
-        return AdaptiveRuntimeDecision("fast", ["high_confidence_simple_query"], route_confidence, route_margin, completeness, complexity, history, llm_allowed, llm_available)
+    if is_fast_safe_case(
+        text,
+        session=session,
+        local_route=local_route,
+        requirement=requirement,
+        route_confidence=route_confidence,
+        route_margin=route_margin,
+        requirement_completeness=completeness,
+        query_complexity=complexity,
+        history_dependency=history,
+        has_attachments=has_attachments,
+        has_image_data=has_image_data,
+    ):
+        return AdaptiveRuntimeDecision("fast", ["fast_safe_case"], route_confidence, route_margin, completeness, complexity, history, llm_allowed, llm_available)
 
     return AdaptiveRuntimeDecision("balanced", ["default_balanced"], route_confidence, route_margin, completeness, complexity, history, llm_allowed, llm_available)
+
+
+def is_fast_safe_case(
+    message: str,
+    *,
+    session: Any = None,
+    local_route: Optional[Dict[str, Any]] = None,
+    requirement: Any = None,
+    route_confidence: float = 0.0,
+    route_margin: float = 0.0,
+    requirement_completeness: float = 0.0,
+    query_complexity: float = 0.0,
+    history_dependency: float = 0.0,
+    has_attachments: bool = False,
+    has_image_data: bool = False,
+) -> bool:
+    """Allow fast only for narrow, single-turn, explicit ecommerce product asks."""
+
+    text = str(message or "")
+    route_name = str((local_route or {}).get("name") or "")
+    args = dict((local_route or {}).get("arguments") or {})
+    if route_name != "recommend_shopping_products":
+        return False
+    if has_attachments or has_image_data:
+        return False
+    if history_dependency > 0.0 or _has_session_context(session):
+        return False
+    if _looks_like_compare(text) or _looks_like_bundle(text) or _looks_like_pc(text):
+        return False
+    if _needs_explanation(text) or _looks_like_multimodal(text):
+        return False
+    if _looks_like_catalog_gap_or_safety(text):
+        return False
+    if _looks_like_broad_category(text):
+        return False
+    if route_confidence < 0.93 or route_margin < 0.45:
+        return False
+    if requirement_completeness < 0.88 or query_complexity > 0.30:
+        return False
+    if not _has_explicit_product_type(text, requirement, args):
+        return False
+    return True
 
 
 def _decision(
@@ -253,3 +307,83 @@ def _dedupe(items: Iterable[str]) -> list[str]:
             seen.add(item)
             result.append(item)
     return result
+
+
+def _needs_full(text: str, complexity: float, route_name: str) -> bool:
+    raw = str(text or "")
+    return (
+        complexity >= 0.72
+        or route_name == "generate_pc_build_plan" and any(term in raw for term in ["完整", "详细", "分析", "调整", "换成"])
+        or any(term in raw for term in ["详细解释", "完整分析", "深入分析", "图片", "图里", "同款", "拍照找", "多模态"])
+    )
+
+
+def _looks_like_compare(text: str) -> bool:
+    return any(term.lower() in str(text or "").lower() for term in ["比较", "对比", "哪个更", "哪款更", "vs", "pk"])
+
+
+def _looks_like_bundle(text: str) -> bool:
+    return any(term in str(text or "") for term in ["一套", "全套", "组合", "搭配", "方案", "套装", "场景"])
+
+
+def _needs_explanation(text: str) -> bool:
+    return any(term in str(text or "") for term in ["为什么", "理由", "解释", "取舍", "优缺点", "详细说明"])
+
+
+def _has_session_context(session: Any) -> bool:
+    return bool(
+        getattr(session, "last_result", None)
+        or getattr(session, "last_requirement", None)
+        or getattr(session, "pc_build_history", None)
+    )
+
+
+def _looks_like_pc(text: str) -> bool:
+    lowered = str(text or "").lower()
+    return any(term in lowered for term in ["pc", "cpu", "gpu", "rtx", "显卡", "主板", "内存", "ssd", "电源", "机箱", "装机", "整机", "主机"])
+
+
+def _looks_like_multimodal(text: str) -> bool:
+    return any(term in str(text or "") for term in ["图片", "图里", "同款", "拍照", "上传", "照片", "image", "photo"])
+
+
+def _looks_like_catalog_gap_or_safety(text: str) -> bool:
+    lowered = str(text or "").lower()
+    terms = ["药", "处方", "医药", "宠物", "猫粮", "狗粮", "家电", "冰箱", "汽车", "摩托", "unsupported"]
+    return any(term in lowered for term in terms)
+
+
+def _looks_like_broad_category(text: str) -> bool:
+    compact = "".join(str(text or "").split())
+    broad_terms = ["商品", "礼物", "数码", "食品", "饮料", "衣服", "护肤", "美妆", "有啥", "有哪些", "随便推荐"]
+    return any(term in compact for term in broad_terms) and not _has_specific_product_word(compact)
+
+
+def _has_explicit_product_type(text: str, requirement: Any, args: Dict[str, Any]) -> bool:
+    if args.get("category") in {"pc_part", "pc_build"}:
+        return False
+    if list(getattr(requirement, "target_sub_categories", []) or []):
+        return True
+    return _has_specific_product_word("".join(str(text or "").split()))
+
+
+def _has_specific_product_word(text: str) -> bool:
+    lowered = str(text or "").lower()
+    specific_terms = [
+        "蓝牙耳机",
+        "耳机",
+        "手机壳",
+        "键盘",
+        "鼠标",
+        "防晒霜",
+        "洗面奶",
+        "面霜",
+        "精华",
+        "咖啡",
+        "坚果",
+        "t恤",
+        "跑鞋",
+        "篮球鞋",
+        "背包",
+    ]
+    return any(term in lowered for term in specific_terms)

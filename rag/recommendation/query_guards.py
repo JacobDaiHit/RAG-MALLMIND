@@ -52,6 +52,7 @@ PRODUCT_TYPE_TERMS: Dict[str, Iterable[str]] = {
     "tshirt": ["t恤", "短袖", "速干t"],
     "jacket": ["外套", "冲锋衣", "夹克", "防风衣", "风衣"],
     "hat": ["帽", "帽子", "遮阳帽", "鸭舌帽"],
+    "basketball_shoes": ["篮球鞋", "篮球实战鞋", "实战篮球鞋", "实战鞋", "篮球专业比赛鞋", "篮球比赛鞋"],
     "shoes": ["运动鞋", "跑鞋", "跑步鞋", "篮球鞋", "徒步鞋", "鞋"],
 }
 
@@ -71,6 +72,7 @@ PRODUCT_TYPE_SUBCATEGORY_TERMS: Dict[str, Iterable[str]] = {
     "tshirt": ["t恤", "短袖", "速干t恤"],
     "jacket": ["外套", "冲锋衣", "夹克", "防风衣", "风衣"],
     "hat": ["帽", "帽子", "遮阳帽", "鸭舌帽"],
+    "basketball_shoes": ["篮球鞋", "篮球实战鞋", "实战篮球鞋", "实战鞋", "篮球专业比赛鞋", "篮球比赛鞋"],
     "shoes": ["鞋", "跑步鞋", "篮球鞋", "徒步鞋", "运动鞋"],
 }
 
@@ -90,6 +92,7 @@ PRODUCT_TYPE_LABELS: Dict[str, str] = {
     "tshirt": "T恤",
     "jacket": "外套",
     "hat": "帽子",
+    "basketball_shoes": "篮球鞋",
     "shoes": "鞋",
 }
 
@@ -109,6 +112,7 @@ PRODUCT_TYPE_CATEGORY: Dict[str, str] = {
     "tshirt": "clothing",
     "jacket": "clothing",
     "hat": "clothing",
+    "basketball_shoes": "clothing",
     "shoes": "clothing",
 }
 
@@ -400,7 +404,7 @@ def infer_product_type(query: str) -> Optional[str]:
     for product_type, terms in PRODUCT_TYPE_TERMS.items():
         if any(normalize_text(term) in text for term in terms):
             matched.append(product_type)
-    for preferred in ("hat", "base_makeup", "jacket"):
+    for preferred in ("basketball_shoes", "hat", "base_makeup", "jacket"):
         if preferred in matched:
             return preferred
     return matched[0] if len(matched) == 1 else None
@@ -471,6 +475,20 @@ def clarification_required(query: str) -> Optional[Dict[str, Any]]:
     raw = str(query or "")
     if not text or _allows_loose_recommendation(raw):
         return None
+    if any(term in text for term in ["礼物", "送礼", "送女朋友", "送男朋友", "gift"]) and not any(
+        term in text
+        for term in ["预算", "以内", "以下", "护肤", "美妆", "数码", "衣服", "鞋", "零食", "咖啡", "香水", "口红"]
+    ):
+        return {
+            "no_match_reason": "clarification_required",
+            "clarification_required": True,
+            "clarification_questions": [
+                "预算上限大概是多少？",
+                "更偏美妆护肤、数码小物、穿搭配饰还是食品饮料？",
+                "收礼人的年龄、风格或忌讳品牌有没有需要避开的？",
+            ],
+            "requested_product_type": "gift",
+        }
     product_type = infer_product_type(raw)
     if product_type == "phone" and _is_broad_single_recommendation(text):
         return {

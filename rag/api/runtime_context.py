@@ -4,6 +4,7 @@ from dataclasses import asdict
 from typing import Any, Dict
 
 from rag.recommendation.adaptive_runtime import AdaptiveRuntimeDecision, select_adaptive_runtime
+from rag.recommendation.llm_client import get_llm_provider_trace
 from rag.recommendation.recommendation_pipeline import InvalidGoalError
 from rag.recommendation.recommendation_pipeline import parse_requirement_rule_based
 from rag.recommendation.runtime_mode import RuntimeModePolicy, runtime_policy_for_mode
@@ -100,7 +101,7 @@ def decision_signals(
     requested = str(requested_mode or "auto").strip().lower() or "auto"
     if requested not in {"auto", "fast", "balanced", "full"}:
         requested = "auto"
-    return {
+    signals = {
         "requested_mode": requested,
         "llm_configured": llm_configured,
         "has_attachments": has_attachments,
@@ -110,6 +111,9 @@ def decision_signals(
         "adaptive_decision": decision.to_trace(),
         "reason_codes": list(decision.reason_codes),
     }
+    signals.update(get_llm_provider_trace())
+    signals["llm_configured"] = llm_configured
+    return signals
 
 
 def runtime_event_payload(
@@ -133,7 +137,7 @@ def runtime_event_payload(
         system_degraded=system_degraded,
     )
     trace = decision.to_trace()
-    return {
+    payload = {
         "requested_mode": signals["requested_mode"],
         "selected_mode": decision.selected_mode,
         "mode": decision.selected_mode,
@@ -150,6 +154,17 @@ def runtime_event_payload(
         "history_dependency": trace["history_dependency"],
         "reason_codes": trace["reason_codes"],
     }
+    payload.update({key: signals[key] for key in (
+        "llm_provider",
+        "llm_model",
+        "router_model",
+        "parse_model",
+        "guidance_model",
+        "llm_config_error_code",
+        "llm_provider_fallback",
+        "llm_error_sanitized",
+    ) if key in signals})
+    return payload
 
 
 def apply_runtime_trace(
@@ -180,6 +195,18 @@ def apply_runtime_trace(
     trace["requested_runtime_mode"] = signals["requested_mode"]
     trace["selected_runtime_mode"] = decision.selected_mode
     trace["llm_configured"] = llm_configured
+    for key in (
+        "llm_provider",
+        "llm_model",
+        "router_model",
+        "parse_model",
+        "guidance_model",
+        "llm_config_error_code",
+        "llm_provider_fallback",
+        "llm_error_sanitized",
+    ):
+        if key in signals:
+            trace[key] = signals[key]
     trace["adaptive_decision"] = adaptive
     trace["reason_codes"] = list(decision.reason_codes)
     trace["route_confidence"] = adaptive["route_confidence"]

@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 from rag.recommendation.input_preprocessor import clean_text
 from rag.recommendation.explanation_builder import build_evidence_grounded_explanation
 from rag.recommendation.package_builder import build_recommendation_result
-from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, report_to_dict, run_with_hard_timeout
+from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, get_llm_provider_trace, report_to_dict, run_with_hard_timeout
 from rag.recommendation.query_guards import is_pc_query
 from rag.schemas import BudgetLevel, ComponentCategory, RecommendationResult, RequirementLevel, RequirementSpec
 from rag.utils.runtime_errors import public_error
@@ -84,6 +84,10 @@ SHOPPING_GOAL_KEYWORDS = [
     "评价",
     "适合",
     "送礼",
+    "礼物",
+    "送女朋友",
+    "送男朋友",
+    "gift",
     "学生",
     "通勤",
     "办公",
@@ -183,6 +187,7 @@ def recommend_shopping_products(
         use_rag_query_expansion=use_rag_query_expansion,
     )
     result.trace["requirement_parsing"] = requirement_parse_trace
+    result.trace.update(get_llm_provider_trace())
     result.trace["llm_requirement_parse_used"] = requirement_parse_trace["llm_parse_used"]
     result.trace["rule_parse_used"] = requirement_parse_trace["rule_parse_used"]
     guidance_enabled = should_use_llm_guidance(user_goal) if use_llm_guidance is None else use_llm_guidance
@@ -246,7 +251,7 @@ def parse_requirement(user_goal: str, use_llm: bool = True) -> RequirementSpec:
                 },
                 {"role": "user", "content": build_requirement_prompt(user_goal, rule_requirement)},
             ],
-                model=client.config.fast_model,
+                model=os.getenv("MALLMIND_PARSE_MODEL") or client.config.fast_model,
                 temperature=0.1,
                 max_tokens=1200,
             ),
@@ -472,6 +477,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
     client = OpenAICompatibleChatClient()
     if not client.configured:
         result.trace["llm_guidance"] = "not_configured"
+        result.trace.update(get_llm_provider_trace())
         return result
 
     try:
@@ -481,7 +487,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
                 {"role": "system", "content": "你是谨慎的传统电商导购助手，只输出 JSON。"},
                 {"role": "user", "content": build_guidance_prompt(result)},
             ],
-                model=client.config.model,
+                model=os.getenv("MALLMIND_GUIDANCE_MODEL") or client.config.model,
                 temperature=0.2,
                 max_tokens=1500,
             ),
@@ -497,6 +503,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
         logger.warning("LLM guidance failed; using rule-based guidance: %s", exc)
         result.trace["llm_guidance"] = "fallback"
         result.trace["llm_guidance_error"] = public_error(exc)
+        result.trace["llm_error_sanitized"] = public_error(exc)
     return result
 
 

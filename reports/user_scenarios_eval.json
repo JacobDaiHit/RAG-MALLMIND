@@ -14,7 +14,7 @@
       "capability_gap": 1
     },
     "overall_status": "ok",
-    "elapsed_ms": 467.58,
+    "elapsed_ms": 309.24,
     "rag_applicable_pass_rate": 1.0,
     "multiturn_state_pass_rate": 0.0,
     "negative_constraint_pass_rate": 1.0,
@@ -1785,7 +1785,7 @@
           "min_price": 199.0,
           "max_price": 199.0,
           "component_role": "",
-          "text": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 北面 clothing 帽子  The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8532，参考价 199-199 CNY。 评价均分 3/5。"
+          "text": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 北面 clothing 帽子  The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8533，参考价 199-199 CNY。 评价均分 3/5。"
         }
       ],
       "component_roles": [
@@ -2006,8 +2006,8 @@
           "currency": "CNY",
           "rating_avg": 3.0,
           "review_count": 4,
-          "score": 0.8532,
-          "strength": "综合分 0.8532，评分 3/5，FAQ 信息较完整。",
+          "score": 0.8533,
+          "strength": "综合分 0.8533，评分 3/5，FAQ 信息较完整。",
           "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
           "recommendation": false
         },
