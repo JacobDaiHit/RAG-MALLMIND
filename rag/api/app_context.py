@@ -48,10 +48,10 @@ def prepare_recommendation_context(
     return contextual_goal, prepared_attachments, attachment_report
 
 
-def validate_goal(goal: str) -> None:
+def validate_goal(goal: str, *, skip_keyword_check: bool = False) -> None:
     if not goal.strip():
         raise InvalidGoalError("goal cannot be empty")
-    validate_business_goal(goal)
+    validate_business_goal(goal, skip_keyword_check=skip_keyword_check)
 
 
 def build_requirement_questions(requirement: Any, attachments: List[Dict[str, Any]]) -> List[str]:

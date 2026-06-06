@@ -296,19 +296,69 @@ python scripts/eval_retrieval.py --output reports/retrieval_eval.json --markdown
 python scripts/check_vector_index_health.py --output reports/vector_index_health.json
 ```
 
-### 6. Full 链路消融评估
+### 6. 模型链路消融评估
 
-用于比较 fast / rag_only / llm_only / full 等模式下，路由、RAG、LLM 解析和最终链路的有效率。该报告用于定位 Agent 层、RAG 层、LLM 层分别贡献了什么。
+用于比较 fast / rag_only / balanced_demo / full 等模式下，路由、RAG、LLM 解析和最终链路的贡献。依赖 Milvus 和 LLM 环境，适合在外部服务就绪后运行。
 
-```bash
-python scripts/eval_full_chain_ablation.py --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
-```
-
-只跑某个模式：
+**快速验证（推荐先跑，约 3 分钟，12 case × 3 组）：**
 
 ```bash
-python scripts/eval_full_chain_ablation.py --mode rag_only --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
+python scripts/eval_model_chain_ablation.py \
+  --cases tests/fixtures/capability_challenge_eval_cases.json \
+  --groups fast_baseline,rag_only,balanced_demo \
+  --limit 12 \
+  --output reports/capability_challenge_quick.json \
+  --markdown reports/capability_challenge_quick.md
 ```
+
+**核心 5 组中等规模（约 8 分钟，20 case × 5 组）：**
+
+```bash
+python scripts/eval_model_chain_ablation.py \
+  --cases tests/fixtures/capability_challenge_eval_cases.json \
+  --groups fast_baseline,rag_only,balanced_demo,router_llm_only,parse_llm_only \
+  --limit 20 \
+  --output reports/capability_challenge_20.json \
+  --markdown reports/capability_challenge_20.md
+```
+
+**完整 9 组全量评估（约 30 分钟，40 case × 9 组）：**
+
+```bash
+python scripts/eval_model_chain_ablation.py \
+  --cases tests/fixtures/capability_challenge_eval_cases.json \
+  --groups all \
+  --output reports/capability_challenge_eval.json \
+  --markdown reports/capability_challenge_eval.md
+```
+
+**只跑单个 case 调试：**
+
+```bash
+python scripts/eval_model_chain_ablation.py \
+  --cases tests/fixtures/capability_challenge_eval_cases.json \
+  --case-id cap_synonym_commute_noise_beans \
+  --groups fast_baseline,rag_only,balanced_demo \
+  --output reports/capability_challenge_single.json \
+  --markdown reports/capability_challenge_single.md
+```
+
+**禁用 router LLM 跑（隔离 RAG + parse 贡献）：**
+
+```bash
+python scripts/eval_model_chain_ablation.py \
+  --cases tests/fixtures/capability_challenge_eval_cases.json \
+  --groups balanced_demo --limit 12 \
+  --disable-router-llm \
+  --output reports/capability_challenge_no_router.json \
+  --markdown reports/capability_challenge_no_router.md
+```
+
+关注指标（打开生成的 `.md` 报告）：
+- `capability_eval` 表：`rag_top1_changed`（RAG 是否改变 top1）、`hit@5`/`p@1`（rag_only vs fast_baseline 差值）
+- `llm_timeout` / `llm_json_invalid` / `llm_provider_error`（LLM 调用失败分类）
+- `LLM diagnostics` 表：`router_failure` / `parse_failure` / `guidance_failure`（各环节失败原因）
+- `vs_fast_delta` 表：`balanced_win`（balanced 相对 fast 的 top1 胜出 case）
 
 ### 7. 比赛演示前建议组合
 
@@ -327,7 +377,7 @@ python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
 python scripts/index_ecommerce_products.py --rebuild
 python scripts/check_vector_index_health.py --output reports/vector_index_health.json
 python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
-python scripts/eval_full_chain_ablation.py --output reports/full_chain_ablation.json --markdown reports/full_chain_ablation.md
+python scripts/eval_model_chain_ablation.py --cases tests/fixtures/capability_challenge_eval_cases.json --groups all --output reports/capability_challenge_eval.json --markdown reports/capability_challenge_eval.md
 ```
 
 部分能力若涉及 LLM、Milvus、Redis 或数据库连通性，是否完全通过会受本地环境影响。

@@ -155,7 +155,7 @@ def handle_recommend(
     catalog_scope = normalize_catalog_scope((tool_call.get("arguments") or {}).get("catalog_scope"))
     recommendation_domain = "single_pc_part" if catalog_scope == "pc_parts" else "ecommerce"
     try:
-        validate_goal(contextual_goal)
+        validate_goal(contextual_goal, skip_keyword_check=True)
         yield sse_event("progress", {"label": "系统已开始检索", "detail": "正在连接本地商品库并准备结构化筛选。"})
         image_evidence = image_retrieval_fn(
             attachments=raw_attachments,
@@ -288,6 +288,8 @@ def call_recommendation_fn(
         kwargs["use_milvus_retrieval"] = use_milvus_retrieval
     if "use_rag_query_expansion" in parameters:
         kwargs["use_rag_query_expansion"] = use_rag_query_expansion
+    if "skip_keyword_check" in parameters:
+        kwargs["skip_keyword_check"] = True
     return recommendation_fn(contextual_goal, **kwargs)
 
 

@@ -54,12 +54,20 @@ def build_evidence_grounded_explanation(
         selected_products=selected_products,
         comparison_table=comparison_table,
     )
+    # ── 标准化 explanation trace 字段 ──
+    trace = {
+        "llm_explanation_attempted": bool(use_llm),
+        "llm_explanation_success": False,
+        "llm_explanation_failure_reason": "",
+    }
     if not use_llm:
-        return {"mode": "template", "llm_input": llm_input, "explanation": template_explanation(llm_input)}
+        trace["llm_explanation_failure_reason"] = "llm_disabled"
+        return {"mode": "template", "llm_input": llm_input, "explanation": template_explanation(llm_input), "_trace": trace}
 
     client = OpenAICompatibleChatClient()
     if not client.configured:
-        return {"mode": "fallback", "fallback_reason": "llm_not_configured", "llm_input": llm_input, "explanation": template_explanation(llm_input)}
+        trace["llm_explanation_failure_reason"] = "llm_not_configured"
+        return {"mode": "fallback", "fallback_reason": "llm_not_configured", "llm_input": llm_input, "explanation": template_explanation(llm_input), "_trace": trace}
 
     try:
         payload = run_with_hard_timeout(
@@ -76,9 +84,20 @@ def build_evidence_grounded_explanation(
             "evidence_explanation",
         )
         explanation = validate_explanation_output(payload)
-        return {"mode": "llm_evidence_grounded", "llm_input": llm_input, "explanation": explanation}
+        trace["llm_explanation_success"] = True
+        return {"mode": "llm_evidence_grounded", "llm_input": llm_input, "explanation": explanation, "_trace": trace}
+    except TimeoutError:
+        trace["llm_explanation_failure_reason"] = "llm_timeout"
+        return {"mode": "fallback", "fallback_reason": "llm_timeout", "llm_input": llm_input, "explanation": template_explanation(llm_input), "_trace": trace}
     except (LLMClientError, ValueError, TypeError) as exc:
-        return {"mode": "fallback", "fallback_reason": public_error(exc), "llm_input": llm_input, "explanation": template_explanation(llm_input)}
+        text = str(exc).lower()
+        if "timeout" in text or "timed out" in text:
+            trace["llm_explanation_failure_reason"] = "llm_timeout"
+        elif isinstance(exc, (ValueError, TypeError)):
+            trace["llm_explanation_failure_reason"] = "llm_json_invalid"
+        else:
+            trace["llm_explanation_failure_reason"] = "llm_provider_error"
+        return {"mode": "fallback", "fallback_reason": public_error(exc), "llm_input": llm_input, "explanation": template_explanation(llm_input), "_trace": trace}
 
 
 def build_llm_explanation_input(

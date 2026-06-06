@@ -220,6 +220,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--disable-router-llm", action="store_true", help="评估时强制关闭 router LLM，只测 parse/RAG/guidance 等链路。")
     parser.add_argument("--router-circuit-failures", type=int, default=5, help="router LLM 连续失败多少次后开启熔断，默认 5，避免一次失败让整组 router LLM 未被有效测到。")
     parser.add_argument("--verbose-external-errors", action="store_true", help="显示外部 LLM/embedding/Milvus 失败的完整 traceback。默认静默，报告仍记录失败状态。")
+    parser.add_argument("--group-delay-seconds", type=float, default=0.0, help="每个实验组结束后等待的秒数，用于避免触发 API 限流。")
     args = parser.parse_args(argv)
 
     load_dotenv(ROOT_DIR / ".env")
@@ -232,7 +233,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     started = time.perf_counter()
     interrupted = False
     try:
-        for group in groups:
+        for group_index, group in enumerate(groups):
             print(f"开始实验组: {group.name}", flush=True)
             for index, case in enumerate(cases, 1):
                 print(f"  [{index}/{len(cases)}] {case.get('case_id')}", flush=True)
@@ -243,6 +244,9 @@ def main(argv: Sequence[str] | None = None) -> int:
                 completed.update((row.get("group"), row.get("case_id"), row.get("turn_index")) for row in new_rows)
                 if args.partial_every and len(rows) % max(args.partial_every, 1) < len(new_rows):
                     write_report(rows, groups, args, started, status="partial")
+            if args.group_delay_seconds and group_index < len(groups) - 1:
+                print(f"  组间等待 {args.group_delay_seconds}s ...", flush=True)
+                time.sleep(args.group_delay_seconds)
     except KeyboardInterrupt:
         interrupted = True
         print("评估被中断，正在写出已完成部分报告...", flush=True)
@@ -398,6 +402,7 @@ def run_single_case(
                     use_milvus_retrieval=group.milvus,
                     use_rag_query_expansion=group.query_expansion,
                     use_llm_guidance=group.guidance_llm,
+                    skip_keyword_check=True,
                 )
                 payload = model_to_dict(result)
                 payload.setdefault("trace", {})["tool_call"] = tool_call
@@ -820,6 +825,22 @@ def call_counters(group: GroupSpec, routing_trace: Dict[str, Any], trace: Dict[s
         "embedding_calls": int(rag_attempted),
         "milvus_calls": int(rag_attempted),
         "guidance_calls": int(guidance_attempted),
+        # ── 标准化 LLM 诊断字段 ──
+        "llm_router_failure_reason": str(routing_trace.get("llm_router_failure_reason") or routing_trace.get("router_failure_reason") or ""),
+        "llm_router_error_class": str(routing_trace.get("llm_router_error_class") or ""),
+        "llm_router_elapsed_ms": int(routing_trace.get("llm_router_elapsed_ms") or 0),
+        "llm_router_timeout": bool(routing_trace.get("llm_router_error_class") == "timeout" or routing_trace.get("router_timeout")),
+        "llm_router_provider_error": bool(routing_trace.get("llm_router_error_class") == "provider_error"),
+        "llm_parse_failure_reason": str(parse_trace.get("llm_parse_failure_reason") or parse_trace.get("parse_fallback_reason") or ""),
+        "llm_parse_error_class": str(parse_trace.get("llm_parse_error_class") or ""),
+        "llm_parse_elapsed_ms": int(parse_trace.get("llm_parse_elapsed_ms") or 0),
+        "llm_parse_timeout": bool(parse_trace.get("llm_parse_error_class") == "timeout"),
+        "llm_parse_json_invalid": bool(parse_trace.get("llm_parse_error_class") == "json_invalid"),
+        "llm_parse_provider_error": bool(parse_trace.get("llm_parse_error_class") == "provider_error"),
+        "llm_guidance_failure_reason": str(trace.get("llm_guidance_failure_reason") or ""),
+        "llm_explanation_attempted": bool(trace.get("llm_explanation_attempted")),
+        "llm_explanation_success": bool(trace.get("llm_explanation_success")),
+        "llm_explanation_failure_reason": str(trace.get("llm_explanation_failure_reason") or ""),
     }
 
 
@@ -1264,6 +1285,31 @@ def aggregate(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
         "full_selected_rate": rate(row.get("selected_runtime_mode") == "full" for row in rows),
         "degraded_fast_rate": rate(row.get("selected_runtime_mode") == "degraded_fast" for row in rows),
         "failed_count": sum(1 for row in rows if row["status"] == "failed"),
+        # ── LLM 错误分类统计 ──
+        "llm_timeout_rate": rate(
+            row.get("llm_router_timeout") or row.get("llm_parse_timeout")
+            for row in rows if row.get("llm_attempted")
+        ),
+        "llm_json_invalid_rate": rate(
+            row.get("router_json_invalid") or row.get("llm_parse_json_invalid")
+            for row in rows if row.get("llm_attempted")
+        ),
+        "llm_provider_error_rate": rate(
+            row.get("llm_router_provider_error") or row.get("llm_parse_provider_error")
+            for row in rows if row.get("llm_attempted")
+        ),
+        "llm_router_failure_rate": rate(
+            bool(row.get("llm_router_failure_reason")) for row in rows if row.get("llm_router_attempted")
+        ),
+        "llm_parse_failure_rate": rate(
+            bool(row.get("llm_parse_failure_reason")) for row in rows if row.get("llm_parse_attempted")
+        ),
+        "llm_guidance_failure_rate": rate(
+            bool(row.get("llm_guidance_failure_reason")) for row in rows if row.get("llm_guidance_attempted")
+        ),
+        "llm_explanation_failure_rate": rate(
+            bool(row.get("llm_explanation_failure_reason")) for row in rows if row.get("llm_explanation_attempted")
+        ),
     }
 
 
@@ -1548,9 +1594,16 @@ def build_llm_diagnostics(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "llm_changed_excluded_brands": parse.get("llm_changed_excluded_brands"),
             "llm_changed_attributes": parse.get("llm_changed_attributes"),
             "parse_fallback_reason": parse.get("parse_fallback_reason"),
+            "llm_router_failure_reason": str(row.get("llm_router_failure_reason") or ""),
+            "llm_router_error_class": str(row.get("llm_router_error_class") or ""),
+            "llm_router_elapsed_ms": int(row.get("llm_router_elapsed_ms") or 0),
+            "llm_parse_failure_reason": str(row.get("llm_parse_failure_reason") or parse.get("parse_fallback_reason") or ""),
+            "llm_parse_error_class": str(row.get("llm_parse_error_class") or ""),
+            "llm_parse_elapsed_ms": int(row.get("llm_parse_elapsed_ms") or 0),
             "guidance_attempted": bool(row.get("llm_guidance_attempted")),
             "guidance_success": bool(row.get("llm_guidance_used")),
             "guidance_applied": bool(row.get("llm_guidance_applied")),
+            "llm_guidance_failure_reason": str(row.get("llm_guidance_failure_reason") or ""),
             "grounded_reason_score": guidance.get("grounded_reason_score"),
             "hallucination_flag": guidance.get("hallucination_flag"),
             "unsupported_claims": guidance.get("unsupported_claims"),
@@ -1724,8 +1777,8 @@ def render_capability_markdown_sections(report: Dict[str, Any]) -> List[str]:
 
     lines.extend(["", "## capability_eval", ""])
     lines.extend([
-        "| group | cases | llm_attempted | llm_success | llm_applied | router a/s/ap | parse a/s/ap | guidance a/s/ap | rag_attempted | embedding | milvus | nonempty | timeout | fallback | rag_n | rag_hit@5 | rag_p@1 | rag_mrr | rag_top1_changed | evidence_reason |",
-        "| --- | ---: | ---: | ---: | ---: | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        "| group | cases | llm_attempted | llm_success | llm_applied | router a/s/ap | parse a/s/ap | guidance a/s/ap | rag_attempted | embedding | milvus | nonempty | timeout | fallback | rag_n | rag_hit@5 | rag_p@1 | rag_mrr | rag_top1_changed | evidence_reason | llm_timeout | llm_json_invalid | llm_provider_error |",
+        "| --- | ---: | ---: | ---: | ---: | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
     ])
     for group, item in report.get("capability_eval", {}).items():
         lines.append(
@@ -1736,7 +1789,8 @@ def render_capability_markdown_sections(report: Dict[str, Any]) -> List[str]:
             f"{fmt(item.get('rag_attempted_rate'))} | {fmt(item.get('embedding_success_rate'))} | {fmt(item.get('milvus_success_rate'))} | "
             f"{fmt(item.get('retrieval_nonempty_rate'))} | {fmt(item.get('retrieval_timeout_rate'))} | {fmt(item.get('fallback_to_catalog_rate'))} | "
             f"{item.get('rag_contribution_evaluable_count', 0)} | {fmt(item.get('rag_effective_hit@5'))} | {fmt(item.get('rag_effective_precision@1'))} | "
-            f"{fmt(item.get('rag_effective_mrr'))} | {fmt(item.get('rag_changed_top1_rate'))} | {fmt(item.get('rag_evidence_used_in_reason_rate'))} |"
+            f"{fmt(item.get('rag_effective_mrr'))} | {fmt(item.get('rag_changed_top1_rate'))} | {fmt(item.get('rag_evidence_used_in_reason_rate'))} | "
+            f"{fmt(item.get('llm_timeout_rate'))} | {fmt(item.get('llm_json_invalid_rate'))} | {fmt(item.get('llm_provider_error_rate'))} |"
         )
 
     lines.extend(render_vs_fast_delta_markdown(report))
@@ -1813,15 +1867,18 @@ def render_llm_diagnostics_markdown(report: Dict[str, Any]) -> List[str]:
     if not rows:
         return lines + ["- No LLM-attempted rows."]
     lines.extend([
-        "| group | case_id | router a/s/ap | local | llm | final | parse a/s/ap | guidance a/s/ap | changed_route | changed_rec | clarification |",
-        "| --- | --- | --- | --- | --- | --- | --- | --- | ---: | ---: | ---: |",
+        "| group | case_id | router a/s/ap | router_failure | local | llm | final | parse a/s/ap | parse_failure | guidance a/s/ap | guidance_failure | changed_route | changed_rec | clarification |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | ---: | ---: |",
     ])
     for row in rows[:120]:
         lines.append(
             f"| {row['group']} | {md(row['case_id'])} | {int(row.get('router_attempted'))}/{int(row.get('router_success'))}/{int(row.get('router_applied'))} | "
+            f"{md(str(row.get('llm_router_failure_reason') or row.get('router_failure_reason') or '')[:30])} | "
             f"{md(row.get('local_route'))} | {md(row.get('llm_route'))} | {md(row.get('final_route'))} | "
             f"{int(row.get('parse_attempted'))}/{int(row.get('parse_success'))}/{int(row.get('parse_applied'))} | "
+            f"{md(str(row.get('llm_parse_failure_reason') or '')[:30])} | "
             f"{int(row.get('guidance_attempted'))}/{int(row.get('guidance_success'))}/{int(row.get('guidance_applied'))} | "
+            f"{md(str(row.get('llm_guidance_failure_reason') or '')[:30])} | "
             f"{int(bool(row.get('route_changed_by_llm')))} | {int(bool(row.get('llm_changed_recommendation')))} | {int(bool(row.get('llm_triggered_clarification')))} |"
         )
     return lines

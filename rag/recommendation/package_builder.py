@@ -166,6 +166,10 @@ def build_recommendation_result(
             },
             "dynamic_weights": collect_dynamic_weights(grouped_scores),
             "dynamic_weight_reasons": collect_weight_reasons(grouped_scores),
+            "evidence_boost_max": _evidence_boost_max(grouped_scores),
+            "evidence_match_max": _evidence_match_max(grouped_scores),
+            "evidence_boost_any": _evidence_boost_any(grouped_scores),
+            "evidence_boost_per_category": _evidence_boost_per_category(grouped_scores),
         },
     )
 
@@ -881,4 +885,32 @@ def dedupe(items: Iterable[str]) -> List[str]:
             continue
         seen.add(item)
         result.append(item)
+    return result
+
+
+def _evidence_boost_max(grouped_scores: Dict[ComponentCategory, List[ProductScore]]) -> float:
+    return round(max(
+        (score.evidence_boost for scores in grouped_scores.values() for score in scores),
+        default=0.0,
+    ), 4)
+
+
+def _evidence_match_max(grouped_scores: Dict[ComponentCategory, List[ProductScore]]) -> float:
+    return round(max(
+        (score.evidence_match for scores in grouped_scores.values() for score in scores),
+        default=0.0,
+    ), 4)
+
+
+def _evidence_boost_any(grouped_scores: Dict[ComponentCategory, List[ProductScore]]) -> bool:
+    return any(score.evidence_boost > 0 for scores in grouped_scores.values() for score in scores)
+
+
+def _evidence_boost_per_category(
+    grouped_scores: Dict[ComponentCategory, List[ProductScore]],
+) -> Dict[str, float]:
+    result: Dict[str, float] = {}
+    for category, scores in grouped_scores.items():
+        if scores:
+            result[category.value] = round(max(score.evidence_boost for score in scores), 4)
     return result

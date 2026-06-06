@@ -151,9 +151,18 @@ def get_llm_provider_trace() -> Dict[str, Any]:
     """Return a public, secret-free provider trace."""
 
     config = build_llm_provider_config()
+    base_url_host = ""
+    if config.base_url:
+        try:
+            from urllib.parse import urlparse
+            parsed = urlparse(config.base_url)
+            base_url_host = parsed.hostname or ""
+        except Exception:
+            base_url_host = ""
     return {
         "llm_provider": config.provider,
         "llm_model": config.model,
+        "llm_base_url_host": base_url_host,
         "router_model": _role_model("MALLMIND_ROUTER_MODEL", config.fast_model or config.model),
         "parse_model": _role_model("MALLMIND_PARSE_MODEL", config.fast_model or config.model),
         "guidance_model": _role_model("MALLMIND_GUIDANCE_MODEL", config.model),
@@ -254,6 +263,7 @@ class OpenAICompatibleChatClient:
             "temperature": temperature,
             "max_tokens": max_tokens,
             "stream": False,
+            "thinking": {"type": "disabled"},
         }
         url = self._chat_completions_url()
         report = LLMCallReport(
@@ -474,7 +484,16 @@ def _clean_int_env(name: str, *, default: int) -> int:
 
 def _extract_message_content(data: Dict[str, Any]) -> str:
     """Normalize chat-completions message content into plain text."""
-    content = data["choices"][0]["message"]["content"]
+    message = data["choices"][0]["message"]
+    content = message.get("content")
+    if content is None:
+        reasoning = message.get("reasoning")
+        if reasoning and isinstance(reasoning, str):
+            return reasoning.strip()
+        text_val = data["choices"][0].get("text")
+        if text_val and isinstance(text_val, str):
+            return text_val.strip()
+        raise KeyError("content")
     if isinstance(content, str):
         return content.strip()
     if isinstance(content, list):

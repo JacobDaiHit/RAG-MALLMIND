@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import time
 from typing import Any, Dict, List, Optional
 
 from rag.recommendation.input_preprocessor import clean_text
@@ -171,11 +172,12 @@ def recommend_shopping_products(
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
     use_llm_explanation: Optional[bool] = None,
+    skip_keyword_check: bool = False,
 ) -> RecommendationResult:
     """Recommend ecommerce products and bundles from a shopping goal."""
 
-    validate_business_goal(user_goal)
-    requirement = parse_requirement(user_goal, use_llm=use_llm)
+    validate_business_goal(user_goal, skip_keyword_check=skip_keyword_check)
+    requirement = parse_requirement(user_goal, use_llm=use_llm, skip_keyword_check=skip_keyword_check)
     requirement_parse_trace = build_requirement_parse_trace(requirement, use_llm=use_llm)
     if is_pc_query(user_goal) and catalog_scope != "pc_parts":
         catalog_scope = "pc_parts"
@@ -212,6 +214,10 @@ def attach_grounded_explanation(result: RecommendationResult, *, use_llm: bool) 
     if not result.product_cards and not result.comparison_table:
         result.trace["explanation_mode"] = "skipped"
         result.trace["llm_used_for_explanation"] = False
+        # ── 标准化 explanation trace ──
+        result.trace["llm_explanation_attempted"] = False
+        result.trace["llm_explanation_success"] = False
+        result.trace["llm_explanation_failure_reason"] = "no_cards_or_comparison"
         return
     explanation = build_evidence_grounded_explanation(
         user_need=result.requirement.raw_query,
@@ -227,20 +233,44 @@ def attach_grounded_explanation(result: RecommendationResult, *, use_llm: bool) 
     if explanation.get("fallback_reason"):
         result.trace["explanation_fallback_reason"] = explanation["fallback_reason"]
     result.feedback_summary["grounded_explanation"] = explanation.get("explanation") or {}
+    # ── 标准化 explanation trace 字段 ──
+    expl_trace = explanation.get("_trace") or {}
+    result.trace["llm_explanation_attempted"] = expl_trace.get("llm_explanation_attempted", bool(use_llm))
+    result.trace["llm_explanation_success"] = expl_trace.get("llm_explanation_success", mode == "llm_evidence_grounded")
+    result.trace["llm_explanation_failure_reason"] = expl_trace.get("llm_explanation_failure_reason", explanation.get("fallback_reason") or "")
 
 
-def parse_requirement(user_goal: str, use_llm: bool = True) -> RequirementSpec:
+# ── 模块级 parse trace（供 build_requirement_parse_trace 读取） ──
+_parse_trace: Dict[str, Any] = {}
+
+
+def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_check: bool = False) -> RequirementSpec:
     """Parse shopping intent with rule fallback and optional LLM enhancement."""
 
-    rule_requirement = parse_requirement_rule_based(user_goal)
+    global _parse_trace
+    _parse_trace = {
+        "llm_parse_attempted": False,
+        "llm_parse_success": False,
+        "llm_parse_applied": False,
+        "llm_parse_failure_reason": "",
+        "llm_parse_error_class": "",
+        "llm_parse_elapsed_ms": 0,
+    }
+    rule_requirement = parse_requirement_rule_based(user_goal, skip_keyword_check=skip_keyword_check)
     if not use_llm or not should_use_llm_requirement_parse(user_goal, rule_requirement):
+        _parse_trace["llm_parse_failure_reason"] = "llm_disabled_by_runtime_policy" if not use_llm else "rule_parse_sufficient_or_auto_skipped"
+        _parse_trace["llm_parse_error_class"] = "skipped"
         return rule_requirement
 
+    _parse_trace["llm_parse_attempted"] = True
     client = OpenAICompatibleChatClient()
     if not client.configured:
+        _parse_trace["llm_parse_failure_reason"] = "llm_not_configured"
+        _parse_trace["llm_parse_error_class"] = "skipped"
         rule_requirement.assumptions.append("未配置生成式大模型，当前使用规则解析购物需求。")
         return rule_requirement
 
+    _parse_start = time.perf_counter()
     try:
         parsed, report = run_with_hard_timeout(
             lambda: client.chat_json_with_report(
@@ -258,12 +288,33 @@ def parse_requirement(user_goal: str, use_llm: bool = True) -> RequirementSpec:
             _float_env("RECOMMENDATION_LLM_PARSE_TIMEOUT_SECONDS", 12.0),
             "requirement_parse",
         )
+        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
         requirement = requirement_from_llm_payload(parsed, rule_requirement)
         requirement.assumptions.append(
             f"生成式大模型已参与需求理解，耗时 {report.elapsed_ms}ms。"
         )
+        _parse_trace["llm_parse_success"] = True
+        _parse_trace["llm_parse_applied"] = True
         return requirement
+    except TimeoutError:
+        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
+        _parse_trace["llm_parse_failure_reason"] = "llm_timeout"
+        _parse_trace["llm_parse_error_class"] = "timeout"
+        logger.warning("LLM requirement parsing timed out; falling back to rules")
+        rule_requirement.assumptions.append("生成式大模型需求解析超时，已降级为规则解析。")
+        return rule_requirement
     except (LLMClientError, ValueError, TypeError) as exc:
+        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
+        text = str(exc).lower()
+        if "timeout" in text or "timed out" in text:
+            _parse_trace["llm_parse_failure_reason"] = "llm_timeout"
+            _parse_trace["llm_parse_error_class"] = "timeout"
+        elif isinstance(exc, (ValueError, TypeError)):
+            _parse_trace["llm_parse_failure_reason"] = "llm_json_invalid"
+            _parse_trace["llm_parse_error_class"] = "json_invalid"
+        else:
+            _parse_trace["llm_parse_failure_reason"] = "llm_provider_error"
+            _parse_trace["llm_parse_error_class"] = "provider_error"
         logger.warning("LLM requirement parsing failed; falling back to rules: %s", exc)
         rule_requirement.assumptions.append("生成式大模型需求解析失败，已降级为规则解析。")
         return rule_requirement
@@ -368,13 +419,24 @@ def build_requirement_parse_trace(requirement: RequirementSpec, *, use_llm: bool
         fallback_reason = "llm_not_configured"
     elif any("生成式大模型需求解析失败" in item for item in assumptions):
         fallback_reason = "llm_parse_failed"
+    elif any("超时" in item for item in assumptions):
+        fallback_reason = "llm_timeout"
     elif not llm_used:
         fallback_reason = "rule_parse_sufficient_or_auto_skipped"
+    # 从模块级 parse trace 读取标准化字段
+    pt = dict(_parse_trace) if _parse_trace else {}
     return {
         "rule_parse_used": True,
         "llm_parse_requested": bool(use_llm),
         "llm_parse_used": llm_used,
         "parse_fallback_reason": fallback_reason,
+        # ── 标准化 LLM parse trace 字段 ──
+        "llm_parse_attempted": pt.get("llm_parse_attempted", bool(use_llm and fallback_reason not in {"llm_disabled_by_runtime_policy", "rule_parse_sufficient_or_auto_skipped"})),
+        "llm_parse_success": pt.get("llm_parse_success", llm_used),
+        "llm_parse_applied": pt.get("llm_parse_applied", llm_used),
+        "llm_parse_failure_reason": pt.get("llm_parse_failure_reason", fallback_reason if not llm_used else ""),
+        "llm_parse_error_class": pt.get("llm_parse_error_class", ""),
+        "llm_parse_elapsed_ms": pt.get("llm_parse_elapsed_ms", 0),
     }
 
 
@@ -470,13 +532,20 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
     result.optimization_suggestions = fallback["optimization_suggestions"]
     result.feedback_summary = fallback["feedback_summary"]
 
+    # ── 标准化 guidance trace 字段（初始化） ──
+    result.trace["llm_guidance_attempted"] = bool(use_llm)
+    result.trace["llm_guidance_success"] = False
+    result.trace["llm_guidance_failure_reason"] = ""
+
     if not use_llm:
         result.trace["llm_guidance"] = "disabled"
+        result.trace["llm_guidance_failure_reason"] = "llm_disabled_by_runtime_policy"
         return result
 
     client = OpenAICompatibleChatClient()
     if not client.configured:
         result.trace["llm_guidance"] = "not_configured"
+        result.trace["llm_guidance_failure_reason"] = "llm_not_configured"
         result.trace.update(get_llm_provider_trace())
         return result
 
@@ -498,17 +567,33 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
         result.follow_up_questions = clarification_questions or normalize_string_list(payload.get("follow_up_questions"), fallback["follow_up_questions"])[:6]
         result.optimization_suggestions = normalize_string_list(payload.get("optimization_suggestions"), fallback["optimization_suggestions"])[:6]
         result.trace["llm_guidance"] = "enabled"
+        result.trace["llm_guidance_success"] = True
         result.trace["llm_guidance_call"] = report_to_dict(report)
+    except TimeoutError:
+        logger.warning("LLM guidance timed out; using rule-based guidance")
+        result.trace["llm_guidance"] = "fallback"
+        result.trace["llm_guidance_failure_reason"] = "llm_timeout"
     except (LLMClientError, ValueError, TypeError) as exc:
         logger.warning("LLM guidance failed; using rule-based guidance: %s", exc)
         result.trace["llm_guidance"] = "fallback"
+        result.trace["llm_guidance_failure_reason"] = _classify_llm_exception(exc)
         result.trace["llm_guidance_error"] = public_error(exc)
         result.trace["llm_error_sanitized"] = public_error(exc)
     return result
 
 
-def parse_requirement_rule_based(user_goal: str) -> RequirementSpec:
-    validate_business_goal(user_goal)
+def _classify_llm_exception(exc: Exception) -> str:
+    """Classify an LLM exception into a stable reason code."""
+    text = str(exc).lower()
+    if "timeout" in text or "timed out" in text:
+        return "llm_timeout"
+    if isinstance(exc, (ValueError, TypeError)):
+        return "llm_json_invalid"
+    return "llm_provider_error"
+
+
+def parse_requirement_rule_based(user_goal: str, *, skip_keyword_check: bool = False) -> RequirementSpec:
+    validate_business_goal(user_goal, skip_keyword_check=skip_keyword_check)
     normalized = clean_text(user_goal)
     lower = normalized.lower()
     desired_categories = infer_desired_categories(normalized, lower)
@@ -567,7 +652,7 @@ def parse_requirement_rule_based(user_goal: str) -> RequirementSpec:
     )
 
 
-def validate_business_goal(user_goal: str) -> None:
+def validate_business_goal(user_goal: str, *, skip_keyword_check: bool = False) -> None:
     normalized = user_goal.strip()
     lower = normalized.lower()
     if len(normalized) < 2:
@@ -578,8 +663,9 @@ def validate_business_goal(user_goal: str) -> None:
     symbol_count = sum(1 for char in normalized if not re.match(r"[\u4e00-\u9fffA-Za-z0-9\s]", char))
     if symbol_count / max(len(normalized), 1) > 0.35:
         raise InvalidGoalError("输入中符号比例过高，请输入自然语言购物需求。")
-    if not has_any(lower, SHOPPING_GOAL_KEYWORDS):
-        raise InvalidGoalError("未识别到有效购物场景，请描述想买什么、预算、用途或偏好。")
+    if not skip_keyword_check:
+        if not has_any(lower, SHOPPING_GOAL_KEYWORDS):
+            raise InvalidGoalError("未识别到有效购物场景，请描述想买什么、预算、用途或偏好。")
 
 
 def infer_desired_categories(raw: str, lower: str) -> List[ComponentCategory]:

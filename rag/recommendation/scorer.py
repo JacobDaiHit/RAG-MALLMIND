@@ -30,6 +30,8 @@ class ProductScore:
     weights: Dict[str, float]
     weight_reasons: List[str]
     evidence: List[Dict[str, Any]] = field(default_factory=list)
+    evidence_boost: float = 0.0
+    evidence_match: float = 0.0
 
 
 def score_product(
@@ -38,10 +40,14 @@ def score_product(
     evidence: Optional[List[Dict[str, Any]]] = None,
 ) -> ProductScore:
     evidence = evidence or []
+    query = requirement.raw_query
     weights, weight_reasons = build_dynamic_weights(requirement)
+    # 场景和属性匹配可以从当前 product_id 的 evidence 中读取信号
+    scenario = score_scenario_match(requirement, product, evidence=evidence)
+    attribute = score_attribute_match(requirement, product, evidence=evidence)
     components = {
-        "scenario_match": score_scenario_match(requirement, product),
-        "attribute_match": score_attribute_match(requirement, product),
+        "scenario_match": scenario,
+        "attribute_match": attribute,
         "price_fit": score_price_fit(requirement, product),
         "reputation_fit": score_reputation_fit(product),
         "availability_fit": score_availability_fit(product),
@@ -49,7 +55,14 @@ def score_product(
         "detail_quality": score_detail_quality(product),
     }
     base_score = sum(components[name] * weights[name] for name in weights)
-    final_score = apply_evidence_boost(base_score, evidence)
+    final_score = apply_evidence_boost(base_score, evidence, query=query)
+    # 计算 evidence 带来的增量
+    base_without_evidence = apply_evidence_boost(base_score, [])
+    evidence_boost = round(final_score - base_without_evidence, 4)
+    # evidence_match 记录 scenario/attribute 中因 evidence 获得的加成
+    scenario_no_ev = score_scenario_match(requirement, product, evidence=None)
+    attribute_no_ev = score_attribute_match(requirement, product, evidence=None)
+    evidence_match = round((scenario - scenario_no_ev) + (attribute - attribute_no_ev), 4)
     reasons = build_score_reasons(requirement=requirement, product=product, components=components)
     reasons.extend(build_evidence_reasons(evidence))
     return ProductScore(
@@ -68,6 +81,8 @@ def score_product(
         weights=weights,
         weight_reasons=weight_reasons,
         evidence=evidence,
+        evidence_boost=evidence_boost,
+        evidence_match=evidence_match,
     )
 
 
@@ -145,6 +160,8 @@ def apply_pc_constraint_boost(requirement: RequirementSpec, scored: List[Product
                 weights=item.weights,
                 weight_reasons=item.weight_reasons,
                 evidence=item.evidence,
+                evidence_boost=item.evidence_boost,
+                evidence_match=item.evidence_match,
             )
         )
     return adjusted
@@ -192,7 +209,10 @@ def rebuild_product_score_with_price_fit(
         "detail_quality": old.detail_quality,
     }
     base_score = sum(components[name] * item.weights[name] for name in item.weights)
+    # 重算 evidence boost（price_fit 变了，但 evidence boost 不变）
+    base_without_evidence = apply_evidence_boost(base_score, [])
     final_score = apply_evidence_boost(base_score, item.evidence)
+    evidence_boost = round(final_score - base_without_evidence, 4)
     reasons = build_price_aware_reasons(item.product, product_price, currency) + [
         reason for reason in old.reasons if not reason.startswith("价格匹配：")
     ]
@@ -212,6 +232,8 @@ def rebuild_product_score_with_price_fit(
         weights=item.weights,
         weight_reasons=item.weight_reasons,
         evidence=item.evidence,
+        evidence_boost=evidence_boost,
+        evidence_match=item.evidence_match,
     )
 
 
@@ -221,12 +243,100 @@ def build_price_aware_reasons(product: ApiProduct, product_price: Optional[float
     return [f"价格匹配：当前最低 SKU 约 {product_price:g} {currency}，已用于预算适配评分。"]
 
 
-def apply_evidence_boost(base_score: float, evidence: List[Dict[str, Any]]) -> float:
+def apply_evidence_boost(base_score: float, evidence: List[Dict[str, Any]], query: str = "") -> float:
     if not evidence:
         return clamp(base_score)
     best_hit = max(float(item.get("score") or 0.0) for item in evidence)
-    boost = min(best_hit, 1.0) * 0.04 + min(len(evidence), 3) / 3 * 0.03
+    base_boost = min(best_hit, 1.0) * 0.07 + min(len(evidence), 3) / 3 * 0.05
+    boost = min(base_boost, 0.12)
+    if _has_strong_evidence_match(evidence, query):
+        boost = min(base_boost, 0.16)
     return round(clamp(base_score + boost), 4)
+
+
+# ── evidence strong-match helpers ──────────────────────────────────────────
+
+# 核心商品词/属性词：这些词如果命中 evidence title/text/sub_category，表示强相关
+# 注意不包含泛词如"推荐""适合""帮我""看看""想买""求推荐""配一套""装备""开学"等
+_CORE_PRODUCT_TERMS = {
+    # 品类词
+    "耳机", "蓝牙耳机", "降噪豆", "键盘", "鼠标", "手机", "平板", "显示器", "笔记本",
+    "鞋", "跑鞋", "运动鞋", "篮球鞋", "徒步鞋", "训练鞋",
+    "外套", "运动裤", "运动上衣", "T恤", "短袖", "卫衣", "裤", "裙", "羽绒服", "冲锋衣",
+    "面霜", "精华", "防晒", "眼霜", "洗面奶", "乳液",
+    "咖啡", "零食", "饮料", "功能饮料", "坚果", "方便食品",
+    "显卡", "CPU", "处理器", "主板", "内存", "SSD", "固态", "硬盘", "电源", "机箱", "散热",
+    # 属性词
+    "缓震", "降噪", "音质", "通勤", "跑步", "训练", "篮球", "实战",
+    "油皮", "干皮", "敏感肌", "保湿", "补水", "控油", "防晒",
+    "拍照", "续航", "快充", "便携", "无糖", "低糖",
+    "透气", "防水", "黑色", "白色", "蓝色", "静音", "轻量",
+    "送礼", "礼物", "学生", "办公", "游戏", "运动", "旅行", "日用",
+    # 品牌词
+    "耐克", "阿迪达斯", "小米", "华为", "苹果", "雅诗兰黛", "科颜氏", "兰蔻",
+    "Nike", "Adidas", "Apple", "Sony", "索尼", "三星",
+}
+
+
+def _has_strong_evidence_match(evidence: List[Dict[str, Any]], query: str) -> bool:
+    """Check if any evidence chunk in top-3 by score has title/text/sub_category
+    matching a core product/attribute term from the query."""
+    if not query or not evidence:
+        return False
+    query_terms = _extract_core_query_terms(query)
+    if not query_terms:
+        return False
+    ranked = sorted(evidence, key=lambda item: float(item.get("score") or 0.0), reverse=True)
+    for item in ranked[:3]:
+        chunk_text = " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "text", "sub_category", "filename")
+        ).lower()
+        if any(term.lower() in chunk_text for term in query_terms):
+            return True
+    return False
+
+
+def _extract_core_query_terms(query: str) -> set:
+    """Extract core product/attribute terms from query by intersection with the
+    known core term set.  Does NOT match generic shopping words."""
+    lowered = query.lower()
+    return {term for term in _CORE_PRODUCT_TERMS if term.lower() in lowered}
+
+
+def _evidence_scenario_bonus(query: str, evidence: List[Dict[str, Any]]) -> float:
+    """Small scenario-match bonus when evidence chunk titles/texts contain
+    core product or scenario terms from the query (max +0.05)."""
+    query_terms = _extract_core_query_terms(query)
+    if not query_terms:
+        return 0.0
+    matched = 0
+    for item in evidence[:5]:
+        chunk_text = " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "text", "sub_category", "filename")
+        ).lower()
+        if any(term.lower() in chunk_text for term in query_terms):
+            matched += 1
+    return min(matched * 0.016, 0.05)
+
+
+def _evidence_attribute_bonus(query: str, evidence: List[Dict[str, Any]]) -> float:
+    """Small attribute-match bonus when evidence chunks contain core attribute
+    terms from the query that also appear in must_have_terms / preferences
+    pattern (max +0.05)."""
+    query_terms = _extract_core_query_terms(query)
+    if not query_terms:
+        return 0.0
+    matched = 0
+    for item in evidence[:5]:
+        chunk_text = " ".join(
+            str(item.get(key) or "")
+            for key in ("title", "text", "sub_category", "filename")
+        ).lower()
+        if any(term.lower() in chunk_text for term in query_terms):
+            matched += 1
+    return min(matched * 0.016, 0.05)
 
 
 def build_evidence_reasons(evidence: List[Dict[str, Any]]) -> List[str]:
@@ -275,7 +385,11 @@ def build_dynamic_weights(requirement: RequirementSpec) -> Tuple[Dict[str, float
     return normalize_weights(weights), reasons
 
 
-def score_scenario_match(requirement: RequirementSpec, product: ApiProduct) -> float:
+def score_scenario_match(
+    requirement: RequirementSpec,
+    product: ApiProduct,
+    evidence: Optional[List[Dict[str, Any]]] = None,
+) -> float:
     query = requirement.raw_query.lower()
     text = _collect_product_text(product)
     score = 0.25
@@ -295,10 +409,18 @@ def score_scenario_match(requirement: RequirementSpec, product: ApiProduct) -> f
         if scenario and (scenario.lower() in query or scenario in requirement.scenario):
             score += 0.06
             break
+    # evidence 场景信号：仅匹配 query 中的核心商品词/场景词，不用泛词
+    if evidence:
+        evidence_scenario_bonus = _evidence_scenario_bonus(query, evidence)
+        score += evidence_scenario_bonus
     return clamp(score)
 
 
-def score_attribute_match(requirement: RequirementSpec, product: ApiProduct) -> float:
+def score_attribute_match(
+    requirement: RequirementSpec,
+    product: ApiProduct,
+    evidence: Optional[List[Dict[str, Any]]] = None,
+) -> float:
     score = 0.45
     if product.category in set(requirement.desired_categories or requirement.required_components):
         score += 0.25
@@ -312,6 +434,10 @@ def score_attribute_match(requirement: RequirementSpec, product: ApiProduct) -> 
         score += min(hits / max(len(requirement.must_have_terms), 1) * 0.20, 0.20)
     if product.skus:
         score += 0.05
+    # evidence 属性信号：仅匹配 query 中的核心属性词，不用泛词
+    if evidence:
+        evidence_attr_bonus = _evidence_attribute_bonus(requirement.raw_query, evidence)
+        score += evidence_attr_bonus
     return clamp(score)
 
 

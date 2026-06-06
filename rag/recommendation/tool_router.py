@@ -422,7 +422,6 @@ CART_STRONG_TERMS = [
     "购物车",
     "加购",
     "加入购物车",
-    "加入车",
     "下单",
     "删除",
     "移除",
@@ -436,17 +435,12 @@ COMPARE_TERMS = ["对比", "比较", "哪个好", "哪个更", "哪款更", "区
 GENERAL_CHAT_TERMS = [
     "你是谁",
     "你能做什么",
-    "怎么用",
-    "如何使用",
     "这个系统",
     "推荐逻辑",
     "为什么这么选",
     "刚才为什么",
     "你用了什么工具",
     "调用了哪个工具",
-    "为什么路由",
-    "路由原因",
-    "走了哪个路由",
 ]
 SEARCH_INTENT_TERMS = [
     "有哪些",
@@ -657,19 +651,44 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
             "router_success": False,
             "router_applied": False,
             "router_final_source": str(final.get("source") or "rules"),
+            "router_failure_reason": "",
+            # ── 标准化 LLM router trace 字段 ──
+            "llm_router_attempted": False,
+            "llm_router_success": False,
+            "llm_router_failure_reason": llm_skipped_reason,
+            "llm_router_error_class": _router_error_class(llm_skipped_reason),
+            "llm_router_elapsed_ms": 0,
         }
         return final
 
+    _router_start = time.perf_counter()
     llm_call, llm_failure_reason = try_llm_route_tool_call(message, session)
+    _router_elapsed_ms = int((time.perf_counter() - _router_start) * 1000)
     router_attempted = llm_failure_reason not in {"concurrency_limit", "llm_not_configured"}
     if llm_call is None:
         llm_skipped = True
         router_failure_reason = llm_failure_reason or "llm_unavailable"
         llm_skipped_reason = router_failure_reason if not router_attempted else ""
-    chosen = llm_call if llm_call and float(llm_call.get("confidence") or 0) >= 0.62 else local
+    # ── 改动5: 非对称置信度阈值 ──
+    # LLM 升级到购物工具 → 低门槛 (0.50)；LLM 降级到 general_chat → 高门槛 (0.80)
+    _llm_conf = float((llm_call or {}).get("confidence") or 0)
+    _llm_name = (llm_call or {}).get("name") or ""
+    _local_name = local.get("name") or ""
+    if llm_call is None:
+        chosen = local
+    elif _llm_name == "general_chat" and _local_name != "general_chat":
+        chosen = llm_call if _llm_conf >= 0.80 else local
+    else:
+        chosen = llm_call if _llm_conf >= 0.50 else local
+    # ── 改动1: 显式标记 LLM 选择结果，供 Guard 层识别 ──
+    if chosen is llm_call and chosen is not None:
+        chosen = dict(chosen)  # 避免修改原始 dict
+        chosen["_llm_chosen"] = True
     final = validate_and_guard_tool_call(message, session, chosen, local)
     route_overridden = final.get("name") != (chosen or {}).get("name")
     arguments_changed = (final.get("arguments") or {}) != ((chosen or {}).get("arguments") or {})
+    llm_router_success = bool(llm_call)
+    llm_router_failure_reason = router_failure_reason if not llm_router_success else ""
     final["routing_trace"] = {
         "runtime_mode": mode,
         **get_llm_provider_trace(),
@@ -688,16 +707,28 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
         "router_attempted": router_attempted,
         "router_timeout": router_failure_reason in {"llm_timeout", "llm_timeout_or_error"},
         "router_json_invalid": router_failure_reason in {"llm_json_invalid", "llm_validation_error"},
-        "router_success": bool(llm_call),
+        "router_success": llm_router_success,
         "router_applied": bool(llm_call and chosen is llm_call and final.get("name") == llm_call.get("name") and not route_overridden),
         "router_final_source": str(final.get("source") or ("llm" if llm_call else "rules")),
         "router_failure_reason": router_failure_reason,
+        # ── 标准化 LLM router trace 字段 ──
+        "llm_router_attempted": router_attempted,
+        "llm_router_success": llm_router_success,
+        "llm_router_failure_reason": llm_router_failure_reason,
+        "llm_router_error_class": _router_error_class(llm_router_failure_reason),
+        "llm_router_elapsed_ms": _router_elapsed_ms,
     }
     return final
 
 
 def should_skip_llm_route(message: str, session: ShoppingSession, local_call: Dict[str, Any]) -> bool:
-    """Avoid expensive LLM routing when local rules are already decisive."""
+    """Avoid expensive LLM routing only when local rules are already decisive.
+
+    Key heuristic: ``general_chat`` is the most common misroute (local rules
+    miss product terms like "篮球鞋" / "运动裤"), so we ALWAYS double-check
+    it with LLM.  Likewise, low-confidence or low-margin local routes are
+    handed off to LLM instead of being locked in by rules.
+    """
 
     mode = _runtime_mode_from_session(session)
     score_info = local_call.get("route_scores") or {}
@@ -705,24 +736,29 @@ def should_skip_llm_route(message: str, session: ShoppingSession, local_call: Di
     margin = float(score_info.get("margin") or 0.0)
     name = str(local_call.get("name") or "")
 
+    # ── general_chat is the most frequent misroute — always let LLM verify ──
+    if name == "general_chat":
+        return False
+
     if mode == "fast":
-        return confidence >= 0.95 and margin >= 0.50 and name in {"recommend_shopping_products", "apply_cart_instruction", "general_chat"}
+        return confidence >= 0.95 and margin >= 0.50 and name in {"recommend_shopping_products", "apply_cart_instruction"}
 
     if mode == "balanced":
-        if confidence >= 0.78 and margin >= 0.20:
-            return True
-        if name in {"apply_cart_instruction", "general_chat"} and confidence >= 0.75:
-            return True
-        return False
-
-    if mode == "full":
-        if confidence >= 0.90 and margin >= 0.35:
-            return True
+        # 低置信度或边界模糊时交给 LLM
+        if confidence < 0.70 or margin < 0.25:
+            return False
         if name == "apply_cart_instruction" and confidence >= 0.85:
             return True
-        return False
+        return confidence >= 0.85 and margin >= 0.35
 
-    return confidence >= 0.78 and margin >= 0.20
+    if mode == "full":
+        if confidence < 0.80 or margin < 0.30:
+            return False
+        if name == "apply_cart_instruction" and confidence >= 0.90:
+            return True
+        return confidence >= 0.92 and margin >= 0.40
+
+    return confidence >= 0.85 and margin >= 0.35
 
 
 def is_fast_deterministic_case(message: str, session: ShoppingSession) -> bool:
@@ -854,7 +890,7 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
     if _router_llm_circuit_open():
         return None, "circuit_open"
 
-    acquire_timeout = _env_float("RECOMMENDATION_ROUTER_LLM_ACQUIRE_TIMEOUT_SECONDS", 0.05)
+    acquire_timeout = _env_float("RECOMMENDATION_ROUTER_LLM_ACQUIRE_TIMEOUT_SECONDS", 0.5)
     acquired = _ROUTER_LLM_SEMAPHORE.acquire(timeout=acquire_timeout)
     if not acquired:
         return None, "concurrency_limit"
@@ -863,17 +899,26 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
         client = OpenAICompatibleChatClient()
         if not client.configured:
             return None, "llm_not_configured"
-        if client.config and client.config.timeout_seconds > 5:
-            client = OpenAICompatibleChatClient(replace(client.config, timeout_seconds=5))
+        # 使用专用 env 配置 router socket timeout，默认 15s（之前硬编码 5s 导致 SensNova 等 provider 频繁超时）
+        _router_socket_timeout = _env_float("RECOMMENDATION_ROUTER_LLM_SOCKET_TIMEOUT_SECONDS", 15.0)
+        if client.config and client.config.timeout_seconds > _router_socket_timeout:
+            client = OpenAICompatibleChatClient(replace(client.config, timeout_seconds=_router_socket_timeout))
         payload, report = run_with_hard_timeout(
             lambda: client.chat_json_with_report(
                 [
                     {
                         "role": "system",
                         "content": (
-                            "你是电商导购系统的工具路由器，只输出 JSON。"
-                            "后端会校验并执行工具，你只负责选择工具和抽取参数。"
-                            "不要编造商品、价格、库存或优惠。"
+                            "\u4f60\u662f\u7535\u5546\u5bfc\u8d2d\u7cfb\u7edf\u7684\u5de5\u5177\u8def\u7531\u5668\uff0c\u53ea\u8f93\u51fa JSON\u3002"
+                            "\u540e\u7aef\u4f1a\u6821\u9a8c\u5e76\u6267\u884c\u5de5\u5177\uff0c\u4f60\u53ea\u8d1f\u8d23\u9009\u62e9\u5de5\u5177\u548c\u62bd\u53d6\u53c2\u6570\u3002"
+                            "\u4e0d\u8981\u7f16\u9020\u5546\u54c1\u3001\u4ef7\u683c\u3001\u5e93\u5b58\u6216\u4f18\u60e0\u3002\n"
+                            "\u8def\u7531\u539f\u5219\uff1a\n"
+                            "- \u53ea\u8981\u7528\u6237\u5728\u8be2\u95ee\u3001\u5bfb\u627e\u3001\u8bc4\u4ef7\u4efb\u4f55\u5546\u54c1\uff08\u5305\u62ec\u836f\u54c1\u3001\u4fdd\u5065\u54c1\u7b49\u975e\u5178\u578b\u54c1\u7c7b\uff09\uff0c\u4e00\u5f8b\u4f7f\u7528 recommend_shopping_products\u3002\n"
+                            "- \u7528\u6237\u8981\u6c42\u201c\u914d\u4e00\u5957\u201d\u201c\u4e00\u8d77\u63a8\u8350\u201d\u201c\u5f00\u5b66\u8981\u7528\u7684\u4e1c\u897f\u201d\u7b49\u591a\u5546\u54c1\u6216\u573a\u666f\u5316\u8bf7\u6c42\uff0c\u4f7f\u7528 recommend_shopping_products\u3002\n"
+                            "- \u201c\u54ea\u4e2a\u66f4\u4e0d\u6cb9\u201d\u201c\u54ea\u4e2a\u66f4\u8f7b\u201d\u201c\u54ea\u6b3e\u66f4\u9002\u5408\u201d\u7b49\u8868\u8fbe\u662f\u5c5e\u6027\u504f\u597d\u7b5b\u9009\uff0c\u4e0d\u662f\u5546\u54c1\u5bf9\u6bd4\uff0c\u4f7f\u7528 recommend_shopping_products\u3002\n"
+                            "- \u53ea\u6709\u7528\u6237\u660e\u786e\u63d0\u5230\u4e24\u4e2a\u5177\u4f53\u5546\u54c1\u540d\u5e76\u8981\u6c42\u6bd4\u8f83\u65f6\u624d\u4f7f\u7528 compare_products\u3002\n"
+                            '- general_chat \u4ec5\u7528\u4e8e\u201c\u4f60\u662f\u8c01\u201d\u201c\u600e\u4e48\u7528\u201d\u201c\u63a8\u8350\u903b\u8f91\u662f\u4ec0\u4e48\u201d\u7b49\u7cfb\u7edf\u5143\u95ee\u9898\u3002\n'
+                            '- \u8f93\u51fa JSON \u4e2d\u5fc5\u987b\u5305\u542b "source": "llm"\u3002'
                         ),
                     },
                     {
@@ -885,7 +930,7 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
                 temperature=0,
                 max_tokens=_env_int("RECOMMENDATION_ROUTER_LLM_MAX_TOKENS", 320),
             ),
-            _llm_timeout("RECOMMENDATION_LLM_ROUTER_TIMEOUT_SECONDS", 3.0),
+            _llm_timeout("RECOMMENDATION_LLM_ROUTER_TIMEOUT_SECONDS", 15.0),
             "tool_router",
         )
         parsed = RoutedToolCall.model_validate(payload)
@@ -976,7 +1021,7 @@ def validate_and_guard_tool_call(
         arguments["source"] = "pc_build_history_guard"
         guarded = _tool_call("generate_pc_build_plan", arguments, max(call["confidence"], 0.94), "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard")
         call.update(guarded)
-    elif _looks_like_compare_request(text):
+    elif _looks_like_compare_request(text) and not call.get("_llm_chosen"):
         arguments["compare_with_previous"] = _mentions_previous(text)
         guarded = _tool_call("compare_products", arguments, max(call["confidence"], 0.88), "后端兜底：明确对比请求走 compare_products。", "guard")
         call.update(guarded)
@@ -1000,7 +1045,10 @@ def validate_and_guard_tool_call(
         guarded = _tool_call("recommend_shopping_products", arguments, max(call["confidence"], 0.84), "后端兜底：商品搜索、场景购物或事实型商品查询必须走商品工具。", "guard")
         call.update(guarded)
     elif _is_general_chat(text, lowered, topic):
-        call.update(_tool_call("general_chat", arguments, max(call["confidence"], 0.9), "后端兜底：非购物执行问题走 general_chat。", "guard"))
+        # 改动2b: 用 _llm_chosen 标记代替 source 字段判断
+        # 如果路由层已通过 LLM 选择了购物工具，Guard 不再用负匹配覆盖回 general_chat
+        if not call.get("_llm_chosen"):
+            call.update(_tool_call("general_chat", arguments, max(call["confidence"], 0.9), "后端兜底：非购物执行问题走 general_chat。", "guard"))
 
     call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
     return call
@@ -1522,6 +1570,19 @@ def _tool_call(name: str, arguments: Dict[str, Any], confidence: float, reason: 
         "reason": reason,
         "source": source,
     }
+
+
+def _router_error_class(failure_reason: str) -> str:
+    """Classify router LLM failure into a stable error class for trace/metrics."""
+    if not failure_reason:
+        return "none"
+    if failure_reason in {"llm_timeout", "llm_timeout_or_error"}:
+        return "timeout"
+    if failure_reason in {"llm_json_invalid", "llm_validation_error"}:
+        return "json_invalid"
+    if failure_reason == "llm_provider_error":
+        return "provider_error"
+    return "skipped"
 
 
 def build_route_prompt(message: str, topic_memory: Dict[str, Any]) -> str:
