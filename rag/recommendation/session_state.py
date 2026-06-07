@@ -424,7 +424,10 @@ def build_contextual_goal(session: ShoppingSession, message: str) -> str:
     if should_start_new_product_topic(session, clean):
         return clean
     if looks_like_followup(clean):
-        return f"{session.last_goal}. User added constraints: {clean}"
+        # 只保留最后一轮的原始用户输入，丢弃累积的 "User added constraints:" 链，
+        # 避免多轮追问导致 query 被历史约束淹没。
+        base_goal = session.last_goal.split(". User added constraints:")[0].strip()
+        return f"{base_goal}. User added constraints: {clean}"
     return clean
 
 

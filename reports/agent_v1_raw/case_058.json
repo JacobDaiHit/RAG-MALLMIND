@@ -1,0 +1,14 @@
+{
+  "case_id": 58,
+  "input": "",
+  "expected": "空消息→提示",
+  "session_id": null,
+  "runtime_mode": "",
+  "tool_calls": [],
+  "text_response": "",
+  "product_card_count": 0,
+  "events_received": [],
+  "error": "HTTP 请求失败: HTTP Error 400: Bad Request",
+  "elapsed_ms": 91,
+  "raw_events": []
+}

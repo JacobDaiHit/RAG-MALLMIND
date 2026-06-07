@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 import os
 
-from rag.ingestion.embedding import EmbeddingService, embedding_service as _default_embedding_service
+from rag.ingestion.embedding import EmbeddingService, embedding_service as _default_embedding_service, get_configured_embedding_dim
 from rag.storage.milvus_client import MilvusManager
 
 
@@ -38,7 +38,7 @@ class MilvusWriter:
 
         try:
             dense_dim = _embedding_service_dim(self.embedding_service)
-            configured_dim = _parse_positive_int(os.getenv("DENSE_EMBEDDING_DIM", "1024"), default=1024)
+            configured_dim = get_configured_embedding_dim()
             if dense_dim is not None and dense_dim != configured_dim:
                 raise ValueError(
                     f"Embedding dimension mismatch: provider dim is {dense_dim}, "
@@ -126,11 +126,3 @@ def _init_collection(milvus_manager, *, dense_dim: int) -> None:
         if "dense_dim" not in str(exc):
             raise
         milvus_manager.init_collection()
-
-
-def _parse_positive_int(value: object, default: int) -> int:
-    try:
-        parsed = int(str(value))
-    except (TypeError, ValueError):
-        return default
-    return parsed if parsed > 0 else default

@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional
 
 from rag.api.app_context import dedupe_strings, model_to_dict, prepare_recommendation_context
 from rag.api.request_models import ChatStreamRequest
-from rag.api.routes.common import request_product_ids
+from rag.api.routes.common import has_image_data, request_product_ids
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.pc_session_flow import build_pc_plan_for_message
 from rag.recommendation.product_loader import load_combined_product_catalog
@@ -50,7 +50,7 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
         raw_message,
         requested_mode=getattr(request, "mode", None),
         has_attachments=bool(raw_attachments),
-        has_image_data=_has_image_data(raw_attachments),
+        has_image_data=has_image_data(raw_attachments),
         llm_configured=llm_configured,
     )
     policy = runtime_policy_for_mode(decision.mode, llm_configured=llm_configured)
@@ -390,15 +390,6 @@ def _legacy_cart_tool_calls(message: str) -> List[Dict[str, str]]:
     if _is_cart_remove(message):
         return [{"name": "remove_from_cart"}]
     return [{"name": "add_to_cart"}]
-
-
-def _chat_mode(request: ChatStreamRequest) -> str:
-    mode = str(getattr(request, "mode", "") or "").strip().lower()
-    return mode if mode in {"auto", "fast", "balanced", "full"} else "auto"
-
-
-def _has_image_data(items: List[Dict[str, Any]]) -> bool:
-    return any(isinstance(item, dict) and (item.get("data_url") or item.get("dataUrl")) for item in items)
 
 
 def _stream_llm_enabled() -> bool:

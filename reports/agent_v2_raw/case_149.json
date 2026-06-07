@@ -1,0 +1,2448 @@
+{
+  "case_id": 149,
+  "input": "我要买华为Pura 90 Pro，黑色的",
+  "expected": "recommend → 华为+CARD, 追问版本",
+  "session_id": "v2_cart",
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "我要买华为Pura 90 Pro，黑色的",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {
+          "color": "黑色"
+        },
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "add_to_cart",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "我要买华为Pura 90 Pro，黑色的",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {
+              "color": "黑色"
+            },
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro 黑色",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "add_to_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1077,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro 黑色",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "add_to_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1077,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "我要买华为Pura 90 Pro，黑色的",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {
+              "color": "黑色"
+            },
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "add_to_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 1079
+      },
+      "topic_memory": {
+        "topic_id": "v2_cart-1",
+        "topic_type": "cart",
+        "subject": "购物车",
+        "route": "apply_cart_instruction",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "combined"
+        },
+        "confidence": 0.9,
+        "source": "llm",
+        "reason": "路由器未提供原因。",
+        "updated_at": "2026-06-07T05:54:04.795431+00:00",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml，参考价约 520 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 4,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "cart",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 2684,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.15,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.15,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "我要买华为Pura 90 Pro，黑色的",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {
+            "color": "黑色"
+          },
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "add_to_cart",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "我要买华为Pura 90 Pro，黑色的",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {
+                "color": "黑色"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro 黑色",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "add_to_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1077,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro 黑色",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "add_to_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1077,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "我要买华为Pura 90 Pro，黑色的",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {
+                "color": "黑色"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "add_to_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 1079
+        },
+        "topic_memory": {
+          "topic_id": "v2_cart-1",
+          "topic_type": "cart",
+          "subject": "购物车",
+          "route": "apply_cart_instruction",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined"
+          },
+          "confidence": 0.9,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T05:54:04.795431+00:00",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 28 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 1 条，预算内命中 1 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml；约 520 CNY；评分 0.90"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.93"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑；约 4999 CNY；评分 0.92"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑；约 5199 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 12 条，预算内命中 12 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.97"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.95"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.94"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣；约 199 CNY；评分 0.92"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡；约 36 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料；约 9 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品；约 30 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml，参考价约 520 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_005",
+            "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+            "name": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+            "brand": "科颜氏",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 520.0,
+            "price_range": [
+              520.0,
+              780.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 4,
+            "reason": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于 美妆护肤/精华，综合分 0.8985，参考价 520-780 CNY。 评价均分 3/5。",
+            "score": 0.8985,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_005_1"
+          },
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9262，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0277；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0255。",
+            "score": 0.9262,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "运动长裤",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.9661，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0284；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#review 召回分 0.0258；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#sku 召回分 0.0258。",
+            "score": 0.9661,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_006_1"
+          },
+          {
+            "product_id": "p_food_023",
+            "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "name": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "brand": "雀巢",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "咖啡",
+            "price": 36.0,
+            "price_range": [
+              36.0,
+              78.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_023_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于 食品饮料/咖啡，综合分 0.8557，参考价 36-78 CNY。 评价均分 4/5。 检索证据：雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#review 召回分 0.0299；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#profile 召回分 0.0251；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#sku 召回分 0.0249。",
+            "score": 0.8557,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_023_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [
+            "华为"
+          ],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "黑色"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "黑色"
+          ]
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 1,
+            "within_budget_count": 1,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_005",
+                "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+                "price": 520.0,
+                "score": 0.8985
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "price": 1499.0,
+                "score": 0.9262
+              },
+              {
+                "product_id": "p_digital_005",
+                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                "price": 4999.0,
+                "score": 0.9225
+              },
+              {
+                "product_id": "p_digital_021",
+                "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+                "price": 5199.0,
+                "score": 0.9133
+              },
+              {
+                "product_id": "p_digital_002",
+                "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                "price": 6999.0,
+                "score": 0.9082
+              },
+              {
+                "product_id": "p_digital_004",
+                "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                "price": 6299.0,
+                "score": 0.8889
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 12,
+            "within_budget_count": 12,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "price": 349.0,
+                "score": 0.9661
+              },
+              {
+                "product_id": "p_clothes_023",
+                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                "price": 149.0,
+                "score": 0.9499
+              },
+              {
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "price": 99.0,
+                "score": 0.9428
+              },
+              {
+                "product_id": "p_clothes_003",
+                "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                "price": 199.0,
+                "score": 0.9229
+              },
+              {
+                "product_id": "p_clothes_005",
+                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                "price": 259.0,
+                "score": 0.92
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_023",
+                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                "price": 36.0,
+                "score": 0.8557
+              },
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8509
+              },
+              {
+                "product_id": "p_food_013",
+                "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                "price": 9.0,
+                "score": 0.8326
+              },
+              {
+                "product_id": "p_food_002",
+                "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                "price": 30.0,
+                "score": 0.8323
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8235
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "我要买华为Pura 90 Pro，黑色的",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [
+            "华为"
+          ],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "黑色"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "黑色"
+          ],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml + 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 + Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 + 雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_005",
+                  "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+                  "brand": "科颜氏",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "精华",
+                  "base_price": 520.0,
+                  "min_price": 520.0,
+                  "max_price": 780.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_005_live.jpg",
+                  "image_url": "/product-images/p_beauty_005_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_005_1",
+                      "properties": {
+                        "容量": "30ml 标准装"
+                      },
+                      "price": 520.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_005_2",
+                      "properties": {
+                        "容量": "50ml 加大装"
+                      },
+                      "price": 780.0
+                    }
+                  ],
+                  "description": "科颜氏新集焕白均衡亮肤淡斑精华液，核心卖点在于温和淡斑与均匀提亮肤色，专为有日晒斑、熬夜暗沉、痘印色素沉淀问题的人群设计。其含有的维生素C衍生物（乙基维生素C）能有效抑制黑色素生成，玻色因成分则帮助修护肌肤屏障，同时添加透明质酸保湿因子，让精华在淡斑的同时保持肌肤水润。质地清爽不黏腻，适合早晚护肤使用，尤其适合长期面对电脑、日晒较多或作息不规律的人群。使用建议：取3-4滴于掌心，轻轻拍打至全脸吸收，后续搭配乳液或面霜锁住养分；白天使用时务必配合足量防晒，避免紫外线加重色素沉淀。注意事项：敏感肌首次使用前需在耳后做皮肤测试，若出现红肿刺痛请立即停用。",
+                  "faqs": [
+                    {
+                      "question": "这款淡斑精华适合哪些肤质？敏感肌可以用吗？",
+                      "answer": "这款精华适合中性、混合性、干性及油性肤质，质地清爽易吸收，不会给肌肤造成负担。对于敏感肌，产品中采用的是温和的维生素C衍生物（乙基维生素C）和玻色因成分，刺激性较低，但仍建议敏感肌人群在使用前先取少量精华涂抹于耳后或手臂内侧，观察24小时无红肿、瘙痒等不适反应后再正常使用，确保肌肤适应。"
+                    },
+                    {
+                      "question": "使用这款精华多久能看到淡斑效果？",
+                      "answer": "淡斑效果因人而异，通常情况下，坚持使用4-8周可看到明显改善。因为黑色素的代谢周期约为28天，所以需要持续使用才能让成分充分发挥作用。建议每天早晚坚持使用，并配合防晒措施，这样能更快看到斑点淡化、肤色均匀的效果。如果使用3个月后仍无明显变化，可咨询专业护肤顾问调整使用方法。"
+                    },
+                    {
+                      "question": "白天使用这款精华需要注意什么？",
+                      "answer": "白天使用时，最重要的是配合足量防晒产品。因为精华中的维生素C成分具有一定的光敏性（虽然乙基维生素C相对稳定），若不做好防晒，紫外线会加速黑色素生成，反而影响淡斑效果。建议在精华吸收后，涂抹SPF30+以上的防晒霜，并根据日晒情况及时补涂，确保肌肤免受紫外线伤害。"
+                    },
+                    {
+                      "question": "30ml和50ml规格除了容量还有其他区别吗？",
+                      "answer": "30ml和50ml规格的精华在成分、质地和功效上完全一致，仅容量不同。50ml加大装的单价更划算，适合长期使用的用户；30ml标准装则适合初次尝试的用户，或者旅行携带更方便。两种规格的包装设计相同，均采用滴管式取用，方便控制用量，保持产品卫生。"
+                    },
+                    {
+                      "question": "这款精华可以和其他精华叠加使用吗？比如抗老精华？",
+                      "answer": "可以叠加使用，但建议遵循“先薄后厚、先水后油”的原则。若要叠加抗老精华（如含视黄醇的产品），建议先使用这款淡斑精华（质地较轻薄），待其完全吸收后再涂抹抗老精华。需要注意的是，若叠加多种功效型产品，需观察肌肤是否出现不适，避免过度营养导致肌肤负担。敏感肌叠加时更需谨慎，建议逐步添加。"
+                    },
+                    {
+                      "question": "这款精华的质地如何？是否会搓泥？",
+                      "answer": "这款精华质地是透明的蛋清状，非常清爽，流动性强，涂抹后快速吸收，不会留下黏腻感。一般情况下，正确使用不会搓泥，但需注意后续护肤品的搭配：避免与含有高分子聚合物的产品（如某些凝胶状面霜）同时使用，且涂抹时手法要轻柔，不要来回揉搓。若出现搓泥，可减少精华用量或调整后续产品顺序。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小敏",
+                      "rating": 3,
+                      "content": "用了快一个月，感觉肤色稍微亮了一点，但颧骨上的晒斑几乎没变化。质地倒是挺清爽的，吸收也快，就是价格有点贵，520块30ml，感觉性价比一般。再用一段时间看看吧，如果还是没效果可能不会回购了。"
+                    },
+                    {
+                      "nickname": "阿雅",
+                      "rating": 5,
+                      "content": "太惊喜了！用了两个月，脸上的痘印和小斑点真的淡了很多，肤色也均匀了不少。质地很清爽，夏天用也不油腻，吸收超快，早上用搭配防晒也没搓泥。已经回购50ml的加大装了，性价比更高，会一直用下去！"
+                    },
+                    {
+                      "nickname": "大张",
+                      "rating": 1,
+                      "content": "完全不适合我！用了三天，脸上就起了好多小红疹，还特别痒，应该是过敏了。我是混油皮，之前用其他科颜氏产品都没事，这次不知道怎么回事。联系客服退货了，建议敏感肌一定要先做测试再买，别像我一样踩雷。"
+                    },
+                    {
+                      "nickname": "玲玲",
+                      "rating": 3,
+                      "content": "用了三个星期，斑点没怎么变淡，肤色倒是提亮了一丢丢。质地是不错，不黏腻，但淡斑效果比预期的差。可能我的斑点比较顽固？或者需要更长时间？暂时没看到明显的淡斑效果，有点失望，再用段时间看看吧。"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "精华"
+                  ],
+                  "not_good_for": [
+                    "油皮需谨慎",
+                    "极敏感人群需先试用"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "精华"
+                  ],
+                  "tags": [
+                    "科颜氏",
+                    "美妆护肤",
+                    "精华",
+                    "敏感肌",
+                    "保湿",
+                    "防晒",
+                    "30ml 标准装",
+                    "50ml 加大装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_005_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "油皮需谨慎",
+                    "极敏感人群需先试用"
+                  ]
+                },
+                "reason": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于 美妆护肤/精华，综合分 0.8985，参考价 520-780 CNY。 评价均分 3/5。",
+                "score": {
+                  "scenario_match": 0.76,
+                  "attribute_match": 0.95,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.8,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.97,
+                  "final_score": 0.8985,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 520 CNY，已用于预算适配评分。",
+                    "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于用户关注的 美妆护肤 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：油皮需谨慎；极敏感人群需先试用。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_005"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_005_1"
+              },
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "brand": "华为",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "真无线耳机",
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_007_live.jpg",
+                  "image_url": "/product-images/p_digital_007_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_007_1",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_2",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_3",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_4",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_5",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_6",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1499.0
+                    }
+                  ],
+                  "description": "华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设计，典雅黑哑光不容易沾指纹，冰霜银磨砂质感高级。日常通勤挤地铁、办公室赶方案、居家沉浸式听歌都能用，使用时建议首次佩戴先在华为智慧生活APP里做贴合度检测，选择适配的耳塞套，不要在雷雨天气或者高水压的水下环境佩戴，避免元器件受潮损坏。",
+                  "faqs": [
+                    {
+                      "question": "华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+                      "answer": "如果是搭载HarmonyOS 4.2及以上版本的华为手机，开盖配对后就能自动触发全链路高解析音频解码，无需额外复杂设置，就能直接输出接近无损的高清音效。如果是其他品牌支持LHDC 5.0协议的设备，也可以在蓝牙音频设置里手动开启高解析模式，只是部分非华为设备可能无法适配全部音频调校参数。要注意只有播放对应Hi-Res音质的音源文件，才能完整发挥这款耳机的音质优势，普通低码率音源没法体现出高解析的细节表现。"
+                    },
+                    {
+                      "question": "这款FreeBuds Pro 5的主动降噪可以根据不同场景自动调节吗？",
+                      "answer": "是的，它搭载了华为最新的动态降噪适配算法，耳机内置的多传感器会实时监测你所处的环境噪音类型，比如你从安静的小区走到车流密集的主干道，系统会自动把降噪强度调整到适配交通噪音的档位，走到人声密集的商圈时也会自动优化降噪参数，既不会把外界必要的提示音完全屏蔽，也能有效过滤冗余噪音。你也可以手动在智慧生活APP里切换深度降噪、轻度降噪、智能透传、人声增强这几个固定档位，适配坐飞机、办公室开短会、过马路等不同的自定义需求。"
+                    },
+                    {
+                      "question": "华为FreeBuds Pro 5的触控操作和之前的FreeBuds系列耳机有什么不一样的地方吗？",
+                      "answer": "它把之前的耳机柄按压触控改成了全新的滑动+轻敲双控制逻辑，你可以在耳机柄的触控区域上下滑动调节音量，轻敲两下耳机柄就能切换歌曲或者接听挂断来电，长按可以快速切换降噪档位，操作逻辑比之前更顺手，不容易出现戴耳机时误触按紧耳道产生的胀痛感。你还能在智慧生活APP里自定义每个触控手势对应的功能，比如双击触发语音助手、长按开启录音转写等专属功能，适配自己的日常使用习惯，不过注意触控区域沾水的时候灵敏度会下降，擦干后就能恢复正常。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小宇",
+                      "rating": 2,
+                      "content": "用了快两周还是有点小失望，我耳朵属于偏小的类型，哪怕换了最小号的耳塞套，走路快走半小时耳机就会往下滑，之前用的旧款FreeBuds Pro戴着就很稳不会掉。而且开启全链路高解析音质之后，续航掉得比官方标的快很多，满电出门降噪加高清音质撑不到5小时就得找充电盒，降噪效果倒是还可以，但这个佩戴贴合度对小耳用户真的不太友好，感觉调校的时候更偏向大耳人群。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "华为这次新出的Pro5真的超出预期！我平时坐地铁通勤单程要一个多小时，开了深度降噪之后地铁的轨道轰鸣声直接几乎全没了，连旁边人打电话的模糊杂音也滤得很干净。音质是真的顶，之前用的耳机听古典乐总觉得小提琴的声音发闷，这款能听到弦乐上细微的揉弦颤音，连歌手换气的小细节都清清楚楚，开盖连我的Mate 60 Pro秒连，智慧生活APP里的自定义功能也特别顺手，一千多花得太值了。"
+                    },
+                    {
+                      "nickname": "萌萌",
+                      "rating": 2,
+                      "content": "入手的冰霜银款，颜值确实没得说，但是耳机柄的触控区域太容易误触了，我有时候整理头发碰到耳机柄，突然就切歌或者直接呼出语音助手，好几次开会的时候突然公放出声特别尴尬。问了客服说可以调触控灵敏度，调完之后有时候要敲两三下才能触发操作，灵敏度过高过低都难适配，这个触控逻辑的调校感觉还不如上一代的按压式用着省心，用着有点闹心。"
+                    },
+                    {
+                      "nickname": "老周",
+                      "rating": 5,
+                      "content": "作为一个做了好几年音频的爱好者，这款FreeBuds Pro5的高解析音质真的太惊喜了，比我之前用过的很多同价位无线耳机声场宽太多，低频的下潜够深但完全不会轰头，中频人声贴耳，听流行歌简直是享受。平时我经常出差坐飞机，开了降噪之后连飞机发动机的持续嗡鸣都能滤掉大部分，长途飞行戴几个小时耳朵也不胀，快充功能太实用，临出门发现没电充15分钟，路上全程听歌都够，完全挑不出毛病。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 1,
+                      "content": "用了不到一周右耳机突然就断连了，怎么重置配对都连不上，单独放回充电盒充电指示灯完全不亮，按照客服教的所有操作试了个遍都没用。我平时根本没摔过没沾过水，全新的耳机就直接出硬件故障，送售后检测说要返厂至少等一周，新买的旗舰耳机用几天就出问题，品控也太拉胯了，完全对不起这个一千多的定价，这次体验特别差，以后再也不敢盲入新款首发了。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "真无线耳机",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "真无线耳机"
+                  ],
+                  "tags": [
+                    "华为",
+                    "数码电子",
+                    "真无线耳机",
+                    "通勤",
+                    "办公",
+                    "续航",
+                    "标准版",
+                    "典雅黑",
+                    "冰霜银",
+                    "羽沙白",
+                    "有线充基础版"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_007_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9262，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0277；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0255。",
+                "score": {
+                  "scenario_match": 0.782,
+                  "attribute_match": 0.882,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.85,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.88,
+                  "final_score": 0.9262,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                    "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_digital_007 召回分 0.0277; p_digital_007 召回分 0.0255。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_007::sku::1",
+                  "p_digital_007::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_007_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "brand": "Nike",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "运动长裤",
+                  "base_price": 349.0,
+                  "min_price": 349.0,
+                  "max_price": 359.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_006_live.jpg",
+                  "image_url": "/product-images/p_clothes_006_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_006_1",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_2",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "黑色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_3",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "黑色"
+                      },
+                      "price": 359.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_4",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "黑色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_5",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_6",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 359.0
+                    }
+                  ],
+                  "description": "这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度保持版型，避免暴晒导致面料发硬变色。",
+                  "faqs": [
+                    {
+                      "question": "这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
+                      "answer": "这款裤子所有在售SKU的面料、做工、细节设计都是完全一致的，价格差异仅来自尺码库存的成本差异，XL码黑色属于常年热门的畅销大码，备货和仓储的调配成本略高，所以定价为359元，其余M码深灰、L码黑色的日常定价都是349元，大家可以根据自己的尺码需求选择，不用担心不同价格的商品存在品质差异，全部都是官方同生产线正品。"
+                    },
+                    {
+                      "question": "这款针织束脚裤的面料是不是容易起球，春秋穿会不会太厚？",
+                      "answer": "这款用的是280g左右的新疆棉混纺针织毛圈面料，表面做了磨毛抗起球预处理，正常穿着前提下日常通勤久坐摩擦、搭配运动鞋穿久了都不容易起球，春秋20度左右单穿刚好合适，不会闷汗也不会觉得凉，南方冬天搭配秋裤也能穿，北方零度以上单穿外出也完全没问题，不会像薄款运动裤那样透风，也不会像加绒款那样闷腿。"
+                    },
+                    {
+                      "question": "我178cm78kg选L码黑色会不会卡裆，束脚口会不会勒小腿？",
+                      "answer": "这款L码黑色的官方净臀围是108cm，裤长是98cm，针对大部分175-180cm、体重70-80kg的男性做了裆部加深剪裁，正常站姿走路完全不会卡裆，束脚口的橡筋做了3cm宽的加宽处理，弹力富余3-5cm，正常小腿围40cm以内的人穿都不会有勒紧的压痕，要是你小腿肌肉特别发达可以选大一码，穿着空间会更宽松舒适。"
+                    },
+                    {
+                      "question": "深灰色M码的裤身会不会容易显脏，洗多了会不会发白？",
+                      "answer": "这款深灰色M码的面料做了固色预处理，正常日常穿溅到咖啡、灰尘这些浅污渍，用湿纸巾一擦就能擦干净，不会留明显印子，按照说明冷水反面洗涤的话，正常穿洗二三十次都不会出现大面积发白的情况，只有长期暴晒或者用热水加漂白剂洗才会出现面料泛旧的问题，日常洗涤只要注意这些小细节，穿一整年颜色都能保持得很均匀。"
+                    },
+                    {
+                      "question": "这款裤子有没有隐形口袋，能不能放下6.7英寸的大手机不会掉出来？",
+                      "answer": "这款裤子两侧的插袋做了18cm的加深处理，袋口内侧还做了隐形暗扣设计，正常放6.7英寸的iPhone 14 Pro Max这类大屏手机完全不会掉出来，哪怕你跑步快步走也不用担心滑落，后片还有一个单独的迷你贴袋，可以放门禁卡、交通卡这类小物件，不会晃来晃去磨得腿不舒服，日常出门不用带包也完全够用。"
+                    },
+                    {
+                      "question": "这款束脚裤能不能用来日常慢跑穿，面料会不会勾丝破洞？",
+                      "answer": "这款针织面料的抗撕扯等级达到了运动服饰的国标A级标准，正常日常慢跑、跳操穿完全没问题，不会随便勾丝破洞，只要不是刻意蹭到尖锐的钢筋、铁丝这类锋利物件，正常穿个两三年都不会出现破洞的情况，不过它属于休闲基础款长裤，不是专业竞速跑步裤，高强度的马拉松训练还是更建议选专业速干运动裤，日常轻度运动穿完全足够。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 4,
+                      "content": "整体穿下来还行，版型确实很修饰腿型，我腿有点O型穿这个束脚款刚好遮得七七八八，面料也软乎乎的很舒服。就是刚拆包装的时候闻到点轻微的工业味，挂阳台吹了两天才散掉，腰头的抽绳留得有点长，走路的时候偶尔会滑出来蹭到鞋面上，其他地方都没啥大毛病，349的价格总体还是值得入手的。"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 5,
+                      "content": "这已经是我买的第二条同款了，之前的旧款穿了快两年洗得有点发白才回购的，这次入的L码黑色刚好合身，175cm72kg穿上不用改裤长，束脚口刚好卡在脚踝上面一点，搭空军一号穿特别好看。面料摸起来厚实但不闷，春天二十多度穿完全刚好，口袋够深，我放Max手机跑着取快递都没掉出来，性价比拉满。"
+                    },
+                    {
+                      "nickname": "大张",
+                      "rating": 3,
+                      "content": "收到货穿了不到一周，后腰位置经常坐椅子摩擦的地方就起了好几个小毛球，用毛球器剃完没两天又长出来了，之前买的别家同价位针织裤都没这个问题。客服说这是正常针织面料的损耗，花三百多买的裤子感觉质量有点配不上价格，版型倒是挺好看的，就是面料抗起球的处理做得不到位，不太推荐久坐的上班族买。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "买给我爸当生日礼物的，选的M码深灰色，他170cm65kg穿上特别合适，腰头的抽绳调节起来很方便，他平时跳完广场舞散散步穿都特舒服。裤子洗了三次都没掉色也没变形，侧边的小勾标绣得特别平整，没有多余的线头，我爸平时省得很说这是他买过最合心意的运动裤，让我再给他回购一条别的颜色。"
+                    },
+                    {
+                      "nickname": "阿远",
+                      "rating": 1,
+                      "content": "收到的XL码黑色明显是被人穿过退回来的二手货，裤脚位置有明显的污渍痕迹，腰头的橡筋都已经松垮没有弹力了，口袋里还留了半张别人的超市购物小票，找客服退货退了半天才同意，来回折腾了快一周才处理完，花359买条别人穿过的残次品体验感特别差，以后不会再来这家买东西了。"
+                    },
+                    {
+                      "nickname": "小辰",
+                      "rating": 5,
+                      "content": "最近健身天天穿这条裤子，练腿的时候深蹲完全不卡裆，面料弹力够大动作怎么做都不会紧绷，束脚口不会往上滑，撸铁完直接穿着去买饭也完全不尴尬，不用换别的外穿裤子。之前怕针织裤显胖，结果穿上身意外的显瘦，搭个基础白T恤就能出门，洗了好多次版型都没塌，349的价格能穿一整年太值了。"
+                    }
+                  ],
+                  "review_count": 6,
+                  "rating_avg": 3.83,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "运动长裤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "运动长裤"
+                  ],
+                  "tags": [
+                    "Nike",
+                    "服饰运动",
+                    "运动长裤",
+                    "通勤",
+                    "M码",
+                    "深灰色",
+                    "L码",
+                    "黑色",
+                    "XL码"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_006_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.9661，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0284；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#review 召回分 0.0258；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#sku 召回分 0.0258。",
+                "score": {
+                  "scenario_match": 0.808,
+                  "attribute_match": 0.998,
+                  "price_fit": 0.8624,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 1.0,
+                  "final_score": 0.9661,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+                    "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.83/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_clothes_006 召回分 0.0284; p_clothes_006 召回分 0.0258。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_006::faq::2",
+                  "p_clothes_006::review::3",
+                  "p_clothes_006::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_006_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_023",
+                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                  "brand": "雀巢",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "咖啡",
+                  "base_price": 42.0,
+                  "min_price": 36.0,
+                  "max_price": 78.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_023_live.jpg",
+                  "image_url": "/product-images/p_food_023_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_023_1",
+                      "properties": {
+                        "容量": "100g",
+                        "包装": "玻璃瓶装"
+                      },
+                      "price": 42.0
+                    },
+                    {
+                      "sku_id": "s_p_food_023_2",
+                      "properties": {
+                        "容量": "200g",
+                        "包装": "经济装"
+                      },
+                      "price": 72.0
+                    },
+                    {
+                      "sku_id": "s_p_food_023_3",
+                      "properties": {
+                        "容量": "100g",
+                        "包装": "经济装"
+                      },
+                      "price": 36.0
+                    },
+                    {
+                      "sku_id": "s_p_food_023_4",
+                      "properties": {
+                        "容量": "200g",
+                        "包装": "玻璃瓶装"
+                      },
+                      "price": 78.0
+                    }
+                  ],
+                  "description": "这款雀巢金牌冻干速溶黑咖啡，用的是先进的低温冻干锁香技术，把阿拉比卡咖啡豆的焦香和坚果香气完整留住，完全不像普通速溶的酸涩感。配料表只有纯咖啡粉，没有额外添加糖和植脂末，喝着完全无负担。不管是早八人赶通勤冲一杯消水肿，下午办公室摸鱼醒神，还是健身前喝一杯提升燃脂效率都超合适。100g玻璃瓶装的密封性特别好，每次喝舀1-2勺用85℃左右的温水冲开就行，怕苦的加冰加燕麦奶都很搭。注意开封后要放在阴凉干燥处密封保存，别让水汽跑进去结块，按每天喝1杯算100g装大概能喝1个多月，想更划算直接入200g经济装更省心。",
+                  "faqs": [
+                    {
+                      "question": "这款雀巢金牌冻干黑咖啡和普通款的雀巢速溶黑咖啡口感差别大吗？",
+                      "answer": "差别还是很明显的，普通款大多采用高温喷雾干燥工艺，香气流失多，入口容易带点焦苦的涩感，这款金牌用的是低温冻干技术，在零下40℃左右的环境里把萃取的咖啡液直接冻成固态再升华除水，完整保留了阿拉比卡咖啡豆的原生花果香和坚果尾韵，冲开之后香气特别浓郁，入口顺滑不喇喉咙，几乎没有杂味，哪怕是直接兑冷水也能快速溶解，不会出现结块挂杯的情况。"
+                    },
+                    {
+                      "question": "100g的玻璃瓶装和200g的经济装除了容量之外，咖啡本身品质有区别吗？",
+                      "answer": "两款的咖啡粉原料、制作工艺完全是一模一样的，都是同一条生产线产出的纯阿拉比卡冻干咖啡粉，没有任何品质差异，区别只在于包装规格：100g是带螺旋盖的透明玻璃瓶，放在办公室桌面随拿随用特别方便，喝完的空瓶子还能用来装小零食或者收纳别针回形针这类小物件；200g是密封铝箔袋经济装，性价比更高，适合日常咖啡消耗量比较大、已经有合适密封容器的老用户囤货，平均每克的单价比瓶装要便宜近3成。"
+                    },
+                    {
+                      "question": "这款黑咖啡每天最多喝多少杯比较合适，会不会有心悸的情况？",
+                      "answer": "这款每2g咖啡粉的咖啡因含量大概在60-70mg左右，符合正常速溶黑咖啡的标准含量，健康成年人每天摄入不超过400mg咖啡因都是安全的，换算下来就是一天喝5-6杯也没问题。但要是平时很少喝咖啡、对咖啡因比较敏感的人，建议第一天先冲半杯试试水，不要空腹一次性喝太浓的，不然确实可能出现心跳发慌、手抖的情况，也不建议晚上睡前3小时内喝，避免影响睡眠质量。"
+                    },
+                    {
+                      "question": "开封之后的咖啡粉如果不小心受潮结块了，还能继续喝吗？",
+                      "answer": "如果只是刚受潮、咖啡粉结成轻轻一捏就碎的松散小块，没有出现发霉、变味、长白毛的情况，把它放在干燥通风的地方晾几小时，之后尽快喝完是完全没问题的。但要是结块已经硬到捏不动，甚至打开罐子能闻到霉味、酸味，就说明咖啡粉已经被微生物污染变质了，千万别舍不得扔，喝了容易闹肚子。平时开封之后每次用完一定要把瓶盖拧紧，别用沾了水的勺子挖粉，就能很大程度避免受潮结块。"
+                    },
+                    {
+                      "question": "这款冻干黑咖啡可以用来做冷萃或者气泡美式这类花式饮品吗？",
+                      "answer": "完全可以，它的溶解度特别优秀，不管是冷水、气泡水还是冰牛奶都能快速化开，不会有沉底的粉渣。做冷萃的话，取2勺咖啡粉倒进装满冷水的瓶子里，放冰箱冷藏4小时就能得到不输门店的冷萃咖啡，省了冷萃壶的麻烦；做气泡美式就更简单了，先在杯子里倒半杯气泡水加冰块，再把咖啡粉撒进去搅两下，气泡会带着咖啡的香气直往鼻尖钻，比用普通速溶冲出来的风味层次丰富太多，还能自己DIY加柠檬片、桂花糖浆调出专属口味。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿远",
+                      "rating": 2,
+                      "content": "这次收到的瓶装咖啡粉总感觉品质不对，倒出来的粉不是平时那种蓬松的冻干颗粒，好多碎末，冲的时候挂杯特别严重，杯底留了一圈化不开的渣，喝起来的焦苦味特别重，完全没有之前买的那种坚果香，喝了半杯胃里就反酸了，找客服问也只说批次不同正常，明明之前喝了大半年都没遇过这种情况，这次体验真的挺失望的。"
+                    },
+                    {
+                      "nickname": "小柚",
+                      "rating": 5,
+                      "content": "这罐我已经回购第三瓶了，早八赶课来不及去楼下咖啡店，挖一勺用温水冲开30秒就能搞定，香气直接飘满整个宿舍，完全没有普通速溶的酸涩味，我习惯早上喝完再去跑半小时步，消水肿效果超明显，一上午脸都不肿，透明玻璃瓶颜值还很高，放书桌上当摆件都好看，喝完我还留着装自己摘的干花，性价比真的甩同价位其他黑咖啡好几条街。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 5,
+                      "content": "作为每天至少两杯咖啡的程序员，我囤了两大罐这个咖啡，下午写代码犯困的时候冲一杯，比喝甜滋滋的奶茶健康多了，没有额外加糖，兑点冰燕麦奶就是外面卖的拿铁，算下来一杯成本才一块多，冻干颗粒遇水直接就化，从来没出现过结块的情况，喝了大半年也没觉得腻，最近直接囤了200g的经济装，够我喝两个多月，太适合我们这种咖啡刚需党了。"
+                    }
+                  ],
+                  "review_count": 3,
+                  "rating_avg": 4.0,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "咖啡",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "sports",
+                    "咖啡"
+                  ],
+                  "tags": [
+                    "雀巢",
+                    "食品饮料",
+                    "咖啡",
+                    "通勤",
+                    "办公",
+                    "100g",
+                    "玻璃瓶装",
+                    "200g",
+                    "经济装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_023_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于 食品饮料/咖啡，综合分 0.8557，参考价 36-78 CNY。 评价均分 4/5。 检索证据：雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#review 召回分 0.0299；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#profile 召回分 0.0251；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#sku 召回分 0.0249。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.8581,
+                  "reputation_fit": 0.95,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8557,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 36 CNY，已用于预算适配评分。",
+                    "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 4/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_food_023 召回分 0.0299; p_food_023 召回分 0.0251。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_023::review::3",
+                  "p_food_023::profile::0",
+                  "p_food_023::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_023_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 2404.0,
+              "total_price_max": 2916.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_beauty_005 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_007 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_006 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_023 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_005": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 520.0,
+                  "min_price": 520.0,
+                  "max_price": 780.0,
+                  "selected_sku_id": "s_p_beauty_005_1",
+                  "selected_price": 520.0,
+                  "selected_total_price": 520.0
+                },
+                "p_digital_007": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "selected_sku_id": "s_p_digital_007_1",
+                  "selected_price": 1699.0,
+                  "selected_total_price": 1699.0
+                },
+                "p_clothes_006": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 349.0,
+                  "min_price": 349.0,
+                  "max_price": 359.0,
+                  "selected_sku_id": "s_p_clothes_006_1",
+                  "selected_price": 349.0,
+                  "selected_total_price": 349.0
+                },
+                "p_food_023": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 42.0,
+                  "min_price": 36.0,
+                  "max_price": 78.0,
+                  "selected_sku_id": "s_p_food_023_1",
+                  "selected_price": 42.0,
+                  "selected_total_price": 42.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "油皮需谨慎"
+            ],
+            "evidence": [
+              "p_beauty_005: 科颜氏新集焕白均衡亮肤淡斑精华液，核心卖点在于温和淡斑与均匀提亮肤色，专为有日晒斑、熬夜暗沉、痘印色素沉淀问题的人群设计。其含有的维生素C衍生物（乙基维生素C）能有效抑制黑色素生成，玻色因成分则帮助修护肌肤屏障，同时添加透明质酸保湿因子，让精华在淡斑的同时保持肌肤水润。质地清爽不黏腻，适合早晚护肤使用，尤其适合长期面对电脑、日晒较多或作息不规律的人群。使用建议：取3-4滴于掌心，轻轻拍打至全脸吸收，后续搭配乳液或面霜锁住养分；白天使用时",
+              "p_beauty_005: FAQ - 这款淡斑精华适合哪些肤质？敏感肌可以用吗？",
+              "价格匹配：当前最低 SKU 约 520 CNY，已用于预算适配评分。",
+              "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于用户关注的 美妆护肤 类目。",
+              "p_digital_007: 华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设",
+              "p_digital_007: FAQ - 华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+              "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+              "p_clothes_006: 这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度",
+              "p_clothes_006: FAQ - 这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
+              "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+              "p_food_023: 这款雀巢金牌冻干速溶黑咖啡，用的是先进的低温冻干锁香技术，把阿拉比卡咖啡豆的焦香和坚果香气完整留住，完全不像普通速溶的酸涩感。配料表只有纯咖啡粉，没有额外添加糖和植脂末，喝着完全无负担。不管是早八人赶通勤冲一杯消水肿，下午办公室摸鱼醒神，还是健身前喝一杯提升燃脂效率都超合适。100g玻璃瓶装的密封性特别好，每次喝舀1-2勺用85℃左右的温水冲开就行，怕苦的加冰加燕麦奶都很搭。注意开封后要放在阴凉干燥处密封保存，别让水汽跑进去结块，按每天",
+              "p_food_023: FAQ - 这款雀巢金牌冻干黑咖啡和普通款的雀巢速溶黑咖啡口感差别大吗？",
+              "价格匹配：当前最低 SKU 约 36 CNY，已用于预算适配评分。",
+              "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_005",
+                "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+                "final_score": 0.8985,
+                "scenario_match": 0.76,
+                "attribute_match": 0.95,
+                "price_fit": 1.0,
+                "reputation_fit": 0.8,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.97,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 520 CNY，已用于预算适配评分。",
+                  "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于用户关注的 美妆护肤 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：油皮需谨慎；极敏感人群需先试用。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
+                ]
+              },
+              {
+                "role": "digital",
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "final_score": 0.9262,
+                "scenario_match": 0.782,
+                "attribute_match": 0.882,
+                "price_fit": 1.0,
+                "reputation_fit": 0.85,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                  "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_digital_007 召回分 0.0277; p_digital_007 召回分 0.0255。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "final_score": 0.9661,
+                "scenario_match": 0.808,
+                "attribute_match": 0.998,
+                "price_fit": 0.8624,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 1.0,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+                  "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.83/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_clothes_006 召回分 0.0284; p_clothes_006 召回分 0.0258。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_023",
+                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                "final_score": 0.8557,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.8581,
+                "reputation_fit": 0.95,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 36 CNY，已用于预算适配评分。",
+                  "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 4/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_food_023 召回分 0.0299; p_food_023 召回分 0.0251。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_005",
+            "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+            "name": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+            "brand": "科颜氏",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 520.0,
+            "price_range": [
+              520.0,
+              780.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 4,
+            "reason": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 属于 美妆护肤/精华，综合分 0.8985，参考价 520-780 CNY。 评价均分 3/5。",
+            "score": 0.8985,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_005_1"
+          },
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9262，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0277；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0255。",
+            "score": 0.9262,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "运动长裤",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.9661，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0284；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#review 召回分 0.0258；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#sku 召回分 0.0258。",
+            "score": 0.9661,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_006_1"
+          },
+          {
+            "product_id": "p_food_023",
+            "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "name": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "brand": "雀巢",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "咖啡",
+            "price": 36.0,
+            "price_range": [
+              36.0,
+              78.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_023_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡 属于 食品饮料/咖啡，综合分 0.8557，参考价 36-78 CNY。 评价均分 4/5。 检索证据：雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#review 召回分 0.0299；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#profile 召回分 0.0251；雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡#sku 召回分 0.0249。",
+            "score": 0.8557,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_023_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [
+              "华为"
+            ],
+            "excluded_brands": [],
+            "must_have_terms": [
+              "黑色"
+            ],
+            "excluded_terms": [],
+            "preferences": [
+              "黑色"
+            ]
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 1,
+              "within_budget_count": 1,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_005",
+                  "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+                  "price": 520.0,
+                  "score": 0.8985
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "price": 1499.0,
+                  "score": 0.9262
+                },
+                {
+                  "product_id": "p_digital_005",
+                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                  "price": 4999.0,
+                  "score": 0.9225
+                },
+                {
+                  "product_id": "p_digital_021",
+                  "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+                  "price": 5199.0,
+                  "score": 0.9133
+                },
+                {
+                  "product_id": "p_digital_002",
+                  "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                  "price": 6999.0,
+                  "score": 0.9082
+                },
+                {
+                  "product_id": "p_digital_004",
+                  "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                  "price": 6299.0,
+                  "score": 0.8889
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 12,
+              "within_budget_count": 12,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "price": 349.0,
+                  "score": 0.9661
+                },
+                {
+                  "product_id": "p_clothes_023",
+                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                  "price": 149.0,
+                  "score": 0.9499
+                },
+                {
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "price": 99.0,
+                  "score": 0.9428
+                },
+                {
+                  "product_id": "p_clothes_003",
+                  "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                  "price": 199.0,
+                  "score": 0.9229
+                },
+                {
+                  "product_id": "p_clothes_005",
+                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                  "price": 259.0,
+                  "score": 0.92
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_023",
+                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                  "price": 36.0,
+                  "score": 0.8557
+                },
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8509
+                },
+                {
+                  "product_id": "p_food_013",
+                  "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                  "price": 9.0,
+                  "score": 0.8326
+                },
+                {
+                  "product_id": "p_food_002",
+                  "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                  "price": 30.0,
+                  "score": 0.8323
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8235
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "score": 0.9661,
+            "strength": "综合分 0.9661，评分 3.83/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_clothes_023",
+            "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 149.0,
+            "price_range": [
+              149.0,
+              159.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 6,
+            "score": 0.9499,
+            "strength": "综合分 0.9499，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 99.0,
+            "price_range": [
+              99.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "score": 0.9428,
+            "strength": "综合分 0.9428，评分 3.8/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.9262,
+            "strength": "综合分 0.9262，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_clothes_003",
+            "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+            "brand": "耐克",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 199.0,
+            "price_range": [
+              199.0,
+              199.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.17,
+            "review_count": 6,
+            "score": 0.9229,
+            "strength": "综合分 0.9229，评分 3.17/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_digital_005",
+            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6399.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 5,
+            "score": 0.9225,
+            "strength": "综合分 0.9225，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "油皮需谨慎"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml、华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质、Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+              "已从商品库候选中选择：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤"
+            ],
+            "evidence_points": [
+              "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml - 价格：520.0",
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0",
+              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 - 价格：349.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "cart",
+      "data": {
+        "session_id": "v2_cart",
+        "action": "add",
+        "messages": [
+          "已将 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 加入购物车，数量 1。"
+        ],
+        "cart": {
+          "items": [
+            {
+              "product_id": "p_beauty_005",
+              "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
+              "brand": "科颜氏",
+              "price": 520.0,
+              "currency": "CNY",
+              "quantity": 1,
+              "line_total": 520.0,
+              "image_url": "/product-images/p_beauty_005_live.jpg"
+            }
+          ],
+          "total_price": 520.0,
+          "currency": "CNY",
+          "count": 1
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_cart"
+      }
+    }
+  ]
+}

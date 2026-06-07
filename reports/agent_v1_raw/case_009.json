@@ -1,0 +1,1307 @@
+{
+  "case_id": 9,
+  "input": "有没有防水的运动鞋",
+  "expected": "recommend_shopping_products → 运动鞋+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "有没有防水的运动鞋",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有防水的运动鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "防水的运动鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 867,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "防水的运动鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 867,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有防水的运动鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 869
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 2,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 1244,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.7400000000000001,
+            "query_complexity": 0.075,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.7400000000000001,
+        "query_complexity": 0.075,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "有没有防水的运动鞋",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有防水的运动鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "防水的运动鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 867,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "防水的运动鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 867,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有防水的运动鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 869
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "condition_filter",
+        "task_type": "condition_filter",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 6 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 2 条，预算内命中 2 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋；约 1099 CNY；评分 1.00"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋；约 1198 CNY；评分 0.89"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 2 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_clothes_015",
+            "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "name": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "brand": "迈乐",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "徒步鞋",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1099.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于 服饰运动/徒步鞋，综合分 1.0000，参考价 1099-1099 CNY。 评价均分 3.75/5。 检索证据：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#profile 召回分 0.0315；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#faq 召回分 0.0279；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#review 召回分 0.0278。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_clothes_015_1"
+          },
+          {
+            "product_id": "p_clothes_014",
+            "title": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+            "name": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+            "brand": "萨洛蒙",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "徒步鞋",
+            "price": 1198.0,
+            "price_range": [
+              1198.0,
+              1198.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_014_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋 属于 服饰运动/徒步鞋，综合分 0.8933，参考价 1198-1198 CNY。 评价均分 2.75/5。 检索证据：SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#profile 召回分 0.0323；SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#review 召回分 0.0294；SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#faq 召回分 0.0275。",
+            "score": 0.8933,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_014_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "clothing"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "防水"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "防水",
+            "运动"
+          ]
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 2,
+            "within_budget_count": 2,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_015",
+                "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                "price": 1099.0,
+                "score": 1.0
+              },
+              {
+                "product_id": "p_clothes_014",
+                "title": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+                "price": 1198.0,
+                "score": 0.8933
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "有没有防水的运动鞋",
+          "scenario": "apparel_sports",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "clothing"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "clothing"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [
+            "运动鞋"
+          ],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "防水"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "防水",
+            "运动"
+          ],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "components": [
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_015",
+                  "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                  "brand": "迈乐",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "徒步鞋",
+                  "base_price": 1099.0,
+                  "min_price": 1099.0,
+                  "max_price": 1099.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_015_live.jpg",
+                  "image_url": "/product-images/p_clothes_015_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_015_1",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "39码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_2",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "40码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_3",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "41码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_4",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "42码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_5",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "43码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_6",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "44码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_015_7",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "45码",
+                        "版本": "GORE-TEX"
+                      },
+                      "price": 1099.0
+                    }
+                  ],
+                  "description": "迈乐这款MOAB 3 GTX男款徒步鞋，专为硬核户外爱好者打造，搭载正版GORE-TEX防水薄膜，连暴雨天走山间溪路都能保持鞋内干爽，中底用了升级的EVA记忆缓震材质，足弓处做了专属硬质支撑片，踩碎石陡坡也不会崴脚。适用经常走长线徒步、周末近郊越野、日常逛郊野公园的男士，不管是泥地、碎石路还是浅滩都能hold住。提醒大家选码前可以先测下净脚长，穿厚户外袜的话建议选大半码，日常不要穿着它长时间跑柏油马路，很容易加快鞋底纹路磨损，养护的时候也别直接暴晒，阴干就好，能穿更久。",
+                  "faqs": [
+                    {
+                      "question": "这款MOAB 3 GTX的GORE-TEX防水层能不能直接整鞋泡在水里测试啊？",
+                      "answer": "不建议大家这么操作哦，GORE-TEX的防水属性是针对户外徒步场景下的泼溅、短时间浅滩涉水设计的，并不是全密封潜水级防水。如果长时间把整鞋泡在深水里，水会从鞋舌拼接缝、鞋口针织包边这些非防水面料的位置渗进去，反而会误以为鞋的防水功能失效。正常走山遇到小雨、踩没过脚踝10厘米以内的浅溪，完全不会湿脚，完全满足日常户外徒步的防水需求。"
+                    },
+                    {
+                      "question": "我脚型偏宽，穿普通休闲鞋要大半码，这款MOAB 3 GTX要不要选大一码？",
+                      "answer": "这款MOAB 3 GTX的鞋楦本身做了前掌加宽的优化设计，比常规休闲鞋的鞋仓空间富余很多。如果你的脚只是轻微偏宽，日常穿普通运动鞋选正码的话，这款按你平时的运动鞋正码选就足够；如果是重度宽脚、或者足弓很高，平时穿厚户外袜容易挤脚的话，可以选比日常运动鞋大半码的尺码，不建议选全大一码，不然下坡走长线的时候脚跟容易晃，反而磨脚还会影响支撑稳定性，选之前也可以对照详情页的脚长对照表核对下净脚长更准。"
+                    },
+                    {
+                      "question": "这款鞋的稳定支撑功能，体重85公斤的人穿长线徒步会不会踩塌？",
+                      "answer": "完全不会，MOAB 3 GTX的中底在原有前代的基础上，把高密度EVA的占比提升了40%，足弓位置还嵌了一块硬度达65D的TPU支撑片，专门针对大体重用户长时间走负重路线的需求设计。就算是85公斤左右的男士背15公斤的登山包走3天以上的长线徒步，中底也不会出现明显的形变塌陷，踩在凹凸不平的碎石路上，支撑片能牢牢兜住足弓，不容易出现脚酸、崴脚的情况，日常通勤穿也能缓解久站的脚累感。"
+                    },
+                    {
+                      "question": "脏了之后这款GTX版本的鞋能不能直接扔洗衣机洗？",
+                      "answer": "千万不要扔洗衣机机洗，机洗的强力翻滚会破坏GORE-TEX薄膜的贴合结构，还会把鞋面的反绒皮面洗得起球变形，鞋底的纹路也很容易被滚筒搅变形。正确的清洁方式是用软毛刷沾中性清洁剂，轻轻刷掉鞋面的泥污，鞋底缝隙的小石子可以用小镊子挑出来，之后用清水冲干净，放在阴凉通风的地方自然阴干，不要放在太阳下暴晒，暴晒会让鞋面皮面开裂，中底也会加速老化变脆，保养得好穿两三年都没问题。"
+                    },
+                    {
+                      "question": "这款MOAB 3 GTX和普通非GTX版本的MOAB 3外观上能看出来区别吗？",
+                      "answer": "两者外观上是有明显区分点的，GTX版本的鞋身外侧靠近脚踝的位置，会缝有专属的GORE-TEX白色织标，鞋舌的标签上也会印上GTX的专属标识，鞋身拼接处的缝线也做了压胶密封处理，不会像非GTX版本那样露出外露的针孔。另外GTX版本的鞋面面料密度要比普通版本高很多，泼水上去会直接形成水珠滚落，普通版本的鞋面泼水之后很快就会洇湿，大家收到货可以对照这几个点检查，确认收到的是正牌GTX防水版本。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 2,
+                      "content": "穿了三次去近郊徒步，发现鞋面的反绒皮位置蹭到树枝之后特别容易留印子，擦都擦不掉，最糟心的是昨天走浅滩大概没过脚面10分钟，鞋尖位置居然渗进水了，袜子前半部分全湿了，本来就是冲着防水买的，体验感特别差。之前以为大牌的GTX不会出问题，现在走长线完全不敢穿它，只能拿来当普通休闲鞋穿，一千多的价格真的感觉不值这个价，有点失望。"
+                    },
+                    {
+                      "nickname": "阿峰",
+                      "rating": 5,
+                      "content": "上周跟着俱乐部走了浙西的三天长线，全程碰到两场阵雨还踩了好几次小溪，鞋里从头到尾都是干的，GORE-TEX的防水真的太靠谱了。足弓的支撑特别舒服，我体重82公斤背了16公斤的包，走下来脚都没像之前穿旧徒步鞋那样酸得难受，鞋底抓地力也绝，走湿滑的石阶完全没打滑，同行的朋友问了链接都要入，这双鞋真的是我近几年买到最满意的徒步鞋。"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 4,
+                      "content": "整体穿着感还可以，支撑和抓地力徒步的时候都挺好用的，走碎石路脚不晃。就是刚上脚的时候鞋舌旁边的包边位置有点磨脚踝，我穿厚户外袜走了大概二十公里才把那块磨开适应过来，新鞋前几次穿最好提前贴个防磨贴会好很多。价格要是能再亲民点就更合适了，其他地方没什么大毛病，日常通勤穿也挺舒服的，除了刚开始磨脚之外没什么槽点。"
+                    },
+                    {
+                      "nickname": "大磊",
+                      "rating": 4,
+                      "content": "防水和支撑都符合预期，上周雨天去爬郊野的山全程脚都干爽，踩泥地里拔脚也不费劲。就是鞋身的反绒皮材质太容易沾灰了，我天天通勤穿，没到半个月鞋面就灰蒙蒙的，得每周都用鞋刷清理一次，打理起来有点麻烦。脚感是真的舒服，久站八小时脚也不疼，除了打理费点事之外，这个价位能买到这种性能的徒步鞋整体还是挺值的。"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.75,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "徒步鞋"
+                  ],
+                  "not_good_for": [
+                    "追求极致轻薄用户需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "sports",
+                    "徒步鞋"
+                  ],
+                  "tags": [
+                    "迈乐",
+                    "服饰运动",
+                    "徒步鞋",
+                    "户外",
+                    "男款",
+                    "39码",
+                    "GORE-TEX",
+                    "40码",
+                    "41码",
+                    "42码",
+                    "43码",
+                    "44码",
+                    "45码"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_015_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求极致轻薄用户需谨慎"
+                  ]
+                },
+                "reason": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于 服饰运动/徒步鞋，综合分 1.0000，参考价 1099-1099 CNY。 评价均分 3.75/5。 检索证据：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#profile 召回分 0.0315；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#faq 召回分 0.0279；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#review 召回分 0.0278。",
+                "score": {
+                  "scenario_match": 0.95,
+                  "attribute_match": 1.0,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.95,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.97,
+                  "final_score": 1.0,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 1099 CNY，已用于预算适配评分。",
+                    "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于用户关注的 服饰运动 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 3.75/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求极致轻薄用户需谨慎。",
+                    "商品知识证据命中：p_clothes_015 召回分 0.0315; p_clothes_015 召回分 0.0279。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_015::profile::0",
+                  "p_clothes_015::faq::2",
+                  "p_clothes_015::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_015_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 1099.0,
+              "total_price_max": 1099.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_clothes_015 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_clothes_015": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 1099.0,
+                  "min_price": 1099.0,
+                  "max_price": 1099.0,
+                  "selected_sku_id": "s_p_clothes_015_1",
+                  "selected_price": 1099.0,
+                  "selected_total_price": 1099.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "追求极致轻薄用户需谨慎"
+            ],
+            "evidence": [
+              "p_clothes_015: 迈乐这款MOAB 3 GTX男款徒步鞋，专为硬核户外爱好者打造，搭载正版GORE-TEX防水薄膜，连暴雨天走山间溪路都能保持鞋内干爽，中底用了升级的EVA记忆缓震材质，足弓处做了专属硬质支撑片，踩碎石陡坡也不会崴脚。适用经常走长线徒步、周末近郊越野、日常逛郊野公园的男士，不管是泥地、碎石路还是浅滩都能hold住。提醒大家选码前可以先测下净脚长，穿厚户外袜的话建议选大半码，日常不要穿着它长时间跑柏油马路，很容易加快鞋底纹路磨损，养护的时候",
+              "p_clothes_015: FAQ - 这款MOAB 3 GTX的GORE-TEX防水层能不能直接整鞋泡在水里测试啊？",
+              "价格匹配：当前最低 SKU 约 1099 CNY，已用于预算适配评分。",
+              "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于用户关注的 服饰运动 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_015",
+                "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                "final_score": 1.0,
+                "scenario_match": 0.95,
+                "attribute_match": 1.0,
+                "price_fit": 1.0,
+                "reputation_fit": 0.95,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.97,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 1099 CNY，已用于预算适配评分。",
+                  "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于用户关注的 服饰运动 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 3.75/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求极致轻薄用户需谨慎。",
+                  "商品知识证据命中：p_clothes_015 召回分 0.0315; p_clothes_015 召回分 0.0279。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_clothes_015",
+            "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "name": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "brand": "迈乐",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "徒步鞋",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1099.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 属于 服饰运动/徒步鞋，综合分 1.0000，参考价 1099-1099 CNY。 评价均分 3.75/5。 检索证据：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#profile 召回分 0.0315；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#faq 召回分 0.0279；Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋#review 召回分 0.0278。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_clothes_015_1"
+          },
+          {
+            "product_id": "p_clothes_014",
+            "title": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+            "name": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+            "brand": "萨洛蒙",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "徒步鞋",
+            "price": 1198.0,
+            "price_range": [
+              1198.0,
+              1198.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_014_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋 属于 服饰运动/徒步鞋，综合分 0.8933，参考价 1198-1198 CNY。 评价均分 2.75/5。 检索证据：SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#profile 召回分 0.0323；SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#review 召回分 0.0294；SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋#faq 召回分 0.0275。",
+            "score": 0.8933,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_014_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "clothing"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [
+              "防水"
+            ],
+            "excluded_terms": [],
+            "preferences": [
+              "防水",
+              "运动"
+            ]
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 2,
+              "within_budget_count": 2,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_015",
+                  "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                  "price": 1099.0,
+                  "score": 1.0
+                },
+                {
+                  "product_id": "p_clothes_014",
+                  "title": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+                  "price": 1198.0,
+                  "score": 0.8933
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_clothes_015",
+            "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+            "brand": "迈乐",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1099.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "score": 1.0,
+            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_clothes_014",
+            "title": "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋",
+            "brand": "萨洛蒙",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 1198.0,
+            "price_range": [
+              1198.0,
+              1198.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "score": 0.8933,
+            "strength": "综合分 0.8933，评分 2.75/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "condition_filter",
+          "task_type": "condition_filter",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "追求极致轻薄用户需谨慎"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+              "已从商品库候选中选择：SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋"
+            ],
+            "evidence_points": [
+              "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 - 价格：1099.0",
+              "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻量抓地登山越野鞋 - 价格：1198.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "test_case_9"
+      }
+    }
+  ]
+}

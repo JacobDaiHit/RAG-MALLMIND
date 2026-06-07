@@ -1,0 +1,1572 @@
+{
+  "case_id": 111,
+  "input": "推荐一双跑步鞋",
+  "expected": "recommend_shopping_products → 跑鞋+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "推荐一双跑步鞋",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "推荐一双跑步鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.7,
+          "reason": "默认进入普通本地商品推荐。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.45,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.45,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.45,
+            "margin_bonus": 0.05,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.35
+          },
+          "local_rule_confidence": 0.7,
+          "route_score_confidence": 0.35
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.45,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.45,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.45,
+          "margin_bonus": 0.05,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.35
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "跑步鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 790,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "跑步鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 790,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "推荐一双跑步鞋",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 791
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 3,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 1016,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.7,
+            "route_margin": 0.45,
+            "requirement_completeness": 0.7400000000000001,
+            "query_complexity": 0.058333333333333334,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.7,
+        "route_margin": 0.45,
+        "requirement_completeness": 0.7400000000000001,
+        "query_complexity": 0.058333333333333334,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "推荐一双跑步鞋",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "推荐一双跑步鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.7,
+            "reason": "默认进入普通本地商品推荐。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.45,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.45,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.45,
+              "margin_bonus": 0.05,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.35
+            },
+            "local_rule_confidence": 0.7,
+            "route_score_confidence": 0.35
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.45,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.45,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.45,
+            "margin_bonus": 0.05,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.35
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "跑步鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 790,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "跑步鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 790,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "推荐一双跑步鞋",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 791
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "condition_filter",
+        "task_type": "condition_filter",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 6 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 4 条，预算内命中 4 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋；约 899 CNY；评分 1.00"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋；约 999 CNY；评分 1.00"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋；约 1099 CNY；评分 0.96"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋；约 1399 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_clothes_007",
+            "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "name": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "brand": "耐克",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 899.0,
+            "price_range": [
+              899.0,
+              949.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_clothes_007_1"
+          },
+          {
+            "product_id": "p_clothes_010",
+            "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+            "name": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+            "brand": "特步",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 999.0,
+            "price_range": [
+              999.0,
+              999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0313；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0294；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0292。",
+            "score": 1.0,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_010_1"
+          },
+          {
+            "product_id": "p_clothes_009",
+            "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+            "name": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+            "brand": "HOKA",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1119.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_009_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9633，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0284；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0284。",
+            "score": 0.9633,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_009_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "clothing"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "跑步"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "跑步"
+          ]
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 4,
+            "within_budget_count": 4,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_007",
+                "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+                "price": 899.0,
+                "score": 1.0
+              },
+              {
+                "product_id": "p_clothes_010",
+                "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+                "price": 999.0,
+                "score": 1.0
+              },
+              {
+                "product_id": "p_clothes_009",
+                "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+                "price": 1099.0,
+                "score": 0.9633
+              },
+              {
+                "product_id": "p_clothes_008",
+                "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
+                "price": 1399.0,
+                "score": 0.9079
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "推荐一双跑步鞋",
+          "scenario": "apparel_sports",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "clothing"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "clothing"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [
+            "跑步鞋"
+          ],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "跑步"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "跑步"
+          ],
+          "occasion": "跑步",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "components": [
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_007",
+                  "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+                  "brand": "耐克",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "跑步鞋",
+                  "base_price": 899.0,
+                  "min_price": 899.0,
+                  "max_price": 949.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_007_live.jpg",
+                  "image_url": "/product-images/p_clothes_007_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_007_1",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "39码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_2",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "40码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_3",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "40.5码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_4",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "41码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_5",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "42码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_6",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "42.5码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_7",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "43码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_8",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "44码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_9",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "44.5码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_10",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "45码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_11",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "46码",
+                        "鞋楦": "标准楦"
+                      },
+                      "price": 899.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_12",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "39码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_13",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "40码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_14",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "40.5码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_15",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "41码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_16",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "42码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_17",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "42.5码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_18",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "43码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_19",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "44码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_20",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "44.5码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_21",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "45码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_007_22",
+                      "properties": {
+                        "款型": "男款",
+                        "尺码": "46码",
+                        "鞋楦": "宽楦"
+                      },
+                      "price": 949.0
+                    }
+                  ],
+                  "description": "这双Nike Air Zoom Pegasus 41男子跑步鞋是耐克飞马系列迭代到第41代的训练款，搭载前后掌分离式Zoom Air气垫，搭配全掌ReactX泡棉中底，缓震反馈比前代更韧不塌。工程网布鞋面做了加密透气孔设计，长时间跑脚不闷汗，标准楦型适配多数亚洲男性脚型。核心卖点是兼顾长距离公路跑的支撑性和日常压街的百搭感，适用人群覆盖每周跑量10-50公里的入门跑者、日常进行3-10公里路跑的健身爱好者，以及需要一双舒适通勤鞋的上班族。日常场景下不管是城市柏油马路训练、小区夜跑还是上班通勤穿都合适。使用建议选大半码更适配厚运动袜，注意不要穿着它去越野跑或进行剧烈对抗球类运动，避免鞋底纹路过度磨损和气垫被尖锐物扎破，雨天穿完及时擦干鞋面缝隙的积水能延长鞋的使用寿命。",
+                  "faqs": [
+                    {
+                      "question": "Nike Air Zoom Pegasus 41和前代Pegasus 40相比，缓震脚感上有什么具体区别？",
+                      "answer": "Pegasus 41把原来的全掌React泡棉升级成了ReactX泡棉，整体软弹度提升了13%左右，上脚不会像前代那样初踩有点硬，跑起来前掌的Zoom Air气垫位置往足中部微调了2mm，蹬地推进的反馈更跟脚，不会出现前两代偶尔会有的脚掌扯拽感。后跟处额外加了2mm的环形泡棉加固，长距离跑到后半程的时候，后跟的支撑性更好，不会出现鞋脚分离的晃动感，日常通勤走久了也不会有后跟磨脚的情况，对初跑者的友好度比前代高不少。"
+                    },
+                    {
+                      "question": "这双鞋的标准楦版型，宽脚或者脚背高的男性能直接穿吗？需要选大多少码合适？",
+                      "answer": "这款的标准楦是针对亚洲男性脚型调整过的正常宽楦，正常足围的脚按照日常穿的运动鞋正码选就完全没问题。如果是脚宽超过E级的宽脚，或者脚背偏高超过4cm的朋友，建议选大半码，比如平时穿42码的选42.5码就刚好，不会出现脚面被鞋面压得发麻的情况。特别注意如果是习惯穿加厚速干跑步袜的跑者，哪怕是正常脚型，也可以优先选大半码，跑步的时候脚掌充血微微胀开也不会挤脚，能避免长时间跑磨出水泡的问题。"
+                    },
+                    {
+                      "question": "平时每周跑3次每次跑10公里左右，这双鞋的中底大概能支撑多少公里的使用寿命？",
+                      "answer": "按照每次跑10公里、每周3次的常规训练强度来算，正常体重在60-80公斤的跑者，这双Pegasus41的ReactX中底加上Zoom气垫组合，正常使用寿命大概在600-800公里左右。如果是超过90公斤的大体重跑者，中底损耗速度会快一些，大概在500公里左右就会感觉到明显的踩实感，缓震反馈变弱。平时不用的时候把鞋放在阴凉通风的地方，不要长期暴晒在太阳底下，能避免泡棉提前老化发硬，最多可以延长150公里左右的使用周期。"
+                    },
+                    {
+                      "question": "这双鞋的工程网面可以直接水洗吗？清洗的时候有什么需要注意的地方？",
+                      "answer": "这款的工程网面是高密度编织的，可以进行水洗，但绝对不要直接整只鞋泡在水里超过1小时，也别用硬毛鞋刷大力蹭鞋面，很容易把细编织线勾出毛球，后续破洞的概率会变高。建议用软毛刷沾中性洗衣液轻轻刷脏的位置，刷完之后用大量清水冲干净，然后把鞋塞进报纸撑住鞋型，放在通风的阴凉处自然晾干，不要放在阳台大太阳底下暴晒，暴晒会让中底的泡棉快速老化发黄，也容易让鞋的开胶概率变高，正常这样清洗的话鞋面穿一两年也不会变形。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "跑者阿凯",
+                      "rating": 5,
+                      "content": "我每周大概跑4次每次8公里，穿这双鞋跑了快一个月了，脚感真的太惊喜了，前掌气垫蹬地的时候反馈特别干脆，完全没有拖沓的感觉，上周跑半马后半程脚也没怎么酸疼。网面透气性特别好，夏天30多度跑完全程袜子也只是微微潮，完全没有闷脚捂汗的情况，标准楦对我这种正常脚型太友好了，鞋跟卡得很稳完全不晃，之后训练就锁定这双飞马41了，太满意。"
+                    },
+                    {
+                      "nickname": "阿远",
+                      "rating": 3,
+                      "content": "我是典型的宽脚，当时看页面说标准楦适配宽脚就直接按正码买了42码，结果上脚挤得小脚趾发麻，跑了一次5公里下来外侧脚边直接磨红了，哪怕换薄袜子穿也还是挤脚。找客服问才说宽脚要选大半码，我穿了一次鞋底沾了灰也没法退换，只能闲置当拖鞋穿，感觉前期尺码指引做得太不到位了，完全没提前把宽脚的适配注意点标在显眼位置，白浪费小九百块。"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 4,
+                      "content": "整体穿着感其实还不错，平时通勤上下班走路特别舒服，缓震很软，踩上去回弹感刚好不会塌。但我穿了大概两周，发现鞋头位置的网面不小心被路牙子刮了一下直接勾出了一根小线，虽然没破但看着很明显，编织的密度比我之前买的飞马39要薄一点。整体性价比还行，就是网面耐造程度有点低于预期，平时穿得稍微注意点别乱刮的话日常用还是完全够用的，给个四星吧。"
+                    },
+                    {
+                      "nickname": "大周",
+                      "rating": 3,
+                      "content": "我体重88公斤，本来冲着飞马系列缓震好买的，结果穿了还不到300公里，就明显感觉到后跟的中底硬得像踩砖一样，之前缓震的软弹感完全没了，下楼的时候脚震得后跟疼。之前穿旧款飞马40同样的跑量至少还能有回弹感，这款的ReactX泡棉好像损耗比前代快很多，感觉寿命比宣传的短了一半，这个价位的鞋不应该是这个品质，有点失望。"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.75,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "跑步鞋",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "追求极致轻薄用户需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "sports",
+                    "跑步鞋"
+                  ],
+                  "tags": [
+                    "耐克",
+                    "服饰运动",
+                    "跑步鞋",
+                    "跑步",
+                    "通勤",
+                    "男款",
+                    "39码",
+                    "标准楦",
+                    "40码",
+                    "40.5码",
+                    "41码",
+                    "42码",
+                    "42.5码",
+                    "43码",
+                    "44码",
+                    "44.5码",
+                    "45码",
+                    "46码",
+                    "宽楦"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_007_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求极致轻薄用户需谨慎"
+                  ]
+                },
+                "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
+                "score": {
+                  "scenario_match": 1.0,
+                  "attribute_match": 1.0,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.95,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.91,
+                  "final_score": 1.0,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 899 CNY，已用于预算适配评分。",
+                    "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于用户关注的 服饰运动 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 3.75/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求极致轻薄用户需谨慎。",
+                    "商品知识证据命中：p_clothes_007 召回分 0.0310; p_clothes_007 召回分 0.0276。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_007::profile::0",
+                  "p_clothes_007::sku::1",
+                  "p_clothes_007::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_007_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 899.0,
+              "total_price_max": 949.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_clothes_007 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_clothes_007": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 899.0,
+                  "min_price": 899.0,
+                  "max_price": 949.0,
+                  "selected_sku_id": "s_p_clothes_007_1",
+                  "selected_price": 899.0,
+                  "selected_total_price": 899.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "跑步",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "追求极致轻薄用户需谨慎"
+            ],
+            "evidence": [
+              "p_clothes_007: 这双Nike Air Zoom Pegasus 41男子跑步鞋是耐克飞马系列迭代到第41代的训练款，搭载前后掌分离式Zoom Air气垫，搭配全掌ReactX泡棉中底，缓震反馈比前代更韧不塌。工程网布鞋面做了加密透气孔设计，长时间跑脚不闷汗，标准楦型适配多数亚洲男性脚型。核心卖点是兼顾长距离公路跑的支撑性和日常压街的百搭感，适用人群覆盖每周跑量10-50公里的入门跑者、日常进行3-10公里路跑的健身爱好者，以及需要一双舒适通勤鞋的上班族",
+              "p_clothes_007: FAQ - Nike Air Zoom Pegasus 41和前代Pegasus 40相比，缓震脚感上有什么具体区别？",
+              "价格匹配：当前最低 SKU 约 899 CNY，已用于预算适配评分。",
+              "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于用户关注的 服饰运动 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_007",
+                "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+                "final_score": 1.0,
+                "scenario_match": 1.0,
+                "attribute_match": 1.0,
+                "price_fit": 1.0,
+                "reputation_fit": 0.95,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.91,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 899 CNY，已用于预算适配评分。",
+                  "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于用户关注的 服饰运动 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 3.75/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求极致轻薄用户需谨慎。",
+                  "商品知识证据命中：p_clothes_007 召回分 0.0310; p_clothes_007 召回分 0.0276。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_clothes_007",
+            "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "name": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "brand": "耐克",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 899.0,
+            "price_range": [
+              899.0,
+              949.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_clothes_007_1"
+          },
+          {
+            "product_id": "p_clothes_010",
+            "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+            "name": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+            "brand": "特步",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 999.0,
+            "price_range": [
+              999.0,
+              999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0313；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0294；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0292。",
+            "score": 1.0,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_010_1"
+          },
+          {
+            "product_id": "p_clothes_009",
+            "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+            "name": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+            "brand": "HOKA",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "跑步鞋",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1119.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_009_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9633，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0284；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0284。",
+            "score": 0.9633,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_clothes_009_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "clothing"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [
+              "跑步"
+            ],
+            "excluded_terms": [],
+            "preferences": [
+              "跑步"
+            ]
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 4,
+              "within_budget_count": 4,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_007",
+                  "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+                  "price": 899.0,
+                  "score": 1.0
+                },
+                {
+                  "product_id": "p_clothes_010",
+                  "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+                  "price": 999.0,
+                  "score": 1.0
+                },
+                {
+                  "product_id": "p_clothes_009",
+                  "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+                  "price": 1099.0,
+                  "score": 0.9633
+                },
+                {
+                  "product_id": "p_clothes_008",
+                  "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
+                  "price": 1399.0,
+                  "score": 0.9079
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_clothes_007",
+            "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+            "brand": "耐克",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 899.0,
+            "price_range": [
+              899.0,
+              949.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "score": 1.0,
+            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_clothes_010",
+            "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+            "brand": "特步",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 999.0,
+            "price_range": [
+              999.0,
+              999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "score": 1.0,
+            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_clothes_009",
+            "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+            "brand": "HOKA",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 1099.0,
+            "price_range": [
+              1099.0,
+              1119.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.9633,
+            "strength": "综合分 0.9633，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_clothes_008",
+            "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
+            "brand": "阿迪达斯",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 1399.0,
+            "price_range": [
+              1399.0,
+              1399.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.25,
+            "review_count": 4,
+            "score": 0.9079,
+            "strength": "综合分 0.9079，评分 4.25/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "condition_filter",
+          "task_type": "condition_filter",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "追求极致轻薄用户需谨慎"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+              "已从商品库候选中选择：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+              "已从商品库候选中选择：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
+            ],
+            "evidence_points": [
+              "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 - 价格：899.0",
+              "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 - 价格：999.0",
+              "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 - 价格：1099.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_111"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1415 @@
+{
+  "case_id": 159,
+  "input": "那这款的拍照效果呢",
+  "expected": "理解上下文=手机的拍照",
+  "session_id": "sess_i156",
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "那这款的拍照效果呢",
+        "budget": null,
+        "category": "手机",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.85,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "general_chat",
+          "arguments": {
+            "query": "那这款的拍照效果呢",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.9,
+          "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.8
+            },
+            "top_name": "general_chat",
+            "top_score": 0.8,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.0,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.8
+          },
+          "top_name": "general_chat",
+          "top_score": 0.8,
+          "second_name": "recommend_shopping_products",
+          "second_score": 0.0,
+          "margin": 0.8,
+          "margin_bonus": 0.08,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.88
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "手机拍照效果",
+            "budget": null,
+            "category": "手机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.85,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 985,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "手机拍照效果",
+            "budget": null,
+            "category": "手机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.85,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 985,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "那这款的拍照效果呢",
+            "budget": null,
+            "category": "手机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 987
+      },
+      "topic_memory": {
+        "topic_id": "sess_i156-1",
+        "topic_type": "ecommerce_recommendation",
+        "subject": "有没有更便宜的",
+        "route": "recommend_shopping_products",
+        "category": "手机",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {
+            "category": "手机"
+          },
+          "product_ids": [],
+          "catalog_scope": "ecommerce"
+        },
+        "confidence": 0.8,
+        "source": "llm",
+        "reason": "路由器未提供原因。",
+        "updated_at": "2026-06-07T04:03:43.960296+00:00",
+        "history": [
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": null,
+              "usage": [],
+              "preferences": {
+                "category": "手机"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:41.056875+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": null,
+              "usage": [],
+              "preferences": {
+                "category": "手机"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:43.007921+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 3,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 5407,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement"
+            ],
+            "route_confidence": 0.9,
+            "route_margin": 0.8,
+            "requirement_completeness": 0.5200000000000001,
+            "query_complexity": 0.075,
+            "history_dependency": 0.42,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.9,
+        "route_margin": 0.8,
+        "requirement_completeness": 0.5200000000000001,
+        "query_complexity": 0.075,
+        "history_dependency": 0.42,
+        "reason_codes": [
+          "incomplete_requirement"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "那这款的拍照效果呢",
+          "budget": null,
+          "category": "手机",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.85,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "general_chat",
+            "arguments": {
+              "query": "那这款的拍照效果呢",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.9,
+            "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.0,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.8
+              },
+              "top_name": "general_chat",
+              "top_score": 0.8,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.8
+            },
+            "top_name": "general_chat",
+            "top_score": 0.8,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "手机拍照效果",
+              "budget": null,
+              "category": "手机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.85,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 985,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "手机拍照效果",
+              "budget": null,
+              "category": "手机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.85,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 985,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "那这款的拍照效果呢",
+              "budget": null,
+              "category": "手机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 987
+        },
+        "topic_memory": {
+          "topic_id": "sess_i156-1",
+          "topic_type": "ecommerce_recommendation",
+          "subject": "有没有更便宜的",
+          "route": "recommend_shopping_products",
+          "category": "手机",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {
+              "category": "手机"
+            },
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.8,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T04:03:43.960296+00:00",
+          "history": [
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": null,
+                "usage": [],
+                "preferences": {
+                  "category": "手机"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:41.056875+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": null,
+                "usage": [],
+                "preferences": {
+                  "category": "手机"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:43.007921+00:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "condition_filter",
+        "task_type": "condition_filter",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 180 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 12 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 45 条，排除后 3 条，预算内命中 3 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机；约 4999 CNY；评分 1.00"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机；约 4999 CNY；评分 1.00"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机；约 5299 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机，参考价约 4999 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_digital_026",
+            "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "name": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "brand": "小米",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6499.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "reason": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于 数码电子/手机，综合分 1.0000，参考价 4999-6499 CNY。 评价均分 3.2/5。 检索证据：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机#profile 召回分 0.5861。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_026_1"
+          },
+          {
+            "product_id": "p_digital_028",
+            "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+            "name": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+            "brand": "vivo",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6299.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.4,
+            "review_count": 5,
+            "reason": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机 属于 数码电子/手机，综合分 1.0000，参考价 4999-6299 CNY。 评价均分 3.4/5。 检索证据：vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机#profile 召回分 0.5780。",
+            "score": 1.0,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_028_1"
+          },
+          {
+            "product_id": "p_digital_027",
+            "title": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+            "name": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 5299.0,
+            "price_range": [
+              5299.0,
+              6799.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机 属于 数码电子/手机，综合分 0.9147，参考价 5299-6799 CNY。 评价均分 3.8/5。 检索证据：OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机#profile 召回分 0.5716。",
+            "score": 0.9147,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_027_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "digital"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "拍照"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "拍照"
+          ]
+        },
+        "total_catalog_count": 180,
+        "by_category": {
+          "digital": {
+            "raw_count": 45,
+            "after_exclusion_count": 3,
+            "within_budget_count": 3,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_026",
+                "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+                "price": 4999.0,
+                "score": 1.0
+              },
+              {
+                "product_id": "p_digital_028",
+                "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+                "price": 4999.0,
+                "score": 1.0
+              },
+              {
+                "product_id": "p_digital_027",
+                "title": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+                "price": 5299.0,
+                "score": 0.9147
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "推荐一款手机. User added constraints: 那这款的拍照效果呢",
+          "scenario": "device_purchase",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "digital"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "digital"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [
+            "手机"
+          ],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "拍照"
+          ],
+          "excluded_terms": [],
+          "preferences": [
+            "拍照"
+          ],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。",
+            "生成式大模型已参与需求理解，耗时 3284ms。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "components": [
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_026",
+                  "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+                  "brand": "小米",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "手机",
+                  "base_price": 4999.0,
+                  "min_price": 4999.0,
+                  "max_price": 6499.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "",
+                  "image_url": "",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_026_1",
+                      "properties": {
+                        "存储": "12GB+256GB",
+                        "颜色": "钛灰色"
+                      },
+                      "price": 4999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_026_2",
+                      "properties": {
+                        "存储": "16GB+512GB",
+                        "颜色": "钛灰色"
+                      },
+                      "price": 5699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_026_3",
+                      "properties": {
+                        "存储": "16GB+1TB",
+                        "颜色": "陶瓷白"
+                      },
+                      "price": 6499.0
+                    }
+                  ],
+                  "description": "小米15 Ultra搭载骁龙8至尊版，徕卡Summilux光学1英寸大底5000万像素主摄。2K LTPO AMOLED 120Hz峰值亮度3200nit。5400mAh电池90W有线50W无线。适合摄影爱好者和科技发烧友。注意机身227g偏重建议搭配保护壳。",
+                  "faqs": [
+                    {
+                      "question": "徕卡影像和普通版区别？",
+                      "answer": "Ultra配徕卡认证1英寸大底进光量提升60%，支持徕卡经典和生动色彩。长焦10倍光学120倍数字变焦。"
+                    },
+                    {
+                      "question": "5400mAh续航如何？",
+                      "answer": "中度1.5天重度约10小时。90W约35分钟满，省电模式可2天以上。"
+                    },
+                    {
+                      "question": "12+256和16+512怎么选？",
+                      "answer": "日常12+256够。大型游戏4K视频选16+512。16+1TB适合存RAW。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "科技小明",
+                      "rating": 5,
+                      "content": "徕卡影像太强夜景细节丰富骁龙玩原神满帧续航一天半。机身227g偏重。"
+                    },
+                    {
+                      "nickname": "张琳琳",
+                      "rating": 4,
+                      "content": "2K屏幕清晰拍照人像虚化自然。系统偶有bug希望OTA修复。性价比高。"
+                    },
+                    {
+                      "nickname": "李大鹏",
+                      "rating": 2,
+                      "content": "有轻微电流声摄像头凸起严重放桌不平。4999品控需提升。"
+                    },
+                    {
+                      "nickname": "王梦瑶",
+                      "rating": 4,
+                      "content": "徕卡色彩直出就能发朋友圈10倍光变拍远处清晰。女生单手有点吃力。"
+                    },
+                    {
+                      "nickname": "赵志强",
+                      "rating": 1,
+                      "content": "一月主板坏了黑屏保修换了但新机出问题闹心换后指纹变慢。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.2,
+                  "best_for": [
+                    "日常使用",
+                    "摄影拍照",
+                    "游戏娱乐",
+                    "商务办公"
+                  ],
+                  "not_good_for": [
+                    "追求轻薄",
+                    "预算有限"
+                  ],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "entertainment"
+                  ],
+                  "tags": [
+                    "小米",
+                    "数码电子",
+                    "手机",
+                    "旗舰",
+                    "拍照",
+                    "徕卡",
+                    "骁龙",
+                    "12GB+256GB",
+                    "16GB+512GB",
+                    "16GB+1TB"
+                  ],
+                  "metadata": {
+                    "source": "agent_expansion_v1",
+                    "source_image_path": ""
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求轻薄",
+                    "预算有限"
+                  ]
+                },
+                "reason": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于 数码电子/手机，综合分 1.0000，参考价 4999-6499 CNY。 评价均分 3.2/5。 检索证据：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机#profile 召回分 0.5861。",
+                "score": {
+                  "scenario_match": 0.976,
+                  "attribute_match": 1.0,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.89,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.85,
+                  "detail_quality": 0.88,
+                  "final_score": 1.0,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+                    "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于用户关注的 数码电子 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 3.2/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求轻薄；预算有限。",
+                    "商品知识证据命中：p_digital_026 召回分 0.5861。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_026::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_026_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 4999.0,
+              "total_price_max": 6499.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_digital_026 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_digital_026": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 4999.0,
+                  "min_price": 4999.0,
+                  "max_price": 6499.0,
+                  "selected_sku_id": "s_p_digital_026_1",
+                  "selected_price": 4999.0,
+                  "selected_total_price": 4999.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "追求轻薄"
+            ],
+            "evidence": [
+              "p_digital_026: 小米15 Ultra搭载骁龙8至尊版，徕卡Summilux光学1英寸大底5000万像素主摄。2K LTPO AMOLED 120Hz峰值亮度3200nit。5400mAh电池90W有线50W无线。适合摄影爱好者和科技发烧友。注意机身227g偏重建议搭配保护壳。",
+              "p_digital_026: FAQ - 徕卡影像和普通版区别？",
+              "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+              "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于用户关注的 数码电子 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "digital",
+                "product_id": "p_digital_026",
+                "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+                "final_score": 1.0,
+                "scenario_match": 0.976,
+                "attribute_match": 1.0,
+                "price_fit": 1.0,
+                "reputation_fit": 0.89,
+                "availability_fit": 0.95,
+                "sku_fit": 0.85,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+                  "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于用户关注的 数码电子 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 3.2/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求轻薄；预算有限。",
+                  "商品知识证据命中：p_digital_026 召回分 0.5861。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 180,
+        "product_cards": [
+          {
+            "product_id": "p_digital_026",
+            "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "name": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "brand": "小米",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6499.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "reason": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 属于 数码电子/手机，综合分 1.0000，参考价 4999-6499 CNY。 评价均分 3.2/5。 检索证据：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机#profile 召回分 0.5861。",
+            "score": 1.0,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_026_1"
+          },
+          {
+            "product_id": "p_digital_028",
+            "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+            "name": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+            "brand": "vivo",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6299.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.4,
+            "review_count": 5,
+            "reason": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机 属于 数码电子/手机，综合分 1.0000，参考价 4999-6299 CNY。 评价均分 3.4/5。 检索证据：vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机#profile 召回分 0.5780。",
+            "score": 1.0,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_028_1"
+          },
+          {
+            "product_id": "p_digital_027",
+            "title": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+            "name": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 5299.0,
+            "price_range": [
+              5299.0,
+              6799.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机 属于 数码电子/手机，综合分 0.9147，参考价 5299-6799 CNY。 评价均分 3.8/5。 检索证据：OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机#profile 召回分 0.5716。",
+            "score": 0.9147,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_027_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "digital"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [
+              "拍照"
+            ],
+            "excluded_terms": [],
+            "preferences": [
+              "拍照"
+            ]
+          },
+          "total_catalog_count": 180,
+          "by_category": {
+            "digital": {
+              "raw_count": 45,
+              "after_exclusion_count": 3,
+              "within_budget_count": 3,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_026",
+                  "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+                  "price": 4999.0,
+                  "score": 1.0
+                },
+                {
+                  "product_id": "p_digital_028",
+                  "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+                  "price": 4999.0,
+                  "score": 1.0
+                },
+                {
+                  "product_id": "p_digital_027",
+                  "title": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+                  "price": 5299.0,
+                  "score": 0.9147
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_digital_026",
+            "title": "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+            "brand": "小米",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6499.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "score": 1.0,
+            "strength": "综合分 1.0000，评分 3.2/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求轻薄；预算有限。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_digital_028",
+            "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+            "brand": "vivo",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6299.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.4,
+            "review_count": 5,
+            "score": 1.0,
+            "strength": "综合分 1.0000，评分 3.4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求原生安卓；小手单手操作。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_digital_027",
+            "title": "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 5299.0,
+            "price_range": [
+              5299.0,
+              6799.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "score": 0.9147,
+            "strength": "综合分 0.9147，评分 3.8/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求原生安卓；小手用户。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "condition_filter",
+          "task_type": "condition_filter",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "追求轻薄"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机",
+              "已从商品库候选中选择：vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+              "已从商品库候选中选择：OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机"
+            ],
+            "evidence_points": [
+              "小米15 Ultra 徕卡影像 骁龙8至尊版 2K屏 5400mAh旗舰拍照手机 - 价格：4999.0",
+              "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机 - 价格：4999.0",
+              "OPPO Find X8 Ultra 哈苏影像 天玑9400 潜望长焦超大底旗舰手机 - 价格：5299.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "sess_i156"
+      }
+    }
+  ]
+}

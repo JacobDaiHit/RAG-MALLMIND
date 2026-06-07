@@ -1,0 +1,1192 @@
+{
+  "case_id": 36,
+  "input": "华为Pura 90和iPhone 17哪个好",
+  "expected": "compare_products → 对比+推荐",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "compare_products",
+      "arguments": {
+        "query": "华为Pura 90和iPhone 17哪个好",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "combined",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false
+          },
+          "confidence": 0.88,
+          "reason": "本地规则识别到商品或历史方案对比请求。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.55,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "compare_products",
+            "top_score": 0.55,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.25,
+            "margin": 0.30000000000000004,
+            "margin_bonus": 0.05,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.6000000000000001
+          },
+          "local_rule_confidence": 0.88,
+          "route_score_confidence": 0.6000000000000001
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.55,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "compare_products",
+          "top_score": 0.55,
+          "second_name": "recommend_shopping_products",
+          "second_score": 0.25,
+          "margin": 0.30000000000000004,
+          "margin_bonus": 0.05,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.6000000000000001
+        },
+        "llm": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 924,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 924,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 925
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "",
+  "product_card_count": 0,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "intent_route",
+    "comparison_table",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 945,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:comparison_request,incomplete_requirement",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "comparison_request",
+              "incomplete_requirement"
+            ],
+            "route_confidence": 0.88,
+            "route_margin": 0.30000000000000004,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.16666666666666666,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "comparison_request",
+            "incomplete_requirement"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.88,
+        "route_margin": 0.30000000000000004,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.16666666666666666,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "comparison_request",
+          "incomplete_requirement"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "compare_products",
+        "arguments": {
+          "query": "华为Pura 90和iPhone 17哪个好",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "combined",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "compare_products",
+            "arguments": {
+              "query": "华为Pura 90和iPhone 17哪个好",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false
+            },
+            "confidence": 0.88,
+            "reason": "本地规则识别到商品或历史方案对比请求。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.55,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "compare_products",
+              "top_score": 0.55,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.25,
+              "margin": 0.30000000000000004,
+              "margin_bonus": 0.05,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.6000000000000001
+            },
+            "local_rule_confidence": 0.88,
+            "route_score_confidence": 0.6000000000000001
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.55,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "compare_products",
+            "top_score": 0.55,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.25,
+            "margin": 0.30000000000000004,
+            "margin_bonus": 0.05,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.6000000000000001
+          },
+          "llm": {
+            "name": "compare_products",
+            "arguments": {
+              "query": "华为Pura 90和iPhone 17哪个好",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 924,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "compare_products",
+            "arguments": {
+              "query": "华为Pura 90和iPhone 17哪个好",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 924,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "compare_products",
+            "arguments": {
+              "query": "华为Pura 90和iPhone 17哪个好",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "combined",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 925
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "comparison",
+        "task_type": "compare_products",
+        "tool_call": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "路由器未提供原因。",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 924,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true,
+          "routing_trace": {
+            "runtime_mode": "balanced",
+            "llm_provider": "openai_compatible",
+            "llm_model": "sensenova-6.7-flash-lite",
+            "llm_base_url_host": "token.sensenova.cn",
+            "router_model": "sensenova-6.7-flash-lite",
+            "parse_model": "sensenova-6.7-flash-lite",
+            "guidance_model": "sensenova-6.7-flash-lite",
+            "llm_configured": true,
+            "llm_config_error_code": "",
+            "llm_provider_fallback": "",
+            "llm_error_sanitized": "",
+            "local": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false
+              },
+              "confidence": 0.88,
+              "reason": "本地规则识别到商品或历史方案对比请求。",
+              "source": "rules",
+              "route_scores": {
+                "scores": {
+                  "recommend_shopping_products": 0.25,
+                  "generate_pc_build_plan": 0.0,
+                  "compare_products": 0.55,
+                  "apply_cart_instruction": 0.0,
+                  "general_chat": 0.0
+                },
+                "top_name": "compare_products",
+                "top_score": 0.55,
+                "second_name": "recommend_shopping_products",
+                "second_score": 0.25,
+                "margin": 0.30000000000000004,
+                "margin_bonus": 0.05,
+                "ambiguity_penalty": 0.0,
+                "confidence": 0.6000000000000001
+              },
+              "local_rule_confidence": 0.88,
+              "route_score_confidence": 0.6000000000000001
+            },
+            "local_route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.55,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "compare_products",
+              "top_score": 0.55,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.25,
+              "margin": 0.30000000000000004,
+              "margin_bonus": 0.05,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.6000000000000001
+            },
+            "llm": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              },
+              "confidence": 0.9,
+              "reason": "",
+              "source": "llm",
+              "needs_clarification": false,
+              "llm_report": {
+                "configured": true,
+                "success": true,
+                "status_code": 200,
+                "elapsed_ms": 924,
+                "has_error": false,
+                "provider": "openai_compatible"
+              }
+            },
+            "chosen_before_guard": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              },
+              "confidence": 0.9,
+              "reason": "",
+              "source": "llm",
+              "needs_clarification": false,
+              "llm_report": {
+                "configured": true,
+                "success": true,
+                "status_code": 200,
+                "elapsed_ms": 924,
+                "has_error": false,
+                "provider": "openai_compatible"
+              },
+              "_llm_chosen": true
+            },
+            "final": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "combined",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              }
+            },
+            "route_overridden": false,
+            "arguments_changed": true,
+            "guard_overridden": false,
+            "llm_skipped": false,
+            "llm_skipped_reason": "",
+            "router_skipped_by_policy": false,
+            "router_skipped_high_confidence_local": false,
+            "router_attempted": true,
+            "router_timeout": false,
+            "router_json_invalid": false,
+            "router_success": true,
+            "router_applied": false,
+            "router_final_source": "llm",
+            "router_failure_reason": "",
+            "llm_router_attempted": true,
+            "llm_router_success": true,
+            "llm_router_failure_reason": "",
+            "llm_router_error_class": "none",
+            "llm_router_elapsed_ms": 925
+          }
+        },
+        "topic_memory": {
+          "topic_id": "test_case_36-1",
+          "topic_type": "comparison",
+          "subject": "商品对比",
+          "route": "compare_products",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined"
+          },
+          "confidence": 0.9,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T05:47:40.679253+00:00",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": [
+          {
+            "product_id": "p_digital_001",
+            "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 8999.0,
+            "price_range": [
+              8999.0,
+              12499.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 3,
+            "image_url": "/product-images/p_digital_001_live.jpg",
+            "stock_status": "available_for_demo",
+            "best_for": [
+              "参数对比",
+              "预算筛选",
+              "使用场景匹配",
+              "智能手机"
+            ],
+            "not_good_for": [],
+            "key_skus": [
+              {
+                "sku_id": "s_p_digital_001_1",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "宇宙橙 Cosmic Orange",
+                  "版本": "全网通版"
+                },
+                "price": 8999.0
+              },
+              {
+                "sku_id": "s_p_digital_001_2",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "远峰蓝",
+                  "版本": "全网通版"
+                },
+                "price": 8999.0
+              },
+              {
+                "sku_id": "s_p_digital_001_3",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "深空黑",
+                  "版本": "全网通版"
+                },
+                "price": 8999.0
+              }
+            ],
+            "evidence": [
+              "Apple iPhone 17 Pro搭载全新A19 Pro芯片，带来颠覆性性能提升，无论是大型3A游戏还是专业视频剪辑都能流畅运行。6.3英寸超视网膜XDR显示屏，支持ProMotion自适应刷新率，户外强光下依然清晰。256GB起步的存储容量，满足摄影爱好者和商务人士的存储需求。宇宙橙、远峰蓝、深空黑三色可选，其中宇宙橙采用独特的哑光玻璃工艺，握感舒适且",
+              "A19 Pro芯片采用3纳米工艺制程，CPU性能提升20%，GPU性能提升30%，AI算力提升40%。在实际使用中，打开大型应用的速度更快，游戏帧率更稳定，视频渲染时间大幅缩短。同时，芯片的能效比更高，配合iOS 19的优化，续航能力比iP",
+              "宇宙橙版本采用创新的哑光玻璃背板，通过特殊的蚀刻工艺形成细腻的纹理，不仅视觉上呈现出独特的渐变效果，而且触感舒适，不易沾染指纹和油污。边框部分采用航空级铝合金材质，经过阳极氧化处理，与背板颜色完美融合，整体质感高级。这种工艺在保持美观的同时"
+            ]
+          },
+          {
+            "product_id": "p_digital_003",
+            "title": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 9999.0,
+            "price_range": [
+              9999.0,
+              13499.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "image_url": "/product-images/p_digital_003_live.jpg",
+            "stock_status": "available_for_demo",
+            "best_for": [
+              "参数对比",
+              "预算筛选",
+              "使用场景匹配",
+              "智能手机"
+            ],
+            "not_good_for": [
+              "偏爱小屏/轻便用户需谨慎"
+            ],
+            "key_skus": [
+              {
+                "sku_id": "s_p_digital_003_1",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "宇宙橙 Cosmic Orange",
+                  "版本": "全网通版"
+                },
+                "price": 9999.0
+              },
+              {
+                "sku_id": "s_p_digital_003_2",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "冰川蓝",
+                  "版本": "全网通版"
+                },
+                "price": 9999.0
+              },
+              {
+                "sku_id": "s_p_digital_003_3",
+                "properties": {
+                  "存储": "256GB",
+                  "颜色": "钛金色",
+                  "版本": "全网通版"
+                },
+                "price": 9999.0
+              }
+            ],
+            "evidence": [
+              "iPhone 17 Pro Max这次直接把大屏体验拉到新高度，6.9英寸超视网膜XDR显示屏不管是刷4K纪录片还是连剪几小时vlog都够爽，A19 Pro仿生芯片的算力直接把移动端3A游戏和专业修图的速度拉满，连导出4K 60帧视频都几乎秒完成。机身用的是全新航空级钛合金边框，这次新增的宇宙橙、冰川蓝配色质感特别绝，256GB起步的存储完全能装下上万张Ra",
+              "这块屏幕把上代的峰值亮度又拉高到了3200尼特，大太阳底下逛菜市场拍价签、户外取景找对焦完全不用拿手挡光，新增的144Hz ProMotion自适应刷新率还会跟着你浏览的内容自动调帧率，刷信息流的时候滑得特别丝滑，看静态文档的时候又自动降到",
+              "A19 Pro这次的GPU升级到了7核架构，算力直接提升了40%，你玩最高画质的《原神》开8K分辨率拉满所有特效，连续跑3小时帧率都稳在59帧以上不会降频卡顿。专业模式下用Procreate画几十层的大型插画，或者用手机自带的剪辑软件导出1"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "type": "comparison",
+        "comparison": {
+          "count": 2,
+          "missing_product_ids": [],
+          "rows": [
+            {
+              "product_id": "p_digital_001",
+              "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+              "brand": "Apple 苹果",
+              "category": "digital",
+              "category_name": "数码电子",
+              "sub_category": "智能手机",
+              "price": 8999.0,
+              "price_range": [
+                8999.0,
+                12499.0
+              ],
+              "currency": "CNY",
+              "rating_avg": 3.33,
+              "review_count": 3,
+              "image_url": "/product-images/p_digital_001_live.jpg",
+              "stock_status": "available_for_demo",
+              "best_for": [
+                "参数对比",
+                "预算筛选",
+                "使用场景匹配",
+                "智能手机"
+              ],
+              "not_good_for": [],
+              "key_skus": [
+                {
+                  "sku_id": "s_p_digital_001_1",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "宇宙橙 Cosmic Orange",
+                    "版本": "全网通版"
+                  },
+                  "price": 8999.0
+                },
+                {
+                  "sku_id": "s_p_digital_001_2",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "远峰蓝",
+                    "版本": "全网通版"
+                  },
+                  "price": 8999.0
+                },
+                {
+                  "sku_id": "s_p_digital_001_3",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "深空黑",
+                    "版本": "全网通版"
+                  },
+                  "price": 8999.0
+                }
+              ],
+              "evidence": [
+                "Apple iPhone 17 Pro搭载全新A19 Pro芯片，带来颠覆性性能提升，无论是大型3A游戏还是专业视频剪辑都能流畅运行。6.3英寸超视网膜XDR显示屏，支持ProMotion自适应刷新率，户外强光下依然清晰。256GB起步的存储容量，满足摄影爱好者和商务人士的存储需求。宇宙橙、远峰蓝、深空黑三色可选，其中宇宙橙采用独特的哑光玻璃工艺，握感舒适且",
+                "A19 Pro芯片采用3纳米工艺制程，CPU性能提升20%，GPU性能提升30%，AI算力提升40%。在实际使用中，打开大型应用的速度更快，游戏帧率更稳定，视频渲染时间大幅缩短。同时，芯片的能效比更高，配合iOS 19的优化，续航能力比iP",
+                "宇宙橙版本采用创新的哑光玻璃背板，通过特殊的蚀刻工艺形成细腻的纹理，不仅视觉上呈现出独特的渐变效果，而且触感舒适，不易沾染指纹和油污。边框部分采用航空级铝合金材质，经过阳极氧化处理，与背板颜色完美融合，整体质感高级。这种工艺在保持美观的同时"
+              ]
+            },
+            {
+              "product_id": "p_digital_003",
+              "title": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机",
+              "brand": "Apple 苹果",
+              "category": "digital",
+              "category_name": "数码电子",
+              "sub_category": "智能手机",
+              "price": 9999.0,
+              "price_range": [
+                9999.0,
+                13499.0
+              ],
+              "currency": "CNY",
+              "rating_avg": 3.2,
+              "review_count": 5,
+              "image_url": "/product-images/p_digital_003_live.jpg",
+              "stock_status": "available_for_demo",
+              "best_for": [
+                "参数对比",
+                "预算筛选",
+                "使用场景匹配",
+                "智能手机"
+              ],
+              "not_good_for": [
+                "偏爱小屏/轻便用户需谨慎"
+              ],
+              "key_skus": [
+                {
+                  "sku_id": "s_p_digital_003_1",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "宇宙橙 Cosmic Orange",
+                    "版本": "全网通版"
+                  },
+                  "price": 9999.0
+                },
+                {
+                  "sku_id": "s_p_digital_003_2",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "冰川蓝",
+                    "版本": "全网通版"
+                  },
+                  "price": 9999.0
+                },
+                {
+                  "sku_id": "s_p_digital_003_3",
+                  "properties": {
+                    "存储": "256GB",
+                    "颜色": "钛金色",
+                    "版本": "全网通版"
+                  },
+                  "price": 9999.0
+                }
+              ],
+              "evidence": [
+                "iPhone 17 Pro Max这次直接把大屏体验拉到新高度，6.9英寸超视网膜XDR显示屏不管是刷4K纪录片还是连剪几小时vlog都够爽，A19 Pro仿生芯片的算力直接把移动端3A游戏和专业修图的速度拉满，连导出4K 60帧视频都几乎秒完成。机身用的是全新航空级钛合金边框，这次新增的宇宙橙、冰川蓝配色质感特别绝，256GB起步的存储完全能装下上万张Ra",
+                "这块屏幕把上代的峰值亮度又拉高到了3200尼特，大太阳底下逛菜市场拍价签、户外取景找对焦完全不用拿手挡光，新增的144Hz ProMotion自适应刷新率还会跟着你浏览的内容自动调帧率，刷信息流的时候滑得特别丝滑，看静态文档的时候又自动降到",
+                "A19 Pro这次的GPU升级到了7核架构，算力直接提升了40%，你玩最高画质的《原神》开8K分辨率拉满所有特效，连续跑3小时帧率都稳在59帧以上不会降频卡顿。专业模式下用Procreate画几十层的大型插画，或者用手机自带的剪辑软件导出1"
+              ]
+            }
+          ],
+          "recommendation": {
+            "product_id": "p_digital_003",
+            "title": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机",
+            "reason": "默认按评价均分、评价数量和价格压力综合建议；最终仍应结合用户偏好。"
+          }
+        },
+        "tool_call": {
+          "name": "compare_products",
+          "arguments": {
+            "query": "华为Pura 90和iPhone 17哪个好",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "路由器未提供原因。",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 924,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true,
+          "routing_trace": {
+            "runtime_mode": "balanced",
+            "llm_provider": "openai_compatible",
+            "llm_model": "sensenova-6.7-flash-lite",
+            "llm_base_url_host": "token.sensenova.cn",
+            "router_model": "sensenova-6.7-flash-lite",
+            "parse_model": "sensenova-6.7-flash-lite",
+            "guidance_model": "sensenova-6.7-flash-lite",
+            "llm_configured": true,
+            "llm_config_error_code": "",
+            "llm_provider_fallback": "",
+            "llm_error_sanitized": "",
+            "local": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false
+              },
+              "confidence": 0.88,
+              "reason": "本地规则识别到商品或历史方案对比请求。",
+              "source": "rules",
+              "route_scores": {
+                "scores": {
+                  "recommend_shopping_products": 0.25,
+                  "generate_pc_build_plan": 0.0,
+                  "compare_products": 0.55,
+                  "apply_cart_instruction": 0.0,
+                  "general_chat": 0.0
+                },
+                "top_name": "compare_products",
+                "top_score": 0.55,
+                "second_name": "recommend_shopping_products",
+                "second_score": 0.25,
+                "margin": 0.30000000000000004,
+                "margin_bonus": 0.05,
+                "ambiguity_penalty": 0.0,
+                "confidence": 0.6000000000000001
+              },
+              "local_rule_confidence": 0.88,
+              "route_score_confidence": 0.6000000000000001
+            },
+            "local_route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.55,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "compare_products",
+              "top_score": 0.55,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.25,
+              "margin": 0.30000000000000004,
+              "margin_bonus": 0.05,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.6000000000000001
+            },
+            "llm": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              },
+              "confidence": 0.9,
+              "reason": "",
+              "source": "llm",
+              "needs_clarification": false,
+              "llm_report": {
+                "configured": true,
+                "success": true,
+                "status_code": 200,
+                "elapsed_ms": 924,
+                "has_error": false,
+                "provider": "openai_compatible"
+              }
+            },
+            "chosen_before_guard": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              },
+              "confidence": 0.9,
+              "reason": "",
+              "source": "llm",
+              "needs_clarification": false,
+              "llm_report": {
+                "configured": true,
+                "success": true,
+                "status_code": 200,
+                "elapsed_ms": 924,
+                "has_error": false,
+                "provider": "openai_compatible"
+              },
+              "_llm_chosen": true
+            },
+            "final": {
+              "name": "compare_products",
+              "arguments": {
+                "query": "华为Pura 90和iPhone 17哪个好",
+                "budget": null,
+                "category": "",
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "combined",
+                "compare_with_previous": false,
+                "quantity": null,
+                "action": "",
+                "topic": "",
+                "need_full_pc_build": false
+              }
+            },
+            "route_overridden": false,
+            "arguments_changed": true,
+            "guard_overridden": false,
+            "llm_skipped": false,
+            "llm_skipped_reason": "",
+            "router_skipped_by_policy": false,
+            "router_skipped_high_confidence_local": false,
+            "router_attempted": true,
+            "router_timeout": false,
+            "router_json_invalid": false,
+            "router_success": true,
+            "router_applied": false,
+            "router_final_source": "llm",
+            "router_failure_reason": "",
+            "llm_router_attempted": true,
+            "llm_router_success": true,
+            "llm_router_failure_reason": "",
+            "llm_router_error_class": "none",
+            "llm_router_elapsed_ms": 925
+          }
+        },
+        "topic_memory": {
+          "topic_id": "test_case_36-1",
+          "topic_type": "comparison",
+          "subject": "商品对比",
+          "route": "compare_products",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined"
+          },
+          "confidence": 0.9,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T05:47:40.679253+00:00",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "test_case_36"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1200 @@
+{
+  "case_id": 145,
+  "input": "推荐护肤品，不要兰蔻",
+  "expected": "recommend_shopping_products(exclude_brands) → 非兰蔻+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+        "budget": null,
+        "category": "护肤",
+        "usage": [],
+        "preferences": {
+          "followup_type": "product_detail"
+        },
+        "product_ids": [
+          "p_digital_028"
+        ],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "用户在上一轮推荐后追问商品详情。",
+      "source": "followup_guard",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+            "product_ids": [
+              "p_digital_028"
+            ],
+            "catalog_scope": "ecommerce",
+            "preferences": {
+              "followup_type": "product_detail"
+            }
+          },
+          "confidence": 0.9,
+          "reason": "用户在上一轮推荐后追问商品详情。",
+          "source": "followup_guard",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.8,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.8,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.8,
+          "margin_bonus": 0.08,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.88
+        },
+        "llm": null,
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+            "product_ids": [
+              "p_digital_028"
+            ],
+            "catalog_scope": "ecommerce",
+            "preferences": {
+              "followup_type": "product_detail"
+            }
+          },
+          "confidence": 0.9,
+          "reason": "用户在上一轮推荐后追问商品详情。",
+          "source": "followup_guard",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+            "budget": null,
+            "category": "护肤",
+            "usage": [],
+            "preferences": {
+              "followup_type": "product_detail"
+            },
+            "product_ids": [
+              "p_digital_028"
+            ],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "high_confidence_local",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": true,
+        "router_attempted": false,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": false,
+        "router_applied": false,
+        "router_final_source": "followup_guard",
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "high_confidence_local",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
+      },
+      "topic_memory": {
+        "topic_id": "default-1",
+        "topic_type": "ecommerce_recommendation",
+        "subject": "手机",
+        "route": "recommend_shopping_products",
+        "category": "手机",
+        "slots": {
+          "budget": 3000.0,
+          "usage": [],
+          "preferences": {
+            "category": "手机",
+            "usage": [
+              "尺码选择指导"
+            ],
+            "followup_type": "product_detail",
+            "performance": "upgrade",
+            "noise": "低噪音"
+          },
+          "product_ids": [
+            "p_digital_001"
+          ],
+          "catalog_scope": "ecommerce"
+        },
+        "confidence": 0.9,
+        "source": "followup_guard",
+        "reason": "用户在上一轮推荐后追问商品详情。",
+        "updated_at": "2026-06-07T04:03:12.642429+00:00",
+        "history": [
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "iPhone 17 Pro 的电池续航怎么样. User added constraints: 华为 FreeBuds Pro 5 降噪效果好不好。用户追问：这个面膜敏感肌能用吗",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "护肤",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [
+                "p_digital_018"
+              ],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:45.875169+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:46.890172+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "鞋靴",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [
+                "尺码选择指导"
+              ],
+              "preferences": {
+                "category": "鞋靴",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:49.781177+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:50.847013+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "有没有人说 iPhone 17 Pro 拍照好",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:55.635221+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "耳机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "耳机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [
+                "p_digital_001"
+              ],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:59.527266+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:03.699019+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:08.137036+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库缺少可推荐候选，无法生成完整购物建议。",
+  "product_card_count": 0,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 3310,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement"
+            ],
+            "route_confidence": 0.9,
+            "route_margin": 0.8,
+            "requirement_completeness": 0.7400000000000001,
+            "query_complexity": 0.08333333333333333,
+            "history_dependency": 0.42,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.9,
+        "route_margin": 0.8,
+        "requirement_completeness": 0.7400000000000001,
+        "query_complexity": 0.08333333333333333,
+        "history_dependency": 0.42,
+        "reason_codes": [
+          "incomplete_requirement"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+          "budget": null,
+          "category": "护肤",
+          "usage": [],
+          "preferences": {
+            "followup_type": "product_detail"
+          },
+          "product_ids": [
+            "p_digital_028"
+          ],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "用户在上一轮推荐后追问商品详情。",
+        "source": "followup_guard",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+              "product_ids": [
+                "p_digital_028"
+              ],
+              "catalog_scope": "ecommerce",
+              "preferences": {
+                "followup_type": "product_detail"
+              }
+            },
+            "confidence": 0.9,
+            "reason": "用户在上一轮推荐后追问商品详情。",
+            "source": "followup_guard",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "llm": null,
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+              "product_ids": [
+                "p_digital_028"
+              ],
+              "catalog_scope": "ecommerce",
+              "preferences": {
+                "followup_type": "product_detail"
+              }
+            },
+            "confidence": 0.9,
+            "reason": "用户在上一轮推荐后追问商品详情。",
+            "source": "followup_guard",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐手机，但不要苹果的。用户追问：推荐护肤品，不要兰蔻",
+              "budget": null,
+              "category": "护肤",
+              "usage": [],
+              "preferences": {
+                "followup_type": "product_detail"
+              },
+              "product_ids": [
+                "p_digital_028"
+              ],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "high_confidence_local",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": true,
+          "router_attempted": false,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": false,
+          "router_applied": false,
+          "router_final_source": "followup_guard",
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "high_confidence_local",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
+        },
+        "topic_memory": {
+          "topic_id": "default-1",
+          "topic_type": "ecommerce_recommendation",
+          "subject": "手机",
+          "route": "recommend_shopping_products",
+          "category": "手机",
+          "slots": {
+            "budget": 3000.0,
+            "usage": [],
+            "preferences": {
+              "category": "手机",
+              "usage": [
+                "尺码选择指导"
+              ],
+              "followup_type": "product_detail",
+              "performance": "upgrade",
+              "noise": "低噪音"
+            },
+            "product_ids": [
+              "p_digital_001"
+            ],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.9,
+          "source": "followup_guard",
+          "reason": "用户在上一轮推荐后追问商品详情。",
+          "updated_at": "2026-06-07T04:03:12.642429+00:00",
+          "history": [
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "iPhone 17 Pro 的电池续航怎么样. User added constraints: 华为 FreeBuds Pro 5 降噪效果好不好。用户追问：这个面膜敏感肌能用吗",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "护肤",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [
+                  "p_digital_018"
+                ],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:45.875169+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:46.890172+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "鞋靴",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "preferences": {
+                  "category": "鞋靴",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:49.781177+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:50.847013+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "有没有人说 iPhone 17 Pro 拍照好",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:55.635221+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "耳机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "耳机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [
+                  "p_digital_001"
+                ],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:59.527266+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:03.699019+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:08.137036+00:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "condition_filter",
+        "task_type": "condition_filter",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "budget_level",
+          "specific_product_type"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 180 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 8 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 45 条，排除后 0 条，预算内命中 0 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "当前商品库缺少可推荐候选，无法生成完整购物建议。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": []
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [
+            "兰蔻"
+          ],
+          "must_have_terms": [],
+          "excluded_terms": [
+            "兰蔻"
+          ],
+          "preferences": []
+        },
+        "total_catalog_count": 180,
+        "by_category": {
+          "beauty": {
+            "raw_count": 45,
+            "after_exclusion_count": 0,
+            "within_budget_count": 0,
+            "top_candidates": []
+          }
+        },
+        "clarification_needed": [
+          "budget_level",
+          "specific_product_type"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "有没有人说 iPhone 17 Pro 拍照好. User added constraints: 推荐护肤品，不要兰蔻",
+          "scenario": "shopping/general/skin_care",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [
+            "兰蔻"
+          ],
+          "must_have_terms": [],
+          "excluded_terms": [
+            "兰蔻"
+          ],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text",
+            "image"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "budget_level",
+            "specific_product_type"
+          ],
+          "assumptions": [
+            "用户前半句关于 iPhone 的提问为干扰信息，核心需求为用户添加的约束：推荐护肤品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "只从已上架的本地商品数据中推荐，不编造不存在商品。",
+            "生成式大模型已参与需求理解，耗时 2359ms。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "当前商品库缺少可推荐候选，无法生成完整购物建议。",
+            "components": [],
+            "cost_estimate": {
+              "total_price_min": 0.0,
+              "total_price_max": 0.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。"
+              ],
+              "breakdown": {}
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "当前类目或预算约束过窄，商品库中没有足够候选"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+            ],
+            "evidence": [],
+            "score_table": []
+          }
+        ],
+        "candidate_count": 180,
+        "product_cards": [],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [
+              "兰蔻"
+            ],
+            "must_have_terms": [],
+            "excluded_terms": [
+              "兰蔻"
+            ],
+            "preferences": []
+          },
+          "total_catalog_count": 180,
+          "by_category": {
+            "beauty": {
+              "raw_count": 45,
+              "after_exclusion_count": 0,
+              "within_budget_count": 0,
+              "top_candidates": []
+            }
+          },
+          "clarification_needed": [
+            "budget_level",
+            "specific_product_type"
+          ]
+        },
+        "comparison_table": [],
+        "intent_route": {
+          "route": "condition_filter",
+          "task_type": "condition_filter",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "budget_level",
+            "specific_product_type"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "budget_level",
+          "specific_product_type",
+          "missing_categories: beauty"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ]
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "default"
+      }
+    }
+  ]
+}

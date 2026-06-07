@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import threading as _threading
 import time
 from typing import Any, Dict, List, Optional
 
@@ -240,15 +241,21 @@ def attach_grounded_explanation(result: RecommendationResult, *, use_llm: bool) 
     result.trace["llm_explanation_failure_reason"] = expl_trace.get("llm_explanation_failure_reason", explanation.get("fallback_reason") or "")
 
 
-# ── 模块级 parse trace（供 build_requirement_parse_trace 读取） ──
-_parse_trace: Dict[str, Any] = {}
+# ── 线程安全的 parse trace（使用 threading.local 替代模块级 dict） ──
+
+_parse_trace_local = _threading.local()
 
 
-def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_check: bool = False) -> RequirementSpec:
-    """Parse shopping intent with rule fallback and optional LLM enhancement."""
+def _get_parse_trace() -> Dict[str, Any]:
+    """Return the current thread's parse trace, initialising it if needed."""
+    if not hasattr(_parse_trace_local, "value"):
+        _parse_trace_local.value = {}
+    return _parse_trace_local.value
 
-    global _parse_trace
-    _parse_trace = {
+
+def _reset_parse_trace() -> Dict[str, Any]:
+    """Reset and return a fresh parse trace dict for the current thread."""
+    _parse_trace_local.value = {
         "llm_parse_attempted": False,
         "llm_parse_success": False,
         "llm_parse_applied": False,
@@ -256,17 +263,24 @@ def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_chec
         "llm_parse_error_class": "",
         "llm_parse_elapsed_ms": 0,
     }
+    return _parse_trace_local.value
+
+
+def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_check: bool = False) -> RequirementSpec:
+    """Parse shopping intent with rule fallback and optional LLM enhancement."""
+
+    _pt = _reset_parse_trace()
     rule_requirement = parse_requirement_rule_based(user_goal, skip_keyword_check=skip_keyword_check)
     if not use_llm or not should_use_llm_requirement_parse(user_goal, rule_requirement):
-        _parse_trace["llm_parse_failure_reason"] = "llm_disabled_by_runtime_policy" if not use_llm else "rule_parse_sufficient_or_auto_skipped"
-        _parse_trace["llm_parse_error_class"] = "skipped"
+        _pt["llm_parse_failure_reason"] = "llm_disabled_by_runtime_policy" if not use_llm else "rule_parse_sufficient_or_auto_skipped"
+        _pt["llm_parse_error_class"] = "skipped"
         return rule_requirement
 
-    _parse_trace["llm_parse_attempted"] = True
+    _pt["llm_parse_attempted"] = True
     client = OpenAICompatibleChatClient()
     if not client.configured:
-        _parse_trace["llm_parse_failure_reason"] = "llm_not_configured"
-        _parse_trace["llm_parse_error_class"] = "skipped"
+        _pt["llm_parse_failure_reason"] = "llm_not_configured"
+        _pt["llm_parse_error_class"] = "skipped"
         rule_requirement.assumptions.append("未配置生成式大模型，当前使用规则解析购物需求。")
         return rule_requirement
 
@@ -288,33 +302,33 @@ def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_chec
             _float_env("RECOMMENDATION_LLM_PARSE_TIMEOUT_SECONDS", 12.0),
             "requirement_parse",
         )
-        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
+        _pt["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
         requirement = requirement_from_llm_payload(parsed, rule_requirement)
         requirement.assumptions.append(
             f"生成式大模型已参与需求理解，耗时 {report.elapsed_ms}ms。"
         )
-        _parse_trace["llm_parse_success"] = True
-        _parse_trace["llm_parse_applied"] = True
+        _pt["llm_parse_success"] = True
+        _pt["llm_parse_applied"] = True
         return requirement
     except TimeoutError:
-        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
-        _parse_trace["llm_parse_failure_reason"] = "llm_timeout"
-        _parse_trace["llm_parse_error_class"] = "timeout"
+        _pt["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
+        _pt["llm_parse_failure_reason"] = "llm_timeout"
+        _pt["llm_parse_error_class"] = "timeout"
         logger.warning("LLM requirement parsing timed out; falling back to rules")
         rule_requirement.assumptions.append("生成式大模型需求解析超时，已降级为规则解析。")
         return rule_requirement
     except (LLMClientError, ValueError, TypeError) as exc:
-        _parse_trace["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
+        _pt["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
         text = str(exc).lower()
         if "timeout" in text or "timed out" in text:
-            _parse_trace["llm_parse_failure_reason"] = "llm_timeout"
-            _parse_trace["llm_parse_error_class"] = "timeout"
+            _pt["llm_parse_failure_reason"] = "llm_timeout"
+            _pt["llm_parse_error_class"] = "timeout"
         elif isinstance(exc, (ValueError, TypeError)):
-            _parse_trace["llm_parse_failure_reason"] = "llm_json_invalid"
-            _parse_trace["llm_parse_error_class"] = "json_invalid"
+            _pt["llm_parse_failure_reason"] = "llm_json_invalid"
+            _pt["llm_parse_error_class"] = "json_invalid"
         else:
-            _parse_trace["llm_parse_failure_reason"] = "llm_provider_error"
-            _parse_trace["llm_parse_error_class"] = "provider_error"
+            _pt["llm_parse_failure_reason"] = "llm_provider_error"
+            _pt["llm_parse_error_class"] = "provider_error"
         logger.warning("LLM requirement parsing failed; falling back to rules: %s", exc)
         rule_requirement.assumptions.append("生成式大模型需求解析失败，已降级为规则解析。")
         return rule_requirement
@@ -423,8 +437,8 @@ def build_requirement_parse_trace(requirement: RequirementSpec, *, use_llm: bool
         fallback_reason = "llm_timeout"
     elif not llm_used:
         fallback_reason = "rule_parse_sufficient_or_auto_skipped"
-    # 从模块级 parse trace 读取标准化字段
-    pt = dict(_parse_trace) if _parse_trace else {}
+    # 从线程安全的 parse trace 读取标准化字段
+    pt = dict(_get_parse_trace()) if _get_parse_trace() else {}
     return {
         "rule_parse_used": True,
         "llm_parse_requested": bool(use_llm),
@@ -694,47 +708,59 @@ def infer_target_sub_categories(raw: str) -> List[str]:
     return [item for item in SUB_CATEGORY_KEYWORDS if item.lower() in raw.lower()]
 
 
+def _cn_unit_to_float(value_str: str, unit_str: str = "") -> float:
+    """Parse a number string with an optional Chinese unit into a float."""
+    amount = float(value_str)
+    _u = (unit_str or "").strip()
+    _multipliers = {
+        "亿": 100_000_000, "千万": 10_000_000, "百万": 1_000_000,
+        "十万": 100_000, "万": 10_000, "千": 1_000, "百": 100,
+    }
+    return amount * _multipliers.get(_u, 1)
+
+
 def extract_price_range(text: str) -> tuple[Optional[float], Optional[float]]:
+    _CU = r"(千万|百万|十万|万|千|百|亿)"  # capturing Chinese unit
     range_patterns = [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:到|至|-|~)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
+        rf"(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?\s*(?:到|至|-|~)\s*(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?",
     ]
     upper_bound_patterns = [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以内|以下|之内|内)",
-        r"(?:不超过|低于|少于)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
+        rf"(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?\s*(?:以内|以下|之内|内)",
+        rf"(?:不要超过|不要超出|别超过|别超出|不超过|不超出|低于|少于)\s*(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?",
     ]
     lower_bound_patterns = [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:以上|起)",
-        r"(?:高于|超过)\s*(\d+(?:\.\d+)?)\s*(?:元|块)?",
+        rf"(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?\s*(?:以上|起)",
+        rf"(?<!不)(?<!不要)(?<!别)(?:高于|超过)\s*(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?",
     ]
     fuzzy_patterns = [
-        r"(\d+(?:\.\d+)?)\s*(?:元|块)?\s*(?:左右|附近)",
+        rf"(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?\s*(?:左右|附近)",
     ]
     bare_budget_patterns = [
-        r"预算\s*(\d+(?:\.\d+)?)\s*(?:元|块)?(?!\s*(?:左右|附近|以上|以内|以下|之内|内))",
+        rf"预算\s*(\d+(?:\.\d+)?)\s*{_CU}?\s*(?:元|块)?(?!\s*(?:左右|附近|以上|以内|以下|之内|内))",
     ]
     for pattern in range_patterns:
         match = re.search(pattern, text)
         if not match:
             continue
-        first = float(match.group(1))
-        second = float(match.group(2))
+        first = _cn_unit_to_float(match.group(1), match.group(2) or "")
+        second = _cn_unit_to_float(match.group(3), match.group(4) or "")
         return min(first, second), max(first, second)
     for pattern in upper_bound_patterns:
         match = re.search(pattern, text)
         if match:
-            return None, float(match.group(1))
+            return None, _cn_unit_to_float(match.group(1), match.group(2) or "")
     for pattern in lower_bound_patterns:
         match = re.search(pattern, text)
         if match:
-            return float(match.group(1)), None
+            return _cn_unit_to_float(match.group(1), match.group(2) or ""), None
     for pattern in fuzzy_patterns:
         match = re.search(pattern, text)
         if match:
-            return None, round(float(match.group(1)) * 1.1, 2)
+            return None, round(_cn_unit_to_float(match.group(1), match.group(2) or "") * 1.1, 2)
     for pattern in bare_budget_patterns:
         match = re.search(pattern, text)
         if match:
-            return None, float(match.group(1))
+            return None, _cn_unit_to_float(match.group(1), match.group(2) or "")
     return None, None
 
 
@@ -743,7 +769,7 @@ def extract_exclusions(text: str) -> tuple[List[str], List[str]]:
     excluded_brands: List[str] = []
     for match in re.finditer(r"(?:不要|不含|别要|排除|除了)\s*([^，。,.；;、\s]+)", text):
         value = match.group(1).strip()
-        if value:
+        if value and not re.match(r"^(?:超过|超出|超|高于|大于|贵于|多)", value):
             excluded_terms.append(value)
     for brand in BRAND_HINTS:
         if any(prefix + brand in text for prefix in ["不要", "除了", "非", "别买"]):

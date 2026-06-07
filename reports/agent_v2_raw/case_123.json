@@ -1,0 +1,2482 @@
+{
+  "case_id": 123,
+  "input": "所有商品按价格从低到高排列",
+  "expected": "recommend → 价格排序列表",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "所有商品按价格从低到高排列",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false,
+        "sort": "price_asc"
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "所有商品按价格从低到高排列",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "所有商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false,
+            "sort": "price_asc"
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1054,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "所有商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false,
+            "sort": "price_asc"
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1054,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "所有商品按价格从低到高排列",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false,
+            "sort": "price_asc"
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 1055
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml，参考价约 139 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 4,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 2270,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.10833333333333334,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.10833333333333334,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "所有商品按价格从低到高排列",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false,
+          "sort": "price_asc"
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "所有商品按价格从低到高排列",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "所有商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false,
+              "sort": "price_asc"
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1054,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "所有商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false,
+              "sort": "price_asc"
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1054,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "所有商品按价格从低到高排列",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false,
+              "sort": "price_asc"
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 1055
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 33 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml；约 139 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml；约 178 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g；约 89 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑；约 4999 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣；约 259 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡；约 36 CNY；评分 0.82"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装；约 59 CNY；评分 0.82"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml，参考价约 139 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_016",
+            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+            "name": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+            "brand": "AHC",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "眼霜",
+            "price": 139.0,
+            "price_range": [
+              139.0,
+              159.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_016_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.17,
+            "review_count": 6,
+            "reason": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于 美妆护肤/眼霜，综合分 0.8608，参考价 139-159 CNY。 评价均分 3.17/5。 检索证据：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#profile 召回分 0.0268；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#faq 召回分 0.0249；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#review 召回分 0.0244。",
+            "score": 0.8608,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_016_1"
+          },
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8539，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0230；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0221。",
+            "score": 0.8539,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_clothes_005",
+            "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+            "name": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+            "brand": "李宁",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "卫衣",
+            "price": 259.0,
+            "price_range": [
+              259.0,
+              269.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于 服饰运动/卫衣，综合分 0.8702，参考价 259-269 CNY。 评价均分 4/5。 检索证据：李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#faq 召回分 0.0309；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#sku 召回分 0.0294；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#profile 召回分 0.0275。",
+            "score": 0.8702,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_005_1"
+          },
+          {
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "name": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "调味品",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于 食品饮料/调味品，综合分 0.8508，参考价 9-32 CNY。 评价均分 3.6/5。 检索证据：李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品#review 召回分 0.0222。",
+            "score": 0.8508,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_018_4"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_016",
+                "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+                "price": 139.0,
+                "score": 0.8608
+              },
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.8452
+              },
+              {
+                "product_id": "p_beauty_017",
+                "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
+                "price": 178.0,
+                "score": 0.8317
+              },
+              {
+                "product_id": "p_beauty_007",
+                "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                "price": 89.0,
+                "score": 0.8313
+              },
+              {
+                "product_id": "p_beauty_022",
+                "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
+                "price": 168.0,
+                "score": 0.8287
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "price": 1499.0,
+                "score": 0.8539
+              },
+              {
+                "product_id": "p_digital_018",
+                "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                "price": 1799.0,
+                "score": 0.8356
+              },
+              {
+                "product_id": "p_digital_005",
+                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                "price": 4999.0,
+                "score": 0.8334
+              },
+              {
+                "product_id": "p_digital_019",
+                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                "price": 3299.0,
+                "score": 0.8273
+              },
+              {
+                "product_id": "p_digital_022",
+                "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
+                "price": 10999.0,
+                "score": 0.821
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_005",
+                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                "price": 259.0,
+                "score": 0.8702
+              },
+              {
+                "product_id": "p_clothes_020",
+                "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                "price": 79.0,
+                "score": 0.8401
+              },
+              {
+                "product_id": "p_clothes_023",
+                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                "price": 149.0,
+                "score": 0.8386
+              },
+              {
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "price": 349.0,
+                "score": 0.8375
+              },
+              {
+                "product_id": "p_clothes_003",
+                "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                "price": 199.0,
+                "score": 0.8374
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8508
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8418
+              },
+              {
+                "product_id": "p_food_023",
+                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                "price": 36.0,
+                "score": 0.8221
+              },
+              {
+                "product_id": "p_food_009",
+                "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                "price": 59.0,
+                "score": 0.8183
+              },
+              {
+                "product_id": "p_food_013",
+                "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                "price": 9.0,
+                "score": 0.8142
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "所有商品按价格从低到高排列",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml + 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 + 李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 + 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_016",
+                  "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+                  "brand": "AHC",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "眼霜",
+                  "base_price": 139.0,
+                  "min_price": 139.0,
+                  "max_price": 159.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_016_live.jpg",
+                  "image_url": "/product-images/p_beauty_016_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_016_1",
+                      "properties": {
+                        "规格": "30ml 第七代全脸眼霜"
+                      },
+                      "price": 139.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_016_2",
+                      "properties": {
+                        "规格": "30ml 升级版"
+                      },
+                      "price": 159.0
+                    }
+                  ],
+                  "description": "AHC塑颜修护全脸眼霜是一款针对眼周及全脸初老问题的多效护理产品，30ml大容量满足日常需求。核心卖点在于全脸可用，不仅能改善眼周干燥、细纹、暗沉，还可用于法令纹、抬头纹等部位，实现一站式修护。成分上添加高浓度玻尿酸深层锁水，视黄醇衍生物温和淡纹，烟酰胺提亮肤色，质地轻盈易吸收。适用人群为25+有初老迹象、眼周干燥或有细纹暗沉的人群。使用场景：早晚洁面后，取黄豆大小点涂眼周及需要护理区域，轻轻打圈按摩至吸收。注意事项：敏感肌建议先耳后测试，避免入眼，开封后6个月内用完，存放于阴凉干燥处。",
+                  "faqs": [
+                    {
+                      "question": "AHC第七代全脸眼霜和升级版有什么区别？",
+                      "answer": "第七代和升级版的核心成分一致，但升级版在有效成分浓度上有所提升，比如视黄醇衍生物含量增加15%，同时添加了新的积雪草提取物增强修护力，淡纹和保湿效果更显著。升级版的质地更清爽，吸收更快，适合夏季或油性肌肤使用。价格上升级版贵20元，是因为成分升级和工艺优化，追求更好效果的用户可选择升级版。"
+                    },
+                    {
+                      "question": "这款眼霜真的可以全脸使用吗？",
+                      "answer": "是的，这款眼霜配方温和，不含酒精、香精等刺激性成分，除眼周外，法令纹、抬头纹、颈纹等易产生细纹的部位都可使用。它的多效配方能同时满足不同区域的修护需求，相当于一瓶多用，性价比很高。使用时注意避开眼内，其他部位按正常护肤步骤涂抹即可，不会对皮肤造成负担。"
+                    },
+                    {
+                      "question": "敏感肌能用这款眼霜吗？",
+                      "answer": "大部分敏感肌可以使用，但由于含有视黄醇衍生物，少数敏感肌可能会出现轻微刺激。建议敏感肌用户先在耳后或手臂内侧做局部测试，无不适再使用。使用时从少量开始，逐步建立耐受，避免频繁使用。若出现红肿、瘙痒等过敏反应，应立即停用并咨询皮肤科医生。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小敏",
+                      "rating": 4,
+                      "content": "用了快半个月，保湿效果还可以，眼周不再干干的，但淡纹效果暂时没看出来。质地有点厚重，夏天用感觉有点闷，不过吸收后还好。整体来说中规中矩，没有特别惊喜，但也不算差，给个4分吧。"
+                    },
+                    {
+                      "nickname": "阿雅",
+                      "rating": 5,
+                      "content": "真的太惊喜了！用了一个月，眼周的干纹明显淡了，尤其是笑起来的细纹几乎看不见。保湿也超持久，早上起来眼周还是润润的。全脸用在法令纹处，感觉也紧致了一点。价格也实惠，30ml能用很久，会无限回购的，必须给5分！"
+                    },
+                    {
+                      "nickname": "阿明",
+                      "rating": 3,
+                      "content": "用了一周，没感觉到任何效果，保湿一般，下午眼周就开始干了。而且味道有点怪怪的，不是很喜欢。139元的价格也不算便宜，感觉性价比不高，有点失望，给3分。"
+                    },
+                    {
+                      "nickname": "丽丽",
+                      "rating": 1,
+                      "content": "太糟糕了！用了两次就过敏了，眼周红肿发痒，赶紧停用了。联系客服，只说让我自己承担运费退货，态度也不好。再也不会买AHC的产品了，强烈不推荐，给1分！"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 3,
+                      "content": "质地太稠了，每次都要按摩很久才吸收，而且用了一个月，淡纹效果几乎没有。包装也很普通，没有想象中高大上。整体感觉一般，没有达到预期，给3分。"
+                    },
+                    {
+                      "nickname": "琪琪",
+                      "rating": 3,
+                      "content": "用了三周，提亮效果不明显，眼周还是暗沉。保湿还可以，但也没特别突出。价格比其他眼霜贵一点，但效果跟不上，有点不值，给3分。"
+                    }
+                  ],
+                  "review_count": 6,
+                  "rating_avg": 3.17,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "眼霜"
+                  ],
+                  "not_good_for": [
+                    "极敏感人群需先试用"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "眼霜"
+                  ],
+                  "tags": [
+                    "AHC",
+                    "美妆护肤",
+                    "眼霜",
+                    "敏感肌",
+                    "保湿",
+                    "淡纹",
+                    "30ml 第七代全脸眼霜",
+                    "30ml 升级版"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_016_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "极敏感人群需先试用"
+                  ]
+                },
+                "reason": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于 美妆护肤/眼霜，综合分 0.8608，参考价 139-159 CNY。 评价均分 3.17/5。 检索证据：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#profile 召回分 0.0268；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#faq 召回分 0.0249；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#review 召回分 0.0244。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9324,
+                  "reputation_fit": 0.884,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.88,
+                  "final_score": 0.8608,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 139 CNY，已用于预算适配评分。",
+                    "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于用户关注的 美妆护肤 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.17/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：极敏感人群需先试用。",
+                    "商品知识证据命中：p_beauty_016 召回分 0.0268; p_beauty_016 召回分 0.0249。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_016::profile::0",
+                  "p_beauty_016::faq::2",
+                  "p_beauty_016::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_016_1"
+              },
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "brand": "华为",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "真无线耳机",
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_007_live.jpg",
+                  "image_url": "/product-images/p_digital_007_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_007_1",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_2",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_3",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_4",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_5",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_6",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1499.0
+                    }
+                  ],
+                  "description": "华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设计，典雅黑哑光不容易沾指纹，冰霜银磨砂质感高级。日常通勤挤地铁、办公室赶方案、居家沉浸式听歌都能用，使用时建议首次佩戴先在华为智慧生活APP里做贴合度检测，选择适配的耳塞套，不要在雷雨天气或者高水压的水下环境佩戴，避免元器件受潮损坏。",
+                  "faqs": [
+                    {
+                      "question": "华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+                      "answer": "如果是搭载HarmonyOS 4.2及以上版本的华为手机，开盖配对后就能自动触发全链路高解析音频解码，无需额外复杂设置，就能直接输出接近无损的高清音效。如果是其他品牌支持LHDC 5.0协议的设备，也可以在蓝牙音频设置里手动开启高解析模式，只是部分非华为设备可能无法适配全部音频调校参数。要注意只有播放对应Hi-Res音质的音源文件，才能完整发挥这款耳机的音质优势，普通低码率音源没法体现出高解析的细节表现。"
+                    },
+                    {
+                      "question": "这款FreeBuds Pro 5的主动降噪可以根据不同场景自动调节吗？",
+                      "answer": "是的，它搭载了华为最新的动态降噪适配算法，耳机内置的多传感器会实时监测你所处的环境噪音类型，比如你从安静的小区走到车流密集的主干道，系统会自动把降噪强度调整到适配交通噪音的档位，走到人声密集的商圈时也会自动优化降噪参数，既不会把外界必要的提示音完全屏蔽，也能有效过滤冗余噪音。你也可以手动在智慧生活APP里切换深度降噪、轻度降噪、智能透传、人声增强这几个固定档位，适配坐飞机、办公室开短会、过马路等不同的自定义需求。"
+                    },
+                    {
+                      "question": "华为FreeBuds Pro 5的触控操作和之前的FreeBuds系列耳机有什么不一样的地方吗？",
+                      "answer": "它把之前的耳机柄按压触控改成了全新的滑动+轻敲双控制逻辑，你可以在耳机柄的触控区域上下滑动调节音量，轻敲两下耳机柄就能切换歌曲或者接听挂断来电，长按可以快速切换降噪档位，操作逻辑比之前更顺手，不容易出现戴耳机时误触按紧耳道产生的胀痛感。你还能在智慧生活APP里自定义每个触控手势对应的功能，比如双击触发语音助手、长按开启录音转写等专属功能，适配自己的日常使用习惯，不过注意触控区域沾水的时候灵敏度会下降，擦干后就能恢复正常。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小宇",
+                      "rating": 2,
+                      "content": "用了快两周还是有点小失望，我耳朵属于偏小的类型，哪怕换了最小号的耳塞套，走路快走半小时耳机就会往下滑，之前用的旧款FreeBuds Pro戴着就很稳不会掉。而且开启全链路高解析音质之后，续航掉得比官方标的快很多，满电出门降噪加高清音质撑不到5小时就得找充电盒，降噪效果倒是还可以，但这个佩戴贴合度对小耳用户真的不太友好，感觉调校的时候更偏向大耳人群。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "华为这次新出的Pro5真的超出预期！我平时坐地铁通勤单程要一个多小时，开了深度降噪之后地铁的轨道轰鸣声直接几乎全没了，连旁边人打电话的模糊杂音也滤得很干净。音质是真的顶，之前用的耳机听古典乐总觉得小提琴的声音发闷，这款能听到弦乐上细微的揉弦颤音，连歌手换气的小细节都清清楚楚，开盖连我的Mate 60 Pro秒连，智慧生活APP里的自定义功能也特别顺手，一千多花得太值了。"
+                    },
+                    {
+                      "nickname": "萌萌",
+                      "rating": 2,
+                      "content": "入手的冰霜银款，颜值确实没得说，但是耳机柄的触控区域太容易误触了，我有时候整理头发碰到耳机柄，突然就切歌或者直接呼出语音助手，好几次开会的时候突然公放出声特别尴尬。问了客服说可以调触控灵敏度，调完之后有时候要敲两三下才能触发操作，灵敏度过高过低都难适配，这个触控逻辑的调校感觉还不如上一代的按压式用着省心，用着有点闹心。"
+                    },
+                    {
+                      "nickname": "老周",
+                      "rating": 5,
+                      "content": "作为一个做了好几年音频的爱好者，这款FreeBuds Pro5的高解析音质真的太惊喜了，比我之前用过的很多同价位无线耳机声场宽太多，低频的下潜够深但完全不会轰头，中频人声贴耳，听流行歌简直是享受。平时我经常出差坐飞机，开了降噪之后连飞机发动机的持续嗡鸣都能滤掉大部分，长途飞行戴几个小时耳朵也不胀，快充功能太实用，临出门发现没电充15分钟，路上全程听歌都够，完全挑不出毛病。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 1,
+                      "content": "用了不到一周右耳机突然就断连了，怎么重置配对都连不上，单独放回充电盒充电指示灯完全不亮，按照客服教的所有操作试了个遍都没用。我平时根本没摔过没沾过水，全新的耳机就直接出硬件故障，送售后检测说要返厂至少等一周，新买的旗舰耳机用几天就出问题，品控也太拉胯了，完全对不起这个一千多的定价，这次体验特别差，以后再也不敢盲入新款首发了。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "真无线耳机",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "真无线耳机"
+                  ],
+                  "tags": [
+                    "华为",
+                    "数码电子",
+                    "真无线耳机",
+                    "通勤",
+                    "办公",
+                    "续航",
+                    "标准版",
+                    "典雅黑",
+                    "冰霜银",
+                    "羽沙白",
+                    "有线充基础版"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_007_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8539，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0230；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0221。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.85,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.88,
+                  "final_score": 0.8539,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                    "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_digital_007 召回分 0.0230; p_digital_007 召回分 0.0221。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_007::review::3",
+                  "p_digital_007::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_007_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_005",
+                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                  "brand": "李宁",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "卫衣",
+                  "base_price": 259.0,
+                  "min_price": 259.0,
+                  "max_price": 269.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_005_live.jpg",
+                  "image_url": "/product-images/p_clothes_005_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_005_1",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "灰色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_2",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "黑色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_3",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_4",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "灰色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_5",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "黑色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_6",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 259.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_7",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "灰色"
+                      },
+                      "price": 269.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_8",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "黑色"
+                      },
+                      "price": 269.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_005_9",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 269.0
+                    }
+                  ],
+                  "description": "这款李宁运动生活系列男款连帽套头卫衣，核心卖点就是经典不挑人的基础大Logo印花+舒适耐穿的亲肤面料，日常出街、轻运动穿都完全不违和。面料是320g重磅精梳棉混纺定制款，摸起来软乎乎的但不容易起球，连帽做了加固走线，洗多少次帽型都不容易塌。适用人群覆盖18-40岁的男性，不管是学生党上课、上班族通勤顺路跑两公里，还是周末和朋友约球后散步穿都合适。使用建议：刚拿到手先反过来冷水轻柔洗，不要和深色掉色衣物混泡，印花部分不要直接大力搓洗就能穿很久。注意XL码的深蓝色款定价是269元，选码的时候可以对照详情页的肩围表，喜欢宽松感的朋友可以选比日常穿的大半码哦。",
+                  "faqs": [
+                    {
+                      "question": "这款李宁男款连帽卫衣的不同SKU定价不一样吗，具体差价是怎么来的？",
+                      "answer": "这款卫衣不同SKU确实存在定价差异，其中M码灰色、L码黑色日常售价都是259元，XL码的深蓝色款定价为269元。主要是因为深蓝色属于该系列的限定热卖色号，面料预缩处理的工序多了一道固色环节，成本小幅上升所以定价略高，三个尺码对应的版型、面料克重、印花工艺都是完全一致的，大家可以根据自己的码数偏好和喜欢的颜色按需选择就行，不用担心不同价格的款式质量有区别。"
+                    },
+                    {
+                      "question": "衣服胸口的基础李宁Logo印花洗多了会不会开裂掉皮啊？",
+                      "answer": "咱们这款卫衣用的是高固色水性胶浆印花工艺，不是市面上廉价的热转印胶，正常按照洗涤说明操作的话，反复机洗50次以上印花也不会开裂掉皮。洗涤的时候注意把卫衣翻面，不要用硬毛刷刷印花位置，也不要把印花部位直接挂在尖锐的晾衣架上拉扯，洗完之后不要长时间放在阳光下暴晒印花区域，就能最大程度延长印花的使用寿命，哪怕穿一整个春秋季Logo也能保持清晰完整的状态。"
+                    },
+                    {
+                      "question": "我178cm75kg选L码的黑色款会太贴身吗，平时里面还想套件薄T恤穿？",
+                      "answer": "这款L码黑色款的实际衣长是70cm，胸围做的是112cm的宽松版型，你178cm75kg的身材穿完全不会贴身，里面叠穿一件薄款棉T恤甚至薄的打底速干衣都绰绰有余。如果你喜欢更oversize的落肩效果也可以考虑加钱选XL码的深蓝色款，整体衣长会多3cm，胸围多4cm，想要穿出街头松弛感的话选XL也没问题，日常运动抬手什么的都不会有束缚感，不会出现抬胳膊衣服往上跑的情况。"
+                    },
+                    {
+                      "question": "这款灰色M码的卫衣帽子里面有没有抽绳啊，风大的时候能不能拉紧？",
+                      "answer": "咱们这款所有码数的卫衣都是配有同色系的高密度棉质抽绳的，灰色M码的抽绳是浅灰色和衣身完全同色，风大的时候完全可以拉紧收住领口，不会灌冷风进来。抽绳的末端还做了金属包边处理，不会用两次就出现脱线散边的情况，帽子的容量也足够，戴头上的时候不会压得头皮发闷，春秋降温的时候单穿戴帽子，冬天还能搭在羽绒服里面当内搭的连帽层，实用度非常高。"
+                    },
+                    {
+                      "question": "深蓝色XL款的卫衣会不会很容易掉色啊，洗的时候能和白T恤一起放洗衣机吗？",
+                      "answer": "这款XL深蓝色款我们出厂前做了3次预洗固色处理，正常冷水下单独短时间机洗基本不会出现浮色掉色的情况，但前3次清洗的时候还是建议不要和浅色白色衣物混洗，避免极少量的新衣服浮色染到其他衣服上。尽量不要用超过40度的热水长时间浸泡衣服，也不要用漂白类的洗涤剂去搓洗深蓝色的衣身，正常护理的话穿很久颜色都能保持均匀鲜亮，不会出现局部发白的情况。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 5,
+                      "content": "太惊喜了！之前一直怕李宁的卫衣买小，选的L码黑色刚好合适，面料摸上去特别扎实，不是那种薄得透肉的便宜货。胸口的Logo印花质感特别好，不是那种硬邦邦的胶印，穿在身上完全不会硌胸口。上周穿去打羽毛球，出汗之后也没有贴在背上，洗完之后完全没变形没起球，连帽的抽绳也很有质感，这个价格买到真的比我之前买的杂牌卫衣值太多，已经推荐给室友了。"
+                    },
+                    {
+                      "nickname": "小峰",
+                      "rating": 2,
+                      "content": "这次购物体验挺糟心的，冲着深蓝XL款买的贵10块，结果收到货发现口袋边缘的走线有个小线头没处理就算了，第一次冷水手洗就掉了不少浮色，把我搭在一起洗的浅灰色运动裤给染蓝了一点。而且版型比我之前买的同码李宁卫衣短了小半指，穿上去盖不住胯部，我180cm穿上刚到腰线，完全没有想要的宽松效果，找客服还说属于正常工艺范围，这次挺失望的。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "M码灰色款拿到手直接惊了，面料软乎乎的但是完全不塌，平时上课套个卫衣就出门特别省事，搭牛仔裤运动裤都好看。领口的罗纹做的特别密实，穿了快一个月了也没松垮变形，连帽部分的走线也很整齐，戴上去不会往下滑。昨天不小心溅了点奶茶在衣服上，搓两下就洗干净了，完全没留印子，李宁的基础款真的永远不会出错，性价比拉满，物超所值。"
+                    }
+                  ],
+                  "review_count": 3,
+                  "rating_avg": 4.0,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "卫衣",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "sports",
+                    "卫衣"
+                  ],
+                  "tags": [
+                    "李宁",
+                    "服饰运动",
+                    "卫衣",
+                    "通勤",
+                    "M码",
+                    "灰色",
+                    "黑色",
+                    "深蓝色",
+                    "L码",
+                    "XL码"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_005_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于 服饰运动/卫衣，综合分 0.8702，参考价 259-269 CNY。 评价均分 4/5。 检索证据：李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#faq 召回分 0.0309；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#sku 召回分 0.0294；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#profile 召回分 0.0275。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9303,
+                  "reputation_fit": 0.95,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8702,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 259 CNY，已用于预算适配评分。",
+                    "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于用户关注的 服饰运动 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 4/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_clothes_005 召回分 0.0309; p_clothes_005 召回分 0.0294。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_005::faq::2",
+                  "p_clothes_005::sku::1",
+                  "p_clothes_005::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_005_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "brand": "李锦记",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "调味品",
+                  "base_price": 29.0,
+                  "min_price": 9.0,
+                  "max_price": 32.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_018_live.jpg",
+                  "image_url": "/product-images/p_food_018_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_018_1",
+                      "properties": {
+                        "容量": "500ml",
+                        "包装类型": "玻璃瓶装"
+                      },
+                      "price": 15.0
+                    },
+                    {
+                      "sku_id": "s_p_food_018_2",
+                      "properties": {
+                        "容量": "500ml",
+                        "包装类型": "塑料瓶装"
+                      },
+                      "price": 9.0
+                    },
+                    {
+                      "sku_id": "s_p_food_018_3",
+                      "properties": {
+                        "容量": "1.65L",
+                        "包装类型": "玻璃瓶装"
+                      },
+                      "price": 32.0
+                    },
+                    {
+                      "sku_id": "s_p_food_018_4",
+                      "properties": {
+                        "容量": "1.65L",
+                        "包装类型": "家庭塑料装"
+                      },
+                      "price": 29.0
+                    }
+                  ],
+                  "description": "李锦记这款特级草菇老抽，核心卖点是添加了自然发酵的草菇浸出液，晒足180天的传统工艺酿造，上色红亮挂壁不发苦，咸香醇厚不带刺鼻酱味。特别适合平时爱做红烧菜、卤味的三口以上大家庭、开小餐馆的个体户，日常做红烧肉、酱牛肉、红烧茄子、卤猪脚都能用，只要几滴就能给食材挂上亮红的酱色，不用额外炒糖色省很多事。成分选用非转基因大豆、小麦粉搭配新鲜草菇提取液，没有添加人工合成的焦糖色。使用建议红烧时出锅前10分钟放就足够，别倒太多避免菜色发黑，开封后一定要放在冰箱冷藏层保存，避免长时间放在灶台边高温环境里导致风味变酸变质。",
+                  "faqs": [
+                    {
+                      "question": "这款特级草菇老抽和普通的酿造老抽上色效果有什么不一样？",
+                      "answer": "这款特级草菇老抽因为在发酵过程中添加了新鲜草菇的浸出液，经过180天充足晒制发酵，产生的天然棕红色素比普通老抽更透亮，上色是鲜亮的酱红不是死黑感，做出来的红烧肉、卤鸭表皮挂色均匀油亮，不会出现局部发苦发乌的情况，哪怕你新手把控不好用量，也不容易把菜炒得黑乎乎的，完全不用额外费心炒糖色就能做出馆子级的卖相。"
+                    },
+                    {
+                      "question": "1.65L的大瓶装开封之后怎么保存才不容易变质？",
+                      "answer": "1.65L的大容量包装开封之后，第一时间拧紧瓶盖放到冰箱的冷藏层存放就行，千万不要一直放在灶台边，平时炒菜产生的高温水汽很容易跑进瓶里，没半个月就会让酱油表层生出白花、风味发酸。如果平时用的频次不是特别高，也可以分装一部分到干燥无油的小挤瓶里，剩下的大瓶密封好放回冰箱，既方便日常取用也不会反复让大瓶接触外界空气，能完整保留醇厚的草菇酱香。"
+                    },
+                    {
+                      "question": "这款草菇老抽可以用来做凉拌菜直接生食吗？",
+                      "answer": "不建议直接拿这款草菇老抽做凉拌菜哦，它的定位是专门的烹饪上色老抽，盐分浓度比生抽高很多，鲜度也不是专门为生食调配的，直接倒在凉拌菜里会特别咸，还会把整盘菜染得黑乎乎影响卖相。它最适合的是高温焖煮的红烧、卤制、酱焖类菜式，经过几分钟的高温烹饪之后，草菇的鲜香味会完全释放出来，上色效果也能完全发挥出来，要是做凉拌菜更推荐选李锦记的特级生抽系列更合适。"
+                    },
+                    {
+                      "question": "同系列的500ml玻璃装和1.65L家庭装的成分、风味是一样的吗？",
+                      "answer": "两款的核心原料、发酵工艺、成品风味完全是统一标准的，都是用同样批次的非转基因大豆、小麦粉搭配草菇浸出液经过180天发酵制成，唯一的区别就是包装容量不同。1.65L的大容量装更适合平时做饭频次高、家里人口多，或者开家常菜小馆、卤味店的用户，算下来单毫升价格更划算，500ml玻璃装更适合租房独居、平时做饭少的年轻人，短时间内能用完不会浪费，大家可以根据自己的使用量选就行。"
+                    },
+                    {
+                      "question": "用这款草菇老抽卤出来的卤汁能不能反复卤煮食材，会不会越卤越咸？",
+                      "answer": "完全可以用来调配老卤，因为它的酱香沉厚不寡淡，反复卤煮之后草菇的鲜香味会完全浸到卤汁里，卤出来的食材风味比普通老抽调的卤汁香很多。但要注意每次卤煮新食材的时候，要根据添加的食材重量和补加的清水量，少量分次补加老抽，别一次性倒太多，每次卤完之后还要把卤汁煮开过滤掉杂质，放凉之后密封放到冰箱冷冻层储存，就能长时间保留老卤的醇厚风味，不会出现越卤越咸、颜色发黑的问题。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿明",
+                      "rating": 1,
+                      "content": "这次收到的1.65L装瓶盖处居然有漏液，瓶身外面黏糊糊的全是酱油，擦了半天都还留着酱味，而且打开闻味道感觉和之前超市买的不一样，酱香味很淡倒有股奇怪的焦苦味，炒出来的红烧肉颜色发乌，吃着也发苦，根本不是之前用的那种红亮的效果，找客服反馈也没人及时回复，花29块买的这瓶根本没法正常用，太闹心了。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 4,
+                      "content": "整体用下来味道还可以，做红烧肉上色确实挺亮的，草菇的鲜香味也能尝出来，就是这个1.65L的塑料瓶盖子设计得太费劲了，女生手小拧开特别费力，每次倒的时候都控制不好量，一倒就容易倒多，好几次菜都快咸了才反应过来。要是能改成带按压嘴或者尖嘴挤口的设计就方便很多了，性价比倒是还行，就是使用细节上差点意思。"
+                    },
+                    {
+                      "nickname": "张姐",
+                      "rating": 5,
+                      "content": "我家厨房常年囤这款草菇老抽，这次看到1.65L装做活动直接囤了两瓶，真的太好用了！上周做了一大锅卤牛肉，就放了几勺这个老抽，卤出来的牛肉红亮油润，切开来纹理里都浸着酱色，连我家不爱吃卤味的小孙子都啃了两大块，味道是纯纯的酱香加淡淡的草菇鲜，完全没有那种劣质老抽的焦苦味，这么大一瓶我们家五六口人用俩月都没问题，太省心了。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 4,
+                      "content": "开外卖店选的这款老抽，之前试了好几个牌子，上色效果确实比大部分平价款好，炒出来的红烧茄子、卤肉饭卖相都很好，客人也没说过味道奇怪。唯一的问题就是大瓶寄过来的时候没有泡沫缓冲，瓶身有个小凹陷，好在没漏液不影响使用，希望下次发货的时候能多加点保护缓冲的东西，不然万一漏了整瓶都浪费了，整体来说还是会回购的。"
+                    },
+                    {
+                      "nickname": "阿雯",
+                      "rating": 4,
+                      "content": "之前一直买500ml玻璃瓶装的，这次换了1.65L的大桶家庭装，算下来单价确实划算很多，做红烧排骨什么的上色均匀不发黑，味道也和之前小瓶的一模一样。就是大瓶太重了，每次从柜子里拿出来倒油都得两只手抱着，我个子矮举着倒油好几次差点撒出来，要是品牌能出个配套的分装小壶就好了，使用感能提升不少。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.6,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "调味品"
+                  ],
+                  "not_good_for": [
+                    "追求极致轻薄用户需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "调味品"
+                  ],
+                  "tags": [
+                    "李锦记",
+                    "食品饮料",
+                    "调味品",
+                    "500ml",
+                    "玻璃瓶装",
+                    "塑料瓶装",
+                    "1.65L",
+                    "家庭塑料装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_018_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求极致轻薄用户需谨慎"
+                  ]
+                },
+                "reason": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于 食品饮料/调味品，综合分 0.8508，参考价 9-32 CNY。 评价均分 3.6/5。 检索证据：李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品#review 召回分 0.0222。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9778,
+                  "reputation_fit": 0.97,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 1.0,
+                  "final_score": 0.8508,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 9 CNY，已用于预算适配评分。",
+                    "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.6/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求极致轻薄用户需谨慎。",
+                    "商品知识证据命中：p_food_018 召回分 0.0222。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_018::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_018_4"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 1906.0,
+              "total_price_max": 2159.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_beauty_016 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_007 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_005 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_018 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_016": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 139.0,
+                  "min_price": 139.0,
+                  "max_price": 159.0,
+                  "selected_sku_id": "s_p_beauty_016_1",
+                  "selected_price": 139.0,
+                  "selected_total_price": 139.0
+                },
+                "p_digital_007": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "selected_sku_id": "s_p_digital_007_1",
+                  "selected_price": 1699.0,
+                  "selected_total_price": 1699.0
+                },
+                "p_clothes_005": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 259.0,
+                  "min_price": 259.0,
+                  "max_price": 269.0,
+                  "selected_sku_id": "s_p_clothes_005_1",
+                  "selected_price": 259.0,
+                  "selected_total_price": 259.0
+                },
+                "p_food_018": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 29.0,
+                  "min_price": 9.0,
+                  "max_price": 32.0,
+                  "selected_sku_id": "s_p_food_018_4",
+                  "selected_price": 29.0,
+                  "selected_total_price": 29.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "极敏感人群需先试用",
+              "追求极致轻薄用户需谨慎"
+            ],
+            "evidence": [
+              "p_beauty_016: AHC塑颜修护全脸眼霜是一款针对眼周及全脸初老问题的多效护理产品，30ml大容量满足日常需求。核心卖点在于全脸可用，不仅能改善眼周干燥、细纹、暗沉，还可用于法令纹、抬头纹等部位，实现一站式修护。成分上添加高浓度玻尿酸深层锁水，视黄醇衍生物温和淡纹，烟酰胺提亮肤色，质地轻盈易吸收。适用人群为25+有初老迹象、眼周干燥或有细纹暗沉的人群。使用场景：早晚洁面后，取黄豆大小点涂眼周及需要护理区域，轻轻打圈按摩至吸收。注意事项：敏感肌建议先耳后测",
+              "p_beauty_016: FAQ - AHC第七代全脸眼霜和升级版有什么区别？",
+              "价格匹配：当前最低 SKU 约 139 CNY，已用于预算适配评分。",
+              "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于用户关注的 美妆护肤 类目。",
+              "p_digital_007: 华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设",
+              "p_digital_007: FAQ - 华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+              "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+              "p_clothes_005: 这款李宁运动生活系列男款连帽套头卫衣，核心卖点就是经典不挑人的基础大Logo印花+舒适耐穿的亲肤面料，日常出街、轻运动穿都完全不违和。面料是320g重磅精梳棉混纺定制款，摸起来软乎乎的但不容易起球，连帽做了加固走线，洗多少次帽型都不容易塌。适用人群覆盖18-40岁的男性，不管是学生党上课、上班族通勤顺路跑两公里，还是周末和朋友约球后散步穿都合适。使用建议：刚拿到手先反过来冷水轻柔洗，不要和深色掉色衣物混泡，印花部分不要直接大力搓洗就能穿",
+              "p_clothes_005: FAQ - 这款李宁男款连帽卫衣的不同SKU定价不一样吗，具体差价是怎么来的？",
+              "价格匹配：当前最低 SKU 约 259 CNY，已用于预算适配评分。",
+              "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于用户关注的 服饰运动 类目。",
+              "p_food_018: 李锦记这款特级草菇老抽，核心卖点是添加了自然发酵的草菇浸出液，晒足180天的传统工艺酿造，上色红亮挂壁不发苦，咸香醇厚不带刺鼻酱味。特别适合平时爱做红烧菜、卤味的三口以上大家庭、开小餐馆的个体户，日常做红烧肉、酱牛肉、红烧茄子、卤猪脚都能用，只要几滴就能给食材挂上亮红的酱色，不用额外炒糖色省很多事。成分选用非转基因大豆、小麦粉搭配新鲜草菇提取液，没有添加人工合成的焦糖色。使用建议红烧时出锅前10分钟放就足够，别倒太多避免菜色发黑，开封后",
+              "p_food_018: FAQ - 这款特级草菇老抽和普通的酿造老抽上色效果有什么不一样？",
+              "价格匹配：当前最低 SKU 约 9 CNY，已用于预算适配评分。",
+              "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_016",
+                "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+                "final_score": 0.8608,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9324,
+                "reputation_fit": 0.884,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 139 CNY，已用于预算适配评分。",
+                  "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于用户关注的 美妆护肤 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.17/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：极敏感人群需先试用。",
+                  "商品知识证据命中：p_beauty_016 召回分 0.0268; p_beauty_016 召回分 0.0249。"
+                ]
+              },
+              {
+                "role": "digital",
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "final_score": 0.8539,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 1.0,
+                "reputation_fit": 0.85,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                  "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_digital_007 召回分 0.0230; p_digital_007 召回分 0.0221。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_005",
+                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                "final_score": 0.8702,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9303,
+                "reputation_fit": 0.95,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 259 CNY，已用于预算适配评分。",
+                  "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于用户关注的 服饰运动 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 4/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_clothes_005 召回分 0.0309; p_clothes_005 召回分 0.0294。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "final_score": 0.8508,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9778,
+                "reputation_fit": 0.97,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 1.0,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 9 CNY，已用于预算适配评分。",
+                  "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.6/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求极致轻薄用户需谨慎。",
+                  "商品知识证据命中：p_food_018 召回分 0.0222。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_016",
+            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+            "name": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+            "brand": "AHC",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "眼霜",
+            "price": 139.0,
+            "price_range": [
+              139.0,
+              159.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_016_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.17,
+            "review_count": 6,
+            "reason": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于 美妆护肤/眼霜，综合分 0.8608，参考价 139-159 CNY。 评价均分 3.17/5。 检索证据：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#profile 召回分 0.0268；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#faq 召回分 0.0249；AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#review 召回分 0.0244。",
+            "score": 0.8608,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_016_1"
+          },
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8539，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0230；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0221。",
+            "score": 0.8539,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_clothes_005",
+            "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+            "name": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+            "brand": "李宁",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "卫衣",
+            "price": 259.0,
+            "price_range": [
+              259.0,
+              269.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 属于 服饰运动/卫衣，综合分 0.8702，参考价 259-269 CNY。 评价均分 4/5。 检索证据：李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#faq 召回分 0.0309；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#sku 召回分 0.0294；李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣#profile 召回分 0.0275。",
+            "score": 0.8702,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_005_1"
+          },
+          {
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "name": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "调味品",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于 食品饮料/调味品，综合分 0.8508，参考价 9-32 CNY。 评价均分 3.6/5。 检索证据：李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品#review 召回分 0.0222。",
+            "score": 0.8508,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_018_4"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_016",
+                  "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+                  "price": 139.0,
+                  "score": 0.8608
+                },
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.8452
+                },
+                {
+                  "product_id": "p_beauty_017",
+                  "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
+                  "price": 178.0,
+                  "score": 0.8317
+                },
+                {
+                  "product_id": "p_beauty_007",
+                  "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                  "price": 89.0,
+                  "score": 0.8313
+                },
+                {
+                  "product_id": "p_beauty_022",
+                  "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
+                  "price": 168.0,
+                  "score": 0.8287
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "price": 1499.0,
+                  "score": 0.8539
+                },
+                {
+                  "product_id": "p_digital_018",
+                  "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                  "price": 1799.0,
+                  "score": 0.8356
+                },
+                {
+                  "product_id": "p_digital_005",
+                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                  "price": 4999.0,
+                  "score": 0.8334
+                },
+                {
+                  "product_id": "p_digital_019",
+                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                  "price": 3299.0,
+                  "score": 0.8273
+                },
+                {
+                  "product_id": "p_digital_022",
+                  "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
+                  "price": 10999.0,
+                  "score": 0.821
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_005",
+                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                  "price": 259.0,
+                  "score": 0.8702
+                },
+                {
+                  "product_id": "p_clothes_020",
+                  "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                  "price": 79.0,
+                  "score": 0.8401
+                },
+                {
+                  "product_id": "p_clothes_023",
+                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                  "price": 149.0,
+                  "score": 0.8386
+                },
+                {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "price": 349.0,
+                  "score": 0.8375
+                },
+                {
+                  "product_id": "p_clothes_003",
+                  "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                  "price": 199.0,
+                  "score": 0.8374
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8508
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8418
+                },
+                {
+                  "product_id": "p_food_023",
+                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                  "price": 36.0,
+                  "score": 0.8221
+                },
+                {
+                  "product_id": "p_food_009",
+                  "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                  "price": 59.0,
+                  "score": 0.8183
+                },
+                {
+                  "product_id": "p_food_013",
+                  "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                  "price": 9.0,
+                  "score": 0.8142
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_clothes_005",
+            "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+            "brand": "李宁",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 259.0,
+            "price_range": [
+              259.0,
+              269.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.8702,
+            "strength": "综合分 0.8702，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_beauty_016",
+            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+            "brand": "AHC",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 139.0,
+            "price_range": [
+              139.0,
+              159.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.17,
+            "review_count": 6,
+            "score": 0.8608,
+            "strength": "综合分 0.8608，评分 3.17/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.8539,
+            "strength": "综合分 0.8539，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8508,
+            "strength": "综合分 0.8508，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8452,
+            "strength": "综合分 0.8452，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_food_003",
+            "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "brand": "东方树叶",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 4.0,
+            "price_range": [
+              4.0,
+              55.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "score": 0.8418,
+            "strength": "综合分 0.8418，评分 3.25/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料；追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "极敏感人群需先试用",
+          "追求极致轻薄用户需谨慎"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml、华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质、李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
+              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+              "已从商品库候选中选择：李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣"
+            ],
+            "evidence_points": [
+              "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml - 价格：139.0",
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0",
+              "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣 - 价格：259.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_123"
+      }
+    }
+  ]
+}

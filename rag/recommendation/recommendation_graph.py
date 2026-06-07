@@ -24,7 +24,7 @@ from rag.schemas import RecommendationResult, RequirementSpec
 
 # Guidance is optional because the main recommendation path must remain usable
 # even when no generation model is configured.
-LLM_GUIDANCE_ENABLED = os.getenv("RECOMMENDATION_LLM_GUIDANCE", "true").lower() == "true"
+LLM_GUIDANCE_ENABLED = os.getenv("RECOMMENDATION_LLM_GUIDANCE", "false").lower() == "true"
 
 
 @dataclass(frozen=True)

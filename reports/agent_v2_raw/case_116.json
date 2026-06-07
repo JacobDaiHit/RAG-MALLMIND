@@ -1,0 +1,2449 @@
+{
+  "case_id": 116,
+  "input": "送礼给女朋友",
+  "expected": "recommend_shopping_products → 跨品类礼物+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "送礼给女朋友",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.8,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "送礼给女朋友",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "送礼给女朋友",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.8,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 951,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "送礼给女朋友",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.8,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 951,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "送礼给女朋友",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": false,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 952
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 4,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 4340,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.05,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.05,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "送礼给女朋友",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.8,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "送礼给女朋友",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "送礼给女朋友",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.8,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 951,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "送礼给女朋友",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.8,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 951,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "送礼给女朋友",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": false,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 952
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 33 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g；约 89 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml；约 118 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB；约 7499 CNY；评分 0.82"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽；约 199 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣；约 199 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装；约 59 CNY；评分 0.90"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品；约 85 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料；约 9 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_025",
+            "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "name": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "brand": "花西子",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "眉笔",
+            "price": 89.0,
+            "price_range": [
+              89.0,
+              89.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_025_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.83,
+            "review_count": 6,
+            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
+            "score": 0.8681,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_025_1"
+          },
+          {
+            "product_id": "p_digital_016",
+            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 3299.0,
+            "price_range": [
+              3299.0,
+              3699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_016_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 3,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
+            "score": 0.8575,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_016_1"
+          },
+          {
+            "product_id": "p_clothes_024",
+            "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+            "name": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+            "brand": "北面",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "帽子",
+            "price": 199.0,
+            "price_range": [
+              199.0,
+              199.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_024_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 4,
+            "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
+            "score": 0.8475,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_024_1"
+          },
+          {
+            "product_id": "p_food_009",
+            "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "name": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "brand": "三只松鼠",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "坚果/零食",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_009_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
+            "score": 0.9036,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_009_4"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "送礼",
+            "女朋友"
+          ],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_025",
+                "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                "price": 89.0,
+                "score": 0.8681
+              },
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.8453
+              },
+              {
+                "product_id": "p_beauty_006",
+                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                "price": 170.0,
+                "score": 0.8384
+              },
+              {
+                "product_id": "p_beauty_010",
+                "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                "price": 118.0,
+                "score": 0.8334
+              },
+              {
+                "product_id": "p_beauty_007",
+                "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                "price": 89.0,
+                "score": 0.8313
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_016",
+                "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+                "price": 3299.0,
+                "score": 0.8575
+              },
+              {
+                "product_id": "p_digital_018",
+                "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                "price": 1799.0,
+                "score": 0.8524
+              },
+              {
+                "product_id": "p_digital_019",
+                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                "price": 3299.0,
+                "score": 0.8459
+              },
+              {
+                "product_id": "p_digital_008",
+                "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
+                "price": 7499.0,
+                "score": 0.8231
+              },
+              {
+                "product_id": "p_digital_010",
+                "title": "小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器",
+                "price": 9999.0,
+                "score": 0.8194
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_024",
+                "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+                "price": 199.0,
+                "score": 0.8475
+              },
+              {
+                "product_id": "p_clothes_023",
+                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                "price": 149.0,
+                "score": 0.8388
+              },
+              {
+                "product_id": "p_clothes_003",
+                "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                "price": 199.0,
+                "score": 0.8374
+              },
+              {
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "price": 349.0,
+                "score": 0.8374
+              },
+              {
+                "product_id": "p_clothes_005",
+                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                "price": 259.0,
+                "score": 0.8364
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_009",
+                "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                "price": 59.0,
+                "score": 0.9036
+              },
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8526
+              },
+              {
+                "product_id": "p_food_016",
+                "title": "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品",
+                "price": 85.0,
+                "score": 0.8485
+              },
+              {
+                "product_id": "p_food_013",
+                "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                "price": 9.0,
+                "score": 0.8342
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8235
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "送礼给女朋友",
+          "scenario": "gift",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [
+            "送礼",
+            "女朋友"
+          ],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "送礼",
+          "target_user": "女",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。",
+            "生成式大模型已参与需求理解，耗时 2424ms。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g + OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB + The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 + 三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_025",
+                  "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                  "brand": "花西子",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "眉笔",
+                  "base_price": 89.0,
+                  "min_price": 89.0,
+                  "max_price": 89.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_025_live.jpg",
+                  "image_url": "/product-images/p_beauty_025_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_025_1",
+                      "properties": {
+                        "色号": "0.08g 经典色号"
+                      },
+                      "price": 89.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_025_2",
+                      "properties": {
+                        "色号": "0.08g 自然棕"
+                      },
+                      "price": 89.0
+                    }
+                  ],
+                  "description": "花西子这款螺黛生花双头眉笔专门针对东方人眉形设计，0.08g的极细笔芯能精准点描每根毛流，就像用毛笔勾线一样丝滑不卡壳，显色度刚好不会重手变蜡笔小新，添加的持色覆膜成分日常通勤出汗、喝冰饮沾到水汽都不容易晕成大黑块。特别适合手残新手、追求野生眉妆感的女生，不管是日常上班快速描眉，还是约会拍特写妆造都能用。一头是细笔芯一头是螺旋眉刷，画之前先梳顺眉毛再填补空缺，画完扫掉浮色就很自然，注意用的时候手别太用力压笔芯，不然容易断，存放在阴凉干燥的地方别晒到太阳就能用很久。",
+                  "faqs": [
+                    {
+                      "question": "这款0.08g的极细笔芯会不会很容易断？平时怎么保养能延长使用寿命？",
+                      "answer": "这款眉笔的笔芯做了分层加固的特殊工艺，正常轻力度描画是不容易断的，它本身设计成0.08g的极细规格就是为了能画出根根分明的毛流感，所以不建议大力按压笔芯作画，每次旋出来1-2毫米的长度就足够用，不用旋出太长。平时使用完记得把笔帽盖紧，避免笔芯长期暴露在空气中变干变脆，也不要放在车里被阳光直晒，避开高温环境存放，正常使用的话一支足够用3-4个月，完全不用担心没用完就断芯的问题。"
+                    },
+                    {
+                      "question": "经典色号和自然棕两个色号分别适合什么样的发色和肤色呀？选不对会不会很突兀？",
+                      "answer": "经典色号是偏灰调的深棕，适配大部分自然黑发、深棕发色的女生，黄二白、黄三白的肤色用它画出来的眉毛和原生毛发衔接特别自然，不会像纯黑色眉笔那样生硬显凶。自然棕是带一点暖调的浅棕，更适合染了浅棕、栗色、奶茶色发色的女生，冷白皮用它能衬得整体妆感更柔和，哪怕是漂过浅发的妹子用这个色号也不会违和。大家选的时候尽量贴合自己发根的原生发色，比发色浅一度就刚好，基本不会踩雷，要是拿不准选最百搭的经典色号也不容易出错。"
+                    },
+                    {
+                      "question": "这款眉笔主打的防晕染效果，夏天出油出汗或者下雨天淋到小雨也能扛住吗？",
+                      "answer": "这款眉笔的显色配方里添加了弱成膜的持色因子，画完之后等30秒左右它会在眉部形成一层薄的透气覆膜，日常日常通勤额头轻微出油、夏天逛半小时街出汗，甚至不小心沾到少量喷溅的饮用水，都不容易花掉晕成色块。但如果是长时间泡在水里、大量泡水揉搓眉部，或者长时间待在桑拿房高温高湿的环境里，还是会有轻微脱妆的情况，大家如果是要去海边玩水、做高强度运动的话，后续搭配一层透明眉粉定妆，持妆时间能拉长到8小时以上。"
+                    },
+                    {
+                      "question": "手残党用这款眉笔真的能画出野生眉吗？有没有什么简单的上手技巧？",
+                      "answer": "这款眉笔的极细笔芯本身就是为手残党设计的，不用你有什么专业画眉功底，上手前先用附赠的螺旋眉刷把眉毛顺着毛流方向全部梳顺，找到自己眉毛本身有空缺的地方，顺着毛发生长的方向一根一根去描，不用整片涂满，填补好空隙之后，再用眉刷扫一遍把边缘晕开，出来就是根根分明的野生眉效果。哪怕你第一次画得颜色重了点，用眉刷多扫两遍就能把浮色扫掉，容错率特别高，多试两次两三分钟就能搞定一个自然的眉妆，完全不用怕画出来生硬奇怪。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿柚",
+                      "rating": 5,
+                      "content": "真的是我用过最适合新手的眉笔了！0.08g的细头太绝了，我之前用别的眉笔一用力就画成粗粗的一条，这个我顺着自己的眉毛空缺点描，画出来真的像自己长出来的眉毛一样，持妆一下午下班摸眉毛都没掉，连我这种手残第一次画都没翻车，双头的眉刷用完梳两下边缘就特别自然，已经回购第二支了。"
+                    },
+                    {
+                      "nickname": "小棠",
+                      "rating": 4,
+                      "content": "整体用着还是挺顺滑的，画出来的野生眉感很足，色号选的自然棕和我染的奶茶发色特别搭，唯一有点小遗憾的就是我每次旋出来一点点，有时候不小心掉地上笔芯就断了一小截，用的时候得特别小心拿着，不然总怕断芯，要是笔芯能再做的耐摔一点就更完美了，整体来说这个价格性价比还算可以。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 1,
+                      "content": "我平时就是油皮，额头特别容易出油，本来冲着防晕染的卖点买的，结果早上画完不到两小时，眉尾直接晕得糊成一块，下班回家眉毛直接只剩半截了，脸上油光一蹭全蹭掉，根本不防油，花八十九买的就这持妆效果，感觉还不如十几块的眉笔好用，真的太失望了。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 1,
+                      "content": "刚拆封用了两次，第三次用的时候旋出来笔芯直接断了大半截，我根本没用力按啊，就正常旋出来准备画，直接断在里面剩下的笔芯根本取不出来，总共加起来都没用三次就剩个空壳，八十九块钱用了不到一周就废了，这个质量也太差了，完全不值这个价。"
+                    },
+                    {
+                      "nickname": "阿月",
+                      "rating": 3,
+                      "content": "我选的经典色号，颜色倒是挺自然的，但是我本身眉毛就比较浓密，用这个细头画半天都填不满，要反复画好几次才能把空缺补上，画个眉毛得花快十分钟，太费时间了，我平时赶早八根本来不及，现在基本闲置在家，只有周末有空的时候才拿出来慢慢画，感觉不太适合浓眉毛的人用。"
+                    },
+                    {
+                      "nickname": "小远",
+                      "rating": 3,
+                      "content": "双头设计倒是挺方便的，但是眉刷用了没两周就开始掉毛，每次梳眉毛都有小细毛粘在眉毛上，得半天才能弄掉，而且画完之后我用普通的卸妆水卸，得反复擦三四遍才能完全卸干净，特别容易留眉部的黄印子，用着感觉有点鸡肋，不算特别难用但也没宣传的那么好用。"
+                    }
+                  ],
+                  "review_count": 6,
+                  "rating_avg": 2.83,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "眉笔",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "油皮需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "眉笔"
+                  ],
+                  "tags": [
+                    "花西子",
+                    "美妆护肤",
+                    "眉笔",
+                    "通勤",
+                    "0.08g 经典色号",
+                    "0.08g 自然棕"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_025_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "油皮需谨慎"
+                  ]
+                },
+                "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
+                "score": {
+                  "scenario_match": 0.68,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9713,
+                  "reputation_fit": 0.816,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8681,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
+                    "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于用户关注的 美妆护肤 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 2.83/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：油皮需谨慎。",
+                    "商品知识证据命中：p_beauty_025 召回分 0.0274; p_beauty_025 召回分 0.0223。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_025::profile::0",
+                  "p_beauty_025::faq::2"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_025_1"
+              },
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_016",
+                  "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+                  "brand": "OPPO",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "智能手机",
+                  "base_price": 3299.0,
+                  "min_price": 3299.0,
+                  "max_price": 3699.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_016_live.jpg",
+                  "image_url": "/product-images/p_digital_016_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_016_1",
+                      "properties": {
+                        "存储": "12GB+256GB",
+                        "版本": "标准版"
+                      },
+                      "price": 3299.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_016_2",
+                      "properties": {
+                        "存储": "12GB+256GB",
+                        "版本": "高配版"
+                      },
+                      "price": 3449.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_016_3",
+                      "properties": {
+                        "存储": "12GB+512GB",
+                        "版本": "标准版"
+                      },
+                      "price": 3549.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_016_4",
+                      "properties": {
+                        "存储": "12GB+512GB",
+                        "版本": "高配版"
+                      },
+                      "price": 3699.0
+                    }
+                  ],
+                  "description": "OPPO Reno 16 Pro是专门为爱拍人像的年轻用户打造的轻薄5G旗舰机，整机拿在手里几乎没有坠手感，长时间刷剧出门扫街揣口袋都毫无负担。核心的人像摄影系统搭配原生柔光环，暗光下拍夜市合照、咖啡馆氛围感照片都不用额外补光，肤感磨皮自然不假白。搭载的高刷屏刷短视频、玩轻度手游时跟手度拉满，搭配大毫安时电池和满血快充，出门忘充电午休充10分钟就能刷一下午社交软件。特别适合喜欢记录日常通勤、和闺蜜出游、下班探店瞬间的学生党、职场新人，平时用机尽量别用非官方的快充头，避免损伤电池健康，裸机使用建议单独贴高清钢化膜防刮花。",
+                  "faqs": [
+                    {
+                      "question": "OPPO Reno 16 Pro的人像拍照在夜景暗光环境下会不会糊？",
+                      "answer": "完全不用担心这个问题，这款机型专门在前置和后置人像模组都搭载了自研的自然人像柔光环，光圈尺寸相比上一代提升了27%，暗光进光量直接拉满。哪怕你是在深夜路边摊、光线昏暗的清吧里拍合照，也不用开闪光灯晃得大家睁不开眼，拍出来的人脸不会出现油光反光，背景的夜市灯光、店面霓虹灯还能保留自然的虚化光斑，肤色还原得很通透，完全不会出现普通手机夜景人像发灰发糊的问题，直出就能发朋友圈。"
+                    },
+                    {
+                      "question": "12GB的运行内存后台能同时保留多少个常用APP不被杀？",
+                      "answer": "这款Reno 16 Pro搭载了OPPO自研的内存拓展技术，12GB的物理运存最高可以拓展到等效24GB的运行空间，日常你同时挂微信、QQ、淘宝、抖音、小红书还有办公的文档APP，来回切换基本不会出现重新加载的情况，正常用机场景下能稳定保留15个以上常用第三方APP后台。就算你中途切出去打半小时手游，切回微信的时候也不用重新登录，之前打开的聊天记录、刷到一半的商品页面都会原封不动保留着，不用重复加载浪费时间。"
+                    },
+                    {
+                      "question": "它的高刷屏日常刷应用和玩游戏的时候会不会很费电？",
+                      "answer": "这款机型的高刷屏搭载了智能动态帧率调节技术，不是全程锁死高刷的，在你看静态电子书、浏览长图内容的时候会自动降到合适的低帧率降低功耗，刷短视频、刷社交信息流的时候自动切换到高刷保证流畅度。日常中度使用的话满电支撑一整天完全没问题，就算你连续2小时玩轻度的MOBA类手游，耗电也不到30%，完全不用为了续航特意把高刷关掉，兼顾了流畅体验和续航表现，不会出现普通高刷手机掉电飞快的情况。"
+                    },
+                    {
+                      "question": "标准版12+256GB和高配版12+512GB除了存储大小还有别的区别吗？",
+                      "answer": "两个版本除了机身存储的容量不同之外，其他所有硬件配置、功能体验都是完全一致的，人像摄影模组、高刷屏参数、快充功率还有5G基带规格没有任何阉割。256GB的版本适合日常只是拍点普通照片、存少量app和视频的用户，足够日常一两年的存储需求，3299的性价比很高。512GB的版本更适合喜欢拍4K人像vlog、存大量剧和游戏资源的用户，不用频繁清理存储空间，用三四年也不用担心内存不够用，定价3699也很划算，大家可以根据自己的存储需求选就行。"
+                    },
+                    {
+                      "question": "这款手机的轻薄机身会不会容易摔碎，抗摔性怎么样？",
+                      "answer": "这款Reno 16 Pro虽然机身做了轻薄处理，整机重量控制在180g以内，但屏幕和后盖都用了经过强化的抗摔玻璃材质，日常从桌面高度不小心滑落掉到木质地板上，基本不会出现碎裂的情况，正常使用完全没问题。但它毕竟没有额外的专业防摔认证，还是不建议大家故意让手机摔落，如果日常经常手滑的用户，搭配赠送的软硅胶手机壳使用，就能进一步降低摔碎的风险，完全可以满足普通用户日常的防摔需求。"
+                    },
+                    {
+                      "question": "它的满血快充从0充到满大概需要多长时间，支持边充边玩吗？",
+                      "answer": "这款机型搭载的是OPPO自家的满血超级闪充，在熄屏状态下从0电量充到100%，只需要不到35分钟，就算你早上起来发现手机忘充电，洗漱收拾的十几分钟就能充到60%以上，完全能满足你出门一整天的用电需求。它本身搭载了完善的充电温控保护机制，正常边充边刷短视频聊微信是完全没问题的，不会出现严重发烫的情况，不过还是不建议边快充边玩大型手游，会让机身温度升高，长期这样操作会轻微损耗电池的使用寿命。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 2,
+                      "content": "用了快两周真的有点失望，本来冲着人像摄影买的，结果晴天户外拍人像的时候，后置镜头的算法过度磨皮，把我脸上的痘印全磨没就算了，连眉毛的毛流感都给磨没了，拍出来的人像假得像网图。还有宣传的高刷屏，部分小众的第三方APP居然锁60帧，刷起来明显卡顿，3千多的机子这个表现真的不值这个价，跟之前用的旧Reno比体验没提升多少。"
+                    },
+                    {
+                      "nickname": "小棠",
+                      "rating": 5,
+                      "content": "这机子真的买对了！我平时特别爱和朋友出门探店拍照片，之前的旧手机在暖光的咖啡馆里拍出来的人脸总是发黄，这个Reno16Pro拍出来的肤色特别通透，自带的虚化把背景的蛋糕灯虚化得特别好看，直出都不用修图直接发朋友圈。整机拿在手里轻得离谱，我这种小手女生单手握一下午刷手机也不累，快充午休充十分钟下午逛一下午街都有电，太适合我们这种爱拍照的女生了。"
+                    },
+                    {
+                      "nickname": "阿哲",
+                      "rating": 2,
+                      "content": "本来冲着5G和轻薄入的，结果用了不到一个月就发现，信号在地铁里经常会断网，同位置我朋友的其他品牌5G手机都能正常刷短视频，我的这台就转圈圈加载半天。而且机身的后盖太沾指纹了，我就算天天擦，用十分钟就全是油印子，看着特别显脏，送的手机壳质感也特别差，用两天边就发黄了，这个价格买真的感觉踩坑了，体验远不如预期。"
+                    }
+                  ],
+                  "review_count": 3,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "智能手机",
+                    "学生党"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "智能手机"
+                  ],
+                  "tags": [
+                    "OPPO",
+                    "数码电子",
+                    "智能手机",
+                    "通勤",
+                    "咖啡",
+                    "12GB+256GB",
+                    "标准版",
+                    "高配版",
+                    "12GB+512GB"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_016_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
+                "score": {
+                  "scenario_match": 0.68,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9517,
+                  "reputation_fit": 0.75,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8575,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
+                    "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_digital_016 召回分 0.0263; p_digital_016 召回分 0.0226。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_016::review::3",
+                  "p_digital_016::faq::2"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_016_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_024",
+                  "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+                  "brand": "北面",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "帽子",
+                  "base_price": 199.0,
+                  "min_price": 199.0,
+                  "max_price": 199.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_024_live.jpg",
+                  "image_url": "/product-images/p_clothes_024_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_024_1",
+                      "properties": {
+                        "尺码": "均码",
+                        "帽围调节方式": "可调节",
+                        "颜色": "经典黑"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_024_2",
+                      "properties": {
+                        "尺码": "均码",
+                        "帽围调节方式": "可调节",
+                        "颜色": "米白色"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_024_3",
+                      "properties": {
+                        "尺码": "均码",
+                        "帽围调节方式": "可调节",
+                        "颜色": "藏青色"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_024_4",
+                      "properties": {
+                        "尺码": "均码",
+                        "帽围调节方式": "可调节",
+                        "颜色": "浅灰色"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_024_5",
+                      "properties": {
+                        "尺码": "均码",
+                        "帽围调节方式": "可调节",
+                        "颜色": "森林绿"
+                      },
+                      "price": 199.0
+                    }
+                  ],
+                  "description": "这款北面Horizon系列轻量速干运动鸭舌帽，专门为户外出行和日常运动打造，帽身采用北面专属的速干针织面料，整体重量不到80g，上头顶着几乎没负担。面料自带细密透气网眼结构，长时间佩戴也不会闷出满头汗，还自带UPF50+的防晒力，能挡住大部分正午直射的紫外线，避免脸侧和后颈被晒红。后脑勺是可调节的魔术贴设计，不管头围54cm到61cm的男女都能调到最贴合的松紧度，不会跑跳两下就掉。不管是周末徒步登山、日常夜跑晨练、通勤骑车买咖啡，还是去海边露营逛景点都能用。平时戴完随手塞包里也不占地方，脏了直接冷水手洗阴干就行，别用热水泡也别扔烘干机烘，不然会破坏速干面料的防晒涂层。",
+                  "faqs": [
+                    {
+                      "question": "这款北面Horizon鸭舌帽的速干面料具体是什么材质，洗多了会不会失去速干效果？",
+                      "answer": "这款帽子的帽身主体采用的是78%聚酯纤维+22%氨纶混纺的定向导速干面料，出厂前就做了长效的拒水导汗涂层处理，正常手洗20次以内基本不会影响速干性能。要注意别用含漂白剂的洗衣液浸泡，也不要用高温烘干机烘干或者长时间放在太阳下暴晒，不然会破坏面料表面的导汗涂层，后续汗渍就容易残留在面料上干得变慢，日常清洗后挂在通风阴凉处阴干就可以很好地保留速干属性。"
+                    },
+                    {
+                      "question": "这款可调节的北面鸭舌帽，最大可以适配多少厘米的头围，戴久了魔术贴会不会起毛勾头发？",
+                      "answer": "这款均码可调节款的适配头围范围是54cm到61cm，大部分成年男性和女性的常规头围都能覆盖到，头围偏大的用户把魔术贴调到最外侧的档位也能贴合不勒头。它的魔术贴用的是北面定制的软勾面，不是普通硬塑料勾面，正常使用半年以内不会大面积起毛，佩戴或者摘戴的时候稍微注意点，顺着头型的方向摘，基本不会勾扯到头发。要是日常不小心勾到起了小毛，用小剪刀轻轻剪掉浮毛就可以正常继续用。"
+                    },
+                    {
+                      "question": "这款帽子的防晒性能是真实的吗，长时间在户外待着后帽檐会不会变软塌下垂？",
+                      "answer": "这款帽子的防晒等级达到了国家UPF50+的标准，经过专业纺织检测机构认证，能够阻隔98%以上的UVA和UVB紫外线，日常在户外待4到6个小时也能有效防护脸侧和额头不被晒伤。帽檐内部嵌入了定制的薄型PP支撑骨，正常使用情况下不容易变软塌，哪怕是淋了小雨或者出了汗浸湿帽檐，晾干之后也能快速恢复原本的挺括造型，只要不用力反复对折帽檐，基本不会出现长期下垂变形的情况。"
+                    },
+                    {
+                      "question": "我平时戴眼镜，戴这款鸭舌帽的时候会不会帽檐卡眼镜腿，侧面会不会漏阳光晒到太阳穴？",
+                      "answer": "这款帽子的帽身侧边做了向内收的弧度剪裁，刚好给戴眼镜的用户留出了眼镜腿的佩戴空隙，正常佩戴的时候不会出现帽檐边卡着眼镜腿把眼镜往上顶的情况。帽檐的横向延伸宽度做到了12cm，比普通运动鸭舌帽宽出1.5cm左右，正常调整好帽子的佩戴角度，基本能把太阳穴位置完全遮住，日常跑步或者快走的时候哪怕有侧方的阳光，也不容易直接晒到太阳穴的皮肤，不用额外反复调整帽子的位置。"
+                    },
+                    {
+                      "question": "这款轻量的鸭舌帽可以折叠塞进冲锋衣的衣兜里吗，折叠之后会不会留下很难消的死褶？",
+                      "answer": "这款帽子整体重量不到80g，帽身没有硬支撑结构，是可以随意折叠的，折叠之后的体积差不多和手掌心差不多大，完全能轻松塞进常规冲锋衣的侧兜或者牛仔裤口袋里，出门通勤或者户外徒步不想戴的时候随手塞进去非常方便。它用的速干面料自带抗皱属性，正常折叠放几个小时拿出来之后，抖两下或者轻轻拍一拍，大部分褶皱都会自然散开，几乎不会留下很难平复的死褶，要是有小部分残留的褶皱，用手顺着面料捋两下就能恢复平整。"
+                    },
+                    {
+                      "question": "运动出汗多的时候戴这款帽子，会不会头前额的汗直接顺着帽檐流到眼睛里？",
+                      "answer": "这款帽子在内侧额头接触的位置，专门加了一层1cm宽的吸汗亲肤条，是用高密度的毛圈面料做的，能快速吸附前额流下来的汗水，短时间大量出汗的时候也不会直接让汗顺着帽檐往下淌。它的导汗设计是把额头的汗水往帽子两侧的面料里导，通过侧面的透气网眼快速散出去，正常日常慢跑或者中等强度的徒步运动，基本不会出现汗水流进眼睛的情况，要是做马拉松这类长时间高强度的运动，建议每隔1个小时左右稍微把帽子摘下来透透气，能进一步提升佩戴的舒适感。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 3,
+                      "content": "整体其实还算过得去，就是戴了大概半个月之后发现后脑勺的魔术贴位置边缘开始起小毛絮，有时候摘帽子还会勾住几根头发，体验有点糟。我头围是59cm，调到最紧的档位跑起来还是有点点晃，不是特别贴合。而且我上次洗了一次之后，帽子正面北面的小logo边缘居然有点轻微脱胶，虽然不仔细看看不出来，但两百块的帽子这个品控确实有点不太符合预期，只能说勉强能用，算不上特别值这个价。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 3,
+                      "content": "本来冲着速干的卖点买的，上周去徒步出了超多汗，帽子内侧是干得挺快的，但是帽檐位置淋了点小雨之后居然软塌了，半天都挺不起来，低头的时候帽檐直接垂下来挡视线，我走山路的时候好几次都看不清脚下的台阶，特别麻烦。而且我戴了两天之后发现，耳朵上方的位置面料有点硬，蹭得耳后皮肤有点发红发痒，可能是我肤质比较敏感？这个佩戴舒适度确实没达到我的预期，只能给个中差评。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "这款帽子真的是我今年买到最满意的运动配饰了！上周连续三天去溯溪爬山，全程大太阳晒着，戴它跑跳全程稳得一批，速干面料出了汗十分钟就全干了，头上一点都不闷，之前戴别的帽子半天就闷得满头痘，这次完全没长痘。帽檐的防晒力也绝，我待在户外大半天，额头脸侧一点都没晒黑，魔术贴调松紧特别方便，我头围57cm调完特别贴合，平时通勤骑车也戴着，塞包里完全不占地方，两百块能买到北面这么实用的帽子真的太值了，已经推荐给一起徒步的朋友了。"
+                    },
+                    {
+                      "nickname": "大宇",
+                      "rating": 1,
+                      "content": "我收到货拆开就发现帽子的帽檐是歪的，左右两边不对称，一边高一边低，戴上去特别奇怪，正面看帽檐往左边歪得很明显，完全没法正常戴。找客服说退换，还让我自己出寄回去的运费，折腾了快一周才处理完。重新寄过来的货味道特别大，放在阳台晾了三天还是有刺鼻的化工味，洗了一次之后速干的面料摸起来硬邦邦的，logo直接掉了一半，两百块买了个残次品，真的太失望了，以后再也不想在这家买北面的东西了。"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "帽子"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "sports",
+                    "帽子"
+                  ],
+                  "tags": [
+                    "北面",
+                    "服饰运动",
+                    "帽子",
+                    "防晒",
+                    "轻量",
+                    "通勤",
+                    "户外",
+                    "咖啡",
+                    "均码",
+                    "可调节",
+                    "经典黑",
+                    "米白色",
+                    "藏青色",
+                    "浅灰色",
+                    "森林绿"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_024_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
+                "score": {
+                  "scenario_match": 0.68,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9535,
+                  "reputation_fit": 0.8,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.97,
+                  "final_score": 0.8475,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+                    "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_clothes_024 召回分 0.0236。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_024::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_024_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_009",
+                  "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                  "brand": "三只松鼠",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "坚果/零食",
+                  "base_price": 99.0,
+                  "min_price": 59.0,
+                  "max_price": 99.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_009_live.jpg",
+                  "image_url": "/product-images/p_food_009_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_009_1",
+                      "properties": {
+                        "总袋数": "15袋",
+                        "包装类型": "简装"
+                      },
+                      "price": 59.0
+                    },
+                    {
+                      "sku_id": "s_p_food_009_2",
+                      "properties": {
+                        "总袋数": "15袋",
+                        "包装类型": "礼盒装"
+                      },
+                      "price": 69.0
+                    },
+                    {
+                      "sku_id": "s_p_food_009_3",
+                      "properties": {
+                        "总袋数": "30袋",
+                        "包装类型": "简装"
+                      },
+                      "price": 89.0
+                    },
+                    {
+                      "sku_id": "s_p_food_009_4",
+                      "properties": {
+                        "总袋数": "30袋",
+                        "包装类型": "礼盒装"
+                      },
+                      "price": 99.0
+                    }
+                  ],
+                  "description": "三只松鼠这款每日坚果专门为懒得搭配坚果、追求每日精准营养的朋友量身打造，整整30袋总重750g，每袋都是25g的独立密封小包装，不用怕开袋后受潮变质。搭配都是科学配比的6种果仁果干，没有额外添加白砂糖调味，保留坚果原生香，不会齁甜发腻。不管是职场人通勤揣一袋当下午茶垫肚子，学生党课间补充能量，还是宝妈给家里小朋友当健康加餐、全家周末出游揣几袋解闷都合适。建议每天拆开1袋直接吃，也可以倒在酸奶、燕麦碗里拌着吃，口感层次更丰富。要注意坚果开封后尽量当天吃完，里面的果仁含少量油脂，放在阴凉干燥处存放，别暴晒也别放冰箱冷藏容易返潮。礼盒装还能直接当伴手礼送亲戚朋友，体面又实用。",
+                  "faqs": [
+                    {
+                      "question": "这款每日坚果750g礼盒里具体是哪几种坚果和果干，有没有额外的添加剂？",
+                      "answer": "咱们这款每日坚果的配比是原味巴旦木仁、夏威夷果仁、核桃仁、榛子仁这4种坚果，搭配蔓越莓干、葡萄干2种低糖果干，全程没有额外添加白砂糖、香精、防腐剂，也没有盐焗、油炸的重加工步骤，所有食材都是经过三次人工筛拣坏果，再低温慢烘锁香处理，保留原生的坚果香气，果干也只保留了果肉本身的清甜，吃起来不会齁甜，老人小朋友都能放心吃，控糖期的人群也可以适量食用。"
+                    },
+                    {
+                      "question": "25g*30袋的礼盒装和25g*15袋的简装，除了袋数之外还有什么区别？",
+                      "answer": "两款除了售价和总净含量不同，包装形式也有明显区别：30袋的750g款用的是硬面烫金的手提礼盒，盒身印了三只松鼠的卡通IP形象，自带手提绳，送礼或者整箱放家里收纳都很方便；15袋的简装是简约瓦楞纸盒，没有手提设计，主打自用高性价比。两款里面的每一小袋内容物配比、单袋重量、食材品质都是完全一致的，大家可以根据自己的食用周期和需求选，要是自己吃1个月左右选15袋简装就够，全家吃或者打算送人直接入30袋礼盒款更划算。"
+                    },
+                    {
+                      "question": "独立小包装的密封效果怎么样，存放的时候需要特别注意什么吗？",
+                      "answer": "每一小袋用的都是加厚铝箔复合膜包装，封口是压边热封工艺，正常未拆封的状态下，放在阴凉干燥的常温环境里能完整保持6个月保质期，不会轻易漏风受潮。大家收到货之后别把整箱放在阳光直晒的窗台、靠近灶台的高温位置，也别放到冰箱冷藏室里，低温环境里的水汽很容易钻进包装缝隙让坚果变软返潮。拆封后的小袋最好一次性吃完，要是实在没吃完，记得把袋口用夹子夹紧，2小时内吃完，不然放久了果仁很容易氧化变哈喇味影响口感。"
+                    },
+                    {
+                      "question": "这款每日坚果有没有经过过敏提示，易过敏人群要注意什么？",
+                      "answer": "咱们产品的外包装和每一个小袋的背面都明确标注了致敏原提示，这款坚果里包含了坚果类、果仁类成分，同时生产流水线也加工过含有花生、乳制品、蛋类的其他零食，要是您本身对巴旦木、榛子、核桃这类坚果，或者花生、乳制品过敏的话，一定要谨慎食用，食用前仔细查看小包装上的成分配比标注。第一次吃的过敏体质人群可以先少量试吃，确认没有不适反应之后再正常食用，也可以先咨询医生的建议再下单，避免出现过敏的情况。"
+                    },
+                    {
+                      "question": "如果收到货发现里面有坏果或者个别小袋破损漏了，能申请售后吗？",
+                      "answer": "咱们品牌对这款每日坚果提供坏果包赔的售后保障，要是您收到货之后，发现整箱里有个别小袋出现封口开裂、果仁漏出的情况，或者拆开之后吃到坏果、瘪果仁，只需要把对应问题的小袋和实物拍清晰的照片，联系咱们店铺的在线客服提交凭证就可以，不用退回商品，客服核实之后会按照对应的问题袋数给您安排退款或者补发。哪怕您已经吃到大半箱才发现有坏果，也随时可以联系我们处理，我们不会以商品已经拆封食用为理由拒绝售后，最大程度保障大家的消费体验。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小棠",
+                      "rating": 5,
+                      "content": "回购第三箱了！每袋里的果仁都很饱满，几乎没遇到过瘪的或者坏的，果干也不是那种干硬齁甜的，配酸奶拌着当早餐刚好，25g的量不多不少，吃完刚好解馋也不会腻。之前买过别的牌子的每日坚果，有时候打开半袋都是果干，这款坚果占比特别高，巴旦木和夏威夷果的香劲特别足，我家娃每天放学都要主动要一袋吃，放在包里带去上班当下午茶，同事都追着要链接。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 2,
+                      "content": "这次买的简装15袋太糟心了，吃第三袋的时候就吃出了一个发苦的榛子仁，以为是个例就扔了，结果后面连续两袋都有两三个发软的核桃仁，明显是受潮了。找客服说坏果包赔，最后只给退了两块钱，说超过3袋坏的才给多赔，之前买礼盒装的时候从来没遇到过这种情况，没想到简装的品控差这么多，明明食材应该一样的，这次体验真的不好，以后不敢随便买简装的了。"
+                    },
+                    {
+                      "nickname": "悠悠",
+                      "rating": 5,
+                      "content": "过年的时候囤了两箱礼盒装送亲戚，反馈都特别好！包装亮堂堂的提着特别有面，里面的独立小袋揣出门太方便了，上周带娃去游乐园，随手塞了两袋在包里，娃玩累了拿出来吃特别顶饱。没有那种油炸的过度调味，给老人吃也放心，配比很科学，不用自己单独买好几种坚果凑量，每天一袋算下来也不贵，比自己单买坚果划算太多了，已经推荐给身边好多宝妈了。"
+                    }
+                  ],
+                  "review_count": 3,
+                  "rating_avg": 4.0,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "坚果/零食",
+                    "学生党"
+                  ],
+                  "not_good_for": [
+                    "严格控糖用户需看配料"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "gift",
+                    "坚果/零食"
+                  ],
+                  "tags": [
+                    "三只松鼠",
+                    "食品饮料",
+                    "坚果/零食",
+                    "通勤",
+                    "礼盒",
+                    "15袋",
+                    "简装",
+                    "礼盒装",
+                    "30袋"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_009_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "严格控糖用户需看配料"
+                  ]
+                },
+                "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
+                "score": {
+                  "scenario_match": 0.86,
+                  "attribute_match": 0.85,
+                  "price_fit": 0.756,
+                  "reputation_fit": 0.95,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.9036,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                    "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于用户关注的 食品饮料 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 4/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：严格控糖用户需看配料。",
+                    "商品知识证据命中：p_food_009 召回分 0.0300; p_food_009 召回分 0.0288。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_009::profile::0",
+                  "p_food_009::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_009_4"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 3646.0,
+              "total_price_max": 4086.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_beauty_025 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_016 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_024 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_009 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_025": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 89.0,
+                  "min_price": 89.0,
+                  "max_price": 89.0,
+                  "selected_sku_id": "s_p_beauty_025_1",
+                  "selected_price": 89.0,
+                  "selected_total_price": 89.0
+                },
+                "p_digital_016": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 3299.0,
+                  "min_price": 3299.0,
+                  "max_price": 3699.0,
+                  "selected_sku_id": "s_p_digital_016_1",
+                  "selected_price": 3299.0,
+                  "selected_total_price": 3299.0
+                },
+                "p_clothes_024": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 199.0,
+                  "min_price": 199.0,
+                  "max_price": 199.0,
+                  "selected_sku_id": "s_p_clothes_024_1",
+                  "selected_price": 199.0,
+                  "selected_total_price": 199.0
+                },
+                "p_food_009": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 99.0,
+                  "min_price": 59.0,
+                  "max_price": 99.0,
+                  "selected_sku_id": "s_p_food_009_4",
+                  "selected_price": 99.0,
+                  "selected_total_price": 99.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "送礼",
+              "女"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "油皮需谨慎",
+              "严格控糖用户需看配料"
+            ],
+            "evidence": [
+              "p_beauty_025: 花西子这款螺黛生花双头眉笔专门针对东方人眉形设计，0.08g的极细笔芯能精准点描每根毛流，就像用毛笔勾线一样丝滑不卡壳，显色度刚好不会重手变蜡笔小新，添加的持色覆膜成分日常通勤出汗、喝冰饮沾到水汽都不容易晕成大黑块。特别适合手残新手、追求野生眉妆感的女生，不管是日常上班快速描眉，还是约会拍特写妆造都能用。一头是细笔芯一头是螺旋眉刷，画之前先梳顺眉毛再填补空缺，画完扫掉浮色就很自然，注意用的时候手别太用力压笔芯，不然容易断，存放在阴凉干燥",
+              "p_beauty_025: FAQ - 这款0.08g的极细笔芯会不会很容易断？平时怎么保养能延长使用寿命？",
+              "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
+              "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于用户关注的 美妆护肤 类目。",
+              "p_digital_016: OPPO Reno 16 Pro是专门为爱拍人像的年轻用户打造的轻薄5G旗舰机，整机拿在手里几乎没有坠手感，长时间刷剧出门扫街揣口袋都毫无负担。核心的人像摄影系统搭配原生柔光环，暗光下拍夜市合照、咖啡馆氛围感照片都不用额外补光，肤感磨皮自然不假白。搭载的高刷屏刷短视频、玩轻度手游时跟手度拉满，搭配大毫安时电池和满血快充，出门忘充电午休充10分钟就能刷一下午社交软件。特别适合喜欢记录日常通勤、和闺蜜出游、下班探店瞬间的学生党、职场新人，平",
+              "p_digital_016: FAQ - OPPO Reno 16 Pro的人像拍照在夜景暗光环境下会不会糊？",
+              "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
+              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
+              "p_clothes_024: 这款北面Horizon系列轻量速干运动鸭舌帽，专门为户外出行和日常运动打造，帽身采用北面专属的速干针织面料，整体重量不到80g，上头顶着几乎没负担。面料自带细密透气网眼结构，长时间佩戴也不会闷出满头汗，还自带UPF50+的防晒力，能挡住大部分正午直射的紫外线，避免脸侧和后颈被晒红。后脑勺是可调节的魔术贴设计，不管头围54cm到61cm的男女都能调到最贴合的松紧度，不会跑跳两下就掉。不管是周末徒步登山、日常夜跑晨练、通勤骑车买咖啡，还是去",
+              "p_clothes_024: FAQ - 这款北面Horizon鸭舌帽的速干面料具体是什么材质，洗多了会不会失去速干效果？",
+              "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+              "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+              "p_food_009: 三只松鼠这款每日坚果专门为懒得搭配坚果、追求每日精准营养的朋友量身打造，整整30袋总重750g，每袋都是25g的独立密封小包装，不用怕开袋后受潮变质。搭配都是科学配比的6种果仁果干，没有额外添加白砂糖调味，保留坚果原生香，不会齁甜发腻。不管是职场人通勤揣一袋当下午茶垫肚子，学生党课间补充能量，还是宝妈给家里小朋友当健康加餐、全家周末出游揣几袋解闷都合适。建议每天拆开1袋直接吃，也可以倒在酸奶、燕麦碗里拌着吃，口感层次更丰富。要注意坚果开",
+              "p_food_009: FAQ - 这款每日坚果750g礼盒里具体是哪几种坚果和果干，有没有额外的添加剂？",
+              "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+              "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_025",
+                "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                "final_score": 0.8681,
+                "scenario_match": 0.68,
+                "attribute_match": 0.75,
+                "price_fit": 0.9713,
+                "reputation_fit": 0.816,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
+                  "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于用户关注的 美妆护肤 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 2.83/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：油皮需谨慎。",
+                  "商品知识证据命中：p_beauty_025 召回分 0.0274; p_beauty_025 召回分 0.0223。"
+                ]
+              },
+              {
+                "role": "digital",
+                "product_id": "p_digital_016",
+                "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+                "final_score": 0.8575,
+                "scenario_match": 0.68,
+                "attribute_match": 0.75,
+                "price_fit": 0.9517,
+                "reputation_fit": 0.75,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
+                  "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_digital_016 召回分 0.0263; p_digital_016 召回分 0.0226。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_024",
+                "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+                "final_score": 0.8475,
+                "scenario_match": 0.68,
+                "attribute_match": 0.75,
+                "price_fit": 0.9535,
+                "reputation_fit": 0.8,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.97,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+                  "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_clothes_024 召回分 0.0236。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_009",
+                "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                "final_score": 0.9036,
+                "scenario_match": 0.86,
+                "attribute_match": 0.85,
+                "price_fit": 0.756,
+                "reputation_fit": 0.95,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                  "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于用户关注的 食品饮料 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 4/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：严格控糖用户需看配料。",
+                  "商品知识证据命中：p_food_009 召回分 0.0300; p_food_009 召回分 0.0288。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_025",
+            "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "name": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "brand": "花西子",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "眉笔",
+            "price": 89.0,
+            "price_range": [
+              89.0,
+              89.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_025_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.83,
+            "review_count": 6,
+            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
+            "score": 0.8681,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_025_1"
+          },
+          {
+            "product_id": "p_digital_016",
+            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 3299.0,
+            "price_range": [
+              3299.0,
+              3699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_016_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 3,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
+            "score": 0.8575,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_016_1"
+          },
+          {
+            "product_id": "p_clothes_024",
+            "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+            "name": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+            "brand": "北面",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "帽子",
+            "price": 199.0,
+            "price_range": [
+              199.0,
+              199.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_024_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 4,
+            "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
+            "score": 0.8475,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_024_1"
+          },
+          {
+            "product_id": "p_food_009",
+            "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "name": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "brand": "三只松鼠",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "坚果/零食",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_009_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
+            "score": 0.9036,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_009_4"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [
+              "送礼",
+              "女朋友"
+            ],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_025",
+                  "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                  "price": 89.0,
+                  "score": 0.8681
+                },
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.8453
+                },
+                {
+                  "product_id": "p_beauty_006",
+                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                  "price": 170.0,
+                  "score": 0.8384
+                },
+                {
+                  "product_id": "p_beauty_010",
+                  "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                  "price": 118.0,
+                  "score": 0.8334
+                },
+                {
+                  "product_id": "p_beauty_007",
+                  "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                  "price": 89.0,
+                  "score": 0.8313
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_016",
+                  "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+                  "price": 3299.0,
+                  "score": 0.8575
+                },
+                {
+                  "product_id": "p_digital_018",
+                  "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                  "price": 1799.0,
+                  "score": 0.8524
+                },
+                {
+                  "product_id": "p_digital_019",
+                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                  "price": 3299.0,
+                  "score": 0.8459
+                },
+                {
+                  "product_id": "p_digital_008",
+                  "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
+                  "price": 7499.0,
+                  "score": 0.8231
+                },
+                {
+                  "product_id": "p_digital_010",
+                  "title": "小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器",
+                  "price": 9999.0,
+                  "score": 0.8194
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_024",
+                  "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+                  "price": 199.0,
+                  "score": 0.8475
+                },
+                {
+                  "product_id": "p_clothes_023",
+                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                  "price": 149.0,
+                  "score": 0.8388
+                },
+                {
+                  "product_id": "p_clothes_003",
+                  "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+                  "price": 199.0,
+                  "score": 0.8374
+                },
+                {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "price": 349.0,
+                  "score": 0.8374
+                },
+                {
+                  "product_id": "p_clothes_005",
+                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
+                  "price": 259.0,
+                  "score": 0.8364
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_009",
+                  "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+                  "price": 59.0,
+                  "score": 0.9036
+                },
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8526
+                },
+                {
+                  "product_id": "p_food_016",
+                  "title": "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品",
+                  "price": 85.0,
+                  "score": 0.8485
+                },
+                {
+                  "product_id": "p_food_013",
+                  "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+                  "price": 9.0,
+                  "score": 0.8342
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8235
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_food_009",
+            "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "brand": "三只松鼠",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.9036,
+            "strength": "综合分 0.9036，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_beauty_025",
+            "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "brand": "花西子",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 89.0,
+            "price_range": [
+              89.0,
+              89.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.83,
+            "review_count": 6,
+            "score": 0.8681,
+            "strength": "综合分 0.8681，评分 2.83/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_digital_016",
+            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 3299.0,
+            "price_range": [
+              3299.0,
+              3699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 3,
+            "score": 0.8575,
+            "strength": "综合分 0.8575，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8526,
+            "strength": "综合分 0.8526，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.8524,
+            "strength": "综合分 0.8524，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_food_016",
+            "title": "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品",
+            "brand": "蒙牛",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 85.0,
+            "price_range": [
+              85.0,
+              118.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.67,
+            "review_count": 6,
+            "score": 0.8485,
+            "strength": "综合分 0.8485，评分 3.67/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "油皮需谨慎",
+          "严格控糖用户需看配料"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g、OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB、The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+              "已从商品库候选中选择：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+              "已从商品库候选中选择：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽"
+            ],
+            "evidence_points": [
+              "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g - 价格：89.0",
+              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB - 价格：3299.0",
+              "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 - 价格：199.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_116"
+      }
+    }
+  ]
+}

@@ -14,11 +14,8 @@ import os
 from typing import Any, Dict, List, Tuple
 
 import requests
-from dotenv import load_dotenv
 
 from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_report
-
-load_dotenv()
 
 RERANK_MODEL = os.getenv("RERANK_MODEL")
 RERANK_BINDING_HOST = os.getenv("RERANK_BINDING_HOST")

@@ -1,0 +1,1394 @@
+{
+  "case_id": 112,
+  "input": "有什么好吃的零食推荐吗",
+  "expected": "recommend_shopping_products → 零食+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "有什么好吃的零食推荐吗",
+        "budget": null,
+        "category": "食品",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.86,
+      "reason": "后端兜底：用户明确切换到普通商品品类 食品。",
+      "source": "guard",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有什么好吃的零食推荐吗",
+            "budget": null,
+            "category": "食品",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.86,
+          "reason": "用户明确提出普通商品品类：食品。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.86,
+          "route_score_confidence": 0.88
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.8,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.8,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.8,
+          "margin_bonus": 0.08,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.88
+        },
+        "llm": null,
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有什么好吃的零食推荐吗",
+            "budget": null,
+            "category": "食品",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.86,
+          "reason": "用户明确提出普通商品品类：食品。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.86,
+          "route_score_confidence": 0.88
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有什么好吃的零食推荐吗",
+            "budget": null,
+            "category": "食品",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "high_confidence_local",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": true,
+        "router_attempted": false,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": false,
+        "router_applied": false,
+        "router_final_source": "guard",
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "high_confidence_local",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心，参考价约 32 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 3,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 249,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement"
+            ],
+            "route_confidence": 0.88,
+            "route_margin": 0.8,
+            "requirement_completeness": 0.7400000000000001,
+            "query_complexity": 0.09166666666666666,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.88,
+        "route_margin": 0.8,
+        "requirement_completeness": 0.7400000000000001,
+        "query_complexity": 0.09166666666666666,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "有什么好吃的零食推荐吗",
+          "budget": null,
+          "category": "食品",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.86,
+        "reason": "后端兜底：用户明确切换到普通商品品类 食品。",
+        "source": "guard",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有什么好吃的零食推荐吗",
+              "budget": null,
+              "category": "食品",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.86,
+            "reason": "用户明确提出普通商品品类：食品。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.86,
+            "route_score_confidence": 0.88
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "llm": null,
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有什么好吃的零食推荐吗",
+              "budget": null,
+              "category": "食品",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.86,
+            "reason": "用户明确提出普通商品品类：食品。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.86,
+            "route_score_confidence": 0.88
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有什么好吃的零食推荐吗",
+              "budget": null,
+              "category": "食品",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "high_confidence_local",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": true,
+          "router_attempted": false,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": false,
+          "router_applied": false,
+          "router_final_source": "guard",
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "high_confidence_local",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "condition_filter",
+        "task_type": "condition_filter",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 10 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心；约 32 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品；约 4.5 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心，参考价约 32 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_food_010",
+            "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "name": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "brand": "良品铺子",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "坚果/零食",
+            "price": 32.0,
+            "price_range": [
+              32.0,
+              62.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "reason": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于 食品饮料/坚果/零食，综合分 0.8692，参考价 32-62 CNY。 评价均分 3.2/5。 检索证据：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#profile 召回分 0.0325；良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#sku 召回分 0.0274。",
+            "score": 0.8692,
+            "source": "single_product",
+            "selected_sku_id": "s_p_food_010_4"
+          },
+          {
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "name": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "调味品",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于 食品饮料/调味品，综合分 0.8476，参考价 9-32 CNY。 评价均分 3.6/5。",
+            "score": 0.8476,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_food_018_4"
+          },
+          {
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "name": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_004_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于 食品饮料/碳酸饮料，综合分 0.8466，参考价 4.5-65 CNY。 评价均分 2.75/5。 检索证据：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#profile 召回分 0.0274。",
+            "score": 0.8466,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_food_004_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_010",
+                "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+                "price": 32.0,
+                "score": 0.8692
+              },
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8476
+              },
+              {
+                "product_id": "p_food_004",
+                "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                "price": 4.5,
+                "score": 0.8466
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8385
+              },
+              {
+                "product_id": "p_food_023",
+                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                "price": 36.0,
+                "score": 0.8371
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "有什么好吃的零食推荐吗",
+          "scenario": "snack_drink",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "components": [
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_010",
+                  "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+                  "brand": "良品铺子",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "坚果/零食",
+                  "base_price": 59.0,
+                  "min_price": 32.0,
+                  "max_price": 62.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_010_live.jpg",
+                  "image_url": "/product-images/p_food_010_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_010_1",
+                      "properties": {
+                        "数量": "约20枚",
+                        "容量": "500g"
+                      },
+                      "price": 35.0
+                    },
+                    {
+                      "sku_id": "s_p_food_010_2",
+                      "properties": {
+                        "数量": "约20枚",
+                        "容量": "1000g"
+                      },
+                      "price": 62.0
+                    },
+                    {
+                      "sku_id": "s_p_food_010_3",
+                      "properties": {
+                        "数量": "约40枚",
+                        "容量": "500g"
+                      },
+                      "price": 32.0
+                    },
+                    {
+                      "sku_id": "s_p_food_010_4",
+                      "properties": {
+                        "数量": "约40枚",
+                        "容量": "1000g"
+                      },
+                      "price": 59.0
+                    }
+                  ],
+                  "description": "良品铺子这款肉松饼可是实打实的国民解馋小点心，足足1000g整箱装差不多有40枚，皮薄得能透出内里满满的肉松，咬一口外层酥软掉渣，内馅咸香不腻，肉香直钻鼻腔，完全不是那种淀粉感很重的廉价货。配料里用的是精选猪腿肉松，搭配小麦粉和鲜鸡蛋调的外皮，不加多余的人工香精，老人小孩吃着也放心。平时赶早八来不及买早饭，揣两个在包里配杯热牛奶就能顶一上午；办公室摸鱼饿了拿一个垫肚子，出门郊游分给同行的朋友也够吃。家里囤货选1kg装更划算，要是想先试味选500g约20枚的规格也合适，注意开封后尽量3天内吃完，放在阴凉干燥处别晒，受潮了外皮会软掉影响口感哦。不管是学生党、上班族还是平时爱囤点心的长辈，都能吃得满意。",
+                  "faqs": [
+                    {
+                      "question": "整箱1000g的良品铺子肉松饼里大概有多少枚，每枚的重量是统一的吗？",
+                      "answer": "咱们1000g的整箱肉松饼常规是约40枚的规格，单枚重量大概在25g左右，因为肉松填充的量有轻微的人工操作误差，个别几枚的重量可能会有1-2g的浮动，不会影响整体口感和总净含量哦。如果您是想分给办公室同事当下午茶点心，按每两人分1枚的量来算，40枚够20人左右的小团队分两轮，完全不用担心不够吃的情况。"
+                    },
+                    {
+                      "question": "这款肉松饼的内馅是纯肉松吗，有没有添加很多淀粉凑重量？",
+                      "answer": "咱们这款良品铺子肉松饼的内馅主原料是精选猪腿肉制成的肉松，只添加了极少量的食用小麦淀粉来调整内馅的粘合度，完全不会出现咬开大半都是淀粉糊的情况，每一口都能吃到实打实的肉香。你撕开饼皮就能看到一缕缕清晰的肉松纤维，咸香度调得刚好，不会过咸发苦，也不会淡得像没放盐，代餐的时候吃也不会觉得齁得慌。"
+                    },
+                    {
+                      "question": "这款肉松饼给小朋友当早餐吃合适吗，有没有什么需要注意的地方？",
+                      "answer": "这款肉松饼作为小朋友的早餐加餐是完全合适的，它的外皮用鲜鸡蛋和小麦粉揉制，不添加人工合成的甜味剂和多余香精，入口松软不费牙，3岁以上的小朋友都可以直接吃。不过给小朋友吃的时候建议搭配温牛奶或者温水，避免单独吃太干噎到，另外如果小朋友对鸡蛋或者猪肉类食材过敏的话，就不建议食用啦，开封后的剩下的饼要封好封口再给小朋友吃，避免落灰受潮。"
+                    },
+                    {
+                      "question": "500g约20枚的规格和1000g约40枚的规格，里面的肉松饼品质是一样的吗？",
+                      "answer": "两个规格的肉松饼是完全同生产线生产的，配料、口感、单枚的大小都没有任何区别，唯一的差别就是整箱的净含量和数量，500g装更适合想先试味、或者家里人口少、一周吃不完40枚的用户选择，35元的定价更灵活不浪费。1000g的整箱装性价比更高，适合宿舍集体囤货、办公室日常补给或者家里爱吃点心的人多的情况，算下来单枚的价格比单独买散称的要便宜近1块钱。"
+                    },
+                    {
+                      "question": "这款肉松饼的保质期有多久，囤货的话要放在什么地方保存才不会坏？",
+                      "answer": "咱们这款良品铺子肉松饼的未开封保质期是180天，每一枚都是独立的小包装，不会出现整箱打开没吃完就全部受潮变质的情况。囤货的时候放在阴凉干燥、避免阳光直射的地方就可以，不要放在卫生间、厨房这种湿度大的区域，也不要和有浓烈气味的东西比如榴莲、樟脑丸放在一起，饼皮很容易吸味影响口感，只要独立小包装没有漏气胀袋，放足半年都不会变软变味。"
+                    },
+                    {
+                      "question": "这款肉松饼吃起来会不会很干，能不能用来当代餐顶饱？",
+                      "answer": "咱们这款肉松饼做了专门的锁水工艺，外皮是松软的而不是硬邦邦的酥皮，内馅的肉松也做了润化处理，咬开不会掉一嘴渣子呛到，配一杯温水或者豆浆的话完全不会觉得干。用来当代餐完全没问题，每枚的热量大概在110大卡左右，早上吃2枚加一杯热豆浆，到午饭前都不会饿，比吃很多甜腻的夹心面包要顶饱很多，也不会吃完没多久就反酸，减脂期用来临时垫肚子也完全合适。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小棠",
+                      "rating": 5,
+                      "content": "回购第三次了！这次直接入了1kg整箱的，数了下刚好41枚，算下来才一块多一个太划算了。外皮软乎乎的一点都不硬，咬开里面全是肉松，能吃到一丝丝的肉纤维，完全没有那种糊嘴的淀粉感，咸淡刚好，当早餐配热牛奶真的绝。我放了两个在工位，下午三点多饿了啃一个，直接撑到下班，同事闻着味还追着我要链接，已经给全办公室都种草了。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 5,
+                      "content": "给我妈买的整箱肉松饼，她平时跳完广场舞回来总爱找东西垫肚子，之前买过别的牌子的吃完她总说太甜太腻，这次这个她夸了好多次。每枚都是独立小包装，揣兜里出门遛弯也方便，咬开肉香特别浓，外皮软得很，她牙不好也能轻松咬动。我自己尝了两个，确实不是那种齁甜的味道，咸香口的，家里囤着放茶几上，来客人随手拿两个吃也很合适。"
+                    },
+                    {
+                      "nickname": "阿明",
+                      "rating": 1,
+                      "content": "这次收到的整箱肉松饼太离谱了，吃第三个就咬到了明显的哈喇味，拆开小包装摸饼皮都是发黏的，看了下生产日期也没过期，估计是运输的时候被晒到变质了。数了下才32枚，根本不是宣传的40枚，找客服半天也不给处理，花59块钱买了半箱坏的，剩下的全扔了，以后再也不买大箱装的了，之前买小规格的从来没遇到过这种情况，这次体验差到极点。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 3,
+                      "content": "整体不算特别差但也没达到预期，之前上学的时候吃过良品铺子的肉松饼，这次买的感觉肉松少了好多，撕开饼皮大半都是厚厚的面皮，咬到最后一口才能吃到一点肉松味。数了下500g的只有17枚，差了3个也不是什么大问题，但35块钱这个价格性价比实在不高，味道也偏甜，之前的咸香口感淡了好多，应该不会再回购了，不如去买楼下糕点店现做的，更便宜还新鲜。"
+                    },
+                    {
+                      "nickname": "圆圆",
+                      "rating": 2,
+                      "content": "本来想囤了当早餐吃，结果拿到手吃了两个就没胃口了，饼皮特别干，咬一口掉一身渣，要猛喝水才能咽下去，里面的肉松几乎全是淀粉感，吃起来像嚼棉花一样，完全没有之前买的那种鲜浓肉香。整箱大部分吃起来都是淡淡的甜味，一点咸香的味道都没有，59块钱买了一箱子几乎吃不下去的东西，勉强分给室友了一半，剩下的全放过期扔了，以后不会再买这款。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.2,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "坚果/零食",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "严格控糖用户需看配料"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "坚果/零食"
+                  ],
+                  "tags": [
+                    "良品铺子",
+                    "食品饮料",
+                    "坚果/零食",
+                    "办公",
+                    "约20枚",
+                    "500g",
+                    "1000g",
+                    "约40枚"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_010_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "严格控糖用户需看配料"
+                  ]
+                },
+                "reason": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于 食品饮料/坚果/零食，综合分 0.8692，参考价 32-62 CNY。 评价均分 3.2/5。 检索证据：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#profile 召回分 0.0325；良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#sku 召回分 0.0274。",
+                "score": {
+                  "scenario_match": 0.692,
+                  "attribute_match": 0.782,
+                  "price_fit": 0.8758,
+                  "reputation_fit": 0.89,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 1.0,
+                  "final_score": 0.8692,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 32 CNY，已用于预算适配评分。",
+                    "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.2/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：严格控糖用户需看配料。",
+                    "商品知识证据命中：p_food_010 召回分 0.0325; p_food_010 召回分 0.0274。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_010::profile::0",
+                  "p_food_010::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_010_4"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 32.0,
+              "total_price_max": 62.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_food_010 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_food_010": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 59.0,
+                  "min_price": 32.0,
+                  "max_price": 62.0,
+                  "selected_sku_id": "s_p_food_010_4",
+                  "selected_price": 59.0,
+                  "selected_total_price": 59.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "严格控糖用户需看配料"
+            ],
+            "evidence": [
+              "p_food_010: 良品铺子这款肉松饼可是实打实的国民解馋小点心，足足1000g整箱装差不多有40枚，皮薄得能透出内里满满的肉松，咬一口外层酥软掉渣，内馅咸香不腻，肉香直钻鼻腔，完全不是那种淀粉感很重的廉价货。配料里用的是精选猪腿肉松，搭配小麦粉和鲜鸡蛋调的外皮，不加多余的人工香精，老人小孩吃着也放心。平时赶早八来不及买早饭，揣两个在包里配杯热牛奶就能顶一上午；办公室摸鱼饿了拿一个垫肚子，出门郊游分给同行的朋友也够吃。家里囤货选1kg装更划算，要是想先试味",
+              "p_food_010: FAQ - 整箱1000g的良品铺子肉松饼里大概有多少枚，每枚的重量是统一的吗？",
+              "价格匹配：当前最低 SKU 约 32 CNY，已用于预算适配评分。",
+              "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "food",
+                "product_id": "p_food_010",
+                "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+                "final_score": 0.8692,
+                "scenario_match": 0.692,
+                "attribute_match": 0.782,
+                "price_fit": 0.8758,
+                "reputation_fit": 0.89,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 1.0,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 32 CNY，已用于预算适配评分。",
+                  "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.2/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：严格控糖用户需看配料。",
+                  "商品知识证据命中：p_food_010 召回分 0.0325; p_food_010 召回分 0.0274。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_food_010",
+            "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "name": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "brand": "良品铺子",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "坚果/零食",
+            "price": 32.0,
+            "price_range": [
+              32.0,
+              62.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "reason": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于 食品饮料/坚果/零食，综合分 0.8692，参考价 32-62 CNY。 评价均分 3.2/5。 检索证据：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#profile 召回分 0.0325；良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#sku 召回分 0.0274。",
+            "score": 0.8692,
+            "source": "single_product",
+            "selected_sku_id": "s_p_food_010_4"
+          },
+          {
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "name": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "调味品",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 属于 食品饮料/调味品，综合分 0.8476，参考价 9-32 CNY。 评价均分 3.6/5。",
+            "score": 0.8476,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_food_018_4"
+          },
+          {
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "name": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_004_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于 食品饮料/碳酸饮料，综合分 0.8466，参考价 4.5-65 CNY。 评价均分 2.75/5。 检索证据：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#profile 召回分 0.0274。",
+            "score": 0.8466,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_food_004_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_010",
+                  "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+                  "price": 32.0,
+                  "score": 0.8692
+                },
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8476
+                },
+                {
+                  "product_id": "p_food_004",
+                  "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                  "price": 4.5,
+                  "score": 0.8466
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8385
+                },
+                {
+                  "product_id": "p_food_023",
+                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                  "price": 36.0,
+                  "score": 0.8371
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_food_010",
+            "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+            "brand": "良品铺子",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 32.0,
+            "price_range": [
+              32.0,
+              62.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.2,
+            "review_count": 5,
+            "score": 0.8692,
+            "strength": "综合分 0.8692，评分 3.2/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8476,
+            "strength": "综合分 0.8476，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "score": 0.8466,
+            "strength": "综合分 0.8466，评分 2.75/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_food_003",
+            "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "brand": "东方树叶",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 4.0,
+            "price_range": [
+              4.0,
+              55.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "score": 0.8385,
+            "strength": "综合分 0.8385，评分 3.25/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料；追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_food_023",
+            "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "brand": "雀巢",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 36.0,
+            "price_range": [
+              36.0,
+              78.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.8371,
+            "strength": "综合分 0.8371，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_food_013",
+            "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+            "brand": "海天",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              22.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 3,
+            "score": 0.8292,
+            "strength": "综合分 0.8292，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "condition_filter",
+          "task_type": "condition_filter",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "严格控糖用户需看配料"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+              "已从商品库候选中选择：李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+              "已从商品库候选中选择：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品"
+            ],
+            "evidence_points": [
+              "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 - 价格：32.0",
+              "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 - 价格：9.0",
+              "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 - 价格：4.5"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_112"
+      }
+    }
+  ]
+}

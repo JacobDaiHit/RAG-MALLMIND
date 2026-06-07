@@ -1,0 +1,2472 @@
+{
+  "case_id": 130,
+  "input": "华为Pura 90 Pro 的详细信息",
+  "expected": "recommend → 华为Pura 90 Pro详情",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "华为Pura 90 Pro 的详细信息",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro 的详细信息",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 917,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 917,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "华为Pura 90 Pro 的详细信息",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 918
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 4,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 2128,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.5200000000000001,
+            "query_complexity": 0.13333333333333333,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.5200000000000001,
+        "query_complexity": 0.13333333333333333,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "华为Pura 90 Pro 的详细信息",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro 的详细信息",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 917,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 917,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "华为Pura 90 Pro 的详细信息",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 918
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 31 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml；约 210 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g；约 120 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g；约 89 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑；约 4999 CNY；评分 0.92"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑；约 5199 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.91"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.90"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "adidas Essentials 三条纹 男子针织运动长裤 日常休闲收口裤；约 299 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.82"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品；约 30 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品；约 4.5 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "name": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8453，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#sku 召回分 0.0247。",
+            "score": 0.8453,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_018_1"
+          },
+          {
+            "product_id": "p_digital_005",
+            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "平板电脑",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6399.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.9224，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0285；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#sku 召回分 0.0247。",
+            "score": 0.9224,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_005_1"
+          },
+          {
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "运动长裤",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8543，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0271；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0241。",
+            "score": 0.8543,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_006_1"
+          },
+          {
+            "product_id": "p_food_003",
+            "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "name": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "brand": "东方树叶",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "茶饮",
+            "price": 4.0,
+            "price_range": [
+              4.0,
+              55.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_003_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于 食品饮料/茶饮，综合分 0.8421，参考价 4-55 CNY。 评价均分 3.25/5。 检索证据：农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案#profile 召回分 0.0274。",
+            "score": 0.8421,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_003_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [
+            "华为"
+          ],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.8453
+              },
+              {
+                "product_id": "p_beauty_009",
+                "title": "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml",
+                "price": 210.0,
+                "score": 0.8366
+              },
+              {
+                "product_id": "p_beauty_015",
+                "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+                "price": 120.0,
+                "score": 0.8338
+              },
+              {
+                "product_id": "p_beauty_007",
+                "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                "price": 89.0,
+                "score": 0.8313
+              },
+              {
+                "product_id": "p_beauty_006",
+                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                "price": 170.0,
+                "score": 0.8201
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_005",
+                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                "price": 4999.0,
+                "score": 0.9224
+              },
+              {
+                "product_id": "p_digital_021",
+                "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+                "price": 5199.0,
+                "score": 0.9133
+              },
+              {
+                "product_id": "p_digital_002",
+                "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                "price": 6999.0,
+                "score": 0.9082
+              },
+              {
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "price": 1499.0,
+                "score": 0.902
+              },
+              {
+                "product_id": "p_digital_004",
+                "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                "price": 6299.0,
+                "score": 0.889
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "price": 349.0,
+                "score": 0.8543
+              },
+              {
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "price": 99.0,
+                "score": 0.8355
+              },
+              {
+                "product_id": "p_clothes_004",
+                "title": "adidas Essentials 三条纹 男子针织运动长裤 日常休闲收口裤",
+                "price": 299.0,
+                "score": 0.8264
+              },
+              {
+                "product_id": "p_clothes_020",
+                "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                "price": 79.0,
+                "score": 0.8216
+              },
+              {
+                "product_id": "p_clothes_023",
+                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                "price": 149.0,
+                "score": 0.8202
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8421
+              },
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8326
+              },
+              {
+                "product_id": "p_food_002",
+                "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                "price": 30.0,
+                "score": 0.8323
+              },
+              {
+                "product_id": "p_food_004",
+                "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                "price": 4.5,
+                "score": 0.8315
+              },
+              {
+                "product_id": "p_food_015",
+                "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                "price": 38.0,
+                "score": 0.8189
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "华为Pura 90 Pro 的详细信息",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [
+            "华为"
+          ],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml + 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 + Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 + 农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "brand": "The Ordinary",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "精华",
+                  "base_price": 59.0,
+                  "min_price": 59.0,
+                  "max_price": 98.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_018_live.jpg",
+                  "image_url": "/product-images/p_beauty_018_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_018_1",
+                      "properties": {
+                        "容量": "30ml 标准装"
+                      },
+                      "price": 59.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_018_2",
+                      "properties": {
+                        "容量": "60ml 大容量装"
+                      },
+                      "price": 98.0
+                    }
+                  ],
+                  "description": "The Ordinary这款烟酰胺10%锌1%精华液是油痘肌和暗沉肌的高性价比选择。核心成分10%烟酰胺能调节皮脂分泌、淡化毛孔并提亮肤色，1%锌则辅助控油舒缓。适合油性/混合性皮肤、有毛孔粗大或肤色不均问题的人群。日常护肤时，洁面爽肤后取2-3滴涂抹全脸（避开眼周），初期建议隔天使用建立耐受，后续可增至每日。注意：敏感肌需先耳后测试，避免与高浓度酸类（如水杨酸）同时使用，使用期间做好防晒。",
+                  "faqs": [
+                    {
+                      "question": "10%烟酰胺浓度会刺激皮肤吗？",
+                      "answer": "10%属于较高浓度烟酰胺，初次使用可能有轻微刺痛或泛红。建议先在耳后/手臂内侧测试，无不适再用。初期每周2-3次，每次2-3滴，待皮肤适应后逐渐增加频率。若持续不适，暂停使用或咨询医生。敏感肌需谨慎，可先选低浓度产品。"
+                    },
+                    {
+                      "question": "这款精华适合什么肤质？",
+                      "answer": "成分功效完全相同，仅容量和价格不同。30ml单价约1.97元/ml，60ml约1.63元/ml，大容量更划算。初次尝试选30ml，长期使用选60ml更经济。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小敏",
+                      "rating": 2,
+                      "content": "用两次就泛红刺痛，混干皮hold不住10%浓度。之前用5%烟酰胺没事，这个太刺激了。涂完脸紧绷，还起了小疹子，敏感肌慎入！"
+                    },
+                    {
+                      "nickname": "阿强",
+                      "rating": 3,
+                      "content": "控油效果一般，早上涂下午T区还是油。毛孔没见小，质地略黏吸收慢。用了一个月没明显变化，性价比普通。"
+                    },
+                    {
+                      "nickname": "小美",
+                      "rating": 5,
+                      "content": "油痘肌救星！半个月T区出油减少，毛孔细腻了，肤色提亮。清爽不黏，吸收快。30ml能用俩月，价格超实惠，会回购60ml！"
+                    },
+                    {
+                      "nickname": "丽丽",
+                      "rating": 3,
+                      "content": "效果不明显，三周肤色没变化。涂多了搓泥，和后续乳液不兼容。用量得控制，不然容易卡粉，整体一般。"
+                    },
+                    {
+                      "nickname": "大兵",
+                      "rating": 5,
+                      "content": "男生油皮福音！控油超棒，早上涂到晚上不油，毛孔变小。价格便宜，60ml能用很久，推荐给油皮朋友！"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.6,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "精华"
+                  ],
+                  "not_good_for": [
+                    "极敏感人群需先试用"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "精华"
+                  ],
+                  "tags": [
+                    "The Ordinary",
+                    "美妆护肤",
+                    "精华",
+                    "敏感肌",
+                    "防晒",
+                    "控油",
+                    "30ml 标准装",
+                    "60ml 大容量装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_018_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "极敏感人群需先试用"
+                  ]
+                },
+                "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8453，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#sku 召回分 0.0247。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9946,
+                  "reputation_fit": 0.97,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.82,
+                  "final_score": 0.8453,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                    "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.6/5，参与口碑评分。",
+                    "商品提供 2 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：极敏感人群需先试用。",
+                    "商品知识证据命中：p_beauty_018 召回分 0.0247。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_018::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_018_1"
+              },
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_005",
+                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                  "brand": "华为",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "平板电脑",
+                  "base_price": 4999.0,
+                  "min_price": 4999.0,
+                  "max_price": 6399.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_005_live.jpg",
+                  "image_url": "/product-images/p_digital_005_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_005_1",
+                      "properties": {
+                        "存储规格": "8GB+256GB",
+                        "网络版本": "Wi-Fi 版"
+                      },
+                      "price": 4999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_2",
+                      "properties": {
+                        "存储规格": "12GB+256GB",
+                        "网络版本": "Wi-Fi 版"
+                      },
+                      "price": 5299.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_3",
+                      "properties": {
+                        "存储规格": "8GB+512GB",
+                        "网络版本": "Wi-Fi 版"
+                      },
+                      "price": 5499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_4",
+                      "properties": {
+                        "存储规格": "12GB+512GB",
+                        "网络版本": "Wi-Fi 版"
+                      },
+                      "price": 5799.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_5",
+                      "properties": {
+                        "存储规格": "8GB+256GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 5599.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_6",
+                      "properties": {
+                        "存储规格": "12GB+256GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 5899.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_7",
+                      "properties": {
+                        "存储规格": "8GB+512GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 6099.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_005_8",
+                      "properties": {
+                        "存储规格": "12GB+512GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 6399.0
+                    }
+                  ],
+                  "description": "华为MatePad Pro Max 12.6英寸平板，核心卖点是适配办公需求的高刷大屏与多任务并行能力，12.6英寸高色域高刷屏拖滑无拖影，分屏最多同时开3个独立应用，侧边还能悬浮小窗回消息，彻底摆脱小屏平板办公的局促感。不管是经常要带设备开线上会的职场打工人，还是需要分屏查资料写文档的内容创作者，或是用来上网课做笔记的高校学生都适配。日常带出门赶方案、居家同时挂会议记笔记剪短视频都顺手，全金属机身握感扎实抗造，搭配M-Pencil使用延迟极低。使用建议平时开智能刷新率模式更省电，注意别让尖锐硬物直接刮到屏幕表面，Wi-Fi版不支持插SIM卡，出门在外需要提前备好手机热点哦。",
+                  "faqs": [
+                    {
+                      "question": "这款12.6英寸的MatePad Pro Max多任务功能具体支持多少应用同时并行，不会出现杀后台的情况吗？",
+                      "answer": "这款平板的多任务能力是专门针对办公场景优化的，8GB+256GB版本日常可稳定同时运行3-4个大型办公应用，12GB+512GB版本最多支持6个常用APP并行，只要后台总占用内存不超出阈值就不会随便杀后台。你可以直接通过底部上滑停顿调出后台，拖拽应用到屏幕边缘开启最多三分屏布局，还能额外叠加2个悬浮小窗，同时开文档、查资料、回微信完全不用反复切换APP，办公效率提升特别明显。"
+                    },
+                    {
+                      "question": "这款12.6英寸的高刷屏日常看视频、刷文档的实际体验怎么样，会不会出现色域偏色的问题？",
+                      "answer": "这块12.6英寸的屏幕支持最高120Hz自适应刷新率，日常刷文档拖滑、刷短视频完全没有卡顿拖影的问题，看2K分辨率的高清视频画面细腻度拉满，还覆盖了100% DCI-P3广色域，出厂前每台都做了校色处理，修图剪视频的时候颜色显示和专业显示器的偏差特别小。你还可以根据使用场景切换护眼模式，长时间开文档办公眼睛也不容易累，高刷设置成智能自适应模式，低刷场景自动降低刷新率还能省不少电。"
+                    },
+                    {
+                      "question": "这款Wi-Fi版的平板外出办公的时候，怎么快速和华为的笔记本、手机联动传输文件？",
+                      "answer": "只要你的华为手机、笔记本和平板登录同一个华为账号，打开蓝牙和Wi-Fi之后就能自动触发多屏协同，手机的界面可以直接投屏到平板上操作，拖拽就能互传图片、文档，不需要走微信发文件的弯路。如果是搭配华为笔记本，还能开启超级终端，把平板直接当成笔记本的扩展屏，一边在笔记本上做演示，一边在平板上标注修改，外出见客户演示方案特别方便，哪怕没有公共网络也能正常使用联动功能，传输速度比普通蓝牙快很多。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 2,
+                      "content": "本来冲着12.6英寸大屏买的，结果没想到裸机拿在手里比我之前的旧重了快半斤，单手握持看半小时网页胳膊就酸，想装个全尺寸的办公套件存素材，256G版本实际可用空间才不到200G，存不了多少高清工程文件就得外接硬盘，这个价位的存储配置实在不太够，而且官方配套的键盘保护壳还要额外花大几百买，算下来总花费比一开始预想的高太多，体验有点失望。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 5,
+                      "content": "做新媒体内容的我真的挖到宝了！这个12.6英寸的高刷屏剪1080P的短视频完全不卡，三分屏同时开着文档找选题、后台挂着微信对接客户、旁边悬浮窗回评论，根本不用来回切APP，之前用小平板找资料要反复退后台，现在一天的工作量两小时就能做完，屏幕显示颜色特别准，修封面图的时候和我台式机显示器的颜色几乎没差，续航也够撑我开一下午线上会，太适合我们这种出门跑活动的内容人了。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "作为每天要开三四场线上会的职场人，这个平板真的帮我大忙了，投屏到会议室的电视上画面特别清晰，高刷不会出现ppt翻页卡顿的情况，多任务开着会议界面的同时，分屏另一边直接开文档记笔记，不用额外带笔记本，揣包里就能直接带去开会，重量比起游戏本轻太多，上下班挤地铁背着完全不累，联动我的华为手机传会议记录点一下就过去，再也不用微信传文件丢画质了，太顺手。"
+                    },
+                    {
+                      "nickname": "小吕",
+                      "rating": 3,
+                      "content": "整体用下来中规中矩吧，多任务办公确实比普通小屏平板好用，但是续航没有宣传的那么顶，我开着高刷连开三小时文档加挂会议，电量直接掉了40%，出门不带快充头半天都撑不住，而且Wi-Fi版在外面要连手机热点特别麻烦，偶尔还会出现热点断连的情况，没有插卡版可选有点不方便，这个价格其实也算不上特别划算，勉勉强强能用，算不上特别满意。"
+                    },
+                    {
+                      "nickname": "阿宁",
+                      "rating": 5,
+                      "content": "读研用来写论文查资料太合适了！分屏一边放知网的文献，另一边直接开word敲字，再也不用在两个APP之间反复横跳，配个华为的手写笔直接在文献上标注重点，省了好多打印资料的钱，12.6英寸的大屏看扫描版的古籍资料也能看清小字，高刷滑动翻页的时候完全没有颗粒感和拖影，泡图书馆坐一下午看文献眼睛也没之前用小平板那么酸，这笔钱花的太值了。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 4.0,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "平板电脑",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "偏爱小屏/轻便用户需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "平板电脑"
+                  ],
+                  "tags": [
+                    "华为",
+                    "数码电子",
+                    "平板电脑",
+                    "办公",
+                    "8GB+256GB",
+                    "Wi-Fi 版",
+                    "12GB+256GB",
+                    "8GB+512GB",
+                    "12GB+512GB",
+                    "全网通5G版"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_005_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "偏爱小屏/轻便用户需谨慎"
+                  ]
+                },
+                "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.9224，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0285；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#sku 召回分 0.0247。",
+                "score": {
+                  "scenario_match": 0.782,
+                  "attribute_match": 0.882,
+                  "price_fit": 0.9061,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.88,
+                  "final_score": 0.9224,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+                    "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 4/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：偏爱小屏/轻便用户需谨慎。",
+                    "商品知识证据命中：p_digital_005 召回分 0.0285; p_digital_005 召回分 0.0247。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_005::profile::0",
+                  "p_digital_005::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_005_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "brand": "Nike",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "运动长裤",
+                  "base_price": 349.0,
+                  "min_price": 349.0,
+                  "max_price": 359.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_006_live.jpg",
+                  "image_url": "/product-images/p_clothes_006_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_006_1",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_2",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "黑色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_3",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "黑色"
+                      },
+                      "price": 359.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_4",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "黑色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_5",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 349.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_006_6",
+                      "properties": {
+                        "尺码": "XL码",
+                        "颜色": "深灰色"
+                      },
+                      "price": 359.0
+                    }
+                  ],
+                  "description": "这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度保持版型，避免暴晒导致面料发硬变色。",
+                  "faqs": [
+                    {
+                      "question": "这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
+                      "answer": "这款裤子所有在售SKU的面料、做工、细节设计都是完全一致的，价格差异仅来自尺码库存的成本差异，XL码黑色属于常年热门的畅销大码，备货和仓储的调配成本略高，所以定价为359元，其余M码深灰、L码黑色的日常定价都是349元，大家可以根据自己的尺码需求选择，不用担心不同价格的商品存在品质差异，全部都是官方同生产线正品。"
+                    },
+                    {
+                      "question": "这款针织束脚裤的面料是不是容易起球，春秋穿会不会太厚？",
+                      "answer": "这款用的是280g左右的新疆棉混纺针织毛圈面料，表面做了磨毛抗起球预处理，正常穿着前提下日常通勤久坐摩擦、搭配运动鞋穿久了都不容易起球，春秋20度左右单穿刚好合适，不会闷汗也不会觉得凉，南方冬天搭配秋裤也能穿，北方零度以上单穿外出也完全没问题，不会像薄款运动裤那样透风，也不会像加绒款那样闷腿。"
+                    },
+                    {
+                      "question": "我178cm78kg选L码黑色会不会卡裆，束脚口会不会勒小腿？",
+                      "answer": "这款L码黑色的官方净臀围是108cm，裤长是98cm，针对大部分175-180cm、体重70-80kg的男性做了裆部加深剪裁，正常站姿走路完全不会卡裆，束脚口的橡筋做了3cm宽的加宽处理，弹力富余3-5cm，正常小腿围40cm以内的人穿都不会有勒紧的压痕，要是你小腿肌肉特别发达可以选大一码，穿着空间会更宽松舒适。"
+                    },
+                    {
+                      "question": "深灰色M码的裤身会不会容易显脏，洗多了会不会发白？",
+                      "answer": "这款深灰色M码的面料做了固色预处理，正常日常穿溅到咖啡、灰尘这些浅污渍，用湿纸巾一擦就能擦干净，不会留明显印子，按照说明冷水反面洗涤的话，正常穿洗二三十次都不会出现大面积发白的情况，只有长期暴晒或者用热水加漂白剂洗才会出现面料泛旧的问题，日常洗涤只要注意这些小细节，穿一整年颜色都能保持得很均匀。"
+                    },
+                    {
+                      "question": "这款裤子有没有隐形口袋，能不能放下6.7英寸的大手机不会掉出来？",
+                      "answer": "这款裤子两侧的插袋做了18cm的加深处理，袋口内侧还做了隐形暗扣设计，正常放6.7英寸的iPhone 14 Pro Max这类大屏手机完全不会掉出来，哪怕你跑步快步走也不用担心滑落，后片还有一个单独的迷你贴袋，可以放门禁卡、交通卡这类小物件，不会晃来晃去磨得腿不舒服，日常出门不用带包也完全够用。"
+                    },
+                    {
+                      "question": "这款束脚裤能不能用来日常慢跑穿，面料会不会勾丝破洞？",
+                      "answer": "这款针织面料的抗撕扯等级达到了运动服饰的国标A级标准，正常日常慢跑、跳操穿完全没问题，不会随便勾丝破洞，只要不是刻意蹭到尖锐的钢筋、铁丝这类锋利物件，正常穿个两三年都不会出现破洞的情况，不过它属于休闲基础款长裤，不是专业竞速跑步裤，高强度的马拉松训练还是更建议选专业速干运动裤，日常轻度运动穿完全足够。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 4,
+                      "content": "整体穿下来还行，版型确实很修饰腿型，我腿有点O型穿这个束脚款刚好遮得七七八八，面料也软乎乎的很舒服。就是刚拆包装的时候闻到点轻微的工业味，挂阳台吹了两天才散掉，腰头的抽绳留得有点长，走路的时候偶尔会滑出来蹭到鞋面上，其他地方都没啥大毛病，349的价格总体还是值得入手的。"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 5,
+                      "content": "这已经是我买的第二条同款了，之前的旧款穿了快两年洗得有点发白才回购的，这次入的L码黑色刚好合身，175cm72kg穿上不用改裤长，束脚口刚好卡在脚踝上面一点，搭空军一号穿特别好看。面料摸起来厚实但不闷，春天二十多度穿完全刚好，口袋够深，我放Max手机跑着取快递都没掉出来，性价比拉满。"
+                    },
+                    {
+                      "nickname": "大张",
+                      "rating": 3,
+                      "content": "收到货穿了不到一周，后腰位置经常坐椅子摩擦的地方就起了好几个小毛球，用毛球器剃完没两天又长出来了，之前买的别家同价位针织裤都没这个问题。客服说这是正常针织面料的损耗，花三百多买的裤子感觉质量有点配不上价格，版型倒是挺好看的，就是面料抗起球的处理做得不到位，不太推荐久坐的上班族买。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "买给我爸当生日礼物的，选的M码深灰色，他170cm65kg穿上特别合适，腰头的抽绳调节起来很方便，他平时跳完广场舞散散步穿都特舒服。裤子洗了三次都没掉色也没变形，侧边的小勾标绣得特别平整，没有多余的线头，我爸平时省得很说这是他买过最合心意的运动裤，让我再给他回购一条别的颜色。"
+                    },
+                    {
+                      "nickname": "阿远",
+                      "rating": 1,
+                      "content": "收到的XL码黑色明显是被人穿过退回来的二手货，裤脚位置有明显的污渍痕迹，腰头的橡筋都已经松垮没有弹力了，口袋里还留了半张别人的超市购物小票，找客服退货退了半天才同意，来回折腾了快一周才处理完，花359买条别人穿过的残次品体验感特别差，以后不会再来这家买东西了。"
+                    },
+                    {
+                      "nickname": "小辰",
+                      "rating": 5,
+                      "content": "最近健身天天穿这条裤子，练腿的时候深蹲完全不卡裆，面料弹力够大动作怎么做都不会紧绷，束脚口不会往上滑，撸铁完直接穿着去买饭也完全不尴尬，不用换别的外穿裤子。之前怕针织裤显胖，结果穿上身意外的显瘦，搭个基础白T恤就能出门，洗了好多次版型都没塌，349的价格能穿一整年太值了。"
+                    }
+                  ],
+                  "review_count": 6,
+                  "rating_avg": 3.83,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "运动长裤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "运动长裤"
+                  ],
+                  "tags": [
+                    "Nike",
+                    "服饰运动",
+                    "运动长裤",
+                    "通勤",
+                    "M码",
+                    "深灰色",
+                    "L码",
+                    "黑色",
+                    "XL码"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_006_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8543，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0271；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0241。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.8954,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 1.0,
+                  "final_score": 0.8543,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+                    "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.83/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_clothes_006 召回分 0.0271; p_clothes_006 召回分 0.0241。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_006::faq::2",
+                  "p_clothes_006::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_006_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "brand": "东方树叶",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "茶饮",
+                  "base_price": 4.0,
+                  "min_price": 4.0,
+                  "max_price": 55.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_003_live.jpg",
+                  "image_url": "/product-images/p_food_003_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_003_1",
+                      "properties": {
+                        "容量": "500ml",
+                        "包装": "单瓶装"
+                      },
+                      "price": 4.0
+                    },
+                    {
+                      "sku_id": "s_p_food_003_2",
+                      "properties": {
+                        "容量": "500ml",
+                        "包装": "15瓶整箱"
+                      },
+                      "price": 55.0
+                    }
+                  ],
+                  "description": "喜欢纯茶味又怕甜腻的朋友看过来！东方树叶无糖乌龙茶是农夫山泉旗下火了十多年的经典款，整瓶完全不含额外添加糖，热量几乎为0，用的是真乌龙茶萃取液，没有多余香精勾兑，入口是炭火焙香的醇厚茶味，回甘清润不会发涩发苦。特别适合控糖人群、健身党、上班摸鱼想解腻的打工人，还有爱喝奶茶又怕长胖的姐妹当低糖替代。上班放工位摸鱼喝，吃重油重盐的外卖配它解腻解辣，出门健身塞包里随时补水解渴都合适。建议阴凉处存放，开封后尽量24小时内喝完，冰镇之后茶香味会更突出，注意未开封的状态下别放在阳光直晒的地方久放，避免风味流失哦。",
+                  "faqs": [
+                    {
+                      "question": "这款东方树叶无糖乌龙茶真的完全不含糖吗？配料表具体有什么？",
+                      "answer": "这款500ml装的东方树叶无糖乌龙茶是完全零添加糖的，配料表非常干净，只有水、乌龙茶叶、维生素C、碳酸氢钠，没有额外添加白砂糖、果葡糖浆、甜味剂这类成分，整体热量不到1大卡，属于真正的无糖茶饮。怕甜怕胖的控糖人群、健身期朋友都可以放心喝，哪怕是平时戒糖的人，入口也只会喝到乌龙茶本身的自然焙香味道，完全不会有突兀的甜味。"
+                    },
+                    {
+                      "question": "整箱15瓶装的东方树叶乌龙茶发过来会不会有漏液、破损的情况？",
+                      "answer": "咱们整箱500ml*15瓶的包装都做了两层防护，外层是加厚的快递专用瓦楞纸箱，内层瓶身之间还有定制的缓冲珍珠棉隔层固定，避免运输过程中瓶子互相碰撞挤压。正常快递运输过程中极少出现漏液破损的情况，如果大家收到货之后发现有瓶子漏液、瓶盖裂开变形、饮品变质的问题，只要在签收24小时内联系客服拍照反馈，我们会直接按破损的瓶数给你全额退款或者补发，完全不用你承担损失。"
+                    },
+                    {
+                      "question": "这款乌龙茶的茶味会不会特别浓涩？平时很少喝纯茶的人能适应吗？",
+                      "answer": "这款东方树叶的乌龙茶萃取工艺做了专门的优化，是用恒温低温萃取技术提取的乌龙茶汤，去掉了普通劣质泡出来的浓茶会有的明显涩味和清苦味，入口是淡淡的炭火焙香，后调带一点乌龙茶本身的清甜回甘，茶味不会特别冲。平时很少喝纯茶的人第一次喝也不会觉得难接受，冰镇之后喝起来口感会更清爽，哪怕你之前习惯喝甜饮料，慢慢喝两次也能适应这种无负担的纯茶香气。"
+                    },
+                    {
+                      "question": "买整箱装的这款东方树叶乌龙茶保质期是多久？发的是不是临期产品？",
+                      "answer": "咱们这款茶饮的未开封保质期是12个月，仓库发出的产品全部都是最近3个月内生产的新鲜批次，绝对不会发距离保质期不足1个月的临期产品，大家收到货可以直接看瓶身喷印的生产日期，清晰可查。如果有特殊需求想要指定新鲜生产批次的朋友，下单的时候可以备注，客服会尽量优先给你发最近两周刚生产的新货，囤货喝也完全不用担心很快过期的问题。"
+                    },
+                    {
+                      "question": "这款无糖乌龙茶和自己在家泡的乌龙茶有什么区别？茶底用的是什么品种的乌龙？",
+                      "answer": "这款茶底用的是福建安溪的浓香型焙火乌龙，萃取的时候严格控制萃取时间和温度，不会析出过多的茶单宁导致喝着涩口，同时保留了乌龙本身的焙火香气，不用你自己洗茶、烧水、等冲泡，开瓶就能直接喝，非常方便。自己在家泡的乌龙茶浓度不好控制，放久了容易变涩，这款工业化标准化生产的每一瓶口感都完全一致，出门带也不怕漏的到处都是，适配各种出门的场景。"
+                    },
+                    {
+                      "question": "喝这款无糖乌龙茶会不会像喝浓咖啡一样晚上睡不着觉？咖啡因含量高吗？",
+                      "answer": "这款500ml装的无糖乌龙茶整瓶的咖啡因含量大概在25mg到35mg之间，只有普通一杯美式咖啡的三分之一不到，含量非常温和，大部分人正常下午喝也不会影响晚上的睡眠，对咖啡因耐受度特别低的朋友，建议下午三点之后就尽量不要喝了，避免少数情况下出现轻微的神经兴奋情况。平时怕咖啡太猛睡不着、想补点咖啡因提精神的朋友选它也很合适，喝了不会有心慌手抖的不适感。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿柠",
+                      "rating": 5,
+                      "content": "我真的是东方树叶乌龙茶的死忠粉！之前健身之后不敢喝甜饮料，偶然买了一瓶喝直接爱上了，入口完全没有那种工业香精的怪味，就是很正的焙火乌龙香，回甘清润，吃火锅吃重油外卖的时候配它，解腻效果特别绝，500ml的瓶子揣包里大小刚好，上班放工位一下午喝一瓶也没啥负担，这次直接囤了整箱，算下来单瓶比超市便宜五毛，太划算了！"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 2,
+                      "content": "这次收到的整箱货太让人无语了，打开之后发现有两瓶的瓶盖边缘不知道怎么被磕裂开了，虽然没完全漏光，但是瓶身湿乎乎的黏了好多灰，联系客服半天才回复，最后只给退了这两瓶的钱，没有任何补偿。而且这批货的日期虽然没临期，但已经是5个月前生产的了，我之前在超市买的都是1个月内新产的，喝起来总觉得这批的茶香味淡了一点，没有之前喝的香。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 1,
+                      "content": "这次购物体验真的太差了，快递送过来的时候纸箱直接被泡湿了大半，打开之后里面至少有6瓶都漏了半瓶多，黏糊糊的整箱流的到处都是，地板都擦了半天。找客服反馈等了快一天才理我，说快递的问题不归他们管，推三阻四半天最后只同意退一半的钱，剩下的半箱漏了的根本没法放，搞的整个储物架都是黏的，以后再也不敢在网上买整箱的饮料了，太闹心。"
+                    },
+                    {
+                      "nickname": "小桃",
+                      "rating": 5,
+                      "content": "戒糖之后找了好久合适的茶饮，终于挖到这款宝藏了！完全没有奇怪的代糖苦味，一口下去就是纯纯的乌龙茶香气，冰镇之后喝特别清爽，我现在每天上班都带一瓶，之前下午总犯困，喝它提精神比喝甜奶茶健康多了，喝完嘴里也不会发腻发齁，15瓶整箱的算下来单瓶还不到4块钱，比楼下便利店卖的便宜好多，已经回购第三次了，太适合我们这种控糖的打工人了！"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.25,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "茶饮",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "严格控糖用户需看配料",
+                    "追求极致轻薄用户需谨慎"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "茶饮"
+                  ],
+                  "tags": [
+                    "东方树叶",
+                    "食品饮料",
+                    "茶饮",
+                    "补水",
+                    "低糖",
+                    "无糖",
+                    "500ml",
+                    "单瓶装",
+                    "15瓶整箱"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_003_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "严格控糖用户需看配料",
+                    "追求极致轻薄用户需谨慎"
+                  ]
+                },
+                "reason": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于 食品饮料/茶饮，综合分 0.8421，参考价 4-55 CNY。 评价均分 3.25/5。 检索证据：农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案#profile 召回分 0.0274。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 1.0,
+                  "reputation_fit": 0.85,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.97,
+                  "final_score": 0.8421,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 4 CNY，已用于预算适配评分。",
+                    "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.25/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：严格控糖用户需看配料；追求极致轻薄用户需谨慎。",
+                    "商品知识证据命中：p_food_003 召回分 0.0274。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_003::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_003_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 5411.0,
+              "total_price_max": 6911.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_beauty_018 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_005 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_006 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_003 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_018": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 59.0,
+                  "min_price": 59.0,
+                  "max_price": 98.0,
+                  "selected_sku_id": "s_p_beauty_018_1",
+                  "selected_price": 59.0,
+                  "selected_total_price": 59.0
+                },
+                "p_digital_005": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 4999.0,
+                  "min_price": 4999.0,
+                  "max_price": 6399.0,
+                  "selected_sku_id": "s_p_digital_005_1",
+                  "selected_price": 4999.0,
+                  "selected_total_price": 4999.0
+                },
+                "p_clothes_006": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 349.0,
+                  "min_price": 349.0,
+                  "max_price": 359.0,
+                  "selected_sku_id": "s_p_clothes_006_1",
+                  "selected_price": 349.0,
+                  "selected_total_price": 349.0
+                },
+                "p_food_003": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 4.0,
+                  "min_price": 4.0,
+                  "max_price": 55.0,
+                  "selected_sku_id": "s_p_food_003_1",
+                  "selected_price": 4.0,
+                  "selected_total_price": 4.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "极敏感人群需先试用",
+              "偏爱小屏/轻便用户需谨慎",
+              "严格控糖用户需看配料"
+            ],
+            "evidence": [
+              "p_beauty_018: The Ordinary这款烟酰胺10%锌1%精华液是油痘肌和暗沉肌的高性价比选择。核心成分10%烟酰胺能调节皮脂分泌、淡化毛孔并提亮肤色，1%锌则辅助控油舒缓。适合油性/混合性皮肤、有毛孔粗大或肤色不均问题的人群。日常护肤时，洁面爽肤后取2-3滴涂抹全脸（避开眼周），初期建议隔天使用建立耐受，后续可增至每日。注意：敏感肌需先耳后测试，避免与高浓度酸类（如水杨酸）同时使用，使用期间做好防晒。",
+              "p_beauty_018: FAQ - 10%烟酰胺浓度会刺激皮肤吗？",
+              "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+              "p_digital_005: 华为MatePad Pro Max 12.6英寸平板，核心卖点是适配办公需求的高刷大屏与多任务并行能力，12.6英寸高色域高刷屏拖滑无拖影，分屏最多同时开3个独立应用，侧边还能悬浮小窗回消息，彻底摆脱小屏平板办公的局促感。不管是经常要带设备开线上会的职场打工人，还是需要分屏查资料写文档的内容创作者，或是用来上网课做笔记的高校学生都适配。日常带出门赶方案、居家同时挂会议记笔记剪短视频都顺手，全金属机身握感扎实抗造，搭配M-Pencil使用",
+              "p_digital_005: FAQ - 这款12.6英寸的MatePad Pro Max多任务功能具体支持多少应用同时并行，不会出现杀后台的情况吗？",
+              "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+              "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+              "p_clothes_006: 这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度",
+              "p_clothes_006: FAQ - 这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
+              "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+              "p_food_003: 喜欢纯茶味又怕甜腻的朋友看过来！东方树叶无糖乌龙茶是农夫山泉旗下火了十多年的经典款，整瓶完全不含额外添加糖，热量几乎为0，用的是真乌龙茶萃取液，没有多余香精勾兑，入口是炭火焙香的醇厚茶味，回甘清润不会发涩发苦。特别适合控糖人群、健身党、上班摸鱼想解腻的打工人，还有爱喝奶茶又怕长胖的姐妹当低糖替代。上班放工位摸鱼喝，吃重油重盐的外卖配它解腻解辣，出门健身塞包里随时补水解渴都合适。建议阴凉处存放，开封后尽量24小时内喝完，冰镇之后茶香味会更",
+              "p_food_003: FAQ - 这款东方树叶无糖乌龙茶真的完全不含糖吗？配料表具体有什么？",
+              "价格匹配：当前最低 SKU 约 4 CNY，已用于预算适配评分。",
+              "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "final_score": 0.8453,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9946,
+                "reputation_fit": 0.97,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.82,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                  "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.6/5，参与口碑评分。",
+                  "商品提供 2 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：极敏感人群需先试用。",
+                  "商品知识证据命中：p_beauty_018 召回分 0.0247。"
+                ]
+              },
+              {
+                "role": "digital",
+                "product_id": "p_digital_005",
+                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                "final_score": 0.9224,
+                "scenario_match": 0.782,
+                "attribute_match": 0.882,
+                "price_fit": 0.9061,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 4999 CNY，已用于预算适配评分。",
+                  "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 4/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：偏爱小屏/轻便用户需谨慎。",
+                  "商品知识证据命中：p_digital_005 召回分 0.0285; p_digital_005 召回分 0.0247。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_006",
+                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                "final_score": 0.8543,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.8954,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 1.0,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
+                  "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.83/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_clothes_006 召回分 0.0271; p_clothes_006 召回分 0.0241。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "final_score": 0.8421,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 1.0,
+                "reputation_fit": 0.85,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.97,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 4 CNY，已用于预算适配评分。",
+                  "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.25/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：严格控糖用户需看配料；追求极致轻薄用户需谨慎。",
+                  "商品知识证据命中：p_food_003 召回分 0.0274。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "name": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8453，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#sku 召回分 0.0247。",
+            "score": 0.8453,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_018_1"
+          },
+          {
+            "product_id": "p_digital_005",
+            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "平板电脑",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6399.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_005_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.9224，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0285；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#sku 召回分 0.0247。",
+            "score": 0.9224,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_005_1"
+          },
+          {
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "运动长裤",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8543，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0271；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0241。",
+            "score": 0.8543,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_006_1"
+          },
+          {
+            "product_id": "p_food_003",
+            "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "name": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "brand": "东方树叶",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "茶饮",
+            "price": 4.0,
+            "price_range": [
+              4.0,
+              55.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_003_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案 属于 食品饮料/茶饮，综合分 0.8421，参考价 4-55 CNY。 评价均分 3.25/5。 检索证据：农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案#profile 召回分 0.0274。",
+            "score": 0.8421,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_003_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [
+              "华为"
+            ],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.8453
+                },
+                {
+                  "product_id": "p_beauty_009",
+                  "title": "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml",
+                  "price": 210.0,
+                  "score": 0.8366
+                },
+                {
+                  "product_id": "p_beauty_015",
+                  "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+                  "price": 120.0,
+                  "score": 0.8338
+                },
+                {
+                  "product_id": "p_beauty_007",
+                  "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                  "price": 89.0,
+                  "score": 0.8313
+                },
+                {
+                  "product_id": "p_beauty_006",
+                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                  "price": 170.0,
+                  "score": 0.8201
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_005",
+                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                  "price": 4999.0,
+                  "score": 0.9224
+                },
+                {
+                  "product_id": "p_digital_021",
+                  "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+                  "price": 5199.0,
+                  "score": 0.9133
+                },
+                {
+                  "product_id": "p_digital_002",
+                  "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                  "price": 6999.0,
+                  "score": 0.9082
+                },
+                {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "price": 1499.0,
+                  "score": 0.902
+                },
+                {
+                  "product_id": "p_digital_004",
+                  "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                  "price": 6299.0,
+                  "score": 0.889
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_006",
+                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+                  "price": 349.0,
+                  "score": 0.8543
+                },
+                {
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "price": 99.0,
+                  "score": 0.8355
+                },
+                {
+                  "product_id": "p_clothes_004",
+                  "title": "adidas Essentials 三条纹 男子针织运动长裤 日常休闲收口裤",
+                  "price": 299.0,
+                  "score": 0.8264
+                },
+                {
+                  "product_id": "p_clothes_020",
+                  "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                  "price": 79.0,
+                  "score": 0.8216
+                },
+                {
+                  "product_id": "p_clothes_023",
+                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                  "price": 149.0,
+                  "score": 0.8202
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8421
+                },
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8326
+                },
+                {
+                  "product_id": "p_food_002",
+                  "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                  "price": 30.0,
+                  "score": 0.8323
+                },
+                {
+                  "product_id": "p_food_004",
+                  "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                  "price": 4.5,
+                  "score": 0.8315
+                },
+                {
+                  "product_id": "p_food_015",
+                  "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                  "price": 38.0,
+                  "score": 0.8189
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_digital_005",
+            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6399.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 5,
+            "score": 0.9224,
+            "strength": "综合分 0.9224，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_digital_021",
+            "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 5199.0,
+            "price_range": [
+              5199.0,
+              7299.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.9133,
+            "strength": "综合分 0.9133，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_digital_002",
+            "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.17,
+            "review_count": 6,
+            "score": 0.9082,
+            "strength": "综合分 0.9082，评分 2.17/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.902,
+            "strength": "综合分 0.9020，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_digital_004",
+            "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6299.0,
+            "price_range": [
+              6299.0,
+              7199.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 6,
+            "score": 0.889,
+            "strength": "综合分 0.8890，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 349.0,
+            "price_range": [
+              349.0,
+              359.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "score": 0.8543,
+            "strength": "综合分 0.8543，评分 3.83/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "极敏感人群需先试用",
+          "偏爱小屏/轻便用户需谨慎",
+          "严格控糖用户需看配料"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml、华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑、Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+              "已从商品库候选中选择：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+              "已从商品库候选中选择：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤"
+            ],
+            "evidence_points": [
+              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml - 价格：59.0",
+              "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 - 价格：4999.0",
+              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 - 价格：349.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_130"
+      }
+    }
+  ]
+}

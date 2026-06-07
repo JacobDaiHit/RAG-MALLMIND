@@ -1,0 +1,2792 @@
+{
+  "case_id": 167,
+  "input": "有没有一百万以上的商品",
+  "expected": "诚实告知无",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "有没有一百万以上的商品",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有一百万以上的商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "一百万以上的商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 868,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "一百万以上的商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 868,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "有没有一百万以上的商品",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 870
+      },
+      "topic_memory": {
+        "topic_id": "default-1",
+        "topic_type": "ecommerce_recommendation",
+        "subject": "三星Galaxy S30怎么样",
+        "route": "recommend_shopping_products",
+        "category": "耳机",
+        "slots": {
+          "budget": 500.0,
+          "usage": [],
+          "preferences": {
+            "category": "耳机",
+            "usage": [
+              "尺码选择指导"
+            ],
+            "followup_type": "product_detail",
+            "performance": "upgrade",
+            "noise": "低噪音"
+          },
+          "product_ids": [],
+          "catalog_scope": "ecommerce"
+        },
+        "confidence": 0.9,
+        "source": "llm",
+        "reason": "路由器未提供原因。",
+        "updated_at": "2026-06-07T04:04:07.967235+00:00",
+        "history": [
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:03.699019+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:08.137036+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [
+                "p_digital_001"
+              ],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:12.642429+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "护肤",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "护肤",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [
+                "p_digital_028"
+              ],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:15.973865+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "看看运动鞋，不要Nike的",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "护肤",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:21.150501+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "耳机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "耳机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [
+                "p_clothes_027"
+              ],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:24.470550+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "你们有卖 PS5 吗",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "耳机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:58.266003+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "iPhone 17 Pro 只要 999 对吧？",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "耳机",
+                "usage": [
+                  "尺码选择指导"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:04:03.052985+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml，参考价约 118 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 4,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 4775,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.09166666666666666,
+            "history_dependency": 0.42,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.09166666666666666,
+        "history_dependency": 0.42,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "有没有一百万以上的商品",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有一百万以上的商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "一百万以上的商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 868,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "一百万以上的商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 868,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "有没有一百万以上的商品",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 870
+        },
+        "topic_memory": {
+          "topic_id": "default-1",
+          "topic_type": "ecommerce_recommendation",
+          "subject": "三星Galaxy S30怎么样",
+          "route": "recommend_shopping_products",
+          "category": "耳机",
+          "slots": {
+            "budget": 500.0,
+            "usage": [],
+            "preferences": {
+              "category": "耳机",
+              "usage": [
+                "尺码选择指导"
+              ],
+              "followup_type": "product_detail",
+              "performance": "upgrade",
+              "noise": "低噪音"
+            },
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.9,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T04:04:07.967235+00:00",
+          "history": [
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:03.699019+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:08.137036+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [
+                  "p_digital_001"
+                ],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:12.642429+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "护肤",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "护肤",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [
+                  "p_digital_028"
+                ],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:15.973865+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "看看运动鞋，不要Nike的",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "护肤",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:21.150501+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "耳机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "耳机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [
+                  "p_clothes_027"
+                ],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:24.470550+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "你们有卖 PS5 吗",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "耳机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:58.266003+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "iPhone 17 Pro 只要 999 对吧？",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "耳机",
+                  "usage": [
+                    "尺码选择指导"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:04:03.052985+00:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 180 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 30 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 45 条，排除后 45 条，预算内命中 45 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml；约 118 CNY；评分 0.88"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g；约 52 CNY；评分 0.88"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "SK-II护肤精华露神仙水晶透保湿调理角质收缩毛孔230ml；约 620 CNY；评分 0.88"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 45 条，排除后 45 条，预算内命中 45 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机；约 8999 CNY；评分 0.92"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "小米平板7 Pro 12.4英寸 骁龙8s Gen3 2.8K 144Hz旗舰安卓平板；约 2499 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机；约 6999 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 45 条，排除后 45 条，预算内命中 45 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤；约 199 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋；约 1099 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣；约 459 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "Adidas男子三叶草运动套装经典复古休闲外套+长裤两件套；约 799 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 45 条，排除后 45 条，预算内命中 45 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装；约 38 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "元气森林白桃味气泡水0糖0脂0卡碳酸饮料480ml*15瓶；约 29 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "可口可乐零度无糖可乐碳酸饮料经典口味330ml*24罐；约 15 CNY；评分 0.86"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml，参考价约 118 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_010",
+            "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+            "name": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+            "brand": "安热沙",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "防晒",
+            "price": 118.0,
+            "price_range": [
+              118.0,
+              298.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.67,
+            "review_count": 3,
+            "reason": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于 美妆护肤/防晒，综合分 0.8802，参考价 118-298 CNY。 评价均分 3.67/5。 检索证据：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#review 召回分 0.3748；安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#sku 召回分 0.3700。",
+            "score": 0.8802,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_010_1"
+          },
+          {
+            "product_id": "p_digital_029",
+            "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+            "name": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+            "brand": "三星",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 8999.0,
+            "price_range": [
+              8999.0,
+              11999.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于 数码电子/手机，综合分 0.9249，参考价 8999-11999 CNY。 评价均分 3.8/5。 检索证据：三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#profile 召回分 0.5165；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#review 召回分 0.4895；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#faq 召回分 0.4822。",
+            "score": 0.9249,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_029_1"
+          },
+          {
+            "product_id": "p_clothes_037",
+            "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+            "name": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "裤子",
+            "price": 199.0,
+            "price_range": [
+              199.0,
+              249.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.2,
+            "review_count": 5,
+            "reason": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于 服饰运动/裤子，综合分 0.8585，参考价 199-249 CNY。 评价均分 4.2/5。 检索证据：优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤#profile 召回分 0.3536。",
+            "score": 0.8585,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_037_1"
+          },
+          {
+            "product_id": "p_food_015",
+            "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+            "name": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+            "brand": "可口可乐",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 38.0,
+            "price_range": [
+              38.0,
+              79.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.6,
+            "review_count": 5,
+            "reason": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于 食品饮料/碳酸饮料，综合分 0.8676，参考价 38-79 CNY。 评价均分 2.6/5。 检索证据：可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#review 召回分 0.3775；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#faq 召回分 0.3665；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#sku 召回分 0.3663。",
+            "score": 0.8676,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_015_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 180,
+        "by_category": {
+          "beauty": {
+            "raw_count": 45,
+            "after_exclusion_count": 45,
+            "within_budget_count": 45,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_010",
+                "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                "price": 118.0,
+                "score": 0.8802
+              },
+              {
+                "product_id": "p_beauty_011",
+                "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                "price": 52.0,
+                "score": 0.8784
+              },
+              {
+                "product_id": "p_beauty_003",
+                "title": "SK-II护肤精华露神仙水晶透保湿调理角质收缩毛孔230ml",
+                "price": 620.0,
+                "score": 0.875
+              },
+              {
+                "product_id": "p_beauty_006",
+                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                "price": 170.0,
+                "score": 0.872
+              },
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.8697
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 45,
+            "after_exclusion_count": 45,
+            "within_budget_count": 45,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_029",
+                "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+                "price": 8999.0,
+                "score": 0.9249
+              },
+              {
+                "product_id": "p_digital_038",
+                "title": "小米平板7 Pro 12.4英寸 骁龙8s Gen3 2.8K 144Hz旗舰安卓平板",
+                "price": 2499.0,
+                "score": 0.8593
+              },
+              {
+                "product_id": "p_digital_017",
+                "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
+                "price": 6999.0,
+                "score": 0.85
+              },
+              {
+                "product_id": "p_digital_015",
+                "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+                "price": 6999.0,
+                "score": 0.8417
+              },
+              {
+                "product_id": "p_digital_028",
+                "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+                "price": 4999.0,
+                "score": 0.8402
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 45,
+            "after_exclusion_count": 45,
+            "within_budget_count": 45,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_037",
+                "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+                "price": 199.0,
+                "score": 0.8585
+              },
+              {
+                "product_id": "p_clothes_015",
+                "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                "price": 1099.0,
+                "score": 0.8529
+              },
+              {
+                "product_id": "p_clothes_022",
+                "title": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣",
+                "price": 459.0,
+                "score": 0.8522
+              },
+              {
+                "product_id": "p_clothes_044",
+                "title": "Adidas男子三叶草运动套装经典复古休闲外套+长裤两件套",
+                "price": 799.0,
+                "score": 0.843
+              },
+              {
+                "product_id": "p_clothes_041",
+                "title": "新秀丽Samsonite商务双肩包15.6英寸电脑包大容量通勤背包",
+                "price": 599.0,
+                "score": 0.8388
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 45,
+            "after_exclusion_count": 45,
+            "within_budget_count": 45,
+            "top_candidates": [
+              {
+                "product_id": "p_food_015",
+                "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                "price": 38.0,
+                "score": 0.8676
+              },
+              {
+                "product_id": "p_food_033",
+                "title": "元气森林白桃味气泡水0糖0脂0卡碳酸饮料480ml*15瓶",
+                "price": 29.0,
+                "score": 0.8664
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8654
+              },
+              {
+                "product_id": "p_food_034",
+                "title": "可口可乐零度无糖可乐碳酸饮料经典口味330ml*24罐",
+                "price": 15.0,
+                "score": 0.8592
+              },
+              {
+                "product_id": "p_food_004",
+                "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                "price": 4.5,
+                "score": 0.8561
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "三星Galaxy S30怎么样. User added constraints: 有没有一百万以上的商品",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml + 三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 + 优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 + 可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_010",
+                  "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                  "brand": "安热沙",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "防晒",
+                  "base_price": 298.0,
+                  "min_price": 118.0,
+                  "max_price": 298.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_010_live.jpg",
+                  "image_url": "/product-images/p_beauty_010_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_010_1",
+                      "properties": {
+                        "规格": "60ml 经典金瓶"
+                      },
+                      "price": 298.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_010_2",
+                      "properties": {
+                        "规格": "20ml 便携装"
+                      },
+                      "price": 118.0
+                    }
+                  ],
+                  "description": "安热沙金灿倍护防晒乳（经典金瓶）是户外防晒的明星产品，核心采用品牌特有的Aqua Booster EX遇水增强技术，遇汗遇水后防晒膜更紧密，SPF50+ PA++++的高倍防护能有效阻隔UVA/UVB，避免晒伤晒黑。适合户外爱好者、通勤族及易出汗人群，无论是爬山、海滩度假还是日常上班都适用。质地清爽不油腻，涂抹后快速成膜，无明显泛白感。成分中添加保湿因子，兼顾防晒与肌肤保湿。使用建议：出门前15-20分钟均匀涂抹于面部及身体暴露部位，面部用量约一元硬币大小；防水配方需用卸妆产品清洁，敏感肌建议先在耳后做皮肤测试，避免入眼，存放于阴凉干燥处。",
+                  "faqs": [
+                    {
+                      "question": "这款防晒乳的防水防汗效果能维持多久？适合游泳时使用吗？",
+                      "answer": "这款防晒乳采用安热沙专利的Aqua Booster EX技术，防水防汗持续时间可达80分钟，符合国际防水标准（ISO 18841）。游泳或长时间户外活动时，若持续浸泡水中或大量出汗，建议每2小时补涂一次，以确保防护效果。日常通勤出汗较少的情况下，可维持4-6小时无需补涂。"
+                    },
+                    {
+                      "question": "经典金瓶60ml和20ml便携装在成分和防晒效果上有区别吗？",
+                      "answer": "两者成分与防晒效果完全一致，均为SPF50+ PA++++，采用相同的遇水增强技术。区别仅在于容量：60ml适合家庭或长期使用，性价比更高；20ml便携装体积小巧，方便随身携带补涂，适合出差、旅行或日常放在包里使用。"
+                    },
+                    {
+                      "question": "这款防晒乳适合敏感肌使用吗？需要做皮肤测试吗？",
+                      "answer": "虽然产品质地温和，但部分敏感肌人群可能对其中的某些成分（如酒精）敏感。建议敏感肌用户在使用前，先取少量产品涂抹于耳后或手臂内侧，观察24小时无红肿、刺痛等不适反应后再使用。若使用过程中出现不适，应立即停止使用并清洗干净。"
+                    },
+                    {
+                      "question": "涂抹这款防晒乳后需要卸妆吗？用普通洁面产品可以清洁干净吗？",
+                      "answer": "由于这款防晒乳具有防水防汗配方，普通洁面产品可能无法彻底清洁。建议使用卸妆产品（如卸妆油、卸妆乳）进行清洁，之后再用洁面产品清洗一次，确保残留的防晒成分被完全去除，避免堵塞毛孔引发肌肤问题。"
+                    },
+                    {
+                      "question": "这款防晒乳的清爽度如何？会不会有油腻感或泛白现象？",
+                      "answer": "产品质地为清爽乳液状，涂抹后快速成膜，不会有明显油腻感。大部分用户反馈无泛白现象，但少数肤色较深的用户可能会感觉轻微提亮，不过很快会与肤色融合。建议涂抹时均匀推开，避免局部用量过多导致泛白。"
+                    },
+                    {
+                      "question": "户外活动时，多久需要补涂一次这款防晒乳？",
+                      "answer": "户外活动时，若处于阳光强烈的环境（如海滩、高原），建议每2小时补涂一次；若大量出汗或游泳后，应立即补涂。补涂前需用纸巾轻轻吸干皮肤表面的汗水或水分，再均匀涂抹防晒乳，确保防护效果持续。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小太阳",
+                      "rating": 5,
+                      "content": "上周和朋友去爬泰山，全程暴晒6小时，就靠这款安热沙金瓶防晒！早上涂了一次，中途补涂了一次，下来后皮肤一点没晒伤，连晒黑都不明显！防水防汗真的牛，爬山出了好多汗，防晒膜也没掉，涂在脸上清爽不闷痘，也没有泛白，太适合户外了！以后户外防晒就锁定它了，性价比也不错！"
+                    },
+                    {
+                      "nickname": "夏小沫",
+                      "rating": 4,
+                      "content": "买的20ml便携装，平时放包里补涂很方便。日常通勤用着还行，防晒效果不错，下午下班脸也没晒红。不过刚涂上去的时候有点点泛白，要等个三五分钟才自然，而且便携装单价确实比大瓶贵不少，要是能多搞点活动就好了。整体还是满意的，毕竟方便携带。"
+                    },
+                    {
+                      "nickname": "林小夕",
+                      "rating": 2,
+                      "content": "本来很期待这款防晒，结果用了两次就过敏了！涂在脸上有点刺刺的，过了半天脸颊就泛红起小疹子，赶紧洗掉了。我是混干敏感肌，可能这款里的酒精成分不适合我吧。而且涂完感觉有点闷，T区出油更厉害了，还长了两颗闭口。以后不会再买了，敏感肌慎入！"
+                    }
+                  ],
+                  "review_count": 3,
+                  "rating_avg": 3.67,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "防晒",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "极敏感人群需先试用"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "防晒"
+                  ],
+                  "tags": [
+                    "安热沙",
+                    "美妆护肤",
+                    "防晒",
+                    "敏感肌",
+                    "保湿",
+                    "通勤",
+                    "户外",
+                    "60ml 经典金瓶",
+                    "20ml 便携装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_010_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "极敏感人群需先试用"
+                  ]
+                },
+                "reason": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于 美妆护肤/防晒，综合分 0.8802，参考价 118-298 CNY。 评价均分 3.67/5。 检索证据：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#review 召回分 0.3748；安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#sku 召回分 0.3700。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9762,
+                  "reputation_fit": 0.884,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8802,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 118 CNY，已用于预算适配评分。",
+                    "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于用户关注的 美妆护肤 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.67/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：极敏感人群需先试用。",
+                    "商品知识证据命中：p_beauty_010 召回分 0.3748; p_beauty_010 召回分 0.3700。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_010::review::3",
+                  "p_beauty_010::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_010_1"
+              },
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_029",
+                  "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+                  "brand": "三星",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "手机",
+                  "base_price": 8999.0,
+                  "min_price": 8999.0,
+                  "max_price": 11999.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "",
+                  "image_url": "",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_029_1",
+                      "properties": {
+                        "存储": "12GB+256GB",
+                        "颜色": "钛灰银"
+                      },
+                      "price": 8999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_029_2",
+                      "properties": {
+                        "存储": "12GB+512GB",
+                        "颜色": "钛墨黑"
+                      },
+                      "price": 9999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_029_3",
+                      "properties": {
+                        "存储": "12GB+1TB",
+                        "颜色": "钛暮紫"
+                      },
+                      "price": 11999.0
+                    }
+                  ],
+                  "description": "三星S25 Ultra钛金属+康宁Armor玻璃耐用。骁龙8 Elite 6.9英寸AMOLED 2600nit。2亿像素5倍光变Galaxy AI通话翻译智能修图。内置S Pen。适合商务和创意用户。",
+                  "faqs": [
+                    {
+                      "question": "Galaxy AI有哪些功能？",
+                      "answer": "通话实时翻译16种语言笔记AI排版AI图片编辑圈选搜索。办公跨语言沟通实用。"
+                    },
+                    {
+                      "question": "钛金属和铝合金区别？",
+                      "answer": "强度高40%重量相近抗跌落刮擦提升。散热更好哑光质感高端。"
+                    },
+                    {
+                      "question": "S Pen实用吗？",
+                      "answer": "商务记事签文件绘图遥控拍照截图标注实用。需求不多使用频率可能低。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "张明宇",
+                      "rating": 5,
+                      "content": "S Pen生产力工具！开会记笔记方便AI翻译出差好用。屏幕亮度户外无敌。"
+                    },
+                    {
+                      "nickname": "李雨桐",
+                      "rating": 3,
+                      "content": "好但国行阉割太多三星Pay国内没用。8999性价比不如国产。S Pen偶尔用。"
+                    },
+                    {
+                      "nickname": "陈大伟",
+                      "rating": 4,
+                      "content": "做工顶级屏幕震撼。白天拍照无敌夜景不如国产。One UI功能多学习成本高。"
+                    },
+                    {
+                      "nickname": "周小丽",
+                      "rating": 2,
+                      "content": "8999充电只有45W充满一小时国产都100W+。预装太多卸不掉。233g沉。"
+                    },
+                    {
+                      "nickname": "吴强",
+                      "rating": 5,
+                      "content": "三星老用户最满意一代。钛金属不怕摔AI实用S Pen方便。续航提升明显。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.8,
+                  "best_for": [
+                    "商务办公",
+                    "创意工作",
+                    "日常使用",
+                    "跨语言沟通"
+                  ],
+                  "not_good_for": [
+                    "追求性价比",
+                    "不喜欢大屏"
+                  ],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "office_work"
+                  ],
+                  "tags": [
+                    "三星",
+                    "数码电子",
+                    "手机",
+                    "旗舰",
+                    "S Pen",
+                    "AI",
+                    "钛金属",
+                    "12GB+256GB",
+                    "12GB+512GB",
+                    "12GB+1TB"
+                  ],
+                  "metadata": {
+                    "source": "agent_expansion_v1",
+                    "source_image_path": ""
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求性价比",
+                    "不喜欢大屏"
+                  ]
+                },
+                "reason": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于 数码电子/手机，综合分 0.9249，参考价 8999-11999 CNY。 评价均分 3.8/5。 检索证据：三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#profile 召回分 0.5165；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#review 召回分 0.4895；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#faq 召回分 0.4822。",
+                "score": {
+                  "scenario_match": 0.798,
+                  "attribute_match": 0.798,
+                  "price_fit": 0.778,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.85,
+                  "detail_quality": 0.88,
+                  "final_score": 0.9249,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
+                    "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于用户关注的 数码电子 类目。",
+                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                    "用户评价均分 3.8/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求性价比；不喜欢大屏。",
+                    "商品知识证据命中：p_digital_029 召回分 0.5165; p_digital_029 召回分 0.4895。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_029::profile::0",
+                  "p_digital_029::review::3",
+                  "p_digital_029::faq::2"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_029_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_037",
+                  "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+                  "brand": "优衣库",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "裤子",
+                  "base_price": 199.0,
+                  "min_price": 199.0,
+                  "max_price": 249.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "",
+                  "image_url": "",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_037_1",
+                      "properties": {
+                        "尺码": "M",
+                        "颜色": "深蓝"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_037_2",
+                      "properties": {
+                        "尺码": "L",
+                        "颜色": "黑色"
+                      },
+                      "price": 199.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_037_3",
+                      "properties": {
+                        "尺码": "XL",
+                        "颜色": "浅蓝"
+                      },
+                      "price": 249.0
+                    }
+                  ],
+                  "description": "优衣库弹力修身牛仔裤含2%弹性纤维舒适不紧绷。修身剪裁显腿型。柔软棉质面料日常穿着舒适。多色可选男女款百搭。199元性价比极高适合日常通勤休闲。",
+                  "faqs": [
+                    {
+                      "question": "和Levi's比怎么样？",
+                      "answer": "优衣库更便宜更舒适但没有Levi's品牌溢价和复古质感。日常穿搭优衣库更实用。"
+                    },
+                    {
+                      "question": "弹力会不会穿久了变松？",
+                      "answer": "会有一定松弛但洗涤后恢复。建议交替穿着延长寿命。"
+                    },
+                    {
+                      "question": "偏码吗？",
+                      "answer": "正常偏修身。喜欢宽松选大一码正常穿着选平时码。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "日常穿搭",
+                      "rating": 5,
+                      "content": "199的牛仔裤太划算了！弹力面料穿着舒服不紧绷。修身版型显腿长。"
+                    },
+                    {
+                      "nickname": "张明",
+                      "rating": 4,
+                      "content": "性价比很高质量对得起价格。但做工细节不如Levi's。日常穿够了。"
+                    },
+                    {
+                      "nickname": "李萌",
+                      "rating": 3,
+                      "content": "还行但穿了几次膝盖就鼓包了。弹力牛仔裤的通病。"
+                    },
+                    {
+                      "nickname": "王大力",
+                      "rating": 5,
+                      "content": "优衣库牛仔裤买了三条黑白蓝都有。百搭舒适199太值了。"
+                    },
+                    {
+                      "nickname": "陈花",
+                      "rating": 4,
+                      "content": "女生穿修身好看。弹力面料蹲下不勒。浅蓝色夏天穿好看。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 4.2,
+                  "best_for": [
+                    "日常通勤",
+                    "休闲穿搭",
+                    "百搭基础",
+                    "性价比"
+                  ],
+                  "not_good_for": [
+                    "追求品牌",
+                    "复古风格"
+                  ],
+                  "supported_scenarios": [
+                    "daily_use",
+                    "office_work",
+                    "entertainment"
+                  ],
+                  "tags": [
+                    "优衣库",
+                    "服饰运动",
+                    "裤子",
+                    "牛仔裤",
+                    "修身",
+                    "弹力",
+                    "百搭",
+                    "休闲",
+                    "M码",
+                    "L码",
+                    "XL码"
+                  ],
+                  "metadata": {
+                    "source": "agent_expansion_v1",
+                    "source_image_path": ""
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "追求品牌",
+                    "复古风格"
+                  ]
+                },
+                "reason": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于 服饰运动/裤子，综合分 0.8585，参考价 199-249 CNY。 评价均分 4.2/5。 检索证据：优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤#profile 召回分 0.3536。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9656,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.85,
+                  "detail_quality": 0.88,
+                  "final_score": 0.8585,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+                    "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于用户关注的 服饰运动 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 4.2/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：追求品牌；复古风格。",
+                    "商品知识证据命中：p_clothes_037 召回分 0.3536。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_037::profile::0"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_037_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_015",
+                  "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                  "brand": "可口可乐",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "碳酸饮料",
+                  "base_price": 75.0,
+                  "min_price": 38.0,
+                  "max_price": 79.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_015_live.jpg",
+                  "image_url": "/product-images/p_food_015_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_015_1",
+                      "properties": {
+                        "容量": "330ml",
+                        "数量": "24罐",
+                        "包装": "易拉罐整箱"
+                      },
+                      "price": 75.0
+                    },
+                    {
+                      "sku_id": "s_p_food_015_2",
+                      "properties": {
+                        "容量": "330ml",
+                        "数量": "12罐",
+                        "包装": "迷你装"
+                      },
+                      "price": 42.0
+                    },
+                    {
+                      "sku_id": "s_p_food_015_3",
+                      "properties": {
+                        "容量": "330ml",
+                        "数量": "12罐",
+                        "包装": "易拉罐整箱"
+                      },
+                      "price": 38.0
+                    },
+                    {
+                      "sku_id": "s_p_food_015_4",
+                      "properties": {
+                        "容量": "330ml",
+                        "数量": "24罐",
+                        "包装": "迷你装"
+                      },
+                      "price": 79.0
+                    }
+                  ],
+                  "description": "这款可口可乐零度汽水是专为怕甜又舍不得经典可乐风味的爱好者打造的无糖碳酸饮料，完全不添加白砂糖，采用阿斯巴甜等合法代糖调出和原味可乐几乎无差的激爽口感，喝下去一口就会冲上来绵密的气泡，带着熟悉的可口可乐标志性香气，完全没有代糖常见的奇怪后味。330ml的罐装大小刚好是一次能喝完的量，不会因为开瓶放久跑气浪费。不管是平时健身控卡的运动党、戒糖的上班族、怕热量超标的学生党都适合喝。追剧看球赛、朋友宅家开黑、吃火锅撸串解腻、上班摸鱼提神的时候掏出来冰一下，爽感直接拉满。提醒大家开罐的时候别对着人对着自己的脸，冰镇别放零度以下太久，不然容易喷罐，碳酸饮料开了尽快喝完别放隔夜就好。现在还能选12罐的迷你装，想先试试水的朋友也完全没负担。",
+                  "faqs": [
+                    {
+                      "question": "这款330ml罐装的零度可乐整箱和普通含糖可口可乐的口感差别大吗？",
+                      "answer": "我们这款零度汽水完全沿用了可口可乐经典的气泡配比和风味基底，只是用合规代糖替换了白砂糖，刻意调低了代糖的后苦占比，大部分人日常喝的话几乎尝不出和普通含糖款的明显差别，只有对甜味特别敏感的少数用户，可能会在喝完十分钟左右感受到极淡的代糖余味，整体的杀口感、气泡绵密度和标志性的焦糖香都和常规款完全对齐，很适合想控糖又舍不得可乐风味的用户选择。"
+                    },
+                    {
+                      "question": "330ml×24罐的整箱零度可乐收到后如果出现个别罐瘪罐的情况还能正常喝吗？",
+                      "answer": "只要易拉罐的密封拉环位置没有破损、罐体没有出现肉眼可见的漏液缝隙，哪怕罐身因为运输磕碰出现轻微凹陷，都不会影响内部饮料的卫生和品质，完全可以正常饮用。要是瘪罐已经导致拉环变形、密封层开裂甚至有液体渗出的情况，就千万不要喝了，大家可以直接联系客服上传破损照片，我们会按照破损的数量直接给你做对应金额的退款补偿，不用把整箱退回，处理起来很方便。"
+                    },
+                    {
+                      "question": "这款零度可乐330ml的罐装，放冰箱冻成冰沙会出现涨罐爆开的情况吗？",
+                      "answer": "因为可乐里含有大量碳酸，水分冻成冰之后体积会比原本的液态扩大近十分之一，要是把未开罐的零度可乐直接放在0度以下的冷冻层放超过4小时，大概率会出现罐体变形，严重的甚至会直接涨裂漏液。想要喝冰沙口感的话，建议大家先把罐身开一个小缝放掉部分气体，再放进零下2度左右的软冷冻层，大概2个小时就能得到半冰沙的状态，既不会爆开，口感也刚好绵密爽口。"
+                    },
+                    {
+                      "question": "330ml×12罐的迷你装零度可乐和24罐整箱的产品品质是完全一样的吗？",
+                      "answer": "两款只是售卖的包装规格不同，里面的330ml零度可乐是完全同一条生产线生产的，原料配比、气泡压力、保质期标准都完全一致，没有任何品质差异。迷你装更适合租房住空间小、喝可乐频率不高，怕囤24罐放太久临期的用户，整箱装性价比更高，适合家庭日常囤货、办公室采购或者经常和朋友聚会需要大量可乐的用户，大家可以根据自己的实际使用需求选对应的规格就好。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 2,
+                      "content": "这次买的整箱24罐零度可乐，到货拆开之后数了下居然有6罐的气泡特别少，开罐的时候几乎没有那种冲上来的气泡声，倒出来半分钟气就全跑光了，喝着像没气的甜水，完全不是平时喝的那种劲爽口感。找客服反馈也半天才回复，说可能是运输的时候高温晃到了不给换，我平时经常买这款，从来没遇到过这种情况，这次的品控确实太让人失望了。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 2,
+                      "content": "下单的时候特意选了24罐整箱的零度，想着囤着喝更划算，结果送过来的时候外包装被雨淋得全湿了，底部纸箱直接泡烂，最底下那层三罐可乐的罐身全锈了，锈迹都渗到罐口的封边位置了，哪敢直接下嘴啊。找客服沟通了好久只给赔3块钱，说其他罐没坏就没问题，我买整箱不就是图省心吗，这种处理方式实在没法让人满意。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "我戒糖快半年了，嘴馋想喝可乐就一直买这款零度的330ml整箱装，气泡特别足，冰完之后一口下去杀口感巨爽，完全喝不出是无糖的，配我家周末的火锅简直绝了。24罐的价格算下来比超市单买便宜快一半，每次喝完直接把空罐丢回收箱也不占地方，整箱送过来包装特别严实，每罐都完好无损，我已经回购第三次了，以后囤可乐就认准这家店了。"
+                    },
+                    {
+                      "nickname": "朵朵",
+                      "rating": 3,
+                      "content": "买的12罐迷你装零度，价格比我预想的稍贵一点，整体喝起来倒是和平时线下买的没什么区别，但是生产日期是半年前的，距离保质期只剩不到三个月，我本来想囤着慢慢喝的，这一下根本喝不完最后肯定要临期浪费。味道倒是没什么问题，要是能给新日期的货就好了，这次体验只能说中规中矩，算不上差但也没有很满意。"
+                    },
+                    {
+                      "nickname": "大张",
+                      "rating": 1,
+                      "content": "这次买的24罐整箱零度可乐，打开喝第一罐就觉得味道不对，有股怪怪的塑料味，连续开了三罐都是这个味道，看了下生产日期居然还有一个星期就过期了，商家临期的货居然当正常新品卖。找客服理论直接装死，发了十几条消息半天才回一句说无糖款就是这个味道，我喝了十几年零度可乐什么味我能不知道？真的是太离谱了，以后绝对不会再来这家买东西。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 2.6,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "碳酸饮料",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "严格控糖用户需看配料"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "sports",
+                    "碳酸饮料"
+                  ],
+                  "tags": [
+                    "可口可乐",
+                    "食品饮料",
+                    "碳酸饮料",
+                    "无糖",
+                    "330ml",
+                    "24罐",
+                    "易拉罐整箱",
+                    "12罐",
+                    "迷你装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_015_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "严格控糖用户需看配料"
+                  ]
+                },
+                "reason": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于 食品饮料/碳酸饮料，综合分 0.8676，参考价 38-79 CNY。 评价均分 2.6/5。 检索证据：可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#review 召回分 0.3775；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#faq 召回分 0.3665；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#sku 召回分 0.3663。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.886,
+                  "reputation_fit": 0.77,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8676,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 38 CNY，已用于预算适配评分。",
+                    "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 2.6/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：严格控糖用户需看配料。",
+                    "商品知识证据命中：p_food_015 召回分 0.3775; p_food_015 召回分 0.3665。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_015::review::3",
+                  "p_food_015::faq::2",
+                  "p_food_015::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_015_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 9354.0,
+              "total_price_max": 12625.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_beauty_010 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_029 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_037 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_015 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_010": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 298.0,
+                  "min_price": 118.0,
+                  "max_price": 298.0,
+                  "selected_sku_id": "s_p_beauty_010_1",
+                  "selected_price": 298.0,
+                  "selected_total_price": 298.0
+                },
+                "p_digital_029": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 8999.0,
+                  "min_price": 8999.0,
+                  "max_price": 11999.0,
+                  "selected_sku_id": "s_p_digital_029_1",
+                  "selected_price": 8999.0,
+                  "selected_total_price": 8999.0
+                },
+                "p_clothes_037": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 199.0,
+                  "min_price": 199.0,
+                  "max_price": 249.0,
+                  "selected_sku_id": "s_p_clothes_037_1",
+                  "selected_price": 199.0,
+                  "selected_total_price": 199.0
+                },
+                "p_food_015": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 75.0,
+                  "min_price": 38.0,
+                  "max_price": 79.0,
+                  "selected_sku_id": "s_p_food_015_1",
+                  "selected_price": 75.0,
+                  "selected_total_price": 75.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "极敏感人群需先试用",
+              "追求性价比",
+              "追求品牌",
+              "严格控糖用户需看配料"
+            ],
+            "evidence": [
+              "p_beauty_010: 安热沙金灿倍护防晒乳（经典金瓶）是户外防晒的明星产品，核心采用品牌特有的Aqua Booster EX遇水增强技术，遇汗遇水后防晒膜更紧密，SPF50+ PA++++的高倍防护能有效阻隔UVA/UVB，避免晒伤晒黑。适合户外爱好者、通勤族及易出汗人群，无论是爬山、海滩度假还是日常上班都适用。质地清爽不油腻，涂抹后快速成膜，无明显泛白感。成分中添加保湿因子，兼顾防晒与肌肤保湿。使用建议：出门前15-20分钟均匀涂抹于面部及身体暴露部位，面",
+              "p_beauty_010: FAQ - 这款防晒乳的防水防汗效果能维持多久？适合游泳时使用吗？",
+              "价格匹配：当前最低 SKU 约 118 CNY，已用于预算适配评分。",
+              "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于用户关注的 美妆护肤 类目。",
+              "p_digital_029: 三星S25 Ultra钛金属+康宁Armor玻璃耐用。骁龙8 Elite 6.9英寸AMOLED 2600nit。2亿像素5倍光变Galaxy AI通话翻译智能修图。内置S Pen。适合商务和创意用户。",
+              "p_digital_029: FAQ - Galaxy AI有哪些功能？",
+              "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
+              "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于用户关注的 数码电子 类目。",
+              "p_clothes_037: 优衣库弹力修身牛仔裤含2%弹性纤维舒适不紧绷。修身剪裁显腿型。柔软棉质面料日常穿着舒适。多色可选男女款百搭。199元性价比极高适合日常通勤休闲。",
+              "p_clothes_037: FAQ - 和Levi's比怎么样？",
+              "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+              "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于用户关注的 服饰运动 类目。",
+              "p_food_015: 这款可口可乐零度汽水是专为怕甜又舍不得经典可乐风味的爱好者打造的无糖碳酸饮料，完全不添加白砂糖，采用阿斯巴甜等合法代糖调出和原味可乐几乎无差的激爽口感，喝下去一口就会冲上来绵密的气泡，带着熟悉的可口可乐标志性香气，完全没有代糖常见的奇怪后味。330ml的罐装大小刚好是一次能喝完的量，不会因为开瓶放久跑气浪费。不管是平时健身控卡的运动党、戒糖的上班族、怕热量超标的学生党都适合喝。追剧看球赛、朋友宅家开黑、吃火锅撸串解腻、上班摸鱼提神的时候",
+              "p_food_015: FAQ - 这款330ml罐装的零度可乐整箱和普通含糖可口可乐的口感差别大吗？",
+              "价格匹配：当前最低 SKU 约 38 CNY，已用于预算适配评分。",
+              "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_010",
+                "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                "final_score": 0.8802,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9762,
+                "reputation_fit": 0.884,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 118 CNY，已用于预算适配评分。",
+                  "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于用户关注的 美妆护肤 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.67/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：极敏感人群需先试用。",
+                  "商品知识证据命中：p_beauty_010 召回分 0.3748; p_beauty_010 召回分 0.3700。"
+                ]
+              },
+              {
+                "role": "digital",
+                "product_id": "p_digital_029",
+                "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+                "final_score": 0.9249,
+                "scenario_match": 0.798,
+                "attribute_match": 0.798,
+                "price_fit": 0.778,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.85,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
+                  "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于用户关注的 数码电子 类目。",
+                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
+                  "用户评价均分 3.8/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求性价比；不喜欢大屏。",
+                  "商品知识证据命中：p_digital_029 召回分 0.5165; p_digital_029 召回分 0.4895。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_037",
+                "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+                "final_score": 0.8585,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9656,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.85,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
+                  "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于用户关注的 服饰运动 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 4.2/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：追求品牌；复古风格。",
+                  "商品知识证据命中：p_clothes_037 召回分 0.3536。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_015",
+                "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                "final_score": 0.8676,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.886,
+                "reputation_fit": 0.77,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 38 CNY，已用于预算适配评分。",
+                  "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 2.6/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：严格控糖用户需看配料。",
+                  "商品知识证据命中：p_food_015 召回分 0.3775; p_food_015 召回分 0.3665。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 180,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_010",
+            "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+            "name": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+            "brand": "安热沙",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "防晒",
+            "price": 118.0,
+            "price_range": [
+              118.0,
+              298.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_010_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.67,
+            "review_count": 3,
+            "reason": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml 属于 美妆护肤/防晒，综合分 0.8802，参考价 118-298 CNY。 评价均分 3.67/5。 检索证据：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#review 召回分 0.3748；安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml#sku 召回分 0.3700。",
+            "score": 0.8802,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_010_1"
+          },
+          {
+            "product_id": "p_digital_029",
+            "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+            "name": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+            "brand": "三星",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "手机",
+            "price": 8999.0,
+            "price_range": [
+              8999.0,
+              11999.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 属于 数码电子/手机，综合分 0.9249，参考价 8999-11999 CNY。 评价均分 3.8/5。 检索证据：三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#profile 召回分 0.5165；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#review 召回分 0.4895；三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机#faq 召回分 0.4822。",
+            "score": 0.9249,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_digital_029_1"
+          },
+          {
+            "product_id": "p_clothes_037",
+            "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+            "name": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "裤子",
+            "price": 199.0,
+            "price_range": [
+              199.0,
+              249.0
+            ],
+            "currency": "CNY",
+            "image_url": "",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 4.2,
+            "review_count": 5,
+            "reason": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 属于 服饰运动/裤子，综合分 0.8585，参考价 199-249 CNY。 评价均分 4.2/5。 检索证据：优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤#profile 召回分 0.3536。",
+            "score": 0.8585,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_037_1"
+          },
+          {
+            "product_id": "p_food_015",
+            "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+            "name": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+            "brand": "可口可乐",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 38.0,
+            "price_range": [
+              38.0,
+              79.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.6,
+            "review_count": 5,
+            "reason": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装 属于 食品饮料/碳酸饮料，综合分 0.8676，参考价 38-79 CNY。 评价均分 2.6/5。 检索证据：可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#review 召回分 0.3775；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#faq 召回分 0.3665；可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装#sku 召回分 0.3663。",
+            "score": 0.8676,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_015_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 180,
+          "by_category": {
+            "beauty": {
+              "raw_count": 45,
+              "after_exclusion_count": 45,
+              "within_budget_count": 45,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_010",
+                  "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+                  "price": 118.0,
+                  "score": 0.8802
+                },
+                {
+                  "product_id": "p_beauty_011",
+                  "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                  "price": 52.0,
+                  "score": 0.8784
+                },
+                {
+                  "product_id": "p_beauty_003",
+                  "title": "SK-II护肤精华露神仙水晶透保湿调理角质收缩毛孔230ml",
+                  "price": 620.0,
+                  "score": 0.875
+                },
+                {
+                  "product_id": "p_beauty_006",
+                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                  "price": 170.0,
+                  "score": 0.872
+                },
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.8697
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 45,
+              "after_exclusion_count": 45,
+              "within_budget_count": 45,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_029",
+                  "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+                  "price": 8999.0,
+                  "score": 0.9249
+                },
+                {
+                  "product_id": "p_digital_038",
+                  "title": "小米平板7 Pro 12.4英寸 骁龙8s Gen3 2.8K 144Hz旗舰安卓平板",
+                  "price": 2499.0,
+                  "score": 0.8593
+                },
+                {
+                  "product_id": "p_digital_017",
+                  "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
+                  "price": 6999.0,
+                  "score": 0.85
+                },
+                {
+                  "product_id": "p_digital_015",
+                  "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+                  "price": 6999.0,
+                  "score": 0.8417
+                },
+                {
+                  "product_id": "p_digital_028",
+                  "title": "vivo X200 Pro 蔡司APO长焦 天玑9400 蓝海电池影像旗舰手机",
+                  "price": 4999.0,
+                  "score": 0.8402
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 45,
+              "after_exclusion_count": 45,
+              "within_budget_count": 45,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_037",
+                  "title": "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤",
+                  "price": 199.0,
+                  "score": 0.8585
+                },
+                {
+                  "product_id": "p_clothes_015",
+                  "title": "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
+                  "price": 1099.0,
+                  "score": 0.8529
+                },
+                {
+                  "product_id": "p_clothes_022",
+                  "title": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣",
+                  "price": 459.0,
+                  "score": 0.8522
+                },
+                {
+                  "product_id": "p_clothes_044",
+                  "title": "Adidas男子三叶草运动套装经典复古休闲外套+长裤两件套",
+                  "price": 799.0,
+                  "score": 0.843
+                },
+                {
+                  "product_id": "p_clothes_041",
+                  "title": "新秀丽Samsonite商务双肩包15.6英寸电脑包大容量通勤背包",
+                  "price": 599.0,
+                  "score": 0.8388
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 45,
+              "after_exclusion_count": 45,
+              "within_budget_count": 45,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_015",
+                  "title": "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+                  "price": 38.0,
+                  "score": 0.8676
+                },
+                {
+                  "product_id": "p_food_033",
+                  "title": "元气森林白桃味气泡水0糖0脂0卡碳酸饮料480ml*15瓶",
+                  "price": 29.0,
+                  "score": 0.8664
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8654
+                },
+                {
+                  "product_id": "p_food_034",
+                  "title": "可口可乐零度无糖可乐碳酸饮料经典口味330ml*24罐",
+                  "price": 15.0,
+                  "score": 0.8592
+                },
+                {
+                  "product_id": "p_food_004",
+                  "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                  "price": 4.5,
+                  "score": 0.8561
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_digital_029",
+            "title": "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+            "brand": "三星",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 8999.0,
+            "price_range": [
+              8999.0,
+              11999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "score": 0.9249,
+            "strength": "综合分 0.9249，评分 3.8/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求性价比；不喜欢大屏。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_beauty_010",
+            "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+            "brand": "安热沙",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 118.0,
+            "price_range": [
+              118.0,
+              298.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.67,
+            "review_count": 3,
+            "score": 0.8802,
+            "strength": "综合分 0.8802，评分 3.67/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_beauty_011",
+            "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+            "brand": "珊珂",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 52.0,
+            "price_range": [
+              52.0,
+              69.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 3,
+            "score": 0.8784,
+            "strength": "综合分 0.8784，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_beauty_003",
+            "title": "SK-II护肤精华露神仙水晶透保湿调理角质收缩毛孔230ml",
+            "brand": "SK-II",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 620.0,
+            "price_range": [
+              620.0,
+              1690.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.5,
+            "review_count": 6,
+            "score": 0.875,
+            "strength": "综合分 0.8750，评分 3.5/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_beauty_006",
+            "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "brand": "巴黎欧莱雅",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 170.0,
+            "price_range": [
+              170.0,
+              190.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.67,
+            "review_count": 6,
+            "score": 0.872,
+            "strength": "综合分 0.8720，评分 3.67/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎；极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8697,
+            "strength": "综合分 0.8697，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "极敏感人群需先试用",
+          "追求性价比",
+          "追求品牌",
+          "严格控糖用户需看配料"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml、三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机、优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+              "已从商品库候选中选择：三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机",
+              "已从商品库候选中选择：优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤"
+            ],
+            "evidence_points": [
+              "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml - 价格：118.0",
+              "三星Galaxy S25 Ultra 骁龙8 Elite 钛金属边框S Pen AI旗舰手机 - 价格：8999.0",
+              "优衣库弹力修身牛仔裤男女款舒适百搭休闲长裤 - 价格：199.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "default"
+      }
+    }
+  ]
+}

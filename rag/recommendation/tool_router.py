@@ -791,12 +791,19 @@ def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]
     pc_followup = topic.get("topic_type") == "pc_build" and _looks_like_pc_followup(text, lowered)
     pc_history_followup = is_pc_build_followup(text, session)
 
-    if _has_cart_intent(text):
-        scores["apply_cart_instruction"] += 0.95
-    if detect_normal_product_category(text):
+    cart_detected = _has_cart_intent(text)
+    category_detected = bool(detect_normal_product_category(text))
+    if cart_detected:
+        scores["apply_cart_instruction"] += 0.75
+    if category_detected:
         scores["recommend_shopping_products"] += 0.55
     if _has_product_query_intent(text, lowered):
         scores["recommend_shopping_products"] += 0.25
+    # 组合意图（购物车 + 商品品类）：用户说"推荐X，再加到购物车"等，
+    # 首要动作是推荐（加购依赖推荐结果），给推荐额外加分拉大 margin，
+    # 使本地路由在组合场景下有足够置信度，减少不必要的 LLM 路由依赖。
+    if cart_detected and category_detected:
+        scores["recommend_shopping_products"] += 0.10
     if single_pc_part:
         scores["recommend_shopping_products"] += 0.60
     if pc_intent:
@@ -852,7 +859,10 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
     score_info = score_local_routes(message, session)
 
     if _has_cart_intent(text):
-        return _attach_route_scores(_tool_call("apply_cart_instruction", slots, 0.95, "本地规则识别到购物车操作。", "rules"), score_info)
+        # 组合意图（推荐+加购）让 LLM 路由，本地规则仅处理纯购物车操作
+        has_recommend_intent = bool(detect_normal_product_category(text)) or _has_product_query_intent(text, lowered)
+        if not has_recommend_intent:
+            return _attach_route_scores(_tool_call("apply_cart_instruction", slots, 0.80, "本地规则识别到购物车操作。", "rules"), score_info)
     if is_pc_build_followup(text, session):
         slots["followup"] = True
         slots["source"] = "pc_build_history_guard"
@@ -908,22 +918,50 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
                 [
                     {
                         "role": "system",
-                        "content": (
-                            "\u4f60\u662f\u7535\u5546\u5bfc\u8d2d\u7cfb\u7edf\u7684\u5de5\u5177\u8def\u7531\u5668\uff0c\u53ea\u8f93\u51fa JSON\u3002"
-                            "\u540e\u7aef\u4f1a\u6821\u9a8c\u5e76\u6267\u884c\u5de5\u5177\uff0c\u4f60\u53ea\u8d1f\u8d23\u9009\u62e9\u5de5\u5177\u548c\u62bd\u53d6\u53c2\u6570\u3002"
-                            "\u4e0d\u8981\u7f16\u9020\u5546\u54c1\u3001\u4ef7\u683c\u3001\u5e93\u5b58\u6216\u4f18\u60e0\u3002\n"
-                            "\u8def\u7531\u539f\u5219\uff1a\n"
-                            "- \u53ea\u8981\u7528\u6237\u5728\u8be2\u95ee\u3001\u5bfb\u627e\u3001\u8bc4\u4ef7\u4efb\u4f55\u5546\u54c1\uff08\u5305\u62ec\u836f\u54c1\u3001\u4fdd\u5065\u54c1\u7b49\u975e\u5178\u578b\u54c1\u7c7b\uff09\uff0c\u4e00\u5f8b\u4f7f\u7528 recommend_shopping_products\u3002\n"
-                            "- \u7528\u6237\u8981\u6c42\u201c\u914d\u4e00\u5957\u201d\u201c\u4e00\u8d77\u63a8\u8350\u201d\u201c\u5f00\u5b66\u8981\u7528\u7684\u4e1c\u897f\u201d\u7b49\u591a\u5546\u54c1\u6216\u573a\u666f\u5316\u8bf7\u6c42\uff0c\u4f7f\u7528 recommend_shopping_products\u3002\n"
-                            "- \u201c\u54ea\u4e2a\u66f4\u4e0d\u6cb9\u201d\u201c\u54ea\u4e2a\u66f4\u8f7b\u201d\u201c\u54ea\u6b3e\u66f4\u9002\u5408\u201d\u7b49\u8868\u8fbe\u662f\u5c5e\u6027\u504f\u597d\u7b5b\u9009\uff0c\u4e0d\u662f\u5546\u54c1\u5bf9\u6bd4\uff0c\u4f7f\u7528 recommend_shopping_products\u3002\n"
-                            "- \u53ea\u6709\u7528\u6237\u660e\u786e\u63d0\u5230\u4e24\u4e2a\u5177\u4f53\u5546\u54c1\u540d\u5e76\u8981\u6c42\u6bd4\u8f83\u65f6\u624d\u4f7f\u7528 compare_products\u3002\n"
-                            '- general_chat \u4ec5\u7528\u4e8e\u201c\u4f60\u662f\u8c01\u201d\u201c\u600e\u4e48\u7528\u201d\u201c\u63a8\u8350\u903b\u8f91\u662f\u4ec0\u4e48\u201d\u7b49\u7cfb\u7edf\u5143\u95ee\u9898\u3002\n'
-                            '- \u8f93\u51fa JSON \u4e2d\u5fc5\u987b\u5305\u542b "source": "llm"\u3002'
-                        ),
+                            "content": (
+                                "你是电商导购系统的工具路由器。你的唯一职责是根据用户输入选择正确的工具并提取参数，输出严格的 JSON。\n"
+                                "不要编造商品、价格、库存或优惠信息。\n\n"
+                                "## 可用工具及路由规则\n\n"
+                                "### 1. recommend_shopping_products\n"
+                                "用途：商品搜索、推荐、筛选。\n"
+                                "使用场景（满足任一即选用此工具）：\n"
+                                "- 用户在询问、寻找、评价任何商品（包括药品、保健品、食品等非典型品类）\n"
+                                "- 用户提到具体商品名并询问属性（如\"iPhone续航怎么样\"\"MacBook有几个配置\"\"这款手机防水吗\"）——这属于商品查询，不是闲聊\n"
+                                "- 用户要求多商品或场景化推荐（\"配一套\"\"开学要用的东西\"）\n"
+                                "- 用户表达属性偏好（\"哪个更轻\"\"哪款更适合学生\"）——这是筛选，不是对比\n"
+                                "- 用户说\"买XX\"\"帮我买\"且指定了具体商品/SKU——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
+                                "- 用户同时要求推荐和加购（\"推荐XX并加到购物车\"）——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
+                                "参数可包含：query, budget, category, product_ids, catalog_scope, action, exclude_brands, usage。\n\n"
+                                "### 2. compare_products\n"
+                                "用途：两个具体商品的规格对比。\n"
+                                "使用场景：仅当用户明确提到两个具体商品名并要求比较时使用。\n"
+                                "注意：\"哪个更适合学生\"这种属性偏好问题属于 recommend_shopping_products，不属于对比。\n\n"
+                                "### 3. apply_cart_instruction\n"
+                                "用途：购物车操作。\n"
+                                "使用场景（满足任一即选用此工具）：\n"
+                                "- 用户明确说\"加到购物车\"\"加入购物车\"且没有要求先推荐商品\n"
+                                "- 用户查看购物车：\"看看购物车\"\"我的购物车\"\n"
+                                "- 用户修改购物车：\"改成2台\"\"数量改成3\"\"不要第一个了\"\"删掉第二个\"\n"
+                                "- 用户结账：\"结账\"\"去结算\"\"下单\"\n"
+                                "- 用户清空购物车：\"清空购物车\"\"全部删除\"\n"
+                                "参数可包含：query, product_ids, action, quantity。\n\n"
+                                "### 4. generate_pc_build_plan\n"
+                                "用途：PC 整机配置单生成。\n"
+                                "使用场景：用户要求\"配一台电脑\"\"组装一台游戏主机\"等多配件整机方案。\n\n"
+                                "### 5. general_chat\n"
+                                "用途：仅用于与商品完全无关的系统元问题。\n"
+                                "使用场景（极其有限）：\n"
+                                "- \"你是谁\"\"你叫什么\"\"怎么用\"\"推荐逻辑是什么\"等关于系统本身的问题\n"
+                                "- 与购物完全无关的问题：\"今天天气怎么样\"\"帮我写一段代码\"\n"
+                                "- 纯寒暄：\"你好\"\"谢谢\"\"再见\"\n"
+                                "注意：任何涉及具体商品名（iPhone、MacBook、华为、小米等）的问题，即使看起来像FAQ，也应该使用 recommend_shopping_products 而非 general_chat。\n\n"
+                                "## 输出格式\n"
+                                "严格输出 JSON，必须包含 \"source\": \"llm\" 字段。"
+                            ),
                     },
                     {
                         "role": "user",
-                        "content": build_route_prompt(message, current_topic_json(session)),
+                        "content": build_route_prompt(message, current_topic_json(session), session),
                     },
                 ],
                 model=os.getenv("MALLMIND_ROUTER_MODEL") or client.config.fast_model,
@@ -1000,6 +1038,53 @@ def validate_and_guard_tool_call(
     call["reason"] = str(call.get("reason") or "路由器未提供原因。")
     call["source"] = str(call.get("source") or "llm")
 
+    # ── 改动: LLM 权威保护（组合意图安全网）──
+    # 当 LLM 已明确选择工具时，guard 层通常跳过规则覆盖，信任大模型的路由决策。
+    # 但组合意图（品类推荐 + 购物车）下，LLM 可能非确定性地选择 cart，
+    # 而 cart 操作在无推荐结果时必然失败。此时 guard 覆盖为 recommend，
+    # 让推荐先行、cart 在后续多轮或 handler 内部自动完成。
+    if call.get("_llm_chosen"):
+        text = message or ""
+        lowered = text.lower()
+        # 防幻觉 guard：当 local 规则高置信度判定为 general_chat 且无商品品类信号时，
+        # 阻止 LLM 将路由覆盖到购物工具（避免对目录中不存在的商品强行推荐无关结果）。
+        _local_scores = (local_call or {}).get("route_scores") or {}
+        if (
+            _local_scores.get("top_name") == "general_chat"
+            and float(_local_scores.get("confidence") or 0) >= 0.85
+            and call["name"] != "general_chat"
+            and not detect_normal_product_category(text)
+        ):
+            call.update(_tool_call(
+                "general_chat",
+                call.get("arguments") or {},
+                max(call["confidence"], 0.9),
+                "防幻觉 guard：local 高置信 general_chat 且无商品品类，拒绝 LLM 覆盖。",
+                "hallucination_guard",
+            ))
+            call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
+            return call
+        if (
+            call["name"] == "apply_cart_instruction"
+            and _has_cart_intent(text)
+            and detect_normal_product_category(text)
+        ):
+            # 纯购物车修改操作（改数量、去掉、清空）不应被组合意图 guard 拦到推荐，
+            # 只有"加购"类操作才需要推荐先行。
+            _cart_modify = ("数量", "改成", "改为", "去掉", "删除", "移除", "清空", "换成")
+            _cart_add = ("加入", "加到", "加购", "放进", "添加")
+            _is_pure_modify = any(t in text for t in _cart_modify) and not any(t in text for t in _cart_add)
+            if not _is_pure_modify:
+                call.update(_tool_call(
+                    "recommend_shopping_products",
+                    merge_route_arguments(call.get("arguments") or {}, extract_slots_rule_based(text)),
+                    max(call["confidence"], 0.88),
+                    "组合意图 guard：品类推荐 + 购物车操作，推荐先行。",
+                    "combined_intent_guard",
+                ))
+        call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
+        return call
+
     text = message or ""
     lowered = text.lower()
     topic = current_topic_json(session)
@@ -1010,12 +1095,29 @@ def validate_and_guard_tool_call(
     product_query_intent = _has_product_query_intent(text, lowered)
     followup_call = resolve_followup_message(text, session)
 
-    if _has_cart_intent(text):
+    # 购物车 guard：仅在纯购物车意图时覆盖（无明确商品品类）。
+    # 组合意图（品类推荐 + 购物车）下，推荐先行，guard 不覆盖。
+    if _has_cart_intent(text) and not explicit_normal:
         call.update(
             local_call
             if local_call.get("name") == "apply_cart_instruction"
-            else _tool_call("apply_cart_instruction", arguments, 0.96, "后端兜底：购物车指令优先。", "guard")
+            else _tool_call("apply_cart_instruction", arguments, 0.85, "后端兜底：购物车指令优先。", "guard")
         )
+    elif (
+        call["name"] == "apply_cart_instruction"
+        and not has_last_recommendation(session)
+        and (explicit_normal or product_query_intent or _has_product_query_intent(text, lowered))
+    ):
+        # 购物车回退 guard：用户要把某商品加入购物车但会话中尚无推荐结果，
+        # 此时 cart handler 无法定位商品，先走推荐搜索目标商品。
+        _slots = merge_route_arguments(arguments, extract_slots_rule_based(text))
+        call.update(_tool_call(
+            "recommend_shopping_products",
+            _slots,
+            max(call["confidence"], 0.85),
+            "购物车回退 guard：会话无推荐历史，先搜索目标商品再加购。",
+            "cart_fallback_guard",
+        ))
     elif is_pc_build_followup(text, session):
         arguments["followup"] = True
         arguments["source"] = "pc_build_history_guard"
@@ -1104,17 +1206,21 @@ def normalize_tool_arguments(name: str, arguments: Dict[str, Any]) -> Dict[str, 
 
 def extract_budget(text: str) -> Optional[float]:
     raw = text or ""
-    money = r"(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|cny|CNY)?"
+    money = r"(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|百|亿|千万|百万|十万|元|块|cny|CNY)?"
     budget_patterns = [
-        rf"(?:预算|价格|价位|控制在|不超过|不超|低于|小于|少于|最高|封顶|上限|价钱|最多|至少|按)\s*(?:是|为|在|到)?\s*{money}",
+        rf"(?:预算|价格|价位|控制在|不要超过|不要超出|别超过|别超出|不超过|不超|低于|小于|少于|最高|封顶|上限|价钱|最多|至少|按)\s*(?:是|为|在|到)?\s*{money}",
         rf"{money}\s*(?:以内|以下|左右|上下|预算|封顶|档次|价位)",
         rf"(?<![A-Za-z]){money}\s*(?:-|到|至|~|～)\s*{money}",
         rf"(?:<=|<)\s*{money}",
         rf"(?:under|within|below|less than|no more than|budget)\s*{money}",
+        r"(\d+(?:\.\d+)?)\s*(千万|百万|十万|万|千|百|亿)",
     ]
-    for pattern in budget_patterns:
+    for idx, pattern in enumerate(budget_patterns):
         match = re.search(pattern, raw, flags=re.I)
         if match:
+            # 范围模式：取上限值（用户的最高预算）
+            if idx == 2 and match.lastindex and match.lastindex >= 4:
+                return _parse_budget_amount(match.group(3), match.group(4) or "")
             return _parse_budget_amount(match.group(1), match.group(2) or "")
     return None
 
@@ -1122,10 +1228,17 @@ def extract_budget(text: str) -> Optional[float]:
 def _parse_budget_amount(value: str, unit: str = "") -> float:
     amount = float(re.sub(r"[\s,，]", "", value))
     normalized = (unit or "").strip().lower()
-    if normalized in {"k", "千"}:
-        return amount * 1000
-    if normalized in {"w", "万"}:
-        return amount * 10000
+    _cn_multipliers = {
+        "亿": 100_000_000,
+        "千万": 10_000_000,
+        "百万": 1_000_000,
+        "十万": 100_000,
+        "w": 10_000, "万": 10_000,
+        "k": 1_000, "千": 1_000,
+        "百": 100,
+    }
+    if normalized in _cn_multipliers:
+        return amount * _cn_multipliers[normalized]
     return amount
 
 
@@ -1440,9 +1553,20 @@ def _has_product_query_intent(text: str, lowered: str) -> bool:
 def resolve_followup_message(message: str, session: ShoppingSession) -> Optional[Dict[str, Any]]:
     if not has_last_recommendation(session) or not is_product_detail_followup(message):
         return None
+    topic = current_topic_json(session)
     product_ids = last_recommended_product_ids(session)
     query_parts = [str(getattr(session, "last_goal", "") or "").strip(), f"用户追问：{message}"]
     query = "。".join(part for part in query_parts if part)
+    # 当会话主题仍在购物车操作上下文中时，追问应继续走购物车工具，
+    # 而非强制回到推荐——避免 followup_guard 在购物车多轮中错误地覆盖路由。
+    if topic.get("topic_type") == "cart":
+        return _tool_call(
+            "apply_cart_instruction",
+            {"query": query or str(message or "")},
+            0.9,
+            "购物车主题下的追问，继续走购物车工具。",
+            "followup_guard",
+        )
     return _tool_call(
         "recommend_shopping_products",
         {
@@ -1585,19 +1709,45 @@ def _router_error_class(failure_reason: str) -> str:
     return "skipped"
 
 
-def build_route_prompt(message: str, topic_memory: Dict[str, Any]) -> str:
+def build_route_prompt(message: str, topic_memory: Dict[str, Any], session=None) -> str:
+    """Build the user-message prompt for the LLM router, including session context."""
     topic = {
         "topic_type": (topic_memory or {}).get("topic_type", ""),
         "route": (topic_memory or {}).get("route", ""),
         "category": (topic_memory or {}).get("category", ""),
     }
-    return (
-        "You are a lightweight shopping tool router. Output strict JSON only.\n"
-        "Tools: recommend_shopping_products, generate_pc_build_plan, compare_products, apply_cart_instruction, general_chat.\n"
-        "Return only these fields: name, arguments, confidence, needs_clarification.\n"
-        "Arguments may include query, budget, category, product_ids, catalog_scope, compare_with_previous, action, quantity.\n"
-        "Do not explain products, recommend products, invent prices, or expand long history.\n"
-        f"Topic summary: {json.dumps(topic, ensure_ascii=False)}\n"
-        f"User: {str(message or '')[:500]}\n"
-        "Example: {\"name\":\"recommend_shopping_products\",\"arguments\":{\"query\":\"...\",\"catalog_scope\":\"ecommerce\"},\"confidence\":0.8,\"needs_clarification\":false}"
+    # ── 购物车上下文注入 ──
+    # 将当前购物车状态作为 LLM 决策的辅助信息，
+    # 帮助 LLM 理解 "看看购物车""改成2台" 等短语的购物车操作意图。
+    cart_context = ""
+    if session is not None:
+        cart = getattr(session, "cart", None) or {}
+        if cart:
+            items_summary = []
+            for pid, item in list(cart.items())[:5]:
+                items_summary.append(f"{pid} x{item.quantity}")
+            cart_context = f"当前购物车({len(cart)}件): {', '.join(items_summary)}"
+        else:
+            cart_context = "当前购物车: 空"
+        # 最近工具调用历史（帮助 LLM 理解追问语境）
+        tool_hist = getattr(session, "tool_history", None) or []
+        if tool_hist:
+            recent = tool_hist[-3:]
+            hist_names = [t.get("name", "?") for t in recent]
+            cart_context += f"\n最近操作: {' -> '.join(hist_names)}"
+
+    parts = [
+        "You are a lightweight shopping tool router. Output strict JSON only.",
+        "Tools: recommend_shopping_products, generate_pc_build_plan, compare_products, apply_cart_instruction, general_chat.",
+        "Return only these fields: name, arguments, confidence, needs_clarification.",
+        "Arguments may include query, budget, category, product_ids, catalog_scope, compare_with_previous, action, quantity.",
+        "Do not explain products, recommend products, invent prices, or expand long history.",
+        f"Topic summary: {json.dumps(topic, ensure_ascii=False)}",
+    ]
+    if cart_context:
+        parts.append(f"Session state: {cart_context}")
+    parts.append(f"User: {str(message or '')[:500]}")
+    parts.append(
+        'Example: {"name":"recommend_shopping_products","arguments":{"query":"...","catalog_scope":"ecommerce"},"confidence":0.8,"needs_clarification":false}'
     )
+    return "\n".join(parts)

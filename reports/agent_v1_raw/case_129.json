@@ -1,0 +1,1103 @@
+{
+  "case_id": 129,
+  "input": "iPhone 17 Pro 有什么颜色可以选？",
+  "expected": "recommend_shopping_products → iPhone SKU信息",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "iPhone 17 Pro 有什么颜色可以选？",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "iPhone 17 Pro 有什么颜色可以选？",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "iPhone 17 Pro 颜色",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 944,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "iPhone 17 Pro 颜色",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 944,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "iPhone 17 Pro 有什么颜色可以选？",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 946
+      },
+      "topic_memory": {
+        "topic_id": "default-1",
+        "topic_type": "ecommerce_recommendation",
+        "subject": "最贵的商品是什么",
+        "route": "recommend_shopping_products",
+        "category": "护肤",
+        "slots": {
+          "budget": 3000.0,
+          "usage": [],
+          "preferences": {
+            "category": "护肤",
+            "usage": [
+              "运动"
+            ],
+            "followup_type": "product_detail",
+            "performance": "upgrade",
+            "noise": "低噪音"
+          },
+          "product_ids": [],
+          "catalog_scope": "ecommerce"
+        },
+        "confidence": 0.8,
+        "source": "llm",
+        "reason": "路由器未提供原因。",
+        "updated_at": "2026-06-07T04:02:17.360224+00:00",
+        "history": [
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "有没有好看的裙子",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:01:56.804410+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "数码电子",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "数码电子",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:01:57.854217+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "500元以下的商品有哪些",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "数码电子",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:00.182709+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "所有商品按价格从低到高排列",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "数码电子",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:05.318398+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "华为品牌的商品有哪些",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 500.0,
+              "usage": [],
+              "preferences": {
+                "category": "数码电子",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:10.089724+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "手机",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:11.131359+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "第二页的商品",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "手机",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:13.134979+00:00"
+          },
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "护肤",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": 3000.0,
+              "usage": [],
+              "preferences": {
+                "category": "护肤",
+                "usage": [
+                  "运动"
+                ],
+                "followup_type": "product_detail",
+                "performance": "upgrade",
+                "noise": "低噪音"
+              },
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:02:15.087537+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+  "product_card_count": 0,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 1896,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.16666666666666666,
+            "history_dependency": 0.42,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.16666666666666666,
+        "history_dependency": 0.42,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "iPhone 17 Pro 有什么颜色可以选？",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "iPhone 17 Pro 有什么颜色可以选？",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "iPhone 17 Pro 颜色",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 944,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "iPhone 17 Pro 颜色",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 944,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "iPhone 17 Pro 有什么颜色可以选？",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 946
+        },
+        "topic_memory": {
+          "topic_id": "default-1",
+          "topic_type": "ecommerce_recommendation",
+          "subject": "最贵的商品是什么",
+          "route": "recommend_shopping_products",
+          "category": "护肤",
+          "slots": {
+            "budget": 3000.0,
+            "usage": [],
+            "preferences": {
+              "category": "护肤",
+              "usage": [
+                "运动"
+              ],
+              "followup_type": "product_detail",
+              "performance": "upgrade",
+              "noise": "低噪音"
+            },
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.8,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T04:02:17.360224+00:00",
+          "history": [
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "有没有好看的裙子",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:01:56.804410+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "数码电子",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "数码电子",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:01:57.854217+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "500元以下的商品有哪些",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "数码电子",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:00.182709+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "所有商品按价格从低到高排列",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "数码电子",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:05.318398+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "华为品牌的商品有哪些",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 500.0,
+                "usage": [],
+                "preferences": {
+                  "category": "数码电子",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:10.089724+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "手机",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:11.131359+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "第二页的商品",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "手机",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:13.134979+00:00"
+            },
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "护肤",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": 3000.0,
+                "usage": [],
+                "preferences": {
+                  "category": "护肤",
+                  "usage": [
+                    "运动"
+                  ],
+                  "followup_type": "product_detail",
+                  "performance": "upgrade",
+                  "noise": "低噪音"
+                },
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:02:15.087537+00:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "no_recommendation",
+        "task_type": "clarify_or_no_recommendation",
+        "supported_now": true,
+        "reason": "budget_catalog_gap"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 180 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "结构化筛选启动",
+        "detail": "当前使用本地商品属性、SKU、价格和评价进行评分。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": []
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "digital"
+          ],
+          "price_min": 3000.0,
+          "price_max": 5000.0,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 180,
+        "by_category": {},
+        "clarification_needed": [
+          "budget_catalog_gap"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "3000到5000之间的手机. User added constraints: iPhone 17 Pro 有什么颜色可以选？",
+          "scenario": "device_purchase",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "digital"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "digital"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": 3000.0,
+          "price_max": 5000.0,
+          "budget_level": "medium",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [],
+        "candidate_count": 180,
+        "product_cards": [],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "digital"
+            ],
+            "price_min": 3000.0,
+            "price_max": 5000.0,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 180,
+          "by_category": {},
+          "clarification_needed": [
+            "budget_catalog_gap"
+          ]
+        },
+        "comparison_table": [],
+        "intent_route": {
+          "route": "no_recommendation",
+          "task_type": "clarify_or_no_recommendation",
+          "supported_now": true,
+          "reason": "budget_catalog_gap"
+        },
+        "missing_fields": [
+          "budget_catalog_gap"
+        ],
+        "risks": [
+          "budget_catalog_gap"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。"
+        ],
+        "follow_up_questions": [
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ]
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "default"
+      }
+    }
+  ]
+}

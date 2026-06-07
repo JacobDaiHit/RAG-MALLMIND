@@ -6,7 +6,7 @@ import logging
 import threading
 from typing import Callable, TypeVar
 
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # noqa: E402 – retained for standalone scripts
 from pymilvus import MilvusClient, DataType, AnnSearchRequest, RRFRanker
 
 load_dotenv()
@@ -85,7 +85,8 @@ class MilvusManager:
         :param dense_dim: 密集向量维度；默认读环境变量 DENSE_EMBEDDING_DIM（本地 BAAI/bge-m3 为 1024）
         """
         if dense_dim is None:
-            dense_dim = _parse_positive_int(os.getenv("DENSE_EMBEDDING_DIM", "1024"), default=1024)
+            from rag.ingestion.embedding import get_configured_embedding_dim
+            dense_dim = get_configured_embedding_dim()
         def _init(client: MilvusClient) -> None:
             """Milvus 客户端：封装 init 相关逻辑，供上层流程复用。"""
             if client.has_collection(self.collection_name):

@@ -9,7 +9,7 @@ from rag.recommendation.cost_estimator import estimate_plan_cost
 from rag.recommendation.image_retrieval import ImageRetrievalEvidence
 from rag.recommendation.intent_router import route_shopping_intent
 from rag.recommendation.product_loader import ProductCatalog, load_catalog_for_scope
-from rag.recommendation.query_guards import clarification_required, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
+from rag.recommendation.query_guards import budget_relaxation_allowed, clarification_required, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
 from rag.recommendation.retrieval import RetrievalEvidence, evidence_summary, retrieve_requirement_evidence
 from rag.recommendation.scorer import ProductScore, score_products
 from rag.recommendation.structured_filter import filter_products_for_requirement
@@ -49,17 +49,8 @@ def build_recommendation_result(
         normalized_scope = "pc_parts"
     catalog = catalog or load_catalog_for_scope(normalized_scope)
     recommendation_domain = recommendation_domain_for_scope(normalized_scope)
-    clarification = clarification_required(requirement.raw_query)
-    if clarification and normalized_scope != "pc_parts":
-        return build_no_recommendation_result(
-            requirement=requirement,
-            catalog=catalog,
-            catalog_scope=normalized_scope,
-            recommendation_domain=recommendation_domain,
-            no_match_reason="clarification_required",
-            pc_route_detected=pc_route_detected,
-            trace_extras=clarification,
-        )
+    # ── clarification_required 不再拦截宽泛查询，让大模型兜底 ──
+    _ = clarification_required(requirement.raw_query)
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
     no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
@@ -116,6 +107,36 @@ def build_recommendation_result(
     plan = build_recommendation_plan(requirement, grouped_scores)
     plans = [plan]
     product_cards = build_product_cards(plans, grouped_scores, requirement=requirement)
+
+    # ── 后置预算执行层：确保明确预算不被穿透 ──
+    if requirement.price_max is not None and product_cards:
+        budget_strict = not budget_relaxation_allowed(requirement.raw_query)
+        if budget_strict:
+            budget_enforced_cards = [
+                card for card in product_cards
+                if not card.get("price") or card["price"] <= requirement.price_max
+            ]
+            if not budget_enforced_cards:
+                return build_no_recommendation_result(
+                    requirement=requirement,
+                    catalog=catalog,
+                    catalog_scope=normalized_scope,
+                    recommendation_domain=recommendation_domain,
+                    no_match_reason="budget_catalog_gap",
+                    pc_route_detected=pc_route_detected,
+                    trace_extras={
+                        "budget_gap_reason": "budget_catalog_gap",
+                        "post_budget_enforcement": True,
+                        "pre_enforcement_card_count": len(product_cards),
+                        "price_max": requirement.price_max,
+                        "structured_filter": {
+                            category.value: diagnostics.to_trace()
+                            for category, diagnostics in filter_diagnostics.items()
+                        },
+                    },
+                )
+            product_cards = budget_enforced_cards
+
     candidate_scope = build_candidate_scope(requirement, catalog, grouped_scores)
     comparison_table = build_comparison_table(grouped_scores)
     missing_fields = list(requirement.missing_fields)

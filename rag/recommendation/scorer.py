@@ -56,6 +56,14 @@ def score_product(
     }
     base_score = sum(components[name] * weights[name] for name in weights)
     final_score = apply_evidence_boost(base_score, evidence, query=query)
+    # ── 跨品类证据惩罚：当查询品类明确时，抑制非目标品类的 evidence boost ──
+    desired_cats = requirement.desired_categories or requirement.required_components
+    if desired_cats and len(desired_cats) == 1 and evidence:
+        target_cat = desired_cats[0].value
+        evidence_cats = {item.get("category", "") for item in evidence if item.get("category")}
+        if evidence_cats and all(cat != target_cat for cat in evidence_cats):
+            # 所有 evidence 来自非目标品类，回退 evidence boost 并施加惩罚
+            final_score = clamp(final_score - 0.10)
     # 计算 evidence 带来的增量
     base_without_evidence = apply_evidence_boost(base_score, [])
     evidence_boost = round(final_score - base_without_evidence, 4)

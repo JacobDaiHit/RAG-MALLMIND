@@ -1,6 +1,6 @@
 """父级分块文档存储（用于 Auto-merging Retriever）"""
 import logging
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List
 
 from rag.schemas.models import ParentChunk
@@ -59,7 +59,7 @@ class ParentChunkStore:
                     "root_chunk_id": doc.get("root_chunk_id", ""),
                     "chunk_level": int(doc.get("chunk_level", 0) or 0),
                     "chunk_idx": int(doc.get("chunk_idx", 0) or 0),
-                    "updated_at": datetime.utcnow(),
+                    "updated_at": datetime.now(timezone.utc),
                 }
                 cache_payload = {
                     "chunk_id": chunk_id,

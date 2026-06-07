@@ -1,4 +1,3 @@
-import json
 import os
 from typing import Any, Dict, Optional
 
@@ -16,6 +15,7 @@ from rag.api.app_context import (
 from rag.api.attachments import prepare_attachments_for_recommendation
 from rag.api.request_models import GoalRequest, PromptFinalizeRequest
 from rag.api.runtime_context import apply_runtime_trace, build_adaptive_runtime_context, runtime_event_payload
+from rag.api.routes.common import has_image_data, is_test_env, stream_llm_enabled, system_degraded
 from rag.api.sse import sse_event
 from rag.recommendation import InvalidGoalError, parse_requirement, parse_requirement_rule_based, recommend_shopping_products
 from rag.recommendation.input_preprocessor import preprocess_user_input
@@ -26,12 +26,6 @@ from rag.utils.runtime_errors import public_error, sanitize_report, sanitize_res
 
 
 router = APIRouter()
-
-
-def stream_llm_enabled() -> bool:
-    from rag.api import recommendation_app
-
-    return recommendation_app.is_llm_configured() and recommendation_app.STREAM_LLM_ENABLED
 
 
 @router.post("/api/analyze-intent")
@@ -91,10 +85,10 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
         route_session,
         requested_mode=getattr(request, "mode", None) or "auto",
         has_attachments=bool(request.attachments),
-        has_image_data=_has_image_data(request.attachments),
+        has_image_data=has_image_data(request.attachments),
         llm_configured=llm_configured,
-        is_test_env=_is_test_env(),
-        system_degraded=_system_degraded(),
+        is_test_env=is_test_env(),
+        system_degraded=system_degraded(),
     )
     decision = runtime_context["decision"]
     policy = runtime_context["policy"]
@@ -130,9 +124,9 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
         requested_mode=getattr(request, "mode", None) or "auto",
         llm_configured=llm_configured,
         has_attachments=bool(request.attachments),
-        has_image_data=_has_image_data(request.attachments),
-        is_test_env=_is_test_env(),
-        system_degraded=_system_degraded(),
+        has_image_data=has_image_data(request.attachments),
+        is_test_env=is_test_env(),
+        system_degraded=system_degraded(),
     )
     trace["llm_used_for_parse"] = bool(trace.get("llm_requirement_parse_used"))
     trace.setdefault("llm_used_for_explanation", False)
@@ -148,25 +142,6 @@ def infer_recommend_catalog_scope(goal: str, session: Any = None, *, local_route
         return "ecommerce"
     scope = (tool_call.get("arguments") or {}).get("catalog_scope") or "ecommerce"
     return scope if scope in {"ecommerce", "pc_parts", "combined"} else "ecommerce"
-
-
-def _has_image_data(value: Any) -> bool:
-    if isinstance(value, str):
-        try:
-            value = json.loads(value)
-        except json.JSONDecodeError:
-            return False
-    if not isinstance(value, list):
-        return False
-    return any(isinstance(item, dict) and (item.get("data_url") or item.get("dataUrl")) for item in value)
-
-
-def _is_test_env() -> bool:
-    return os.getenv("APP_ENV", "").strip().lower() in {"test", "testing", "ci"}
-
-
-def _system_degraded() -> bool:
-    return os.getenv("SYSTEM_DEGRADED", "").strip().lower() in {"1", "true", "yes", "on"}
 
 
 @router.get("/api/stream-recommend")
@@ -190,10 +165,10 @@ def stream_recommend(
         route_session,
         requested_mode=mode,
         has_attachments=bool(attachments),
-        has_image_data=_has_image_data(attachments),
+        has_image_data=has_image_data(attachments),
         llm_configured=llm_configured,
-        is_test_env=_is_test_env(),
-        system_degraded=_system_degraded(),
+        is_test_env=is_test_env(),
+        system_degraded=system_degraded(),
     )
     decision = runtime_context["decision"]
     policy = runtime_context["policy"]
@@ -225,9 +200,9 @@ def stream_recommend(
                 requested_mode=mode,
                 llm_configured=llm_configured,
                 has_attachments=bool(attachments),
-                has_image_data=_has_image_data(attachments),
-                is_test_env=_is_test_env(),
-                system_degraded=_system_degraded(),
+                has_image_data=has_image_data(attachments),
+                is_test_env=is_test_env(),
+                system_degraded=system_degraded(),
             ),
         )
         yield sse_event(
@@ -258,9 +233,9 @@ def stream_recommend(
                     requested_mode=mode,
                     llm_configured=llm_configured,
                     has_attachments=bool(attachments),
-                    has_image_data=_has_image_data(attachments),
-                    is_test_env=_is_test_env(),
-                    system_degraded=_system_degraded(),
+                    has_image_data=has_image_data(attachments),
+                    is_test_env=is_test_env(),
+                    system_degraded=system_degraded(),
                 )
                 payload["trace"] = trace
                 payload = sanitize_result_for_response(payload)

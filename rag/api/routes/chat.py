@@ -7,7 +7,7 @@ from fastapi.responses import StreamingResponse
 from rag.api.app_context import prepare_recommendation_context
 from rag.api.request_models import CartActionRequest, ChatStreamRequest, ProductCompareRequest
 from rag.api.runtime_context import build_adaptive_runtime_context, decision_reason, decision_signals, runtime_event_payload
-from rag.api.routes.common import request_product_ids
+from rag.api.routes.common import has_image_data, is_test_env, request_product_ids, stream_llm_enabled, system_degraded
 from rag.api.routes.legacy_chat_compat import chat_compat_response
 from rag.api.sse import safe_stream, sse_event
 from rag.recommendation.comparison import compare_products
@@ -32,12 +32,6 @@ from rag.utils.runtime_errors import sanitize_report
 
 
 router = APIRouter()
-
-
-def stream_llm_enabled() -> bool:
-    from rag.api import recommendation_app
-
-    return recommendation_app.is_llm_configured() and recommendation_app.STREAM_LLM_ENABLED
 
 
 def recommendation_fn():
@@ -74,10 +68,10 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             session,
             requested_mode=getattr(request, "mode", None),
             has_attachments=bool(raw_attachments),
-            has_image_data=_has_image_data(raw_attachments),
+            has_image_data=has_image_data(raw_attachments),
             llm_configured=llm_configured,
-            is_test_env=_is_test_env(),
-            system_degraded=_system_degraded(),
+            is_test_env=is_test_env(),
+            system_degraded=system_degraded(),
         )
         adaptive_decision = runtime_context["decision"]
         policy = runtime_context["policy"]
@@ -90,9 +84,9 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
                 requested_mode=getattr(request, "mode", None),
                 llm_configured=llm_configured,
                 has_attachments=bool(raw_attachments),
-                has_image_data=_has_image_data(raw_attachments),
-                is_test_env=_is_test_env(),
-                system_degraded=_system_degraded(),
+                has_image_data=has_image_data(raw_attachments),
+                is_test_env=is_test_env(),
+                system_degraded=system_degraded(),
             ),
         )
         yield sse_event(
@@ -103,9 +97,9 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
                 requested_mode=getattr(request, "mode", None),
                 llm_configured=llm_configured,
                 has_attachments=bool(raw_attachments),
-                has_image_data=_has_image_data(raw_attachments),
-                is_test_env=_is_test_env(),
-                system_degraded=_system_degraded(),
+                has_image_data=has_image_data(raw_attachments),
+                is_test_env=is_test_env(),
+                system_degraded=system_degraded(),
             ),
         )
         tool_call = route_shopping_tool_call(raw_message, session, use_llm=policy.use_router_llm)
@@ -218,22 +212,3 @@ def compare_product_cards(request: ProductCompareRequest) -> Dict[str, Any]:
     if not request.product_ids:
         raise HTTPException(status_code=400, detail="product_ids cannot be empty")
     return compare_products(load_combined_product_catalog(), request.product_ids)
-
-
-def _chat_mode(request: ChatStreamRequest) -> str:
-    mode = str(getattr(request, "mode", "") or "").strip().lower()
-    if mode in {"auto", "fast", "balanced", "full"}:
-        return mode
-    return "auto"
-
-
-def _has_image_data(items: List[Dict[str, Any]]) -> bool:
-    return any(isinstance(item, dict) and (item.get("data_url") or item.get("dataUrl")) for item in items)
-
-
-def _is_test_env() -> bool:
-    return os.getenv("APP_ENV", "").strip().lower() in {"test", "testing", "ci"}
-
-
-def _system_degraded() -> bool:
-    return os.getenv("SYSTEM_DEGRADED", "").strip().lower() in {"1", "true", "yes", "on"}

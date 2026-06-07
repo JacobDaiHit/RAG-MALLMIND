@@ -1,9 +1,23 @@
 """Legacy LangChain-style product evidence tools.
 
-The production shopping flow does not use this module. The current main routing
-path is rag.recommendation.tool_router -> rag.recommendation.tool_handlers.
-Keep this file only for old experiments/tests.
+.. deprecated::
+    This module is **deprecated** and will be removed in a future release.
+    The production shopping flow does not use this module. The current main routing
+    path is rag.recommendation.tool_router -> rag.recommendation.tool_handlers.
+    Keep this file only for old experiments/tests.
+
+    Known issues:
+    - Uses unsynchronised global mutable state (_LAST_RAG_CONTEXT, etc.)
+    - Not thread-safe under concurrent FastAPI requests.
 """
+
+import warnings as _warnings
+
+_warnings.warn(
+    "rag.legacy.tools is deprecated; use rag.recommendation.tool_router instead.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 from typing import Optional
 

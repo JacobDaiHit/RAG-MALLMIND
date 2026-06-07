@@ -181,7 +181,9 @@ def test_redis_delete_pattern_uses_scan_iter():
 
 
 def test_rerank_meta_does_not_include_provider_response_text():
-    for path in ("rag/utils/retrieval_postprocess.py", "rag/utils/rag_utils.py"):
+    # rag_utils.py delegates to retrieval_postprocess.py for rerank/auto-merge,
+    # so only the canonical module needs the http_status_ string.
+    for path in ("rag/utils/retrieval_postprocess.py",):
         source = Path(path).read_text(encoding="utf-8")
         assert "http_status_" in source
 

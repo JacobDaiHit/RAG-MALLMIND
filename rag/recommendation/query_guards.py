@@ -54,6 +54,9 @@ PRODUCT_TYPE_TERMS: Dict[str, Iterable[str]] = {
     "hat": ["帽", "帽子", "遮阳帽", "鸭舌帽"],
     "basketball_shoes": ["篮球鞋", "篮球实战鞋", "实战篮球鞋", "实战鞋", "篮球专业比赛鞋", "篮球比赛鞋"],
     "shoes": ["运动鞋", "跑鞋", "跑步鞋", "篮球鞋", "徒步鞋", "鞋"],
+    "watch": ["手表", "运动手表", "智能手表", "watch"],
+    "dress": ["裙子", "连衣裙", "半身裙", "裙装"],
+    "game_console": ["游戏机", "ps5", "playstation", "xbox", "switch", "nintendo"],
 }
 
 PRODUCT_TYPE_SUBCATEGORY_TERMS: Dict[str, Iterable[str]] = {
@@ -74,6 +77,9 @@ PRODUCT_TYPE_SUBCATEGORY_TERMS: Dict[str, Iterable[str]] = {
     "hat": ["帽", "帽子", "遮阳帽", "鸭舌帽"],
     "basketball_shoes": ["篮球鞋", "篮球实战鞋", "实战篮球鞋", "实战鞋", "篮球专业比赛鞋", "篮球比赛鞋"],
     "shoes": ["鞋", "跑步鞋", "篮球鞋", "徒步鞋", "运动鞋"],
+    "watch": ["手表", "运动手表", "智能手表"],
+    "dress": ["裙子", "连衣裙", "半身裙"],
+    "game_console": ["游戏机", "主机游戏"],
 }
 
 PRODUCT_TYPE_LABELS: Dict[str, str] = {
@@ -94,6 +100,9 @@ PRODUCT_TYPE_LABELS: Dict[str, str] = {
     "hat": "帽子",
     "basketball_shoes": "篮球鞋",
     "shoes": "鞋",
+    "watch": "手表",
+    "dress": "裙子",
+    "game_console": "游戏机",
 }
 
 PRODUCT_TYPE_CATEGORY: Dict[str, str] = {
@@ -114,6 +123,9 @@ PRODUCT_TYPE_CATEGORY: Dict[str, str] = {
     "hat": "clothing",
     "basketball_shoes": "clothing",
     "shoes": "clothing",
+    "watch": "digital",
+    "dress": "clothing",
+    "game_console": "digital",
 }
 
 NEIGHBOR_TYPE_TERMS: Dict[str, Dict[str, Iterable[str]]] = {
@@ -370,17 +382,25 @@ def _parse_cpu_constraint(text: str, compact: str) -> Dict[str, str]:
     return constraints
 
 
+def _cn_unit_multiplier(unit_str: str) -> float:
+    _m = {
+        "亿": 100_000_000, "千万": 10_000_000, "百万": 1_000_000,
+        "十万": 100_000, "万": 10_000, "千": 1_000, "百": 100,
+    }
+    return _m.get((unit_str or "").strip(), 1)
+
+
 def _parse_budget_max(text: str) -> Optional[float]:
-    match = re.search(r"(\d+(?:\.\d+)?)\s*(?:元|块|rmb|cny)?\s*(?:以内|以下|内)", text, re.I)
+    match = re.search(r"(\d+(?:\.\d+)?)\s*(千万|百万|十万|万|千|百|亿)?\s*(?:元|块|rmb|cny)?\s*(?:以内|以下|内)", text, re.I)
     if match:
-        return float(match.group(1))
+        return float(match.group(1)) * _cn_unit_multiplier(match.group(2) or "")
     return None
 
 
 def _parse_budget_amount(text: str) -> Optional[float]:
-    match = re.search(r"(\d+(?:\.\d+)?)\s*(?:元|块|rmb|cny)", text, re.I)
+    match = re.search(r"(\d+(?:\.\d+)?)\s*(千万|百万|十万|万|千|百|亿)?\s*(?:元|块|rmb|cny)", text, re.I)
     if match:
-        return float(match.group(1))
+        return float(match.group(1)) * _cn_unit_multiplier(match.group(2) or "")
     return None
 
 

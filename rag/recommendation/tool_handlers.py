@@ -20,6 +20,7 @@ from rag.recommendation.session_state import (
 )
 from rag.utils.catalog_scope import normalize_catalog_scope
 from rag.utils.runtime_errors import public_error, sanitize_result_for_response
+from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient
 
 
 logger = logging.getLogger(__name__)
@@ -40,25 +41,74 @@ def handle_cart(session: Any, message: str, product_ids: List[str], tool_call: D
 
 
 def handle_general_chat(session: Any, tool_call: Dict[str, Any]) -> Iterable[str]:
+    """Handle general_chat: generate diverse responses via LLM with template fallback."""
     update_topic_memory(session, tool_call, result_type="general_chat")
     query = str((tool_call.get("arguments") or {}).get("query") or "")
+
+    # ── LLM 生成多样化回复 ──
+    # 通过 LLM 生成自然、多样的回复，避免所有 general_chat 返回相同模板。
+    # 如果 LLM 不可用或失败，回退到模板回复。
+    text = _generate_general_chat_llm_response(query)
+    if not text:
+        text = _generate_general_chat_fallback(query)
+
+    yield sse_event("delta", {"text": text})
+    yield sse_event("done", {"session_id": session.session_id})
+
+
+def _generate_general_chat_llm_response(query: str) -> str:
+    """Use LLM to generate a diverse general_chat response. Returns empty string on failure."""
+    try:
+        client = OpenAICompatibleChatClient()
+        if not client.configured:
+            return ""
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "你是一个电商智能导购助手。用户问了一个与具体商品推荐无关的问题，请你用自然、友好、多样的方式回复。\n"
+                    "回复规则：\n"
+                    "1. 如果是问候（你好、hi、hello），友好回应并简短介绍自己的能力（搜索商品、推荐、对比、购物车）\n"
+                    "2. 如果是身份问题（你是谁、你叫什么），介绍自己是智能导购助手\n"
+                    "3. 如果是购物无关的问题（天气、写代码、新闻），委婉说明自己专注购物领域，并引导用户提出购物需求\n"
+                    "4. 如果是感谢或告别，礼貌回应\n"
+                    "5. 回复要简短（1-3句话），自然口语化，不要每次都一模一样\n"
+                    "直接输出回复文本，不要加引号或前缀。"
+                ),
+            },
+            {"role": "user", "content": query},
+        ]
+        result = client.chat_text(messages, temperature=0.7, max_tokens=200)
+        result = result.strip().strip('"').strip("'")
+        if len(result) > 5:
+            return result
+        return ""
+    except (LLMClientError, Exception) as exc:
+        logger.debug("general_chat LLM fallback failed: %s", exc)
+        return ""
+
+
+def _generate_general_chat_fallback(query: str) -> str:
+    """Template-based fallback when LLM is unavailable."""
+    lower = query.lower()
     if any(term in query for term in ("天气", "写一首诗", "排序算法", "国际局势")):
-        text = (
+        return (
             "我是智能导购助手，主要帮你挑选商品、做商品对比和处理购物车。"
             "这个问题和购物无关，我就不展开了；如果你有购物需求，可以告诉我品类、预算和偏好。"
         )
-    elif query.strip().isdigit() or not any(ch.isalnum() for ch in query):
-        text = (
+    if query.strip().isdigit() or not any(ch.isalnum() for ch in query):
+        return (
             "我是智能导购助手。请告诉我你想买什么商品、预算多少、有什么偏好，"
             "我可以帮你搜索、推荐、对比，或加入购物车。"
         )
-    else:
-        text = (
-            "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、"
-            "生成整机方案，也可以处理购物车。请告诉我你想买什么。"
-        )
-    yield sse_event("delta", {"text": text})
-    yield sse_event("done", {"session_id": session.session_id})
+    if any(term in lower for term in ("谢谢", "感谢", "thank", "辛苦了")):
+        return "不客气！有需要随时找我，我可以帮你搜商品、做对比、处理购物车。"
+    if any(term in lower for term in ("再见", "拜拜", "bye")):
+        return "再见！购物有需要随时来找我。"
+    return (
+        "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、"
+        "生成整机方案，也可以处理购物车。请告诉我你想买什么。"
+    )
 
 
 def handle_compare(session: Any, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
@@ -256,6 +306,35 @@ def handle_recommend(
     if response_payload.get("follow_up_questions"):
         yield sse_event("follow_up_questions", {"questions": response_payload.get("follow_up_questions")})
     yield sse_event("result", response_payload)
+
+    # ── 组合意图：推荐后自动加购物车 ──
+    # 当 LLM 路由选择了 recommend_shopping_products 并附带 action="add_to_cart" 时，
+    # 在推荐完成后自动将首个推荐商品加入购物车，实现"推荐并加购"的链式操作。
+    tool_args = tool_call.get("arguments") or {}
+    pending_cart_action = tool_args.get("action") == "add_to_cart"
+    if pending_cart_action:
+        top_ids = [
+            str(card.get("product_id"))
+            for card in (response_payload.get("product_cards") or [])
+            if card.get("product_id")
+        ][:1]
+        if top_ids:
+            cart_result = apply_cart_instruction(
+                session=session,
+                instruction=f"把 {top_ids[0]} 加到购物车",
+                catalog=load_combined_product_catalog(),
+                product_ids=top_ids,
+            )
+            yield sse_event("cart", cart_result)
+        else:
+            yield sse_event("cart", {
+                "action": "add",
+                "items": [],
+                "total_price": 0.0,
+                "count": 0,
+                "messages": ["推荐结果为空，无法自动加入购物车。"],
+            })
+
     yield sse_event("done", {"session_id": session.session_id})
 
 

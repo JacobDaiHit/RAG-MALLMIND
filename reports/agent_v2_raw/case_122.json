@@ -1,0 +1,2104 @@
+{
+  "case_id": 122,
+  "input": "500元以下的商品有哪些",
+  "expected": "recommend(budget=500)+CARD",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "500元以下的商品有哪些",
+        "budget": 500.0,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "500元以下的商品有哪些",
+            "budget": 500.0,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "500元以下的商品",
+            "budget": 500.0,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1048,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "500元以下的商品",
+            "budget": 500.0,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 1048,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "500元以下的商品有哪些",
+            "budget": 500.0,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 1049
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 3,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 2319,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.8200000000000001,
+            "query_complexity": 0.1,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.8200000000000001,
+        "query_complexity": 0.1,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "500元以下的商品有哪些",
+          "budget": 500.0,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "500元以下的商品有哪些",
+              "budget": 500.0,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "500元以下的商品",
+              "budget": 500.0,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1048,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "500元以下的商品",
+              "budget": 500.0,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 1048,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "500元以下的商品有哪些",
+              "budget": 500.0,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 1049
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 36 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 20 条，预算内命中 20 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g；约 120 CNY；评分 0.81"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g；约 52 CNY；评分 0.81"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g；约 89 CNY；评分 0.80"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 0 条，预算内命中 0 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 12 条，预算内命中 12 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.81"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.79"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.79"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣；约 129 CNY；评分 0.75"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品；约 4.5 CNY；评分 0.87"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡；约 36 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "name": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8490，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#profile 召回分 0.0222；The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#faq 召回分 0.0221。",
+            "score": 0.849,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_018_1"
+          },
+          {
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "name": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "短袖T恤",
+            "price": 99.0,
+            "price_range": [
+              99.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_001_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8121，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0220。",
+            "score": 0.8121,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_001_1"
+          },
+          {
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "name": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_004_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于 食品饮料/碳酸饮料，综合分 0.8651，参考价 4.5-65 CNY。 评价均分 2.75/5。 检索证据：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#profile 召回分 0.0256；元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#sku 召回分 0.0223。",
+            "score": 0.8651,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_004_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": 500.0,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 20,
+            "within_budget_count": 20,
+            "top_candidates": [
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.849
+              },
+              {
+                "product_id": "p_beauty_015",
+                "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+                "price": 120.0,
+                "score": 0.8081
+              },
+              {
+                "product_id": "p_beauty_011",
+                "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                "price": 52.0,
+                "score": 0.8056
+              },
+              {
+                "product_id": "p_beauty_025",
+                "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                "price": 89.0,
+                "score": 0.8002
+              },
+              {
+                "product_id": "p_beauty_007",
+                "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                "price": 89.0,
+                "score": 0.7985
+              }
+            ]
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 0,
+            "within_budget_count": 0,
+            "top_candidates": []
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 12,
+            "within_budget_count": 12,
+            "top_candidates": [
+              {
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "price": 99.0,
+                "score": 0.8121
+              },
+              {
+                "product_id": "p_clothes_020",
+                "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                "price": 79.0,
+                "score": 0.7895
+              },
+              {
+                "product_id": "p_clothes_023",
+                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                "price": 149.0,
+                "score": 0.7875
+              },
+              {
+                "product_id": "p_clothes_002",
+                "title": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣",
+                "price": 129.0,
+                "score": 0.7479
+              },
+              {
+                "product_id": "p_clothes_019",
+                "title": "Nike Heritage86 Futura Logo 经典刺绣棒球帽 可调节帽围",
+                "price": 169.0,
+                "score": 0.7341
+              }
+            ]
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 25,
+            "within_budget_count": 25,
+            "top_candidates": [
+              {
+                "product_id": "p_food_004",
+                "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                "price": 4.5,
+                "score": 0.8651
+              },
+              {
+                "product_id": "p_food_018",
+                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                "price": 9.0,
+                "score": 0.8497
+              },
+              {
+                "product_id": "p_food_023",
+                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                "price": 36.0,
+                "score": 0.8475
+              },
+              {
+                "product_id": "p_food_003",
+                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                "price": 4.0,
+                "score": 0.8403
+              },
+              {
+                "product_id": "p_food_002",
+                "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                "price": 30.0,
+                "score": 0.8363
+              }
+            ]
+          }
+        },
+        "clarification_needed": [
+          "category"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "500元以下的商品有哪些",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": 500.0,
+          "budget_level": "medium",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "shopping_bundle",
+            "title": "组合推荐",
+            "summary": "按场景组合多个互补商品：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml + 优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 + 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "components": [
+              {
+                "role": "beauty",
+                "product": {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "brand": "The Ordinary",
+                  "category": "beauty",
+                  "category_name": "美妆护肤",
+                  "sub_category": "精华",
+                  "base_price": 59.0,
+                  "min_price": 59.0,
+                  "max_price": 98.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_beauty_018_live.jpg",
+                  "image_url": "/product-images/p_beauty_018_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_beauty_018_1",
+                      "properties": {
+                        "容量": "30ml 标准装"
+                      },
+                      "price": 59.0
+                    },
+                    {
+                      "sku_id": "s_p_beauty_018_2",
+                      "properties": {
+                        "容量": "60ml 大容量装"
+                      },
+                      "price": 98.0
+                    }
+                  ],
+                  "description": "The Ordinary这款烟酰胺10%锌1%精华液是油痘肌和暗沉肌的高性价比选择。核心成分10%烟酰胺能调节皮脂分泌、淡化毛孔并提亮肤色，1%锌则辅助控油舒缓。适合油性/混合性皮肤、有毛孔粗大或肤色不均问题的人群。日常护肤时，洁面爽肤后取2-3滴涂抹全脸（避开眼周），初期建议隔天使用建立耐受，后续可增至每日。注意：敏感肌需先耳后测试，避免与高浓度酸类（如水杨酸）同时使用，使用期间做好防晒。",
+                  "faqs": [
+                    {
+                      "question": "10%烟酰胺浓度会刺激皮肤吗？",
+                      "answer": "10%属于较高浓度烟酰胺，初次使用可能有轻微刺痛或泛红。建议先在耳后/手臂内侧测试，无不适再用。初期每周2-3次，每次2-3滴，待皮肤适应后逐渐增加频率。若持续不适，暂停使用或咨询医生。敏感肌需谨慎，可先选低浓度产品。"
+                    },
+                    {
+                      "question": "这款精华适合什么肤质？",
+                      "answer": "成分功效完全相同，仅容量和价格不同。30ml单价约1.97元/ml，60ml约1.63元/ml，大容量更划算。初次尝试选30ml，长期使用选60ml更经济。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小敏",
+                      "rating": 2,
+                      "content": "用两次就泛红刺痛，混干皮hold不住10%浓度。之前用5%烟酰胺没事，这个太刺激了。涂完脸紧绷，还起了小疹子，敏感肌慎入！"
+                    },
+                    {
+                      "nickname": "阿强",
+                      "rating": 3,
+                      "content": "控油效果一般，早上涂下午T区还是油。毛孔没见小，质地略黏吸收慢。用了一个月没明显变化，性价比普通。"
+                    },
+                    {
+                      "nickname": "小美",
+                      "rating": 5,
+                      "content": "油痘肌救星！半个月T区出油减少，毛孔细腻了，肤色提亮。清爽不黏，吸收快。30ml能用俩月，价格超实惠，会回购60ml！"
+                    },
+                    {
+                      "nickname": "丽丽",
+                      "rating": 3,
+                      "content": "效果不明显，三周肤色没变化。涂多了搓泥，和后续乳液不兼容。用量得控制，不然容易卡粉，整体一般。"
+                    },
+                    {
+                      "nickname": "大兵",
+                      "rating": 5,
+                      "content": "男生油皮福音！控油超棒，早上涂到晚上不油，毛孔变小。价格便宜，60ml能用很久，推荐给油皮朋友！"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.6,
+                  "best_for": [
+                    "护肤咨询",
+                    "肤质匹配",
+                    "成分与功效问答",
+                    "精华"
+                  ],
+                  "not_good_for": [
+                    "极敏感人群需先试用"
+                  ],
+                  "supported_scenarios": [
+                    "beauty_routine",
+                    "skin_care",
+                    "gift_selection",
+                    "精华"
+                  ],
+                  "tags": [
+                    "The Ordinary",
+                    "美妆护肤",
+                    "精华",
+                    "敏感肌",
+                    "防晒",
+                    "控油",
+                    "30ml 标准装",
+                    "60ml 大容量装"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "1_美妆护肤/images/p_beauty_018_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "极敏感人群需先试用"
+                  ]
+                },
+                "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8490，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#profile 召回分 0.0222；The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#faq 召回分 0.0221。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.882,
+                  "reputation_fit": 0.97,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.82,
+                  "final_score": 0.849,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                    "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.6/5，参与口碑评分。",
+                    "商品提供 2 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：极敏感人群需先试用。",
+                    "商品知识证据命中：p_beauty_018 召回分 0.0222; p_beauty_018 召回分 0.0221。",
+                    "用户给出低预算或价格上限，价格适配权重提高。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_beauty_018::profile::0",
+                  "p_beauty_018::faq::2"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_beauty_018_1"
+              },
+              {
+                "role": "clothing",
+                "product": {
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "brand": "优衣库",
+                  "category": "clothing",
+                  "category_name": "服饰运动",
+                  "sub_category": "短袖T恤",
+                  "base_price": 99.0,
+                  "min_price": 99.0,
+                  "max_price": 99.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_clothes_001_live.jpg",
+                  "image_url": "/product-images/p_clothes_001_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_clothes_001_1",
+                      "properties": {
+                        "尺码": "S码",
+                        "颜色": "黑色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_2",
+                      "properties": {
+                        "尺码": "S码",
+                        "颜色": "白色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_3",
+                      "properties": {
+                        "尺码": "S码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_4",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "黑色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_5",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "白色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_6",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_7",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "黑色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_8",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "白色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_9",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 99.0
+                    }
+                  ],
+                  "description": "优衣库这款AIRism联名系列的男装宽松圆领T恤，把亲肤棉感和黑科技凉感做了完美融合，不是普通的薄款白T！面料用的是AIRism专属混纺棉，摸上去是软乎乎的棉质质感，贴身穿完全不扎，自带的吸湿速干属性夏天出了汗也不会黏在背上，宽松H版型刚好遮住腰腹的小赘肉，不紧绷也不会垮得像偷穿大人衣服。不管是学生党上课通勤、上班族下班逛夜市、周末约球做轻运动当内搭都合适，单穿配工装裤、牛仔短裤都很出片。建议洗的时候翻面用冷水轻柔模式，别用热水长时间泡，避免破坏面料里的凉感涂层，不要长时间暴晒在正午阳光下，挂在通风阴干能保持版型穿一整个夏天都不变形。",
+                  "faqs": [
+                    {
+                      "question": "这款AIRism棉质T恤和普通的优衣库纯棉基础T恤穿感上有什么不一样？",
+                      "answer": "这款T恤是AIRism技术加持的棉质款，不是100%普通纯棉，在保留了棉类面料亲肤不闷、不容易起静电的优势之外，还叠加了AIRism专属的细微凉感纤维导孔，夏天室温30多度贴身穿不会有普通纯棉刚上身的闷热感，出汗之后面料能快速把潮气导出去，不会像普通纯棉那样湿了之后硬邦邦贴在背上。宽松剪裁也比普通合身款的基础T留了更多透气空隙，怕热的男生穿会明显觉得体感更清爽。"
+                    },
+                    {
+                      "question": "目前在售的S/M/L三个码对应的对应配色，只能选对应码数的颜色吗？能不能跨码选其他颜色？",
+                      "answer": "目前这款SKU的库存是定向配货的，S码对应的黑色、M码对应的白色、L码对应的深蓝色都是当前仓库现货直发的规格，暂时不支持跨码换色的定制需求哦。如果想要特定颜色搭配特定码数，比如想要黑色M码，可以后续留意优衣库线下门店或者官方渠道的不定期补库存通知，本次下单的时候选对应码数拿到的就是匹配标注的颜色，不会发错货，三个颜色都是经典基础色，日常搭配适配度都很高。"
+                    },
+                    {
+                      "question": "这件T恤的宽松版型会不会显邋遢，小个子男生穿会不会压个子？",
+                      "answer": "这款的宽松是做了微落肩和衣长微调的H型宽松，不是oversize的长款垮版型，S码衣长大概在68cm左右，165-170cm的男生穿刚好盖住胯骨，搭配工装短裤不会压个子。M码衣长71cm适配170-178cm的身高，L码74cm适配178-185cm的身高，只要按平时穿优衣库T恤的常规码数选，不会出现过于松垮显邋遢的情况，想要更利落的效果可以把前摆稍微塞一点进裤腰里，搭配起来很显精神。"
+                    },
+                    {
+                      "question": "洗的时候会不会掉色，能不能和其他深色/浅色衣服混洗？",
+                      "answer": "这款T恤的三个配色都是活性染色工艺做的，初次下水的时候会有极轻微的浮色，第一次洗建议单独冷水手洗或者翻面套洗衣袋机洗，不要和其他容易掉色的彩色衣物混洗。黑色和深蓝色前3次洗最好和纯白色衣物分开，避免极少量浮色蹭到其他浅色衣服上，之后正常机洗几乎不会再出现掉色情况，面料色牢度符合优衣库的品控标准，正常穿洗大几个月也不会出现大面积发白变旧的情况。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 4,
+                      "content": "整体穿下来还挺舒服的，凉感确实比我之前买的普通纯棉T明显，上周35度出门跑外勤，后背出汗也没黏糊糊的。唯一有点小遗憾是我选的L码深蓝色，领口的走线我仔细看有一点点小线头，剪完就没啥事了，这个价格能买到带AIRism技术的T其实挺划算的，就是洗了两次之后衣长稍微垂了一丢丢，不仔细看看不出来，日常穿完全够用。"
+                    },
+                    {
+                      "nickname": "小宇",
+                      "rating": 5,
+                      "content": "这是我今年买过最满意的基础T了！选的M码白色，刚好卡在我175的身高身上，不会太长也不会太紧身，面料软乎乎的但是完全不透，之前买过别家的白T薄的穿个黑内衣都透，这个完全不会。上周去打球穿了俩小时，出了一身汗风一吹很快就干了，身上一点都没闷得慌，99块钱这个质感比我之前买的两百多的T还好，打算再蹲蹲补码的时候入件黑的换着穿。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 4,
+                      "content": "T恤本身的质感是没得说的，AIRism的凉感确实很惊喜，贴身穿完全不扎，我皮肤有点敏感穿别的便宜T容易痒，这件穿了大半个月完全没不舒服。就是我本来想选S码白的，结果现在S码只有黑色，只能凑单买了黑的，虽然黑的也百搭但我本来想买白T搭牛仔背带裤的，算是小遗憾吧，要是后续能补全配色就好了，整体性价比还是很高的。"
+                    },
+                    {
+                      "nickname": "大刚",
+                      "rating": 2,
+                      "content": "拿到手穿了两次就有点失望，我选的L码深蓝色，第一次下水没怎么搓，晒干之后领口就有点变形，本来挺平整的圆领穿几次就有点塌塌的，领口翻边堆在脖子那里特别显邋遢。而且我180穿L码本来以为合身，结果衣长比我预想的长很多，盖过屁股了，穿出去显得五五分，99块钱不算贵但这个品控感觉不如我前几年买的同系列款，有点不值。"
+                    },
+                    {
+                      "nickname": "小枫",
+                      "rating": 4,
+                      "content": "整体穿着体验是ok的，宽松版型对我这种腰上有小肚子的人太友好了，完全不会勒肚子，AIRism的面料夏天在空调房穿不会冻得胳膊凉，出门也不会闷。就是我选的S码黑色，洗了三次之后腋下位置有一点点起小毛球，得用粘毛器滚两下才干净，不过也不仔细看发现不了，这个价格能买到兼顾棉感和凉感的T，平时通勤穿完全够用，总体还是挺满意的。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.8,
+                  "best_for": [
+                    "穿搭组合",
+                    "尺码颜色选择",
+                    "运动/通勤场景",
+                    "短袖T恤",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "outfit_bundle",
+                    "sportswear",
+                    "commute_style",
+                    "sports",
+                    "短袖T恤"
+                  ],
+                  "tags": [
+                    "优衣库",
+                    "服饰运动",
+                    "短袖T恤",
+                    "通勤",
+                    "夏天",
+                    "S码",
+                    "黑色",
+                    "白色",
+                    "深蓝色",
+                    "M码",
+                    "L码"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "3_服饰运动/images/p_clothes_001_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8121，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0220。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.802,
+                  "reputation_fit": 1.0,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8121,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+                    "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3.8/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_clothes_001 召回分 0.0220。",
+                    "用户给出低预算或价格上限，价格适配权重提高。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_clothes_001::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_clothes_001_1"
+              },
+              {
+                "role": "food",
+                "product": {
+                  "product_id": "p_food_004",
+                  "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                  "brand": "元气森林",
+                  "category": "food",
+                  "category_name": "食品饮料",
+                  "sub_category": "碳酸饮料",
+                  "base_price": 4.5,
+                  "min_price": 4.5,
+                  "max_price": 65.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_food_004_live.jpg",
+                  "image_url": "/product-images/p_food_004_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_food_004_1",
+                      "properties": {
+                        "容量": "480ml",
+                        "口味": "白桃味",
+                        "包装规格": "单瓶"
+                      },
+                      "price": 4.5
+                    },
+                    {
+                      "sku_id": "s_p_food_004_2",
+                      "properties": {
+                        "容量": "480ml",
+                        "口味": "白桃味",
+                        "包装规格": "15瓶整箱"
+                      },
+                      "price": 65.0
+                    }
+                  ],
+                  "description": "元气森林白桃味气泡水是专为怕甜怕腻又爱爽感的人量身打造的快乐水，核心就是实打实的0糖0脂0卡，用赤藓糖醇代替白砂糖，喝起来完全没有普通碳酸饮料喝完齁嗓子反酸的问题，入口是刚咬开脆甜水蜜桃的鲜爽香气，细密的气泡在舌尖炸开，凉丝丝的特别解腻。不管是健身控卡期的运动党、正在控糖的减脂人群、怕胖的学生上班族，还是戒糖又嘴馋的奶茶爱好者都能放心喝。平时吃火锅撸串配它解辣解腻，上班困了冰一瓶提神醒脑，逛超市随手拿一瓶边走边喝也很方便。收到货如果没开封最好放阴凉避光处，别暴晒，冰1-2小时口感最好，开瓶之后尽快喝完避免气泡散掉哦。",
+                  "faqs": [
+                    {
+                      "question": "这款白桃味气泡水的0糖是完全不含糖分吗，配料表里有没有隐形糖？",
+                      "answer": "这款元气森林白桃味气泡水的0糖是完全符合国家相关标准的，没有添加白砂糖、果葡糖浆等可产生热量的糖类，配料里选用的甜味剂是赤藓糖醇，是从天然植物发酵提取的，几乎不会被人体代谢产生热量，也不会升血糖，完全不存在隐形添加糖的情况，控糖人群、减脂期的朋友都可以放心饮用，不用担心喝了之后有额外的热量负担。"
+                    },
+                    {
+                      "question": "整箱装的480ml*15瓶白桃味气泡水运输的时候容易出现漏液的情况吗？",
+                      "answer": "咱们这款整箱装的气泡水发货前都会经过二次加固包装，箱内会加防震气泡膜缓冲磕碰，瓶身本身是食品级耐压力的PET材质，正常运输过程中基本不会出现漏液问题。如果大家收到货之后发现有鼓瓶、漏液、气泡跑光的情况，别签收直接联系客服提供破损照片，我们会第一时间给你安排补发或者全额退款，全程不需要你承担任何额外的费用，请放心下单就好。"
+                    },
+                    {
+                      "question": "这款白桃味气泡水的气泡够足吗，和普通带气的苏打水喝起来口感有什么区别？",
+                      "answer": "我们这款气泡水的气泡是高压充入的细密小微气泡，比普通苏打水的气泡更绵密，不是那种粗粝刺嗓子的辣感，入口之后会在舌尖慢慢爆开，搭配白桃的清甜香气，不会有普通苏打水的发苦的碱味。就算你开盖放了十分钟，也还剩大半的气泡感，平时喝不惯纯苏打水的朋友也能轻松接受，冰过之后气泡的爽感会更突出，解腻提神的效果特别好。"
+                    },
+                    {
+                      "question": "控糖的妊娠期或者血糖偏高的人群可以喝这款白桃味气泡水吗？",
+                      "answer": "这款白桃味气泡水的赤藓糖醇升糖指数GI为0，正常适量饮用是不会引起血糖波动的，也不会给身体造成额外的代谢负担，血糖偏高的人群、控糖的孕期朋友在嘴馋想喝带味饮品的时候，都可以少量喝来解馋。不过还是建议大家不要一次大量饮用冰的款，避免刺激肠胃，要是本身有特殊的饮食禁忌，饮用前也可以先咨询下自己的主治医生更稳妥。"
+                    },
+                    {
+                      "question": "这款白桃味气泡水的白桃香味是天然果汁提取的还是食用香精调的？",
+                      "answer": "这款气泡水的白桃风味是用合规的天然蜜桃提取物搭配食用级的白桃香精调配的，没有添加人工劣质香精，调出来的香味非常接近新鲜熟成的水蜜桃的清甜味，不是那种工业香精的刺鼻甜腻感。喝的时候能吃到淡淡的果肉鲜感，完全不会有喝完之后嘴里留奇怪香精味的情况，符合国家食品添加剂的安全标准，大家可以完全放心饮用。"
+                    },
+                    {
+                      "question": "未开封的480ml装白桃味气泡水保质期是多久，存放的时候有什么要注意的？",
+                      "answer": "这款未开封的480ml装白桃味气泡水保质期是12个月，大家存放的时候一定要放在阴凉、干燥、避光的地方，别放在太阳底下暴晒，也别放在0度以下的环境里冷冻，不然瓶内的液体结冰膨胀很容易直接把瓶子撑裂漏液。如果是夏天温度高的时候，别把整箱水放在汽车的后备箱里长时间闷着，不仅容易让瓶身变形，高温环境还容易影响气泡的留存，喝起来的口感会大打折扣。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿泽",
+                      "rating": 2,
+                      "content": "这次收到的单瓶喝起来感觉白桃味特别淡，几乎只有点淡淡的甜味，完全没有之前买的那种刚撕开鲜桃子皮的清香味，气泡也少了好多，开瓶的时候完全没有“呲”的一声冒气的动静，喝到嘴里软塌塌的像放了好几天跑气了一样。4.5一瓶这个品质真的不太值，感觉是存放时间太久了，本来想买来配火锅的，结果喝着一点都不解腻，有点小失望。"
+                    },
+                    {
+                      "nickname": "小棠",
+                      "rating": 3,
+                      "content": "凑单买的单瓶，本来以为白桃味会很浓很好喝，结果喝起来甜味有点发怪，不是水蜜桃的鲜甜味，带点代糖特有的后味，喝完之后嘴里残留好久的怪味。气泡倒是够足，但是喝半瓶就觉得有点齁得慌，本来想买来代替奶茶的，结果喝了两口就不想喝了，剩下的半瓶放了一晚上气全跑光，直接像兑了味的白水，性价比有点低，应该不会回购单瓶的了。"
+                    },
+                    {
+                      "nickname": "大宇",
+                      "rating": 1,
+                      "content": "这次买的整箱15瓶真的太糟心了，快递送到的时候外包装盒全湿了，拆开看有三瓶漏液漏了大半，瓶身黏糊糊的，剩下的好几瓶摸起来都是软的，一点气压都没有，拧开盖子完全没有气泡，全是甜乎乎的白水味。找客服处理等了半天才回应，只愿意赔3瓶的钱，剩下的没气的就不管，花65买一箱大半瓶都废了，体验感特别差。"
+                    },
+                    {
+                      "nickname": "小桃",
+                      "rating": 5,
+                      "content": "真的是我无限回购的款！这次凑活动买了整箱放家里，冰过之后拿出来喝一口，绵密的气泡在舌尖炸开，白桃的清香味直接冒出来，甜丝丝的完全不齁，0糖0脂喝着完全没负担。平时吃完重油重盐的外卖，或者周末在家煮麻辣火锅配它，解辣又解腻，比喝奶茶爽太多了，480ml的容量一瓶刚好够喝，不会喝不完剩半瓶浪费，已经安利给办公室好多同事了。"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 2.75,
+                  "best_for": [
+                    "口味偏好",
+                    "囤货采购",
+                    "场景化补给",
+                    "碳酸饮料",
+                    "学生党",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [
+                    "严格控糖用户需看配料"
+                  ],
+                  "supported_scenarios": [
+                    "daily_grocery",
+                    "snack_drink",
+                    "stock_up",
+                    "sports",
+                    "碳酸饮料"
+                  ],
+                  "tags": [
+                    "元气森林",
+                    "食品饮料",
+                    "碳酸饮料",
+                    "480ml",
+                    "白桃味",
+                    "单瓶",
+                    "15瓶整箱"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "4_食品生活/images/p_food_004_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": [
+                    "严格控糖用户需看配料"
+                  ]
+                },
+                "reason": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于 食品饮料/碳酸饮料，综合分 0.8651，参考价 4.5-65 CNY。 评价均分 2.75/5。 检索证据：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#profile 召回分 0.0256；元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#sku 召回分 0.0223。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.991,
+                  "reputation_fit": 0.75,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.97,
+                  "final_score": 0.8651,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 4.5 CNY，已用于预算适配评分。",
+                    "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于用户关注的 食品饮料 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 2.75/5，参与口碑评分。",
+                    "商品提供 6 条官方 FAQ，可作为回答证据。",
+                    "不适用提示：严格控糖用户需看配料。",
+                    "商品知识证据命中：p_food_004 召回分 0.0256; p_food_004 召回分 0.0223。",
+                    "用户给出低预算或价格上限，价格适配权重提高。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_food_004::profile::0",
+                  "p_food_004::sku::1"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_food_004_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 162.5,
+              "total_price_max": 262.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "用户预算上限约 500 CNY，套餐会优先控制总价。",
+                "p_beauty_018 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_001 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_food_004 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_beauty_018": {
+                  "role": "beauty",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 59.0,
+                  "min_price": 59.0,
+                  "max_price": 98.0,
+                  "selected_sku_id": "s_p_beauty_018_1",
+                  "selected_price": 59.0,
+                  "selected_total_price": 59.0
+                },
+                "p_clothes_001": {
+                  "role": "clothing",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 99.0,
+                  "min_price": 99.0,
+                  "max_price": 99.0,
+                  "selected_sku_id": "s_p_clothes_001_1",
+                  "selected_price": 99.0,
+                  "selected_total_price": 99.0
+                },
+                "p_food_004": {
+                  "role": "food",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 4.5,
+                  "min_price": 4.5,
+                  "max_price": 65.0,
+                  "selected_sku_id": "s_p_food_004_1",
+                  "selected_price": 4.5,
+                  "selected_total_price": 4.5
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "组合内商品按场景互补，适合一次性采购或搭配"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新",
+              "组合总价可能高于单品预算，需要确认是否确实需要整套"
+            ],
+            "suitable_for": [
+              "需要一整套搭配或采购清单",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+              "极敏感人群需先试用",
+              "严格控糖用户需看配料"
+            ],
+            "evidence": [
+              "p_beauty_018: The Ordinary这款烟酰胺10%锌1%精华液是油痘肌和暗沉肌的高性价比选择。核心成分10%烟酰胺能调节皮脂分泌、淡化毛孔并提亮肤色，1%锌则辅助控油舒缓。适合油性/混合性皮肤、有毛孔粗大或肤色不均问题的人群。日常护肤时，洁面爽肤后取2-3滴涂抹全脸（避开眼周），初期建议隔天使用建立耐受，后续可增至每日。注意：敏感肌需先耳后测试，避免与高浓度酸类（如水杨酸）同时使用，使用期间做好防晒。",
+              "p_beauty_018: FAQ - 10%烟酰胺浓度会刺激皮肤吗？",
+              "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+              "p_clothes_001: 优衣库这款AIRism联名系列的男装宽松圆领T恤，把亲肤棉感和黑科技凉感做了完美融合，不是普通的薄款白T！面料用的是AIRism专属混纺棉，摸上去是软乎乎的棉质质感，贴身穿完全不扎，自带的吸湿速干属性夏天出了汗也不会黏在背上，宽松H版型刚好遮住腰腹的小赘肉，不紧绷也不会垮得像偷穿大人衣服。不管是学生党上课通勤、上班族下班逛夜市、周末约球做轻运动当内搭都合适，单穿配工装裤、牛仔短裤都很出片。建议洗的时候翻面用冷水轻柔模式，别用热水长时间泡",
+              "p_clothes_001: FAQ - 这款AIRism棉质T恤和普通的优衣库纯棉基础T恤穿感上有什么不一样？",
+              "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+              "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
+              "p_food_004: 元气森林白桃味气泡水是专为怕甜怕腻又爱爽感的人量身打造的快乐水，核心就是实打实的0糖0脂0卡，用赤藓糖醇代替白砂糖，喝起来完全没有普通碳酸饮料喝完齁嗓子反酸的问题，入口是刚咬开脆甜水蜜桃的鲜爽香气，细密的气泡在舌尖炸开，凉丝丝的特别解腻。不管是健身控卡期的运动党、正在控糖的减脂人群、怕胖的学生上班族，还是戒糖又嘴馋的奶茶爱好者都能放心喝。平时吃火锅撸串配它解辣解腻，上班困了冰一瓶提神醒脑，逛超市随手拿一瓶边走边喝也很方便。收到货如果没开",
+              "p_food_004: FAQ - 这款白桃味气泡水的0糖是完全不含糖分吗，配料表里有没有隐形糖？",
+              "价格匹配：当前最低 SKU 约 4.5 CNY，已用于预算适配评分。",
+              "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于用户关注的 食品饮料 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "beauty",
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "final_score": 0.849,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.882,
+                "reputation_fit": 0.97,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.82,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
+                  "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于用户关注的 美妆护肤 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.6/5，参与口碑评分。",
+                  "商品提供 2 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：极敏感人群需先试用。",
+                  "商品知识证据命中：p_beauty_018 召回分 0.0222; p_beauty_018 召回分 0.0221。",
+                  "用户给出低预算或价格上限，价格适配权重提高。"
+                ]
+              },
+              {
+                "role": "clothing",
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "final_score": 0.8121,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.802,
+                "reputation_fit": 1.0,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.94,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+                  "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3.8/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_clothes_001 召回分 0.0220。",
+                  "用户给出低预算或价格上限，价格适配权重提高。"
+                ]
+              },
+              {
+                "role": "food",
+                "product_id": "p_food_004",
+                "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                "final_score": 0.8651,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.991,
+                "reputation_fit": 0.75,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.97,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 4.5 CNY，已用于预算适配评分。",
+                  "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于用户关注的 食品饮料 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 2.75/5，参与口碑评分。",
+                  "商品提供 6 条官方 FAQ，可作为回答证据。",
+                  "不适用提示：严格控糖用户需看配料。",
+                  "商品知识证据命中：p_food_004 召回分 0.0256; p_food_004 召回分 0.0223。",
+                  "用户给出低预算或价格上限，价格适配权重提高。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "name": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "精华",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8490，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#profile 召回分 0.0222；The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#faq 召回分 0.0221。",
+            "score": 0.849,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_beauty_018_1"
+          },
+          {
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "name": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "sub_category": "短袖T恤",
+            "price": 99.0,
+            "price_range": [
+              99.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_clothes_001_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8121，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0220。",
+            "score": 0.8121,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_clothes_001_1"
+          },
+          {
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "name": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "sub_category": "碳酸饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_food_004_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "reason": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 属于 食品饮料/碳酸饮料，综合分 0.8651，参考价 4.5-65 CNY。 评价均分 2.75/5。 检索证据：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#profile 召回分 0.0256；元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品#sku 召回分 0.0223。",
+            "score": 0.8651,
+            "source": "shopping_bundle",
+            "selected_sku_id": "s_p_food_004_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": 500.0,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 20,
+              "within_budget_count": 20,
+              "top_candidates": [
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.849
+                },
+                {
+                  "product_id": "p_beauty_015",
+                  "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+                  "price": 120.0,
+                  "score": 0.8081
+                },
+                {
+                  "product_id": "p_beauty_011",
+                  "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                  "price": 52.0,
+                  "score": 0.8056
+                },
+                {
+                  "product_id": "p_beauty_025",
+                  "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+                  "price": 89.0,
+                  "score": 0.8002
+                },
+                {
+                  "product_id": "p_beauty_007",
+                  "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+                  "price": 89.0,
+                  "score": 0.7985
+                }
+              ]
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 0,
+              "within_budget_count": 0,
+              "top_candidates": []
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 12,
+              "within_budget_count": 12,
+              "top_candidates": [
+                {
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "price": 99.0,
+                  "score": 0.8121
+                },
+                {
+                  "product_id": "p_clothes_020",
+                  "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                  "price": 79.0,
+                  "score": 0.7895
+                },
+                {
+                  "product_id": "p_clothes_023",
+                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+                  "price": 149.0,
+                  "score": 0.7875
+                },
+                {
+                  "product_id": "p_clothes_002",
+                  "title": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣",
+                  "price": 129.0,
+                  "score": 0.7479
+                },
+                {
+                  "product_id": "p_clothes_019",
+                  "title": "Nike Heritage86 Futura Logo 经典刺绣棒球帽 可调节帽围",
+                  "price": 169.0,
+                  "score": 0.7341
+                }
+              ]
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 25,
+              "within_budget_count": 25,
+              "top_candidates": [
+                {
+                  "product_id": "p_food_004",
+                  "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+                  "price": 4.5,
+                  "score": 0.8651
+                },
+                {
+                  "product_id": "p_food_018",
+                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+                  "price": 9.0,
+                  "score": 0.8497
+                },
+                {
+                  "product_id": "p_food_023",
+                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+                  "price": 36.0,
+                  "score": 0.8475
+                },
+                {
+                  "product_id": "p_food_003",
+                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+                  "price": 4.0,
+                  "score": 0.8403
+                },
+                {
+                  "product_id": "p_food_002",
+                  "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+                  "price": 30.0,
+                  "score": 0.8363
+                }
+              ]
+            }
+          },
+          "clarification_needed": [
+            "category"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_food_004",
+            "title": "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+            "brand": "元气森林",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 4.5,
+            "price_range": [
+              4.5,
+              65.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.75,
+            "review_count": 4,
+            "score": 0.8651,
+            "strength": "综合分 0.8651，评分 2.75/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_food_018",
+            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+            "brand": "李锦记",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              32.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8497,
+            "strength": "综合分 0.8497，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_beauty_018",
+            "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+            "brand": "The Ordinary",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 59.0,
+            "price_range": [
+              59.0,
+              98.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.849,
+            "strength": "综合分 0.8490，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_food_023",
+            "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
+            "brand": "雀巢",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 36.0,
+            "price_range": [
+              36.0,
+              78.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.8475,
+            "strength": "综合分 0.8475，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_food_003",
+            "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
+            "brand": "东方树叶",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 4.0,
+            "price_range": [
+              4.0,
+              55.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "score": 0.8403,
+            "strength": "综合分 0.8403，评分 3.25/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：严格控糖用户需看配料；追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_food_002",
+            "title": "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
+            "brand": "雀巢",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 30.0,
+            "price_range": [
+              30.0,
+              68.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "score": 0.8363,
+            "strength": "综合分 0.8363，评分 3.6/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "missing_categories: digital"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
+          "极敏感人群需先试用",
+          "严格控糖用户需看配料"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml、优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣、元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品。"
+        ],
+        "follow_up_questions": [
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+              "已从商品库候选中选择：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+              "已从商品库候选中选择：元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品"
+            ],
+            "evidence_points": [
+              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml - 价格：59.0",
+              "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 - 价格：99.0",
+              "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 - 价格：4.5"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "v2_case_122"
+      }
+    }
+  ]
+}

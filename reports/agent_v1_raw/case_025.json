@@ -1,0 +1,1199 @@
+{
+  "case_id": 25,
+  "input": "不要超过3000的耳机",
+  "expected": "max_price=3000, 耳机类",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "不要超过3000的耳机",
+        "budget": 3000.0,
+        "category": "耳机",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.86,
+      "reason": "后端兜底：用户明确切换到普通商品品类 耳机。",
+      "source": "guard",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "不要超过3000的耳机",
+            "budget": 3000.0,
+            "category": "耳机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.86,
+          "reason": "用户明确提出普通商品品类：耳机。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.86,
+          "route_score_confidence": 0.88
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.8,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.8,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.8,
+          "margin_bonus": 0.08,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.88
+        },
+        "llm": null,
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "不要超过3000的耳机",
+            "budget": 3000.0,
+            "category": "耳机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.86,
+          "reason": "用户明确提出普通商品品类：耳机。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.86,
+          "route_score_confidence": 0.88
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "不要超过3000的耳机",
+            "budget": 3000.0,
+            "category": "耳机",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "high_confidence_local",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": true,
+        "router_attempted": false,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": false,
+        "router_applied": false,
+        "router_final_source": "guard",
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "high_confidence_local",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 2,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 254,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:default_balanced",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "default_balanced"
+            ],
+            "route_confidence": 0.88,
+            "route_margin": 0.8,
+            "requirement_completeness": 1.0,
+            "query_complexity": 0.09166666666666666,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "default_balanced"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.88,
+        "route_margin": 0.8,
+        "requirement_completeness": 1.0,
+        "query_complexity": 0.09166666666666666,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "default_balanced"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "不要超过3000的耳机",
+          "budget": 3000.0,
+          "category": "耳机",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.86,
+        "reason": "后端兜底：用户明确切换到普通商品品类 耳机。",
+        "source": "guard",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "不要超过3000的耳机",
+              "budget": 3000.0,
+              "category": "耳机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.86,
+            "reason": "用户明确提出普通商品品类：耳机。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.86,
+            "route_score_confidence": 0.88
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.8,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.8,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "llm": null,
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "不要超过3000的耳机",
+              "budget": 3000.0,
+              "category": "耳机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.86,
+            "reason": "用户明确提出普通商品品类：耳机。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.8,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.8,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.86,
+            "route_score_confidence": 0.88
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "不要超过3000的耳机",
+              "budget": 3000.0,
+              "category": "耳机",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "high_confidence_local",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": true,
+          "router_attempted": false,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": false,
+          "router_applied": false,
+          "router_final_source": "guard",
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "high_confidence_local",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "single_product_recommendation",
+        "task_type": "single_product_recommendation",
+        "needs_clarification": false,
+        "clarification_fields": [],
+        "next_action": "recommend_grounded_products",
+        "supported_now": true,
+        "reason": "识别为单品推荐，按类目、预算、偏好、排除条件筛选并输出商品卡片。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 12 条证据，命中 9 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 2 条，预算内命中 2 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.75"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.70"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 2 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.7531，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0273；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0266。",
+            "score": 0.7531,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.6979，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0325；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#sku 召回分 0.0274。",
+            "score": 0.6979,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_018_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "digital"
+          ],
+          "price_min": null,
+          "price_max": 3000.0,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 2,
+            "within_budget_count": 2,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "price": 1499.0,
+                "score": 0.7531
+              },
+              {
+                "product_id": "p_digital_018",
+                "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                "price": 1799.0,
+                "score": 0.6979
+              }
+            ]
+          }
+        },
+        "clarification_needed": []
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "不要超过3000的耳机",
+          "scenario": "device_purchase",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "digital"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "digital"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": 3000.0,
+          "budget_level": "medium",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "components": [
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "brand": "华为",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "真无线耳机",
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_007_live.jpg",
+                  "image_url": "/product-images/p_digital_007_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_007_1",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_2",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_3",
+                      "properties": {
+                        "版本": "标准版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_4",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "典雅黑"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_5",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "冰霜银"
+                      },
+                      "price": 1499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_007_6",
+                      "properties": {
+                        "版本": "有线充基础版",
+                        "颜色": "羽沙白"
+                      },
+                      "price": 1499.0
+                    }
+                  ],
+                  "description": "华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设计，典雅黑哑光不容易沾指纹，冰霜银磨砂质感高级。日常通勤挤地铁、办公室赶方案、居家沉浸式听歌都能用，使用时建议首次佩戴先在华为智慧生活APP里做贴合度检测，选择适配的耳塞套，不要在雷雨天气或者高水压的水下环境佩戴，避免元器件受潮损坏。",
+                  "faqs": [
+                    {
+                      "question": "华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+                      "answer": "如果是搭载HarmonyOS 4.2及以上版本的华为手机，开盖配对后就能自动触发全链路高解析音频解码，无需额外复杂设置，就能直接输出接近无损的高清音效。如果是其他品牌支持LHDC 5.0协议的设备，也可以在蓝牙音频设置里手动开启高解析模式，只是部分非华为设备可能无法适配全部音频调校参数。要注意只有播放对应Hi-Res音质的音源文件，才能完整发挥这款耳机的音质优势，普通低码率音源没法体现出高解析的细节表现。"
+                    },
+                    {
+                      "question": "这款FreeBuds Pro 5的主动降噪可以根据不同场景自动调节吗？",
+                      "answer": "是的，它搭载了华为最新的动态降噪适配算法，耳机内置的多传感器会实时监测你所处的环境噪音类型，比如你从安静的小区走到车流密集的主干道，系统会自动把降噪强度调整到适配交通噪音的档位，走到人声密集的商圈时也会自动优化降噪参数，既不会把外界必要的提示音完全屏蔽，也能有效过滤冗余噪音。你也可以手动在智慧生活APP里切换深度降噪、轻度降噪、智能透传、人声增强这几个固定档位，适配坐飞机、办公室开短会、过马路等不同的自定义需求。"
+                    },
+                    {
+                      "question": "华为FreeBuds Pro 5的触控操作和之前的FreeBuds系列耳机有什么不一样的地方吗？",
+                      "answer": "它把之前的耳机柄按压触控改成了全新的滑动+轻敲双控制逻辑，你可以在耳机柄的触控区域上下滑动调节音量，轻敲两下耳机柄就能切换歌曲或者接听挂断来电，长按可以快速切换降噪档位，操作逻辑比之前更顺手，不容易出现戴耳机时误触按紧耳道产生的胀痛感。你还能在智慧生活APP里自定义每个触控手势对应的功能，比如双击触发语音助手、长按开启录音转写等专属功能，适配自己的日常使用习惯，不过注意触控区域沾水的时候灵敏度会下降，擦干后就能恢复正常。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "小宇",
+                      "rating": 2,
+                      "content": "用了快两周还是有点小失望，我耳朵属于偏小的类型，哪怕换了最小号的耳塞套，走路快走半小时耳机就会往下滑，之前用的旧款FreeBuds Pro戴着就很稳不会掉。而且开启全链路高解析音质之后，续航掉得比官方标的快很多，满电出门降噪加高清音质撑不到5小时就得找充电盒，降噪效果倒是还可以，但这个佩戴贴合度对小耳用户真的不太友好，感觉调校的时候更偏向大耳人群。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 5,
+                      "content": "华为这次新出的Pro5真的超出预期！我平时坐地铁通勤单程要一个多小时，开了深度降噪之后地铁的轨道轰鸣声直接几乎全没了，连旁边人打电话的模糊杂音也滤得很干净。音质是真的顶，之前用的耳机听古典乐总觉得小提琴的声音发闷，这款能听到弦乐上细微的揉弦颤音，连歌手换气的小细节都清清楚楚，开盖连我的Mate 60 Pro秒连，智慧生活APP里的自定义功能也特别顺手，一千多花得太值了。"
+                    },
+                    {
+                      "nickname": "萌萌",
+                      "rating": 2,
+                      "content": "入手的冰霜银款，颜值确实没得说，但是耳机柄的触控区域太容易误触了，我有时候整理头发碰到耳机柄，突然就切歌或者直接呼出语音助手，好几次开会的时候突然公放出声特别尴尬。问了客服说可以调触控灵敏度，调完之后有时候要敲两三下才能触发操作，灵敏度过高过低都难适配，这个触控逻辑的调校感觉还不如上一代的按压式用着省心，用着有点闹心。"
+                    },
+                    {
+                      "nickname": "老周",
+                      "rating": 5,
+                      "content": "作为一个做了好几年音频的爱好者，这款FreeBuds Pro5的高解析音质真的太惊喜了，比我之前用过的很多同价位无线耳机声场宽太多，低频的下潜够深但完全不会轰头，中频人声贴耳，听流行歌简直是享受。平时我经常出差坐飞机，开了降噪之后连飞机发动机的持续嗡鸣都能滤掉大部分，长途飞行戴几个小时耳朵也不胀，快充功能太实用，临出门发现没电充15分钟，路上全程听歌都够，完全挑不出毛病。"
+                    },
+                    {
+                      "nickname": "阿凯",
+                      "rating": 1,
+                      "content": "用了不到一周右耳机突然就断连了，怎么重置配对都连不上，单独放回充电盒充电指示灯完全不亮，按照客服教的所有操作试了个遍都没用。我平时根本没摔过没沾过水，全新的耳机就直接出硬件故障，送售后检测说要返厂至少等一周，新买的旗舰耳机用几天就出问题，品控也太拉胯了，完全对不起这个一千多的定价，这次体验特别差，以后再也不敢盲入新款首发了。"
+                    }
+                  ],
+                  "review_count": 5,
+                  "rating_avg": 3.0,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "真无线耳机",
+                    "上班通勤"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "真无线耳机"
+                  ],
+                  "tags": [
+                    "华为",
+                    "数码电子",
+                    "真无线耳机",
+                    "通勤",
+                    "办公",
+                    "续航",
+                    "标准版",
+                    "典雅黑",
+                    "冰霜银",
+                    "羽沙白",
+                    "有线充基础版"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_007_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.7531，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0273；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0266。",
+                "score": {
+                  "scenario_match": 0.648,
+                  "attribute_match": 0.798,
+                  "price_fit": 0.5003,
+                  "reputation_fit": 0.85,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.88,
+                  "final_score": 0.7531,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                    "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                    "价格与预算要求较匹配。",
+                    "用户评价均分 3/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_digital_007 召回分 0.0323; p_digital_007 召回分 0.0273。",
+                    "用户给出低预算或价格上限，价格适配权重提高。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_007::profile::0",
+                  "p_digital_007::sku::1",
+                  "p_digital_007::review::3"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_007_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 1499.0,
+              "total_price_max": 1699.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "用户预算上限约 3000 CNY，套餐会优先控制总价。",
+                "p_digital_007 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_digital_007": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 1699.0,
+                  "min_price": 1499.0,
+                  "max_price": 1699.0,
+                  "selected_sku_id": "s_p_digital_007_1",
+                  "selected_price": 1699.0,
+                  "selected_total_price": 1699.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+            ],
+            "evidence": [
+              "p_digital_007: 华为FreeBuds Pro 5是专为追求高音质和强降噪体验的数码爱好者、通勤族、办公党打造的旗舰级真无线耳机。搭载华为自研的超感知主动降噪系统，最高降噪深度可达55dB，搭配全新升级的高解析音频解码，能完整还原Hi-Res Audio标准的细节音效，哪怕是古典乐里的弦乐泛音、演唱会现场的现场感都能精准捕捉。单耳满电可支持6小时降噪模式播放，搭配充电盒总续航能到30小时，支持快充15分钟听歌4小时。机身采用贴合耳廓的人体工学半开放倾耳设",
+              "p_digital_007: FAQ - 华为FreeBuds Pro 5的高解析音质需要搭配特定的华为手机才能开启吗？",
+              "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "digital",
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "final_score": 0.7531,
+                "scenario_match": 0.648,
+                "attribute_match": 0.798,
+                "price_fit": 0.5003,
+                "reputation_fit": 0.85,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.88,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
+                  "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
+                  "价格与预算要求较匹配。",
+                  "用户评价均分 3/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_digital_007 召回分 0.0323; p_digital_007 召回分 0.0273。",
+                  "用户给出低预算或价格上限，价格适配权重提高。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_007_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.7531，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0273；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0266。",
+            "score": 0.7531,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.6979，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0325；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#sku 召回分 0.0274。",
+            "score": 0.6979,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_018_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "digital"
+            ],
+            "price_min": null,
+            "price_max": 3000.0,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 2,
+              "within_budget_count": 2,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "price": 1499.0,
+                  "score": 0.7531
+                },
+                {
+                  "product_id": "p_digital_018",
+                  "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                  "price": 1799.0,
+                  "score": 0.6979
+                }
+              ]
+            }
+          },
+          "clarification_needed": []
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1499.0,
+            "price_range": [
+              1499.0,
+              1699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.7531,
+            "strength": "综合分 0.7531，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.6979,
+            "strength": "综合分 0.6979，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "single_product_recommendation",
+          "task_type": "single_product_recommendation",
+          "needs_clarification": false,
+          "clarification_fields": [],
+          "next_action": "recommend_grounded_products",
+          "supported_now": true,
+          "reason": "识别为单品推荐，按类目、预算、偏好、排除条件筛选并输出商品卡片。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质。"
+        ],
+        "follow_up_questions": [
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+              "已从商品库候选中选择：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版"
+            ],
+            "evidence_points": [
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0",
+              "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 - 价格：1799.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 12,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "test_case_25"
+      }
+    }
+  ]
+}

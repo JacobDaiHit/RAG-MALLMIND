@@ -1,0 +1,1608 @@
+{
+  "case_id": 31,
+  "input": "MacBook有几个配置",
+  "expected": "recommend_shopping_products → MacBook SKU",
+  "session_id": null,
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "recommend_shopping_products",
+      "arguments": {
+        "query": "MacBook有几个配置",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "ecommerce",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.9,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "MacBook有几个配置",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.13000000000000003
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.0,
+            "general_chat": 0.0
+          },
+          "top_name": "recommend_shopping_products",
+          "top_score": 0.25,
+          "second_name": "generate_pc_build_plan",
+          "second_score": 0.0,
+          "margin": 0.25,
+          "margin_bonus": 0.03,
+          "ambiguity_penalty": 0.15,
+          "confidence": 0.13000000000000003
+        },
+        "llm": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "MacBook配置",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 891,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "MacBook配置",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.9,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 891,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "MacBook有几个配置",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 894
+      },
+      "topic_memory": {
+        "topic_id": "",
+        "topic_type": "unknown",
+        "subject": "",
+        "route": "",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": []
+        },
+        "confidence": 0.0,
+        "source": "init",
+        "reason": "",
+        "updated_at": "",
+        "history": []
+      }
+    }
+  ],
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "product_card_count": 3,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "progress",
+    "progress",
+    "progress",
+    "intent_route",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "progress",
+    "delta",
+    "delta",
+    "product_cards",
+    "candidate_scope",
+    "comparison_table",
+    "follow_up_questions",
+    "result",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 2332,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.25,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.1,
+            "history_dependency": 0.12,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.25,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.1,
+        "history_dependency": 0.12,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "recommend_shopping_products",
+        "arguments": {
+          "query": "MacBook有几个配置",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "ecommerce",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.9,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "MacBook有几个配置",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.13000000000000003
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
+          },
+          "llm": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "MacBook配置",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 891,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "MacBook配置",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.9,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 891,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "MacBook有几个配置",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 894
+        },
+        "topic_memory": {
+          "topic_id": "",
+          "topic_type": "unknown",
+          "subject": "",
+          "route": "",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": []
+          },
+          "confidence": 0.0,
+          "source": "init",
+          "reason": "",
+          "updated_at": "",
+          "history": []
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "已收到需求",
+        "detail": "开始整理预算、品类、颜色和功能约束。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在解析条件",
+        "detail": "大模型会参与需求理解。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "系统已开始检索",
+        "detail": "正在连接本地商品库并准备结构化筛选。"
+      }
+    },
+    {
+      "event": "intent_route",
+      "data": {
+        "route": "bundle_recommendation",
+        "task_type": "bundle_recommendation",
+        "needs_clarification": true,
+        "clarification_fields": [
+          "category",
+          "budget_level"
+        ],
+        "next_action": "ask_follow_up_then_recommend",
+        "supported_now": true,
+        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+        "pipeline": [
+          "input_preprocessor",
+          "intent_router",
+          "constraint_parser",
+          "structured_filter",
+          "scoring_rerank",
+          "grounded_generator"
+        ]
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "商品库扫描完成",
+        "detail": "共读取 100 条本地真实商品数据。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "RAG 证据检索完成",
+        "detail": "检索到 48 条证据，命中 32 个商品。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "美妆护肤筛选完成",
+        "detail": "原始 25 条，排除后 0 条，预算内命中 0 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "数码电子筛选完成",
+        "detail": "原始 25 条，排除后 6 条，预算内命中 6 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 1",
+        "detail": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑；约 8499 CNY；评分 0.85"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 2",
+        "detail": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑；约 13499 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 3",
+        "detail": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑；约 6999 CNY；评分 0.84"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "命中候选 4",
+        "detail": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本；约 6299 CNY；评分 0.83"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "服饰运动筛选完成",
+        "detail": "原始 25 条，排除后 0 条，预算内命中 0 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "食品饮料筛选完成",
+        "detail": "原始 25 条，排除后 0 条，预算内命中 0 条。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "候选卡片已准备",
+        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
+        "label": "正在生成导购回答",
+        "detail": "正在整理推荐理由和追问。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。"
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+      }
+    },
+    {
+      "event": "product_cards",
+      "data": {
+        "products": [
+          {
+            "product_id": "p_digital_020",
+            "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "name": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 8499.0,
+            "price_range": [
+              8499.0,
+              10999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_020_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8543，参考价 8499-10999 CNY。 评价均分 3.25/5。 检索证据：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#profile 召回分 0.0318；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#sku 召回分 0.0308；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#faq 召回分 0.0286。",
+            "score": 0.8543,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_020_1"
+          },
+          {
+            "product_id": "p_digital_006",
+            "title": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+            "name": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 13499.0,
+            "price_range": [
+              13499.0,
+              17999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8388，参考价 13499-17999 CNY。 评价均分 3.8/5。 检索证据：Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#profile 召回分 0.0318；Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#sku 召回分 0.0294；Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#review 召回分 0.0275。",
+            "score": 0.8388,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_006_1"
+          },
+          {
+            "product_id": "p_digital_023",
+            "title": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+            "name": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+            "brand": "联想",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_023_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8372，参考价 6999-7999 CNY。 评价均分 3.25/5。 检索证据：联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑#sku 召回分 0.0280。",
+            "score": 0.8372,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_023_1"
+          }
+        ]
+      }
+    },
+    {
+      "event": "candidate_scope",
+      "data": {
+        "active_filters": {
+          "categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "price_min": null,
+          "price_max": null,
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": []
+        },
+        "total_catalog_count": 100,
+        "by_category": {
+          "beauty": {
+            "raw_count": 25,
+            "after_exclusion_count": 0,
+            "within_budget_count": 0,
+            "top_candidates": []
+          },
+          "digital": {
+            "raw_count": 25,
+            "after_exclusion_count": 6,
+            "within_budget_count": 6,
+            "top_candidates": [
+              {
+                "product_id": "p_digital_020",
+                "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+                "price": 8499.0,
+                "score": 0.8543
+              },
+              {
+                "product_id": "p_digital_006",
+                "title": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+                "price": 13499.0,
+                "score": 0.8388
+              },
+              {
+                "product_id": "p_digital_023",
+                "title": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+                "price": 6999.0,
+                "score": 0.8372
+              },
+              {
+                "product_id": "p_digital_004",
+                "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                "price": 6299.0,
+                "score": 0.8316
+              },
+              {
+                "product_id": "p_digital_022",
+                "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
+                "price": 10999.0,
+                "score": 0.8041
+              }
+            ]
+          },
+          "clothing": {
+            "raw_count": 25,
+            "after_exclusion_count": 0,
+            "within_budget_count": 0,
+            "top_candidates": []
+          },
+          "food": {
+            "raw_count": 25,
+            "after_exclusion_count": 0,
+            "within_budget_count": 0,
+            "top_candidates": []
+          }
+        },
+        "clarification_needed": [
+          "category",
+          "budget_level"
+        ]
+      }
+    },
+    {
+      "event": "comparison_table",
+      "data": {
+        "rows": []
+      }
+    },
+    {
+      "event": "follow_up_questions",
+      "data": {
+        "questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ]
+      }
+    },
+    {
+      "event": "result",
+      "data": {
+        "requirement": {
+          "raw_query": "MacBook有几个配置",
+          "scenario": "general_shopping",
+          "task_type": "single_product_recommendation",
+          "required_components": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "optional_components": [],
+          "desired_categories": [
+            "beauty",
+            "digital",
+            "clothing",
+            "food"
+          ],
+          "excluded_categories": [],
+          "target_sub_categories": [],
+          "brands": [],
+          "excluded_brands": [],
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "preferences": [],
+          "occasion": "",
+          "target_user": "",
+          "price_min": null,
+          "price_max": null,
+          "budget_level": "unknown",
+          "need_bundle": false,
+          "need_comparison": false,
+          "need_cart_action": false,
+          "need_multimodal": false,
+          "input_modalities": [
+            "text"
+          ],
+          "output_modalities": [
+            "text"
+          ],
+          "languages": [
+            "zh"
+          ],
+          "latency_requirement": "medium",
+          "quality_requirement": "medium",
+          "missing_fields": [
+            "category",
+            "budget_level"
+          ],
+          "assumptions": [
+            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
+            "用户未给出明确预算，按价格/口碑/场景综合排序。",
+            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
+          ]
+        },
+        "plans": [
+          {
+            "recommendation_type": "single_product",
+            "title": "单品推荐",
+            "summary": "优先推荐当前最匹配的上架商品：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "components": [
+              {
+                "role": "digital",
+                "product": {
+                  "product_id": "p_digital_020",
+                  "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+                  "brand": "Apple 苹果",
+                  "category": "digital",
+                  "category_name": "数码电子",
+                  "sub_category": "笔记本电脑",
+                  "base_price": 8499.0,
+                  "min_price": 8499.0,
+                  "max_price": 10999.0,
+                  "currency": "CNY",
+                  "stock_status": "available_for_demo",
+                  "stock_quantity": null,
+                  "image_path": "data/ecommerce_products/images/p_digital_020_live.jpg",
+                  "image_url": "/product-images/p_digital_020_live.jpg",
+                  "skus": [
+                    {
+                      "sku_id": "s_p_digital_020_1",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "天蓝色"
+                      },
+                      "price": 8499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_2",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "午夜色"
+                      },
+                      "price": 8499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_3",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "星光色"
+                      },
+                      "price": 8499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_4",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "天蓝色"
+                      },
+                      "price": 9499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_5",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "午夜色"
+                      },
+                      "price": 9499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_6",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "星光色"
+                      },
+                      "price": 9499.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_7",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "天蓝色"
+                      },
+                      "price": 9999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_8",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "午夜色"
+                      },
+                      "price": 9999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_9",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "512GB SSD",
+                        "颜色": "星光色"
+                      },
+                      "price": 9999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_10",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "天蓝色"
+                      },
+                      "price": 10999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_11",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "午夜色"
+                      },
+                      "price": 10999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_020_12",
+                      "properties": {
+                        "屏幕尺寸": "15英寸",
+                        "芯片": "M5芯片",
+                        "内存": "16GB内存",
+                        "固态存储": "1TB SSD",
+                        "颜色": "星光色"
+                      },
+                      "price": 10999.0
+                    }
+                  ],
+                  "description": "这款搭载M5芯片的13英寸MacBook Air，整机轻至1.24kg薄至1.13cm，全铝Unibody一体成型机身摸起来细腻顺滑，放在通勤包几乎没存在感。16GB统一内存后台同时开十几个网页、修图软件和文档都不卡，512GB起步的SSD传大文件速度拉满，续航满电能撑18小时，出差跑全天会议都不用带充电器。特别适合新媒体从业者日常剪短视频、大学生跑代码写论文、商务人士频繁外勤见客户用，全尺寸蝶式升级剪刀脚键盘敲久了不累，3.5mm耳机孔还保留着。提醒大家不要自行拆机扩容，首次激活建议在苹果官网核验序列号，长期不用保持每月充一次电避免电池亏电。",
+                  "faqs": [
+                    {
+                      "question": "这款搭载M5芯片的13英寸MacBook Air同时运行Lightroom批量修图和微信、浏览器十几页网页会卡顿吗？",
+                      "answer": "完全不会卡顿，M5芯片的统一内存架构刚好适配16GB的容量，图形处理性能比上一代M3款提升近30%，批量导出200张RAW格式照片仅需3分20秒左右，后台挂着几十页网页和通讯软件也不会出现页面重载的情况。即便是日常同时运行轻量剪映工程、思维导图软件和在线会议软件，整机也只会发出极微弱的风扇声，不会出现掉帧、操作延迟的问题，完全能满足创意类轻度办公用户的多任务需求。"
+                    },
+                    {
+                      "question": "同系列里13英寸512GB天蓝色款和15英寸512GB星光色款除了尺寸外还有其他实际使用差异吗？",
+                      "answer": "除了机身尺寸和屏幕大小之外，二者的扬声器模组也有区别，15英寸版本搭载了六扬声器的空间音频系统，看影视内容的环绕感比13英寸的四扬声器版本强不少，同时15英寸版本的续航时长要多2小时左右，满电播放本地视频能达到20小时。另外15英寸版本因为机身空间更大，散热冗余更高，长时间负载运行高功耗软件时，机身表面的最高温度要比13英寸版本低2到3摄氏度，更适合需要长时间驻留在电脑前办公的用户，便携性上13英寸款要更适合日常塞小包通勤。"
+                    },
+                    {
+                      "question": "这款16GB内存512GB SSD的M5芯片MacBook Air后续可以自行升级内存或者硬盘容量吗？",
+                      "answer": "不支持任何形式的后续自行升级，这款MacBook Air的内存和SSD都是出厂时直接和主板集成封装在一起的，没有预留额外的扩容插槽，也不支持市面上第三方的硬改扩容服务。大家选购的时候一定要根据自己的存储需求选好对应规格，如果日常要存大量4K剪辑工程、高清素材或者本地影视资源，更推荐直接选1TB SSD的午夜色版本，避免后续存储空间不足需要频繁外接移动硬盘的麻烦，苹果官方也没有提供这款机型的硬件扩容付费服务，购买前确认好配置能省不少后续麻烦。"
+                    }
+                  ],
+                  "reviews": [
+                    {
+                      "nickname": "阿凯",
+                      "rating": 3,
+                      "content": "用了半个月说下感受，M5芯片的性能确实没问题，开很多软件都不卡，但天蓝色这个版本的机身沾指纹太明显了，每次从包里拿出来都印满手印，擦半天才能擦干净。还有那个充电接口，我平时用第三方的C口充电器有时候会出现识别慢的情况，要插拔好几次才能充上电，续航也没宣传的18小时那么久，开亮度50%连网办公的话大概12小时左右就没电了，整体不算差但有不少小槽点。"
+                    },
+                    {
+                      "nickname": "小夏",
+                      "rating": 1,
+                      "content": "收到货拆开就发现屏幕右下角有个非常明显的亮点，联系客服说要走检测流程折腾了整整三天，送授权点检测完才同意换货。换回来的新机用了不到一周，键盘的R键按下去偶尔会失灵，要使劲按才有反应，我之前用旧款MacBook Air从来没遇到这种品控问题，花八千多买的本连续踩两个坑真的太闹心，现在出门见客户带它都怕关键时刻按不出字，体验感特别差。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 4,
+                      "content": "整体用下来大部分地方都挺满意的，16GB内存跑我常用的编程环境特别流畅，机身轻背着通勤完全没负担，续航确实够撑我从早八上课到晚六下晚自习，中途不用找插座。但有个小缺点，就是夏天放在大腿上用，机身底部靠近转轴的位置会有点发热，虽然不烫但温温的贴腿不太舒服，还有就是自带的输入法联想功能不太符合我的使用习惯，自己装第三方输入法偶尔会有半秒的卡顿，瑕不掩瑜吧还是能给个中评。"
+                    },
+                    {
+                      "nickname": "朵朵",
+                      "rating": 5,
+                      "content": "真的太喜欢这款本了！天蓝色的机身颜值超高，带去图书馆好多同学问我在哪买的，M5芯片剪我平时拍的vlog素材超级顺，之前旧电脑导出十分钟的视频现在两分钟就搞定。16GB内存后台挂着PS、剪映还有几十页网课网页一点都不卡，满电我出去参加两天的线下展会，白天开资料开线上会，晚上回酒店剪素材，第二天晚上回酒店还有剩余电量，全程没带充电器太爽了，太适合我们新媒体打工人了！"
+                    }
+                  ],
+                  "review_count": 4,
+                  "rating_avg": 3.25,
+                  "best_for": [
+                    "参数对比",
+                    "预算筛选",
+                    "使用场景匹配",
+                    "笔记本电脑",
+                    "旅行出差",
+                    "学生党"
+                  ],
+                  "not_good_for": [],
+                  "supported_scenarios": [
+                    "digital_purchase",
+                    "device_comparison",
+                    "productivity",
+                    "sports",
+                    "travel",
+                    "笔记本电脑"
+                  ],
+                  "tags": [
+                    "Apple 苹果",
+                    "数码电子",
+                    "笔记本电脑",
+                    "通勤",
+                    "续航",
+                    "13英寸",
+                    "M5芯片",
+                    "16GB内存",
+                    "512GB SSD",
+                    "天蓝色",
+                    "午夜色",
+                    "星光色",
+                    "1TB SSD",
+                    "15英寸"
+                  ],
+                  "metadata": {
+                    "source": "ecommerce_agent_dataset_供参考.zip",
+                    "source_image_path": "2_数码电子/images/p_digital_020_live.jpg"
+                  },
+                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
+                  "risk_notes": []
+                },
+                "reason": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8543，参考价 8499-10999 CNY。 评价均分 3.25/5。 检索证据：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#profile 召回分 0.0318；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#sku 召回分 0.0308；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#faq 召回分 0.0286。",
+                "score": {
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
+                  "price_fit": 0.9229,
+                  "reputation_fit": 0.85,
+                  "availability_fit": 0.95,
+                  "sku_fit": 0.95,
+                  "detail_quality": 0.85,
+                  "final_score": 0.8543,
+                  "reasons": [
+                    "价格匹配：当前最低 SKU 约 8499 CNY，已用于预算适配评分。",
+                    "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于用户关注的 数码电子 类目。",
+                    "用户评价均分 3.25/5，参与口碑评分。",
+                    "商品提供 3 条官方 FAQ，可作为回答证据。",
+                    "商品知识证据命中：p_digital_020 召回分 0.0318; p_digital_020 召回分 0.0308。"
+                  ]
+                },
+                "evidence_doc_ids": [
+                  "p_digital_020::profile::0",
+                  "p_digital_020::sku::1",
+                  "p_digital_020::faq::2"
+                ],
+                "quantity": 1,
+                "selected_sku_id": "s_p_digital_020_1"
+              }
+            ],
+            "cost_estimate": {
+              "total_price_min": 8499.0,
+              "total_price_max": 10999.0,
+              "currency": "CNY",
+              "assumptions": [
+                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
+                "p_digital_020 未提供精确库存数量，仅按已上架商品参与推荐。"
+              ],
+              "breakdown": {
+                "p_digital_020": {
+                  "role": "digital",
+                  "pricing_model": "sku_price",
+                  "currency": "CNY",
+                  "quantity": 1,
+                  "base_price": 8499.0,
+                  "min_price": 8499.0,
+                  "max_price": 10999.0,
+                  "selected_sku_id": "s_p_digital_020_1",
+                  "selected_price": 8499.0,
+                  "selected_total_price": 8499.0
+                }
+              }
+            },
+            "pros": [
+              "只从本地商品库选择真实上架商品",
+              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
+              "单品决策路径短，适合快速加购或继续对比同类商品"
+            ],
+            "cons": [
+              "数据集不含实时优惠券，最终成交价需要下单前刷新"
+            ],
+            "suitable_for": [
+              "明确单品需求",
+              "日常使用",
+              "普通消费者"
+            ],
+            "risks": [
+              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+            ],
+            "evidence": [
+              "p_digital_020: 这款搭载M5芯片的13英寸MacBook Air，整机轻至1.24kg薄至1.13cm，全铝Unibody一体成型机身摸起来细腻顺滑，放在通勤包几乎没存在感。16GB统一内存后台同时开十几个网页、修图软件和文档都不卡，512GB起步的SSD传大文件速度拉满，续航满电能撑18小时，出差跑全天会议都不用带充电器。特别适合新媒体从业者日常剪短视频、大学生跑代码写论文、商务人士频繁外勤见客户用，全尺寸蝶式升级剪刀脚键盘敲久了不累，3.5mm耳机",
+              "p_digital_020: FAQ - 这款搭载M5芯片的13英寸MacBook Air同时运行Lightroom批量修图和微信、浏览器十几页网页会卡顿吗？",
+              "价格匹配：当前最低 SKU 约 8499 CNY，已用于预算适配评分。",
+              "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于用户关注的 数码电子 类目。"
+            ],
+            "score_table": [
+              {
+                "role": "digital",
+                "product_id": "p_digital_020",
+                "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+                "final_score": 0.8543,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
+                "price_fit": 0.9229,
+                "reputation_fit": 0.85,
+                "availability_fit": 0.95,
+                "sku_fit": 0.95,
+                "detail_quality": 0.85,
+                "reasons": [
+                  "价格匹配：当前最低 SKU 约 8499 CNY，已用于预算适配评分。",
+                  "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于用户关注的 数码电子 类目。",
+                  "用户评价均分 3.25/5，参与口碑评分。",
+                  "商品提供 3 条官方 FAQ，可作为回答证据。",
+                  "商品知识证据命中：p_digital_020 召回分 0.0318; p_digital_020 召回分 0.0308。"
+                ]
+              }
+            ]
+          }
+        ],
+        "candidate_count": 100,
+        "product_cards": [
+          {
+            "product_id": "p_digital_020",
+            "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "name": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 8499.0,
+            "price_range": [
+              8499.0,
+              10999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_020_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8543，参考价 8499-10999 CNY。 评价均分 3.25/5。 检索证据：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#profile 召回分 0.0318；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#sku 召回分 0.0308；Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑#faq 召回分 0.0286。",
+            "score": 0.8543,
+            "source": "single_product",
+            "selected_sku_id": "s_p_digital_020_1"
+          },
+          {
+            "product_id": "p_digital_006",
+            "title": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+            "name": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 13499.0,
+            "price_range": [
+              13499.0,
+              17999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8388，参考价 13499-17999 CNY。 评价均分 3.8/5。 检索证据：Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#profile 召回分 0.0318；Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#sku 召回分 0.0294；Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑#review 召回分 0.0275。",
+            "score": 0.8388,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_006_1"
+          },
+          {
+            "product_id": "p_digital_023",
+            "title": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+            "name": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+            "brand": "联想",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "笔记本电脑",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7999.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_023_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "reason": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑 属于 数码电子/笔记本电脑，综合分 0.8372，参考价 6999-7999 CNY。 评价均分 3.25/5。 检索证据：联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑#sku 召回分 0.0280。",
+            "score": 0.8372,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_023_1"
+          }
+        ],
+        "candidate_scope": {
+          "active_filters": {
+            "categories": [
+              "beauty",
+              "digital",
+              "clothing",
+              "food"
+            ],
+            "price_min": null,
+            "price_max": null,
+            "brands": [],
+            "excluded_brands": [],
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "preferences": []
+          },
+          "total_catalog_count": 100,
+          "by_category": {
+            "beauty": {
+              "raw_count": 25,
+              "after_exclusion_count": 0,
+              "within_budget_count": 0,
+              "top_candidates": []
+            },
+            "digital": {
+              "raw_count": 25,
+              "after_exclusion_count": 6,
+              "within_budget_count": 6,
+              "top_candidates": [
+                {
+                  "product_id": "p_digital_020",
+                  "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+                  "price": 8499.0,
+                  "score": 0.8543
+                },
+                {
+                  "product_id": "p_digital_006",
+                  "title": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+                  "price": 13499.0,
+                  "score": 0.8388
+                },
+                {
+                  "product_id": "p_digital_023",
+                  "title": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+                  "price": 6999.0,
+                  "score": 0.8372
+                },
+                {
+                  "product_id": "p_digital_004",
+                  "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+                  "price": 6299.0,
+                  "score": 0.8316
+                },
+                {
+                  "product_id": "p_digital_022",
+                  "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
+                  "price": 10999.0,
+                  "score": 0.8041
+                }
+              ]
+            },
+            "clothing": {
+              "raw_count": 25,
+              "after_exclusion_count": 0,
+              "within_budget_count": 0,
+              "top_candidates": []
+            },
+            "food": {
+              "raw_count": 25,
+              "after_exclusion_count": 0,
+              "within_budget_count": 0,
+              "top_candidates": []
+            }
+          },
+          "clarification_needed": [
+            "category",
+            "budget_level"
+          ]
+        },
+        "comparison_table": [
+          {
+            "rank": 1,
+            "product_id": "p_digital_020",
+            "title": "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 8499.0,
+            "price_range": [
+              8499.0,
+              10999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "score": 0.8543,
+            "strength": "综合分 0.8543，评分 3.25/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": true
+          },
+          {
+            "rank": 2,
+            "product_id": "p_digital_006",
+            "title": "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 13499.0,
+            "price_range": [
+              13499.0,
+              17999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "score": 0.8388,
+            "strength": "综合分 0.8388，评分 3.8/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
+            "product_id": "p_digital_023",
+            "title": "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑",
+            "brand": "联想",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.25,
+            "review_count": 4,
+            "score": 0.8372,
+            "strength": "综合分 0.8372，评分 3.25/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_digital_004",
+            "title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6299.0,
+            "price_range": [
+              6299.0,
+              7199.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 6,
+            "score": 0.8316,
+            "strength": "综合分 0.8316，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_digital_022",
+            "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
+            "brand": "联想",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 10999.0,
+            "price_range": [
+              10999.0,
+              12999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.33,
+            "review_count": 3,
+            "score": 0.8041,
+            "strength": "综合分 0.8041，评分 4.33/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_digital_012",
+            "title": "Apple MacBook Pro 16英寸 M5 Pro 芯片 32GB 1TB 创意设计师笔记本电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 21999.0,
+            "price_range": [
+              21999.0,
+              29999.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "score": 0.7612,
+            "strength": "综合分 0.7612，评分 3/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          }
+        ],
+        "intent_route": {
+          "route": "bundle_recommendation",
+          "task_type": "bundle_recommendation",
+          "needs_clarification": true,
+          "clarification_fields": [
+            "category",
+            "budget_level"
+          ],
+          "next_action": "ask_follow_up_then_recommend",
+          "supported_now": true,
+          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
+          "pipeline": [
+            "input_preprocessor",
+            "intent_router",
+            "constraint_parser",
+            "structured_filter",
+            "scoring_rerank",
+            "grounded_generator"
+          ]
+        },
+        "missing_fields": [
+          "category",
+          "budget_level",
+          "missing_categories: beauty, clothing, food"
+        ],
+        "risks": [
+          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
+        ],
+        "teaching_guidance": [
+          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
+          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
+          "当前推荐包含：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑。"
+        ],
+        "follow_up_questions": [
+          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+          "是否有明确不要的品牌、成分、颜色、口味或功能？",
+          "更看重价格、口碑、功效/参数，还是搭配完整度？"
+        ],
+        "optimization_suggestions": [
+          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
+          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
+          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
+          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
+        ],
+        "feedback_summary": {
+          "loop": "capture_query_click_cart_feedback",
+          "signals": [
+            "missing_fields",
+            "selected_product",
+            "product_click",
+            "add_to_cart",
+            "purchase"
+          ],
+          "next_actions": [
+            "补充商品属性",
+            "调权重",
+            "接真实库存价格",
+            "沉淀失败问题"
+          ],
+          "grounded_explanation": {
+            "why_recommended": [
+              "已从商品库候选中选择：Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑",
+              "已从商品库候选中选择：Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑",
+              "已从商品库候选中选择：联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑"
+            ],
+            "evidence_points": [
+              "Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 - 价格：8499.0",
+              "Apple MacBook Pro 14英寸 M5 芯片 16GB 512GB 专业高性能笔记本电脑 - 价格：13499.0",
+              "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑 - 价格：6999.0"
+            ],
+            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
+            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
+            "caveat": "未使用未提供的商品事实生成解释。"
+          }
+        },
+        "trace": {
+          "catalog_scope": "ecommerce",
+          "recommendation_domain": "ecommerce",
+          "llm_configured": true,
+          "stream_llm_enabled": true,
+          "stream_llm_reason": "configured_and_enabled",
+          "runtime_mode": "balanced",
+          "requested_mode": "auto",
+          "selected_mode": "balanced",
+          "fallback_used": false,
+          "use_milvus_retrieval": true,
+          "use_rag_query_expansion": false,
+          "retrieval_status": "ok",
+          "milvus_status": "ok",
+          "candidate_count": 48,
+          "image_retrieval_status": "skipped",
+          "llm_used": false
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "test_case_31"
+      }
+    }
+  ]
+}

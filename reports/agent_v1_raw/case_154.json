@@ -1,0 +1,615 @@
+{
+  "case_id": 154,
+  "input": "购物车里有什么",
+  "expected": "apply_cart_instruction(view_cart)",
+  "session_id": "sess_h148",
+  "runtime_mode": "balanced",
+  "tool_calls": [
+    {
+      "name": "apply_cart_instruction",
+      "arguments": {
+        "query": "购物车里有什么",
+        "budget": null,
+        "category": "",
+        "usage": [],
+        "preferences": {},
+        "product_ids": [],
+        "catalog_scope": "combined",
+        "compare_with_previous": false,
+        "quantity": null,
+        "action": "view_cart",
+        "topic": "",
+        "need_full_pc_build": false
+      },
+      "confidence": 0.95,
+      "reason": "路由器未提供原因。",
+      "source": "llm",
+      "routing_trace": {
+        "runtime_mode": "balanced",
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "llm_base_url_host": "token.sensenova.cn",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_configured": true,
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": "",
+        "local": {
+          "name": "recommend_shopping_products",
+          "arguments": {
+            "query": "购物车里有什么",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.84,
+          "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.75,
+              "general_chat": 0.0
+            },
+            "top_name": "apply_cart_instruction",
+            "top_score": 0.75,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.25,
+            "margin": 0.5,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.83
+          },
+          "local_rule_confidence": 0.84,
+          "route_score_confidence": 0.83
+        },
+        "local_route_scores": {
+          "scores": {
+            "recommend_shopping_products": 0.25,
+            "generate_pc_build_plan": 0.0,
+            "compare_products": 0.0,
+            "apply_cart_instruction": 0.75,
+            "general_chat": 0.0
+          },
+          "top_name": "apply_cart_instruction",
+          "top_score": 0.75,
+          "second_name": "recommend_shopping_products",
+          "second_score": 0.25,
+          "margin": 0.5,
+          "margin_bonus": 0.08,
+          "ambiguity_penalty": 0.0,
+          "confidence": 0.83
+        },
+        "llm": {
+          "name": "apply_cart_instruction",
+          "arguments": {
+            "query": "查看购物车",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "view_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.95,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 852,
+            "has_error": false,
+            "provider": "openai_compatible"
+          }
+        },
+        "chosen_before_guard": {
+          "name": "apply_cart_instruction",
+          "arguments": {
+            "query": "查看购物车",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "view_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          },
+          "confidence": 0.95,
+          "reason": "",
+          "source": "llm",
+          "needs_clarification": false,
+          "llm_report": {
+            "configured": true,
+            "success": true,
+            "status_code": 200,
+            "elapsed_ms": 852,
+            "has_error": false,
+            "provider": "openai_compatible"
+          },
+          "_llm_chosen": true
+        },
+        "final": {
+          "name": "apply_cart_instruction",
+          "arguments": {
+            "query": "购物车里有什么",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined",
+            "compare_with_previous": false,
+            "quantity": null,
+            "action": "view_cart",
+            "topic": "",
+            "need_full_pc_build": false
+          }
+        },
+        "route_overridden": false,
+        "arguments_changed": true,
+        "guard_overridden": false,
+        "llm_skipped": false,
+        "llm_skipped_reason": "",
+        "router_skipped_by_policy": false,
+        "router_skipped_high_confidence_local": false,
+        "router_attempted": true,
+        "router_timeout": false,
+        "router_json_invalid": false,
+        "router_success": true,
+        "router_applied": false,
+        "router_final_source": "llm",
+        "router_failure_reason": "",
+        "llm_router_attempted": true,
+        "llm_router_success": true,
+        "llm_router_failure_reason": "",
+        "llm_router_error_class": "none",
+        "llm_router_elapsed_ms": 854
+      },
+      "topic_memory": {
+        "topic_id": "sess_h148-1",
+        "topic_type": "cart",
+        "subject": "帮我把 iPhone 17 Pro 加到购物车",
+        "route": "apply_cart_instruction",
+        "category": "",
+        "slots": {
+          "budget": null,
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "combined"
+        },
+        "confidence": 0.95,
+        "source": "llm",
+        "reason": "路由器未提供原因。",
+        "updated_at": "2026-06-07T04:03:37.751722+00:00",
+        "history": [
+          {
+            "topic_type": "ecommerce_recommendation",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "recommend_shopping_products",
+            "slots": {
+              "budget": null,
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "updated_at": "2026-06-07T04:03:29.084324+00:00"
+          },
+          {
+            "topic_type": "cart",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "apply_cart_instruction",
+            "slots": {
+              "budget": null,
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "combined"
+            },
+            "updated_at": "2026-06-07T04:03:35.134778+00:00"
+          },
+          {
+            "topic_type": "cart",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "apply_cart_instruction",
+            "slots": {
+              "budget": null,
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "combined"
+            },
+            "updated_at": "2026-06-07T04:03:35.950587+00:00"
+          }
+        ]
+      }
+    }
+  ],
+  "text_response": "已将 Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 加入购物车，数量 1。",
+  "product_card_count": 0,
+  "events_received": [
+    "runtime_mode",
+    "tool_call",
+    "delta",
+    "cart",
+    "done"
+  ],
+  "error": "",
+  "elapsed_ms": 873,
+  "raw_events": [
+    {
+      "event": "runtime_mode",
+      "data": {
+        "requested_mode": "auto",
+        "selected_mode": "balanced",
+        "mode": "balanced",
+        "reason": "adaptive_runtime:incomplete_requirement,medium_route_confidence",
+        "signals": {
+          "requested_mode": "auto",
+          "llm_configured": true,
+          "has_attachments": false,
+          "has_image_data": false,
+          "is_test_env": false,
+          "system_degraded": false,
+          "adaptive_decision": {
+            "selected_mode": "balanced",
+            "reason_codes": [
+              "incomplete_requirement",
+              "medium_route_confidence"
+            ],
+            "route_confidence": 0.84,
+            "route_margin": 0.5,
+            "requirement_completeness": 0.56,
+            "query_complexity": 0.058333333333333334,
+            "history_dependency": 0.42,
+            "llm_allowed": true,
+            "llm_available": true,
+            "fallback_used": false,
+            "fallback_reason": null
+          },
+          "reason_codes": [
+            "incomplete_requirement",
+            "medium_route_confidence"
+          ],
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": ""
+        },
+        "llm_configured": true,
+        "use_milvus_retrieval": true,
+        "use_rag_query_expansion": false,
+        "policy": {
+          "mode": "balanced",
+          "use_router_llm": true,
+          "use_requirement_llm": true,
+          "use_guidance_llm": false,
+          "use_vision_llm": false,
+          "use_rag_query_expansion": false,
+          "use_milvus_retrieval": true
+        },
+        "route_confidence": 0.84,
+        "route_margin": 0.5,
+        "requirement_completeness": 0.56,
+        "query_complexity": 0.058333333333333334,
+        "history_dependency": 0.42,
+        "reason_codes": [
+          "incomplete_requirement",
+          "medium_route_confidence"
+        ],
+        "llm_provider": "openai_compatible",
+        "llm_model": "sensenova-6.7-flash-lite",
+        "router_model": "sensenova-6.7-flash-lite",
+        "parse_model": "sensenova-6.7-flash-lite",
+        "guidance_model": "sensenova-6.7-flash-lite",
+        "llm_config_error_code": "",
+        "llm_provider_fallback": "",
+        "llm_error_sanitized": ""
+      }
+    },
+    {
+      "event": "tool_call",
+      "data": {
+        "name": "apply_cart_instruction",
+        "arguments": {
+          "query": "购物车里有什么",
+          "budget": null,
+          "category": "",
+          "usage": [],
+          "preferences": {},
+          "product_ids": [],
+          "catalog_scope": "combined",
+          "compare_with_previous": false,
+          "quantity": null,
+          "action": "view_cart",
+          "topic": "",
+          "need_full_pc_build": false
+        },
+        "confidence": 0.95,
+        "reason": "路由器未提供原因。",
+        "source": "llm",
+        "routing_trace": {
+          "runtime_mode": "balanced",
+          "llm_provider": "openai_compatible",
+          "llm_model": "sensenova-6.7-flash-lite",
+          "llm_base_url_host": "token.sensenova.cn",
+          "router_model": "sensenova-6.7-flash-lite",
+          "parse_model": "sensenova-6.7-flash-lite",
+          "guidance_model": "sensenova-6.7-flash-lite",
+          "llm_configured": true,
+          "llm_config_error_code": "",
+          "llm_provider_fallback": "",
+          "llm_error_sanitized": "",
+          "local": {
+            "name": "recommend_shopping_products",
+            "arguments": {
+              "query": "购物车里有什么",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.84,
+            "reason": "本地规则识别到商品搜索、场景购物或事实型商品查询。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.75,
+                "general_chat": 0.0
+              },
+              "top_name": "apply_cart_instruction",
+              "top_score": 0.75,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.25,
+              "margin": 0.5,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.83
+            },
+            "local_rule_confidence": 0.84,
+            "route_score_confidence": 0.83
+          },
+          "local_route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.75,
+              "general_chat": 0.0
+            },
+            "top_name": "apply_cart_instruction",
+            "top_score": 0.75,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.25,
+            "margin": 0.5,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.83
+          },
+          "llm": {
+            "name": "apply_cart_instruction",
+            "arguments": {
+              "query": "查看购物车",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "view_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.95,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 852,
+              "has_error": false,
+              "provider": "openai_compatible"
+            }
+          },
+          "chosen_before_guard": {
+            "name": "apply_cart_instruction",
+            "arguments": {
+              "query": "查看购物车",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "view_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            },
+            "confidence": 0.95,
+            "reason": "",
+            "source": "llm",
+            "needs_clarification": false,
+            "llm_report": {
+              "configured": true,
+              "success": true,
+              "status_code": 200,
+              "elapsed_ms": 852,
+              "has_error": false,
+              "provider": "openai_compatible"
+            },
+            "_llm_chosen": true
+          },
+          "final": {
+            "name": "apply_cart_instruction",
+            "arguments": {
+              "query": "购物车里有什么",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "combined",
+              "compare_with_previous": false,
+              "quantity": null,
+              "action": "view_cart",
+              "topic": "",
+              "need_full_pc_build": false
+            }
+          },
+          "route_overridden": false,
+          "arguments_changed": true,
+          "guard_overridden": false,
+          "llm_skipped": false,
+          "llm_skipped_reason": "",
+          "router_skipped_by_policy": false,
+          "router_skipped_high_confidence_local": false,
+          "router_attempted": true,
+          "router_timeout": false,
+          "router_json_invalid": false,
+          "router_success": true,
+          "router_applied": false,
+          "router_final_source": "llm",
+          "router_failure_reason": "",
+          "llm_router_attempted": true,
+          "llm_router_success": true,
+          "llm_router_failure_reason": "",
+          "llm_router_error_class": "none",
+          "llm_router_elapsed_ms": 854
+        },
+        "topic_memory": {
+          "topic_id": "sess_h148-1",
+          "topic_type": "cart",
+          "subject": "帮我把 iPhone 17 Pro 加到购物车",
+          "route": "apply_cart_instruction",
+          "category": "",
+          "slots": {
+            "budget": null,
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "combined"
+          },
+          "confidence": 0.95,
+          "source": "llm",
+          "reason": "路由器未提供原因。",
+          "updated_at": "2026-06-07T04:03:37.751722+00:00",
+          "history": [
+            {
+              "topic_type": "ecommerce_recommendation",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "recommend_shopping_products",
+              "slots": {
+                "budget": null,
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "ecommerce"
+              },
+              "updated_at": "2026-06-07T04:03:29.084324+00:00"
+            },
+            {
+              "topic_type": "cart",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "apply_cart_instruction",
+              "slots": {
+                "budget": null,
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "combined"
+              },
+              "updated_at": "2026-06-07T04:03:35.134778+00:00"
+            },
+            {
+              "topic_type": "cart",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "apply_cart_instruction",
+              "slots": {
+                "budget": null,
+                "usage": [],
+                "preferences": {},
+                "product_ids": [],
+                "catalog_scope": "combined"
+              },
+              "updated_at": "2026-06-07T04:03:35.950587+00:00"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "event": "delta",
+      "data": {
+        "text": "已将 Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 加入购物车，数量 1。"
+      }
+    },
+    {
+      "event": "cart",
+      "data": {
+        "session_id": "sess_h148",
+        "action": "add",
+        "messages": [
+          "已将 Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 加入购物车，数量 1。"
+        ],
+        "cart": {
+          "items": [
+            {
+              "product_id": "p_digital_001",
+              "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+              "brand": "Apple 苹果",
+              "price": 8999.0,
+              "currency": "CNY",
+              "quantity": 1,
+              "line_total": 8999.0,
+              "image_url": "/product-images/p_digital_001_live.jpg"
+            }
+          ],
+          "total_price": 8999.0,
+          "currency": "CNY",
+          "count": 1
+        }
+      }
+    },
+    {
+      "event": "done",
+      "data": {
+        "session_id": "sess_h148"
+      }
+    }
+  ]
+}
