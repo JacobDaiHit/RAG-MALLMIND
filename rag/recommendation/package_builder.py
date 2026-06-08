@@ -49,8 +49,9 @@ def build_recommendation_result(
         normalized_scope = "pc_parts"
     catalog = catalog or load_catalog_for_scope(normalized_scope)
     recommendation_domain = recommendation_domain_for_scope(normalized_scope)
-    # ── clarification_required 不再拦截宽泛查询，让大模型兜底 ──
-    _ = clarification_required(requirement.raw_query)
+    # ── clarification merge: rule + LLM ──
+    rule_clarification = clarification_required(requirement.raw_query)
+    llm_clarification_q = requirement.clarification_question or ""
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
     no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
@@ -191,6 +192,8 @@ def build_recommendation_result(
             "evidence_match_max": _evidence_match_max(grouped_scores),
             "evidence_boost_any": _evidence_boost_any(grouped_scores),
             "evidence_boost_per_category": _evidence_boost_per_category(grouped_scores),
+            "clarification_question": llm_clarification_q,
+            "rule_clarification": rule_clarification,
         },
     )
 
@@ -237,7 +240,18 @@ def build_no_recommendation_result(
     }
     if trace_extras:
         trace.update(trace_extras)
-    follow_up_questions = list((trace_extras or {}).get("clarification_questions") or [no_match_reason])
+    # ── clarification merge for no-recommendation path ──
+    rule_clarify = clarification_required(requirement.raw_query)
+    llm_clarify_q = requirement.clarification_question or ""
+    rule_questions = list((trace_extras or {}).get("clarification_questions") or [])
+    if rule_clarify and rule_clarify.get("clarification_questions"):
+        rule_questions.extend(rule_clarify["clarification_questions"])
+    follow_up_questions = rule_questions if rule_questions else [no_match_reason]
+    # Inject LLM clarification_question into trace
+    trace["clarification_question"] = llm_clarify_q
+    trace["rule_clarification"] = rule_clarify
+    if llm_clarify_q and llm_clarify_q not in follow_up_questions:
+        follow_up_questions.insert(0, llm_clarify_q)
     return RecommendationResult(
         requirement=requirement,
         plans=[],

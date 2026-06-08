@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.86,
       "reason": "后端兜底：用户明确切换到普通商品品类 数码电子。",
@@ -136,7 +144,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -208,7 +224,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 249,
+  "elapsed_ms": 26,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -298,7 +314,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.86,
         "reason": "后端兜底：用户明确切换到普通商品品类 数码电子。",
@@ -415,7 +439,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -518,7 +550,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 10 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -532,28 +564,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.86"
+        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑；约 4999 CNY；评分 0.85"
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.82"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.82"
+        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.82"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.82"
+        "detail": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑；约 4799 CNY；评分 0.82"
       }
     },
     {
@@ -605,58 +637,58 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8627，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0290；vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#sku 召回分 0.0262。",
-            "score": 0.8627,
+            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
+            "score": 0.8273,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_019_1"
           },
           {
-            "product_id": "p_digital_005",
-            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-            "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
             "brand": "华为",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "平板电脑",
-            "price": 4999.0,
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
             "price_range": [
-              4999.0,
-              6399.0
+              1499.0,
+              1699.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_005_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 4.0,
-            "review_count": 5,
-            "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8504，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0271；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#sku 召回分 0.0262。",
-            "score": 0.8504,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_005_1"
-          },
-          {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
+            "image_url": "/product-images/p_digital_007_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
             "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8208，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0263。",
-            "score": 0.8208,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8190，参考价 1499-1699 CNY。 评价均分 3/5。",
+            "score": 0.819,
             "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_016_1"
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.8174，参考价 1799-2299 CNY。 评价均分 3/5。",
+            "score": 0.8174,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_018_1"
           }
         ]
       }
@@ -687,19 +719,7 @@
                 "product_id": "p_digital_019",
                 "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
                 "price": 3299.0,
-                "score": 0.8627
-              },
-              {
-                "product_id": "p_digital_005",
-                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-                "price": 4999.0,
-                "score": 0.8504
-              },
-              {
-                "product_id": "p_digital_016",
-                "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                "price": 3299.0,
-                "score": 0.8208
+                "score": 0.8273
               },
               {
                 "product_id": "p_digital_007",
@@ -708,10 +728,22 @@
                 "score": 0.819
               },
               {
-                "product_id": "p_digital_015",
-                "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                "price": 6999.0,
-                "score": 0.8181
+                "product_id": "p_digital_018",
+                "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                "price": 1799.0,
+                "score": 0.8174
+              },
+              {
+                "product_id": "p_digital_025",
+                "title": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑",
+                "price": 4799.0,
+                "score": 0.8158
+              },
+              {
+                "product_id": "p_digital_005",
+                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                "price": 4999.0,
+                "score": 0.8152
               }
             ]
           }
@@ -947,7 +979,7 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8627，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0290；vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#sku 召回分 0.0262。",
+                "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
                 "score": {
                   "scenario_match": 0.6,
                   "attribute_match": 0.75,
@@ -956,18 +988,17 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 1.0,
-                  "final_score": 0.8627,
+                  "final_score": 0.8273,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
                     "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
                     "用户评价均分 3.6/5，参与口碑评分。",
                     "商品提供 5 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_019 召回分 0.0290; p_digital_019 召回分 0.0262。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_019::profile::0",
-                  "p_digital_019::sku::1"
+                  "p_digital_019"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_019_1"
@@ -1023,7 +1054,7 @@
                 "role": "digital",
                 "product_id": "p_digital_019",
                 "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                "final_score": 0.8627,
+                "final_score": 0.8273,
                 "scenario_match": 0.6,
                 "attribute_match": 0.75,
                 "price_fit": 0.9517,
@@ -1036,7 +1067,7 @@
                   "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
                   "用户评价均分 3.6/5，参与口碑评分。",
                   "商品提供 5 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_019 召回分 0.0290; p_digital_019 召回分 0.0262。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1063,58 +1094,58 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8627，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0290；vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#sku 召回分 0.0262。",
-            "score": 0.8627,
+            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
+            "score": 0.8273,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_019_1"
           },
           {
-            "product_id": "p_digital_005",
-            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-            "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "product_id": "p_digital_007",
+            "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+            "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
             "brand": "华为",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "平板电脑",
-            "price": 4999.0,
+            "sub_category": "真无线耳机",
+            "price": 1499.0,
             "price_range": [
-              4999.0,
-              6399.0
+              1499.0,
+              1699.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_005_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 4.0,
-            "review_count": 5,
-            "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8504，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0271；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#sku 召回分 0.0262。",
-            "score": 0.8504,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_005_1"
-          },
-          {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
+            "image_url": "/product-images/p_digital_007_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
             "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8208，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0263。",
-            "score": 0.8208,
+            "review_count": 5,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8190，参考价 1499-1699 CNY。 评价均分 3/5。",
+            "score": 0.819,
             "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_016_1"
+            "selected_sku_id": "s_p_digital_007_1"
+          },
+          {
+            "product_id": "p_digital_018",
+            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "真无线耳机",
+            "price": 1799.0,
+            "price_range": [
+              1799.0,
+              2299.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_018_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.0,
+            "review_count": 5,
+            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.8174，参考价 1799-2299 CNY。 评价均分 3/5。",
+            "score": 0.8174,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_018_1"
           }
         ],
         "candidate_scope": {
@@ -1141,19 +1172,7 @@
                   "product_id": "p_digital_019",
                   "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
                   "price": 3299.0,
-                  "score": 0.8627
-                },
-                {
-                  "product_id": "p_digital_005",
-                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-                  "price": 4999.0,
-                  "score": 0.8504
-                },
-                {
-                  "product_id": "p_digital_016",
-                  "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                  "price": 3299.0,
-                  "score": 0.8208
+                  "score": 0.8273
                 },
                 {
                   "product_id": "p_digital_007",
@@ -1162,10 +1181,22 @@
                   "score": 0.819
                 },
                 {
-                  "product_id": "p_digital_015",
-                  "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                  "price": 6999.0,
-                  "score": 0.8181
+                  "product_id": "p_digital_018",
+                  "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+                  "price": 1799.0,
+                  "score": 0.8174
+                },
+                {
+                  "product_id": "p_digital_025",
+                  "title": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑",
+                  "price": 4799.0,
+                  "score": 0.8158
+                },
+                {
+                  "product_id": "p_digital_005",
+                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+                  "price": 4999.0,
+                  "score": 0.8152
                 }
               ]
             }
@@ -1190,53 +1221,13 @@
             "currency": "CNY",
             "rating_avg": 3.6,
             "review_count": 5,
-            "score": 0.8627,
-            "strength": "综合分 0.8627，评分 3.6/5，FAQ 信息较完整。",
+            "score": 0.8273,
+            "strength": "综合分 0.8273，评分 3.6/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
           {
             "rank": 2,
-            "product_id": "p_digital_005",
-            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-            "brand": "华为",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 4999.0,
-            "price_range": [
-              4999.0,
-              6399.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 4.0,
-            "review_count": 5,
-            "score": 0.8504,
-            "strength": "综合分 0.8504，评分 4/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 3,
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "score": 0.8208,
-            "strength": "综合分 0.8208，评分 3/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
             "product_id": "p_digital_007",
             "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
             "brand": "华为",
@@ -1256,27 +1247,7 @@
             "recommendation": false
           },
           {
-            "rank": 5,
-            "product_id": "p_digital_015",
-            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.5,
-            "review_count": 6,
-            "score": 0.8181,
-            "strength": "综合分 0.8181，评分 3.5/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 6,
+            "rank": 3,
             "product_id": "p_digital_018",
             "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
             "brand": "Apple 苹果",
@@ -1293,6 +1264,66 @@
             "score": 0.8174,
             "strength": "综合分 0.8174，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_digital_025",
+            "title": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑",
+            "brand": "Apple 苹果",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4799.0,
+            "price_range": [
+              4799.0,
+              6599.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.75,
+            "review_count": 4,
+            "score": 0.8158,
+            "strength": "综合分 0.8158，评分 3.75/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_digital_005",
+            "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 4999.0,
+            "price_range": [
+              4999.0,
+              6399.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 5,
+            "score": 0.8152,
+            "strength": "综合分 0.8152，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_digital_021",
+            "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 5199.0,
+            "price_range": [
+              5199.0,
+              7299.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 4.0,
+            "review_count": 3,
+            "score": 0.8061,
+            "strength": "综合分 0.8061，评分 4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
             "recommendation": false
           }
         ],
@@ -1356,13 +1387,13 @@
           "grounded_explanation": {
             "why_recommended": [
               "已从商品库候选中选择：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-              "已从商品库候选中选择：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-              "已从商品库候选中选择：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB"
+              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+              "已从商品库候选中选择：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版"
             ],
             "evidence_points": [
               "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 - 价格：3299.0",
-              "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 - 价格：4999.0",
-              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB - 价格：3299.0"
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0",
+              "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 - 价格：1799.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1381,9 +1412,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

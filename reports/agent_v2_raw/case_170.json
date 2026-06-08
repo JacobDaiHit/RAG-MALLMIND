@@ -21,7 +21,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": 3000.0,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.86,
       "reason": "后端兜底：用户明确切换到普通商品品类 护肤。",
@@ -144,7 +152,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": 3000.0,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -216,7 +232,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 396,
+  "elapsed_ms": 49,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -308,7 +324,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": 3000.0,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.86,
         "reason": "后端兜底：用户明确切换到普通商品品类 护肤。",
@@ -431,7 +455,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": 3000.0,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -532,7 +564,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 10 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -546,28 +578,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g；约 89 CNY；评分 0.88"
+        "detail": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g；约 89 CNY；评分 0.84"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.84"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g；约 89 CNY；评分 0.85"
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.84"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g；约 168 CNY；评分 0.85"
+        "detail": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml；约 178 CNY；评分 0.83"
       }
     },
     {
@@ -619,10 +651,34 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8788，参考价 89-268 CNY。 评价均分 3.6/5。 检索证据：薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#profile 召回分 0.0294；薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#sku 召回分 0.0263。",
-            "score": 0.8788,
+            "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8434，参考价 89-268 CNY。 评价均分 3.6/5。",
+            "score": 0.8434,
             "source": "single_product",
             "selected_sku_id": "s_p_beauty_007_2"
+          },
+          {
+            "product_id": "p_beauty_006",
+            "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "name": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "brand": "巴黎欧莱雅",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "防晒",
+            "price": 170.0,
+            "price_range": [
+              170.0,
+              190.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.67,
+            "review_count": 6,
+            "reason": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml 属于 美妆护肤/防晒，综合分 0.8378，参考价 170-190 CNY。 评价均分 3.67/5。",
+            "score": 0.8378,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_beauty_006_1"
           },
           {
             "product_id": "p_beauty_018",
@@ -643,34 +699,10 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8538，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#profile 召回分 0.0278。",
-            "score": 0.8538,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8352，参考价 59-98 CNY。 评价均分 3.6/5。",
+            "score": 0.8352,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_beauty_018_1"
-          },
-          {
-            "product_id": "p_beauty_008",
-            "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
-            "name": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
-            "brand": "玉兰油",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "面霜",
-            "price": 89.0,
-            "price_range": [
-              89.0,
-              259.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_008_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.67,
-            "review_count": 3,
-            "reason": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g 属于 美妆护肤/面霜，综合分 0.8497，参考价 89-259 CNY。 评价均分 3.67/5。 检索证据：玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g#profile 召回分 0.0267。",
-            "score": 0.8497,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_beauty_008_1"
           }
         ]
       }
@@ -703,31 +735,31 @@
                 "product_id": "p_beauty_007",
                 "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
                 "price": 89.0,
-                "score": 0.8788
+                "score": 0.8434
+              },
+              {
+                "product_id": "p_beauty_006",
+                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                "price": 170.0,
+                "score": 0.8378
               },
               {
                 "product_id": "p_beauty_018",
                 "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
                 "price": 59.0,
-                "score": 0.8538
+                "score": 0.8352
+              },
+              {
+                "product_id": "p_beauty_017",
+                "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
+                "price": 178.0,
+                "score": 0.8317
               },
               {
                 "product_id": "p_beauty_008",
                 "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
                 "price": 89.0,
-                "score": 0.8497
-              },
-              {
-                "product_id": "p_beauty_022",
-                "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                "price": 168.0,
-                "score": 0.8469
-              },
-              {
-                "product_id": "p_beauty_015",
-                "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
-                "price": 120.0,
-                "score": 0.8464
+                "score": 0.8312
               }
             ]
           }
@@ -925,7 +957,7 @@
                     "追求极致轻薄用户需谨慎"
                   ]
                 },
-                "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8788，参考价 89-268 CNY。 评价均分 3.6/5。 检索证据：薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#profile 召回分 0.0294；薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#sku 召回分 0.0263。",
+                "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8434，参考价 89-268 CNY。 评价均分 3.6/5。",
                 "score": {
                   "scenario_match": 0.66,
                   "attribute_match": 0.75,
@@ -934,7 +966,7 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 1.0,
-                  "final_score": 0.8788,
+                  "final_score": 0.8434,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
                     "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于用户关注的 美妆护肤 类目。",
@@ -942,14 +974,13 @@
                     "用户评价均分 3.6/5，参与口碑评分。",
                     "商品提供 5 条官方 FAQ，可作为回答证据。",
                     "不适用提示：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-                    "商品知识证据命中：p_beauty_007 召回分 0.0294; p_beauty_007 召回分 0.0263。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                     "用户给出低预算或价格上限，价格适配权重提高。",
                     "用户更关注品质/效果，属性匹配与详情证据权重提高。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_beauty_007::profile::0",
-                  "p_beauty_007::sku::1"
+                  "p_beauty_007"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_beauty_007_2"
@@ -1007,7 +1038,7 @@
                 "role": "beauty",
                 "product_id": "p_beauty_007",
                 "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-                "final_score": 0.8788,
+                "final_score": 0.8434,
                 "scenario_match": 0.66,
                 "attribute_match": 0.75,
                 "price_fit": 0.9703,
@@ -1022,7 +1053,7 @@
                   "用户评价均分 3.6/5，参与口碑评分。",
                   "商品提供 5 条官方 FAQ，可作为回答证据。",
                   "不适用提示：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-                  "商品知识证据命中：p_beauty_007 召回分 0.0294; p_beauty_007 召回分 0.0263。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                   "用户给出低预算或价格上限，价格适配权重提高。"
                 ]
               }
@@ -1050,10 +1081,34 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8788，参考价 89-268 CNY。 评价均分 3.6/5。 检索证据：薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#profile 召回分 0.0294；薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g#sku 召回分 0.0263。",
-            "score": 0.8788,
+            "reason": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 属于 美妆护肤/面霜，综合分 0.8434，参考价 89-268 CNY。 评价均分 3.6/5。",
+            "score": 0.8434,
             "source": "single_product",
             "selected_sku_id": "s_p_beauty_007_2"
+          },
+          {
+            "product_id": "p_beauty_006",
+            "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "name": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "brand": "巴黎欧莱雅",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "sub_category": "防晒",
+            "price": 170.0,
+            "price_range": [
+              170.0,
+              190.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_beauty_006_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.67,
+            "review_count": 6,
+            "reason": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml 属于 美妆护肤/防晒，综合分 0.8378，参考价 170-190 CNY。 评价均分 3.67/5。",
+            "score": 0.8378,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_beauty_006_1"
           },
           {
             "product_id": "p_beauty_018",
@@ -1074,34 +1129,10 @@
             "stock_quantity": null,
             "rating_avg": 3.6,
             "review_count": 5,
-            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8538，参考价 59-98 CNY。 评价均分 3.6/5。 检索证据：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml#profile 召回分 0.0278。",
-            "score": 0.8538,
+            "reason": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 属于 美妆护肤/精华，综合分 0.8352，参考价 59-98 CNY。 评价均分 3.6/5。",
+            "score": 0.8352,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_beauty_018_1"
-          },
-          {
-            "product_id": "p_beauty_008",
-            "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
-            "name": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
-            "brand": "玉兰油",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "面霜",
-            "price": 89.0,
-            "price_range": [
-              89.0,
-              259.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_008_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.67,
-            "review_count": 3,
-            "reason": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g 属于 美妆护肤/面霜，综合分 0.8497，参考价 89-259 CNY。 评价均分 3.67/5。 检索证据：玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g#profile 召回分 0.0267。",
-            "score": 0.8497,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_beauty_008_1"
           }
         ],
         "candidate_scope": {
@@ -1130,31 +1161,31 @@
                   "product_id": "p_beauty_007",
                   "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
                   "price": 89.0,
-                  "score": 0.8788
+                  "score": 0.8434
+                },
+                {
+                  "product_id": "p_beauty_006",
+                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                  "price": 170.0,
+                  "score": 0.8378
                 },
                 {
                   "product_id": "p_beauty_018",
                   "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
                   "price": 59.0,
-                  "score": 0.8538
+                  "score": 0.8352
+                },
+                {
+                  "product_id": "p_beauty_017",
+                  "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
+                  "price": 178.0,
+                  "score": 0.8317
                 },
                 {
                   "product_id": "p_beauty_008",
                   "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
                   "price": 89.0,
-                  "score": 0.8497
-                },
-                {
-                  "product_id": "p_beauty_022",
-                  "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                  "price": 168.0,
-                  "score": 0.8469
-                },
-                {
-                  "product_id": "p_beauty_015",
-                  "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
-                  "price": 120.0,
-                  "score": 0.8464
+                  "score": 0.8312
                 }
               ]
             }
@@ -1177,13 +1208,33 @@
             "currency": "CNY",
             "rating_avg": 3.6,
             "review_count": 5,
-            "score": 0.8788,
-            "strength": "综合分 0.8788，评分 3.6/5，FAQ 信息较完整。",
+            "score": 0.8434,
+            "strength": "综合分 0.8434，评分 3.6/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
             "recommendation": true
           },
           {
             "rank": 2,
+            "product_id": "p_beauty_006",
+            "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+            "brand": "巴黎欧莱雅",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 170.0,
+            "price_range": [
+              170.0,
+              190.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.67,
+            "review_count": 6,
+            "score": 0.8378,
+            "strength": "综合分 0.8378，评分 3.67/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎；极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 3,
             "product_id": "p_beauty_018",
             "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
             "brand": "The Ordinary",
@@ -1197,13 +1248,33 @@
             "currency": "CNY",
             "rating_avg": 3.6,
             "review_count": 5,
-            "score": 0.8538,
-            "strength": "综合分 0.8538，评分 3.6/5，FAQ 信息较完整。",
+            "score": 0.8352,
+            "strength": "综合分 0.8352，评分 3.6/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：极敏感人群需先试用。",
             "recommendation": false
           },
           {
-            "rank": 3,
+            "rank": 4,
+            "product_id": "p_beauty_017",
+            "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
+            "brand": "芳珂",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 178.0,
+            "price_range": [
+              178.0,
+              198.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.4,
+            "review_count": 5,
+            "score": 0.8317,
+            "strength": "综合分 0.8317，评分 3.4/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
             "product_id": "p_beauty_008",
             "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
             "brand": "玉兰油",
@@ -1217,69 +1288,29 @@
             "currency": "CNY",
             "rating_avg": 3.67,
             "review_count": 3,
-            "score": 0.8497,
-            "strength": "综合分 0.8497，评分 3.67/5，FAQ 信息较完整。",
+            "score": 0.8312,
+            "strength": "综合分 0.8312，评分 3.67/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：极敏感人群需先试用。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
-            "product_id": "p_beauty_022",
-            "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "brand": "薇诺娜",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 168.0,
-            "price_range": [
-              168.0,
-              199.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "score": 0.8469,
-            "strength": "综合分 0.8469，评分 3.17/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 5,
-            "product_id": "p_beauty_015",
-            "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
-            "brand": "完美日记",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 120.0,
-            "price_range": [
-              120.0,
-              129.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "score": 0.8464,
-            "strength": "综合分 0.8464，评分 4/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
           {
             "rank": 6,
-            "product_id": "p_beauty_016",
-            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "brand": "AHC",
+            "product_id": "p_beauty_013",
+            "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
+            "brand": "方里",
             "category": "beauty",
             "category_name": "美妆护肤",
-            "price": 139.0,
+            "price": 99.0,
             "price_range": [
-              139.0,
-              159.0
+              99.0,
+              139.0
             ],
             "currency": "CNY",
             "rating_avg": 3.17,
             "review_count": 6,
-            "score": 0.8418,
-            "strength": "综合分 0.8418，评分 3.17/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用。",
+            "score": 0.8303,
+            "strength": "综合分 0.8303，评分 3.17/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎。",
             "recommendation": false
           }
         ],
@@ -1339,13 +1370,13 @@
           "grounded_explanation": {
             "why_recommended": [
               "已从商品库候选中选择：薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-              "已从商品库候选中选择：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-              "已从商品库候选中选择：玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g"
+              "已从商品库候选中选择：巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+              "已从商品库候选中选择：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml"
             ],
             "evidence_points": [
               "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g - 价格：89.0",
-              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml - 价格：59.0",
-              "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g - 价格：89.0"
+              "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml - 价格：170.0",
+              "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml - 价格：59.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1364,9 +1395,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

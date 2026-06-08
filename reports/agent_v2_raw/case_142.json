@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.86,
       "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
@@ -136,7 +144,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -180,7 +196,7 @@
     }
   ],
   "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB，参考价约 6999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-  "product_card_count": 3,
+  "product_card_count": 1,
   "events_received": [
     "runtime_mode",
     "tool_call",
@@ -189,9 +205,6 @@
     "progress",
     "progress",
     "intent_route",
-    "progress",
-    "progress",
-    "progress",
     "progress",
     "progress",
     "progress",
@@ -208,7 +221,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 544,
+  "elapsed_ms": 23,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -298,7 +311,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.86,
         "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
@@ -415,7 +436,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -518,49 +547,28 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 10 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "数码电子筛选完成",
-        "detail": "原始 25 条，排除后 10 条，预算内命中 10 条。"
+        "detail": "原始 25 条，排除后 1 条，预算内命中 1 条。"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.88"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
-        "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.81"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 4",
-        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.79"
+        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.86"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "候选卡片已准备",
-        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+        "detail": "将展示 1 张商品卡片，并保留可对比候选。"
       }
     },
     {
@@ -605,58 +613,10 @@
             "stock_quantity": null,
             "rating_avg": 2.17,
             "review_count": 6,
-            "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8760，参考价 6999-7699 CNY。 评价均分 2.17/5。 检索证据：华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#profile 召回分 0.0323；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#sku 召回分 0.0269；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#review 召回分 0.0268。",
-            "score": 0.876,
+            "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8629，参考价 6999-7699 CNY。 评价均分 2.17/5。",
+            "score": 0.8629,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_002_1"
-          },
-          {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8377，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0266。",
-            "score": 0.8377,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_016_1"
-          },
-          {
-            "product_id": "p_digital_009",
-            "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-            "name": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-            "brand": "小米",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 6499.0,
-            "price_range": [
-              6499.0,
-              7099.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_009_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8052，参考价 6499-7099 CNY。 评价均分 4/5。 检索证据：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#profile 召回分 0.0267。",
-            "score": 0.8052,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_009_1"
           }
         ]
       }
@@ -682,38 +642,14 @@
         "by_category": {
           "digital": {
             "raw_count": 25,
-            "after_exclusion_count": 10,
-            "within_budget_count": 10,
+            "after_exclusion_count": 1,
+            "within_budget_count": 1,
             "top_candidates": [
               {
                 "product_id": "p_digital_002",
                 "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
                 "price": 6999.0,
-                "score": 0.876
-              },
-              {
-                "product_id": "p_digital_016",
-                "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                "price": 3299.0,
-                "score": 0.8377
-              },
-              {
-                "product_id": "p_digital_009",
-                "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-                "price": 6499.0,
-                "score": 0.8052
-              },
-              {
-                "product_id": "p_digital_015",
-                "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                "price": 6999.0,
-                "score": 0.7941
-              },
-              {
-                "product_id": "p_digital_008",
-                "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
-                "price": 7499.0,
-                "score": 0.768
+                "score": 0.8629
               }
             ]
           }
@@ -977,29 +913,27 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8760，参考价 6999-7699 CNY。 评价均分 2.17/5。 检索证据：华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#profile 召回分 0.0323；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#sku 召回分 0.0269；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#review 召回分 0.0268。",
+                "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8629，参考价 6999-7699 CNY。 评价均分 2.17/5。",
                 "score": {
-                  "scenario_match": 0.798,
-                  "attribute_match": 0.898,
-                  "price_fit": 0.6963,
+                  "scenario_match": 0.75,
+                  "attribute_match": 0.85,
+                  "price_fit": 1.0,
                   "reputation_fit": 0.684,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.876,
+                  "final_score": 0.8629,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 6999 CNY，已用于预算适配评分。",
                     "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于用户关注的 数码电子 类目。",
                     "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                     "用户评价均分 2.17/5，参与口碑评分。",
                     "商品提供 4 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_002 召回分 0.0323; p_digital_002 召回分 0.0269。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_002::profile::0",
-                  "p_digital_002::sku::1",
-                  "p_digital_002::review::3"
+                  "p_digital_002"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_002_1"
@@ -1055,10 +989,10 @@
                 "role": "digital",
                 "product_id": "p_digital_002",
                 "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
-                "final_score": 0.876,
-                "scenario_match": 0.798,
-                "attribute_match": 0.898,
-                "price_fit": 0.6963,
+                "final_score": 0.8629,
+                "scenario_match": 0.75,
+                "attribute_match": 0.85,
+                "price_fit": 1.0,
                 "reputation_fit": 0.684,
                 "availability_fit": 0.95,
                 "sku_fit": 0.95,
@@ -1069,7 +1003,7 @@
                   "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                   "用户评价均分 2.17/5，参与口碑评分。",
                   "商品提供 4 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_002 召回分 0.0323; p_digital_002 召回分 0.0269。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1096,58 +1030,10 @@
             "stock_quantity": null,
             "rating_avg": 2.17,
             "review_count": 6,
-            "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8760，参考价 6999-7699 CNY。 评价均分 2.17/5。 检索证据：华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#profile 召回分 0.0323；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#sku 召回分 0.0269；华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB#review 召回分 0.0268。",
-            "score": 0.876,
+            "reason": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB 属于 数码电子/智能手机，综合分 0.8629，参考价 6999-7699 CNY。 评价均分 2.17/5。",
+            "score": 0.8629,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_002_1"
-          },
-          {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8377，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0266。",
-            "score": 0.8377,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_016_1"
-          },
-          {
-            "product_id": "p_digital_009",
-            "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-            "name": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-            "brand": "小米",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 6499.0,
-            "price_range": [
-              6499.0,
-              7099.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_009_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8052，参考价 6499-7099 CNY。 评价均分 4/5。 检索证据：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#profile 召回分 0.0267。",
-            "score": 0.8052,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_009_1"
           }
         ],
         "candidate_scope": {
@@ -1169,38 +1055,14 @@
           "by_category": {
             "digital": {
               "raw_count": 25,
-              "after_exclusion_count": 10,
-              "within_budget_count": 10,
+              "after_exclusion_count": 1,
+              "within_budget_count": 1,
               "top_candidates": [
                 {
                   "product_id": "p_digital_002",
                   "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
                   "price": 6999.0,
-                  "score": 0.876
-                },
-                {
-                  "product_id": "p_digital_016",
-                  "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                  "price": 3299.0,
-                  "score": 0.8377
-                },
-                {
-                  "product_id": "p_digital_009",
-                  "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-                  "price": 6499.0,
-                  "score": 0.8052
-                },
-                {
-                  "product_id": "p_digital_015",
-                  "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                  "price": 6999.0,
-                  "score": 0.7941
-                },
-                {
-                  "product_id": "p_digital_008",
-                  "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
-                  "price": 7499.0,
-                  "score": 0.768
+                  "score": 0.8629
                 }
               ]
             }
@@ -1225,110 +1087,10 @@
             "currency": "CNY",
             "rating_avg": 2.17,
             "review_count": 6,
-            "score": 0.876,
-            "strength": "综合分 0.8760，评分 2.17/5，FAQ 信息较完整。",
+            "score": 0.8629,
+            "strength": "综合分 0.8629，评分 2.17/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
-          },
-          {
-            "rank": 2,
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "score": 0.8377,
-            "strength": "综合分 0.8377，评分 3/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 3,
-            "product_id": "p_digital_009",
-            "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-            "brand": "小米",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6499.0,
-            "price_range": [
-              6499.0,
-              7099.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "score": 0.8052,
-            "strength": "综合分 0.8052，评分 4/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
-            "product_id": "p_digital_015",
-            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.5,
-            "review_count": 6,
-            "score": 0.7941,
-            "strength": "综合分 0.7941，评分 3.5/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 5,
-            "product_id": "p_digital_008",
-            "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
-            "brand": "小米",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 7499.0,
-            "price_range": [
-              7499.0,
-              9299.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 4.33,
-            "review_count": 3,
-            "score": 0.768,
-            "strength": "综合分 0.7680，评分 4.33/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 6,
-            "product_id": "p_digital_017",
-            "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
-            "brand": "vivo",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 2.33,
-            "review_count": 3,
-            "score": 0.7578,
-            "strength": "综合分 0.7578，评分 2.33/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
           }
         ],
         "intent_route": {
@@ -1390,14 +1152,10 @@
           ],
           "grounded_explanation": {
             "why_recommended": [
-              "已从商品库候选中选择：华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
-              "已从商品库候选中选择：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-              "已从商品库候选中选择：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB"
+              "已从商品库候选中选择：华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB"
             ],
             "evidence_points": [
-              "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB - 价格：6999.0",
-              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB - 价格：3299.0",
-              "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB - 价格：6499.0"
+              "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB - 价格：6999.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1416,9 +1174,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.86,
       "reason": "后端兜底：用户明确切换到普通商品品类 护肤。",
@@ -136,7 +144,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -208,7 +224,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 396,
+  "elapsed_ms": 42,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -298,7 +314,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.86,
         "reason": "后端兜底：用户明确切换到普通商品品类 护肤。",
@@ -415,7 +439,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -518,7 +550,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 6 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -546,14 +578,14 @@
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml；约 139 CNY；评分 0.84"
+        "detail": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g；约 89 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g；约 89 CNY；评分 0.83"
+        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.83"
       }
     },
     {
@@ -635,28 +667,28 @@
             "selected_sku_id": "s_p_beauty_018_1"
           },
           {
-            "product_id": "p_beauty_016",
-            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "name": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "brand": "AHC",
+            "product_id": "p_beauty_008",
+            "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+            "name": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+            "brand": "玉兰油",
             "category": "beauty",
             "category_name": "美妆护肤",
-            "sub_category": "眼霜",
-            "price": 139.0,
+            "sub_category": "面霜",
+            "price": 89.0,
             "price_range": [
-              139.0,
-              159.0
+              89.0,
+              259.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_beauty_016_live.jpg",
+            "image_url": "/product-images/p_beauty_008_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于 美妆护肤/眼霜，综合分 0.8417，参考价 139-159 CNY。 评价均分 3.17/5。 检索证据：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#profile 召回分 0.0275。",
-            "score": 0.8417,
+            "rating_avg": 3.67,
+            "review_count": 3,
+            "reason": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g 属于 美妆护肤/面霜，综合分 0.8343，参考价 89-259 CNY。 评价均分 3.67/5。",
+            "score": 0.8343,
             "source": "alternative_candidate",
-            "selected_sku_id": "s_p_beauty_016_1"
+            "selected_sku_id": "s_p_beauty_008_1"
           }
         ]
       }
@@ -700,12 +732,6 @@
                 "score": 0.8418
               },
               {
-                "product_id": "p_beauty_016",
-                "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-                "price": 139.0,
-                "score": 0.8417
-              },
-              {
                 "product_id": "p_beauty_008",
                 "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
                 "price": 89.0,
@@ -716,6 +742,12 @@
                 "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
                 "price": 170.0,
                 "score": 0.834
+              },
+              {
+                "product_id": "p_beauty_011",
+                "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                "price": 52.0,
+                "score": 0.8336
               }
             ]
           }
@@ -1071,28 +1103,28 @@
             "selected_sku_id": "s_p_beauty_018_1"
           },
           {
-            "product_id": "p_beauty_016",
-            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "name": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "brand": "AHC",
+            "product_id": "p_beauty_008",
+            "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+            "name": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+            "brand": "玉兰油",
             "category": "beauty",
             "category_name": "美妆护肤",
-            "sub_category": "眼霜",
-            "price": 139.0,
+            "sub_category": "面霜",
+            "price": 89.0,
             "price_range": [
-              139.0,
-              159.0
+              89.0,
+              259.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_beauty_016_live.jpg",
+            "image_url": "/product-images/p_beauty_008_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml 属于 美妆护肤/眼霜，综合分 0.8417，参考价 139-159 CNY。 评价均分 3.17/5。 检索证据：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml#profile 召回分 0.0275。",
-            "score": 0.8417,
+            "rating_avg": 3.67,
+            "review_count": 3,
+            "reason": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g 属于 美妆护肤/面霜，综合分 0.8343，参考价 89-259 CNY。 评价均分 3.67/5。",
+            "score": 0.8343,
             "source": "alternative_candidate",
-            "selected_sku_id": "s_p_beauty_016_1"
+            "selected_sku_id": "s_p_beauty_008_1"
           }
         ],
         "candidate_scope": {
@@ -1132,12 +1164,6 @@
                   "score": 0.8418
                 },
                 {
-                  "product_id": "p_beauty_016",
-                  "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-                  "price": 139.0,
-                  "score": 0.8417
-                },
-                {
                   "product_id": "p_beauty_008",
                   "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
                   "price": 89.0,
@@ -1148,6 +1174,12 @@
                   "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
                   "price": 170.0,
                   "score": 0.834
+                },
+                {
+                  "product_id": "p_beauty_011",
+                  "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
+                  "price": 52.0,
+                  "score": 0.8336
                 }
               ]
             }
@@ -1199,26 +1231,6 @@
           },
           {
             "rank": 3,
-            "product_id": "p_beauty_016",
-            "title": "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml",
-            "brand": "AHC",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 139.0,
-            "price_range": [
-              139.0,
-              159.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "score": 0.8417,
-            "strength": "综合分 0.8417，评分 3.17/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
             "product_id": "p_beauty_008",
             "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
             "brand": "玉兰油",
@@ -1238,7 +1250,7 @@
             "recommendation": false
           },
           {
-            "rank": 5,
+            "rank": 4,
             "product_id": "p_beauty_006",
             "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
             "brand": "巴黎欧莱雅",
@@ -1258,7 +1270,7 @@
             "recommendation": false
           },
           {
-            "rank": 6,
+            "rank": 5,
             "product_id": "p_beauty_011",
             "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
             "brand": "珊珂",
@@ -1275,6 +1287,26 @@
             "score": 0.8336,
             "strength": "综合分 0.8336，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：极敏感人群需先试用。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_beauty_013",
+            "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
+            "brand": "方里",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 99.0,
+            "price_range": [
+              99.0,
+              139.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.17,
+            "review_count": 6,
+            "score": 0.8327,
+            "strength": "综合分 0.8327，评分 3.17/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎。",
             "recommendation": false
           }
         ],
@@ -1340,12 +1372,12 @@
             "why_recommended": [
               "已从商品库候选中选择：薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
               "已从商品库候选中选择：The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-              "已从商品库候选中选择：AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml"
+              "已从商品库候选中选择：玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g"
             ],
             "evidence_points": [
               "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g - 价格：89.0",
               "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml - 价格：59.0",
-              "AHC塑颜修护全脸眼霜紧致淡纹保湿提亮多效眼周护理30ml - 价格：139.0"
+              "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g - 价格：89.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1364,9 +1396,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

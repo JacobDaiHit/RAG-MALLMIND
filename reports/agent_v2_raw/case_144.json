@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.86,
       "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
@@ -136,7 +144,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -208,7 +224,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 479,
+  "elapsed_ms": 43,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -298,7 +314,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.86,
         "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
@@ -415,7 +439,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -518,42 +550,42 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 12 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "数码电子筛选完成",
-        "detail": "原始 25 条，排除后 10 条，预算内命中 10 条。"
+        "detail": "原始 25 条，排除后 8 条，预算内命中 8 条。"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.84"
+        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.81"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.79"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
         "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.78"
       }
     },
     {
       "event": "progress",
       "data": {
+        "label": "命中候选 3",
+        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.77"
+      }
+    },
+    {
+      "event": "progress",
+      "data": {
         "label": "命中候选 4",
-        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.77"
+        "detail": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB；约 7499 CNY；评分 0.77"
       }
     },
     {
@@ -605,34 +637,10 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8378，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0279。",
-            "score": 0.8378,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8120，参考价 3299-3699 CNY。 评价均分 3/5。",
+            "score": 0.812,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_016_1"
-          },
-          {
-            "product_id": "p_digital_015",
-            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "name": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_015_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.5,
-            "review_count": 6,
-            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.7940，参考价 6999-7799 CNY。 评价均分 3.5/5。 检索证据：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#profile 召回分 0.0273。",
-            "score": 0.794,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_015_1"
           },
           {
             "product_id": "p_digital_009",
@@ -657,6 +665,30 @@
             "score": 0.7795,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_009_1"
+          },
+          {
+            "product_id": "p_digital_015",
+            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+            "name": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7799.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.5,
+            "review_count": 6,
+            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.7683，参考价 6999-7799 CNY。 评价均分 3.5/5。",
+            "score": 0.7683,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_015_1"
           }
         ]
       }
@@ -684,20 +716,14 @@
         "by_category": {
           "digital": {
             "raw_count": 25,
-            "after_exclusion_count": 10,
-            "within_budget_count": 10,
+            "after_exclusion_count": 8,
+            "within_budget_count": 8,
             "top_candidates": [
               {
                 "product_id": "p_digital_016",
                 "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                 "price": 3299.0,
-                "score": 0.8378
-              },
-              {
-                "product_id": "p_digital_015",
-                "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                "price": 6999.0,
-                "score": 0.794
+                "score": 0.812
               },
               {
                 "product_id": "p_digital_009",
@@ -706,16 +732,22 @@
                 "score": 0.7795
               },
               {
-                "product_id": "p_digital_002",
-                "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                "product_id": "p_digital_015",
+                "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                 "price": 6999.0,
-                "score": 0.7705
+                "score": 0.7683
               },
               {
                 "product_id": "p_digital_008",
                 "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
                 "price": 7499.0,
                 "score": 0.768
+              },
+              {
+                "product_id": "p_digital_002",
+                "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                "price": 6999.0,
+                "score": 0.7447
               }
             ]
           }
@@ -930,26 +962,26 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8378，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0279。",
+                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8120，参考价 3299-3699 CNY。 评价均分 3/5。",
                 "score": {
-                  "scenario_match": 0.616,
-                  "attribute_match": 0.766,
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
                   "price_fit": 1.0,
                   "reputation_fit": 0.75,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.8378,
+                  "final_score": 0.812,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
                     "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
                     "用户评价均分 3/5，参与口碑评分。",
                     "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_016 召回分 0.0279。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_016::profile::0"
+                  "p_digital_016"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_016_1"
@@ -1005,9 +1037,9 @@
                 "role": "digital",
                 "product_id": "p_digital_016",
                 "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                "final_score": 0.8378,
-                "scenario_match": 0.616,
-                "attribute_match": 0.766,
+                "final_score": 0.812,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
                 "price_fit": 1.0,
                 "reputation_fit": 0.75,
                 "availability_fit": 0.95,
@@ -1018,7 +1050,7 @@
                   "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
                   "用户评价均分 3/5，参与口碑评分。",
                   "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_016 召回分 0.0279。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1045,34 +1077,10 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8378，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0279。",
-            "score": 0.8378,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8120，参考价 3299-3699 CNY。 评价均分 3/5。",
+            "score": 0.812,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_016_1"
-          },
-          {
-            "product_id": "p_digital_015",
-            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "name": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "智能手机",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_015_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.5,
-            "review_count": 6,
-            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.7940，参考价 6999-7799 CNY。 评价均分 3.5/5。 检索证据：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#profile 召回分 0.0273。",
-            "score": 0.794,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_015_1"
           },
           {
             "product_id": "p_digital_009",
@@ -1097,6 +1105,30 @@
             "score": 0.7795,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_009_1"
+          },
+          {
+            "product_id": "p_digital_015",
+            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+            "name": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+            "brand": "OPPO",
+            "category": "digital",
+            "category_name": "数码电子",
+            "sub_category": "智能手机",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7799.0
+            ],
+            "currency": "CNY",
+            "image_url": "/product-images/p_digital_015_live.jpg",
+            "stock_status": "available_for_demo",
+            "stock_quantity": null,
+            "rating_avg": 3.5,
+            "review_count": 6,
+            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.7683，参考价 6999-7799 CNY。 评价均分 3.5/5。",
+            "score": 0.7683,
+            "source": "alternative_candidate",
+            "selected_sku_id": "s_p_digital_015_1"
           }
         ],
         "candidate_scope": {
@@ -1120,20 +1152,14 @@
           "by_category": {
             "digital": {
               "raw_count": 25,
-              "after_exclusion_count": 10,
-              "within_budget_count": 10,
+              "after_exclusion_count": 8,
+              "within_budget_count": 8,
               "top_candidates": [
                 {
                   "product_id": "p_digital_016",
                   "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                   "price": 3299.0,
-                  "score": 0.8378
-                },
-                {
-                  "product_id": "p_digital_015",
-                  "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-                  "price": 6999.0,
-                  "score": 0.794
+                  "score": 0.812
                 },
                 {
                   "product_id": "p_digital_009",
@@ -1142,16 +1168,22 @@
                   "score": 0.7795
                 },
                 {
-                  "product_id": "p_digital_002",
-                  "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                  "product_id": "p_digital_015",
+                  "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                   "price": 6999.0,
-                  "score": 0.7705
+                  "score": 0.7683
                 },
                 {
                   "product_id": "p_digital_008",
                   "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
                   "price": 7499.0,
                   "score": 0.768
+                },
+                {
+                  "product_id": "p_digital_002",
+                  "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+                  "price": 6999.0,
+                  "score": 0.7447
                 }
               ]
             }
@@ -1176,33 +1208,13 @@
             "currency": "CNY",
             "rating_avg": 3.0,
             "review_count": 3,
-            "score": 0.8378,
-            "strength": "综合分 0.8378，评分 3/5，FAQ 信息较完整。",
+            "score": 0.812,
+            "strength": "综合分 0.8120，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
           {
             "rank": 2,
-            "product_id": "p_digital_015",
-            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.5,
-            "review_count": 6,
-            "score": 0.794,
-            "strength": "综合分 0.7940，评分 3.5/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 3,
             "product_id": "p_digital_009",
             "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
             "brand": "小米",
@@ -1222,27 +1234,27 @@
             "recommendation": false
           },
           {
-            "rank": 4,
-            "product_id": "p_digital_002",
-            "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
-            "brand": "华为",
+            "rank": 3,
+            "product_id": "p_digital_015",
+            "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
+            "brand": "OPPO",
             "category": "digital",
             "category_name": "数码电子",
             "price": 6999.0,
             "price_range": [
               6999.0,
-              7699.0
+              7799.0
             ],
             "currency": "CNY",
-            "rating_avg": 2.17,
+            "rating_avg": 3.5,
             "review_count": 6,
-            "score": 0.7705,
-            "strength": "综合分 0.7705，评分 2.17/5，FAQ 信息较完整。",
+            "score": 0.7683,
+            "strength": "综合分 0.7683，评分 3.5/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
           {
-            "rank": 5,
+            "rank": 4,
             "product_id": "p_digital_008",
             "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
             "brand": "小米",
@@ -1262,22 +1274,42 @@
             "recommendation": false
           },
           {
-            "rank": 6,
-            "product_id": "p_digital_001",
-            "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "brand": "Apple 苹果",
+            "rank": 5,
+            "product_id": "p_digital_002",
+            "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+            "brand": "华为",
             "category": "digital",
             "category_name": "数码电子",
-            "price": 8999.0,
+            "price": 6999.0,
             "price_range": [
-              8999.0,
-              12499.0
+              6999.0,
+              7699.0
             ],
             "currency": "CNY",
-            "rating_avg": 3.33,
+            "rating_avg": 2.17,
+            "review_count": 6,
+            "score": 0.7447,
+            "strength": "综合分 0.7447，评分 2.17/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_digital_017",
+            "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
+            "brand": "vivo",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7799.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.33,
             "review_count": 3,
-            "score": 0.751,
-            "strength": "综合分 0.7510，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.7319,
+            "strength": "综合分 0.7319，评分 2.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -1342,13 +1374,13 @@
           "grounded_explanation": {
             "why_recommended": [
               "已从商品库候选中选择：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-              "已从商品库候选中选择：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
-              "已从商品库候选中选择：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB"
+              "已从商品库候选中选择：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
+              "已从商品库候选中选择：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机"
             ],
             "evidence_points": [
               "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB - 价格：3299.0",
-              "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 - 价格：6999.0",
-              "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB - 价格：6499.0"
+              "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB - 价格：6499.0",
+              "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 - 价格：6999.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1367,9 +1399,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

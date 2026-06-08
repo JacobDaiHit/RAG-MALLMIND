@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.95,
       "reason": "路由器未提供原因。",
@@ -101,7 +109,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.95,
           "reason": "",
@@ -111,7 +127,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 792,
+            "elapsed_ms": 795,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -130,7 +146,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.95,
           "reason": "",
@@ -140,7 +164,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 792,
+            "elapsed_ms": 795,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,7 +184,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 793
+        "llm_router_elapsed_ms": 795
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,7 +235,7 @@
       }
     }
   ],
-  "text_response": "作为商汤科技开发的智能导购助手，我主要专注于为您提供购物相关的帮助，比如商品推荐、对比和搜索等。关于美国总统大选的话题，我可能不太适合深入讨论哦。如果您有关于购物的任何问题，随时欢迎向我咨询！",
+  "text_response": "我主要专注于购物领域的智能导购服务，像帮您搜索商品、推荐好物、对比参数这些都很在行哦。如果您有想买的东西或者需要购物建议，随时告诉我呀！",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
@@ -212,7 +244,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1847,
+  "elapsed_ms": 1623,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -302,7 +334,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.95,
         "reason": "路由器未提供原因。",
@@ -384,7 +424,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.95,
             "reason": "",
@@ -394,7 +442,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 792,
+              "elapsed_ms": 795,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -413,7 +461,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.95,
             "reason": "",
@@ -423,7 +479,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 792,
+              "elapsed_ms": 795,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -443,7 +499,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -464,7 +528,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 793
+          "llm_router_elapsed_ms": 795
         },
         "topic_memory": {
           "topic_id": "",
@@ -489,7 +553,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "作为商汤科技开发的智能导购助手，我主要专注于为您提供购物相关的帮助，比如商品推荐、对比和搜索等。关于美国总统大选的话题，我可能不太适合深入讨论哦。如果您有关于购物的任何问题，随时欢迎向我咨询！"
+        "text": "我主要专注于购物领域的智能导购服务，像帮您搜索商品、推荐好物、对比参数这些都很在行哦。如果您有想买的东西或者需要购物建议，随时告诉我呀！"
       }
     },
     {

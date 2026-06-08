@@ -384,20 +384,72 @@ def build_chat_delta_lines(payload: Dict[str, Any]) -> List[str]:
     llm_guidance = payload.get("teaching_guidance") or []
     lines: List[str] = []
 
+    # ── clarification_question takes priority ──
+    clarification_q = (
+        trace.get("clarification_question")
+        or requirement.get("clarification_question")
+        or ""
+    )
+    if clarification_q:
+        lines.append(str(clarification_q))
+
+    # ── product cards ──
     if cards:
         lead = cards[0]
         lead_title = lead.get("title") or lead.get("name") or "候选商品"
         lead_price = lead.get("price")
+        lead_brand = lead.get("brand") or ""
         price_max = requirement.get("price_max")
+
+        # brand mismatch prefix
+        requested_brands = requirement.get("brands") or []
+        if requested_brands and lead_brand:
+            _norm = lambda s: "".join(
+                ch.lower() for ch in str(s or "")
+                if ch.isalnum() or "\u4e00" <= ch <= "\u9fff"
+            )
+            if not any(_norm(b) in _norm(lead_brand) for b in requested_brands):
+                brands_text = "、".join(requested_brands)
+                lines.append(
+                    f"没有找到 {brands_text} 品牌的在售商品，下面推荐了其他品牌的候选。"
+                )
+
         if price_max is not None and lead_price and lead_price > price_max:
-            lines.append(f"商品库里没有找到 {price_max:g} CNY 内且足够相关的候选，下面给出同类最近备选。")
-        lines.append(f"我优先推荐 {lead_title}，参考价约 {lead_price:g} CNY。" if lead_price else f"我优先推荐 {lead_title}。")
+            lines.append(
+                f"商品库里没有找到 {price_max:g} CNY 内且足够相关的候选，下面给出同类最近备选。"
+            )
+        if lead_price:
+            lines.append(f"我优先推荐 {lead_title}，参考价约 {lead_price:g} CNY。")
+        else:
+            lines.append(f"我优先推荐 {lead_title}。")
         lines.append("下面保留了候选商品卡片，你可以继续对比或加入购物车。")
     elif plans:
         summary = str((plans[0] or {}).get("summary") or "").strip()
         lines.append(summary or "已生成一组推荐方案。")
     else:
-        lines.append("这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。")
+        # ── smart no-match response using structured data ──
+        price_max = requirement.get("price_max")
+        price_min = requirement.get("price_min")
+        category_list = requirement.get("desired_categories") or requirement.get("target_sub_categories") or []
+        excluded_brands = requirement.get("excluded_brands") or []
+
+        if price_max is not None:
+            cat_hint = "该品类" if category_list else ""
+            lines.append(
+                f"当前商品库没有找到 {cat_hint} {price_max:g} CNY 以内的合适商品，"
+                "可以试试调高预算或换个关键词。"
+            )
+        elif price_min is not None:
+            lines.append(
+                f"当前商品库没有找到 {price_min:g} CNY 以上的合适商品，可以试试调整价格区间。"
+            )
+        elif excluded_brands:
+            brands_text = "、".join(excluded_brands)
+            lines.append(
+                f"排除 {brands_text} 后没有找到足够匹配的商品，可以放宽品牌限制或调整其他条件。"
+            )
+        else:
+            lines.append("这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。")
 
     if trace.get("llm_guidance") == "enabled":
         lines.extend(str(item).strip() for item in llm_guidance[:2] if str(item).strip())

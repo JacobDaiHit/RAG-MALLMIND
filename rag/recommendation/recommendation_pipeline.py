@@ -499,7 +499,8 @@ def build_requirement_prompt(user_goal: str, fallback: RequirementSpec) -> str:
   "need_cart_action": true/false,
   "need_multimodal": true/false,
   "missing_fields": ["缺失但会影响推荐的问题"],
-  "assumptions": ["关键假设"]
+  "assumptions": ["关键假设"],
+  "clarification_question": "当用户需求模糊时，生成一个最关键的追问（如预算、品类、品牌偏好），不需要追问则为空字符串"
 }}
 
 要求：
@@ -535,6 +536,11 @@ def requirement_from_llm_payload(payload: Dict[str, Any], fallback: RequirementS
         data[key] = normalize_string_list(data.get(key), getattr(fallback, key, []))
     for key in ("need_bundle", "need_comparison", "need_cart_action", "need_multimodal"):
         data[key] = bool(data.get(key))
+    # ── clarification_question normalization ──
+    cq = data.get("clarification_question")
+    if not isinstance(cq, str):
+        cq = ""
+    data["clarification_question"] = cq.strip()
     return RequirementSpec(**data)
 
 
@@ -979,8 +985,14 @@ def build_guidance_prompt(result: RecommendationResult) -> str:
             for plan in result.plans
         ],
     }
+    # ── clarification hint injection ──
+    clarification_hint = ""
+    if result.requirement.clarification_question:
+        clarification_hint = (
+            f"\n\n注意：用户需求尚不明确，建议在追问中包含：{result.requirement.clarification_question}"
+        )
     return f"""
-请基于下面的传统电商推荐结果，输出导购解释、追问和优化建议。
+请基于下面的传统电商推荐结果，输出导购解释、追问和优化建议。{clarification_hint}
 
 推荐结果：
 {json_dumps(compact)}

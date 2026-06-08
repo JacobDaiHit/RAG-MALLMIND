@@ -6,14 +6,12 @@
   "runtime_mode": "balanced",
   "tool_calls": [
     {
-      "name": "recommend_shopping_products",
+      "name": "general_chat",
       "arguments": {
         "query": "这个面膜敏感肌能用吗",
         "budget": null,
-        "category": "美妆护肤",
-        "usage": [
-          "敏感肌适用"
-        ],
+        "category": "",
+        "usage": [],
         "preferences": {},
         "product_ids": [],
         "catalog_scope": "ecommerce",
@@ -21,11 +19,19 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
-      "reason": "路由器未提供原因。",
-      "source": "llm",
+      "reason": "后端兜底：非购物执行问题走 general_chat。",
+      "source": "guard",
       "routing_trace": {
         "runtime_mode": "balanced",
         "llm_provider": "openai_compatible",
@@ -89,78 +95,48 @@
           "ambiguity_penalty": 0.0,
           "confidence": 0.88
         },
-        "llm": {
-          "name": "recommend_shopping_products",
-          "arguments": {
-            "query": "敏感肌可用面膜",
-            "budget": null,
-            "category": "美妆护肤",
-            "usage": [
-              "敏感肌适用"
-            ],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 1764,
-            "has_error": false,
-            "provider": "openai_compatible"
-          }
-        },
+        "llm": null,
         "chosen_before_guard": {
-          "name": "recommend_shopping_products",
-          "arguments": {
-            "query": "敏感肌可用面膜",
-            "budget": null,
-            "category": "美妆护肤",
-            "usage": [
-              "敏感肌适用"
-            ],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 1764,
-            "has_error": false,
-            "provider": "openai_compatible"
-          },
-          "_llm_chosen": true
-        },
-        "final": {
-          "name": "recommend_shopping_products",
+          "name": "general_chat",
           "arguments": {
             "query": "这个面膜敏感肌能用吗",
             "budget": null,
-            "category": "美妆护肤",
-            "usage": [
-              "敏感肌适用"
-            ],
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.9,
+          "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.8
+            },
+            "top_name": "general_chat",
+            "top_score": 0.8,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
+        },
+        "final": {
+          "name": "general_chat",
+          "arguments": {
+            "query": "这个面膜敏感肌能用吗",
+            "budget": null,
+            "category": "",
+            "usage": [],
             "preferences": {},
             "product_ids": [],
             "catalog_scope": "ecommerce",
@@ -168,28 +144,36 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
-        "llm_skipped": false,
+        "llm_skipped": true,
         "llm_skipped_reason": "",
         "router_skipped_by_policy": false,
         "router_skipped_high_confidence_local": false,
         "router_attempted": true,
         "router_timeout": false,
         "router_json_invalid": false,
-        "router_success": true,
+        "router_success": false,
         "router_applied": false,
-        "router_final_source": "llm",
-        "router_failure_reason": "",
+        "router_final_source": "guard",
+        "router_failure_reason": "llm_provider_error",
         "llm_router_attempted": true,
-        "llm_router_success": true,
-        "llm_router_failure_reason": "",
-        "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 1766
+        "llm_router_success": false,
+        "llm_router_failure_reason": "llm_provider_error",
+        "llm_router_error_class": "provider_error",
+        "llm_router_elapsed_ms": 193
       },
       "topic_memory": {
         "topic_id": "",
@@ -211,33 +195,16 @@
       }
     }
   ],
-  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g，参考价约 168 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-  "product_card_count": 1,
+  "text_response": "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、生成整机方案，也可以处理购物车。请告诉我你想买什么。",
+  "product_card_count": 0,
   "events_received": [
     "runtime_mode",
     "tool_call",
     "delta",
-    "progress",
-    "progress",
-    "progress",
-    "intent_route",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "delta",
-    "delta",
-    "product_cards",
-    "candidate_scope",
-    "comparison_table",
-    "follow_up_questions",
-    "result",
     "done"
   ],
   "error": "",
-  "elapsed_ms": 5019,
+  "elapsed_ms": 396,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -317,14 +284,12 @@
     {
       "event": "tool_call",
       "data": {
-        "name": "recommend_shopping_products",
+        "name": "general_chat",
         "arguments": {
           "query": "这个面膜敏感肌能用吗",
           "budget": null,
-          "category": "美妆护肤",
-          "usage": [
-            "敏感肌适用"
-          ],
+          "category": "",
+          "usage": [],
           "preferences": {},
           "product_ids": [],
           "catalog_scope": "ecommerce",
@@ -332,11 +297,19 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
-        "reason": "路由器未提供原因。",
-        "source": "llm",
+        "reason": "后端兜底：非购物执行问题走 general_chat。",
+        "source": "guard",
         "routing_trace": {
           "runtime_mode": "balanced",
           "llm_provider": "openai_compatible",
@@ -400,78 +373,48 @@
             "ambiguity_penalty": 0.0,
             "confidence": 0.88
           },
-          "llm": {
-            "name": "recommend_shopping_products",
-            "arguments": {
-              "query": "敏感肌可用面膜",
-              "budget": null,
-              "category": "美妆护肤",
-              "usage": [
-                "敏感肌适用"
-              ],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 1764,
-              "has_error": false,
-              "provider": "openai_compatible"
-            }
-          },
+          "llm": null,
           "chosen_before_guard": {
-            "name": "recommend_shopping_products",
-            "arguments": {
-              "query": "敏感肌可用面膜",
-              "budget": null,
-              "category": "美妆护肤",
-              "usage": [
-                "敏感肌适用"
-              ],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 1764,
-              "has_error": false,
-              "provider": "openai_compatible"
-            },
-            "_llm_chosen": true
-          },
-          "final": {
-            "name": "recommend_shopping_products",
+            "name": "general_chat",
             "arguments": {
               "query": "这个面膜敏感肌能用吗",
               "budget": null,
-              "category": "美妆护肤",
-              "usage": [
-                "敏感肌适用"
-              ],
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.9,
+            "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.0,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.8
+              },
+              "top_name": "general_chat",
+              "top_score": 0.8,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
+          },
+          "final": {
+            "name": "general_chat",
+            "arguments": {
+              "query": "这个面膜敏感肌能用吗",
+              "budget": null,
+              "category": "",
+              "usage": [],
               "preferences": {},
               "product_ids": [],
               "catalog_scope": "ecommerce",
@@ -479,28 +422,36 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
-          "llm_skipped": false,
+          "llm_skipped": true,
           "llm_skipped_reason": "",
           "router_skipped_by_policy": false,
           "router_skipped_high_confidence_local": false,
           "router_attempted": true,
           "router_timeout": false,
           "router_json_invalid": false,
-          "router_success": true,
+          "router_success": false,
           "router_applied": false,
-          "router_final_source": "llm",
-          "router_failure_reason": "",
+          "router_final_source": "guard",
+          "router_failure_reason": "llm_provider_error",
           "llm_router_attempted": true,
-          "llm_router_success": true,
-          "llm_router_failure_reason": "",
-          "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 1766
+          "llm_router_success": false,
+          "llm_router_failure_reason": "llm_provider_error",
+          "llm_router_error_class": "provider_error",
+          "llm_router_elapsed_ms": 193
         },
         "topic_memory": {
           "topic_id": "",
@@ -525,664 +476,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "已收到需求",
-        "detail": "开始整理预算、品类、颜色和功能约束。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "正在解析条件",
-        "detail": "大模型会参与需求理解。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "系统已开始检索",
-        "detail": "正在连接本地商品库并准备结构化筛选。"
-      }
-    },
-    {
-      "event": "intent_route",
-      "data": {
-        "route": "condition_filter",
-        "task_type": "condition_filter",
-        "needs_clarification": true,
-        "clarification_fields": [
-          "budget_level"
-        ],
-        "next_action": "ask_follow_up_then_recommend",
-        "supported_now": true,
-        "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
-        "pipeline": [
-          "input_preprocessor",
-          "intent_router",
-          "constraint_parser",
-          "structured_filter",
-          "scoring_rerank",
-          "grounded_generator"
-        ]
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "商品库扫描完成",
-        "detail": "共读取 100 条本地真实商品数据。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 10 个商品。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "美妆护肤筛选完成",
-        "detail": "原始 25 条，排除后 1 条，预算内命中 1 条。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 1",
-        "detail": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g；约 168 CNY；评分 1.00"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "候选卡片已准备",
-        "detail": "将展示 1 张商品卡片，并保留可对比候选。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "正在生成导购回答",
-        "detail": "正在整理推荐理由和追问。"
-      }
-    },
-    {
-      "event": "delta",
-      "data": {
-        "text": "我优先推荐 薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g，参考价约 168 CNY。"
-      }
-    },
-    {
-      "event": "delta",
-      "data": {
-        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
-      }
-    },
-    {
-      "event": "product_cards",
-      "data": {
-        "products": [
-          {
-            "product_id": "p_beauty_022",
-            "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "name": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "brand": "薇诺娜",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "面膜",
-            "price": 168.0,
-            "price_range": [
-              168.0,
-              199.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_022_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于 美妆护肤/面膜，综合分 1.0000，参考价 168-199 CNY。 评价均分 3.17/5。 检索证据：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#profile 召回分 0.0328；薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#faq 召回分 0.0268。",
-            "score": 1.0,
-            "source": "single_product",
-            "selected_sku_id": "s_p_beauty_022_1"
-          }
-        ]
-      }
-    },
-    {
-      "event": "candidate_scope",
-      "data": {
-        "active_filters": {
-          "categories": [
-            "beauty"
-          ],
-          "price_min": null,
-          "price_max": null,
-          "brands": [],
-          "excluded_brands": [],
-          "must_have_terms": [
-            "敏感肌"
-          ],
-          "excluded_terms": [],
-          "preferences": [
-            "敏感肌"
-          ]
-        },
-        "total_catalog_count": 100,
-        "by_category": {
-          "beauty": {
-            "raw_count": 25,
-            "after_exclusion_count": 1,
-            "within_budget_count": 1,
-            "top_candidates": [
-              {
-                "product_id": "p_beauty_022",
-                "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                "price": 168.0,
-                "score": 1.0
-              }
-            ]
-          }
-        },
-        "clarification_needed": [
-          "budget_level"
-        ]
-      }
-    },
-    {
-      "event": "comparison_table",
-      "data": {
-        "rows": []
-      }
-    },
-    {
-      "event": "follow_up_questions",
-      "data": {
-        "questions": [
-          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
-          "是否有明确不要的品牌、成分、颜色、口味或功能？",
-          "更看重价格、口碑、功效/参数，还是搭配完整度？"
-        ]
-      }
-    },
-    {
-      "event": "result",
-      "data": {
-        "requirement": {
-          "raw_query": "这个面膜敏感肌能用吗",
-          "scenario": "shopping/general/skin_care",
-          "task_type": "single_product_recommendation",
-          "required_components": [
-            "beauty"
-          ],
-          "optional_components": [],
-          "desired_categories": [
-            "beauty"
-          ],
-          "excluded_categories": [],
-          "target_sub_categories": [
-            "面膜"
-          ],
-          "brands": [],
-          "excluded_brands": [],
-          "must_have_terms": [
-            "敏感肌"
-          ],
-          "excluded_terms": [],
-          "preferences": [
-            "敏感肌"
-          ],
-          "occasion": "",
-          "target_user": "敏感肌",
-          "price_min": null,
-          "price_max": null,
-          "budget_level": "unknown",
-          "need_bundle": false,
-          "need_comparison": false,
-          "need_cart_action": false,
-          "need_multimodal": false,
-          "input_modalities": [
-            "text"
-          ],
-          "output_modalities": [
-            "text"
-          ],
-          "languages": [
-            "zh"
-          ],
-          "latency_requirement": "medium",
-          "quality_requirement": "medium",
-          "missing_fields": [
-            "budget_level"
-          ],
-          "assumptions": [
-            "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
-            "用户未给出明确预算，按价格/口碑/场景综合排序。",
-            "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。",
-            "生成式大模型已参与需求理解，耗时 2927ms。"
-          ]
-        },
-        "plans": [
-          {
-            "recommendation_type": "single_product",
-            "title": "单品推荐",
-            "summary": "优先推荐当前最匹配的上架商品：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "components": [
-              {
-                "role": "beauty",
-                "product": {
-                  "product_id": "p_beauty_022",
-                  "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                  "brand": "薇诺娜",
-                  "category": "beauty",
-                  "category_name": "美妆护肤",
-                  "sub_category": "面膜",
-                  "base_price": 199.0,
-                  "min_price": 168.0,
-                  "max_price": 199.0,
-                  "currency": "CNY",
-                  "stock_status": "available_for_demo",
-                  "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_beauty_022_live.jpg",
-                  "image_url": "/product-images/p_beauty_022_live.jpg",
-                  "skus": [
-                    {
-                      "sku_id": "s_p_beauty_022_1",
-                      "properties": {
-                        "产品规格": "75g 涂抹式面膜"
-                      },
-                      "price": 199.0
-                    },
-                    {
-                      "sku_id": "s_p_beauty_022_2",
-                      "properties": {
-                        "产品规格": "25g*5片 贴片装面膜"
-                      },
-                      "price": 168.0
-                    }
-                  ],
-                  "description": "薇诺娜极润保湿面膜专为干敏肌设计，核心成分含云南高原青刺果油与马齿苋提取物，能密集补水同时舒缓泛红。75g涂抹式包装适合夜间厚敷，25g*5片装便携适合出差。使用时取适量均匀涂于面部，避开眼唇，15-20分钟后洗净。注意开封后6个月内用完，敏感肌首次使用建议先做耳后测试。",
-                  "faqs": [
-                    {
-                      "question": "这款面膜适合什么肤质？",
-                      "answer": "主要针对干性、敏感性肌肤，尤其是换季或空调房导致的肌肤干燥、泛红问题。成分温和无酒精，敏感肌可放心使用，但首次使用建议先做局部测试。"
-                    },
-                    {
-                      "question": "75g和25g*5片装的区别是什么？",
-                      "answer": "75g是罐装涂抹式，适合长期居家使用，单次用量更灵活；25g*5片是独立包装，方便携带，适合出差或旅行。两者成分相同，仅规格和包装形式不同。"
-                    },
-                    {
-                      "question": "使用频率建议是怎样的？",
-                      "answer": "干性肌肤每周2-3次，敏感肌每周1-2次。干燥季节可增加至每周3-4次，每次厚敷15-20分钟，后续无需清洗，直接进行基础护肤即可。"
-                    },
-                    {
-                      "question": "开封后保质期是多久？",
-                      "answer": "罐装75g开封后建议6个月内用完，单片装开封后需立即使用。储存时避免阳光直射，放置于阴凉干燥处，防止成分变质影响效果。"
-                    },
-                    {
-                      "question": "可以和其他护肤品叠加使用吗？",
-                      "answer": "可以。建议在洁面后直接使用面膜，后续搭配薇诺娜特护霜或保湿乳液锁水。避免与含酸类产品（如刷酸）同时使用，以免刺激肌肤。"
-                    },
-                    {
-                      "question": "面膜有香味吗？是否含香精？",
-                      "answer": "产品无明显香味，不含人工香精。采用天然植物成分，气味清淡，敏感肌使用更安心。若对特定植物成分过敏，建议先查看成分表或咨询客服。"
-                    }
-                  ],
-                  "reviews": [
-                    {
-                      "nickname": "林小雨",
-                      "rating": 3,
-                      "content": "保湿效果还行，但涂抹时有点黏腻，洗掉后皮肤会紧绷。用了三次，泛红有所缓解，但没达到预期。价格偏贵，性价比一般，可能不会回购。"
-                    },
-                    {
-                      "nickname": "张大明",
-                      "rating": 1,
-                      "content": "用了一次就过敏了，脸颊泛红刺痛，停用后才好转。查了成分，发现有我不耐受的成分。包装上没明确标注敏感成分，客服处理也慢，非常失望。"
-                    },
-                    {
-                      "nickname": "王佳佳",
-                      "rating": 3,
-                      "content": "补水效果一般，厚敷后还是觉得干。单片装量太少，一次不够用，性价比低。而且涂抹后容易搓泥，后续上妆不服帖，不会再买了。"
-                    },
-                    {
-                      "nickname": "李思思",
-                      "rating": 4,
-                      "content": "整体还不错，舒缓效果明显，泛红减轻了。但质地有点稀，涂抹时容易滴落，建议改进包装设计。价格偏高，如果有活动会考虑回购。"
-                    },
-                    {
-                      "nickname": "赵小磊",
-                      "rating": 3,
-                      "content": "用了两周，保湿效果不持久，第二天还是干。罐装设计不方便携带，出差只能买单片装，成本太高。成分虽然温和，但效果普通，不太推荐。"
-                    },
-                    {
-                      "nickname": "陈萌萌",
-                      "rating": 5,
-                      "content": "干敏肌救星！用了三次，泛红完全消退，皮肤变得水润。涂抹式很方便，厚敷后洗掉皮肤软软的，后续上妆超服帖。会无限回购，推荐给敏感肌朋友！"
-                    }
-                  ],
-                  "review_count": 6,
-                  "rating_avg": 3.17,
-                  "best_for": [
-                    "护肤咨询",
-                    "肤质匹配",
-                    "成分与功效问答",
-                    "面膜",
-                    "旅行出差"
-                  ],
-                  "not_good_for": [
-                    "极敏感人群需先试用",
-                    "追求极致轻薄用户需谨慎"
-                  ],
-                  "supported_scenarios": [
-                    "beauty_routine",
-                    "skin_care",
-                    "gift_selection",
-                    "travel",
-                    "面膜"
-                  ],
-                  "tags": [
-                    "薇诺娜",
-                    "美妆护肤",
-                    "面膜",
-                    "敏感肌",
-                    "保湿",
-                    "补水",
-                    "75g 涂抹式面膜",
-                    "25g*5片 贴片装面膜"
-                  ],
-                  "metadata": {
-                    "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "1_美妆护肤/images/p_beauty_022_live.jpg"
-                  },
-                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
-                  "risk_notes": [
-                    "极敏感人群需先试用",
-                    "追求极致轻薄用户需谨慎"
-                  ]
-                },
-                "reason": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于 美妆护肤/面膜，综合分 1.0000，参考价 168-199 CNY。 评价均分 3.17/5。 检索证据：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#profile 召回分 0.0328；薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#faq 召回分 0.0268。",
-                "score": {
-                  "scenario_match": 1.0,
-                  "attribute_match": 1.0,
-                  "price_fit": 1.0,
-                  "reputation_fit": 0.884,
-                  "availability_fit": 0.95,
-                  "sku_fit": 0.95,
-                  "detail_quality": 1.0,
-                  "final_score": 1.0,
-                  "reasons": [
-                    "价格匹配：当前最低 SKU 约 168 CNY，已用于预算适配评分。",
-                    "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于用户关注的 美妆护肤 类目。",
-                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
-                    "价格与预算要求较匹配。",
-                    "用户评价均分 3.17/5，参与口碑评分。",
-                    "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "不适用提示：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-                    "商品知识证据命中：p_beauty_022 召回分 0.0328; p_beauty_022 召回分 0.0268。"
-                  ]
-                },
-                "evidence_doc_ids": [
-                  "p_beauty_022::profile::0",
-                  "p_beauty_022::faq::2"
-                ],
-                "quantity": 1,
-                "selected_sku_id": "s_p_beauty_022_1"
-              }
-            ],
-            "cost_estimate": {
-              "total_price_min": 168.0,
-              "total_price_max": 199.0,
-              "currency": "CNY",
-              "assumptions": [
-                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
-                "p_beauty_022 未提供精确库存数量，仅按已上架商品参与推荐。"
-              ],
-              "breakdown": {
-                "p_beauty_022": {
-                  "role": "beauty",
-                  "pricing_model": "sku_price",
-                  "currency": "CNY",
-                  "quantity": 1,
-                  "base_price": 199.0,
-                  "min_price": 168.0,
-                  "max_price": 199.0,
-                  "selected_sku_id": "s_p_beauty_022_1",
-                  "selected_price": 199.0,
-                  "selected_total_price": 199.0
-                }
-              }
-            },
-            "pros": [
-              "只从本地商品库选择真实上架商品",
-              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
-              "单品决策路径短，适合快速加购或继续对比同类商品"
-            ],
-            "cons": [
-              "数据集不含实时优惠券，最终成交价需要下单前刷新"
-            ],
-            "suitable_for": [
-              "明确单品需求",
-              "日常使用",
-              "敏感肌"
-            ],
-            "risks": [
-              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
-              "极敏感人群需先试用"
-            ],
-            "evidence": [
-              "p_beauty_022: 薇诺娜极润保湿面膜专为干敏肌设计，核心成分含云南高原青刺果油与马齿苋提取物，能密集补水同时舒缓泛红。75g涂抹式包装适合夜间厚敷，25g*5片装便携适合出差。使用时取适量均匀涂于面部，避开眼唇，15-20分钟后洗净。注意开封后6个月内用完，敏感肌首次使用建议先做耳后测试。",
-              "p_beauty_022: FAQ - 这款面膜适合什么肤质？",
-              "价格匹配：当前最低 SKU 约 168 CNY，已用于预算适配评分。",
-              "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于用户关注的 美妆护肤 类目。"
-            ],
-            "score_table": [
-              {
-                "role": "beauty",
-                "product_id": "p_beauty_022",
-                "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                "final_score": 1.0,
-                "scenario_match": 1.0,
-                "attribute_match": 1.0,
-                "price_fit": 1.0,
-                "reputation_fit": 0.884,
-                "availability_fit": 0.95,
-                "sku_fit": 0.95,
-                "detail_quality": 1.0,
-                "reasons": [
-                  "价格匹配：当前最低 SKU 约 168 CNY，已用于预算适配评分。",
-                  "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于用户关注的 美妆护肤 类目。",
-                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
-                  "价格与预算要求较匹配。",
-                  "用户评价均分 3.17/5，参与口碑评分。",
-                  "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "不适用提示：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-                  "商品知识证据命中：p_beauty_022 召回分 0.0328; p_beauty_022 召回分 0.0268。"
-                ]
-              }
-            ]
-          }
-        ],
-        "candidate_count": 100,
-        "product_cards": [
-          {
-            "product_id": "p_beauty_022",
-            "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "name": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "brand": "薇诺娜",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "面膜",
-            "price": 168.0,
-            "price_range": [
-              168.0,
-              199.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_022_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g 属于 美妆护肤/面膜，综合分 1.0000，参考价 168-199 CNY。 评价均分 3.17/5。 检索证据：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#profile 召回分 0.0328；薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g#faq 召回分 0.0268。",
-            "score": 1.0,
-            "source": "single_product",
-            "selected_sku_id": "s_p_beauty_022_1"
-          }
-        ],
-        "candidate_scope": {
-          "active_filters": {
-            "categories": [
-              "beauty"
-            ],
-            "price_min": null,
-            "price_max": null,
-            "brands": [],
-            "excluded_brands": [],
-            "must_have_terms": [
-              "敏感肌"
-            ],
-            "excluded_terms": [],
-            "preferences": [
-              "敏感肌"
-            ]
-          },
-          "total_catalog_count": 100,
-          "by_category": {
-            "beauty": {
-              "raw_count": 25,
-              "after_exclusion_count": 1,
-              "within_budget_count": 1,
-              "top_candidates": [
-                {
-                  "product_id": "p_beauty_022",
-                  "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-                  "price": 168.0,
-                  "score": 1.0
-                }
-              ]
-            }
-          },
-          "clarification_needed": [
-            "budget_level"
-          ]
-        },
-        "comparison_table": [
-          {
-            "rank": 1,
-            "product_id": "p_beauty_022",
-            "title": "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g",
-            "brand": "薇诺娜",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 168.0,
-            "price_range": [
-              168.0,
-              199.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "score": 1.0,
-            "strength": "综合分 1.0000，评分 3.17/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用；追求极致轻薄用户需谨慎。",
-            "recommendation": true
-          }
-        ],
-        "intent_route": {
-          "route": "condition_filter",
-          "task_type": "condition_filter",
-          "needs_clarification": true,
-          "clarification_fields": [
-            "budget_level"
-          ],
-          "next_action": "ask_follow_up_then_recommend",
-          "supported_now": true,
-          "reason": "需求中仍缺少关键筛选条件，先给候选范围并追问预算、类目或偏好。",
-          "pipeline": [
-            "input_preprocessor",
-            "intent_router",
-            "constraint_parser",
-            "structured_filter",
-            "scoring_rerank",
-            "grounded_generator"
-          ]
-        },
-        "missing_fields": [
-          "budget_level"
-        ],
-        "risks": [
-          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
-          "极敏感人群需先试用"
-        ],
-        "teaching_guidance": [
-          "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
-          "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
-          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
-          "当前推荐包含：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g。"
-        ],
-        "follow_up_questions": [
-          "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
-          "是否有明确不要的品牌、成分、颜色、口味或功能？",
-          "更看重价格、口碑、功效/参数，还是搭配完整度？"
-        ],
-        "optimization_suggestions": [
-          "对高频用户问题可缓存解析后的结构化需求和 Top 商品候选，降低首屏延迟。",
-          "Android 商品卡片应展示 product_id、title、price、image_url、reason 和可点击详情，避免端侧再次拼装业务字段。",
-          "后续可接入真实库存/优惠接口，在进入下单前刷新价格与库存，防止推荐结果过期。",
-          "图片找货可以先用 VLM 抽取颜色、品类、材质或物体，再复用同一套文本召回与评分链路。"
-        ],
-        "feedback_summary": {
-          "loop": "capture_query_click_cart_feedback",
-          "signals": [
-            "missing_fields",
-            "selected_product",
-            "product_click",
-            "add_to_cart",
-            "purchase"
-          ],
-          "next_actions": [
-            "补充商品属性",
-            "调权重",
-            "接真实库存价格",
-            "沉淀失败问题"
-          ],
-          "grounded_explanation": {
-            "why_recommended": [
-              "已从商品库候选中选择：薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g"
-            ],
-            "evidence_points": [
-              "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g - 价格：168.0"
-            ],
-            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
-            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
-            "caveat": "未使用未提供的商品事实生成解释。"
-          }
-        },
-        "trace": {
-          "catalog_scope": "ecommerce",
-          "recommendation_domain": "ecommerce",
-          "llm_configured": true,
-          "stream_llm_enabled": true,
-          "stream_llm_reason": "configured_and_enabled",
-          "runtime_mode": "balanced",
-          "requested_mode": "auto",
-          "selected_mode": "balanced",
-          "fallback_used": false,
-          "use_milvus_retrieval": true,
-          "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
-          "image_retrieval_status": "skipped",
-          "llm_used": false
-        }
+        "text": "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、生成整机方案，也可以处理购物车。请告诉我你想买什么。"
       }
     },
     {

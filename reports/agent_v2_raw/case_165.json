@@ -19,7 +19,17 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "PS5"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -90,7 +100,7 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "PS5",
+            "query": "你们有卖 PS5 吗",
             "budget": null,
             "category": "",
             "usage": [],
@@ -101,7 +111,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "PS5"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +131,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 876,
+            "elapsed_ms": 1050,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -119,7 +139,7 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "PS5",
+            "query": "你们有卖 PS5 吗",
             "budget": null,
             "category": "",
             "usage": [],
@@ -130,7 +150,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "PS5"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +170,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 876,
+            "elapsed_ms": 1050,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,11 +190,21 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "PS5"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -181,7 +221,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 879
+        "llm_router_elapsed_ms": 1051
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,8 +243,8 @@
       }
     }
   ],
-  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g，参考价约 99 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-  "product_card_count": 4,
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+  "product_card_count": 0,
   "events_received": [
     "runtime_mode",
     "tool_call",
@@ -216,28 +256,6 @@
     "progress",
     "progress",
     "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "progress",
-    "delta",
     "delta",
     "product_cards",
     "candidate_scope",
@@ -247,7 +265,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 2371,
+  "elapsed_ms": 1073,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -337,7 +355,17 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "PS5"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -408,7 +436,7 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "PS5",
+              "query": "你们有卖 PS5 吗",
               "budget": null,
               "category": "",
               "usage": [],
@@ -419,7 +447,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "PS5"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -429,7 +467,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 876,
+              "elapsed_ms": 1050,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -437,7 +475,7 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "PS5",
+              "query": "你们有卖 PS5 吗",
               "budget": null,
               "category": "",
               "usage": [],
@@ -448,7 +486,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "PS5"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -458,7 +506,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 876,
+              "elapsed_ms": 1050,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -478,11 +526,21 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "PS5"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -499,7 +557,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 879
+          "llm_router_elapsed_ms": 1051
         },
         "topic_memory": {
           "topic_id": "",
@@ -551,24 +609,10 @@
     {
       "event": "intent_route",
       "data": {
-        "route": "bundle_recommendation",
-        "task_type": "bundle_recommendation",
-        "needs_clarification": true,
-        "clarification_fields": [
-          "category",
-          "budget_level"
-        ],
-        "next_action": "ask_follow_up_then_recommend",
+        "route": "no_recommendation",
+        "task_type": "clarify_or_no_recommendation",
         "supported_now": true,
-        "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
-        "pipeline": [
-          "input_preprocessor",
-          "intent_router",
-          "constraint_parser",
-          "structured_filter",
-          "scoring_rerank",
-          "grounded_generator"
-        ]
+        "reason": "missing_subcategory"
       }
     },
     {
@@ -581,155 +625,8 @@
     {
       "event": "progress",
       "data": {
-        "label": "RAG 证据检索完成",
-        "detail": "检索到 48 条证据，命中 37 个商品。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "美妆护肤筛选完成",
-        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 1",
-        "detail": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g；约 99 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml；约 178 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
-        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 4",
-        "detail": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g；约 120 CNY；评分 0.83"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "数码电子筛选完成",
-        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 1",
-        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本；约 10999 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
-        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 4",
-        "detail": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑；约 4999 CNY；评分 0.83"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "服饰运动筛选完成",
-        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 1",
-        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
-        "detail": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣；约 199 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 4",
-        "detail": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣；约 259 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "食品饮料筛选完成",
-        "detail": "原始 25 条，排除后 25 条，预算内命中 25 条。"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 1",
-        "detail": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因；约 5 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品；约 9 CNY；评分 0.85"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 3",
-        "detail": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案；约 4 CNY；评分 0.84"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 4",
-        "detail": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心；约 32 CNY；评分 0.82"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "候选卡片已准备",
-        "detail": "将展示 4 张商品卡片，并保留可对比候选。"
+        "label": "结构化筛选启动",
+        "detail": "当前使用本地商品属性、SKU、价格和评价进行评分。"
       }
     },
     {
@@ -742,116 +639,13 @@
     {
       "event": "delta",
       "data": {
-        "text": "我优先推荐 方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g，参考价约 99 CNY。"
-      }
-    },
-    {
-      "event": "delta",
-      "data": {
-        "text": "下面保留了候选商品卡片，你可以继续对比或加入购物车。"
+        "text": "这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。"
       }
     },
     {
       "event": "product_cards",
       "data": {
-        "products": [
-          {
-            "product_id": "p_beauty_013",
-            "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-            "name": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-            "brand": "方里",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "蜜粉",
-            "price": 99.0,
-            "price_range": [
-              99.0,
-              139.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_013_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于 美妆护肤/蜜粉，综合分 0.8529，参考价 99-139 CNY。 评价均分 3.17/5。 检索证据：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#profile 召回分 0.0209；方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#faq 召回分 0.0207。",
-            "score": 0.8529,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_beauty_013_1"
-          },
-          {
-            "product_id": "p_digital_019",
-            "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-            "name": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-            "brand": "vivo",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "平板电脑",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              4299.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_019_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.6,
-            "review_count": 5,
-            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8455，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0216。",
-            "score": 0.8455,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_digital_019_1"
-          },
-          {
-            "product_id": "p_clothes_006",
-            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-            "brand": "Nike",
-            "category": "clothing",
-            "category_name": "服饰运动",
-            "sub_category": "运动长裤",
-            "price": 349.0,
-            "price_range": [
-              349.0,
-              359.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_clothes_006_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.83,
-            "review_count": 6,
-            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8544，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0290；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0228。",
-            "score": 0.8544,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_clothes_006_1"
-          },
-          {
-            "product_id": "p_food_005",
-            "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "name": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "brand": "东鹏",
-            "category": "food",
-            "category_name": "食品饮料",
-            "sub_category": "功能饮料",
-            "price": 5.0,
-            "price_range": [
-              5.0,
-              68.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_food_005_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 2.25,
-            "review_count": 4,
-            "reason": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于 食品饮料/功能饮料，综合分 0.8543，参考价 5-68 CNY。 评价均分 2.25/5。 检索证据：东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#faq 召回分 0.0236；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#review 召回分 0.0219；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#profile 召回分 0.0215。",
-            "score": 0.8543,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_food_005_1"
-          }
-        ]
+        "products": []
       }
     },
     {
@@ -868,164 +662,16 @@
           "price_max": null,
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "PS5"
+          ],
           "excluded_terms": [],
           "preferences": []
         },
         "total_catalog_count": 100,
-        "by_category": {
-          "beauty": {
-            "raw_count": 25,
-            "after_exclusion_count": 25,
-            "within_budget_count": 25,
-            "top_candidates": [
-              {
-                "product_id": "p_beauty_013",
-                "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-                "price": 99.0,
-                "score": 0.8529
-              },
-              {
-                "product_id": "p_beauty_017",
-                "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
-                "price": 178.0,
-                "score": 0.8484
-              },
-              {
-                "product_id": "p_beauty_018",
-                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-                "price": 59.0,
-                "score": 0.8452
-              },
-              {
-                "product_id": "p_beauty_015",
-                "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
-                "price": 120.0,
-                "score": 0.8337
-              },
-              {
-                "product_id": "p_beauty_007",
-                "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-                "price": 89.0,
-                "score": 0.8313
-              }
-            ]
-          },
-          "digital": {
-            "raw_count": 25,
-            "after_exclusion_count": 25,
-            "within_budget_count": 25,
-            "top_candidates": [
-              {
-                "product_id": "p_digital_019",
-                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                "price": 3299.0,
-                "score": 0.8455
-              },
-              {
-                "product_id": "p_digital_022",
-                "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
-                "price": 10999.0,
-                "score": 0.8376
-              },
-              {
-                "product_id": "p_digital_007",
-                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-                "price": 1499.0,
-                "score": 0.8374
-              },
-              {
-                "product_id": "p_digital_005",
-                "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-                "price": 4999.0,
-                "score": 0.8333
-              },
-              {
-                "product_id": "p_digital_009",
-                "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-                "price": 6499.0,
-                "score": 0.8233
-              }
-            ]
-          },
-          "clothing": {
-            "raw_count": 25,
-            "after_exclusion_count": 25,
-            "within_budget_count": 25,
-            "top_candidates": [
-              {
-                "product_id": "p_clothes_006",
-                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                "price": 349.0,
-                "score": 0.8544
-              },
-              {
-                "product_id": "p_clothes_023",
-                "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
-                "price": 149.0,
-                "score": 0.8385
-              },
-              {
-                "product_id": "p_clothes_003",
-                "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
-                "price": 199.0,
-                "score": 0.8374
-              },
-              {
-                "product_id": "p_clothes_005",
-                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-                "price": 259.0,
-                "score": 0.8366
-              },
-              {
-                "product_id": "p_clothes_001",
-                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-                "price": 99.0,
-                "score": 0.8355
-              }
-            ]
-          },
-          "food": {
-            "raw_count": 25,
-            "after_exclusion_count": 25,
-            "within_budget_count": 25,
-            "top_candidates": [
-              {
-                "product_id": "p_food_005",
-                "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-                "price": 5.0,
-                "score": 0.8543
-              },
-              {
-                "product_id": "p_food_018",
-                "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
-                "price": 9.0,
-                "score": 0.8509
-              },
-              {
-                "product_id": "p_food_003",
-                "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
-                "price": 4.0,
-                "score": 0.8418
-              },
-              {
-                "product_id": "p_food_010",
-                "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
-                "price": 32.0,
-                "score": 0.8224
-              },
-              {
-                "product_id": "p_food_023",
-                "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
-                "price": 36.0,
-                "score": 0.8219
-              }
-            ]
-          }
-        },
+        "by_category": {},
         "clarification_needed": [
-          "category",
-          "budget_level"
+          "missing_subcategory"
         ]
       }
     },
@@ -1040,7 +686,6 @@
       "data": {
         "questions": [
           "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
-          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
           "是否有明确不要的品牌、成分、颜色、口味或功能？",
           "更看重价格、口碑、功效/参数，还是搭配完整度？"
         ]
@@ -1070,7 +715,9 @@
           "target_sub_categories": [],
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "PS5"
+          ],
           "excluded_terms": [],
           "preferences": [],
           "occasion": "",
@@ -1103,976 +750,9 @@
             "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。"
           ]
         },
-        "plans": [
-          {
-            "recommendation_type": "shopping_bundle",
-            "title": "组合推荐",
-            "summary": "按场景组合多个互补商品：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g + vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 + Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 + 东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "components": [
-              {
-                "role": "beauty",
-                "product": {
-                  "product_id": "p_beauty_013",
-                  "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-                  "brand": "方里",
-                  "category": "beauty",
-                  "category_name": "美妆护肤",
-                  "sub_category": "蜜粉",
-                  "base_price": 99.0,
-                  "min_price": 99.0,
-                  "max_price": 139.0,
-                  "currency": "CNY",
-                  "stock_status": "available_for_demo",
-                  "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_beauty_013_live.jpg",
-                  "image_url": "/product-images/p_beauty_013_live.jpg",
-                  "skus": [
-                    {
-                      "sku_id": "s_p_beauty_013_1",
-                      "properties": {
-                        "产品规格": "7g 清透色"
-                      },
-                      "price": 99.0
-                    },
-                    {
-                      "sku_id": "s_p_beauty_013_2",
-                      "properties": {
-                        "产品规格": "12g 清透色补充装"
-                      },
-                      "price": 139.0
-                    }
-                  ],
-                  "description": "方里这款柔焦蜜粉饼简直是油皮混油皮的福音！7g的小巧体积揣在包里便携性拉满，细腻如烟的粉质上脸瞬间柔焦，毛孔被隐形得干干净净，还能自然提亮肤色，拒绝假白感。核心卖点是控油定妆+隐匿毛孔+提亮，适合油皮、混油皮日常通勤、夏季长时间带妆或容易出油的场景。使用时建议取粉后先在盖子上蹭掉余粉，轻拍上脸（T区重点按压）；干皮姐妹需做好保湿打底避免卡粉。补充装12g不含外壳，性价比更高，适合回购用户替换，环保又省钱。",
-                  "faqs": [
-                    {
-                      "question": "7g装和12g补充装的区别是什么？",
-                      "answer": "7g装是带外壳和粉扑的完整包装，方便随身携带；12g补充装不含外壳与粉扑，需搭配原有外壳使用，单克价格更实惠。两者粉质、色号（清透色）及控油柔焦效果一致，补充装适合已有外壳的用户回购，容量更大性价比更高。"
-                    },
-                    {
-                      "question": "清透色会假白吗？适合哪些肤色？",
-                      "answer": "清透色是自然提亮款，上脸无假白感，能均匀肤色让皮肤通透。适合大多数肤色：黄一白、黄二白、自然肤色均能驾驭，深肤色用它定妆也不会违和，反而让妆容更干净持久，不会显得突兀。"
-                    },
-                    {
-                      "question": "控油效果能维持多久？",
-                      "answer": "控油效果因肤质和环境而异：油皮夏季通勤可维持4-6小时不泛油；混油皮T区能维持3-5小时。高温或出汗多的环境建议随身携带补妆，其细腻粉质补妆时不会卡粉结块，能保持妆容完整。"
-                    },
-                    {
-                      "question": "干皮能用吗？需注意什么？",
-                      "answer": "干皮可用但需做好保湿打底：先涂保湿乳液/面霜确保皮肤水润，取粉勿过多，轻拍上脸避免干燥部位反复涂抹，减少卡粉。特别干燥的皮肤可只在T区等出油部位使用，既定妆又不加重干燥感。"
-                    }
-                  ],
-                  "reviews": [
-                    {
-                      "nickname": "小敏",
-                      "rating": 2,
-                      "content": "干皮表示卡粉严重！明明做好保湿了，眼下和法令纹还是卡出小细纹，下午更明显。控油效果也一般，混干T区下午就出油，粉扑还硬，上脸不舒服。可能这款更适合油皮，干皮慎入。"
-                    },
-                    {
-                      "nickname": "阿杰",
-                      "rating": 2,
-                      "content": "外壳塑料感重，粉质细腻但提亮效果几乎无，黄二白用着和没涂一样。定妆3小时不到T区就油，补充装没外壳还要单独买，麻烦。追求明显提亮和持久控油的别买。"
-                    },
-                    {
-                      "nickname": "莉莉",
-                      "rating": 2,
-                      "content": "用一次就过敏起小红疹，成分可能不适合我。粉扑质量差，两次就掉毛沾脸。找客服反应说我皮肤问题，没解决办法，以后不会再买方里蜜粉了。"
-                    },
-                    {
-                      "nickname": "小美",
-                      "rating": 3,
-                      "content": "粉质细腻毛孔隐形效果不错，不厚重。但控油一般，油皮中午就得补妆。清透色自然不假白，可惜粉扑小用着不方便。99元不算贵但性价比一般，勉强中评。"
-                    },
-                    {
-                      "nickname": "小雅",
-                      "rating": 5,
-                      "content": "油皮夏天福音！早上定妆到下午6点T区仅微油，粉质细腻像磨皮，毛孔全隐形。清透色自然提亮不假白，7g便携补妆方便，粉扑柔软舒服。已回购补充装，太爱了！"
-                    },
-                    {
-                      "nickname": "小宇",
-                      "rating": 5,
-                      "content": "混油皮表示完美！控油效果好到下午不脱妆，粉质细腻不卡粉，毛孔隐形超棒。清透色适合黄二白，自然提亮。12g补充装划算，换芯环保。强烈推荐油皮混油皮姐妹！"
-                    }
-                  ],
-                  "review_count": 6,
-                  "rating_avg": 3.17,
-                  "best_for": [
-                    "护肤咨询",
-                    "肤质匹配",
-                    "成分与功效问答",
-                    "蜜粉"
-                  ],
-                  "not_good_for": [
-                    "油皮需谨慎"
-                  ],
-                  "supported_scenarios": [
-                    "beauty_routine",
-                    "skin_care",
-                    "gift_selection",
-                    "蜜粉"
-                  ],
-                  "tags": [
-                    "方里",
-                    "美妆护肤",
-                    "蜜粉",
-                    "油皮",
-                    "干皮",
-                    "保湿",
-                    "控油",
-                    "通勤",
-                    "7g 清透色",
-                    "12g 清透色补充装"
-                  ],
-                  "metadata": {
-                    "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "1_美妆护肤/images/p_beauty_013_live.jpg"
-                  },
-                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
-                  "risk_notes": [
-                    "油皮需谨慎"
-                  ]
-                },
-                "reason": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于 美妆护肤/蜜粉，综合分 0.8529，参考价 99-139 CNY。 评价均分 3.17/5。 检索证据：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#profile 召回分 0.0209；方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#faq 召回分 0.0207。",
-                "score": {
-                  "scenario_match": 0.6,
-                  "attribute_match": 0.75,
-                  "price_fit": 0.9635,
-                  "reputation_fit": 0.884,
-                  "availability_fit": 0.95,
-                  "sku_fit": 0.95,
-                  "detail_quality": 0.94,
-                  "final_score": 0.8529,
-                  "reasons": [
-                    "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
-                    "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于用户关注的 美妆护肤 类目。",
-                    "价格与预算要求较匹配。",
-                    "用户评价均分 3.17/5，参与口碑评分。",
-                    "商品提供 4 条官方 FAQ，可作为回答证据。",
-                    "不适用提示：油皮需谨慎。",
-                    "商品知识证据命中：p_beauty_013 召回分 0.0209; p_beauty_013 召回分 0.0207。"
-                  ]
-                },
-                "evidence_doc_ids": [
-                  "p_beauty_013::profile::0",
-                  "p_beauty_013::faq::2"
-                ],
-                "quantity": 1,
-                "selected_sku_id": "s_p_beauty_013_1"
-              },
-              {
-                "role": "digital",
-                "product": {
-                  "product_id": "p_digital_019",
-                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                  "brand": "vivo",
-                  "category": "digital",
-                  "category_name": "数码电子",
-                  "sub_category": "平板电脑",
-                  "base_price": 3299.0,
-                  "min_price": 3299.0,
-                  "max_price": 4299.0,
-                  "currency": "CNY",
-                  "stock_status": "available_for_demo",
-                  "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_digital_019_live.jpg",
-                  "image_url": "/product-images/p_digital_019_live.jpg",
-                  "skus": [
-                    {
-                      "sku_id": "s_p_digital_019_1",
-                      "properties": {
-                        "存储配置": "8GB+256GB",
-                        "网络版本": "Wi-Fi 版"
-                      },
-                      "price": 3299.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_019_2",
-                      "properties": {
-                        "存储配置": "12GB+256GB",
-                        "网络版本": "Wi-Fi 版"
-                      },
-                      "price": 3599.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_019_3",
-                      "properties": {
-                        "存储配置": "12GB+512GB",
-                        "网络版本": "Wi-Fi 版"
-                      },
-                      "price": 3899.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_019_4",
-                      "properties": {
-                        "存储配置": "8GB+256GB",
-                        "网络版本": "全网通5G版"
-                      },
-                      "price": 3699.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_019_5",
-                      "properties": {
-                        "存储配置": "12GB+256GB",
-                        "网络版本": "全网通5G版"
-                      },
-                      "price": 3999.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_019_6",
-                      "properties": {
-                        "存储配置": "12GB+512GB",
-                        "网络版本": "全网通5G版"
-                      },
-                      "price": 4299.0
-                    }
-                  ],
-                  "description": "vivo Pad 6 Pro搭配12.1英寸高刷全面屏，是专门为学生党、轻办公上班族、影音娱乐爱好者打造的多用途平板。核心卖点是大内存组合搭配高刷新率显示，学习时可以一边开上网课窗口、一边记电子笔记、侧边挂查资料小窗，多任务切换丝滑不卡顿；通勤居家刷剧、玩轻度手游时，屏幕色彩通透流畅度拉满。全金属机身质感扎实，Wi-Fi版无流量卡顿困扰，8+256G版本日常存储课件、存剧完全够用，12+512G版本更适合需要装大量专业绘图、办公软件的用户。使用建议平时搭配原装触控笔记笔记更顺手，注意不要把平板和尖锐硬物放在同一个包里避免刮花屏幕，长期高负载使用时建议摘掉保护壳散热。",
-                  "faqs": [
-                    {
-                      "question": "vivo Pad 6 Pro的分屏多任务功能最多支持同时打开多少个应用，不同内存版本会有差异吗？",
-                      "answer": "这款平板的系统最多支持同时开启4个应用窗口，包括两个全屏分屏应用加两个悬浮小窗的组合。8GB+256GB版本同时开启3个日常应用比如网课、笔记、浏览器完全不会出现杀后台情况，开4个窗口的话尽量关闭后台闲置程序即可；12GB+512GB版本由于运存更大，哪怕同时开4个占用资源稍高的绘图、办公软件，切换时也几乎不会重载，两个版本的分屏功能逻辑完全一致，仅后台留存能力有区别。"
-                    },
-                    {
-                      "question": "这款12.1英寸的高刷屏看久书眼睛会酸吗，有没有专门针对学习场景的显示优化？",
-                      "answer": "它的屏幕自带硬件级低蓝光认证，还有专门的学习模式可以自动调整屏幕色温，过滤刺眼的短波蓝光，长时间上网课、看电子教材的时候，屏幕不会像普通平板那样越看越眼酸。高刷模式下翻页、滑动笔记的动作完全没有拖影，不会因为画面卡顿晃眼加重用眼负担，还可以自定义定时提醒休息功能，连续使用45分钟就会弹出提示让你远眺放松，对于学生长时间上网课的场景适配度很高。"
-                    },
-                    {
-                      "question": "vivo Pad 6 Pro两个Wi-Fi版本日常办公存文件够用吗，支持外接移动硬盘扩展存储吗？",
-                      "answer": "8GB+256GB版本存上千份课件、几十部高清剧集再装十余个常用办公软件完全没有压力，适合日常轻办公的普通用户；12GB+512GB版本可以存储大量设计素材、高清网课资源，甚至能存几十G的大型办公套件离线安装包，适合有大量资料存储需求的用户。两个版本都支持通过OTG转接外接最大2TB的移动硬盘，直接在平板里读取修改办公文件，不用额外传输，临时拷大项目文件也很方便。"
-                    },
-                    {
-                      "question": "这款平板的Wi-Fi信号表现怎么样，隔着两堵墙办公上网课会不会经常断连？",
-                      "answer": "vivo Pad 6 Pro搭载了专门优化的Wi-Fi6天线模组，针对穿墙场景做了信号增益调校，普通家用路由器环境下，隔着两堵实体承重墙，信号强度依然能维持满格的70%以上，上网课开高清直播、在线协作文档都不会出现卡顿断连的情况。哪怕是在人多的公共会议室连公共Wi-Fi，它也能优先抢占更稳定的信道，不会出现别人的设备都能联网唯独自己平板加载半天的尴尬情况。"
-                    },
-                    {
-                      "question": "vivo Pad 6 Pro不插键盘只用触控操作，做表格改文档方便吗？",
-                      "answer": "系统自带的办公触控优化逻辑做了专门适配，不用外接键盘，手指点选单元格、拖动调整表格行列宽，双指缩放文档视图都很精准，很少出现误触情况。搭配vivo原装触控笔还能直接在PDF文档、PPT草稿上批注修改，临时改个方案标个重点完全不用找键盘，外出见客户忘带配件的时候，仅凭平板本身就能完成大部分轻办公的应急操作，效率不会打折扣。"
-                    }
-                  ],
-                  "reviews": [
-                    {
-                      "nickname": "小周",
-                      "rating": 3,
-                      "content": "用了快两周实在有点闹心，本来冲着多任务功能买的想一边上网课一边记笔记，结果8GB版本开了网课和笔记APP之后，后台再切回浏览器经常直接把网课APP给杀了，得重新进直播间重连，好几次老师讲的重点都错过了。而且机身重量比我之前旧平板沉不少，捧着看一小时书胳膊就酸，同价位别的平板都有配套的送手写笔活动，这款笔还得单独买，感觉性价比有点配不上这个定价，挺失望的。"
-                    },
-                    {
-                      "nickname": "阿凯",
-                      "rating": 4,
-                      "content": "整体用下来还行，12.1英寸的高刷屏看剧是真的爽，色彩特别鲜艳滑动起来也完全不卡，平时用来追更新的综艺体验拉满。就是有个小问题，自带的系统阅读模式适配的APP太少了，很多第三方小说软件打开没法开启护眼显示，得手动调亮度色温特别麻烦。还有裸机的边框摸起来有点割手，得自己额外买个带边框保护的壳子，要是出厂能送个软壳就更贴心了，整体不算踩雷但小瑕疵确实有点影响体验。"
-                    },
-                    {
-                      "nickname": "小楠",
-                      "rating": 3,
-                      "content": "本来买给家里弟弟上网课用的，结果用了一周发现续航实在太拉胯，满电状态下连续开高清网课三个半小时就剩15%的电，官方宣传的长续航完全是虚标。而且底部的扬声器偶尔会出现破音情况，开稍微大一点的网课老师声音就劈了，还得插耳机用。找客服检测说属于正常范围不给退换，三千多买的平板这个体验实在不值这个价，早知道当初加钱选别家的产品了。"
-                    },
-                    {
-                      "nickname": "阿泽",
-                      "rating": 5,
-                      "content": "这个平板真的买对了！我平时做新媒体运营，常用平板剪短素材、多开微信、浏览器和笔记APP对接需求，12GB运存的版本来回切完全没有卡顿，从来没出现过后台应用重载的情况。12.1英寸的高刷屏刷短视频、看样片色彩特别准，屏幕清晰度比我之前的旧平板好太多，平时下班躺床上追4K剧沉浸感直接拉满，全金属机身质感也特别棒，同事问了链接都打算入手，这个价格能买到这个配置真的太香了。"
-                    },
-                    {
-                      "nickname": "阿美",
-                      "rating": 3,
-                      "content": "冲着办公需求买的，结果连接我家的旧款5GWi-Fi路由器经常断流，每次打开在线文档加载半天，换了别的手机连同一个网都完全没问题，问客服说要我换新款路由器，哪有买个平板还要换路由器的道理。而且自带的便签功能导出成PDF的时候，手写的笔触经常会出现偏移，导出的文件和屏幕上看到的不一样，很多我标出来的重点位置都歪了，用来整理学习笔记特别不方便，用着太闹心。"
-                    }
-                  ],
-                  "review_count": 5,
-                  "rating_avg": 3.6,
-                  "best_for": [
-                    "参数对比",
-                    "预算筛选",
-                    "使用场景匹配",
-                    "平板电脑",
-                    "学生党",
-                    "上班通勤"
-                  ],
-                  "not_good_for": [],
-                  "supported_scenarios": [
-                    "digital_purchase",
-                    "device_comparison",
-                    "productivity",
-                    "平板电脑"
-                  ],
-                  "tags": [
-                    "vivo",
-                    "数码电子",
-                    "平板电脑",
-                    "通勤",
-                    "办公",
-                    "学习",
-                    "8GB+256GB",
-                    "Wi-Fi 版",
-                    "12GB+256GB",
-                    "12GB+512GB",
-                    "全网通5G版"
-                  ],
-                  "metadata": {
-                    "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "2_数码电子/images/p_digital_019_live.jpg"
-                  },
-                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
-                  "risk_notes": []
-                },
-                "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8455，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0216。",
-                "score": {
-                  "scenario_match": 0.6,
-                  "attribute_match": 0.75,
-                  "price_fit": 0.9517,
-                  "reputation_fit": 0.97,
-                  "availability_fit": 0.95,
-                  "sku_fit": 0.95,
-                  "detail_quality": 1.0,
-                  "final_score": 0.8455,
-                  "reasons": [
-                    "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-                    "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
-                    "用户评价均分 3.6/5，参与口碑评分。",
-                    "商品提供 5 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_019 召回分 0.0216。"
-                  ]
-                },
-                "evidence_doc_ids": [
-                  "p_digital_019::profile::0"
-                ],
-                "quantity": 1,
-                "selected_sku_id": "s_p_digital_019_1"
-              },
-              {
-                "role": "clothing",
-                "product": {
-                  "product_id": "p_clothes_006",
-                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                  "brand": "Nike",
-                  "category": "clothing",
-                  "category_name": "服饰运动",
-                  "sub_category": "运动长裤",
-                  "base_price": 349.0,
-                  "min_price": 349.0,
-                  "max_price": 359.0,
-                  "currency": "CNY",
-                  "stock_status": "available_for_demo",
-                  "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_clothes_006_live.jpg",
-                  "image_url": "/product-images/p_clothes_006_live.jpg",
-                  "skus": [
-                    {
-                      "sku_id": "s_p_clothes_006_1",
-                      "properties": {
-                        "尺码": "M码",
-                        "颜色": "深灰色"
-                      },
-                      "price": 349.0
-                    },
-                    {
-                      "sku_id": "s_p_clothes_006_2",
-                      "properties": {
-                        "尺码": "L码",
-                        "颜色": "黑色"
-                      },
-                      "price": 349.0
-                    },
-                    {
-                      "sku_id": "s_p_clothes_006_3",
-                      "properties": {
-                        "尺码": "XL码",
-                        "颜色": "黑色"
-                      },
-                      "price": 359.0
-                    },
-                    {
-                      "sku_id": "s_p_clothes_006_4",
-                      "properties": {
-                        "尺码": "M码",
-                        "颜色": "黑色"
-                      },
-                      "price": 349.0
-                    },
-                    {
-                      "sku_id": "s_p_clothes_006_5",
-                      "properties": {
-                        "尺码": "L码",
-                        "颜色": "深灰色"
-                      },
-                      "price": 349.0
-                    },
-                    {
-                      "sku_id": "s_p_clothes_006_6",
-                      "properties": {
-                        "尺码": "XL码",
-                        "颜色": "深灰色"
-                      },
-                      "price": 359.0
-                    }
-                  ],
-                  "description": "这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度保持版型，避免暴晒导致面料发硬变色。",
-                  "faqs": [
-                    {
-                      "question": "这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
-                      "answer": "这款裤子所有在售SKU的面料、做工、细节设计都是完全一致的，价格差异仅来自尺码库存的成本差异，XL码黑色属于常年热门的畅销大码，备货和仓储的调配成本略高，所以定价为359元，其余M码深灰、L码黑色的日常定价都是349元，大家可以根据自己的尺码需求选择，不用担心不同价格的商品存在品质差异，全部都是官方同生产线正品。"
-                    },
-                    {
-                      "question": "这款针织束脚裤的面料是不是容易起球，春秋穿会不会太厚？",
-                      "answer": "这款用的是280g左右的新疆棉混纺针织毛圈面料，表面做了磨毛抗起球预处理，正常穿着前提下日常通勤久坐摩擦、搭配运动鞋穿久了都不容易起球，春秋20度左右单穿刚好合适，不会闷汗也不会觉得凉，南方冬天搭配秋裤也能穿，北方零度以上单穿外出也完全没问题，不会像薄款运动裤那样透风，也不会像加绒款那样闷腿。"
-                    },
-                    {
-                      "question": "我178cm78kg选L码黑色会不会卡裆，束脚口会不会勒小腿？",
-                      "answer": "这款L码黑色的官方净臀围是108cm，裤长是98cm，针对大部分175-180cm、体重70-80kg的男性做了裆部加深剪裁，正常站姿走路完全不会卡裆，束脚口的橡筋做了3cm宽的加宽处理，弹力富余3-5cm，正常小腿围40cm以内的人穿都不会有勒紧的压痕，要是你小腿肌肉特别发达可以选大一码，穿着空间会更宽松舒适。"
-                    },
-                    {
-                      "question": "深灰色M码的裤身会不会容易显脏，洗多了会不会发白？",
-                      "answer": "这款深灰色M码的面料做了固色预处理，正常日常穿溅到咖啡、灰尘这些浅污渍，用湿纸巾一擦就能擦干净，不会留明显印子，按照说明冷水反面洗涤的话，正常穿洗二三十次都不会出现大面积发白的情况，只有长期暴晒或者用热水加漂白剂洗才会出现面料泛旧的问题，日常洗涤只要注意这些小细节，穿一整年颜色都能保持得很均匀。"
-                    },
-                    {
-                      "question": "这款裤子有没有隐形口袋，能不能放下6.7英寸的大手机不会掉出来？",
-                      "answer": "这款裤子两侧的插袋做了18cm的加深处理，袋口内侧还做了隐形暗扣设计，正常放6.7英寸的iPhone 14 Pro Max这类大屏手机完全不会掉出来，哪怕你跑步快步走也不用担心滑落，后片还有一个单独的迷你贴袋，可以放门禁卡、交通卡这类小物件，不会晃来晃去磨得腿不舒服，日常出门不用带包也完全够用。"
-                    },
-                    {
-                      "question": "这款束脚裤能不能用来日常慢跑穿，面料会不会勾丝破洞？",
-                      "answer": "这款针织面料的抗撕扯等级达到了运动服饰的国标A级标准，正常日常慢跑、跳操穿完全没问题，不会随便勾丝破洞，只要不是刻意蹭到尖锐的钢筋、铁丝这类锋利物件，正常穿个两三年都不会出现破洞的情况，不过它属于休闲基础款长裤，不是专业竞速跑步裤，高强度的马拉松训练还是更建议选专业速干运动裤，日常轻度运动穿完全足够。"
-                    }
-                  ],
-                  "reviews": [
-                    {
-                      "nickname": "阿凯",
-                      "rating": 4,
-                      "content": "整体穿下来还行，版型确实很修饰腿型，我腿有点O型穿这个束脚款刚好遮得七七八八，面料也软乎乎的很舒服。就是刚拆包装的时候闻到点轻微的工业味，挂阳台吹了两天才散掉，腰头的抽绳留得有点长，走路的时候偶尔会滑出来蹭到鞋面上，其他地方都没啥大毛病，349的价格总体还是值得入手的。"
-                    },
-                    {
-                      "nickname": "小宇",
-                      "rating": 5,
-                      "content": "这已经是我买的第二条同款了，之前的旧款穿了快两年洗得有点发白才回购的，这次入的L码黑色刚好合身，175cm72kg穿上不用改裤长，束脚口刚好卡在脚踝上面一点，搭空军一号穿特别好看。面料摸起来厚实但不闷，春天二十多度穿完全刚好，口袋够深，我放Max手机跑着取快递都没掉出来，性价比拉满。"
-                    },
-                    {
-                      "nickname": "大张",
-                      "rating": 3,
-                      "content": "收到货穿了不到一周，后腰位置经常坐椅子摩擦的地方就起了好几个小毛球，用毛球器剃完没两天又长出来了，之前买的别家同价位针织裤都没这个问题。客服说这是正常针织面料的损耗，花三百多买的裤子感觉质量有点配不上价格，版型倒是挺好看的，就是面料抗起球的处理做得不到位，不太推荐久坐的上班族买。"
-                    },
-                    {
-                      "nickname": "阿泽",
-                      "rating": 5,
-                      "content": "买给我爸当生日礼物的，选的M码深灰色，他170cm65kg穿上特别合适，腰头的抽绳调节起来很方便，他平时跳完广场舞散散步穿都特舒服。裤子洗了三次都没掉色也没变形，侧边的小勾标绣得特别平整，没有多余的线头，我爸平时省得很说这是他买过最合心意的运动裤，让我再给他回购一条别的颜色。"
-                    },
-                    {
-                      "nickname": "阿远",
-                      "rating": 1,
-                      "content": "收到的XL码黑色明显是被人穿过退回来的二手货，裤脚位置有明显的污渍痕迹，腰头的橡筋都已经松垮没有弹力了，口袋里还留了半张别人的超市购物小票，找客服退货退了半天才同意，来回折腾了快一周才处理完，花359买条别人穿过的残次品体验感特别差，以后不会再来这家买东西了。"
-                    },
-                    {
-                      "nickname": "小辰",
-                      "rating": 5,
-                      "content": "最近健身天天穿这条裤子，练腿的时候深蹲完全不卡裆，面料弹力够大动作怎么做都不会紧绷，束脚口不会往上滑，撸铁完直接穿着去买饭也完全不尴尬，不用换别的外穿裤子。之前怕针织裤显胖，结果穿上身意外的显瘦，搭个基础白T恤就能出门，洗了好多次版型都没塌，349的价格能穿一整年太值了。"
-                    }
-                  ],
-                  "review_count": 6,
-                  "rating_avg": 3.83,
-                  "best_for": [
-                    "穿搭组合",
-                    "尺码颜色选择",
-                    "运动/通勤场景",
-                    "运动长裤"
-                  ],
-                  "not_good_for": [],
-                  "supported_scenarios": [
-                    "outfit_bundle",
-                    "sportswear",
-                    "commute_style",
-                    "运动长裤"
-                  ],
-                  "tags": [
-                    "Nike",
-                    "服饰运动",
-                    "运动长裤",
-                    "通勤",
-                    "M码",
-                    "深灰色",
-                    "L码",
-                    "黑色",
-                    "XL码"
-                  ],
-                  "metadata": {
-                    "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "3_服饰运动/images/p_clothes_006_live.jpg"
-                  },
-                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
-                  "risk_notes": []
-                },
-                "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8544，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0290；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0228。",
-                "score": {
-                  "scenario_match": 0.6,
-                  "attribute_match": 0.75,
-                  "price_fit": 0.8954,
-                  "reputation_fit": 1.0,
-                  "availability_fit": 0.95,
-                  "sku_fit": 0.95,
-                  "detail_quality": 1.0,
-                  "final_score": 0.8544,
-                  "reasons": [
-                    "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
-                    "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
-                    "价格与预算要求较匹配。",
-                    "用户评价均分 3.83/5，参与口碑评分。",
-                    "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_clothes_006 召回分 0.0290; p_clothes_006 召回分 0.0228。"
-                  ]
-                },
-                "evidence_doc_ids": [
-                  "p_clothes_006::faq::2",
-                  "p_clothes_006::profile::0"
-                ],
-                "quantity": 1,
-                "selected_sku_id": "s_p_clothes_006_1"
-              },
-              {
-                "role": "food",
-                "product": {
-                  "product_id": "p_food_005",
-                  "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-                  "brand": "东鹏",
-                  "category": "food",
-                  "category_name": "食品饮料",
-                  "sub_category": "功能饮料",
-                  "base_price": 5.0,
-                  "min_price": 5.0,
-                  "max_price": 68.0,
-                  "currency": "CNY",
-                  "stock_status": "available_for_demo",
-                  "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_food_005_live.jpg",
-                  "image_url": "/product-images/p_food_005_live.jpg",
-                  "skus": [
-                    {
-                      "sku_id": "s_p_food_005_1",
-                      "properties": {
-                        "容量": "500ml",
-                        "数量": "1瓶",
-                        "包装": "散装单瓶"
-                      },
-                      "price": 5.0
-                    },
-                    {
-                      "sku_id": "s_p_food_005_2",
-                      "properties": {
-                        "容量": "500ml",
-                        "数量": "6瓶",
-                        "包装": "塑封组合装"
-                      },
-                      "price": 28.0
-                    },
-                    {
-                      "sku_id": "s_p_food_005_3",
-                      "properties": {
-                        "容量": "500ml",
-                        "数量": "15瓶",
-                        "包装": "原厂整箱"
-                      },
-                      "price": 68.0
-                    }
-                  ],
-                  "description": "这款东鹏特饮500ml经典瓶装功能饮料，是不少熬夜党、运动族的随身能量补给首选。核心添加了牛磺酸、适量咖啡因与多种B族维生素，大瓶500ml的容量比常规小瓶多了近一半，一口下去是熟悉的清甜焦香口感，快速帮你驱散困意、补充消耗的体能。特别适合开长途的货车司机、连续加班的上班族、课后还要训练的体育生，或是约着组队打一下午球的球友。建议犯困、体能告急时小口慢饮，不要短时间猛灌，孕妇、未成年人和对咖啡因敏感的朋友就不要饮用啦，常温避光存放就能保留新鲜风味。",
-                  "faqs": [
-                    {
-                      "question": "这款500ml装的东鹏特饮，牛磺酸和咖啡因的具体添加量是多少呀？",
-                      "answer": "咱们这款500ml经典装东鹏特饮，每瓶的牛磺酸添加量足有1800mg，同时合规添加了咖啡因约50mg，搭配维生素B族群协同作用，既不会给身体造成过重负担，又能充分起到缓解疲劳、补充消耗体能的效果。这个配比是经过多年市场验证调整的，口感和提神效果都适配大多数普通消费者的需求，大家日常需要快速补能的时候放心按需饮用就好。"
-                    },
-                    {
-                      "question": "买500ml*15瓶的整箱装，收到货会不会有漏液或者瓶身变形的情况？",
-                      "answer": "咱们整箱装的500ml东鹏特饮，出厂时每瓶都做了密封检测，发货时还会在原有塑封箱的基础上额外加一层加厚气泡垫包裹，避免运输途中的磕碰挤压。绝大多数情况下送到买家手里都是完好的，如果万一收到货有个别瓶身变形、瓶盖松动漏液的情况，你只需要24小时内联系客服上传照片，我们会按破损瓶的数量直接给你全额退款，完全不用你承担运输过程造成的损失。"
-                    },
-                    {
-                      "question": "平时健身跑完步能不能直接喝这款东鹏特饮补充能量？",
-                      "answer": "完全可以的，你跑完步体能大量消耗之后喝一瓶500ml的东鹏特饮，里面的牛磺酸能快速帮助神经缓解疲劳状态，添加的少量糖分可以及时补充运动中消耗掉的糖原，比喝普通白水的缓疲效果要好很多。不过要注意刚跑完步先缓两分钟，等呼吸平稳之后再小口慢饮，不要对着瓶口猛灌，避免给肠胃造成刺激，运动后一次性喝半瓶左右其实就足够补足状态了。"
-                    },
-                    {
-                      "question": "这款500ml装的东鹏特饮，和同款小瓶装的除了容量之外有区别吗？",
-                      "answer": "除了容量从常规的250ml升级到500ml之外，配方、口感都是完全一模一样的，没有任何调整。我们做大容量的经典瓶装，就是为了适配大家开长途、长时间户外作业、连续加班这类需要长时间补能的场景，不用中途反复买小瓶，单瓶算下来也更划算，整箱买平均单瓶价格比单独买小瓶要便宜不少，经常需要喝的朋友选整箱装性价比更高。"
-                    },
-                    {
-                      "question": "开盖之后没喝完的东鹏特饮，放多久还能继续喝呀？",
-                      "answer": "开盖之后的东鹏特饮，如果是常温环境下，建议你在24小时之内喝完，要是已经放进冰箱冷藏密封好，最长也不要超过48小时。因为饮料开盖之后接触到空气中的杂菌，时间放久了风味会明显变酸变淡，营养成分也会慢慢流失，饮用之后还可能引发肠胃不适。要是你开盖之后放了超过两天，就不建议再继续喝了，直接丢弃更安全。"
-                    }
-                  ],
-                  "reviews": [
-                    {
-                      "nickname": "阿凯",
-                      "rating": 5,
-                      "content": "我是跑城际货运的，每次跑长途之前都必囤两箱这个500ml的东鹏特饮，之前买小瓶的半路就喝完了，大瓶的一瓶能撑好几个小时，困了喝两口立刻精神不少，味道还是熟悉的老配方，甜滋滋的不发苦。这次买整箱算下来单瓶才4块多，比服务区卖6块一瓶便宜太多，下次跑完长途还得再来囤两箱放车上备用。"
-                    },
-                    {
-                      "nickname": "小夏",
-                      "rating": 1,
-                      "content": "这次收到的整箱货至少有三瓶漏液了，黏糊糊的撒了半箱子，找客服说只给赔三瓶的钱，剩下的瓶身沾的黏擦都擦不掉，味道喝着还比平时买的淡很多，看生产日期居然还有半个月就到期了，之前买的都是剩大半年保质期的，这次发临期品也不提前说，体验感真的太差了，以后绝对不会再来这家店买了。"
-                    },
-                    {
-                      "nickname": "阿哲",
-                      "rating": 2,
-                      "content": "等了三天才送到，拆开箱子好几瓶的瓶盖都被挤得变了形，虽然没漏液但是总觉得不干净，喝了半瓶提神效果也很一般，我平时喝东鹏半小时就不困了，这次熬到后半夜还是昏昏沉沉的，不知道是不是批次的问题，找客服说只能退货，但是我已经开了两瓶没法退，算了就当买个教训，下次还是去楼下超市买更放心。"
-                    },
-                    {
-                      "nickname": "圆圆",
-                      "rating": 1,
-                      "content": "买的时候页面标着整箱15瓶，收到货数了数才13瓶，少了整整两瓶，找客服核对半天，他们说仓库发货称重是对的，是我自己数错了，我反复数了三遍怎么可能数错。而且有两瓶的瓶盖一拧直接就弹飞了，气特别足喷了我一身，撒了半瓶在衣服上，黏糊糊的洗都洗不掉，这次购物真的太闹心了，完全不值这个价。"
-                    }
-                  ],
-                  "review_count": 4,
-                  "rating_avg": 2.25,
-                  "best_for": [
-                    "口味偏好",
-                    "囤货采购",
-                    "场景化补给",
-                    "功能饮料",
-                    "上班通勤"
-                  ],
-                  "not_good_for": [
-                    "极敏感人群需先试用",
-                    "咖啡因敏感人群不建议",
-                    "严格控糖用户需看配料"
-                  ],
-                  "supported_scenarios": [
-                    "daily_grocery",
-                    "snack_drink",
-                    "stock_up",
-                    "sports",
-                    "功能饮料"
-                  ],
-                  "tags": [
-                    "东鹏",
-                    "食品饮料",
-                    "功能饮料",
-                    "咖啡",
-                    "500ml",
-                    "1瓶",
-                    "散装单瓶",
-                    "6瓶",
-                    "塑封组合装",
-                    "15瓶",
-                    "原厂整箱"
-                  ],
-                  "metadata": {
-                    "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "4_食品生活/images/p_food_005_live.jpg"
-                  },
-                  "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
-                  "risk_notes": [
-                    "极敏感人群需先试用",
-                    "咖啡因敏感人群不建议",
-                    "严格控糖用户需看配料"
-                  ]
-                },
-                "reason": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于 食品饮料/功能饮料，综合分 0.8543，参考价 5-68 CNY。 评价均分 2.25/5。 检索证据：东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#faq 召回分 0.0236；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#review 召回分 0.0219；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#profile 召回分 0.0215。",
-                "score": {
-                  "scenario_match": 0.6,
-                  "attribute_match": 0.75,
-                  "price_fit": 0.9956,
-                  "reputation_fit": 0.65,
-                  "availability_fit": 0.95,
-                  "sku_fit": 0.95,
-                  "detail_quality": 0.97,
-                  "final_score": 0.8543,
-                  "reasons": [
-                    "价格匹配：当前最低 SKU 约 5 CNY，已用于预算适配评分。",
-                    "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于用户关注的 食品饮料 类目。",
-                    "价格与预算要求较匹配。",
-                    "用户评价均分 2.25/5，参与口碑评分。",
-                    "商品提供 5 条官方 FAQ，可作为回答证据。",
-                    "不适用提示：极敏感人群需先试用；咖啡因敏感人群不建议。",
-                    "商品知识证据命中：p_food_005 召回分 0.0236; p_food_005 召回分 0.0219。"
-                  ]
-                },
-                "evidence_doc_ids": [
-                  "p_food_005::faq::2",
-                  "p_food_005::review::3",
-                  "p_food_005::profile::0"
-                ],
-                "quantity": 1,
-                "selected_sku_id": "s_p_food_005_1"
-              }
-            ],
-            "cost_estimate": {
-              "total_price_min": 3752.0,
-              "total_price_max": 4865.0,
-              "currency": "CNY",
-              "assumptions": [
-                "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
-                "p_beauty_013 未提供精确库存数量，仅按已上架商品参与推荐。",
-                "p_digital_019 未提供精确库存数量，仅按已上架商品参与推荐。",
-                "p_clothes_006 未提供精确库存数量，仅按已上架商品参与推荐。",
-                "p_food_005 未提供精确库存数量，仅按已上架商品参与推荐。"
-              ],
-              "breakdown": {
-                "p_beauty_013": {
-                  "role": "beauty",
-                  "pricing_model": "sku_price",
-                  "currency": "CNY",
-                  "quantity": 1,
-                  "base_price": 99.0,
-                  "min_price": 99.0,
-                  "max_price": 139.0,
-                  "selected_sku_id": "s_p_beauty_013_1",
-                  "selected_price": 99.0,
-                  "selected_total_price": 99.0
-                },
-                "p_digital_019": {
-                  "role": "digital",
-                  "pricing_model": "sku_price",
-                  "currency": "CNY",
-                  "quantity": 1,
-                  "base_price": 3299.0,
-                  "min_price": 3299.0,
-                  "max_price": 4299.0,
-                  "selected_sku_id": "s_p_digital_019_1",
-                  "selected_price": 3299.0,
-                  "selected_total_price": 3299.0
-                },
-                "p_clothes_006": {
-                  "role": "clothing",
-                  "pricing_model": "sku_price",
-                  "currency": "CNY",
-                  "quantity": 1,
-                  "base_price": 349.0,
-                  "min_price": 349.0,
-                  "max_price": 359.0,
-                  "selected_sku_id": "s_p_clothes_006_1",
-                  "selected_price": 349.0,
-                  "selected_total_price": 349.0
-                },
-                "p_food_005": {
-                  "role": "food",
-                  "pricing_model": "sku_price",
-                  "currency": "CNY",
-                  "quantity": 1,
-                  "base_price": 5.0,
-                  "min_price": 5.0,
-                  "max_price": 68.0,
-                  "selected_sku_id": "s_p_food_005_1",
-                  "selected_price": 5.0,
-                  "selected_total_price": 5.0
-                }
-              }
-            },
-            "pros": [
-              "只从本地商品库选择真实上架商品",
-              "推荐理由引用价格、SKU、FAQ、评价和结构化属性",
-              "组合内商品按场景互补，适合一次性采购或搭配"
-            ],
-            "cons": [
-              "数据集不含实时优惠券，最终成交价需要下单前刷新",
-              "组合总价可能高于单品预算，需要确认是否确实需要整套"
-            ],
-            "suitable_for": [
-              "需要一整套搭配或采购清单",
-              "日常使用",
-              "普通消费者"
-            ],
-            "risks": [
-              "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
-              "油皮需谨慎",
-              "极敏感人群需先试用"
-            ],
-            "evidence": [
-              "p_beauty_013: 方里这款柔焦蜜粉饼简直是油皮混油皮的福音！7g的小巧体积揣在包里便携性拉满，细腻如烟的粉质上脸瞬间柔焦，毛孔被隐形得干干净净，还能自然提亮肤色，拒绝假白感。核心卖点是控油定妆+隐匿毛孔+提亮，适合油皮、混油皮日常通勤、夏季长时间带妆或容易出油的场景。使用时建议取粉后先在盖子上蹭掉余粉，轻拍上脸（T区重点按压）；干皮姐妹需做好保湿打底避免卡粉。补充装12g不含外壳，性价比更高，适合回购用户替换，环保又省钱。",
-              "p_beauty_013: FAQ - 7g装和12g补充装的区别是什么？",
-              "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
-              "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于用户关注的 美妆护肤 类目。",
-              "p_digital_019: vivo Pad 6 Pro搭配12.1英寸高刷全面屏，是专门为学生党、轻办公上班族、影音娱乐爱好者打造的多用途平板。核心卖点是大内存组合搭配高刷新率显示，学习时可以一边开上网课窗口、一边记电子笔记、侧边挂查资料小窗，多任务切换丝滑不卡顿；通勤居家刷剧、玩轻度手游时，屏幕色彩通透流畅度拉满。全金属机身质感扎实，Wi-Fi版无流量卡顿困扰，8+256G版本日常存储课件、存剧完全够用，12+512G版本更适合需要装大量专业绘图、办公软件的用",
-              "p_digital_019: FAQ - vivo Pad 6 Pro的分屏多任务功能最多支持同时打开多少个应用，不同内存版本会有差异吗？",
-              "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-              "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
-              "p_clothes_006: 这款Nike Sportswear Club男子针织束脚长裤，专为追求舒适与日常质感的男性打造，采用细腻重磅针织毛圈面料，软而不塌上身不易起皱，侧边小绣标低调不浮夸，松紧腰头搭配内置抽绳可自由调节松紧，束脚口剪裁刚好收拢裤腿不堆在脚踝，既能遮住小腿多余线条又不会显得臃肿。日常通勤、楼下取外卖、周末约球热身、休闲探店穿都合适，搭配同品牌卫衣或基础白T都很出片。洗涤建议反面冷水轻柔机洗，不要长时间浸泡、不要用漂白剂，晾晒时拉直裤脚能最大程度",
-              "p_clothes_006: FAQ - 这款Nike Club针织束脚裤不同SKU的价格不一样，是面料有区别吗？",
-              "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
-              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
-              "p_food_005: 这款东鹏特饮500ml经典瓶装功能饮料，是不少熬夜党、运动族的随身能量补给首选。核心添加了牛磺酸、适量咖啡因与多种B族维生素，大瓶500ml的容量比常规小瓶多了近一半，一口下去是熟悉的清甜焦香口感，快速帮你驱散困意、补充消耗的体能。特别适合开长途的货车司机、连续加班的上班族、课后还要训练的体育生，或是约着组队打一下午球的球友。建议犯困、体能告急时小口慢饮，不要短时间猛灌，孕妇、未成年人和对咖啡因敏感的朋友就不要饮用啦，常温避光存放就能保",
-              "p_food_005: FAQ - 这款500ml装的东鹏特饮，牛磺酸和咖啡因的具体添加量是多少呀？",
-              "价格匹配：当前最低 SKU 约 5 CNY，已用于预算适配评分。",
-              "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于用户关注的 食品饮料 类目。"
-            ],
-            "score_table": [
-              {
-                "role": "beauty",
-                "product_id": "p_beauty_013",
-                "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-                "final_score": 0.8529,
-                "scenario_match": 0.6,
-                "attribute_match": 0.75,
-                "price_fit": 0.9635,
-                "reputation_fit": 0.884,
-                "availability_fit": 0.95,
-                "sku_fit": 0.95,
-                "detail_quality": 0.94,
-                "reasons": [
-                  "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
-                  "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于用户关注的 美妆护肤 类目。",
-                  "价格与预算要求较匹配。",
-                  "用户评价均分 3.17/5，参与口碑评分。",
-                  "商品提供 4 条官方 FAQ，可作为回答证据。",
-                  "不适用提示：油皮需谨慎。",
-                  "商品知识证据命中：p_beauty_013 召回分 0.0209; p_beauty_013 召回分 0.0207。"
-                ]
-              },
-              {
-                "role": "digital",
-                "product_id": "p_digital_019",
-                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                "final_score": 0.8455,
-                "scenario_match": 0.6,
-                "attribute_match": 0.75,
-                "price_fit": 0.9517,
-                "reputation_fit": 0.97,
-                "availability_fit": 0.95,
-                "sku_fit": 0.95,
-                "detail_quality": 1.0,
-                "reasons": [
-                  "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-                  "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
-                  "用户评价均分 3.6/5，参与口碑评分。",
-                  "商品提供 5 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_019 召回分 0.0216。"
-                ]
-              },
-              {
-                "role": "clothing",
-                "product_id": "p_clothes_006",
-                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                "final_score": 0.8544,
-                "scenario_match": 0.6,
-                "attribute_match": 0.75,
-                "price_fit": 0.8954,
-                "reputation_fit": 1.0,
-                "availability_fit": 0.95,
-                "sku_fit": 0.95,
-                "detail_quality": 1.0,
-                "reasons": [
-                  "价格匹配：当前最低 SKU 约 349 CNY，已用于预算适配评分。",
-                  "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于用户关注的 服饰运动 类目。",
-                  "价格与预算要求较匹配。",
-                  "用户评价均分 3.83/5，参与口碑评分。",
-                  "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_clothes_006 召回分 0.0290; p_clothes_006 召回分 0.0228。"
-                ]
-              },
-              {
-                "role": "food",
-                "product_id": "p_food_005",
-                "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-                "final_score": 0.8543,
-                "scenario_match": 0.6,
-                "attribute_match": 0.75,
-                "price_fit": 0.9956,
-                "reputation_fit": 0.65,
-                "availability_fit": 0.95,
-                "sku_fit": 0.95,
-                "detail_quality": 0.97,
-                "reasons": [
-                  "价格匹配：当前最低 SKU 约 5 CNY，已用于预算适配评分。",
-                  "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于用户关注的 食品饮料 类目。",
-                  "价格与预算要求较匹配。",
-                  "用户评价均分 2.25/5，参与口碑评分。",
-                  "商品提供 5 条官方 FAQ，可作为回答证据。",
-                  "不适用提示：极敏感人群需先试用；咖啡因敏感人群不建议。",
-                  "商品知识证据命中：p_food_005 召回分 0.0236; p_food_005 召回分 0.0219。"
-                ]
-              }
-            ]
-          }
-        ],
+        "plans": [],
         "candidate_count": 100,
-        "product_cards": [
-          {
-            "product_id": "p_beauty_013",
-            "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-            "name": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-            "brand": "方里",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "sub_category": "蜜粉",
-            "price": 99.0,
-            "price_range": [
-              99.0,
-              139.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_beauty_013_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "reason": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g 属于 美妆护肤/蜜粉，综合分 0.8529，参考价 99-139 CNY。 评价均分 3.17/5。 检索证据：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#profile 召回分 0.0209；方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g#faq 召回分 0.0207。",
-            "score": 0.8529,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_beauty_013_1"
-          },
-          {
-            "product_id": "p_digital_019",
-            "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-            "name": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-            "brand": "vivo",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "平板电脑",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              4299.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_019_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.6,
-            "review_count": 5,
-            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8455，参考价 3299-4299 CNY。 评价均分 3.6/5。 检索证据：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑#profile 召回分 0.0216。",
-            "score": 0.8455,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_digital_019_1"
-          },
-          {
-            "product_id": "p_clothes_006",
-            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-            "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-            "brand": "Nike",
-            "category": "clothing",
-            "category_name": "服饰运动",
-            "sub_category": "运动长裤",
-            "price": 349.0,
-            "price_range": [
-              349.0,
-              359.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_clothes_006_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.83,
-            "review_count": 6,
-            "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8544，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0290；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#profile 召回分 0.0228。",
-            "score": 0.8544,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_clothes_006_1"
-          },
-          {
-            "product_id": "p_food_005",
-            "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "name": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "brand": "东鹏",
-            "category": "food",
-            "category_name": "食品饮料",
-            "sub_category": "功能饮料",
-            "price": 5.0,
-            "price_range": [
-              5.0,
-              68.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_food_005_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 2.25,
-            "review_count": 4,
-            "reason": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 属于 食品饮料/功能饮料，综合分 0.8543，参考价 5-68 CNY。 评价均分 2.25/5。 检索证据：东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#faq 召回分 0.0236；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#review 召回分 0.0219；东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因#profile 召回分 0.0215。",
-            "score": 0.8543,
-            "source": "shopping_bundle",
-            "selected_sku_id": "s_p_food_005_1"
-          }
-        ],
+        "product_cards": [],
         "candidate_scope": {
           "active_filters": {
             "categories": [
@@ -2085,326 +765,38 @@
             "price_max": null,
             "brands": [],
             "excluded_brands": [],
-            "must_have_terms": [],
+            "must_have_terms": [
+              "PS5"
+            ],
             "excluded_terms": [],
             "preferences": []
           },
           "total_catalog_count": 100,
-          "by_category": {
-            "beauty": {
-              "raw_count": 25,
-              "after_exclusion_count": 25,
-              "within_budget_count": 25,
-              "top_candidates": [
-                {
-                  "product_id": "p_beauty_013",
-                  "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-                  "price": 99.0,
-                  "score": 0.8529
-                },
-                {
-                  "product_id": "p_beauty_017",
-                  "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
-                  "price": 178.0,
-                  "score": 0.8484
-                },
-                {
-                  "product_id": "p_beauty_018",
-                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-                  "price": 59.0,
-                  "score": 0.8452
-                },
-                {
-                  "product_id": "p_beauty_015",
-                  "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
-                  "price": 120.0,
-                  "score": 0.8337
-                },
-                {
-                  "product_id": "p_beauty_007",
-                  "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-                  "price": 89.0,
-                  "score": 0.8313
-                }
-              ]
-            },
-            "digital": {
-              "raw_count": 25,
-              "after_exclusion_count": 25,
-              "within_budget_count": 25,
-              "top_candidates": [
-                {
-                  "product_id": "p_digital_019",
-                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                  "price": 3299.0,
-                  "score": 0.8455
-                },
-                {
-                  "product_id": "p_digital_022",
-                  "title": "联想 ThinkPad X1 Carbon Aura AI 元启版2026 14英寸高端商务轻薄本",
-                  "price": 10999.0,
-                  "score": 0.8376
-                },
-                {
-                  "product_id": "p_digital_007",
-                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-                  "price": 1499.0,
-                  "score": 0.8374
-                },
-                {
-                  "product_id": "p_digital_005",
-                  "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
-                  "price": 4999.0,
-                  "score": 0.8333
-                },
-                {
-                  "product_id": "p_digital_009",
-                  "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-                  "price": 6499.0,
-                  "score": 0.8233
-                }
-              ]
-            },
-            "clothing": {
-              "raw_count": 25,
-              "after_exclusion_count": 25,
-              "within_budget_count": 25,
-              "top_candidates": [
-                {
-                  "product_id": "p_clothes_006",
-                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                  "price": 349.0,
-                  "score": 0.8544
-                },
-                {
-                  "product_id": "p_clothes_023",
-                  "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
-                  "price": 149.0,
-                  "score": 0.8385
-                },
-                {
-                  "product_id": "p_clothes_003",
-                  "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
-                  "price": 199.0,
-                  "score": 0.8374
-                },
-                {
-                  "product_id": "p_clothes_005",
-                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-                  "price": 259.0,
-                  "score": 0.8366
-                },
-                {
-                  "product_id": "p_clothes_001",
-                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-                  "price": 99.0,
-                  "score": 0.8355
-                }
-              ]
-            },
-            "food": {
-              "raw_count": 25,
-              "after_exclusion_count": 25,
-              "within_budget_count": 25,
-              "top_candidates": [
-                {
-                  "product_id": "p_food_005",
-                  "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-                  "price": 5.0,
-                  "score": 0.8543
-                },
-                {
-                  "product_id": "p_food_018",
-                  "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
-                  "price": 9.0,
-                  "score": 0.8509
-                },
-                {
-                  "product_id": "p_food_003",
-                  "title": "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
-                  "price": 4.0,
-                  "score": 0.8418
-                },
-                {
-                  "product_id": "p_food_010",
-                  "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
-                  "price": 32.0,
-                  "score": 0.8224
-                },
-                {
-                  "product_id": "p_food_023",
-                  "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
-                  "price": 36.0,
-                  "score": 0.8219
-                }
-              ]
-            }
-          },
+          "by_category": {},
           "clarification_needed": [
-            "category",
-            "budget_level"
+            "missing_subcategory"
           ]
         },
-        "comparison_table": [
-          {
-            "rank": 1,
-            "product_id": "p_clothes_006",
-            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-            "brand": "Nike",
-            "category": "clothing",
-            "category_name": "服饰运动",
-            "price": 349.0,
-            "price_range": [
-              349.0,
-              359.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.83,
-            "review_count": 6,
-            "score": 0.8544,
-            "strength": "综合分 0.8544，评分 3.83/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": true
-          },
-          {
-            "rank": 2,
-            "product_id": "p_food_005",
-            "title": "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-            "brand": "东鹏",
-            "category": "food",
-            "category_name": "食品饮料",
-            "price": 5.0,
-            "price_range": [
-              5.0,
-              68.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 2.25,
-            "review_count": 4,
-            "score": 0.8543,
-            "strength": "综合分 0.8543，评分 2.25/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用；咖啡因敏感人群不建议。",
-            "recommendation": false
-          },
-          {
-            "rank": 3,
-            "product_id": "p_beauty_013",
-            "title": "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-            "brand": "方里",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 99.0,
-            "price_range": [
-              99.0,
-              139.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.17,
-            "review_count": 6,
-            "score": 0.8529,
-            "strength": "综合分 0.8529，评分 3.17/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：油皮需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
-            "product_id": "p_food_018",
-            "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
-            "brand": "李锦记",
-            "category": "food",
-            "category_name": "食品饮料",
-            "price": 9.0,
-            "price_range": [
-              9.0,
-              32.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.6,
-            "review_count": 5,
-            "score": 0.8509,
-            "strength": "综合分 0.8509，评分 3.6/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 5,
-            "product_id": "p_beauty_017",
-            "title": "芳珂纳米温和净化卸妆油深层清洁毛孔无添加卸妆液120ml",
-            "brand": "芳珂",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 178.0,
-            "price_range": [
-              178.0,
-              198.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.4,
-            "review_count": 5,
-            "score": 0.8484,
-            "strength": "综合分 0.8484，评分 3.4/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：极敏感人群需先试用。",
-            "recommendation": false
-          },
-          {
-            "rank": 6,
-            "product_id": "p_digital_019",
-            "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-            "brand": "vivo",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              4299.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.6,
-            "review_count": 5,
-            "score": 0.8455,
-            "strength": "综合分 0.8455，评分 3.6/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          }
-        ],
+        "comparison_table": [],
         "intent_route": {
-          "route": "bundle_recommendation",
-          "task_type": "bundle_recommendation",
-          "needs_clarification": true,
-          "clarification_fields": [
-            "category",
-            "budget_level"
-          ],
-          "next_action": "ask_follow_up_then_recommend",
+          "route": "no_recommendation",
+          "task_type": "clarify_or_no_recommendation",
           "supported_now": true,
-          "reason": "用户需要套装或跨类目搭配，按多个类目分别召回后组合成方案。",
-          "pipeline": [
-            "input_preprocessor",
-            "intent_router",
-            "constraint_parser",
-            "structured_filter",
-            "scoring_rerank",
-            "grounded_generator"
-          ]
+          "reason": "missing_subcategory"
         },
         "missing_fields": [
-          "category",
-          "budget_level"
+          "missing_subcategory"
         ],
         "risks": [
-          "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。",
-          "油皮需谨慎",
-          "极敏感人群需先试用"
+          "missing_subcategory"
         ],
         "teaching_guidance": [
           "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
           "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
-          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
-          "当前推荐包含：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g、vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑、Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤。"
+          "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。"
         ],
         "follow_up_questions": [
           "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
-          "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
           "是否有明确不要的品牌、成分、颜色、口味或功能？",
           "更看重价格、口碑、功效/参数，还是搭配完整度？"
         ],
@@ -2428,22 +820,7 @@
             "调权重",
             "接真实库存价格",
             "沉淀失败问题"
-          ],
-          "grounded_explanation": {
-            "why_recommended": [
-              "已从商品库候选中选择：方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g",
-              "已从商品库候选中选择：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-              "已从商品库候选中选择：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤"
-            ],
-            "evidence_points": [
-              "方里柔焦蜜粉饼控油定妆细腻粉质隐匿毛孔提亮肤色粉饼7g - 价格：99.0",
-              "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 - 价格：3299.0",
-              "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 - 价格：349.0"
-            ],
-            "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
-            "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
-            "caveat": "未使用未提供的商品事实生成解释。"
-          }
+          ]
         },
         "trace": {
           "catalog_scope": "ecommerce",
@@ -2457,10 +834,6 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 48,
-          "image_retrieval_status": "skipped",
           "llm_used": false
         }
       }

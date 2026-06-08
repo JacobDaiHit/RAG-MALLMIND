@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -101,7 +109,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +127,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 840,
+            "elapsed_ms": 923,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -130,7 +146,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +164,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 840,
+            "elapsed_ms": 923,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,7 +184,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 841
+        "llm_router_elapsed_ms": 924
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,7 +235,7 @@
       }
     }
   ],
-  "text_response": "选跑鞋尺码时，建议比日常鞋大半码到一码，给脚趾留出活动空间，尤其是长距离跑步时脚会肿胀。你可以告诉我平时穿的鞋码，或者具体的运动场景，我来帮你推荐几款合适的跑鞋哦！",
+  "text_response": "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、生成整机方案，也可以处理购物车。请告诉我你想买什么。",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
@@ -212,7 +244,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1952,
+  "elapsed_ms": 1108,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -302,7 +334,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -384,7 +424,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -394,7 +442,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 840,
+              "elapsed_ms": 923,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -413,7 +461,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -423,7 +479,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 840,
+              "elapsed_ms": 923,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -443,7 +499,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -464,7 +528,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 841
+          "llm_router_elapsed_ms": 924
         },
         "topic_memory": {
           "topic_id": "",
@@ -489,7 +553,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "选跑鞋尺码时，建议比日常鞋大半码到一码，给脚趾留出活动空间，尤其是长距离跑步时脚会肿胀。你可以告诉我平时穿的鞋码，或者具体的运动场景，我来帮你推荐几款合适的跑鞋哦！"
+        "text": "你好，我是智能导购助手，可以帮你搜索商品、推荐合适款式、对比商品、生成整机方案，也可以处理购物车。请告诉我你想买什么。"
       }
     },
     {

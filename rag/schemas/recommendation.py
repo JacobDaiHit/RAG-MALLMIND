@@ -131,6 +131,7 @@ class RequirementSpec(BaseModel):
 
     missing_fields: List[str] = Field(default_factory=list)
     assumptions: List[str] = Field(default_factory=list)
+    clarification_question: str = Field(default="")
 
     @model_validator(mode="after")
     def sync_category_fields(self) -> "RequirementSpec":

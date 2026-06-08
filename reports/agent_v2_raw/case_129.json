@@ -19,7 +19,17 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "iPhone 17 Pro"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -90,7 +100,7 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "iPhone 17 Pro 颜色",
+            "query": "iPhone 17 Pro 有什么颜色可以选？",
             "budget": null,
             "category": "",
             "usage": [],
@@ -101,7 +111,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +131,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 2736,
+            "elapsed_ms": 1163,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -119,7 +139,7 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "iPhone 17 Pro 颜色",
+            "query": "iPhone 17 Pro 有什么颜色可以选？",
             "budget": null,
             "category": "",
             "usage": [],
@@ -130,7 +150,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +170,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 2736,
+            "elapsed_ms": 1163,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,11 +190,21 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -181,7 +221,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 2738
+        "llm_router_elapsed_ms": 1164
       },
       "topic_memory": {
         "topic_id": "",
@@ -233,7 +273,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 4145,
+  "elapsed_ms": 1199,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -326,7 +366,17 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "iPhone 17 Pro"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -397,7 +447,7 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "iPhone 17 Pro 颜色",
+              "query": "iPhone 17 Pro 有什么颜色可以选？",
               "budget": null,
               "category": "",
               "usage": [],
@@ -408,7 +458,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -418,7 +478,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 2736,
+              "elapsed_ms": 1163,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -426,7 +486,7 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "iPhone 17 Pro 颜色",
+              "query": "iPhone 17 Pro 有什么颜色可以选？",
               "budget": null,
               "category": "",
               "usage": [],
@@ -437,7 +497,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -447,7 +517,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 2736,
+              "elapsed_ms": 1163,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -467,11 +537,21 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -488,7 +568,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 2738
+          "llm_router_elapsed_ms": 1164
         },
         "topic_memory": {
           "topic_id": "",
@@ -571,7 +651,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 48 条证据，命中 32 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -592,14 +672,14 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机；约 8999 CNY；评分 0.87"
+        "detail": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机；约 8999 CNY；评分 0.88"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机；约 9999 CNY；评分 0.77"
+        "detail": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机；约 9999 CNY；评分 0.78"
       }
     },
     {
@@ -665,8 +745,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 3,
-            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8708，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#sku 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0318。",
-            "score": 0.8708,
+            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8786，参考价 8999-12499 CNY。 评价均分 3.33/5。",
+            "score": 0.8786,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_001_1"
           },
@@ -689,8 +769,8 @@
             "stock_quantity": null,
             "rating_avg": 3.2,
             "review_count": 5,
-            "reason": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机 属于 数码电子/智能手机，综合分 0.7712，参考价 9999-13499 CNY。 评价均分 3.2/5。 检索证据：Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#sku 召回分 0.0317；Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#profile 召回分 0.0303；Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#faq 召回分 0.0294。",
-            "score": 0.7712,
+            "reason": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机 属于 数码电子/智能手机，综合分 0.7790，参考价 9999-13499 CNY。 评价均分 3.2/5。",
+            "score": 0.779,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_003_1"
           }
@@ -711,7 +791,9 @@
           "price_max": null,
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "iPhone 17 Pro"
+          ],
           "excluded_terms": [],
           "preferences": []
         },
@@ -732,13 +814,13 @@
                 "product_id": "p_digital_001",
                 "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
                 "price": 8999.0,
-                "score": 0.8708
+                "score": 0.8786
               },
               {
                 "product_id": "p_digital_003",
                 "title": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机",
                 "price": 9999.0,
-                "score": 0.7712
+                "score": 0.779
               }
             ]
           },
@@ -802,7 +884,9 @@
           "target_sub_categories": [],
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "iPhone 17 Pro"
+          ],
           "excluded_terms": [],
           "preferences": [],
           "occasion": "",
@@ -1024,28 +1108,26 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8708，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#sku 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0318。",
+                "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8786，参考价 8999-12499 CNY。 评价均分 3.33/5。",
                 "score": {
-                  "scenario_match": 0.6,
-                  "attribute_match": 0.75,
+                  "scenario_match": 0.68,
+                  "attribute_match": 0.95,
                   "price_fit": 1.0,
                   "reputation_fit": 0.816,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.8708,
+                  "final_score": 0.8786,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
                     "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于用户关注的 数码电子 类目。",
                     "用户评价均分 3.33/5，参与口碑评分。",
                     "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_001 召回分 0.0318; p_digital_001 召回分 0.0318。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_001::profile::0",
-                  "p_digital_001::sku::1",
-                  "p_digital_001::review::3"
+                  "p_digital_001"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_001_1"
@@ -1101,9 +1183,9 @@
                 "role": "digital",
                 "product_id": "p_digital_001",
                 "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-                "final_score": 0.8708,
-                "scenario_match": 0.6,
-                "attribute_match": 0.75,
+                "final_score": 0.8786,
+                "scenario_match": 0.68,
+                "attribute_match": 0.95,
                 "price_fit": 1.0,
                 "reputation_fit": 0.816,
                 "availability_fit": 0.95,
@@ -1114,7 +1196,7 @@
                   "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于用户关注的 数码电子 类目。",
                   "用户评价均分 3.33/5，参与口碑评分。",
                   "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_001 召回分 0.0318; p_digital_001 召回分 0.0318。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1141,8 +1223,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 3,
-            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8708，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#sku 召回分 0.0318；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0318。",
-            "score": 0.8708,
+            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.8786，参考价 8999-12499 CNY。 评价均分 3.33/5。",
+            "score": 0.8786,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_001_1"
           },
@@ -1165,8 +1247,8 @@
             "stock_quantity": null,
             "rating_avg": 3.2,
             "review_count": 5,
-            "reason": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机 属于 数码电子/智能手机，综合分 0.7712，参考价 9999-13499 CNY。 评价均分 3.2/5。 检索证据：Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#sku 召回分 0.0317；Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#profile 召回分 0.0303；Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机#faq 召回分 0.0294。",
-            "score": 0.7712,
+            "reason": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机 属于 数码电子/智能手机，综合分 0.7790，参考价 9999-13499 CNY。 评价均分 3.2/5。",
+            "score": 0.779,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_003_1"
           }
@@ -1183,7 +1265,9 @@
             "price_max": null,
             "brands": [],
             "excluded_brands": [],
-            "must_have_terms": [],
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
             "excluded_terms": [],
             "preferences": []
           },
@@ -1204,13 +1288,13 @@
                   "product_id": "p_digital_001",
                   "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
                   "price": 8999.0,
-                  "score": 0.8708
+                  "score": 0.8786
                 },
                 {
                   "product_id": "p_digital_003",
                   "title": "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机",
                   "price": 9999.0,
-                  "score": 0.7712
+                  "score": 0.779
                 }
               ]
             },
@@ -1248,8 +1332,8 @@
             "currency": "CNY",
             "rating_avg": 3.33,
             "review_count": 3,
-            "score": 0.8708,
-            "strength": "综合分 0.8708，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.8786,
+            "strength": "综合分 0.8786，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
@@ -1268,8 +1352,8 @@
             "currency": "CNY",
             "rating_avg": 3.2,
             "review_count": 5,
-            "score": 0.7712,
-            "strength": "综合分 0.7712，评分 3.2/5，FAQ 信息较完整。",
+            "score": 0.779,
+            "strength": "综合分 0.7790，评分 3.2/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
             "recommendation": false
           }
@@ -1361,9 +1445,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 48,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

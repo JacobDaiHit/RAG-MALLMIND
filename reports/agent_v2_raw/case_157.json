@@ -8,22 +8,34 @@
     {
       "name": "recommend_shopping_products",
       "arguments": {
-        "query": "续航怎么样",
+        "query": "推荐一款手机。用户追问：续航怎么样",
         "budget": null,
         "category": "",
         "usage": [],
-        "preferences": {},
-        "product_ids": [],
+        "preferences": {
+          "followup_type": "product_detail"
+        },
+        "product_ids": [
+          "p_digital_016"
+        ],
         "catalog_scope": "ecommerce",
         "compare_with_previous": false,
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
-      "confidence": 0.8,
-      "reason": "路由器未提供原因。",
-      "source": "llm",
+      "confidence": 0.9,
+      "reason": "用户在上一轮推荐后追问商品详情。",
+      "source": "followup_guard",
       "routing_trace": {
         "runtime_mode": "balanced",
         "llm_provider": "openai_compatible",
@@ -88,101 +100,90 @@
           "ambiguity_penalty": 0.15,
           "confidence": 0.13000000000000003
         },
-        "llm": {
-          "name": "recommend_shopping_products",
-          "arguments": {
-            "query": "手机 续航怎么样",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.8,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 921,
-            "has_error": false,
-            "provider": "openai_compatible"
-          }
-        },
+        "llm": null,
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "手机 续航怎么样",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
+            "query": "推荐一款手机。用户追问：续航怎么样",
+            "product_ids": [
+              "p_digital_016"
+            ],
             "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
+            "preferences": {
+              "followup_type": "product_detail"
+            }
           },
-          "confidence": 0.8,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 921,
-            "has_error": false,
-            "provider": "openai_compatible"
+          "confidence": 0.9,
+          "reason": "用户在上一轮推荐后追问商品详情。",
+          "source": "followup_guard",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.25,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.0
+            },
+            "top_name": "recommend_shopping_products",
+            "top_score": 0.25,
+            "second_name": "generate_pc_build_plan",
+            "second_score": 0.0,
+            "margin": 0.25,
+            "margin_bonus": 0.03,
+            "ambiguity_penalty": 0.15,
+            "confidence": 0.13000000000000003
           },
-          "_llm_chosen": true
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.13000000000000003
         },
         "final": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "续航怎么样",
+            "query": "推荐一款手机。用户追问：续航怎么样",
             "budget": null,
             "category": "",
             "usage": [],
-            "preferences": {},
-            "product_ids": [],
+            "preferences": {
+              "followup_type": "product_detail"
+            },
+            "product_ids": [
+              "p_digital_016"
+            ],
             "catalog_scope": "ecommerce",
             "compare_with_previous": false,
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
-        "llm_skipped": false,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
-        "router_success": true,
+        "router_success": false,
         "router_applied": false,
-        "router_final_source": "llm",
+        "router_final_source": "followup_guard",
         "router_failure_reason": "",
-        "llm_router_attempted": true,
-        "llm_router_success": true,
-        "llm_router_failure_reason": "",
-        "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 924
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_mt1-1",
@@ -202,7 +203,7 @@
         "confidence": 0.86,
         "source": "guard",
         "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
-        "updated_at": "2026-06-07T05:54:12.138260+00:00",
+        "updated_at": "2026-06-08T00:23:50.998253+00:00",
         "history": []
       }
     }
@@ -236,7 +237,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1396,
+  "elapsed_ms": 29,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -315,22 +316,34 @@
       "data": {
         "name": "recommend_shopping_products",
         "arguments": {
-          "query": "续航怎么样",
+          "query": "推荐一款手机。用户追问：续航怎么样",
           "budget": null,
           "category": "",
           "usage": [],
-          "preferences": {},
-          "product_ids": [],
+          "preferences": {
+            "followup_type": "product_detail"
+          },
+          "product_ids": [
+            "p_digital_016"
+          ],
           "catalog_scope": "ecommerce",
           "compare_with_previous": false,
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
-        "confidence": 0.8,
-        "reason": "路由器未提供原因。",
-        "source": "llm",
+        "confidence": 0.9,
+        "reason": "用户在上一轮推荐后追问商品详情。",
+        "source": "followup_guard",
         "routing_trace": {
           "runtime_mode": "balanced",
           "llm_provider": "openai_compatible",
@@ -395,101 +408,90 @@
             "ambiguity_penalty": 0.15,
             "confidence": 0.13000000000000003
           },
-          "llm": {
-            "name": "recommend_shopping_products",
-            "arguments": {
-              "query": "手机 续航怎么样",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.8,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 921,
-              "has_error": false,
-              "provider": "openai_compatible"
-            }
-          },
+          "llm": null,
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "手机 续航怎么样",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
+              "query": "推荐一款手机。用户追问：续航怎么样",
+              "product_ids": [
+                "p_digital_016"
+              ],
               "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
+              "preferences": {
+                "followup_type": "product_detail"
+              }
             },
-            "confidence": 0.8,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 921,
-              "has_error": false,
-              "provider": "openai_compatible"
+            "confidence": 0.9,
+            "reason": "用户在上一轮推荐后追问商品详情。",
+            "source": "followup_guard",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.25,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.0
+              },
+              "top_name": "recommend_shopping_products",
+              "top_score": 0.25,
+              "second_name": "generate_pc_build_plan",
+              "second_score": 0.0,
+              "margin": 0.25,
+              "margin_bonus": 0.03,
+              "ambiguity_penalty": 0.15,
+              "confidence": 0.13000000000000003
             },
-            "_llm_chosen": true
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.13000000000000003
           },
           "final": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "续航怎么样",
+              "query": "推荐一款手机。用户追问：续航怎么样",
               "budget": null,
               "category": "",
               "usage": [],
-              "preferences": {},
-              "product_ids": [],
+              "preferences": {
+                "followup_type": "product_detail"
+              },
+              "product_ids": [
+                "p_digital_016"
+              ],
               "catalog_scope": "ecommerce",
               "compare_with_previous": false,
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
-          "llm_skipped": false,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
-          "router_success": true,
+          "router_success": false,
           "router_applied": false,
-          "router_final_source": "llm",
+          "router_final_source": "followup_guard",
           "router_failure_reason": "",
-          "llm_router_attempted": true,
-          "llm_router_success": true,
-          "llm_router_failure_reason": "",
-          "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 924
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_mt1-1",
@@ -509,7 +511,7 @@
           "confidence": 0.86,
           "source": "guard",
           "reason": "后端兜底：用户明确切换到普通商品品类 手机。",
-          "updated_at": "2026-06-07T05:54:12.138260+00:00",
+          "updated_at": "2026-06-08T00:23:50.998253+00:00",
           "history": []
         }
       }
@@ -574,7 +576,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 8 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -588,28 +590,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.96"
+        "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.91"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.94"
+        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.89"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机；约 6999 CNY；评分 0.92"
+        "detail": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机；约 6999 CNY；评分 0.85"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机；约 8999 CNY；评分 0.81"
+        "detail": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机；约 8999 CNY；评分 0.79"
       }
     },
     {
@@ -661,8 +663,8 @@
             "stock_quantity": null,
             "rating_avg": 4.0,
             "review_count": 3,
-            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9620，参考价 6499-7099 CNY。 评价均分 4/5。 检索证据：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#profile 召回分 0.0320；小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#review 召回分 0.0268。",
-            "score": 0.962,
+            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9120，参考价 6499-7099 CNY。 评价均分 4/5。",
+            "score": 0.912,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_009_1"
           },
@@ -685,8 +687,8 @@
             "stock_quantity": null,
             "rating_avg": 3.5,
             "review_count": 6,
-            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.9369，参考价 6999-7799 CNY。 评价均分 3.5/5。 检索证据：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#profile 召回分 0.0315；OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#sku 召回分 0.0265。",
-            "score": 0.9369,
+            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.8870，参考价 6999-7799 CNY。 评价均分 3.5/5。",
+            "score": 0.887,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_015_1"
           },
@@ -709,8 +711,8 @@
             "stock_quantity": null,
             "rating_avg": 2.33,
             "review_count": 3,
-            "reason": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机 属于 数码电子/智能手机，综合分 0.9245，参考价 6999-7799 CNY。 评价均分 2.33/5。 检索证据：vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#profile 召回分 0.0328；vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#sku 召回分 0.0265；vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#review 召回分 0.0259。",
-            "score": 0.9245,
+            "reason": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机 属于 数码电子/智能手机，综合分 0.8506，参考价 6999-7799 CNY。 评价均分 2.33/5。",
+            "score": 0.8506,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_017_1"
           }
@@ -747,25 +749,25 @@
                 "product_id": "p_digital_009",
                 "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
                 "price": 6499.0,
-                "score": 0.962
+                "score": 0.912
               },
               {
                 "product_id": "p_digital_015",
                 "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                 "price": 6999.0,
-                "score": 0.9369
+                "score": 0.887
               },
               {
                 "product_id": "p_digital_017",
                 "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
                 "price": 6999.0,
-                "score": 0.9245
+                "score": 0.8506
               },
               {
                 "product_id": "p_digital_001",
                 "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
                 "price": 8999.0,
-                "score": 0.8143
+                "score": 0.7886
               }
             ]
           }
@@ -983,16 +985,16 @@
                     "偏爱小屏/轻便用户需谨慎"
                   ]
                 },
-                "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9620，参考价 6499-7099 CNY。 评价均分 4/5。 检索证据：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#profile 召回分 0.0320；小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#review 召回分 0.0268。",
+                "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9120，参考价 6499-7099 CNY。 评价均分 4/5。",
                 "score": {
-                  "scenario_match": 0.792,
-                  "attribute_match": 0.982,
+                  "scenario_match": 0.76,
+                  "attribute_match": 0.95,
                   "price_fit": 1.0,
                   "reputation_fit": 0.95,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.962,
+                  "final_score": 0.912,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 6499 CNY，已用于预算适配评分。",
                     "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
@@ -1000,12 +1002,11 @@
                     "用户评价均分 4/5，参与口碑评分。",
                     "商品提供 5 条官方 FAQ，可作为回答证据。",
                     "不适用提示：偏爱小屏/轻便用户需谨慎。",
-                    "商品知识证据命中：p_digital_009 召回分 0.0320; p_digital_009 召回分 0.0268。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_009::profile::0",
-                  "p_digital_009::review::3"
+                  "p_digital_009"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_009_1"
@@ -1062,9 +1063,9 @@
                 "role": "digital",
                 "product_id": "p_digital_009",
                 "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
-                "final_score": 0.962,
-                "scenario_match": 0.792,
-                "attribute_match": 0.982,
+                "final_score": 0.912,
+                "scenario_match": 0.76,
+                "attribute_match": 0.95,
                 "price_fit": 1.0,
                 "reputation_fit": 0.95,
                 "availability_fit": 0.95,
@@ -1077,7 +1078,7 @@
                   "用户评价均分 4/5，参与口碑评分。",
                   "商品提供 5 条官方 FAQ，可作为回答证据。",
                   "不适用提示：偏爱小屏/轻便用户需谨慎。",
-                  "商品知识证据命中：p_digital_009 召回分 0.0320; p_digital_009 召回分 0.0268。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1104,8 +1105,8 @@
             "stock_quantity": null,
             "rating_avg": 4.0,
             "review_count": 3,
-            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9620，参考价 6499-7099 CNY。 评价均分 4/5。 检索证据：小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#profile 召回分 0.0320；小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB#review 召回分 0.0268。",
-            "score": 0.962,
+            "reason": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.9120，参考价 6499-7099 CNY。 评价均分 4/5。",
+            "score": 0.912,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_009_1"
           },
@@ -1128,8 +1129,8 @@
             "stock_quantity": null,
             "rating_avg": 3.5,
             "review_count": 6,
-            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.9369，参考价 6999-7799 CNY。 评价均分 3.5/5。 检索证据：OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#profile 召回分 0.0315；OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机#sku 召回分 0.0265。",
-            "score": 0.9369,
+            "reason": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机 属于 数码电子/智能手机，综合分 0.8870，参考价 6999-7799 CNY。 评价均分 3.5/5。",
+            "score": 0.887,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_015_1"
           },
@@ -1152,8 +1153,8 @@
             "stock_quantity": null,
             "rating_avg": 2.33,
             "review_count": 3,
-            "reason": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机 属于 数码电子/智能手机，综合分 0.9245，参考价 6999-7799 CNY。 评价均分 2.33/5。 检索证据：vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#profile 召回分 0.0328；vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#sku 召回分 0.0265；vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机#review 召回分 0.0259。",
-            "score": 0.9245,
+            "reason": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机 属于 数码电子/智能手机，综合分 0.8506，参考价 6999-7799 CNY。 评价均分 2.33/5。",
+            "score": 0.8506,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_digital_017_1"
           }
@@ -1186,25 +1187,25 @@
                   "product_id": "p_digital_009",
                   "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
                   "price": 6499.0,
-                  "score": 0.962
+                  "score": 0.912
                 },
                 {
                   "product_id": "p_digital_015",
                   "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                   "price": 6999.0,
-                  "score": 0.9369
+                  "score": 0.887
                 },
                 {
                   "product_id": "p_digital_017",
                   "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
                   "price": 6999.0,
-                  "score": 0.9245
+                  "score": 0.8506
                 },
                 {
                   "product_id": "p_digital_001",
                   "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
                   "price": 8999.0,
-                  "score": 0.8143
+                  "score": 0.7886
                 }
               ]
             }
@@ -1229,8 +1230,8 @@
             "currency": "CNY",
             "rating_avg": 4.0,
             "review_count": 3,
-            "score": 0.962,
-            "strength": "综合分 0.9620，评分 4/5，FAQ 信息较完整。",
+            "score": 0.912,
+            "strength": "综合分 0.9120，评分 4/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
             "recommendation": true
           },
@@ -1249,8 +1250,8 @@
             "currency": "CNY",
             "rating_avg": 3.5,
             "review_count": 6,
-            "score": 0.9369,
-            "strength": "综合分 0.9369，评分 3.5/5，FAQ 信息较完整。",
+            "score": 0.887,
+            "strength": "综合分 0.8870，评分 3.5/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1269,8 +1270,8 @@
             "currency": "CNY",
             "rating_avg": 2.33,
             "review_count": 3,
-            "score": 0.9245,
-            "strength": "综合分 0.9245，评分 2.33/5，FAQ 信息较完整。",
+            "score": 0.8506,
+            "strength": "综合分 0.8506，评分 2.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1289,8 +1290,8 @@
             "currency": "CNY",
             "rating_avg": 3.33,
             "review_count": 3,
-            "score": 0.8143,
-            "strength": "综合分 0.8143，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.7886,
+            "strength": "综合分 0.7886，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -1381,9 +1382,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

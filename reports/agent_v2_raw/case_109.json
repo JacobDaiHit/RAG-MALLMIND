@@ -10,7 +10,7 @@
       "arguments": {
         "query": "推荐一款好用的洗面奶",
         "budget": null,
-        "category": "",
+        "category": "洗面奶",
         "usage": [],
         "preferences": {},
         "product_ids": [],
@@ -19,7 +19,17 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "好用"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -90,9 +100,9 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "好用的洗面奶",
+            "query": "推荐一款好用的洗面奶",
             "budget": null,
-            "category": "",
+            "category": "洗面奶",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -101,7 +111,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "好用"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +131,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1050,
+            "elapsed_ms": 1994,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -119,9 +139,9 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "好用的洗面奶",
+            "query": "推荐一款好用的洗面奶",
             "budget": null,
-            "category": "",
+            "category": "洗面奶",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -130,7 +150,17 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "好用"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +170,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1050,
+            "elapsed_ms": 1994,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -151,7 +181,7 @@
           "arguments": {
             "query": "推荐一款好用的洗面奶",
             "budget": null,
-            "category": "",
+            "category": "洗面奶",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -160,11 +190,21 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "好用"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -181,7 +221,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 1051
+        "llm_router_elapsed_ms": 1999
       },
       "topic_memory": {
         "topic_id": "",
@@ -229,7 +269,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1420,
+  "elapsed_ms": 2064,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -313,7 +353,7 @@
         "arguments": {
           "query": "推荐一款好用的洗面奶",
           "budget": null,
-          "category": "",
+          "category": "洗面奶",
           "usage": [],
           "preferences": {},
           "product_ids": [],
@@ -322,7 +362,17 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "好用"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -393,9 +443,9 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "好用的洗面奶",
+              "query": "推荐一款好用的洗面奶",
               "budget": null,
-              "category": "",
+              "category": "洗面奶",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -404,7 +454,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "好用"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -414,7 +474,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1050,
+              "elapsed_ms": 1994,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -422,9 +482,9 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "好用的洗面奶",
+              "query": "推荐一款好用的洗面奶",
               "budget": null,
-              "category": "",
+              "category": "洗面奶",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -433,7 +493,17 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "好用"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -443,7 +513,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1050,
+              "elapsed_ms": 1994,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -454,7 +524,7 @@
             "arguments": {
               "query": "推荐一款好用的洗面奶",
               "budget": null,
-              "category": "",
+              "category": "洗面奶",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -463,11 +533,21 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "好用"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -484,7 +564,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 1051
+          "llm_router_elapsed_ms": 1999
         },
         "topic_memory": {
           "topic_id": "",
@@ -566,7 +646,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 10 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -632,8 +712,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 3,
-            "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8859，参考价 52-69 CNY。 评价均分 3.33/5。 检索证据：珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#profile 召回分 0.0325；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#review 召回分 0.0273；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#sku 召回分 0.0271。",
-            "score": 0.8859,
+            "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8936，参考价 52-69 CNY。 评价均分 3.33/5。",
+            "score": 0.8936,
             "source": "single_product",
             "selected_sku_id": "s_p_beauty_011_1"
           }
@@ -651,7 +731,9 @@
           "price_max": null,
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "好用"
+          ],
           "excluded_terms": [],
           "preferences": []
         },
@@ -666,7 +748,7 @@
                 "product_id": "p_beauty_011",
                 "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
                 "price": 52.0,
-                "score": 0.8859
+                "score": 0.8936
               }
             ]
           }
@@ -712,7 +794,9 @@
           ],
           "brands": [],
           "excluded_brands": [],
-          "must_have_terms": [],
+          "must_have_terms": [
+            "好用"
+          ],
           "excluded_terms": [],
           "preferences": [],
           "occasion": "",
@@ -862,16 +946,16 @@
                     "极敏感人群需先试用"
                   ]
                 },
-                "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8859，参考价 52-69 CNY。 评价均分 3.33/5。 检索证据：珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#profile 召回分 0.0325；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#review 召回分 0.0273；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#sku 召回分 0.0271。",
+                "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8936，参考价 52-69 CNY。 评价均分 3.33/5。",
                 "score": {
-                  "scenario_match": 0.66,
-                  "attribute_match": 0.75,
+                  "scenario_match": 0.74,
+                  "attribute_match": 0.95,
                   "price_fit": 1.0,
                   "reputation_fit": 0.816,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.8859,
+                  "final_score": 0.8936,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 52 CNY，已用于预算适配评分。",
                     "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于用户关注的 美妆护肤 类目。",
@@ -879,13 +963,11 @@
                     "用户评价均分 3.33/5，参与口碑评分。",
                     "商品提供 6 条官方 FAQ，可作为回答证据。",
                     "不适用提示：极敏感人群需先试用。",
-                    "商品知识证据命中：p_beauty_011 召回分 0.0325; p_beauty_011 召回分 0.0273。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_beauty_011::profile::0",
-                  "p_beauty_011::review::3",
-                  "p_beauty_011::sku::1"
+                  "p_beauty_011"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_beauty_011_1"
@@ -942,9 +1024,9 @@
                 "role": "beauty",
                 "product_id": "p_beauty_011",
                 "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
-                "final_score": 0.8859,
-                "scenario_match": 0.66,
-                "attribute_match": 0.75,
+                "final_score": 0.8936,
+                "scenario_match": 0.74,
+                "attribute_match": 0.95,
                 "price_fit": 1.0,
                 "reputation_fit": 0.816,
                 "availability_fit": 0.95,
@@ -957,7 +1039,7 @@
                   "用户评价均分 3.33/5，参与口碑评分。",
                   "商品提供 6 条官方 FAQ，可作为回答证据。",
                   "不适用提示：极敏感人群需先试用。",
-                  "商品知识证据命中：p_beauty_011 召回分 0.0325; p_beauty_011 召回分 0.0273。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -984,8 +1066,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 3,
-            "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8859，参考价 52-69 CNY。 评价均分 3.33/5。 检索证据：珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#profile 召回分 0.0325；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#review 召回分 0.0273；珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g#sku 召回分 0.0271。",
-            "score": 0.8859,
+            "reason": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g 属于 美妆护肤/洁面，综合分 0.8936，参考价 52-69 CNY。 评价均分 3.33/5。",
+            "score": 0.8936,
             "source": "single_product",
             "selected_sku_id": "s_p_beauty_011_1"
           }
@@ -999,7 +1081,9 @@
             "price_max": null,
             "brands": [],
             "excluded_brands": [],
-            "must_have_terms": [],
+            "must_have_terms": [
+              "好用"
+            ],
             "excluded_terms": [],
             "preferences": []
           },
@@ -1014,7 +1098,7 @@
                   "product_id": "p_beauty_011",
                   "title": "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g",
                   "price": 52.0,
-                  "score": 0.8859
+                  "score": 0.8936
                 }
               ]
             }
@@ -1039,8 +1123,8 @@
             "currency": "CNY",
             "rating_avg": 3.33,
             "review_count": 3,
-            "score": 0.8859,
-            "strength": "综合分 0.8859，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.8936,
+            "strength": "综合分 0.8936，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：极敏感人群需先试用。",
             "recommendation": true
           }
@@ -1127,9 +1211,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

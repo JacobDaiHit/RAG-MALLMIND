@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.95,
       "reason": "路由器未提供原因。",
@@ -101,7 +109,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.95,
           "reason": "",
@@ -111,7 +127,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1007,
+            "elapsed_ms": 1017,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -130,7 +146,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.95,
           "reason": "",
@@ -140,7 +164,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1007,
+            "elapsed_ms": 1017,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,7 +184,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 1008
+        "llm_router_elapsed_ms": 1018
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,7 +235,7 @@
       }
     }
   ],
-  "text_response": "我很乐意为您创作一首诗，但作为您的智能导购助手，我更擅长帮您挑选心仪的商品。如果您在购物方面有任何疑问或需要推荐，请随时告诉我！",
+  "text_response": "我主要擅长帮您挑选和推荐商品，写诗可能不太在行呢。不过如果您有想买的礼物或者需要挑选的商品，我很乐意帮您出谋划策！",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
@@ -212,7 +244,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1901,
+  "elapsed_ms": 1757,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -302,7 +334,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.95,
         "reason": "路由器未提供原因。",
@@ -384,7 +424,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.95,
             "reason": "",
@@ -394,7 +442,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1007,
+              "elapsed_ms": 1017,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -413,7 +461,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.95,
             "reason": "",
@@ -423,7 +479,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1007,
+              "elapsed_ms": 1017,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -443,7 +499,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -464,7 +528,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 1008
+          "llm_router_elapsed_ms": 1018
         },
         "topic_memory": {
           "topic_id": "",
@@ -489,7 +553,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "我很乐意为您创作一首诗，但作为您的智能导购助手，我更擅长帮您挑选心仪的商品。如果您在购物方面有任何疑问或需要推荐，请随时告诉我！"
+        "text": "我主要擅长帮您挑选和推荐商品，写诗可能不太在行呢。不过如果您有想买的礼物或者需要挑选的商品，我很乐意帮您出谋划策！"
       }
     },
     {

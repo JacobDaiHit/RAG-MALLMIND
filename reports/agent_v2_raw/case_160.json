@@ -14,16 +14,11 @@
         "usage": [],
         "preferences": {},
         "product_ids": [],
-        "catalog_scope": "combined",
-        "compare_with_previous": false,
-        "quantity": 1,
-        "action": "add_to_cart",
-        "topic": "",
-        "need_full_pc_build": false
+        "catalog_scope": "combined"
       },
-      "confidence": 0.9,
-      "reason": "路由器未提供原因。",
-      "source": "llm",
+      "confidence": 0.8,
+      "reason": "本地规则识别到购物车操作。",
+      "source": "rules",
       "routing_trace": {
         "runtime_mode": "balanced",
         "llm_provider": "openai_compatible",
@@ -87,64 +82,40 @@
           "ambiguity_penalty": 0.0,
           "confidence": 0.83
         },
-        "llm": {
-          "name": "apply_cart_instruction",
-          "arguments": {
-            "query": "",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": 1,
-            "action": "add_to_cart",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 947,
-            "has_error": false,
-            "provider": "openai_compatible"
-          }
-        },
+        "llm": null,
         "chosen_before_guard": {
           "name": "apply_cart_instruction",
           "arguments": {
-            "query": "",
+            "query": "第一个不错，帮我加购物车",
             "budget": null,
             "category": "",
             "usage": [],
             "preferences": {},
             "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": 1,
-            "action": "add_to_cart",
-            "topic": "",
-            "need_full_pc_build": false
+            "catalog_scope": "ecommerce"
           },
-          "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 947,
-            "has_error": false,
-            "provider": "openai_compatible"
+          "confidence": 0.8,
+          "reason": "本地规则识别到购物车操作。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.75,
+              "general_chat": 0.0
+            },
+            "top_name": "apply_cart_instruction",
+            "top_score": 0.75,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.75,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.83
           },
-          "_llm_chosen": true
+          "local_rule_confidence": 0.8,
+          "route_score_confidence": 0.83
         },
         "final": {
           "name": "apply_cart_instruction",
@@ -155,33 +126,28 @@
             "usage": [],
             "preferences": {},
             "product_ids": [],
-            "catalog_scope": "combined",
-            "compare_with_previous": false,
-            "quantity": 1,
-            "action": "add_to_cart",
-            "topic": "",
-            "need_full_pc_build": false
+            "catalog_scope": "combined"
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
-        "llm_skipped": false,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
-        "router_success": true,
+        "router_success": false,
         "router_applied": false,
-        "router_final_source": "llm",
+        "router_final_source": "rules",
         "router_failure_reason": "",
-        "llm_router_attempted": true,
-        "llm_router_success": true,
-        "llm_router_failure_reason": "",
-        "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 950
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_mt3-1",
@@ -201,12 +167,12 @@
         "confidence": 0.86,
         "source": "guard",
         "reason": "后端兜底：用户明确切换到普通商品品类 食品。",
-        "updated_at": "2026-06-07T05:54:14.749317+00:00",
+        "updated_at": "2026-06-08T00:23:51.128710+00:00",
         "history": []
       }
     }
   ],
-  "text_response": "已将 良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 加入购物车，数量 1。",
+  "text_response": "已将 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 加入购物车，数量 1。",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
@@ -216,7 +182,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 985,
+  "elapsed_ms": 7,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -307,16 +273,11 @@
           "usage": [],
           "preferences": {},
           "product_ids": [],
-          "catalog_scope": "combined",
-          "compare_with_previous": false,
-          "quantity": 1,
-          "action": "add_to_cart",
-          "topic": "",
-          "need_full_pc_build": false
+          "catalog_scope": "combined"
         },
-        "confidence": 0.9,
-        "reason": "路由器未提供原因。",
-        "source": "llm",
+        "confidence": 0.8,
+        "reason": "本地规则识别到购物车操作。",
+        "source": "rules",
         "routing_trace": {
           "runtime_mode": "balanced",
           "llm_provider": "openai_compatible",
@@ -380,64 +341,40 @@
             "ambiguity_penalty": 0.0,
             "confidence": 0.83
           },
-          "llm": {
-            "name": "apply_cart_instruction",
-            "arguments": {
-              "query": "",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": 1,
-              "action": "add_to_cart",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 947,
-              "has_error": false,
-              "provider": "openai_compatible"
-            }
-          },
+          "llm": null,
           "chosen_before_guard": {
             "name": "apply_cart_instruction",
             "arguments": {
-              "query": "",
+              "query": "第一个不错，帮我加购物车",
               "budget": null,
               "category": "",
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": 1,
-              "action": "add_to_cart",
-              "topic": "",
-              "need_full_pc_build": false
+              "catalog_scope": "ecommerce"
             },
-            "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 947,
-              "has_error": false,
-              "provider": "openai_compatible"
+            "confidence": 0.8,
+            "reason": "本地规则识别到购物车操作。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.0,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.75,
+                "general_chat": 0.0
+              },
+              "top_name": "apply_cart_instruction",
+              "top_score": 0.75,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.0,
+              "margin": 0.75,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.83
             },
-            "_llm_chosen": true
+            "local_rule_confidence": 0.8,
+            "route_score_confidence": 0.83
           },
           "final": {
             "name": "apply_cart_instruction",
@@ -448,33 +385,28 @@
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "combined",
-              "compare_with_previous": false,
-              "quantity": 1,
-              "action": "add_to_cart",
-              "topic": "",
-              "need_full_pc_build": false
+              "catalog_scope": "combined"
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
-          "llm_skipped": false,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
-          "router_success": true,
+          "router_success": false,
           "router_applied": false,
-          "router_final_source": "llm",
+          "router_final_source": "rules",
           "router_failure_reason": "",
-          "llm_router_attempted": true,
-          "llm_router_success": true,
-          "llm_router_failure_reason": "",
-          "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 950
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_mt3-1",
@@ -494,7 +426,7 @@
           "confidence": 0.86,
           "source": "guard",
           "reason": "后端兜底：用户明确切换到普通商品品类 食品。",
-          "updated_at": "2026-06-07T05:54:14.749317+00:00",
+          "updated_at": "2026-06-08T00:23:51.128710+00:00",
           "history": []
         }
       }
@@ -502,7 +434,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "已将 良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 加入购物车，数量 1。"
+        "text": "已将 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 加入购物车，数量 1。"
       }
     },
     {
@@ -511,22 +443,22 @@
         "session_id": "v2_mt3",
         "action": "add",
         "messages": [
-          "已将 良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 加入购物车，数量 1。"
+          "已将 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 加入购物车，数量 1。"
         ],
         "cart": {
           "items": [
             {
-              "product_id": "p_food_010",
-              "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
-              "brand": "良品铺子",
-              "price": 32.0,
+              "product_id": "p_food_018",
+              "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
+              "brand": "李锦记",
+              "price": 9.0,
               "currency": "CNY",
               "quantity": 1,
-              "line_total": 32.0,
-              "image_url": "/product-images/p_food_010_live.jpg"
+              "line_total": 9.0,
+              "image_url": "/product-images/p_food_018_live.jpg"
             }
           ],
-          "total_price": 32.0,
+          "total_price": 9.0,
           "currency": "CNY",
           "count": 1
         }

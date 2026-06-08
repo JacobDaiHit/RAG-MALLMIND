@@ -10,7 +10,7 @@
       "arguments": {
         "query": "华为 FreeBuds Pro 5 降噪效果好不好",
         "budget": null,
-        "category": "",
+        "category": "耳机",
         "usage": [],
         "preferences": {
           "noise": "低噪音"
@@ -21,7 +21,20 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [
+          "华为"
+        ],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "FreeBuds Pro 5",
+          "降噪"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -94,9 +107,9 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "华为 FreeBuds Pro 5 降噪效果",
+            "query": "华为 FreeBuds Pro 5 降噪效果好不好",
             "budget": null,
-            "category": "",
+            "category": "耳机",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -105,7 +118,20 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "华为"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "FreeBuds Pro 5",
+              "降噪"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -115,7 +141,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1031,
+            "elapsed_ms": 1793,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -123,9 +149,9 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "华为 FreeBuds Pro 5 降噪效果",
+            "query": "华为 FreeBuds Pro 5 降噪效果好不好",
             "budget": null,
-            "category": "",
+            "category": "耳机",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -134,7 +160,20 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "华为"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "FreeBuds Pro 5",
+              "降噪"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -144,7 +183,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1031,
+            "elapsed_ms": 1793,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -155,7 +194,7 @@
           "arguments": {
             "query": "华为 FreeBuds Pro 5 降噪效果好不好",
             "budget": null,
-            "category": "",
+            "category": "耳机",
             "usage": [],
             "preferences": {
               "noise": "低噪音"
@@ -166,7 +205,20 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "华为"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "FreeBuds Pro 5",
+              "降噪"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -187,7 +239,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 1033
+        "llm_router_elapsed_ms": 1794
       },
       "topic_memory": {
         "topic_id": "",
@@ -210,7 +262,7 @@
     }
   ],
   "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-  "product_card_count": 2,
+  "product_card_count": 1,
   "events_received": [
     "runtime_mode",
     "tool_call",
@@ -219,7 +271,6 @@
     "progress",
     "progress",
     "intent_route",
-    "progress",
     "progress",
     "progress",
     "progress",
@@ -239,7 +290,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 2429,
+  "elapsed_ms": 1823,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -323,7 +374,7 @@
         "arguments": {
           "query": "华为 FreeBuds Pro 5 降噪效果好不好",
           "budget": null,
-          "category": "",
+          "category": "耳机",
           "usage": [],
           "preferences": {
             "noise": "低噪音"
@@ -334,7 +385,20 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [
+            "华为"
+          ],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "FreeBuds Pro 5",
+            "降噪"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -407,9 +471,9 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "华为 FreeBuds Pro 5 降噪效果",
+              "query": "华为 FreeBuds Pro 5 降噪效果好不好",
               "budget": null,
-              "category": "",
+              "category": "耳机",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -418,7 +482,20 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "华为"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "FreeBuds Pro 5",
+                "降噪"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -428,7 +505,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1031,
+              "elapsed_ms": 1793,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -436,9 +513,9 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "华为 FreeBuds Pro 5 降噪效果",
+              "query": "华为 FreeBuds Pro 5 降噪效果好不好",
               "budget": null,
-              "category": "",
+              "category": "耳机",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -447,7 +524,20 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "华为"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "FreeBuds Pro 5",
+                "降噪"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -457,7 +547,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1031,
+              "elapsed_ms": 1793,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -468,7 +558,7 @@
             "arguments": {
               "query": "华为 FreeBuds Pro 5 降噪效果好不好",
               "budget": null,
-              "category": "",
+              "category": "耳机",
               "usage": [],
               "preferences": {
                 "noise": "低噪音"
@@ -479,7 +569,20 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "华为"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "FreeBuds Pro 5",
+                "降噪"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -500,7 +603,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 1033
+          "llm_router_elapsed_ms": 1794
         },
         "topic_memory": {
           "topic_id": "",
@@ -583,7 +686,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 48 条证据，命中 32 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -597,21 +700,14 @@
       "event": "progress",
       "data": {
         "label": "数码电子筛选完成",
-        "detail": "原始 25 条，排除后 2 条，预算内命中 2 条。"
+        "detail": "原始 25 条，排除后 1 条，预算内命中 1 条。"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 1.00"
-      }
-    },
-    {
-      "event": "progress",
-      "data": {
-        "label": "命中候选 2",
-        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.89"
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.96"
       }
     },
     {
@@ -632,7 +728,7 @@
       "event": "progress",
       "data": {
         "label": "候选卡片已准备",
-        "detail": "将展示 2 张商品卡片，并保留可对比候选。"
+        "detail": "将展示 1 张商品卡片，并保留可对比候选。"
       }
     },
     {
@@ -677,34 +773,10 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 5,
-            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 1.0000，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#faq 召回分 0.0320；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0320。",
-            "score": 1.0,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9647，参考价 1499-1699 CNY。 评价均分 3/5。",
+            "score": 0.9647,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_007_1"
-          },
-          {
-            "product_id": "p_digital_018",
-            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "brand": "Apple 苹果",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "真无线耳机",
-            "price": 1799.0,
-            "price_range": [
-              1799.0,
-              2299.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_018_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.8948，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#review 召回分 0.0303；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0303；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#sku 召回分 0.0290。",
-            "score": 0.8948,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_018_1"
           }
         ]
       }
@@ -726,6 +798,7 @@
           ],
           "excluded_brands": [],
           "must_have_terms": [
+            "FreeBuds Pro 5",
             "降噪"
           ],
           "excluded_terms": [],
@@ -743,20 +816,14 @@
           },
           "digital": {
             "raw_count": 25,
-            "after_exclusion_count": 2,
-            "within_budget_count": 2,
+            "after_exclusion_count": 1,
+            "within_budget_count": 1,
             "top_candidates": [
               {
                 "product_id": "p_digital_007",
                 "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
                 "price": 1499.0,
-                "score": 1.0
-              },
-              {
-                "product_id": "p_digital_018",
-                "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-                "price": 1799.0,
-                "score": 0.8948
+                "score": 0.9647
               }
             ]
           },
@@ -823,6 +890,7 @@
           ],
           "excluded_brands": [],
           "must_have_terms": [
+            "FreeBuds Pro 5",
             "降噪"
           ],
           "excluded_terms": [],
@@ -1010,30 +1078,28 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 1.0000，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#faq 召回分 0.0320；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0320。",
+                "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9647，参考价 1499-1699 CNY。 评价均分 3/5。",
                 "score": {
-                  "scenario_match": 0.96,
+                  "scenario_match": 0.99,
                   "attribute_match": 1.0,
                   "price_fit": 1.0,
                   "reputation_fit": 0.85,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.88,
-                  "final_score": 1.0,
+                  "final_score": 0.9647,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 1499 CNY，已用于预算适配评分。",
                     "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于用户关注的 数码电子 类目。",
                     "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                     "用户评价均分 3/5，参与口碑评分。",
                     "商品提供 3 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_007 召回分 0.0323; p_digital_007 召回分 0.0320。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                     "用户更关注品质/效果，属性匹配与详情证据权重提高。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_007::profile::0",
-                  "p_digital_007::faq::2",
-                  "p_digital_007::review::3"
+                  "p_digital_007"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_007_1"
@@ -1089,8 +1155,8 @@
                 "role": "digital",
                 "product_id": "p_digital_007",
                 "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-                "final_score": 1.0,
-                "scenario_match": 0.96,
+                "final_score": 0.9647,
+                "scenario_match": 0.99,
                 "attribute_match": 1.0,
                 "price_fit": 1.0,
                 "reputation_fit": 0.85,
@@ -1103,7 +1169,7 @@
                   "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                   "用户评价均分 3/5，参与口碑评分。",
                   "商品提供 3 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_007 召回分 0.0323; p_digital_007 召回分 0.0320。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                   "用户更关注品质/效果，属性匹配与详情证据权重提高。"
                 ]
               }
@@ -1131,34 +1197,10 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 5,
-            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 1.0000，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0323；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#faq 召回分 0.0320；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0320。",
-            "score": 1.0,
+            "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.9647，参考价 1499-1699 CNY。 评价均分 3/5。",
+            "score": 0.9647,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_007_1"
-          },
-          {
-            "product_id": "p_digital_018",
-            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "brand": "Apple 苹果",
-            "category": "digital",
-            "category_name": "数码电子",
-            "sub_category": "真无线耳机",
-            "price": 1799.0,
-            "price_range": [
-              1799.0,
-              2299.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_digital_018_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.8948，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#review 召回分 0.0303；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0303；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#sku 召回分 0.0290。",
-            "score": 0.8948,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_digital_018_1"
           }
         ],
         "candidate_scope": {
@@ -1176,6 +1218,7 @@
             ],
             "excluded_brands": [],
             "must_have_terms": [
+              "FreeBuds Pro 5",
               "降噪"
             ],
             "excluded_terms": [],
@@ -1193,20 +1236,14 @@
             },
             "digital": {
               "raw_count": 25,
-              "after_exclusion_count": 2,
-              "within_budget_count": 2,
+              "after_exclusion_count": 1,
+              "within_budget_count": 1,
               "top_candidates": [
                 {
                   "product_id": "p_digital_007",
                   "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
                   "price": 1499.0,
-                  "score": 1.0
-                },
-                {
-                  "product_id": "p_digital_018",
-                  "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-                  "price": 1799.0,
-                  "score": 0.8948
+                  "score": 0.9647
                 }
               ]
             },
@@ -1244,30 +1281,10 @@
             "currency": "CNY",
             "rating_avg": 3.0,
             "review_count": 5,
-            "score": 1.0,
-            "strength": "综合分 1.0000，评分 3/5，FAQ 信息较完整。",
+            "score": 0.9647,
+            "strength": "综合分 0.9647，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
-          },
-          {
-            "rank": 2,
-            "product_id": "p_digital_018",
-            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "brand": "Apple 苹果",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 1799.0,
-            "price_range": [
-              1799.0,
-              2299.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "score": 0.8948,
-            "strength": "综合分 0.8948，评分 3/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
           }
         ],
         "intent_route": {
@@ -1333,12 +1350,10 @@
           ],
           "grounded_explanation": {
             "why_recommended": [
-              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-              "已从商品库候选中选择：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版"
+              "已从商品库候选中选择：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质"
             ],
             "evidence_points": [
-              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0",
-              "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 - 价格：1799.0"
+              "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 - 价格：1499.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1357,9 +1372,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 48,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

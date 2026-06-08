@@ -1,0 +1,727 @@
+[
+  {
+    "case_id": 114,
+    "query": "有没有防水的运动手表",
+    "expected": "recommend → 告知无运动手表或推荐替代",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "有没有防水的运动手表",
+      "budget": null,
+      "category": "运动手表",
+      "usage": [
+        "运动"
+      ],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [
+        "防水"
+      ],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [],
+    "card_count": 0,
+    "card_ids": [],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 120,
+    "query": "有没有好看的裙子",
+    "expected": "recommend → 告知无裙装或推荐替代",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "有没有好看的裙子",
+      "budget": null,
+      "category": "裙子",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [],
+    "card_count": 0,
+    "card_ids": [],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。请问您对裙子的风格（如连衣裙、半身裙）、场合（如日常、约会）或预算有具体要求吗？",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 125,
+    "query": "3000到5000之间的手机",
+    "expected": "recommend(budget=5000, 手机)+CARD",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "3000到5000之间的手机",
+      "budget": 5000.0,
+      "category": "手机",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": 3000.0,
+      "price_max": 5000.0,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_digital_016",
+        "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "brand": "OPPO",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "智能手机",
+        "price": 3299.0,
+        "price_range": [
+          3299.0,
+          3699.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_016_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 3,
+        "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8385，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0306。",
+        "score": 0.8385,
+        "source": "single_product",
+        "selected_sku_id": "s_p_digital_016_1"
+      }
+    ],
+    "card_count": 1,
+    "card_ids": [
+      "p_digital_016"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "follow_ups": [
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 126,
+    "query": "第二页的商品",
+    "expected": "追问是哪个品类的第二页",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "第二页的商品",
+      "budget": null,
+      "category": "",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_beauty_015",
+        "title": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+        "name": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g",
+        "brand": "完美日记",
+        "category": "beauty",
+        "category_name": "美妆护肤",
+        "sub_category": "唇釉",
+        "price": 120.0,
+        "price_range": [
+          120.0,
+          129.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_beauty_015_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 4.0,
+        "review_count": 3,
+        "reason": "完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g 属于 美妆护肤/唇釉，综合分 0.8505，参考价 120-129 CNY。 评价均分 4/5。 检索证据：完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g#review 召回分 0.0250；完美日记仿生膜精华唇釉丝绒哑光滋润显色持妆唇部彩妆3g#profile 召回分 0.0245。",
+        "score": 0.8505,
+        "source": "shopping_bundle",
+        "selected_sku_id": "s_p_beauty_015_1"
+      },
+      {
+        "product_id": "p_digital_005",
+        "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+        "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+        "brand": "华为",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "平板电脑",
+        "price": 4999.0,
+        "price_range": [
+          4999.0,
+          6399.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_005_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 4.0,
+        "review_count": 5,
+        "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8504，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#review 召回分 0.0258；华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0236。",
+        "score": 0.8504,
+        "source": "shopping_bundle",
+        "selected_sku_id": "s_p_digital_005_1"
+      },
+      {
+        "product_id": "p_clothes_006",
+        "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+        "name": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+        "brand": "Nike",
+        "category": "clothing",
+        "category_name": "服饰运动",
+        "sub_category": "运动长裤",
+        "price": 349.0,
+        "price_range": [
+          349.0,
+          359.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_clothes_006_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.83,
+        "review_count": 6,
+        "reason": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤 属于 服饰运动/运动长裤，综合分 0.8542，参考价 349-359 CNY。 评价均分 3.83/5。 检索证据：Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#review 召回分 0.0259；Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤#faq 召回分 0.0252。",
+        "score": 0.8542,
+        "source": "shopping_bundle",
+        "selected_sku_id": "s_p_clothes_006_1"
+      },
+      {
+        "product_id": "p_food_010",
+        "title": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+        "name": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
+        "brand": "良品铺子",
+        "category": "food",
+        "category_name": "食品饮料",
+        "sub_category": "坚果/零食",
+        "price": 32.0,
+        "price_range": [
+          32.0,
+          62.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_food_010_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.2,
+        "review_count": 5,
+        "reason": "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心 属于 食品饮料/坚果/零食，综合分 0.8391，参考价 32-62 CNY。 评价均分 3.2/5。 检索证据：良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#review 召回分 0.0232；良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心#profile 召回分 0.0228。",
+        "score": 0.8391,
+        "source": "shopping_bundle",
+        "selected_sku_id": "s_p_food_010_4"
+      }
+    ],
+    "card_count": 4,
+    "card_ids": [
+      "p_beauty_015",
+      "p_digital_005",
+      "p_clothes_006",
+      "p_food_010"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。请问您想看哪个品类的商品？",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "更想看美妆护肤、数码电子、服饰运动还是食品饮料？",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 138,
+    "query": "运动跑鞋怎么选择尺码",
+    "expected": "recommend → 跑鞋尺码建议",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "运动跑鞋怎么选择尺码",
+      "budget": null,
+      "category": "运动跑鞋",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_clothes_007",
+        "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+        "name": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
+        "brand": "耐克",
+        "category": "clothing",
+        "category_name": "服饰运动",
+        "sub_category": "跑步鞋",
+        "price": 899.0,
+        "price_range": [
+          899.0,
+          949.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_clothes_007_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.75,
+        "review_count": 4,
+        "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9590，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0306；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0289。",
+        "score": 0.959,
+        "source": "single_product",
+        "selected_sku_id": "s_p_clothes_007_1"
+      },
+      {
+        "product_id": "p_clothes_010",
+        "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+        "name": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+        "brand": "特步",
+        "category": "clothing",
+        "category_name": "服饰运动",
+        "sub_category": "跑步鞋",
+        "price": 999.0,
+        "price_range": [
+          999.0,
+          999.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_clothes_010_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.75,
+        "review_count": 4,
+        "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9400，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0313；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0270。",
+        "score": 0.94,
+        "source": "alternative_candidate",
+        "selected_sku_id": "s_p_clothes_010_1"
+      },
+      {
+        "product_id": "p_clothes_009",
+        "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+        "name": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
+        "brand": "HOKA",
+        "category": "clothing",
+        "category_name": "服饰运动",
+        "sub_category": "跑步鞋",
+        "price": 1099.0,
+        "price_range": [
+          1099.0,
+          1119.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_clothes_009_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 5,
+        "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.8855，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0269。",
+        "score": 0.8855,
+        "source": "alternative_candidate",
+        "selected_sku_id": "s_p_clothes_009_1"
+      }
+    ],
+    "card_count": 3,
+    "card_ids": [
+      "p_clothes_007",
+      "p_clothes_010",
+      "p_clothes_009"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为了更准确地推荐尺码，请问您的脚长是多少厘米？或者您平时穿哪个品牌的跑鞋尺码？",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 141,
+    "query": "这款耳机有差评吗",
+    "expected": "general_chat: 追问是哪款耳机（无上下文）",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "这款耳机有差评吗",
+      "budget": null,
+      "category": "耳机",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_digital_007",
+        "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+        "name": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+        "brand": "华为",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "真无线耳机",
+        "price": 1499.0,
+        "price_range": [
+          1499.0,
+          1699.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_007_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 5,
+        "reason": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 属于 数码电子/真无线耳机，综合分 0.8929，参考价 1499-1699 CNY。 评价均分 3/5。 检索证据：华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#profile 召回分 0.0325；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#sku 召回分 0.0278；华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质#review 召回分 0.0271。",
+        "score": 0.8929,
+        "source": "single_product",
+        "selected_sku_id": "s_p_digital_007_1"
+      },
+      {
+        "product_id": "p_digital_018",
+        "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+        "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+        "brand": "Apple 苹果",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "真无线耳机",
+        "price": 1799.0,
+        "price_range": [
+          1799.0,
+          2299.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_018_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 5,
+        "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.7828，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0318；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#review 召回分 0.0266；Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#sku 召回分 0.0263。",
+        "score": 0.7828,
+        "source": "alternative_candidate",
+        "selected_sku_id": "s_p_digital_018_1"
+      }
+    ],
+    "card_count": 2,
+    "card_ids": [
+      "p_digital_007",
+      "p_digital_018"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "guard",
+    "clarification": ""
+  },
+  {
+    "case_id": 147,
+    "query": "推荐耳机，不要华为的，500到2000之间",
+    "expected": "recommend(exclude=华为, 耳机, budget)+CARD",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "推荐耳机，不要华为的，500到2000之间",
+      "budget": 2000.0,
+      "category": "耳机",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [],
+      "exclude_brands": [
+        "华为"
+      ],
+      "sort_order": null,
+      "price_min": 500.0,
+      "price_max": 2000.0,
+      "must_have_terms": [],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_digital_018",
+        "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+        "name": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+        "brand": "Apple 苹果",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "真无线耳机",
+        "price": 1799.0,
+        "price_range": [
+          1799.0,
+          2299.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_018_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 5,
+        "reason": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 属于 数码电子/真无线耳机，综合分 0.6586，参考价 1799-2299 CNY。 评价均分 3/5。 检索证据：Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版#profile 召回分 0.0308。",
+        "score": 0.6586,
+        "source": "single_product",
+        "selected_sku_id": "s_p_digital_018_1"
+      }
+    ],
+    "card_count": 1,
+    "card_ids": [
+      "p_digital_018"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版，参考价约 1799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "follow_ups": [
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 166,
+    "query": "iPhone 17 Pro 只要 999 对吧？",
+    "expected": "纠正价格：实际 8999 元",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "iPhone 17 Pro 只要 999 对吧？",
+      "budget": null,
+      "category": "手机",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [
+        "Apple"
+      ],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [
+        "iPhone 17 Pro"
+      ],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [],
+    "card_count": 0,
+    "card_ids": [],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+    "follow_ups": [
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  },
+  {
+    "case_id": 167,
+    "query": "三星Galaxy S30怎么样",
+    "expected": "诚实告知没有该商品",
+    "tool": "recommend_shopping_products",
+    "tool_args": {
+      "query": "三星Galaxy S30怎么样",
+      "budget": null,
+      "category": "手机",
+      "usage": [],
+      "preferences": {},
+      "product_ids": [],
+      "catalog_scope": "ecommerce",
+      "compare_with_previous": false,
+      "quantity": null,
+      "action": "",
+      "topic": "",
+      "need_full_pc_build": false,
+      "brands": [
+        "三星"
+      ],
+      "exclude_brands": [],
+      "sort_order": null,
+      "price_min": null,
+      "price_max": null,
+      "must_have_terms": [
+        "Galaxy S30"
+      ],
+      "excluded_terms": [],
+      "target_sub_categories": []
+    },
+    "cards": [
+      {
+        "product_id": "p_digital_016",
+        "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "brand": "OPPO",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "智能手机",
+        "price": 3299.0,
+        "price_range": [
+          3299.0,
+          3699.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_016_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 3.0,
+        "review_count": 3,
+        "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8307，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0284。",
+        "score": 0.8307,
+        "source": "single_product",
+        "selected_sku_id": "s_p_digital_016_1"
+      },
+      {
+        "product_id": "p_digital_005",
+        "title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+        "name": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
+        "brand": "华为",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "平板电脑",
+        "price": 4999.0,
+        "price_range": [
+          4999.0,
+          6399.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_005_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 4.0,
+        "review_count": 5,
+        "reason": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8246，参考价 4999-6399 CNY。 评价均分 4/5。 检索证据：华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑#profile 召回分 0.0260。",
+        "score": 0.8246,
+        "source": "alternative_candidate",
+        "selected_sku_id": "s_p_digital_005_1"
+      },
+      {
+        "product_id": "p_digital_021",
+        "title": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+        "name": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑",
+        "brand": "华为",
+        "category": "digital",
+        "category_name": "数码电子",
+        "sub_category": "平板电脑",
+        "price": 5199.0,
+        "price_range": [
+          5199.0,
+          7299.0
+        ],
+        "currency": "CNY",
+        "image_url": "/product-images/p_digital_021_live.jpg",
+        "stock_status": "available_for_demo",
+        "stock_quantity": null,
+        "rating_avg": 4.0,
+        "review_count": 3,
+        "reason": "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑 属于 数码电子/平板电脑，综合分 0.8135，参考价 5199-7299 CNY。 评价均分 4/5。 检索证据：华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑#profile 召回分 0.0294。",
+        "score": 0.8135,
+        "source": "alternative_candidate",
+        "selected_sku_id": "s_p_digital_021_1"
+      }
+    ],
+    "card_count": 3,
+    "card_ids": [
+      "p_digital_016",
+      "p_digital_005",
+      "p_digital_021"
+    ],
+    "full_text": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "follow_ups": [
+      "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
+      "是否有明确不要的品牌、成分、颜色、口味或功能？",
+      "更看重价格、口碑、功效/参数，还是搭配完整度？"
+    ],
+    "routing_source": "llm",
+    "clarification": ""
+  }
+]

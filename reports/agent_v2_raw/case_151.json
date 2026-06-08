@@ -6,7 +6,7 @@
   "runtime_mode": "balanced",
   "tool_calls": [
     {
-      "name": "apply_cart_instruction",
+      "name": "general_chat",
       "arguments": {
         "query": "把第一个去掉",
         "budget": null,
@@ -14,16 +14,24 @@
         "usage": [],
         "preferences": {},
         "product_ids": [],
-        "catalog_scope": "combined",
+        "catalog_scope": "ecommerce",
         "compare_with_previous": false,
-        "quantity": 1,
-        "action": "remove_first",
+        "quantity": null,
+        "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
-      "confidence": 0.95,
-      "reason": "路由器未提供原因。",
-      "source": "llm",
+      "confidence": 0.9,
+      "reason": "后端兜底：非购物执行问题走 general_chat。",
+      "source": "guard",
       "routing_trace": {
         "runtime_mode": "balanced",
         "llm_provider": "openai_compatible",
@@ -87,67 +95,9 @@
           "ambiguity_penalty": 0.0,
           "confidence": 0.88
         },
-        "llm": {
-          "name": "apply_cart_instruction",
-          "arguments": {
-            "query": "",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": 1,
-            "action": "remove_first",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.95,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 878,
-            "has_error": false,
-            "provider": "openai_compatible"
-          }
-        },
+        "llm": null,
         "chosen_before_guard": {
-          "name": "apply_cart_instruction",
-          "arguments": {
-            "query": "",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": 1,
-            "action": "remove_first",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.95,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 878,
-            "has_error": false,
-            "provider": "openai_compatible"
-          },
-          "_llm_chosen": true
-        },
-        "final": {
-          "name": "apply_cart_instruction",
+          "name": "general_chat",
           "arguments": {
             "query": "把第一个去掉",
             "budget": null,
@@ -155,33 +105,75 @@
             "usage": [],
             "preferences": {},
             "product_ids": [],
-            "catalog_scope": "combined",
+            "catalog_scope": "ecommerce"
+          },
+          "confidence": 0.9,
+          "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.8
+            },
+            "top_name": "general_chat",
+            "top_score": 0.8,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
+          },
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
+        },
+        "final": {
+          "name": "general_chat",
+          "arguments": {
+            "query": "把第一个去掉",
+            "budget": null,
+            "category": "",
+            "usage": [],
+            "preferences": {},
+            "product_ids": [],
+            "catalog_scope": "ecommerce",
             "compare_with_previous": false,
-            "quantity": 1,
-            "action": "remove_first",
+            "quantity": null,
+            "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
-        "llm_skipped": false,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped": true,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
-        "router_success": true,
+        "router_success": false,
         "router_applied": false,
-        "router_final_source": "llm",
+        "router_final_source": "guard",
         "router_failure_reason": "",
-        "llm_router_attempted": true,
-        "llm_router_success": true,
-        "llm_router_failure_reason": "",
-        "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 880
+        "llm_router_attempted": false,
+        "llm_router_success": false,
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_cart-1",
@@ -198,23 +190,23 @@
           "product_ids": [],
           "catalog_scope": "combined"
         },
-        "confidence": 0.95,
-        "source": "llm",
-        "reason": "路由器未提供原因。",
-        "updated_at": "2026-06-07T05:54:08.479500+00:00",
+        "confidence": 0.85,
+        "source": "guard",
+        "reason": "后端兜底：购物车指令优先。",
+        "updated_at": "2026-06-08T00:23:49.122373+00:00",
         "history": [
           {
-            "topic_type": "cart",
-            "subject": "购物车",
-            "route": "apply_cart_instruction",
+            "topic_type": "ecommerce_recommendation",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "recommend_shopping_products",
             "slots": {
               "budget": null,
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "combined"
+              "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:04.795431+00:00"
+            "updated_at": "2026-06-08T00:23:49.013699+00:00"
           },
           {
             "topic_type": "ecommerce_recommendation",
@@ -229,23 +221,22 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:07.423720+00:00"
+            "updated_at": "2026-06-08T00:23:49.074330+00:00"
           }
         ]
       }
     }
   ],
-  "text_response": "已将 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 加入购物车，数量 1。",
+  "text_response": "好的，没问题！不过我有点好奇，您是想去掉购物车里的第一件商品，还是想调整刚才推荐列表里的第一个选项呢？您可以直接告诉我，我来帮您处理！",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
     "tool_call",
     "delta",
-    "cart",
     "done"
   ],
   "error": "",
-  "elapsed_ms": 927,
+  "elapsed_ms": 819,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -325,7 +316,7 @@
     {
       "event": "tool_call",
       "data": {
-        "name": "apply_cart_instruction",
+        "name": "general_chat",
         "arguments": {
           "query": "把第一个去掉",
           "budget": null,
@@ -333,16 +324,24 @@
           "usage": [],
           "preferences": {},
           "product_ids": [],
-          "catalog_scope": "combined",
+          "catalog_scope": "ecommerce",
           "compare_with_previous": false,
-          "quantity": 1,
-          "action": "remove_first",
+          "quantity": null,
+          "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
-        "confidence": 0.95,
-        "reason": "路由器未提供原因。",
-        "source": "llm",
+        "confidence": 0.9,
+        "reason": "后端兜底：非购物执行问题走 general_chat。",
+        "source": "guard",
         "routing_trace": {
           "runtime_mode": "balanced",
           "llm_provider": "openai_compatible",
@@ -406,67 +405,9 @@
             "ambiguity_penalty": 0.0,
             "confidence": 0.88
           },
-          "llm": {
-            "name": "apply_cart_instruction",
-            "arguments": {
-              "query": "",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": 1,
-              "action": "remove_first",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.95,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 878,
-              "has_error": false,
-              "provider": "openai_compatible"
-            }
-          },
+          "llm": null,
           "chosen_before_guard": {
-            "name": "apply_cart_instruction",
-            "arguments": {
-              "query": "",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": 1,
-              "action": "remove_first",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.95,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 878,
-              "has_error": false,
-              "provider": "openai_compatible"
-            },
-            "_llm_chosen": true
-          },
-          "final": {
-            "name": "apply_cart_instruction",
+            "name": "general_chat",
             "arguments": {
               "query": "把第一个去掉",
               "budget": null,
@@ -474,33 +415,75 @@
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "combined",
+              "catalog_scope": "ecommerce"
+            },
+            "confidence": 0.9,
+            "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.0,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.8
+              },
+              "top_name": "general_chat",
+              "top_score": 0.8,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
+            },
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
+          },
+          "final": {
+            "name": "general_chat",
+            "arguments": {
+              "query": "把第一个去掉",
+              "budget": null,
+              "category": "",
+              "usage": [],
+              "preferences": {},
+              "product_ids": [],
+              "catalog_scope": "ecommerce",
               "compare_with_previous": false,
-              "quantity": 1,
-              "action": "remove_first",
+              "quantity": null,
+              "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
-          "llm_skipped": false,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped": true,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
-          "router_success": true,
+          "router_success": false,
           "router_applied": false,
-          "router_final_source": "llm",
+          "router_final_source": "guard",
           "router_failure_reason": "",
-          "llm_router_attempted": true,
-          "llm_router_success": true,
-          "llm_router_failure_reason": "",
-          "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 880
+          "llm_router_attempted": false,
+          "llm_router_success": false,
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_cart-1",
@@ -517,23 +500,23 @@
             "product_ids": [],
             "catalog_scope": "combined"
           },
-          "confidence": 0.95,
-          "source": "llm",
-          "reason": "路由器未提供原因。",
-          "updated_at": "2026-06-07T05:54:08.479500+00:00",
+          "confidence": 0.85,
+          "source": "guard",
+          "reason": "后端兜底：购物车指令优先。",
+          "updated_at": "2026-06-08T00:23:49.122373+00:00",
           "history": [
             {
-              "topic_type": "cart",
-              "subject": "购物车",
-              "route": "apply_cart_instruction",
+              "topic_type": "ecommerce_recommendation",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "recommend_shopping_products",
               "slots": {
                 "budget": null,
                 "usage": [],
                 "preferences": {},
                 "product_ids": [],
-                "catalog_scope": "combined"
+                "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:04.795431+00:00"
+              "updated_at": "2026-06-08T00:23:49.013699+00:00"
             },
             {
               "topic_type": "ecommerce_recommendation",
@@ -548,7 +531,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:07.423720+00:00"
+              "updated_at": "2026-06-08T00:23:49.074330+00:00"
             }
           ]
         }
@@ -557,64 +540,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "已将 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 加入购物车，数量 1。"
-      }
-    },
-    {
-      "event": "cart",
-      "data": {
-        "session_id": "v2_cart",
-        "action": "add",
-        "messages": [
-          "已将 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml 加入购物车，数量 1。"
-        ],
-        "cart": {
-          "items": [
-            {
-              "product_id": "p_beauty_005",
-              "title": "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml",
-              "brand": "科颜氏",
-              "price": 520.0,
-              "currency": "CNY",
-              "quantity": 3,
-              "line_total": 1560.0,
-              "image_url": "/product-images/p_beauty_005_live.jpg"
-            },
-            {
-              "product_id": "p_digital_007",
-              "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-              "brand": "华为",
-              "price": 1499.0,
-              "currency": "CNY",
-              "quantity": 1,
-              "line_total": 1499.0,
-              "image_url": "/product-images/p_digital_007_live.jpg"
-            },
-            {
-              "product_id": "p_clothes_006",
-              "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-              "brand": "Nike",
-              "price": 349.0,
-              "currency": "CNY",
-              "quantity": 1,
-              "line_total": 349.0,
-              "image_url": "/product-images/p_clothes_006_live.jpg"
-            },
-            {
-              "product_id": "p_food_023",
-              "title": "雀巢 金牌 冻干速溶咖啡 100g 瓶装 黑咖啡",
-              "brand": "雀巢",
-              "price": 36.0,
-              "currency": "CNY",
-              "quantity": 1,
-              "line_total": 36.0,
-              "image_url": "/product-images/p_food_023_live.jpg"
-            }
-          ],
-          "total_price": 3444.0,
-          "currency": "CNY",
-          "count": 6
-        }
+        "text": "好的，没问题！不过我有点好奇，您是想去掉购物车里的第一件商品，还是想调整刚才推荐列表里的第一个选项呢？您可以直接告诉我，我来帮您处理！"
       }
     },
     {

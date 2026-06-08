@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.85,
       "reason": "后端兜底：购物车指令优先。",
@@ -136,28 +144,36 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": true,
         "arguments_changed": true,
         "guard_overridden": true,
         "llm_skipped": true,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
         "router_success": false,
         "router_applied": false,
         "router_final_source": "guard",
-        "router_failure_reason": "llm_provider_error",
-        "llm_router_attempted": true,
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
         "llm_router_success": false,
-        "llm_router_failure_reason": "llm_provider_error",
-        "llm_router_error_class": "provider_error",
-        "llm_router_elapsed_ms": 216
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_cart-1",
@@ -178,20 +194,20 @@
         "confidence": 0.8,
         "source": "rules",
         "reason": "本地规则识别到购物车操作。",
-        "updated_at": "2026-06-07T05:54:10.637085+00:00",
+        "updated_at": "2026-06-08T00:23:50.017127+00:00",
         "history": [
           {
-            "topic_type": "cart",
-            "subject": "购物车",
-            "route": "apply_cart_instruction",
+            "topic_type": "ecommerce_recommendation",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "recommend_shopping_products",
             "slots": {
               "budget": null,
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "combined"
+              "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:04.795431+00:00"
+            "updated_at": "2026-06-08T00:23:49.013699+00:00"
           },
           {
             "topic_type": "ecommerce_recommendation",
@@ -206,7 +222,7 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:07.423720+00:00"
+            "updated_at": "2026-06-08T00:23:49.074330+00:00"
           },
           {
             "topic_type": "cart",
@@ -221,12 +237,12 @@
               "product_ids": [],
               "catalog_scope": "combined"
             },
-            "updated_at": "2026-06-07T05:54:08.479500+00:00"
+            "updated_at": "2026-06-08T00:23:49.122373+00:00"
           },
           {
-            "topic_type": "cart",
+            "topic_type": "general_chat",
             "subject": "我要买华为Pura 90 Pro，黑色的",
-            "route": "apply_cart_instruction",
+            "route": "general_chat",
             "slots": {
               "budget": null,
               "usage": [],
@@ -234,9 +250,9 @@
                 "color": "黑色"
               },
               "product_ids": [],
-              "catalog_scope": "combined"
+              "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:09.413427+00:00"
+            "updated_at": "2026-06-08T00:23:49.151997+00:00"
           },
           {
             "topic_type": "ecommerce_recommendation",
@@ -252,7 +268,7 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:10.333213+00:00"
+            "updated_at": "2026-06-08T00:23:49.971764+00:00"
           }
         ]
       }
@@ -268,7 +284,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 244,
+  "elapsed_ms": 7,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -361,7 +377,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.85,
         "reason": "后端兜底：购物车指令优先。",
@@ -478,28 +502,36 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": true,
           "arguments_changed": true,
           "guard_overridden": true,
           "llm_skipped": true,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
           "router_success": false,
           "router_applied": false,
           "router_final_source": "guard",
-          "router_failure_reason": "llm_provider_error",
-          "llm_router_attempted": true,
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
           "llm_router_success": false,
-          "llm_router_failure_reason": "llm_provider_error",
-          "llm_router_error_class": "provider_error",
-          "llm_router_elapsed_ms": 216
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_cart-1",
@@ -520,20 +552,20 @@
           "confidence": 0.8,
           "source": "rules",
           "reason": "本地规则识别到购物车操作。",
-          "updated_at": "2026-06-07T05:54:10.637085+00:00",
+          "updated_at": "2026-06-08T00:23:50.017127+00:00",
           "history": [
             {
-              "topic_type": "cart",
-              "subject": "购物车",
-              "route": "apply_cart_instruction",
+              "topic_type": "ecommerce_recommendation",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "recommend_shopping_products",
               "slots": {
                 "budget": null,
                 "usage": [],
                 "preferences": {},
                 "product_ids": [],
-                "catalog_scope": "combined"
+                "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:04.795431+00:00"
+              "updated_at": "2026-06-08T00:23:49.013699+00:00"
             },
             {
               "topic_type": "ecommerce_recommendation",
@@ -548,7 +580,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:07.423720+00:00"
+              "updated_at": "2026-06-08T00:23:49.074330+00:00"
             },
             {
               "topic_type": "cart",
@@ -563,12 +595,12 @@
                 "product_ids": [],
                 "catalog_scope": "combined"
               },
-              "updated_at": "2026-06-07T05:54:08.479500+00:00"
+              "updated_at": "2026-06-08T00:23:49.122373+00:00"
             },
             {
-              "topic_type": "cart",
+              "topic_type": "general_chat",
               "subject": "我要买华为Pura 90 Pro，黑色的",
-              "route": "apply_cart_instruction",
+              "route": "general_chat",
               "slots": {
                 "budget": null,
                 "usage": [],
@@ -576,9 +608,9 @@
                   "color": "黑色"
                 },
                 "product_ids": [],
-                "catalog_scope": "combined"
+                "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:09.413427+00:00"
+              "updated_at": "2026-06-08T00:23:49.151997+00:00"
             },
             {
               "topic_type": "ecommerce_recommendation",
@@ -594,7 +626,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:10.333213+00:00"
+              "updated_at": "2026-06-08T00:23:49.971764+00:00"
             }
           ]
         }

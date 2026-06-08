@@ -11,7 +11,10 @@
         "query": "夏天穿什么衣服比较凉快",
         "budget": null,
         "category": "服装",
-        "usage": [],
+        "usage": [
+          "夏季",
+          "透气"
+        ],
         "preferences": {},
         "product_ids": [],
         "catalog_scope": "ecommerce",
@@ -19,7 +22,18 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "夏天",
+          "凉快"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -91,10 +105,13 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "夏天凉快衣服",
+            "query": "夏天穿什么衣服比较凉快",
             "budget": null,
             "category": "服装",
-            "usage": [],
+            "usage": [
+              "夏季",
+              "透气"
+            ],
             "preferences": {},
             "product_ids": [],
             "catalog_scope": "ecommerce",
@@ -102,7 +119,18 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "夏天",
+              "凉快"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -112,7 +140,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1009,
+            "elapsed_ms": 1519,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -120,10 +148,13 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "夏天凉快衣服",
+            "query": "夏天穿什么衣服比较凉快",
             "budget": null,
             "category": "服装",
-            "usage": [],
+            "usage": [
+              "夏季",
+              "透气"
+            ],
             "preferences": {},
             "product_ids": [],
             "catalog_scope": "ecommerce",
@@ -131,7 +162,18 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "夏天",
+              "凉快"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -141,7 +183,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 1009,
+            "elapsed_ms": 1519,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -153,7 +195,10 @@
             "query": "夏天穿什么衣服比较凉快",
             "budget": null,
             "category": "服装",
-            "usage": [],
+            "usage": [
+              "夏季",
+              "透气"
+            ],
             "preferences": {},
             "product_ids": [],
             "catalog_scope": "ecommerce",
@@ -161,11 +206,22 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "夏天",
+              "凉快"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -182,7 +238,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 1010
+        "llm_router_elapsed_ms": 1520
       },
       "topic_memory": {
         "topic_id": "",
@@ -234,7 +290,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 3710,
+  "elapsed_ms": 3816,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -319,7 +375,10 @@
           "query": "夏天穿什么衣服比较凉快",
           "budget": null,
           "category": "服装",
-          "usage": [],
+          "usage": [
+            "夏季",
+            "透气"
+          ],
           "preferences": {},
           "product_ids": [],
           "catalog_scope": "ecommerce",
@@ -327,7 +386,18 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "夏天",
+            "凉快"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -399,10 +469,13 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "夏天凉快衣服",
+              "query": "夏天穿什么衣服比较凉快",
               "budget": null,
               "category": "服装",
-              "usage": [],
+              "usage": [
+                "夏季",
+                "透气"
+              ],
               "preferences": {},
               "product_ids": [],
               "catalog_scope": "ecommerce",
@@ -410,7 +483,18 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "夏天",
+                "凉快"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -420,7 +504,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1009,
+              "elapsed_ms": 1519,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -428,10 +512,13 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "夏天凉快衣服",
+              "query": "夏天穿什么衣服比较凉快",
               "budget": null,
               "category": "服装",
-              "usage": [],
+              "usage": [
+                "夏季",
+                "透气"
+              ],
               "preferences": {},
               "product_ids": [],
               "catalog_scope": "ecommerce",
@@ -439,7 +526,18 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "夏天",
+                "凉快"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -449,7 +547,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 1009,
+              "elapsed_ms": 1519,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -461,7 +559,10 @@
               "query": "夏天穿什么衣服比较凉快",
               "budget": null,
               "category": "服装",
-              "usage": [],
+              "usage": [
+                "夏季",
+                "透气"
+              ],
               "preferences": {},
               "product_ids": [],
               "catalog_scope": "ecommerce",
@@ -469,11 +570,22 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "夏天",
+                "凉快"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -490,7 +602,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 1010
+          "llm_router_elapsed_ms": 1520
         },
         "topic_memory": {
           "topic_id": "",
@@ -572,7 +684,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 7 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -586,28 +698,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.94"
+        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.87"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.92"
+        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.86"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.91"
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.85"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣；约 129 CNY；评分 0.89"
+        "detail": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣；约 129 CNY；评分 0.84"
       }
     },
     {
@@ -665,8 +777,8 @@
             "stock_quantity": null,
             "rating_avg": 3.8,
             "review_count": 5,
-            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.9442，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#profile 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#faq 召回分 0.0280。",
-            "score": 0.9442,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8720，参考价 99-99 CNY。 评价均分 3.8/5。",
+            "score": 0.872,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_001_1"
           },
@@ -689,8 +801,8 @@
             "stock_quantity": null,
             "rating_avg": 2.83,
             "review_count": 6,
-            "reason": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣 属于 服饰运动/速干T恤，综合分 0.9166，参考价 79-79 CNY。 评价均分 2.83/5。 检索证据：迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣#review 召回分 0.0315；迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣#profile 召回分 0.0253。",
-            "score": 0.9166,
+            "reason": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣 属于 服饰运动/速干T恤，综合分 0.8611，参考价 79-79 CNY。 评价均分 2.83/5。",
+            "score": 0.8611,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_020_1"
           },
@@ -713,8 +825,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 6,
-            "reason": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤 属于 服饰运动/运动短裤，综合分 0.9092，参考价 149-159 CNY。 评价均分 3.33/5。 检索证据：优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤#profile 召回分 0.0310；优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤#review 召回分 0.0303。",
-            "score": 0.9092,
+            "reason": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤 属于 服饰运动/运动短裤，综合分 0.8537，参考价 149-159 CNY。 评价均分 3.33/5。",
+            "score": 0.8537,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_023_1"
           },
@@ -737,8 +849,8 @@
             "stock_quantity": null,
             "rating_avg": 2.75,
             "review_count": 4,
-            "reason": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣 属于 服饰运动/短袖T恤，综合分 0.8909，参考价 129-129 CNY。 评价均分 2.75/5。 检索证据：优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣#profile 召回分 0.0282；优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣#review 召回分 0.0279。",
-            "score": 0.8909,
+            "reason": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣 属于 服饰运动/短袖T恤，综合分 0.8356，参考价 129-129 CNY。 评价均分 2.75/5。",
+            "score": 0.8356,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_002_1"
           },
@@ -761,8 +873,8 @@
             "stock_quantity": null,
             "rating_avg": 3.17,
             "review_count": 6,
-            "reason": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣 属于 服饰运动/短袖T恤，综合分 0.8341，参考价 199-199 CNY。 评价均分 3.17/5。 检索证据：Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣#profile 召回分 0.0265。",
-            "score": 0.8341,
+            "reason": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣 属于 服饰运动/短袖T恤，综合分 0.8156，参考价 199-199 CNY。 评价均分 3.17/5。",
+            "score": 0.8156,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_003_1"
           }
@@ -786,7 +898,6 @@
           ],
           "excluded_terms": [],
           "preferences": [
-            "夏天",
             "凉快"
           ]
         },
@@ -801,31 +912,31 @@
                 "product_id": "p_clothes_001",
                 "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
                 "price": 99.0,
-                "score": 0.9442
+                "score": 0.872
               },
               {
                 "product_id": "p_clothes_020",
                 "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
                 "price": 79.0,
-                "score": 0.9166
+                "score": 0.8611
               },
               {
                 "product_id": "p_clothes_023",
                 "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
                 "price": 149.0,
-                "score": 0.9092
+                "score": 0.8537
               },
               {
                 "product_id": "p_clothes_002",
                 "title": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣",
                 "price": 129.0,
-                "score": 0.8909
+                "score": 0.8356
               },
               {
                 "product_id": "p_clothes_003",
                 "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
                 "price": 199.0,
-                "score": 0.8341
+                "score": 0.8156
               }
             ]
           }
@@ -854,8 +965,8 @@
             "currency": "CNY",
             "rating_avg": 3.8,
             "review_count": 5,
-            "score": 0.9442,
-            "strength": "综合分 0.9442，评分 3.8/5，FAQ 信息较完整。",
+            "score": 0.872,
+            "strength": "综合分 0.8720，评分 3.8/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
@@ -874,8 +985,8 @@
             "currency": "CNY",
             "rating_avg": 2.83,
             "review_count": 6,
-            "score": 0.9166,
-            "strength": "综合分 0.9166，评分 2.83/5，FAQ 信息较完整。",
+            "score": 0.8611,
+            "strength": "综合分 0.8611，评分 2.83/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": false
           },
@@ -894,8 +1005,8 @@
             "currency": "CNY",
             "rating_avg": 3.33,
             "review_count": 6,
-            "score": 0.9092,
-            "strength": "综合分 0.9092，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.8537,
+            "strength": "综合分 0.8537，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -914,8 +1025,8 @@
             "currency": "CNY",
             "rating_avg": 2.75,
             "review_count": 4,
-            "score": 0.8909,
-            "strength": "综合分 0.8909，评分 2.75/5，FAQ 信息较完整。",
+            "score": 0.8356,
+            "strength": "综合分 0.8356，评分 2.75/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -934,28 +1045,28 @@
             "currency": "CNY",
             "rating_avg": 3.17,
             "review_count": 6,
-            "score": 0.8341,
-            "strength": "综合分 0.8341，评分 3.17/5，FAQ 信息较完整。",
+            "score": 0.8156,
+            "strength": "综合分 0.8156，评分 3.17/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
           {
             "rank": 6,
-            "product_id": "p_clothes_005",
-            "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-            "brand": "李宁",
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
             "category": "clothing",
             "category_name": "服饰运动",
-            "price": 259.0,
+            "price": 349.0,
             "price_range": [
-              259.0,
-              269.0
+              349.0,
+              359.0
             ],
             "currency": "CNY",
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "score": 0.8301,
-            "strength": "综合分 0.8301，评分 4/5，FAQ 信息较完整。",
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "score": 0.8156,
+            "strength": "综合分 0.8156，评分 3.83/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -996,7 +1107,6 @@
           ],
           "excluded_terms": [],
           "preferences": [
-            "夏天",
             "凉快"
           ],
           "occasion": "",
@@ -1026,7 +1136,7 @@
             "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
             "用户未给出明确预算，按价格/口碑/场景综合排序。",
             "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。",
-            "生成式大模型已参与需求理解，耗时 2311ms。"
+            "生成式大模型已参与需求理解，耗时 2266ms。"
           ]
         },
         "plans": [
@@ -1210,31 +1320,28 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.9442，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#profile 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#faq 召回分 0.0280。",
+                "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8720，参考价 99-99 CNY。 评价均分 3.8/5。",
                 "score": {
-                  "scenario_match": 0.76,
+                  "scenario_match": 0.68,
                   "attribute_match": 0.85,
                   "price_fit": 0.9923,
                   "reputation_fit": 1.0,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.9442,
+                  "final_score": 0.872,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
                     "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
-                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                     "价格与预算要求较匹配。",
                     "用户评价均分 3.8/5，参与口碑评分。",
                     "商品提供 4 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_clothes_001 召回分 0.0323; p_clothes_001 召回分 0.0323。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                     "用户有对比决策需求，FAQ、评价和属性完整度权重提高。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_clothes_001::review::3",
-                  "p_clothes_001::profile::0",
-                  "p_clothes_001::faq::2"
+                  "p_clothes_001"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_clothes_001_1"
@@ -1290,8 +1397,8 @@
                 "role": "clothing",
                 "product_id": "p_clothes_001",
                 "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-                "final_score": 0.9442,
-                "scenario_match": 0.76,
+                "final_score": 0.872,
+                "scenario_match": 0.68,
                 "attribute_match": 0.85,
                 "price_fit": 0.9923,
                 "reputation_fit": 1.0,
@@ -1301,11 +1408,10 @@
                 "reasons": [
                   "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
                   "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
-                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
                   "价格与预算要求较匹配。",
                   "用户评价均分 3.8/5，参与口碑评分。",
                   "商品提供 4 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_clothes_001 召回分 0.0323; p_clothes_001 召回分 0.0323。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                   "用户有对比决策需求，FAQ、评价和属性完整度权重提高。"
                 ]
               }
@@ -1333,8 +1439,8 @@
             "stock_quantity": null,
             "rating_avg": 3.8,
             "review_count": 5,
-            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.9442，参考价 99-99 CNY。 评价均分 3.8/5。 检索证据：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#review 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#profile 召回分 0.0323；优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣#faq 召回分 0.0280。",
-            "score": 0.9442,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8720，参考价 99-99 CNY。 评价均分 3.8/5。",
+            "score": 0.872,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_001_1"
           },
@@ -1357,8 +1463,8 @@
             "stock_quantity": null,
             "rating_avg": 2.83,
             "review_count": 6,
-            "reason": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣 属于 服饰运动/速干T恤，综合分 0.9166，参考价 79-79 CNY。 评价均分 2.83/5。 检索证据：迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣#review 召回分 0.0315；迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣#profile 召回分 0.0253。",
-            "score": 0.9166,
+            "reason": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣 属于 服饰运动/速干T恤，综合分 0.8611，参考价 79-79 CNY。 评价均分 2.83/5。",
+            "score": 0.8611,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_020_1"
           },
@@ -1381,8 +1487,8 @@
             "stock_quantity": null,
             "rating_avg": 3.33,
             "review_count": 6,
-            "reason": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤 属于 服饰运动/运动短裤，综合分 0.9092，参考价 149-159 CNY。 评价均分 3.33/5。 检索证据：优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤#profile 召回分 0.0310；优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤#review 召回分 0.0303。",
-            "score": 0.9092,
+            "reason": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤 属于 服饰运动/运动短裤，综合分 0.8537，参考价 149-159 CNY。 评价均分 3.33/5。",
+            "score": 0.8537,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_023_1"
           },
@@ -1405,8 +1511,8 @@
             "stock_quantity": null,
             "rating_avg": 2.75,
             "review_count": 4,
-            "reason": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣 属于 服饰运动/短袖T恤，综合分 0.8909，参考价 129-129 CNY。 评价均分 2.75/5。 检索证据：优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣#profile 召回分 0.0282；优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣#review 召回分 0.0279。",
-            "score": 0.8909,
+            "reason": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣 属于 服饰运动/短袖T恤，综合分 0.8356，参考价 129-129 CNY。 评价均分 2.75/5。",
+            "score": 0.8356,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_002_1"
           },
@@ -1429,8 +1535,8 @@
             "stock_quantity": null,
             "rating_avg": 3.17,
             "review_count": 6,
-            "reason": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣 属于 服饰运动/短袖T恤，综合分 0.8341，参考价 199-199 CNY。 评价均分 3.17/5。 检索证据：Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣#profile 召回分 0.0265。",
-            "score": 0.8341,
+            "reason": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣 属于 服饰运动/短袖T恤，综合分 0.8156，参考价 199-199 CNY。 评价均分 3.17/5。",
+            "score": 0.8156,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_003_1"
           }
@@ -1450,7 +1556,6 @@
             ],
             "excluded_terms": [],
             "preferences": [
-              "夏天",
               "凉快"
             ]
           },
@@ -1465,31 +1570,31 @@
                   "product_id": "p_clothes_001",
                   "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
                   "price": 99.0,
-                  "score": 0.9442
+                  "score": 0.872
                 },
                 {
                   "product_id": "p_clothes_020",
                   "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
                   "price": 79.0,
-                  "score": 0.9166
+                  "score": 0.8611
                 },
                 {
                   "product_id": "p_clothes_023",
                   "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
                   "price": 149.0,
-                  "score": 0.9092
+                  "score": 0.8537
                 },
                 {
                   "product_id": "p_clothes_002",
                   "title": "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣",
                   "price": 129.0,
-                  "score": 0.8909
+                  "score": 0.8356
                 },
                 {
                   "product_id": "p_clothes_003",
                   "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
                   "price": 199.0,
-                  "score": 0.8341
+                  "score": 0.8156
                 }
               ]
             }
@@ -1514,8 +1619,8 @@
             "currency": "CNY",
             "rating_avg": 3.8,
             "review_count": 5,
-            "score": 0.9442,
-            "strength": "综合分 0.9442，评分 3.8/5，FAQ 信息较完整。",
+            "score": 0.872,
+            "strength": "综合分 0.8720，评分 3.8/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
@@ -1534,8 +1639,8 @@
             "currency": "CNY",
             "rating_avg": 2.83,
             "review_count": 6,
-            "score": 0.9166,
-            "strength": "综合分 0.9166，评分 2.83/5，FAQ 信息较完整。",
+            "score": 0.8611,
+            "strength": "综合分 0.8611，评分 2.83/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": false
           },
@@ -1554,8 +1659,8 @@
             "currency": "CNY",
             "rating_avg": 3.33,
             "review_count": 6,
-            "score": 0.9092,
-            "strength": "综合分 0.9092，评分 3.33/5，FAQ 信息较完整。",
+            "score": 0.8537,
+            "strength": "综合分 0.8537，评分 3.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1574,8 +1679,8 @@
             "currency": "CNY",
             "rating_avg": 2.75,
             "review_count": 4,
-            "score": 0.8909,
-            "strength": "综合分 0.8909，评分 2.75/5，FAQ 信息较完整。",
+            "score": 0.8356,
+            "strength": "综合分 0.8356，评分 2.75/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1594,28 +1699,28 @@
             "currency": "CNY",
             "rating_avg": 3.17,
             "review_count": 6,
-            "score": 0.8341,
-            "strength": "综合分 0.8341，评分 3.17/5，FAQ 信息较完整。",
+            "score": 0.8156,
+            "strength": "综合分 0.8156，评分 3.17/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
           {
             "rank": 6,
-            "product_id": "p_clothes_005",
-            "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-            "brand": "李宁",
+            "product_id": "p_clothes_006",
+            "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
+            "brand": "Nike",
             "category": "clothing",
             "category_name": "服饰运动",
-            "price": 259.0,
+            "price": 349.0,
             "price_range": [
-              259.0,
-              269.0
+              349.0,
+              359.0
             ],
             "currency": "CNY",
-            "rating_avg": 4.0,
-            "review_count": 3,
-            "score": 0.8301,
-            "strength": "综合分 0.8301，评分 4/5，FAQ 信息较完整。",
+            "rating_avg": 3.83,
+            "review_count": 6,
+            "score": 0.8156,
+            "strength": "综合分 0.8156，评分 3.83/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -1705,9 +1810,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python tests/test_fail_cases.py)",
+      "Bash(python -c ' *)",
+      "Bash(python tests/trace_case2.py)",
+      "Bash(netstat -ano)",
+      "Bash(kill 21732)",
+      "Bash(taskkill //PID 21732 //F)",
+      "Bash(python tests/trace_case4_case9.py)",
+      "Bash(python tests/trace_case10_11_12.py)",
+      "Bash(taskkill //PID 39776 //F)",
+      "Bash(python tests/trace_case10_12_v2.py)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('rag/recommendation/tool_router.py', encoding='utf-8'\\).read\\(\\)\\); print\\('OK'\\)\")",
+      "Bash(taskkill //PID 2460 //F)"
+    ]
+  }
+}

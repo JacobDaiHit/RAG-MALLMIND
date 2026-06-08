@@ -740,6 +740,13 @@ def should_skip_llm_route(message: str, session: ShoppingSession, local_call: Di
     if name == "general_chat":
         return False
 
+    # ── 本地 extract_budget 仅提取单一上限值，会丢失区间信息 ──
+    # 当本地规则提取了 budget 时，不跳过 LLM 路由，让 LLM 正确解析
+    # price_min / price_max / budget 的完整语义（区间型、上下型等）。
+    _local_args = local_call.get("arguments") or {}
+    if _local_args.get("budget") is not None:
+        return False
+
     if mode == "fast":
         return confidence >= 0.95 and margin >= 0.50 and name in {"recommend_shopping_products", "apply_cart_instruction"}
 
@@ -931,7 +938,30 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
                                 "- 用户表达属性偏好（\"哪个更轻\"\"哪款更适合学生\"）——这是筛选，不是对比\n"
                                 "- 用户说\"买XX\"\"帮我买\"且指定了具体商品/SKU——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
                                 "- 用户同时要求推荐和加购（\"推荐XX并加到购物车\"）——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
-                                "参数可包含：query, budget, category, product_ids, catalog_scope, action, exclude_brands, usage。\n\n"
+                                "参数说明（重点 — 价格和预算字段）：\n"
+                                "- query: 用户原始查询\n"
+                                "- category: 商品品类（如手机、耳机、跑步鞋）\n"
+                                "- exclude_brands: 用户明确排除的品牌（如'不要华为' → ['华为']）\n"
+                                "- price_min / price_max: 价格区间下界和上界\n"
+                                "- budget: 总预算或上限金额\n"
+                                "- sort_order: 排序方式（如 price_asc, price_desc, rating_desc）\n"
+                                "- brands: 用户明确想要的品牌\n"
+                                "- must_have_terms: 必须满足的属性关键词\n\n"
+                                "【价格提取规则】— 严格按以下类型分别处理 budget / price_min / price_max：\n"
+                                "① 价格区间型（'3000到5000''预算3000-5000''价格在200~800之间'）→ price_min=下界, price_max=上界, budget=null\n"
+                                "② 某价格以下型（'不超过5000''500以内''预算3000以内''最多花1万'）→ price_max=该价格, budget=该价格, price_min=null\n"
+                                "③ 某价格以上型（'3000以上''至少5000起''不低于2000'）→ price_min=该价格, price_max=null, budget=null\n"
+                                "④ 某价格左右型（'5000左右''大概3000上下''差不多2000'）→ 按 ±20% 计算区间: price_min=该价格×0.8, price_max=该价格×1.2, budget=null\n"
+                                "⑤ 总预算型（'总共不超过1万''一共预算5000'）→ budget=该金额, price_max=该金额\n"
+                                "注意：一个查询只匹配一种类型，不要同时填 budget 和 price_min。区间型绝不提取 budget。\n\n"
+                                "【示例】\n"
+                                "1. '推荐3000到5000的手机' → {name: recommend_shopping_products, arguments: {category: '手机', price_min: 3000, price_max: 5000, budget: null}}\n"
+                                "2. '500以内的耳机' → {name: recommend_shopping_products, arguments: {category: '耳机', price_max: 500, budget: 500, price_min: null}}\n"
+                                "3. '推荐耳机，不要华为的，500到2000之间' → {name: recommend_shopping_products, arguments: {category: '耳机', exclude_brands: ['华为'], price_min: 500, price_max: 2000, budget: null}}\n"
+                                "4. '3000以上的手机' → {name: recommend_shopping_products, arguments: {category: '手机', price_min: 3000, price_max: null, budget: null}}\n"
+                                "5. '5000左右的笔记本' → {name: recommend_shopping_products, arguments: {category: '笔记本', price_min: 4000, price_max: 6000, budget: null}}\n"
+                                "6. '总共不超过1万，买手机和耳机' → {name: recommend_shopping_products, arguments: {budget: 10000, price_max: 10000, price_min: null}}\n"
+                                "7. '性价比高的跑步鞋，按价格从低到高排' → {name: recommend_shopping_products, arguments: {category: '跑步鞋', sort_order: 'price_asc'}}\n\n"
                                 "### 2. compare_products\n"
                                 "用途：两个具体商品的规格对比。\n"
                                 "使用场景：仅当用户明确提到两个具体商品名并要求比较时使用。\n"
@@ -956,7 +986,9 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
                                 "- 纯寒暄：\"你好\"\"谢谢\"\"再见\"\n"
                                 "注意：任何涉及具体商品名（iPhone、MacBook、华为、小米等）的问题，即使看起来像FAQ，也应该使用 recommend_shopping_products 而非 general_chat。\n\n"
                                 "## 输出格式\n"
-                                "严格输出 JSON，必须包含 \"source\": \"llm\" 字段。"
+                                "严格输出 JSON，必须包含 \"source\": \"llm\" 字段。\n"
+                                "arguments 中可包含：query, budget, category, product_ids, catalog_scope, action, exclude_brands, brands, price_min, price_max, sort_order, must_have_terms, excluded_terms, usage。\n"
+                                "只输出 JSON，不要任何额外解释。"
                             ),
                     },
                     {
@@ -1205,22 +1237,33 @@ def normalize_tool_arguments(name: str, arguments: Dict[str, Any]) -> Dict[str, 
 
 
 def extract_budget(text: str) -> Optional[float]:
+    """Extract budget from text as a FALLBACK when LLM router is unavailable."""
     raw = text or ""
     money = r"(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|百|亿|千万|百万|十万|元|块|cny|CNY)?"
     budget_patterns = [
-        rf"(?:预算|价格|价位|控制在|不要超过|不要超出|别超过|别超出|不超过|不超|低于|小于|少于|最高|封顶|上限|价钱|最多|至少|按)\s*(?:是|为|在|到)?\s*{money}",
-        rf"{money}\s*(?:以内|以下|左右|上下|预算|封顶|档次|价位)",
+        # idx 0: 区间型优先 (X到Y / X-Y / X~Y) → 取上限
         rf"(?<![A-Za-z]){money}\s*(?:-|到|至|~|～)\s*{money}",
+        # idx 1: 上限型关键词
+        rf"(?:预算|价格|价位|控制在|不要超过|不要超出|别超过|别超出|不超过|不超|低于|小于|少于|最高|封顶|上限|价钱|最多|按)\s*(?:是|为|在)?\s*{money}",
+        # idx 2: 后缀型 (X以内 / X以下 / X预算)
+        rf"{money}\s*(?:以内|以下|预算|封顶|档次|价位)",
+        # idx 3: 左右/上下型
+        rf"{money}\s*(?:左右|上下)",
+        # idx 4: 符号型
         rf"(?:<=|<)\s*{money}",
+        # idx 5: 英文型
         rf"(?:under|within|below|less than|no more than|budget)\s*{money}",
+        # idx 6: 中文单位型
         r"(\d+(?:\.\d+)?)\s*(千万|百万|十万|万|千|百|亿)",
     ]
     for idx, pattern in enumerate(budget_patterns):
         match = re.search(pattern, raw, flags=re.I)
         if match:
-            # 范围模式：取上限值（用户的最高预算）
-            if idx == 2 and match.lastindex and match.lastindex >= 4:
-                return _parse_budget_amount(match.group(3), match.group(4) or "")
+            if idx == 0:
+                # 区间型：取上限值（group 3 = 第二个数字）
+                upper_amount = match.group(3)
+                if upper_amount is not None:
+                    return _parse_budget_amount(upper_amount, match.group(4) or "")
             return _parse_budget_amount(match.group(1), match.group(2) or "")
     return None
 
@@ -1298,13 +1341,21 @@ def infer_catalog_scope_for_message(text: str) -> str:
 
 
 def merge_route_arguments(llm_args: Dict[str, Any], rule_args: Dict[str, Any]) -> Dict[str, Any]:
+    """Merge LLM router output with rule-based extraction.
+
+    Priority: LLM values take precedence for fields the LLM extracts more
+    accurately (budget, price_min/max, exclude_brands, brands, etc.).
+    Rule-based extraction fills gaps when the LLM did not produce a value.
+    """
     merged = dict(llm_args or {})
     merged["query"] = rule_args.get("query") or merged.get("query") or ""
 
+    # ── product_ids: union of both ──
     rule_ids = rule_args.get("product_ids") if isinstance(rule_args.get("product_ids"), list) else []
     llm_ids = merged.get("product_ids") if isinstance(merged.get("product_ids"), list) else []
     merged["product_ids"] = _dedupe_strings([*llm_ids, *rule_ids])
 
+    # ── category: LLM first, rule fills gap ──
     if not merged.get("category") and rule_args.get("category"):
         merged["category"] = rule_args["category"]
 
@@ -1312,9 +1363,15 @@ def merge_route_arguments(llm_args: Dict[str, Any], rule_args: Dict[str, Any]) -
         rule_args.get("catalog_scope") or merged.get("catalog_scope") or "ecommerce"
     )
 
-    if rule_args.get("budget") is not None:
-        merged["budget"] = rule_args["budget"]
+    # ── budget: LLM value takes priority ──
+    # LLM 能区分 price_min/price_max/budget 的完整语义；
+    # extract_budget 仅作为 LLM 不可用时的 fallback。
+    if "budget" not in llm_args or llm_args["budget"] is None:
+        if rule_args.get("budget") is not None:
+            merged["budget"] = rule_args["budget"]
+    # else: keep LLM value (already in merged from dict(llm_args))
 
+    # ── usage: union of both ──
     merged_usage = []
     if isinstance(merged.get("usage"), list):
         merged_usage.extend(str(item) for item in merged["usage"] if str(item).strip())
@@ -1322,12 +1379,35 @@ def merge_route_arguments(llm_args: Dict[str, Any], rule_args: Dict[str, Any]) -
         merged_usage.extend(str(item) for item in rule_args["usage"] if str(item).strip())
     merged["usage"] = _dedupe_strings(merged_usage)
 
+    # ── preferences: rule fills gaps in LLM ──
     preferences = {}
     if isinstance(merged.get("preferences"), dict):
         preferences.update(merged["preferences"])
     if isinstance(rule_args.get("preferences"), dict):
         preferences.update(rule_args["preferences"])
     merged["preferences"] = preferences
+
+    # ── LLM-exclusive structured fields ──
+    # These are extracted by the LLM with full context; rule layer does not produce them.
+    # Only carry forward if the LLM provided a non-empty value.
+    for field in ("price_min", "price_max", "exclude_brands", "brands",
+                  "must_have_terms", "excluded_terms", "target_sub_categories"):
+        llm_val = llm_args.get(field)
+        if llm_val is not None and llm_val != [] and llm_val != "":
+            merged[field] = llm_val
+        elif field not in llm_args:
+            rule_val = rule_args.get(field)
+            if rule_val is not None and rule_val != [] and rule_val != "":
+                merged[field] = rule_val
+
+    # ── sort_order: LLM first, rule fills gap ──
+    _llm_priority_simple = ("sort_order",)
+    for field in _llm_priority_simple:
+        llm_val = llm_args.get(field)
+        if llm_val is not None and llm_val != "":
+            merged[field] = llm_val
+        elif field not in llm_args and rule_args.get(field):
+            merged[field] = rule_args[field]
 
     return merged
 

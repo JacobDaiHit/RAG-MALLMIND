@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.84,
       "reason": "后端兜底：商品搜索、场景购物或事实型商品查询必须走商品工具。",
@@ -136,48 +144,59 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
         "llm_skipped": true,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
         "router_success": false,
         "router_applied": false,
         "router_final_source": "guard",
-        "router_failure_reason": "llm_provider_error",
-        "llm_router_attempted": true,
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
         "llm_router_success": false,
-        "llm_router_failure_reason": "llm_provider_error",
-        "llm_router_error_class": "provider_error",
-        "llm_router_elapsed_ms": 260
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_mt1-1",
         "topic_type": "ecommerce_recommendation",
-        "subject": "续航怎么样",
+        "subject": "推荐一款手机。用户追问：续航怎么样",
         "route": "recommend_shopping_products",
         "category": "手机",
         "slots": {
           "budget": null,
           "usage": [],
           "preferences": {
-            "category": "手机"
+            "category": "手机",
+            "followup_type": "product_detail"
           },
-          "product_ids": [],
+          "product_ids": [
+            "p_digital_016"
+          ],
           "catalog_scope": "ecommerce"
         },
-        "confidence": 0.8,
-        "source": "llm",
-        "reason": "路由器未提供原因。",
-        "updated_at": "2026-06-07T05:54:13.549365+00:00",
+        "confidence": 0.9,
+        "source": "followup_guard",
+        "reason": "用户在上一轮推荐后追问商品详情。",
+        "updated_at": "2026-06-08T00:23:51.033355+00:00",
         "history": [
           {
             "topic_type": "ecommerce_recommendation",
@@ -192,7 +211,7 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:12.138260+00:00"
+            "updated_at": "2026-06-08T00:23:50.998253+00:00"
           }
         ]
       }
@@ -227,7 +246,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 753,
+  "elapsed_ms": 56,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -320,7 +339,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.84,
         "reason": "后端兜底：商品搜索、场景购物或事实型商品查询必须走商品工具。",
@@ -437,48 +464,59 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
           "llm_skipped": true,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
           "router_success": false,
           "router_applied": false,
           "router_final_source": "guard",
-          "router_failure_reason": "llm_provider_error",
-          "llm_router_attempted": true,
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
           "llm_router_success": false,
-          "llm_router_failure_reason": "llm_provider_error",
-          "llm_router_error_class": "provider_error",
-          "llm_router_elapsed_ms": 260
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_mt1-1",
           "topic_type": "ecommerce_recommendation",
-          "subject": "续航怎么样",
+          "subject": "推荐一款手机。用户追问：续航怎么样",
           "route": "recommend_shopping_products",
           "category": "手机",
           "slots": {
             "budget": null,
             "usage": [],
             "preferences": {
-              "category": "手机"
+              "category": "手机",
+              "followup_type": "product_detail"
             },
-            "product_ids": [],
+            "product_ids": [
+              "p_digital_016"
+            ],
             "catalog_scope": "ecommerce"
           },
-          "confidence": 0.8,
-          "source": "llm",
-          "reason": "路由器未提供原因。",
-          "updated_at": "2026-06-07T05:54:13.549365+00:00",
+          "confidence": 0.9,
+          "source": "followup_guard",
+          "reason": "用户在上一轮推荐后追问商品详情。",
+          "updated_at": "2026-06-08T00:23:51.033355+00:00",
           "history": [
             {
               "topic_type": "ecommerce_recommendation",
@@ -493,7 +531,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:12.138260+00:00"
+              "updated_at": "2026-06-08T00:23:50.998253+00:00"
             }
           ]
         }
@@ -557,7 +595,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 11 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -571,28 +609,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.86"
+        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.72"
+        "detail": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB；约 6499 CNY；评分 0.70"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.72"
+        "detail": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机；约 6999 CNY；评分 0.67"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB；约 6999 CNY；评分 0.67"
+        "detail": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB；约 7499 CNY；评分 0.66"
       }
     },
     {
@@ -644,8 +682,8 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8578，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0323。",
-            "score": 0.8578,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8323，参考价 3299-3699 CNY。 评价均分 3/5。",
+            "score": 0.8323,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_016_1"
           }
@@ -680,31 +718,31 @@
                 "product_id": "p_digital_016",
                 "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                 "price": 3299.0,
-                "score": 0.8578
+                "score": 0.8323
               },
               {
                 "product_id": "p_digital_009",
                 "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
                 "price": 6499.0,
-                "score": 0.7247
+                "score": 0.6995
               },
               {
                 "product_id": "p_digital_015",
                 "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                 "price": 6999.0,
-                "score": 0.723
+                "score": 0.6744
+              },
+              {
+                "product_id": "p_digital_008",
+                "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
+                "price": 7499.0,
+                "score": 0.6567
               },
               {
                 "product_id": "p_digital_002",
                 "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
                 "price": 6999.0,
-                "score": 0.6743
-              },
-              {
-                "product_id": "p_digital_017",
-                "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
-                "price": 6999.0,
-                "score": 0.665
+                "score": 0.649
               }
             ]
           }
@@ -912,28 +950,28 @@
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8578，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0323。",
+                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8323，参考价 3299-3699 CNY。 评价均分 3/5。",
                 "score": {
-                  "scenario_match": 0.616,
-                  "attribute_match": 0.766,
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.75,
                   "price_fit": 1.0,
                   "reputation_fit": 0.75,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.8578,
+                  "final_score": 0.8323,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
                     "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
                     "价格可能超出用户预算，需要谨慎推荐。",
                     "用户评价均分 3/5，参与口碑评分。",
                     "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_016 召回分 0.0323。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                     "用户给出低预算或价格上限，价格适配权重提高。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_016::profile::0"
+                  "p_digital_016"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_digital_016_1"
@@ -989,9 +1027,9 @@
                 "role": "digital",
                 "product_id": "p_digital_016",
                 "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                "final_score": 0.8578,
-                "scenario_match": 0.616,
-                "attribute_match": 0.766,
+                "final_score": 0.8323,
+                "scenario_match": 0.6,
+                "attribute_match": 0.75,
                 "price_fit": 1.0,
                 "reputation_fit": 0.75,
                 "availability_fit": 0.95,
@@ -1003,7 +1041,7 @@
                   "价格可能超出用户预算，需要谨慎推荐。",
                   "用户评价均分 3/5，参与口碑评分。",
                   "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_016 召回分 0.0323。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                   "用户给出低预算或价格上限，价格适配权重提高。"
                 ]
               }
@@ -1031,8 +1069,8 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8578，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#profile 召回分 0.0323。",
-            "score": 0.8578,
+            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8323，参考价 3299-3699 CNY。 评价均分 3/5。",
+            "score": 0.8323,
             "source": "single_product",
             "selected_sku_id": "s_p_digital_016_1"
           }
@@ -1063,31 +1101,31 @@
                   "product_id": "p_digital_016",
                   "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                   "price": 3299.0,
-                  "score": 0.8578
+                  "score": 0.8323
                 },
                 {
                   "product_id": "p_digital_009",
                   "title": "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB",
                   "price": 6499.0,
-                  "score": 0.7247
+                  "score": 0.6995
                 },
                 {
                   "product_id": "p_digital_015",
                   "title": "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
                   "price": 6999.0,
-                  "score": 0.723
+                  "score": 0.6744
+                },
+                {
+                  "product_id": "p_digital_008",
+                  "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
+                  "price": 7499.0,
+                  "score": 0.6567
                 },
                 {
                   "product_id": "p_digital_002",
                   "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
                   "price": 6999.0,
-                  "score": 0.6743
-                },
-                {
-                  "product_id": "p_digital_017",
-                  "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
-                  "price": 6999.0,
-                  "score": 0.665
+                  "score": 0.649
                 }
               ]
             }
@@ -1110,8 +1148,8 @@
             "currency": "CNY",
             "rating_avg": 3.0,
             "review_count": 3,
-            "score": 0.8578,
-            "strength": "综合分 0.8578，评分 3/5，FAQ 信息较完整。",
+            "score": 0.8323,
+            "strength": "综合分 0.8323，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           },
@@ -1130,8 +1168,8 @@
             "currency": "CNY",
             "rating_avg": 4.0,
             "review_count": 3,
-            "score": 0.7247,
-            "strength": "综合分 0.7247，评分 4/5，FAQ 信息较完整。",
+            "score": 0.6995,
+            "strength": "综合分 0.6995，评分 4/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：偏爱小屏/轻便用户需谨慎。",
             "recommendation": false
           },
@@ -1150,53 +1188,13 @@
             "currency": "CNY",
             "rating_avg": 3.5,
             "review_count": 6,
-            "score": 0.723,
-            "strength": "综合分 0.7230，评分 3.5/5，FAQ 信息较完整。",
+            "score": 0.6744,
+            "strength": "综合分 0.6744，评分 3.5/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
           {
             "rank": 4,
-            "product_id": "p_digital_002",
-            "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
-            "brand": "华为",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7699.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 2.17,
-            "review_count": 6,
-            "score": 0.6743,
-            "strength": "综合分 0.6743，评分 2.17/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 5,
-            "product_id": "p_digital_017",
-            "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
-            "brand": "vivo",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 6999.0,
-            "price_range": [
-              6999.0,
-              7799.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 2.33,
-            "review_count": 3,
-            "score": 0.665,
-            "strength": "综合分 0.6650，评分 2.33/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 6,
             "product_id": "p_digital_008",
             "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
             "brand": "小米",
@@ -1212,6 +1210,46 @@
             "review_count": 3,
             "score": 0.6567,
             "strength": "综合分 0.6567，评分 4.33/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_digital_002",
+            "title": "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机12+256GB",
+            "brand": "华为",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7699.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.17,
+            "review_count": 6,
+            "score": 0.649,
+            "strength": "综合分 0.6490，评分 2.17/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_digital_017",
+            "title": "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能手机",
+            "brand": "vivo",
+            "category": "digital",
+            "category_name": "数码电子",
+            "price": 6999.0,
+            "price_range": [
+              6999.0,
+              7799.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.33,
+            "review_count": 3,
+            "score": 0.6398,
+            "strength": "综合分 0.6398，评分 2.33/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -1292,9 +1330,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

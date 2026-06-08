@@ -19,11 +19,19 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
-      "reason": "路由器未提供原因。",
-      "source": "llm",
+      "reason": "后端兜底：非购物执行问题走 general_chat。",
+      "source": "guard",
       "routing_trace": {
         "runtime_mode": "balanced",
         "llm_provider": "openai_compatible",
@@ -87,35 +95,7 @@
           "ambiguity_penalty": 0.0,
           "confidence": 0.88
         },
-        "llm": {
-          "name": "general_chat",
-          "arguments": {
-            "query": "你们这个店叫什么名字？什么时候开业的？",
-            "budget": null,
-            "category": "",
-            "usage": [],
-            "preferences": {},
-            "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
-          },
-          "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 934,
-            "has_error": false,
-            "provider": "openai_compatible"
-          }
-        },
+        "llm": null,
         "chosen_before_guard": {
           "name": "general_chat",
           "arguments": {
@@ -125,26 +105,30 @@
             "usage": [],
             "preferences": {},
             "product_ids": [],
-            "catalog_scope": "ecommerce",
-            "compare_with_previous": false,
-            "quantity": null,
-            "action": "",
-            "topic": "",
-            "need_full_pc_build": false
+            "catalog_scope": "ecommerce"
           },
           "confidence": 0.9,
-          "reason": "",
-          "source": "llm",
-          "needs_clarification": false,
-          "llm_report": {
-            "configured": true,
-            "success": true,
-            "status_code": 200,
-            "elapsed_ms": 934,
-            "has_error": false,
-            "provider": "openai_compatible"
+          "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+          "source": "rules",
+          "route_scores": {
+            "scores": {
+              "recommend_shopping_products": 0.0,
+              "generate_pc_build_plan": 0.0,
+              "compare_products": 0.0,
+              "apply_cart_instruction": 0.0,
+              "general_chat": 0.8
+            },
+            "top_name": "general_chat",
+            "top_score": 0.8,
+            "second_name": "recommend_shopping_products",
+            "second_score": 0.0,
+            "margin": 0.8,
+            "margin_bonus": 0.08,
+            "ambiguity_penalty": 0.0,
+            "confidence": 0.88
           },
-          "_llm_chosen": true
+          "local_rule_confidence": 0.9,
+          "route_score_confidence": 0.88
         },
         "final": {
           "name": "general_chat",
@@ -160,28 +144,36 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": false,
+        "arguments_changed": true,
         "guard_overridden": false,
-        "llm_skipped": false,
+        "llm_skipped": true,
         "llm_skipped_reason": "",
         "router_skipped_by_policy": false,
         "router_skipped_high_confidence_local": false,
         "router_attempted": true,
         "router_timeout": false,
         "router_json_invalid": false,
-        "router_success": true,
+        "router_success": false,
         "router_applied": false,
-        "router_final_source": "llm",
-        "router_failure_reason": "",
+        "router_final_source": "guard",
+        "router_failure_reason": "llm_provider_error",
         "llm_router_attempted": true,
-        "llm_router_success": true,
-        "llm_router_failure_reason": "",
-        "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 936
+        "llm_router_success": false,
+        "llm_router_failure_reason": "llm_provider_error",
+        "llm_router_error_class": "provider_error",
+        "llm_router_elapsed_ms": 167
       },
       "topic_memory": {
         "topic_id": "",
@@ -212,7 +204,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1180,
+  "elapsed_ms": 346,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -305,11 +297,19 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
-        "reason": "路由器未提供原因。",
-        "source": "llm",
+        "reason": "后端兜底：非购物执行问题走 general_chat。",
+        "source": "guard",
         "routing_trace": {
           "runtime_mode": "balanced",
           "llm_provider": "openai_compatible",
@@ -373,35 +373,7 @@
             "ambiguity_penalty": 0.0,
             "confidence": 0.88
           },
-          "llm": {
-            "name": "general_chat",
-            "arguments": {
-              "query": "你们这个店叫什么名字？什么时候开业的？",
-              "budget": null,
-              "category": "",
-              "usage": [],
-              "preferences": {},
-              "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
-            },
-            "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 934,
-              "has_error": false,
-              "provider": "openai_compatible"
-            }
-          },
+          "llm": null,
           "chosen_before_guard": {
             "name": "general_chat",
             "arguments": {
@@ -411,26 +383,30 @@
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "ecommerce",
-              "compare_with_previous": false,
-              "quantity": null,
-              "action": "",
-              "topic": "",
-              "need_full_pc_build": false
+              "catalog_scope": "ecommerce"
             },
             "confidence": 0.9,
-            "reason": "",
-            "source": "llm",
-            "needs_clarification": false,
-            "llm_report": {
-              "configured": true,
-              "success": true,
-              "status_code": 200,
-              "elapsed_ms": 934,
-              "has_error": false,
-              "provider": "openai_compatible"
+            "reason": "本地规则识别到系统说明、身份或推荐逻辑类问题。",
+            "source": "rules",
+            "route_scores": {
+              "scores": {
+                "recommend_shopping_products": 0.0,
+                "generate_pc_build_plan": 0.0,
+                "compare_products": 0.0,
+                "apply_cart_instruction": 0.0,
+                "general_chat": 0.8
+              },
+              "top_name": "general_chat",
+              "top_score": 0.8,
+              "second_name": "recommend_shopping_products",
+              "second_score": 0.0,
+              "margin": 0.8,
+              "margin_bonus": 0.08,
+              "ambiguity_penalty": 0.0,
+              "confidence": 0.88
             },
-            "_llm_chosen": true
+            "local_rule_confidence": 0.9,
+            "route_score_confidence": 0.88
           },
           "final": {
             "name": "general_chat",
@@ -446,28 +422,36 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": false,
+          "arguments_changed": true,
           "guard_overridden": false,
-          "llm_skipped": false,
+          "llm_skipped": true,
           "llm_skipped_reason": "",
           "router_skipped_by_policy": false,
           "router_skipped_high_confidence_local": false,
           "router_attempted": true,
           "router_timeout": false,
           "router_json_invalid": false,
-          "router_success": true,
+          "router_success": false,
           "router_applied": false,
-          "router_final_source": "llm",
-          "router_failure_reason": "",
+          "router_final_source": "guard",
+          "router_failure_reason": "llm_provider_error",
           "llm_router_attempted": true,
-          "llm_router_success": true,
-          "llm_router_failure_reason": "",
-          "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 936
+          "llm_router_success": false,
+          "llm_router_failure_reason": "llm_provider_error",
+          "llm_router_error_class": "provider_error",
+          "llm_router_elapsed_ms": 167
         },
         "topic_memory": {
           "topic_id": "",

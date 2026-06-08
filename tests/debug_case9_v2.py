@@ -1,0 +1,71 @@
+"""Debug Case 9 v2: trace session_context at each step"""
+import json, requests, sys, io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+BASE = "http://127.0.0.1:8000/api/chat/stream"
+
+def send_and_get(session_id, message):
+    payload = {"message": message, "session_id": session_id, "catalog_scope": "ecommerce"}
+    r = requests.post(BASE, json=payload, stream=True, timeout=120)
+    r.raise_for_status()
+    raw_text = r.content.decode("utf-8", errors="replace")
+    events_raw = raw_text.split("\n\n")
+    for event_block in events_raw:
+        event_type = ""
+        data_lines = []
+        for line in event_block.split("\n"):
+            if line.startswith("event:"):
+                event_type = line[6:].strip()
+            elif line.startswith("data:"):
+                data_lines.append(line[5:].strip())
+            elif data_lines:
+                data_lines.append(line.strip())
+        if not data_lines:
+            continue
+        data_str = "".join(data_lines)
+        if data_str in ("", "[DONE]"):
+            continue
+        try:
+            ev = json.loads(data_str)
+        except:
+            continue
+        if event_type == "tool_call":
+            args = ev.get("arguments") or {}
+            rt = ev.get("routing_trace") or {}
+            llm = rt.get("llm") or {}
+            print(f"  TOOL: {ev.get('name')} src={ev.get('source')}")
+            print(f"    query: {str(args.get('query',''))[:80]}")
+            print(f"    category: {args.get('category')}")
+            print(f"    must_have: {args.get('must_have_terms')}")
+            if llm:
+                print(f"    LLM query: {str((llm.get('arguments') or {}).get('query',''))[:60]}")
+                print(f"    LLM category: {(llm.get('arguments') or {}).get('category')}")
+        elif event_type == "result":
+            req = (ev.get("requirement") or {})
+            print(f"  RESULT:")
+            print(f"    raw_query: {str(req.get('raw_query',''))[:80]}")
+            print(f"    target_sub_categories: {req.get('target_sub_categories')}")
+            print(f"    desired_categories: {req.get('desired_categories')}")
+            print(f"    must_have_terms: {req.get('must_have_terms')}")
+            print(f"    excluded_terms: {req.get('excluded_terms')}")
+            cards = ev.get("product_cards") or []
+            print(f"    cards: {len(cards)}")
+            for c in cards[:3]:
+                print(f"      {c.get('brand')} | {str(c.get('title',''))[:40]} | price={c.get('price')}")
+        elif event_type == "candidate_scope":
+            filters = ev.get("active_filters") or {}
+            print(f"  SCOPE:")
+            print(f"    target_sub_categories: {filters.get('target_sub_categories')}")
+            print(f"    must_have_terms: {filters.get('must_have_terms')}")
+            by_cat = ev.get("by_category") or {}
+            for cat, info in by_cat.items():
+                if isinstance(info, dict):
+                    print(f"    [{cat}]: raw={info.get('raw_count')} excl={info.get('after_exclusion_count')} target={info.get('after_target_count')} returned={info.get('returned_count')}")
+
+SID = "debug_case9_v2"
+
+print("=== Turn 1 ===")
+send_and_get(SID, "我最近在减肥，想买个无糖的气泡水。")
+
+print("\n=== Turn 2 ===")
+send_and_get(SID, "白桃味的喝腻了，有没有其他口味？")

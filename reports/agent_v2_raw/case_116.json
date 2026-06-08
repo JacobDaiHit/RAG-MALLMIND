@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.8,
       "reason": "路由器未提供原因。",
@@ -101,7 +109,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.8,
           "reason": "",
@@ -111,7 +127,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 951,
+            "elapsed_ms": 1890,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -130,7 +146,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.8,
           "reason": "",
@@ -140,7 +164,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 951,
+            "elapsed_ms": 1890,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,7 +184,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 952
+        "llm_router_elapsed_ms": 1891
       },
       "topic_memory": {
         "topic_id": "",
@@ -247,7 +279,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 4340,
+  "elapsed_ms": 4345,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -340,7 +372,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.8,
         "reason": "路由器未提供原因。",
@@ -422,7 +462,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.8,
             "reason": "",
@@ -432,7 +480,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 951,
+              "elapsed_ms": 1890,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -451,7 +499,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.8,
             "reason": "",
@@ -461,7 +517,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 951,
+              "elapsed_ms": 1890,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -481,7 +537,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -502,7 +566,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 952
+          "llm_router_elapsed_ms": 1891
         },
         "topic_memory": {
           "topic_id": "",
@@ -585,7 +649,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 48 条证据，命中 33 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -599,28 +663,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g；约 89 CNY；评分 0.87"
+        "detail": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g；约 89 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.85"
+        "detail": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g；约 89 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.84"
+        "detail": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml；约 59 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml；约 118 CNY；评分 0.83"
+        "detail": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml；约 170 CNY；评分 0.82"
       }
     },
     {
@@ -634,28 +698,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.86"
+        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.85"
+        "detail": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB；约 3299 CNY；评分 0.82"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑；约 3299 CNY；评分 0.85"
+        "detail": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质；约 1499 CNY；评分 0.82"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB；约 7499 CNY；评分 0.82"
+        "detail": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版；约 1799 CNY；评分 0.82"
       }
     },
     {
@@ -669,28 +733,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽；约 199 CNY；评分 0.85"
+        "detail": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣；约 99 CNY；评分 0.84"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.84"
+        "detail": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽；约 199 CNY；评分 0.83"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣；约 199 CNY；评分 0.84"
+        "detail": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣；约 79 CNY；评分 0.82"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤；约 349 CNY；评分 0.84"
+        "detail": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤；约 149 CNY；评分 0.82"
       }
     },
     {
@@ -704,7 +768,7 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装；约 59 CNY；评分 0.90"
+        "detail": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装；约 59 CNY；评分 0.87"
       }
     },
     {
@@ -777,58 +841,58 @@
             "stock_quantity": null,
             "rating_avg": 2.83,
             "review_count": 6,
-            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
-            "score": 0.8681,
+            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8329，参考价 89-89 CNY。 评价均分 2.83/5。",
+            "score": 0.8329,
             "source": "shopping_bundle",
             "selected_sku_id": "s_p_beauty_025_1"
           },
           {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
+            "product_id": "p_digital_019",
+            "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+            "name": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+            "brand": "vivo",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "智能手机",
+            "sub_category": "平板电脑",
             "price": 3299.0,
             "price_range": [
               3299.0,
-              3699.0
+              4299.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
+            "image_url": "/product-images/p_digital_019_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
-            "score": 0.8575,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
+            "score": 0.8273,
             "source": "shopping_bundle",
-            "selected_sku_id": "s_p_digital_016_1"
+            "selected_sku_id": "s_p_digital_019_1"
           },
           {
-            "product_id": "p_clothes_024",
-            "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-            "name": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-            "brand": "北面",
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "name": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
             "category": "clothing",
             "category_name": "服饰运动",
-            "sub_category": "帽子",
-            "price": 199.0,
+            "sub_category": "短袖T恤",
+            "price": 99.0,
             "price_range": [
-              199.0,
-              199.0
+              99.0,
+              99.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_clothes_024_live.jpg",
+            "image_url": "/product-images/p_clothes_001_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 4,
-            "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
-            "score": 0.8475,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8355，参考价 99-99 CNY。 评价均分 3.8/5。",
+            "score": 0.8355,
             "source": "shopping_bundle",
-            "selected_sku_id": "s_p_clothes_024_1"
+            "selected_sku_id": "s_p_clothes_001_1"
           },
           {
             "product_id": "p_food_009",
@@ -849,8 +913,8 @@
             "stock_quantity": null,
             "rating_avg": 4.0,
             "review_count": 3,
-            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
-            "score": 0.9036,
+            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.8682，参考价 59-99 CNY。 评价均分 4/5。",
+            "score": 0.8682,
             "source": "shopping_bundle",
             "selected_sku_id": "s_p_food_009_4"
           }
@@ -889,31 +953,31 @@
                 "product_id": "p_beauty_025",
                 "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
                 "price": 89.0,
-                "score": 0.8681
-              },
-              {
-                "product_id": "p_beauty_018",
-                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-                "price": 59.0,
-                "score": 0.8453
-              },
-              {
-                "product_id": "p_beauty_006",
-                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
-                "price": 170.0,
-                "score": 0.8384
-              },
-              {
-                "product_id": "p_beauty_010",
-                "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
-                "price": 118.0,
-                "score": 0.8334
+                "score": 0.8329
               },
               {
                 "product_id": "p_beauty_007",
                 "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
                 "price": 89.0,
                 "score": 0.8313
+              },
+              {
+                "product_id": "p_beauty_018",
+                "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                "price": 59.0,
+                "score": 0.8269
+              },
+              {
+                "product_id": "p_beauty_006",
+                "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                "price": 170.0,
+                "score": 0.8201
+              },
+              {
+                "product_id": "p_beauty_008",
+                "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+                "price": 89.0,
+                "score": 0.8197
               }
             ]
           },
@@ -923,34 +987,34 @@
             "within_budget_count": 25,
             "top_candidates": [
               {
+                "product_id": "p_digital_019",
+                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                "price": 3299.0,
+                "score": 0.8273
+              },
+              {
                 "product_id": "p_digital_016",
                 "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                 "price": 3299.0,
-                "score": 0.8575
+                "score": 0.8223
+              },
+              {
+                "product_id": "p_digital_007",
+                "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                "price": 1499.0,
+                "score": 0.819
               },
               {
                 "product_id": "p_digital_018",
                 "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
                 "price": 1799.0,
-                "score": 0.8524
+                "score": 0.8174
               },
               {
-                "product_id": "p_digital_019",
-                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                "price": 3299.0,
-                "score": 0.8459
-              },
-              {
-                "product_id": "p_digital_008",
-                "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
-                "price": 7499.0,
-                "score": 0.8231
-              },
-              {
-                "product_id": "p_digital_010",
-                "title": "小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器",
-                "price": 9999.0,
-                "score": 0.8194
+                "product_id": "p_digital_025",
+                "title": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑",
+                "price": 4799.0,
+                "score": 0.8158
               }
             ]
           },
@@ -960,34 +1024,34 @@
             "within_budget_count": 25,
             "top_candidates": [
               {
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "price": 99.0,
+                "score": 0.8355
+              },
+              {
                 "product_id": "p_clothes_024",
                 "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
                 "price": 199.0,
-                "score": 0.8475
+                "score": 0.8292
+              },
+              {
+                "product_id": "p_clothes_020",
+                "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                "price": 79.0,
+                "score": 0.8216
               },
               {
                 "product_id": "p_clothes_023",
                 "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
                 "price": 149.0,
-                "score": 0.8388
+                "score": 0.8202
               },
               {
                 "product_id": "p_clothes_003",
                 "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
                 "price": 199.0,
-                "score": 0.8374
-              },
-              {
-                "product_id": "p_clothes_006",
-                "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                "price": 349.0,
-                "score": 0.8374
-              },
-              {
-                "product_id": "p_clothes_005",
-                "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-                "price": 259.0,
-                "score": 0.8364
+                "score": 0.8191
               }
             ]
           },
@@ -1000,7 +1064,7 @@
                 "product_id": "p_food_009",
                 "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
                 "price": 59.0,
-                "score": 0.9036
+                "score": 0.8682
               },
               {
                 "product_id": "p_food_018",
@@ -1110,14 +1174,14 @@
             "只从已上架的本地 100 条商品数据中推荐，不编造不存在商品。",
             "用户未给出明确预算，按价格/口碑/场景综合排序。",
             "数据集未提供精确库存数量，后端只返回上架状态，不声明实时库存。",
-            "生成式大模型已参与需求理解，耗时 2424ms。"
+            "生成式大模型已参与需求理解，耗时 2391ms。"
           ]
         },
         "plans": [
           {
             "recommendation_type": "shopping_bundle",
             "title": "组合推荐",
-            "summary": "按场景组合多个互补商品：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g + OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB + The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 + 三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+            "summary": "按场景组合多个互补商品：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g + vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 + 优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 + 三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
             "components": [
               {
                 "role": "beauty",
@@ -1238,7 +1302,7 @@
                     "油皮需谨慎"
                   ]
                 },
-                "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
+                "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8329，参考价 89-89 CNY。 评价均分 2.83/5。",
                 "score": {
                   "scenario_match": 0.68,
                   "attribute_match": 0.75,
@@ -1247,7 +1311,7 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.8681,
+                  "final_score": 0.8329,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
                     "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于用户关注的 美妆护肤 类目。",
@@ -1255,12 +1319,11 @@
                     "用户评价均分 2.83/5，参与口碑评分。",
                     "商品提供 4 条官方 FAQ，可作为回答证据。",
                     "不适用提示：油皮需谨慎。",
-                    "商品知识证据命中：p_beauty_025 召回分 0.0274; p_beauty_025 召回分 0.0223。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_beauty_025::profile::0",
-                  "p_beauty_025::faq::2"
+                  "p_beauty_025"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_beauty_025_1"
@@ -1268,277 +1331,327 @@
               {
                 "role": "digital",
                 "product": {
-                  "product_id": "p_digital_016",
-                  "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                  "brand": "OPPO",
+                  "product_id": "p_digital_019",
+                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                  "brand": "vivo",
                   "category": "digital",
                   "category_name": "数码电子",
-                  "sub_category": "智能手机",
+                  "sub_category": "平板电脑",
                   "base_price": 3299.0,
                   "min_price": 3299.0,
-                  "max_price": 3699.0,
+                  "max_price": 4299.0,
                   "currency": "CNY",
                   "stock_status": "available_for_demo",
                   "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_digital_016_live.jpg",
-                  "image_url": "/product-images/p_digital_016_live.jpg",
+                  "image_path": "data/ecommerce_products/images/p_digital_019_live.jpg",
+                  "image_url": "/product-images/p_digital_019_live.jpg",
                   "skus": [
                     {
-                      "sku_id": "s_p_digital_016_1",
+                      "sku_id": "s_p_digital_019_1",
                       "properties": {
-                        "存储": "12GB+256GB",
-                        "版本": "标准版"
+                        "存储配置": "8GB+256GB",
+                        "网络版本": "Wi-Fi 版"
                       },
                       "price": 3299.0
                     },
                     {
-                      "sku_id": "s_p_digital_016_2",
+                      "sku_id": "s_p_digital_019_2",
                       "properties": {
-                        "存储": "12GB+256GB",
-                        "版本": "高配版"
+                        "存储配置": "12GB+256GB",
+                        "网络版本": "Wi-Fi 版"
                       },
-                      "price": 3449.0
+                      "price": 3599.0
                     },
                     {
-                      "sku_id": "s_p_digital_016_3",
+                      "sku_id": "s_p_digital_019_3",
                       "properties": {
-                        "存储": "12GB+512GB",
-                        "版本": "标准版"
+                        "存储配置": "12GB+512GB",
+                        "网络版本": "Wi-Fi 版"
                       },
-                      "price": 3549.0
+                      "price": 3899.0
                     },
                     {
-                      "sku_id": "s_p_digital_016_4",
+                      "sku_id": "s_p_digital_019_4",
                       "properties": {
-                        "存储": "12GB+512GB",
-                        "版本": "高配版"
+                        "存储配置": "8GB+256GB",
+                        "网络版本": "全网通5G版"
                       },
                       "price": 3699.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_019_5",
+                      "properties": {
+                        "存储配置": "12GB+256GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 3999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_019_6",
+                      "properties": {
+                        "存储配置": "12GB+512GB",
+                        "网络版本": "全网通5G版"
+                      },
+                      "price": 4299.0
                     }
                   ],
-                  "description": "OPPO Reno 16 Pro是专门为爱拍人像的年轻用户打造的轻薄5G旗舰机，整机拿在手里几乎没有坠手感，长时间刷剧出门扫街揣口袋都毫无负担。核心的人像摄影系统搭配原生柔光环，暗光下拍夜市合照、咖啡馆氛围感照片都不用额外补光，肤感磨皮自然不假白。搭载的高刷屏刷短视频、玩轻度手游时跟手度拉满，搭配大毫安时电池和满血快充，出门忘充电午休充10分钟就能刷一下午社交软件。特别适合喜欢记录日常通勤、和闺蜜出游、下班探店瞬间的学生党、职场新人，平时用机尽量别用非官方的快充头，避免损伤电池健康，裸机使用建议单独贴高清钢化膜防刮花。",
+                  "description": "vivo Pad 6 Pro搭配12.1英寸高刷全面屏，是专门为学生党、轻办公上班族、影音娱乐爱好者打造的多用途平板。核心卖点是大内存组合搭配高刷新率显示，学习时可以一边开上网课窗口、一边记电子笔记、侧边挂查资料小窗，多任务切换丝滑不卡顿；通勤居家刷剧、玩轻度手游时，屏幕色彩通透流畅度拉满。全金属机身质感扎实，Wi-Fi版无流量卡顿困扰，8+256G版本日常存储课件、存剧完全够用，12+512G版本更适合需要装大量专业绘图、办公软件的用户。使用建议平时搭配原装触控笔记笔记更顺手，注意不要把平板和尖锐硬物放在同一个包里避免刮花屏幕，长期高负载使用时建议摘掉保护壳散热。",
                   "faqs": [
                     {
-                      "question": "OPPO Reno 16 Pro的人像拍照在夜景暗光环境下会不会糊？",
-                      "answer": "完全不用担心这个问题，这款机型专门在前置和后置人像模组都搭载了自研的自然人像柔光环，光圈尺寸相比上一代提升了27%，暗光进光量直接拉满。哪怕你是在深夜路边摊、光线昏暗的清吧里拍合照，也不用开闪光灯晃得大家睁不开眼，拍出来的人脸不会出现油光反光，背景的夜市灯光、店面霓虹灯还能保留自然的虚化光斑，肤色还原得很通透，完全不会出现普通手机夜景人像发灰发糊的问题，直出就能发朋友圈。"
+                      "question": "vivo Pad 6 Pro的分屏多任务功能最多支持同时打开多少个应用，不同内存版本会有差异吗？",
+                      "answer": "这款平板的系统最多支持同时开启4个应用窗口，包括两个全屏分屏应用加两个悬浮小窗的组合。8GB+256GB版本同时开启3个日常应用比如网课、笔记、浏览器完全不会出现杀后台情况，开4个窗口的话尽量关闭后台闲置程序即可；12GB+512GB版本由于运存更大，哪怕同时开4个占用资源稍高的绘图、办公软件，切换时也几乎不会重载，两个版本的分屏功能逻辑完全一致，仅后台留存能力有区别。"
                     },
                     {
-                      "question": "12GB的运行内存后台能同时保留多少个常用APP不被杀？",
-                      "answer": "这款Reno 16 Pro搭载了OPPO自研的内存拓展技术，12GB的物理运存最高可以拓展到等效24GB的运行空间，日常你同时挂微信、QQ、淘宝、抖音、小红书还有办公的文档APP，来回切换基本不会出现重新加载的情况，正常用机场景下能稳定保留15个以上常用第三方APP后台。就算你中途切出去打半小时手游，切回微信的时候也不用重新登录，之前打开的聊天记录、刷到一半的商品页面都会原封不动保留着，不用重复加载浪费时间。"
+                      "question": "这款12.1英寸的高刷屏看久书眼睛会酸吗，有没有专门针对学习场景的显示优化？",
+                      "answer": "它的屏幕自带硬件级低蓝光认证，还有专门的学习模式可以自动调整屏幕色温，过滤刺眼的短波蓝光，长时间上网课、看电子教材的时候，屏幕不会像普通平板那样越看越眼酸。高刷模式下翻页、滑动笔记的动作完全没有拖影，不会因为画面卡顿晃眼加重用眼负担，还可以自定义定时提醒休息功能，连续使用45分钟就会弹出提示让你远眺放松，对于学生长时间上网课的场景适配度很高。"
                     },
                     {
-                      "question": "它的高刷屏日常刷应用和玩游戏的时候会不会很费电？",
-                      "answer": "这款机型的高刷屏搭载了智能动态帧率调节技术，不是全程锁死高刷的，在你看静态电子书、浏览长图内容的时候会自动降到合适的低帧率降低功耗，刷短视频、刷社交信息流的时候自动切换到高刷保证流畅度。日常中度使用的话满电支撑一整天完全没问题，就算你连续2小时玩轻度的MOBA类手游，耗电也不到30%，完全不用为了续航特意把高刷关掉，兼顾了流畅体验和续航表现，不会出现普通高刷手机掉电飞快的情况。"
+                      "question": "vivo Pad 6 Pro两个Wi-Fi版本日常办公存文件够用吗，支持外接移动硬盘扩展存储吗？",
+                      "answer": "8GB+256GB版本存上千份课件、几十部高清剧集再装十余个常用办公软件完全没有压力，适合日常轻办公的普通用户；12GB+512GB版本可以存储大量设计素材、高清网课资源，甚至能存几十G的大型办公套件离线安装包，适合有大量资料存储需求的用户。两个版本都支持通过OTG转接外接最大2TB的移动硬盘，直接在平板里读取修改办公文件，不用额外传输，临时拷大项目文件也很方便。"
                     },
                     {
-                      "question": "标准版12+256GB和高配版12+512GB除了存储大小还有别的区别吗？",
-                      "answer": "两个版本除了机身存储的容量不同之外，其他所有硬件配置、功能体验都是完全一致的，人像摄影模组、高刷屏参数、快充功率还有5G基带规格没有任何阉割。256GB的版本适合日常只是拍点普通照片、存少量app和视频的用户，足够日常一两年的存储需求，3299的性价比很高。512GB的版本更适合喜欢拍4K人像vlog、存大量剧和游戏资源的用户，不用频繁清理存储空间，用三四年也不用担心内存不够用，定价3699也很划算，大家可以根据自己的存储需求选就行。"
+                      "question": "这款平板的Wi-Fi信号表现怎么样，隔着两堵墙办公上网课会不会经常断连？",
+                      "answer": "vivo Pad 6 Pro搭载了专门优化的Wi-Fi6天线模组，针对穿墙场景做了信号增益调校，普通家用路由器环境下，隔着两堵实体承重墙，信号强度依然能维持满格的70%以上，上网课开高清直播、在线协作文档都不会出现卡顿断连的情况。哪怕是在人多的公共会议室连公共Wi-Fi，它也能优先抢占更稳定的信道，不会出现别人的设备都能联网唯独自己平板加载半天的尴尬情况。"
                     },
                     {
-                      "question": "这款手机的轻薄机身会不会容易摔碎，抗摔性怎么样？",
-                      "answer": "这款Reno 16 Pro虽然机身做了轻薄处理，整机重量控制在180g以内，但屏幕和后盖都用了经过强化的抗摔玻璃材质，日常从桌面高度不小心滑落掉到木质地板上，基本不会出现碎裂的情况，正常使用完全没问题。但它毕竟没有额外的专业防摔认证，还是不建议大家故意让手机摔落，如果日常经常手滑的用户，搭配赠送的软硅胶手机壳使用，就能进一步降低摔碎的风险，完全可以满足普通用户日常的防摔需求。"
-                    },
-                    {
-                      "question": "它的满血快充从0充到满大概需要多长时间，支持边充边玩吗？",
-                      "answer": "这款机型搭载的是OPPO自家的满血超级闪充，在熄屏状态下从0电量充到100%，只需要不到35分钟，就算你早上起来发现手机忘充电，洗漱收拾的十几分钟就能充到60%以上，完全能满足你出门一整天的用电需求。它本身搭载了完善的充电温控保护机制，正常边充边刷短视频聊微信是完全没问题的，不会出现严重发烫的情况，不过还是不建议边快充边玩大型手游，会让机身温度升高，长期这样操作会轻微损耗电池的使用寿命。"
+                      "question": "vivo Pad 6 Pro不插键盘只用触控操作，做表格改文档方便吗？",
+                      "answer": "系统自带的办公触控优化逻辑做了专门适配，不用外接键盘，手指点选单元格、拖动调整表格行列宽，双指缩放文档视图都很精准，很少出现误触情况。搭配vivo原装触控笔还能直接在PDF文档、PPT草稿上批注修改，临时改个方案标个重点完全不用找键盘，外出见客户忘带配件的时候，仅凭平板本身就能完成大部分轻办公的应急操作，效率不会打折扣。"
                     }
                   ],
                   "reviews": [
                     {
+                      "nickname": "小周",
+                      "rating": 3,
+                      "content": "用了快两周实在有点闹心，本来冲着多任务功能买的想一边上网课一边记笔记，结果8GB版本开了网课和笔记APP之后，后台再切回浏览器经常直接把网课APP给杀了，得重新进直播间重连，好几次老师讲的重点都错过了。而且机身重量比我之前旧平板沉不少，捧着看一小时书胳膊就酸，同价位别的平板都有配套的送手写笔活动，这款笔还得单独买，感觉性价比有点配不上这个定价，挺失望的。"
+                    },
+                    {
                       "nickname": "阿凯",
-                      "rating": 2,
-                      "content": "用了快两周真的有点失望，本来冲着人像摄影买的，结果晴天户外拍人像的时候，后置镜头的算法过度磨皮，把我脸上的痘印全磨没就算了，连眉毛的毛流感都给磨没了，拍出来的人像假得像网图。还有宣传的高刷屏，部分小众的第三方APP居然锁60帧，刷起来明显卡顿，3千多的机子这个表现真的不值这个价，跟之前用的旧Reno比体验没提升多少。"
+                      "rating": 4,
+                      "content": "整体用下来还行，12.1英寸的高刷屏看剧是真的爽，色彩特别鲜艳滑动起来也完全不卡，平时用来追更新的综艺体验拉满。就是有个小问题，自带的系统阅读模式适配的APP太少了，很多第三方小说软件打开没法开启护眼显示，得手动调亮度色温特别麻烦。还有裸机的边框摸起来有点割手，得自己额外买个带边框保护的壳子，要是出厂能送个软壳就更贴心了，整体不算踩雷但小瑕疵确实有点影响体验。"
                     },
                     {
-                      "nickname": "小棠",
+                      "nickname": "小楠",
+                      "rating": 3,
+                      "content": "本来买给家里弟弟上网课用的，结果用了一周发现续航实在太拉胯，满电状态下连续开高清网课三个半小时就剩15%的电，官方宣传的长续航完全是虚标。而且底部的扬声器偶尔会出现破音情况，开稍微大一点的网课老师声音就劈了，还得插耳机用。找客服检测说属于正常范围不给退换，三千多买的平板这个体验实在不值这个价，早知道当初加钱选别家的产品了。"
+                    },
+                    {
+                      "nickname": "阿泽",
                       "rating": 5,
-                      "content": "这机子真的买对了！我平时特别爱和朋友出门探店拍照片，之前的旧手机在暖光的咖啡馆里拍出来的人脸总是发黄，这个Reno16Pro拍出来的肤色特别通透，自带的虚化把背景的蛋糕灯虚化得特别好看，直出都不用修图直接发朋友圈。整机拿在手里轻得离谱，我这种小手女生单手握一下午刷手机也不累，快充午休充十分钟下午逛一下午街都有电，太适合我们这种爱拍照的女生了。"
+                      "content": "这个平板真的买对了！我平时做新媒体运营，常用平板剪短素材、多开微信、浏览器和笔记APP对接需求，12GB运存的版本来回切完全没有卡顿，从来没出现过后台应用重载的情况。12.1英寸的高刷屏刷短视频、看样片色彩特别准，屏幕清晰度比我之前的旧平板好太多，平时下班躺床上追4K剧沉浸感直接拉满，全金属机身质感也特别棒，同事问了链接都打算入手，这个价格能买到这个配置真的太香了。"
                     },
                     {
-                      "nickname": "阿哲",
-                      "rating": 2,
-                      "content": "本来冲着5G和轻薄入的，结果用了不到一个月就发现，信号在地铁里经常会断网，同位置我朋友的其他品牌5G手机都能正常刷短视频，我的这台就转圈圈加载半天。而且机身的后盖太沾指纹了，我就算天天擦，用十分钟就全是油印子，看着特别显脏，送的手机壳质感也特别差，用两天边就发黄了，这个价格买真的感觉踩坑了，体验远不如预期。"
+                      "nickname": "阿美",
+                      "rating": 3,
+                      "content": "冲着办公需求买的，结果连接我家的旧款5GWi-Fi路由器经常断流，每次打开在线文档加载半天，换了别的手机连同一个网都完全没问题，问客服说要我换新款路由器，哪有买个平板还要换路由器的道理。而且自带的便签功能导出成PDF的时候，手写的笔触经常会出现偏移，导出的文件和屏幕上看到的不一样，很多我标出来的重点位置都歪了，用来整理学习笔记特别不方便，用着太闹心。"
                     }
                   ],
-                  "review_count": 3,
-                  "rating_avg": 3.0,
+                  "review_count": 5,
+                  "rating_avg": 3.6,
                   "best_for": [
                     "参数对比",
                     "预算筛选",
                     "使用场景匹配",
-                    "智能手机",
-                    "学生党"
+                    "平板电脑",
+                    "学生党",
+                    "上班通勤"
                   ],
                   "not_good_for": [],
                   "supported_scenarios": [
                     "digital_purchase",
                     "device_comparison",
                     "productivity",
-                    "智能手机"
+                    "平板电脑"
                   ],
                   "tags": [
-                    "OPPO",
+                    "vivo",
                     "数码电子",
-                    "智能手机",
+                    "平板电脑",
                     "通勤",
-                    "咖啡",
+                    "办公",
+                    "学习",
+                    "8GB+256GB",
+                    "Wi-Fi 版",
                     "12GB+256GB",
-                    "标准版",
-                    "高配版",
-                    "12GB+512GB"
+                    "12GB+512GB",
+                    "全网通5G版"
                   ],
                   "metadata": {
                     "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "2_数码电子/images/p_digital_016_live.jpg"
+                    "source_image_path": "2_数码电子/images/p_digital_019_live.jpg"
                   },
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
+                "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
                 "score": {
-                  "scenario_match": 0.68,
+                  "scenario_match": 0.6,
                   "attribute_match": 0.75,
                   "price_fit": 0.9517,
-                  "reputation_fit": 0.75,
+                  "reputation_fit": 0.97,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
-                  "detail_quality": 0.94,
-                  "final_score": 0.8575,
+                  "detail_quality": 1.0,
+                  "final_score": 0.8273,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-                    "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
-                    "用户评价均分 3/5，参与口碑评分。",
-                    "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_016 召回分 0.0263; p_digital_016 召回分 0.0226。"
+                    "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+                    "用户评价均分 3.6/5，参与口碑评分。",
+                    "商品提供 5 条官方 FAQ，可作为回答证据。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_016::review::3",
-                  "p_digital_016::faq::2"
+                  "p_digital_019"
                 ],
                 "quantity": 1,
-                "selected_sku_id": "s_p_digital_016_1"
+                "selected_sku_id": "s_p_digital_019_1"
               },
               {
                 "role": "clothing",
                 "product": {
-                  "product_id": "p_clothes_024",
-                  "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-                  "brand": "北面",
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "brand": "优衣库",
                   "category": "clothing",
                   "category_name": "服饰运动",
-                  "sub_category": "帽子",
-                  "base_price": 199.0,
-                  "min_price": 199.0,
-                  "max_price": 199.0,
+                  "sub_category": "短袖T恤",
+                  "base_price": 99.0,
+                  "min_price": 99.0,
+                  "max_price": 99.0,
                   "currency": "CNY",
                   "stock_status": "available_for_demo",
                   "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_clothes_024_live.jpg",
-                  "image_url": "/product-images/p_clothes_024_live.jpg",
+                  "image_path": "data/ecommerce_products/images/p_clothes_001_live.jpg",
+                  "image_url": "/product-images/p_clothes_001_live.jpg",
                   "skus": [
                     {
-                      "sku_id": "s_p_clothes_024_1",
+                      "sku_id": "s_p_clothes_001_1",
                       "properties": {
-                        "尺码": "均码",
-                        "帽围调节方式": "可调节",
-                        "颜色": "经典黑"
+                        "尺码": "S码",
+                        "颜色": "黑色"
                       },
-                      "price": 199.0
+                      "price": 99.0
                     },
                     {
-                      "sku_id": "s_p_clothes_024_2",
+                      "sku_id": "s_p_clothes_001_2",
                       "properties": {
-                        "尺码": "均码",
-                        "帽围调节方式": "可调节",
-                        "颜色": "米白色"
+                        "尺码": "S码",
+                        "颜色": "白色"
                       },
-                      "price": 199.0
+                      "price": 99.0
                     },
                     {
-                      "sku_id": "s_p_clothes_024_3",
+                      "sku_id": "s_p_clothes_001_3",
                       "properties": {
-                        "尺码": "均码",
-                        "帽围调节方式": "可调节",
-                        "颜色": "藏青色"
+                        "尺码": "S码",
+                        "颜色": "深蓝色"
                       },
-                      "price": 199.0
+                      "price": 99.0
                     },
                     {
-                      "sku_id": "s_p_clothes_024_4",
+                      "sku_id": "s_p_clothes_001_4",
                       "properties": {
-                        "尺码": "均码",
-                        "帽围调节方式": "可调节",
-                        "颜色": "浅灰色"
+                        "尺码": "M码",
+                        "颜色": "黑色"
                       },
-                      "price": 199.0
+                      "price": 99.0
                     },
                     {
-                      "sku_id": "s_p_clothes_024_5",
+                      "sku_id": "s_p_clothes_001_5",
                       "properties": {
-                        "尺码": "均码",
-                        "帽围调节方式": "可调节",
-                        "颜色": "森林绿"
+                        "尺码": "M码",
+                        "颜色": "白色"
                       },
-                      "price": 199.0
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_6",
+                      "properties": {
+                        "尺码": "M码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_7",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "黑色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_8",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "白色"
+                      },
+                      "price": 99.0
+                    },
+                    {
+                      "sku_id": "s_p_clothes_001_9",
+                      "properties": {
+                        "尺码": "L码",
+                        "颜色": "深蓝色"
+                      },
+                      "price": 99.0
                     }
                   ],
-                  "description": "这款北面Horizon系列轻量速干运动鸭舌帽，专门为户外出行和日常运动打造，帽身采用北面专属的速干针织面料，整体重量不到80g，上头顶着几乎没负担。面料自带细密透气网眼结构，长时间佩戴也不会闷出满头汗，还自带UPF50+的防晒力，能挡住大部分正午直射的紫外线，避免脸侧和后颈被晒红。后脑勺是可调节的魔术贴设计，不管头围54cm到61cm的男女都能调到最贴合的松紧度，不会跑跳两下就掉。不管是周末徒步登山、日常夜跑晨练、通勤骑车买咖啡，还是去海边露营逛景点都能用。平时戴完随手塞包里也不占地方，脏了直接冷水手洗阴干就行，别用热水泡也别扔烘干机烘，不然会破坏速干面料的防晒涂层。",
+                  "description": "优衣库这款AIRism联名系列的男装宽松圆领T恤，把亲肤棉感和黑科技凉感做了完美融合，不是普通的薄款白T！面料用的是AIRism专属混纺棉，摸上去是软乎乎的棉质质感，贴身穿完全不扎，自带的吸湿速干属性夏天出了汗也不会黏在背上，宽松H版型刚好遮住腰腹的小赘肉，不紧绷也不会垮得像偷穿大人衣服。不管是学生党上课通勤、上班族下班逛夜市、周末约球做轻运动当内搭都合适，单穿配工装裤、牛仔短裤都很出片。建议洗的时候翻面用冷水轻柔模式，别用热水长时间泡，避免破坏面料里的凉感涂层，不要长时间暴晒在正午阳光下，挂在通风阴干能保持版型穿一整个夏天都不变形。",
                   "faqs": [
                     {
-                      "question": "这款北面Horizon鸭舌帽的速干面料具体是什么材质，洗多了会不会失去速干效果？",
-                      "answer": "这款帽子的帽身主体采用的是78%聚酯纤维+22%氨纶混纺的定向导速干面料，出厂前就做了长效的拒水导汗涂层处理，正常手洗20次以内基本不会影响速干性能。要注意别用含漂白剂的洗衣液浸泡，也不要用高温烘干机烘干或者长时间放在太阳下暴晒，不然会破坏面料表面的导汗涂层，后续汗渍就容易残留在面料上干得变慢，日常清洗后挂在通风阴凉处阴干就可以很好地保留速干属性。"
+                      "question": "这款AIRism棉质T恤和普通的优衣库纯棉基础T恤穿感上有什么不一样？",
+                      "answer": "这款T恤是AIRism技术加持的棉质款，不是100%普通纯棉，在保留了棉类面料亲肤不闷、不容易起静电的优势之外，还叠加了AIRism专属的细微凉感纤维导孔，夏天室温30多度贴身穿不会有普通纯棉刚上身的闷热感，出汗之后面料能快速把潮气导出去，不会像普通纯棉那样湿了之后硬邦邦贴在背上。宽松剪裁也比普通合身款的基础T留了更多透气空隙，怕热的男生穿会明显觉得体感更清爽。"
                     },
                     {
-                      "question": "这款可调节的北面鸭舌帽，最大可以适配多少厘米的头围，戴久了魔术贴会不会起毛勾头发？",
-                      "answer": "这款均码可调节款的适配头围范围是54cm到61cm，大部分成年男性和女性的常规头围都能覆盖到，头围偏大的用户把魔术贴调到最外侧的档位也能贴合不勒头。它的魔术贴用的是北面定制的软勾面，不是普通硬塑料勾面，正常使用半年以内不会大面积起毛，佩戴或者摘戴的时候稍微注意点，顺着头型的方向摘，基本不会勾扯到头发。要是日常不小心勾到起了小毛，用小剪刀轻轻剪掉浮毛就可以正常继续用。"
+                      "question": "目前在售的S/M/L三个码对应的对应配色，只能选对应码数的颜色吗？能不能跨码选其他颜色？",
+                      "answer": "目前这款SKU的库存是定向配货的，S码对应的黑色、M码对应的白色、L码对应的深蓝色都是当前仓库现货直发的规格，暂时不支持跨码换色的定制需求哦。如果想要特定颜色搭配特定码数，比如想要黑色M码，可以后续留意优衣库线下门店或者官方渠道的不定期补库存通知，本次下单的时候选对应码数拿到的就是匹配标注的颜色，不会发错货，三个颜色都是经典基础色，日常搭配适配度都很高。"
                     },
                     {
-                      "question": "这款帽子的防晒性能是真实的吗，长时间在户外待着后帽檐会不会变软塌下垂？",
-                      "answer": "这款帽子的防晒等级达到了国家UPF50+的标准，经过专业纺织检测机构认证，能够阻隔98%以上的UVA和UVB紫外线，日常在户外待4到6个小时也能有效防护脸侧和额头不被晒伤。帽檐内部嵌入了定制的薄型PP支撑骨，正常使用情况下不容易变软塌，哪怕是淋了小雨或者出了汗浸湿帽檐，晾干之后也能快速恢复原本的挺括造型，只要不用力反复对折帽檐，基本不会出现长期下垂变形的情况。"
+                      "question": "这件T恤的宽松版型会不会显邋遢，小个子男生穿会不会压个子？",
+                      "answer": "这款的宽松是做了微落肩和衣长微调的H型宽松，不是oversize的长款垮版型，S码衣长大概在68cm左右，165-170cm的男生穿刚好盖住胯骨，搭配工装短裤不会压个子。M码衣长71cm适配170-178cm的身高，L码74cm适配178-185cm的身高，只要按平时穿优衣库T恤的常规码数选，不会出现过于松垮显邋遢的情况，想要更利落的效果可以把前摆稍微塞一点进裤腰里，搭配起来很显精神。"
                     },
                     {
-                      "question": "我平时戴眼镜，戴这款鸭舌帽的时候会不会帽檐卡眼镜腿，侧面会不会漏阳光晒到太阳穴？",
-                      "answer": "这款帽子的帽身侧边做了向内收的弧度剪裁，刚好给戴眼镜的用户留出了眼镜腿的佩戴空隙，正常佩戴的时候不会出现帽檐边卡着眼镜腿把眼镜往上顶的情况。帽檐的横向延伸宽度做到了12cm，比普通运动鸭舌帽宽出1.5cm左右，正常调整好帽子的佩戴角度，基本能把太阳穴位置完全遮住，日常跑步或者快走的时候哪怕有侧方的阳光，也不容易直接晒到太阳穴的皮肤，不用额外反复调整帽子的位置。"
-                    },
-                    {
-                      "question": "这款轻量的鸭舌帽可以折叠塞进冲锋衣的衣兜里吗，折叠之后会不会留下很难消的死褶？",
-                      "answer": "这款帽子整体重量不到80g，帽身没有硬支撑结构，是可以随意折叠的，折叠之后的体积差不多和手掌心差不多大，完全能轻松塞进常规冲锋衣的侧兜或者牛仔裤口袋里，出门通勤或者户外徒步不想戴的时候随手塞进去非常方便。它用的速干面料自带抗皱属性，正常折叠放几个小时拿出来之后，抖两下或者轻轻拍一拍，大部分褶皱都会自然散开，几乎不会留下很难平复的死褶，要是有小部分残留的褶皱，用手顺着面料捋两下就能恢复平整。"
-                    },
-                    {
-                      "question": "运动出汗多的时候戴这款帽子，会不会头前额的汗直接顺着帽檐流到眼睛里？",
-                      "answer": "这款帽子在内侧额头接触的位置，专门加了一层1cm宽的吸汗亲肤条，是用高密度的毛圈面料做的，能快速吸附前额流下来的汗水，短时间大量出汗的时候也不会直接让汗顺着帽檐往下淌。它的导汗设计是把额头的汗水往帽子两侧的面料里导，通过侧面的透气网眼快速散出去，正常日常慢跑或者中等强度的徒步运动，基本不会出现汗水流进眼睛的情况，要是做马拉松这类长时间高强度的运动，建议每隔1个小时左右稍微把帽子摘下来透透气，能进一步提升佩戴的舒适感。"
+                      "question": "洗的时候会不会掉色，能不能和其他深色/浅色衣服混洗？",
+                      "answer": "这款T恤的三个配色都是活性染色工艺做的，初次下水的时候会有极轻微的浮色，第一次洗建议单独冷水手洗或者翻面套洗衣袋机洗，不要和其他容易掉色的彩色衣物混洗。黑色和深蓝色前3次洗最好和纯白色衣物分开，避免极少量浮色蹭到其他浅色衣服上，之后正常机洗几乎不会再出现掉色情况，面料色牢度符合优衣库的品控标准，正常穿洗大几个月也不会出现大面积发白变旧的情况。"
                     }
                   ],
                   "reviews": [
                     {
                       "nickname": "阿凯",
-                      "rating": 3,
-                      "content": "整体其实还算过得去，就是戴了大概半个月之后发现后脑勺的魔术贴位置边缘开始起小毛絮，有时候摘帽子还会勾住几根头发，体验有点糟。我头围是59cm，调到最紧的档位跑起来还是有点点晃，不是特别贴合。而且我上次洗了一次之后，帽子正面北面的小logo边缘居然有点轻微脱胶，虽然不仔细看看不出来，但两百块的帽子这个品控确实有点不太符合预期，只能说勉强能用，算不上特别值这个价。"
+                      "rating": 4,
+                      "content": "整体穿下来还挺舒服的，凉感确实比我之前买的普通纯棉T明显，上周35度出门跑外勤，后背出汗也没黏糊糊的。唯一有点小遗憾是我选的L码深蓝色，领口的走线我仔细看有一点点小线头，剪完就没啥事了，这个价格能买到带AIRism技术的T其实挺划算的，就是洗了两次之后衣长稍微垂了一丢丢，不仔细看看不出来，日常穿完全够用。"
                     },
                     {
-                      "nickname": "小夏",
-                      "rating": 3,
-                      "content": "本来冲着速干的卖点买的，上周去徒步出了超多汗，帽子内侧是干得挺快的，但是帽檐位置淋了点小雨之后居然软塌了，半天都挺不起来，低头的时候帽檐直接垂下来挡视线，我走山路的时候好几次都看不清脚下的台阶，特别麻烦。而且我戴了两天之后发现，耳朵上方的位置面料有点硬，蹭得耳后皮肤有点发红发痒，可能是我肤质比较敏感？这个佩戴舒适度确实没达到我的预期，只能给个中差评。"
+                      "nickname": "小宇",
+                      "rating": 5,
+                      "content": "这是我今年买过最满意的基础T了！选的M码白色，刚好卡在我175的身高身上，不会太长也不会太紧身，面料软乎乎的但是完全不透，之前买过别家的白T薄的穿个黑内衣都透，这个完全不会。上周去打球穿了俩小时，出了一身汗风一吹很快就干了，身上一点都没闷得慌，99块钱这个质感比我之前买的两百多的T还好，打算再蹲蹲补码的时候入件黑的换着穿。"
                     },
                     {
                       "nickname": "阿泽",
-                      "rating": 5,
-                      "content": "这款帽子真的是我今年买到最满意的运动配饰了！上周连续三天去溯溪爬山，全程大太阳晒着，戴它跑跳全程稳得一批，速干面料出了汗十分钟就全干了，头上一点都不闷，之前戴别的帽子半天就闷得满头痘，这次完全没长痘。帽檐的防晒力也绝，我待在户外大半天，额头脸侧一点都没晒黑，魔术贴调松紧特别方便，我头围57cm调完特别贴合，平时通勤骑车也戴着，塞包里完全不占地方，两百块能买到北面这么实用的帽子真的太值了，已经推荐给一起徒步的朋友了。"
+                      "rating": 4,
+                      "content": "T恤本身的质感是没得说的，AIRism的凉感确实很惊喜，贴身穿完全不扎，我皮肤有点敏感穿别的便宜T容易痒，这件穿了大半个月完全没不舒服。就是我本来想选S码白的，结果现在S码只有黑色，只能凑单买了黑的，虽然黑的也百搭但我本来想买白T搭牛仔背带裤的，算是小遗憾吧，要是后续能补全配色就好了，整体性价比还是很高的。"
                     },
                     {
-                      "nickname": "大宇",
-                      "rating": 1,
-                      "content": "我收到货拆开就发现帽子的帽檐是歪的，左右两边不对称，一边高一边低，戴上去特别奇怪，正面看帽檐往左边歪得很明显，完全没法正常戴。找客服说退换，还让我自己出寄回去的运费，折腾了快一周才处理完。重新寄过来的货味道特别大，放在阳台晾了三天还是有刺鼻的化工味，洗了一次之后速干的面料摸起来硬邦邦的，logo直接掉了一半，两百块买了个残次品，真的太失望了，以后再也不想在这家买北面的东西了。"
+                      "nickname": "大刚",
+                      "rating": 2,
+                      "content": "拿到手穿了两次就有点失望，我选的L码深蓝色，第一次下水没怎么搓，晒干之后领口就有点变形，本来挺平整的圆领穿几次就有点塌塌的，领口翻边堆在脖子那里特别显邋遢。而且我180穿L码本来以为合身，结果衣长比我预想的长很多，盖过屁股了，穿出去显得五五分，99块钱不算贵但这个品控感觉不如我前几年买的同系列款，有点不值。"
+                    },
+                    {
+                      "nickname": "小枫",
+                      "rating": 4,
+                      "content": "整体穿着体验是ok的，宽松版型对我这种腰上有小肚子的人太友好了，完全不会勒肚子，AIRism的面料夏天在空调房穿不会冻得胳膊凉，出门也不会闷。就是我选的S码黑色，洗了三次之后腋下位置有一点点起小毛球，得用粘毛器滚两下才干净，不过也不仔细看发现不了，这个价格能买到兼顾棉感和凉感的T，平时通勤穿完全够用，总体还是挺满意的。"
                     }
                   ],
-                  "review_count": 4,
-                  "rating_avg": 3.0,
+                  "review_count": 5,
+                  "rating_avg": 3.8,
                   "best_for": [
                     "穿搭组合",
                     "尺码颜色选择",
                     "运动/通勤场景",
-                    "帽子"
+                    "短袖T恤",
+                    "学生党",
+                    "上班通勤"
                   ],
                   "not_good_for": [],
                   "supported_scenarios": [
@@ -1546,56 +1659,52 @@
                     "sportswear",
                     "commute_style",
                     "sports",
-                    "帽子"
+                    "短袖T恤"
                   ],
                   "tags": [
-                    "北面",
+                    "优衣库",
                     "服饰运动",
-                    "帽子",
-                    "防晒",
-                    "轻量",
+                    "短袖T恤",
                     "通勤",
-                    "户外",
-                    "咖啡",
-                    "均码",
-                    "可调节",
-                    "经典黑",
-                    "米白色",
-                    "藏青色",
-                    "浅灰色",
-                    "森林绿"
+                    "夏天",
+                    "S码",
+                    "黑色",
+                    "白色",
+                    "深蓝色",
+                    "M码",
+                    "L码"
                   ],
                   "metadata": {
                     "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "3_服饰运动/images/p_clothes_024_live.jpg"
+                    "source_image_path": "3_服饰运动/images/p_clothes_001_live.jpg"
                   },
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
+                "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8355，参考价 99-99 CNY。 评价均分 3.8/5。",
                 "score": {
-                  "scenario_match": 0.68,
+                  "scenario_match": 0.6,
                   "attribute_match": 0.75,
-                  "price_fit": 0.9535,
-                  "reputation_fit": 0.8,
+                  "price_fit": 0.9923,
+                  "reputation_fit": 1.0,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
-                  "detail_quality": 0.97,
-                  "final_score": 0.8475,
+                  "detail_quality": 0.94,
+                  "final_score": 0.8355,
                   "reasons": [
-                    "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
-                    "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+                    "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+                    "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
                     "价格与预算要求较匹配。",
-                    "用户评价均分 3/5，参与口碑评分。",
-                    "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_clothes_024 召回分 0.0236。"
+                    "用户评价均分 3.8/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_clothes_024::profile::0"
+                  "p_clothes_001"
                 ],
                 "quantity": 1,
-                "selected_sku_id": "s_p_clothes_024_1"
+                "selected_sku_id": "s_p_clothes_001_1"
               },
               {
                 "role": "food",
@@ -1727,7 +1836,7 @@
                     "严格控糖用户需看配料"
                   ]
                 },
-                "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
+                "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.8682，参考价 59-99 CNY。 评价均分 4/5。",
                 "score": {
                   "scenario_match": 0.86,
                   "attribute_match": 0.85,
@@ -1736,7 +1845,7 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.9036,
+                  "final_score": 0.8682,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
                     "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于用户关注的 食品饮料 类目。",
@@ -1745,26 +1854,25 @@
                     "用户评价均分 4/5，参与口碑评分。",
                     "商品提供 5 条官方 FAQ，可作为回答证据。",
                     "不适用提示：严格控糖用户需看配料。",
-                    "商品知识证据命中：p_food_009 召回分 0.0300; p_food_009 召回分 0.0288。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_food_009::profile::0",
-                  "p_food_009::sku::1"
+                  "p_food_009"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_food_009_4"
               }
             ],
             "cost_estimate": {
-              "total_price_min": 3646.0,
-              "total_price_max": 4086.0,
+              "total_price_min": 3546.0,
+              "total_price_max": 4586.0,
               "currency": "CNY",
               "assumptions": [
                 "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
                 "p_beauty_025 未提供精确库存数量，仅按已上架商品参与推荐。",
-                "p_digital_016 未提供精确库存数量，仅按已上架商品参与推荐。",
-                "p_clothes_024 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_digital_019 未提供精确库存数量，仅按已上架商品参与推荐。",
+                "p_clothes_001 未提供精确库存数量，仅按已上架商品参与推荐。",
                 "p_food_009 未提供精确库存数量，仅按已上架商品参与推荐。"
               ],
               "breakdown": {
@@ -1780,29 +1888,29 @@
                   "selected_price": 89.0,
                   "selected_total_price": 89.0
                 },
-                "p_digital_016": {
+                "p_digital_019": {
                   "role": "digital",
                   "pricing_model": "sku_price",
                   "currency": "CNY",
                   "quantity": 1,
                   "base_price": 3299.0,
                   "min_price": 3299.0,
-                  "max_price": 3699.0,
-                  "selected_sku_id": "s_p_digital_016_1",
+                  "max_price": 4299.0,
+                  "selected_sku_id": "s_p_digital_019_1",
                   "selected_price": 3299.0,
                   "selected_total_price": 3299.0
                 },
-                "p_clothes_024": {
+                "p_clothes_001": {
                   "role": "clothing",
                   "pricing_model": "sku_price",
                   "currency": "CNY",
                   "quantity": 1,
-                  "base_price": 199.0,
-                  "min_price": 199.0,
-                  "max_price": 199.0,
-                  "selected_sku_id": "s_p_clothes_024_1",
-                  "selected_price": 199.0,
-                  "selected_total_price": 199.0
+                  "base_price": 99.0,
+                  "min_price": 99.0,
+                  "max_price": 99.0,
+                  "selected_sku_id": "s_p_clothes_001_1",
+                  "selected_price": 99.0,
+                  "selected_total_price": 99.0
                 },
                 "p_food_009": {
                   "role": "food",
@@ -1842,14 +1950,14 @@
               "p_beauty_025: FAQ - 这款0.08g的极细笔芯会不会很容易断？平时怎么保养能延长使用寿命？",
               "价格匹配：当前最低 SKU 约 89 CNY，已用于预算适配评分。",
               "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于用户关注的 美妆护肤 类目。",
-              "p_digital_016: OPPO Reno 16 Pro是专门为爱拍人像的年轻用户打造的轻薄5G旗舰机，整机拿在手里几乎没有坠手感，长时间刷剧出门扫街揣口袋都毫无负担。核心的人像摄影系统搭配原生柔光环，暗光下拍夜市合照、咖啡馆氛围感照片都不用额外补光，肤感磨皮自然不假白。搭载的高刷屏刷短视频、玩轻度手游时跟手度拉满，搭配大毫安时电池和满血快充，出门忘充电午休充10分钟就能刷一下午社交软件。特别适合喜欢记录日常通勤、和闺蜜出游、下班探店瞬间的学生党、职场新人，平",
-              "p_digital_016: FAQ - OPPO Reno 16 Pro的人像拍照在夜景暗光环境下会不会糊？",
+              "p_digital_019: vivo Pad 6 Pro搭配12.1英寸高刷全面屏，是专门为学生党、轻办公上班族、影音娱乐爱好者打造的多用途平板。核心卖点是大内存组合搭配高刷新率显示，学习时可以一边开上网课窗口、一边记电子笔记、侧边挂查资料小窗，多任务切换丝滑不卡顿；通勤居家刷剧、玩轻度手游时，屏幕色彩通透流畅度拉满。全金属机身质感扎实，Wi-Fi版无流量卡顿困扰，8+256G版本日常存储课件、存剧完全够用，12+512G版本更适合需要装大量专业绘图、办公软件的用",
+              "p_digital_019: FAQ - vivo Pad 6 Pro的分屏多任务功能最多支持同时打开多少个应用，不同内存版本会有差异吗？",
               "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
-              "p_clothes_024: 这款北面Horizon系列轻量速干运动鸭舌帽，专门为户外出行和日常运动打造，帽身采用北面专属的速干针织面料，整体重量不到80g，上头顶着几乎没负担。面料自带细密透气网眼结构，长时间佩戴也不会闷出满头汗，还自带UPF50+的防晒力，能挡住大部分正午直射的紫外线，避免脸侧和后颈被晒红。后脑勺是可调节的魔术贴设计，不管头围54cm到61cm的男女都能调到最贴合的松紧度，不会跑跳两下就掉。不管是周末徒步登山、日常夜跑晨练、通勤骑车买咖啡，还是去",
-              "p_clothes_024: FAQ - 这款北面Horizon鸭舌帽的速干面料具体是什么材质，洗多了会不会失去速干效果？",
-              "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
-              "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+              "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+              "p_clothes_001: 优衣库这款AIRism联名系列的男装宽松圆领T恤，把亲肤棉感和黑科技凉感做了完美融合，不是普通的薄款白T！面料用的是AIRism专属混纺棉，摸上去是软乎乎的棉质质感，贴身穿完全不扎，自带的吸湿速干属性夏天出了汗也不会黏在背上，宽松H版型刚好遮住腰腹的小赘肉，不紧绷也不会垮得像偷穿大人衣服。不管是学生党上课通勤、上班族下班逛夜市、周末约球做轻运动当内搭都合适，单穿配工装裤、牛仔短裤都很出片。建议洗的时候翻面用冷水轻柔模式，别用热水长时间泡",
+              "p_clothes_001: FAQ - 这款AIRism棉质T恤和普通的优衣库纯棉基础T恤穿感上有什么不一样？",
+              "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+              "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
               "p_food_009: 三只松鼠这款每日坚果专门为懒得搭配坚果、追求每日精准营养的朋友量身打造，整整30袋总重750g，每袋都是25g的独立密封小包装，不用怕开袋后受潮变质。搭配都是科学配比的6种果仁果干，没有额外添加白砂糖调味，保留坚果原生香，不会齁甜发腻。不管是职场人通勤揣一袋当下午茶垫肚子，学生党课间补充能量，还是宝妈给家里小朋友当健康加餐、全家周末出游揣几袋解闷都合适。建议每天拆开1袋直接吃，也可以倒在酸奶、燕麦碗里拌着吃，口感层次更丰富。要注意坚果开",
               "p_food_009: FAQ - 这款每日坚果750g礼盒里具体是哪几种坚果和果干，有没有额外的添加剂？",
               "价格匹配：当前最低 SKU 约 59 CNY，已用于预算适配评分。",
@@ -1860,7 +1968,7 @@
                 "role": "beauty",
                 "product_id": "p_beauty_025",
                 "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
-                "final_score": 0.8681,
+                "final_score": 0.8329,
                 "scenario_match": 0.68,
                 "attribute_match": 0.75,
                 "price_fit": 0.9713,
@@ -1875,55 +1983,55 @@
                   "用户评价均分 2.83/5，参与口碑评分。",
                   "商品提供 4 条官方 FAQ，可作为回答证据。",
                   "不适用提示：油皮需谨慎。",
-                  "商品知识证据命中：p_beauty_025 召回分 0.0274; p_beauty_025 召回分 0.0223。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               },
               {
                 "role": "digital",
-                "product_id": "p_digital_016",
-                "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-                "final_score": 0.8575,
-                "scenario_match": 0.68,
+                "product_id": "p_digital_019",
+                "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                "final_score": 0.8273,
+                "scenario_match": 0.6,
                 "attribute_match": 0.75,
                 "price_fit": 0.9517,
-                "reputation_fit": 0.75,
+                "reputation_fit": 0.97,
                 "availability_fit": 0.95,
                 "sku_fit": 0.95,
-                "detail_quality": 0.94,
+                "detail_quality": 1.0,
                 "reasons": [
                   "价格匹配：当前最低 SKU 约 3299 CNY，已用于预算适配评分。",
-                  "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于用户关注的 数码电子 类目。",
-                  "用户评价均分 3/5，参与口碑评分。",
-                  "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_016 召回分 0.0263; p_digital_016 召回分 0.0226。"
+                  "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于用户关注的 数码电子 类目。",
+                  "用户评价均分 3.6/5，参与口碑评分。",
+                  "商品提供 5 条官方 FAQ，可作为回答证据。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               },
               {
                 "role": "clothing",
-                "product_id": "p_clothes_024",
-                "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-                "final_score": 0.8475,
-                "scenario_match": 0.68,
+                "product_id": "p_clothes_001",
+                "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                "final_score": 0.8355,
+                "scenario_match": 0.6,
                 "attribute_match": 0.75,
-                "price_fit": 0.9535,
-                "reputation_fit": 0.8,
+                "price_fit": 0.9923,
+                "reputation_fit": 1.0,
                 "availability_fit": 0.95,
                 "sku_fit": 0.95,
-                "detail_quality": 0.97,
+                "detail_quality": 0.94,
                 "reasons": [
-                  "价格匹配：当前最低 SKU 约 199 CNY，已用于预算适配评分。",
-                  "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于用户关注的 服饰运动 类目。",
+                  "价格匹配：当前最低 SKU 约 99 CNY，已用于预算适配评分。",
+                  "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于用户关注的 服饰运动 类目。",
                   "价格与预算要求较匹配。",
-                  "用户评价均分 3/5，参与口碑评分。",
-                  "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_clothes_024 召回分 0.0236。"
+                  "用户评价均分 3.8/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               },
               {
                 "role": "food",
                 "product_id": "p_food_009",
                 "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
-                "final_score": 0.9036,
+                "final_score": 0.8682,
                 "scenario_match": 0.86,
                 "attribute_match": 0.85,
                 "price_fit": 0.756,
@@ -1939,7 +2047,7 @@
                   "用户评价均分 4/5，参与口碑评分。",
                   "商品提供 5 条官方 FAQ，可作为回答证据。",
                   "不适用提示：严格控糖用户需看配料。",
-                  "商品知识证据命中：p_food_009 召回分 0.0300; p_food_009 召回分 0.0288。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1966,58 +2074,58 @@
             "stock_quantity": null,
             "rating_avg": 2.83,
             "review_count": 6,
-            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8681，参考价 89-89 CNY。 评价均分 2.83/5。 检索证据：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#profile 召回分 0.0274；花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g#faq 召回分 0.0223。",
-            "score": 0.8681,
+            "reason": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 属于 美妆护肤/眉笔，综合分 0.8329，参考价 89-89 CNY。 评价均分 2.83/5。",
+            "score": 0.8329,
             "source": "shopping_bundle",
             "selected_sku_id": "s_p_beauty_025_1"
           },
           {
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "name": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
+            "product_id": "p_digital_019",
+            "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+            "name": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+            "brand": "vivo",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "智能手机",
+            "sub_category": "平板电脑",
             "price": 3299.0,
             "price_range": [
               3299.0,
-              3699.0
+              4299.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_016_live.jpg",
+            "image_url": "/product-images/p_digital_019_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "reason": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 属于 数码电子/智能手机，综合分 0.8575，参考价 3299-3699 CNY。 评价均分 3/5。 检索证据：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#review 召回分 0.0263；OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB#faq 召回分 0.0226。",
-            "score": 0.8575,
+            "rating_avg": 3.6,
+            "review_count": 5,
+            "reason": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 属于 数码电子/平板电脑，综合分 0.8273，参考价 3299-4299 CNY。 评价均分 3.6/5。",
+            "score": 0.8273,
             "source": "shopping_bundle",
-            "selected_sku_id": "s_p_digital_016_1"
+            "selected_sku_id": "s_p_digital_019_1"
           },
           {
-            "product_id": "p_clothes_024",
-            "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-            "name": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
-            "brand": "北面",
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "name": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
             "category": "clothing",
             "category_name": "服饰运动",
-            "sub_category": "帽子",
-            "price": 199.0,
+            "sub_category": "短袖T恤",
+            "price": 99.0,
             "price_range": [
-              199.0,
-              199.0
+              99.0,
+              99.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_clothes_024_live.jpg",
+            "image_url": "/product-images/p_clothes_001_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 4,
-            "reason": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 属于 服饰运动/帽子，综合分 0.8475，参考价 199-199 CNY。 评价均分 3/5。 检索证据：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽#profile 召回分 0.0236。",
-            "score": 0.8475,
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "reason": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 属于 服饰运动/短袖T恤，综合分 0.8355，参考价 99-99 CNY。 评价均分 3.8/5。",
+            "score": 0.8355,
             "source": "shopping_bundle",
-            "selected_sku_id": "s_p_clothes_024_1"
+            "selected_sku_id": "s_p_clothes_001_1"
           },
           {
             "product_id": "p_food_009",
@@ -2038,8 +2146,8 @@
             "stock_quantity": null,
             "rating_avg": 4.0,
             "review_count": 3,
-            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.9036，参考价 59-99 CNY。 评价均分 4/5。 检索证据：三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#profile 召回分 0.0300；三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装#sku 召回分 0.0288。",
-            "score": 0.9036,
+            "reason": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装 属于 食品饮料/坚果/零食，综合分 0.8682，参考价 59-99 CNY。 评价均分 4/5。",
+            "score": 0.8682,
             "source": "shopping_bundle",
             "selected_sku_id": "s_p_food_009_4"
           }
@@ -2074,31 +2182,31 @@
                   "product_id": "p_beauty_025",
                   "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
                   "price": 89.0,
-                  "score": 0.8681
-                },
-                {
-                  "product_id": "p_beauty_018",
-                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
-                  "price": 59.0,
-                  "score": 0.8453
-                },
-                {
-                  "product_id": "p_beauty_006",
-                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
-                  "price": 170.0,
-                  "score": 0.8384
-                },
-                {
-                  "product_id": "p_beauty_010",
-                  "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
-                  "price": 118.0,
-                  "score": 0.8334
+                  "score": 0.8329
                 },
                 {
                   "product_id": "p_beauty_007",
                   "title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
                   "price": 89.0,
                   "score": 0.8313
+                },
+                {
+                  "product_id": "p_beauty_018",
+                  "title": "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
+                  "price": 59.0,
+                  "score": 0.8269
+                },
+                {
+                  "product_id": "p_beauty_006",
+                  "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+                  "price": 170.0,
+                  "score": 0.8201
+                },
+                {
+                  "product_id": "p_beauty_008",
+                  "title": "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+                  "price": 89.0,
+                  "score": 0.8197
                 }
               ]
             },
@@ -2108,34 +2216,34 @@
               "within_budget_count": 25,
               "top_candidates": [
                 {
+                  "product_id": "p_digital_019",
+                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+                  "price": 3299.0,
+                  "score": 0.8273
+                },
+                {
                   "product_id": "p_digital_016",
                   "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
                   "price": 3299.0,
-                  "score": 0.8575
+                  "score": 0.8223
+                },
+                {
+                  "product_id": "p_digital_007",
+                  "title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+                  "price": 1499.0,
+                  "score": 0.819
                 },
                 {
                   "product_id": "p_digital_018",
                   "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
                   "price": 1799.0,
-                  "score": 0.8524
+                  "score": 0.8174
                 },
                 {
-                  "product_id": "p_digital_019",
-                  "title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-                  "price": 3299.0,
-                  "score": 0.8459
-                },
-                {
-                  "product_id": "p_digital_008",
-                  "title": "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB",
-                  "price": 7499.0,
-                  "score": 0.8231
-                },
-                {
-                  "product_id": "p_digital_010",
-                  "title": "小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器",
-                  "price": 9999.0,
-                  "score": 0.8194
+                  "product_id": "p_digital_025",
+                  "title": "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑",
+                  "price": 4799.0,
+                  "score": 0.8158
                 }
               ]
             },
@@ -2145,34 +2253,34 @@
               "within_budget_count": 25,
               "top_candidates": [
                 {
+                  "product_id": "p_clothes_001",
+                  "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+                  "price": 99.0,
+                  "score": 0.8355
+                },
+                {
                   "product_id": "p_clothes_024",
                   "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
                   "price": 199.0,
-                  "score": 0.8475
+                  "score": 0.8292
+                },
+                {
+                  "product_id": "p_clothes_020",
+                  "title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+                  "price": 79.0,
+                  "score": 0.8216
                 },
                 {
                   "product_id": "p_clothes_023",
                   "title": "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
                   "price": 149.0,
-                  "score": 0.8388
+                  "score": 0.8202
                 },
                 {
                   "product_id": "p_clothes_003",
                   "title": "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
                   "price": 199.0,
-                  "score": 0.8374
-                },
-                {
-                  "product_id": "p_clothes_006",
-                  "title": "Nike Sportswear Club 男子针织运动长裤 基础休闲束脚裤",
-                  "price": 349.0,
-                  "score": 0.8374
-                },
-                {
-                  "product_id": "p_clothes_005",
-                  "title": "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣",
-                  "price": 259.0,
-                  "score": 0.8364
+                  "score": 0.8191
                 }
               ]
             },
@@ -2185,7 +2293,7 @@
                   "product_id": "p_food_009",
                   "title": "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
                   "price": 59.0,
-                  "score": 0.9036
+                  "score": 0.8682
                 },
                 {
                   "product_id": "p_food_018",
@@ -2235,53 +2343,13 @@
             "currency": "CNY",
             "rating_avg": 4.0,
             "review_count": 3,
-            "score": 0.9036,
-            "strength": "综合分 0.9036，评分 4/5，FAQ 信息较完整。",
+            "score": 0.8682,
+            "strength": "综合分 0.8682，评分 4/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：严格控糖用户需看配料。",
             "recommendation": true
           },
           {
             "rank": 2,
-            "product_id": "p_beauty_025",
-            "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
-            "brand": "花西子",
-            "category": "beauty",
-            "category_name": "美妆护肤",
-            "price": 89.0,
-            "price_range": [
-              89.0,
-              89.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 2.83,
-            "review_count": 6,
-            "score": 0.8681,
-            "strength": "综合分 0.8681，评分 2.83/5，FAQ 信息较完整。",
-            "tradeoff": "需要注意：油皮需谨慎。",
-            "recommendation": false
-          },
-          {
-            "rank": 3,
-            "product_id": "p_digital_016",
-            "title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-            "brand": "OPPO",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 3299.0,
-            "price_range": [
-              3299.0,
-              3699.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.0,
-            "review_count": 3,
-            "score": 0.8575,
-            "strength": "综合分 0.8575，评分 3/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 4,
             "product_id": "p_food_018",
             "title": "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
             "brand": "李锦记",
@@ -2301,27 +2369,7 @@
             "recommendation": false
           },
           {
-            "rank": 5,
-            "product_id": "p_digital_018",
-            "title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
-            "brand": "Apple 苹果",
-            "category": "digital",
-            "category_name": "数码电子",
-            "price": 1799.0,
-            "price_range": [
-              1799.0,
-              2299.0
-            ],
-            "currency": "CNY",
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "score": 0.8524,
-            "strength": "综合分 0.8524，评分 3/5，FAQ 信息较完整。",
-            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
-            "recommendation": false
-          },
-          {
-            "rank": 6,
+            "rank": 3,
             "product_id": "p_food_016",
             "title": "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品",
             "brand": "蒙牛",
@@ -2338,6 +2386,66 @@
             "score": 0.8485,
             "strength": "综合分 0.8485，评分 3.67/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 4,
+            "product_id": "p_clothes_001",
+            "title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+            "brand": "优衣库",
+            "category": "clothing",
+            "category_name": "服饰运动",
+            "price": 99.0,
+            "price_range": [
+              99.0,
+              99.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.8,
+            "review_count": 5,
+            "score": 0.8355,
+            "strength": "综合分 0.8355，评分 3.8/5，FAQ 信息较完整。",
+            "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
+            "recommendation": false
+          },
+          {
+            "rank": 5,
+            "product_id": "p_food_013",
+            "title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
+            "brand": "海天",
+            "category": "food",
+            "category_name": "食品饮料",
+            "price": 9.0,
+            "price_range": [
+              9.0,
+              22.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 3.33,
+            "review_count": 3,
+            "score": 0.8342,
+            "strength": "综合分 0.8342，评分 3.33/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
+            "recommendation": false
+          },
+          {
+            "rank": 6,
+            "product_id": "p_beauty_025",
+            "title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+            "brand": "花西子",
+            "category": "beauty",
+            "category_name": "美妆护肤",
+            "price": 89.0,
+            "price_range": [
+              89.0,
+              89.0
+            ],
+            "currency": "CNY",
+            "rating_avg": 2.83,
+            "review_count": 6,
+            "score": 0.8329,
+            "strength": "综合分 0.8329，评分 2.83/5，FAQ 信息较完整。",
+            "tradeoff": "需要注意：油皮需谨慎。",
             "recommendation": false
           }
         ],
@@ -2374,7 +2482,7 @@
           "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
           "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
           "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
-          "当前推荐包含：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g、OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB、The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽。"
+          "当前推荐包含：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g、vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑、优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣。"
         ],
         "follow_up_questions": [
           "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
@@ -2406,13 +2514,13 @@
           "grounded_explanation": {
             "why_recommended": [
               "已从商品库候选中选择：花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
-              "已从商品库候选中选择：OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-              "已从商品库候选中选择：The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽"
+              "已从商品库候选中选择：vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+              "已从商品库候选中选择：优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣"
             ],
             "evidence_points": [
               "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g - 价格：89.0",
-              "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB - 价格：3299.0",
-              "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽 - 价格：199.0"
+              "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 - 价格：3299.0",
+              "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 - 价格：99.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -2431,9 +2539,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 48,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

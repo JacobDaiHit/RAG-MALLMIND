@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.7,
       "reason": "默认进入普通本地商品推荐。",
@@ -136,28 +144,36 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
         "arguments_changed": true,
         "guard_overridden": false,
         "llm_skipped": true,
-        "llm_skipped_reason": "",
-        "router_skipped_by_policy": false,
+        "llm_skipped_reason": "circuit_open",
+        "router_skipped_by_policy": true,
         "router_skipped_high_confidence_local": false,
-        "router_attempted": true,
+        "router_attempted": false,
         "router_timeout": false,
         "router_json_invalid": false,
         "router_success": false,
         "router_applied": false,
         "router_final_source": "rules",
-        "router_failure_reason": "llm_provider_error",
-        "llm_router_attempted": true,
+        "router_failure_reason": "",
+        "llm_router_attempted": false,
         "llm_router_success": false,
-        "llm_router_failure_reason": "llm_provider_error",
-        "llm_router_error_class": "provider_error",
-        "llm_router_elapsed_ms": 259
+        "llm_router_failure_reason": "circuit_open",
+        "llm_router_error_class": "skipped",
+        "llm_router_elapsed_ms": 0
       },
       "topic_memory": {
         "topic_id": "v2_cart-1",
@@ -178,20 +194,20 @@
         "confidence": 0.85,
         "source": "guard",
         "reason": "后端兜底：购物车指令优先。",
-        "updated_at": "2026-06-07T05:54:10.890682+00:00",
+        "updated_at": "2026-06-08T00:23:50.026465+00:00",
         "history": [
           {
-            "topic_type": "cart",
-            "subject": "购物车",
-            "route": "apply_cart_instruction",
+            "topic_type": "ecommerce_recommendation",
+            "subject": "帮我把 iPhone 17 Pro 加到购物车",
+            "route": "recommend_shopping_products",
             "slots": {
               "budget": null,
               "usage": [],
               "preferences": {},
               "product_ids": [],
-              "catalog_scope": "combined"
+              "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:04.795431+00:00"
+            "updated_at": "2026-06-08T00:23:49.013699+00:00"
           },
           {
             "topic_type": "ecommerce_recommendation",
@@ -206,7 +222,7 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:07.423720+00:00"
+            "updated_at": "2026-06-08T00:23:49.074330+00:00"
           },
           {
             "topic_type": "cart",
@@ -221,12 +237,12 @@
               "product_ids": [],
               "catalog_scope": "combined"
             },
-            "updated_at": "2026-06-07T05:54:08.479500+00:00"
+            "updated_at": "2026-06-08T00:23:49.122373+00:00"
           },
           {
-            "topic_type": "cart",
+            "topic_type": "general_chat",
             "subject": "我要买华为Pura 90 Pro，黑色的",
-            "route": "apply_cart_instruction",
+            "route": "general_chat",
             "slots": {
               "budget": null,
               "usage": [],
@@ -234,9 +250,9 @@
                 "color": "黑色"
               },
               "product_ids": [],
-              "catalog_scope": "combined"
+              "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:09.413427+00:00"
+            "updated_at": "2026-06-08T00:23:49.151997+00:00"
           },
           {
             "topic_type": "ecommerce_recommendation",
@@ -252,7 +268,7 @@
               "product_ids": [],
               "catalog_scope": "ecommerce"
             },
-            "updated_at": "2026-06-07T05:54:10.333213+00:00"
+            "updated_at": "2026-06-08T00:23:49.971764+00:00"
           },
           {
             "topic_type": "cart",
@@ -268,14 +284,14 @@
               "product_ids": [],
               "catalog_scope": "combined"
             },
-            "updated_at": "2026-06-07T05:54:10.637085+00:00"
+            "updated_at": "2026-06-08T00:23:50.017127+00:00"
           }
         ]
       }
     }
   ],
   "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-  "product_card_count": 3,
+  "product_card_count": 2,
   "events_received": [
     "runtime_mode",
     "tool_call",
@@ -303,7 +319,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 807,
+  "elapsed_ms": 52,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -393,7 +409,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.7,
         "reason": "默认进入普通本地商品推荐。",
@@ -510,28 +534,36 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
           "arguments_changed": true,
           "guard_overridden": false,
           "llm_skipped": true,
-          "llm_skipped_reason": "",
-          "router_skipped_by_policy": false,
+          "llm_skipped_reason": "circuit_open",
+          "router_skipped_by_policy": true,
           "router_skipped_high_confidence_local": false,
-          "router_attempted": true,
+          "router_attempted": false,
           "router_timeout": false,
           "router_json_invalid": false,
           "router_success": false,
           "router_applied": false,
           "router_final_source": "rules",
-          "router_failure_reason": "llm_provider_error",
-          "llm_router_attempted": true,
+          "router_failure_reason": "",
+          "llm_router_attempted": false,
           "llm_router_success": false,
-          "llm_router_failure_reason": "llm_provider_error",
-          "llm_router_error_class": "provider_error",
-          "llm_router_elapsed_ms": 259
+          "llm_router_failure_reason": "circuit_open",
+          "llm_router_error_class": "skipped",
+          "llm_router_elapsed_ms": 0
         },
         "topic_memory": {
           "topic_id": "v2_cart-1",
@@ -552,20 +584,20 @@
           "confidence": 0.85,
           "source": "guard",
           "reason": "后端兜底：购物车指令优先。",
-          "updated_at": "2026-06-07T05:54:10.890682+00:00",
+          "updated_at": "2026-06-08T00:23:50.026465+00:00",
           "history": [
             {
-              "topic_type": "cart",
-              "subject": "购物车",
-              "route": "apply_cart_instruction",
+              "topic_type": "ecommerce_recommendation",
+              "subject": "帮我把 iPhone 17 Pro 加到购物车",
+              "route": "recommend_shopping_products",
               "slots": {
                 "budget": null,
                 "usage": [],
                 "preferences": {},
                 "product_ids": [],
-                "catalog_scope": "combined"
+                "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:04.795431+00:00"
+              "updated_at": "2026-06-08T00:23:49.013699+00:00"
             },
             {
               "topic_type": "ecommerce_recommendation",
@@ -580,7 +612,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:07.423720+00:00"
+              "updated_at": "2026-06-08T00:23:49.074330+00:00"
             },
             {
               "topic_type": "cart",
@@ -595,12 +627,12 @@
                 "product_ids": [],
                 "catalog_scope": "combined"
               },
-              "updated_at": "2026-06-07T05:54:08.479500+00:00"
+              "updated_at": "2026-06-08T00:23:49.122373+00:00"
             },
             {
-              "topic_type": "cart",
+              "topic_type": "general_chat",
               "subject": "我要买华为Pura 90 Pro，黑色的",
-              "route": "apply_cart_instruction",
+              "route": "general_chat",
               "slots": {
                 "budget": null,
                 "usage": [],
@@ -608,9 +640,9 @@
                   "color": "黑色"
                 },
                 "product_ids": [],
-                "catalog_scope": "combined"
+                "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:09.413427+00:00"
+              "updated_at": "2026-06-08T00:23:49.151997+00:00"
             },
             {
               "topic_type": "ecommerce_recommendation",
@@ -626,7 +658,7 @@
                 "product_ids": [],
                 "catalog_scope": "ecommerce"
               },
-              "updated_at": "2026-06-07T05:54:10.333213+00:00"
+              "updated_at": "2026-06-08T00:23:49.971764+00:00"
             },
             {
               "topic_type": "cart",
@@ -642,7 +674,7 @@
                 "product_ids": [],
                 "catalog_scope": "combined"
               },
-              "updated_at": "2026-06-07T05:54:10.637085+00:00"
+              "updated_at": "2026-06-08T00:23:50.017127+00:00"
             }
           ]
         }
@@ -678,11 +710,11 @@
     {
       "event": "intent_route",
       "data": {
-        "route": "single_product_recommendation",
-        "task_type": "single_product_recommendation",
+        "route": "cart_action",
+        "task_type": "cart_action",
         "needs_clarification": false,
         "clarification_fields": [],
-        "next_action": "recommend_grounded_products",
+        "next_action": "operate_cart_after_product_selection",
         "supported_now": true,
         "reason": "识别为单品推荐，按类目、预算、偏好、排除条件筛选并输出商品卡片。",
         "pipeline": [
@@ -706,7 +738,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 7 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -720,35 +752,35 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋；约 899 CNY；评分 1.00"
+        "detail": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋；约 899 CNY；评分 0.99"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋；约 999 CNY；评分 0.98"
+        "detail": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋；约 999 CNY；评分 0.92"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋；约 1099 CNY；评分 0.88"
+        "detail": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋；约 1099 CNY；评分 0.85"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋；约 1399 CNY；评分 0.69"
+        "detail": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋；约 1399 CNY；评分 0.67"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "候选卡片已准备",
-        "detail": "将展示 3 张商品卡片，并保留可对比候选。"
+        "detail": "将展示 2 张商品卡片，并保留可对比候选。"
       }
     },
     {
@@ -793,8 +825,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0281；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0243。",
-            "score": 1.0,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9857，参考价 899-949 CNY。 评价均分 3.75/5。",
+            "score": 0.9857,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_007_1"
           },
@@ -817,34 +849,10 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9751，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0315；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0305；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0279。",
-            "score": 0.9751,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9229，参考价 999-999 CNY。 评价均分 3.75/5。",
+            "score": 0.9229,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_010_1"
-          },
-          {
-            "product_id": "p_clothes_009",
-            "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-            "name": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-            "brand": "HOKA",
-            "category": "clothing",
-            "category_name": "服饰运动",
-            "sub_category": "跑步鞋",
-            "price": 1099.0,
-            "price_range": [
-              1099.0,
-              1119.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_clothes_009_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.8835，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0271；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0268。",
-            "score": 0.8835,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_clothes_009_1"
           }
         ]
       }
@@ -858,18 +866,14 @@
           ],
           "price_min": null,
           "price_max": null,
-          "brands": [
-            "华为"
-          ],
+          "brands": [],
           "excluded_brands": [],
           "must_have_terms": [
-            "跑步",
-            "黑色"
+            "跑步"
           ],
           "excluded_terms": [],
           "preferences": [
             "跑步",
-            "黑色",
             "便宜"
           ]
         },
@@ -884,25 +888,25 @@
                 "product_id": "p_clothes_007",
                 "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
                 "price": 899.0,
-                "score": 1.0
+                "score": 0.9857
               },
               {
                 "product_id": "p_clothes_010",
                 "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
                 "price": 999.0,
-                "score": 0.9751
+                "score": 0.9229
               },
               {
                 "product_id": "p_clothes_009",
                 "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
                 "price": 1099.0,
-                "score": 0.8835
+                "score": 0.8483
               },
               {
                 "product_id": "p_clothes_008",
                 "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
                 "price": 1399.0,
-                "score": 0.6882
+                "score": 0.6695
               }
             ]
           }
@@ -929,9 +933,9 @@
       "event": "result",
       "data": {
         "requirement": {
-          "raw_query": "我要买华为Pura 90 Pro，黑色的. User added constraints: 加一双跑步鞋，要最便宜的",
-          "scenario": "apparel_sports",
-          "task_type": "single_product_recommendation",
+          "raw_query": "帮我把 iPhone 17 Pro 加到购物车. User added constraints: 加一双跑步鞋，要最便宜的",
+          "scenario": "cart_or_order_action",
+          "task_type": "cart_action",
           "required_components": [
             "clothing"
           ],
@@ -943,18 +947,14 @@
           "target_sub_categories": [
             "跑步鞋"
           ],
-          "brands": [
-            "华为"
-          ],
+          "brands": [],
           "excluded_brands": [],
           "must_have_terms": [
-            "跑步",
-            "黑色"
+            "跑步"
           ],
           "excluded_terms": [],
           "preferences": [
             "跑步",
-            "黑色",
             "便宜"
           ],
           "occasion": "跑步",
@@ -964,7 +964,7 @@
           "budget_level": "low",
           "need_bundle": false,
           "need_comparison": false,
-          "need_cart_action": false,
+          "need_cart_action": true,
           "need_multimodal": false,
           "input_modalities": [
             "text"
@@ -1297,7 +1297,7 @@
                     "追求极致轻薄用户需谨慎"
                   ]
                 },
-                "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0281；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0243。",
+                "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9857，参考价 899-949 CNY。 评价均分 3.75/5。",
                 "score": {
                   "scenario_match": 1.0,
                   "attribute_match": 1.0,
@@ -1306,7 +1306,7 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.91,
-                  "final_score": 1.0,
+                  "final_score": 0.9857,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 899 CNY，已用于预算适配评分。",
                     "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于用户关注的 服饰运动 类目。",
@@ -1315,13 +1315,12 @@
                     "用户评价均分 3.75/5，参与口碑评分。",
                     "商品提供 4 条官方 FAQ，可作为回答证据。",
                     "不适用提示：追求极致轻薄用户需谨慎。",
-                    "商品知识证据命中：p_clothes_007 召回分 0.0281; p_clothes_007 召回分 0.0243。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。",
                     "用户给出低预算或价格上限，价格适配权重提高。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_clothes_007::profile::0",
-                  "p_clothes_007::review::3"
+                  "p_clothes_007"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_clothes_007_1"
@@ -1378,7 +1377,7 @@
                 "role": "clothing",
                 "product_id": "p_clothes_007",
                 "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
-                "final_score": 1.0,
+                "final_score": 0.9857,
                 "scenario_match": 1.0,
                 "attribute_match": 1.0,
                 "price_fit": 1.0,
@@ -1394,7 +1393,7 @@
                   "用户评价均分 3.75/5，参与口碑评分。",
                   "商品提供 4 条官方 FAQ，可作为回答证据。",
                   "不适用提示：追求极致轻薄用户需谨慎。",
-                  "商品知识证据命中：p_clothes_007 召回分 0.0281; p_clothes_007 召回分 0.0243。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1421,8 +1420,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0281；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0243。",
-            "score": 1.0,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9857，参考价 899-949 CNY。 评价均分 3.75/5。",
+            "score": 0.9857,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_007_1"
           },
@@ -1445,34 +1444,10 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9751，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0315；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0305；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0279。",
-            "score": 0.9751,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9229，参考价 999-999 CNY。 评价均分 3.75/5。",
+            "score": 0.9229,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_010_1"
-          },
-          {
-            "product_id": "p_clothes_009",
-            "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-            "name": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-            "brand": "HOKA",
-            "category": "clothing",
-            "category_name": "服饰运动",
-            "sub_category": "跑步鞋",
-            "price": 1099.0,
-            "price_range": [
-              1099.0,
-              1119.0
-            ],
-            "currency": "CNY",
-            "image_url": "/product-images/p_clothes_009_live.jpg",
-            "stock_status": "available_for_demo",
-            "stock_quantity": null,
-            "rating_avg": 3.0,
-            "review_count": 5,
-            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.8835，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0271；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0268。",
-            "score": 0.8835,
-            "source": "alternative_candidate",
-            "selected_sku_id": "s_p_clothes_009_1"
           }
         ],
         "candidate_scope": {
@@ -1482,18 +1457,14 @@
             ],
             "price_min": null,
             "price_max": null,
-            "brands": [
-              "华为"
-            ],
+            "brands": [],
             "excluded_brands": [],
             "must_have_terms": [
-              "跑步",
-              "黑色"
+              "跑步"
             ],
             "excluded_terms": [],
             "preferences": [
               "跑步",
-              "黑色",
               "便宜"
             ]
           },
@@ -1508,25 +1479,25 @@
                   "product_id": "p_clothes_007",
                   "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
                   "price": 899.0,
-                  "score": 1.0
+                  "score": 0.9857
                 },
                 {
                   "product_id": "p_clothes_010",
                   "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
                   "price": 999.0,
-                  "score": 0.9751
+                  "score": 0.9229
                 },
                 {
                   "product_id": "p_clothes_009",
                   "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
                   "price": 1099.0,
-                  "score": 0.8835
+                  "score": 0.8483
                 },
                 {
                   "product_id": "p_clothes_008",
                   "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
                   "price": 1399.0,
-                  "score": 0.6882
+                  "score": 0.6695
                 }
               ]
             }
@@ -1549,8 +1520,8 @@
             "currency": "CNY",
             "rating_avg": 3.75,
             "review_count": 4,
-            "score": 1.0,
-            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "score": 0.9857,
+            "strength": "综合分 0.9857，评分 3.75/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": true
           },
@@ -1569,8 +1540,8 @@
             "currency": "CNY",
             "rating_avg": 3.75,
             "review_count": 4,
-            "score": 0.9751,
-            "strength": "综合分 0.9751，评分 3.75/5，FAQ 信息较完整。",
+            "score": 0.9229,
+            "strength": "综合分 0.9229，评分 3.75/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1589,8 +1560,8 @@
             "currency": "CNY",
             "rating_avg": 3.0,
             "review_count": 5,
-            "score": 0.8835,
-            "strength": "综合分 0.8835，评分 3/5，FAQ 信息较完整。",
+            "score": 0.8483,
+            "strength": "综合分 0.8483，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": false
           },
@@ -1609,18 +1580,18 @@
             "currency": "CNY",
             "rating_avg": 4.25,
             "review_count": 4,
-            "score": 0.6882,
-            "strength": "综合分 0.6882，评分 4.25/5，FAQ 信息较完整。",
+            "score": 0.6695,
+            "strength": "综合分 0.6695，评分 4.25/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
         ],
         "intent_route": {
-          "route": "single_product_recommendation",
-          "task_type": "single_product_recommendation",
+          "route": "cart_action",
+          "task_type": "cart_action",
           "needs_clarification": false,
           "clarification_fields": [],
-          "next_action": "recommend_grounded_products",
+          "next_action": "operate_cart_after_product_selection",
           "supported_now": true,
           "reason": "识别为单品推荐，按类目、预算、偏好、排除条件筛选并输出商品卡片。",
           "pipeline": [
@@ -1671,13 +1642,11 @@
           "grounded_explanation": {
             "why_recommended": [
               "已从商品库候选中选择：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
-              "已从商品库候选中选择：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-              "已从商品库候选中选择：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
+              "已从商品库候选中选择：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
             ],
             "evidence_points": [
               "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 - 价格：899.0",
-              "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 - 价格：999.0",
-              "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 - 价格：1099.0"
+              "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 - 价格：999.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1696,9 +1665,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -101,17 +109,25 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
           "source": "llm",
-          "needs_clarification": false,
+          "needs_clarification": true,
           "llm_report": {
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 734,
+            "elapsed_ms": 944,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -130,17 +146,25 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
           "source": "llm",
-          "needs_clarification": false,
+          "needs_clarification": true,
           "llm_report": {
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 734,
+            "elapsed_ms": 944,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -160,7 +184,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 736
+        "llm_router_elapsed_ms": 945
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,7 +235,7 @@
       }
     }
   ],
-  "text_response": "我这边可以帮您查找和推荐各大品牌的商品，比如服装、数码、美妆等品类。您具体想了解哪个领域的品牌呢？",
+  "text_response": "这个问题有点宽泛呀，具体您是想了解哪个品类里的品牌呢？比如手机、家电还是美妆？告诉我您的购物需求，我马上帮您筛选和对比！",
   "product_card_count": 0,
   "events_received": [
     "runtime_mode",
@@ -212,7 +244,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1507,
+  "elapsed_ms": 1708,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -305,7 +337,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -387,17 +427,25 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
             "source": "llm",
-            "needs_clarification": false,
+            "needs_clarification": true,
             "llm_report": {
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 734,
+              "elapsed_ms": 944,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -416,17 +464,25 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
             "source": "llm",
-            "needs_clarification": false,
+            "needs_clarification": true,
             "llm_report": {
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 734,
+              "elapsed_ms": 944,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -446,7 +502,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
@@ -467,7 +531,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 736
+          "llm_router_elapsed_ms": 945
         },
         "topic_memory": {
           "topic_id": "",
@@ -492,7 +556,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "我这边可以帮您查找和推荐各大品牌的商品，比如服装、数码、美妆等品类。您具体想了解哪个领域的品牌呢？"
+        "text": "这个问题有点宽泛呀，具体您是想了解哪个品类里的品牌呢？比如手机、家电还是美妆？告诉我您的购物需求，我马上帮您筛选和对比！"
       }
     },
     {

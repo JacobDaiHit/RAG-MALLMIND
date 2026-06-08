@@ -7,6 +7,10 @@ still explain the nearest alternatives instead of hallucinating products.
 """
 from __future__ import annotations
 
+import json
+import logging
+import os
+import re
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List
 
@@ -21,6 +25,8 @@ from rag.recommendation.query_guards import (
 )
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 
+logger = logging.getLogger(__name__)
+
 
 @dataclass(frozen=True)
 class FilterDiagnostics:
@@ -31,6 +37,7 @@ class FilterDiagnostics:
     after_target_count: int = 0
     after_must_have_count: int = 0
     after_budget_count: int = 0
+    after_llm_count: int = 0
     inferred_product_type: str = ""
     product_type_filter_applied: bool = False
     product_type_candidate_count: int = 0
@@ -52,6 +59,7 @@ class FilterDiagnostics:
             "after_target_count": self.after_target_count,
             "after_must_have_count": self.after_must_have_count,
             "after_budget_count": self.after_budget_count,
+            "after_llm_count": self.after_llm_count,
             "inferred_product_type": self.inferred_product_type,
             "product_type_filter_applied": self.product_type_filter_applied,
             "product_type_candidate_count": self.product_type_candidate_count,
@@ -162,6 +170,15 @@ def filter_products_for_requirement(
             relaxed.append("price_max")
             budget_gap_reason = "explicit_budget_relaxation"
 
+    # ── LLM filter layer ──
+    # When deterministic filters leave fields incomplete (e.g. brand exclusion
+    # that needs semantic understanding), let the LLM do a soft filter pass.
+    llm_filtered = returned
+    if returned and _has_incomplete_fields(requirement):
+        llm_filtered = _llm_filter_products(requirement, returned)
+        if not llm_filtered:
+            llm_filtered = returned  # fallback: keep all if LLM removed everything
+
     diagnostics = FilterDiagnostics(
         category=category,
         raw_count=len(raw),
@@ -170,6 +187,7 @@ def filter_products_for_requirement(
         after_target_count=len(target_filtered),
         after_must_have_count=len(must_have_filtered),
         after_budget_count=len(budget_filtered),
+        after_llm_count=len(llm_filtered),
         inferred_product_type=inferred_product_type or "",
         product_type_filter_applied=product_type_filter_applied,
         product_type_candidate_count=len(product_type_filtered),
@@ -177,12 +195,12 @@ def filter_products_for_requirement(
         pc_constraint_filter_applied=pc_constraint_filter_applied,
         pc_constraint_candidate_count=len(pc_constraint_filtered),
         pc_constraint_relaxed=pc_constraint_relaxed,
-        returned_count=len(returned),
+        returned_count=len(llm_filtered),
         relaxed_constraints=relaxed,
         budget_filter_strict=budget_filter_strict,
         budget_gap_reason=budget_gap_reason,
     )
-    return returned, diagnostics
+    return llm_filtered, diagnostics
 
 
 def is_available(product: ApiProduct) -> bool:
@@ -193,9 +211,13 @@ def is_available(product: ApiProduct) -> bool:
 
 
 def violates_brand_or_text_exclusion(requirement: RequirementSpec, product: ApiProduct) -> bool:
+    """Check text-based exclusion only.
+
+    Brand exclusion is now handled by the LLM filter layer, which can
+    understand semantic relationships (e.g. sub-brands, aliases) that a
+    simple string match cannot.
+    """
     text = collect_product_text(product)
-    if product.brand and normalize(product.brand) in {normalize(item) for item in requirement.excluded_brands}:
-        return True
     for term in requirement.excluded_terms:
         key = normalize(term)
         if key and key in text:
@@ -248,3 +270,95 @@ def collect_product_text(product: ApiProduct) -> str:
 
 def normalize(value: object) -> str:
     return "".join(ch.lower() for ch in str(value or "") if ch.isalnum() or "\u4e00" <= ch <= "\u9fff")
+
+
+# ── LLM filter layer ────────────────────────────────────────────────────
+
+def _has_incomplete_fields(requirement: RequirementSpec) -> bool:
+    """Return True when the requirement has soft constraints that
+    deterministic filters cannot fully resolve (e.g. brand exclusion
+    which needs semantic understanding of sub-brands / aliases)."""
+    if requirement.excluded_brands:
+        return True
+    return False
+
+
+def _llm_filter_products(
+    requirement: RequirementSpec,
+    candidates: List[ApiProduct],
+) -> List[ApiProduct]:
+    """Use the LLM to soft-filter products against constraints that
+    deterministic filters cannot handle (brand exclusion, semantic terms, etc.).
+
+    Sends a single batched request with all candidate products.  On any
+    failure (timeout, parse error, LLM unavailable) returns the original
+    list unchanged so the pipeline never breaks.
+    """
+    try:
+        from rag.recommendation.llm_client import (
+            OpenAICompatibleChatClient,
+            run_with_hard_timeout,
+        )
+    except ImportError:
+        return candidates
+
+    client = OpenAICompatibleChatClient()
+    if not client.configured:
+        return candidates
+
+    # ── Build constraint description ──
+    constraints: List[str] = []
+    if requirement.excluded_brands:
+        brands_text = "、".join(requirement.excluded_brands)
+        constraints.append(
+            f"用户排除品牌: {brands_text}（包括其子品牌、关联品牌、别名）"
+        )
+
+    if not constraints:
+        return candidates
+
+    # ── Build product listing (cap at 30 to stay within token budget) ──
+    capped = candidates[:30]
+    product_lines: List[str] = []
+    for i, p in enumerate(capped):
+        price = p.min_price or p.base_price or 0
+        product_lines.append(
+            f"{i + 1}. ID={p.product_id} | {p.title} | 品牌={p.brand or '未知'} | ¥{price}"
+        )
+    product_text = "\n".join(product_lines)
+
+    constraint_text = "\n".join(f"- {c}" for c in constraints)
+
+    prompt = (
+        "你是商品筛选助手。根据用户的筛选条件，判断以下每个商品是否符合条件。\n\n"
+        f"【筛选条件】\n{constraint_text}\n\n"
+        f"【商品列表】\n{product_text}\n\n"
+        "输出 JSON 对象，格式：{\"keep\": [保留的商品ID列表]}\n"
+        "注意：\n"
+        "- 排除品牌时，其子品牌、关联品牌、贴牌产品也应排除\n"
+        "- 如果无法确定是否属于排除品牌，保留该商品\n"
+        "- 只输出 JSON，不要解释"
+    )
+
+    try:
+        _timeout = float(os.getenv("RECOMMENDATION_LLM_FILTER_TIMEOUT_SECONDS", "12"))
+        result, _report = run_with_hard_timeout(
+            lambda: client.chat_json_with_report(
+                [{"role": "user", "content": prompt}],
+                model=os.getenv("MALLMIND_LLM_FILTER_MODEL")
+                or client.config.fast_model,
+                temperature=0.0,
+                max_tokens=500,
+            ),
+            _timeout,
+            "llm_filter",
+        )
+        keep_ids = set(result.get("keep", []))
+        filtered = [p for p in capped if p.product_id in keep_ids]
+        # Include any products beyond the capped range (not evaluated by LLM)
+        if len(candidates) > 30:
+            filtered.extend(candidates[30:])
+        return filtered
+    except Exception as exc:
+        logger.warning("LLM filter failed, keeping all candidates: %s", exc)
+        return candidates

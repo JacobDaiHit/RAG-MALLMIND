@@ -10,7 +10,7 @@
       "arguments": {
         "query": "iPhone 17 Pro 的电池续航怎么样",
         "budget": null,
-        "category": "",
+        "category": "手机",
         "usage": [],
         "preferences": {},
         "product_ids": [],
@@ -19,7 +19,19 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [
+          "苹果"
+        ],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [
+          "iPhone 17 Pro"
+        ],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -90,9 +102,9 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "iPhone 17 Pro 电池续航",
+            "query": "iPhone 17 Pro 的电池续航怎么样",
             "budget": null,
-            "category": "",
+            "category": "手机",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -101,7 +113,19 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "苹果"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +135,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 859,
+            "elapsed_ms": 1657,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -119,9 +143,9 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "iPhone 17 Pro 电池续航",
+            "query": "iPhone 17 Pro 的电池续航怎么样",
             "budget": null,
-            "category": "",
+            "category": "手机",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -130,7 +154,19 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "苹果"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +176,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 859,
+            "elapsed_ms": 1657,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -151,7 +187,7 @@
           "arguments": {
             "query": "iPhone 17 Pro 的电池续航怎么样",
             "budget": null,
-            "category": "",
+            "category": "手机",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -160,11 +196,23 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [
+              "苹果"
+            ],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [
+              "iPhone 17 Pro"
+            ],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -181,7 +229,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 861
+        "llm_router_elapsed_ms": 1657
       },
       "topic_memory": {
         "topic_id": "",
@@ -203,7 +251,7 @@
       }
     }
   ],
-  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机，参考价约 8999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+  "text_response": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑，参考价约 8999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
   "product_card_count": 1,
   "events_received": [
     "runtime_mode",
@@ -229,7 +277,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1334,
+  "elapsed_ms": 1680,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -313,7 +361,7 @@
         "arguments": {
           "query": "iPhone 17 Pro 的电池续航怎么样",
           "budget": null,
-          "category": "",
+          "category": "手机",
           "usage": [],
           "preferences": {},
           "product_ids": [],
@@ -322,7 +370,19 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [
+            "苹果"
+          ],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [
+            "iPhone 17 Pro"
+          ],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -393,9 +453,9 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "iPhone 17 Pro 电池续航",
+              "query": "iPhone 17 Pro 的电池续航怎么样",
               "budget": null,
-              "category": "",
+              "category": "手机",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -404,7 +464,19 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "苹果"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -414,7 +486,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 859,
+              "elapsed_ms": 1657,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -422,9 +494,9 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "iPhone 17 Pro 电池续航",
+              "query": "iPhone 17 Pro 的电池续航怎么样",
               "budget": null,
-              "category": "",
+              "category": "手机",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -433,7 +505,19 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "苹果"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -443,7 +527,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 859,
+              "elapsed_ms": 1657,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -454,7 +538,7 @@
             "arguments": {
               "query": "iPhone 17 Pro 的电池续航怎么样",
               "budget": null,
-              "category": "",
+              "category": "手机",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -463,11 +547,23 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [
+                "苹果"
+              ],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [
+                "iPhone 17 Pro"
+              ],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -484,7 +580,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 861
+          "llm_router_elapsed_ms": 1657
         },
         "topic_memory": {
           "topic_id": "",
@@ -566,7 +662,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 6 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -580,7 +676,7 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机；约 8999 CNY；评分 0.97"
+        "detail": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑；约 8999 CNY；评分 0.82"
       }
     },
     {
@@ -600,7 +696,7 @@
     {
       "event": "delta",
       "data": {
-        "text": "我优先推荐 Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机，参考价约 8999 CNY。"
+        "text": "我优先推荐 Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑，参考价约 8999 CNY。"
       }
     },
     {
@@ -614,28 +710,28 @@
       "data": {
         "products": [
           {
-            "product_id": "p_digital_001",
-            "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "name": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "brand": "Apple 苹果",
+            "product_id": "p_digital_013",
+            "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+            "name": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+            "brand": "苹果",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "智能手机",
+            "sub_category": "平板电脑",
             "price": 8999.0,
             "price_range": [
               8999.0,
-              12499.0
+              11499.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_001_live.jpg",
+            "image_url": "/product-images/p_digital_013_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.33,
-            "review_count": 3,
-            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.9725，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0323；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0320；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#faq 召回分 0.0317。",
-            "score": 0.9725,
+            "rating_avg": 2.0,
+            "review_count": 5,
+            "reason": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于 数码电子/平板电脑，综合分 0.8220，参考价 8999-11499 CNY。 评价均分 2/5。",
+            "score": 0.822,
             "source": "single_product",
-            "selected_sku_id": "s_p_digital_001_1"
+            "selected_sku_id": "s_p_digital_013_1"
           }
         ]
       }
@@ -649,10 +745,12 @@
           ],
           "price_min": null,
           "price_max": null,
-          "brands": [],
+          "brands": [
+            "苹果"
+          ],
           "excluded_brands": [],
           "must_have_terms": [
-            "续航"
+            "iPhone 17 Pro"
           ],
           "excluded_terms": [],
           "preferences": [
@@ -667,10 +765,10 @@
             "within_budget_count": 1,
             "top_candidates": [
               {
-                "product_id": "p_digital_001",
-                "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+                "product_id": "p_digital_013",
+                "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
                 "price": 8999.0,
-                "score": 0.9725
+                "score": 0.822
               }
             ]
           }
@@ -712,10 +810,12 @@
           ],
           "excluded_categories": [],
           "target_sub_categories": [],
-          "brands": [],
+          "brands": [
+            "苹果"
+          ],
           "excluded_brands": [],
           "must_have_terms": [
-            "续航"
+            "iPhone 17 Pro"
           ],
           "excluded_terms": [],
           "preferences": [
@@ -754,159 +854,161 @@
           {
             "recommendation_type": "single_product",
             "title": "单品推荐",
-            "summary": "优先推荐当前最匹配的上架商品：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+            "summary": "优先推荐当前最匹配的上架商品：Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
             "components": [
               {
                 "role": "digital",
                 "product": {
-                  "product_id": "p_digital_001",
-                  "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-                  "brand": "Apple 苹果",
+                  "product_id": "p_digital_013",
+                  "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+                  "brand": "苹果",
                   "category": "digital",
                   "category_name": "数码电子",
-                  "sub_category": "智能手机",
+                  "sub_category": "平板电脑",
                   "base_price": 8999.0,
                   "min_price": 8999.0,
-                  "max_price": 12499.0,
+                  "max_price": 11499.0,
                   "currency": "CNY",
                   "stock_status": "available_for_demo",
                   "stock_quantity": null,
-                  "image_path": "data/ecommerce_products/images/p_digital_001_live.jpg",
-                  "image_url": "/product-images/p_digital_001_live.jpg",
+                  "image_path": "data/ecommerce_products/images/p_digital_013_live.jpg",
+                  "image_url": "/product-images/p_digital_013_live.jpg",
                   "skus": [
                     {
-                      "sku_id": "s_p_digital_001_1",
+                      "sku_id": "s_p_digital_013_1",
                       "properties": {
-                        "存储": "256GB",
-                        "颜色": "宇宙橙 Cosmic Orange",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "256GB",
+                        "版本": "Wi‑Fi",
+                        "颜色": "深空黑"
                       },
                       "price": 8999.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_2",
+                      "sku_id": "s_p_digital_013_2",
                       "properties": {
-                        "存储": "256GB",
-                        "颜色": "远峰蓝",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "256GB",
+                        "版本": "Wi‑Fi",
+                        "颜色": "银色"
                       },
                       "price": 8999.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_3",
+                      "sku_id": "s_p_digital_013_3",
                       "properties": {
-                        "存储": "256GB",
-                        "颜色": "深空黑",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "256GB",
+                        "版本": "蜂窝网络",
+                        "颜色": "深空黑"
                       },
-                      "price": 8999.0
+                      "price": 9999.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_4",
+                      "sku_id": "s_p_digital_013_4",
                       "properties": {
-                        "存储": "512GB",
-                        "颜色": "宇宙橙 Cosmic Orange",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "256GB",
+                        "版本": "蜂窝网络",
+                        "颜色": "银色"
+                      },
+                      "price": 9999.0
+                    },
+                    {
+                      "sku_id": "s_p_digital_013_5",
+                      "properties": {
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "512GB",
+                        "版本": "Wi‑Fi",
+                        "颜色": "深空黑"
                       },
                       "price": 10499.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_5",
+                      "sku_id": "s_p_digital_013_6",
                       "properties": {
-                        "存储": "512GB",
-                        "颜色": "远峰蓝",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "512GB",
+                        "版本": "Wi‑Fi",
+                        "颜色": "银色"
                       },
                       "price": 10499.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_6",
+                      "sku_id": "s_p_digital_013_7",
                       "properties": {
-                        "存储": "512GB",
-                        "颜色": "深空黑",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "512GB",
+                        "版本": "蜂窝网络",
+                        "颜色": "深空黑"
                       },
-                      "price": 10499.0
+                      "price": 11499.0
                     },
                     {
-                      "sku_id": "s_p_digital_001_7",
+                      "sku_id": "s_p_digital_013_8",
                       "properties": {
-                        "存储": "1TB",
-                        "颜色": "宇宙橙 Cosmic Orange",
-                        "版本": "全网通版"
+                        "屏幕尺寸": "13英寸",
+                        "存储容量": "512GB",
+                        "版本": "蜂窝网络",
+                        "颜色": "银色"
                       },
-                      "price": 12499.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_001_8",
-                      "properties": {
-                        "存储": "1TB",
-                        "颜色": "远峰蓝",
-                        "版本": "全网通版"
-                      },
-                      "price": 12499.0
-                    },
-                    {
-                      "sku_id": "s_p_digital_001_9",
-                      "properties": {
-                        "存储": "1TB",
-                        "颜色": "深空黑",
-                        "版本": "全网通版"
-                      },
-                      "price": 12499.0
+                      "price": 11499.0
                     }
                   ],
-                  "description": "Apple iPhone 17 Pro搭载全新A19 Pro芯片，带来颠覆性性能提升，无论是大型3A游戏还是专业视频剪辑都能流畅运行。6.3英寸超视网膜XDR显示屏，支持ProMotion自适应刷新率，户外强光下依然清晰。256GB起步的存储容量，满足摄影爱好者和商务人士的存储需求。宇宙橙、远峰蓝、深空黑三色可选，其中宇宙橙采用独特的哑光玻璃工艺，握感舒适且不易留指纹。适合追求极致体验的科技爱好者、内容创作者以及需要高效办公的商务人群。日常使用建议开启低电量模式延长续航，拍摄专业视频时可搭配MagSafe配件提升稳定性。注意：不同存储版本价格差异较大，选购时需根据自身需求选择。",
+                  "description": "这款搭载M5芯片的13英寸iPad Pro，配备Liquid视网膜XDR显示屏，峰值亮度最高可达1600尼特，阳光下看设计稿、剪4K影片都能看清暗部细节。256GB起步的存储容量，存满上百个专业绘图工程、几十部4K剪辑素材都毫无压力，Wi-Fi版完全能覆盖居家办公、画室创作、大学生做课设的日常需求，深空黑和银色两个配色适配不同使用场景。特别适合平面设计师、短视频创作者、高校美术生这类专业用户，日常用Apple Pencil写画延迟几乎感知不到。使用时建议搭配官方类纸膜减少屏幕反光，平时别把它长时间放在阳光直射的汽车中控台，避免XDR屏长时间处于极端高温下影响色彩校准精度。",
                   "faqs": [
                     {
-                      "question": "iPhone 17 Pro的A19 Pro芯片相比上一代有哪些提升？",
-                      "answer": "A19 Pro芯片采用3纳米工艺制程，CPU性能提升20%，GPU性能提升30%，AI算力提升40%。在实际使用中，打开大型应用的速度更快，游戏帧率更稳定，视频渲染时间大幅缩短。同时，芯片的能效比更高，配合iOS 19的优化，续航能力比iPhone 16 Pro提升约1.5小时。无论是日常使用还是专业创作，都能提供更流畅的体验。"
+                      "question": "这款13英寸M5版iPad Pro的Liquid视网膜XDR屏，和上一代12.9英寸机型的显示效果差别大吗？",
+                      "answer": "差别还是比较明显的，这款13英寸机型把屏幕尺寸升级的同时，把峰值全屏亮度提升到了1000尼特，看HDR纪录片的时候亮部细节不会像之前的机型那样发灰，峰值触发的HDR亮度更是高达1600尼特，你对着阳光修户外人像的亮部光斑也不会过曝丢失细节。而且这次屏幕的色准校准精度进一步提升，专业修图时导出的色彩和后期在Mac上打开的匹配度比上一代高不少，画高色域插画几乎不用再二次校色。日常使用完全不用担心色彩偏移的问题。"
                     },
                     {
-                      "question": "宇宙橙版本的外观工艺有什么特别之处？",
-                      "answer": "宇宙橙版本采用创新的哑光玻璃背板，通过特殊的蚀刻工艺形成细腻的纹理，不仅视觉上呈现出独特的渐变效果，而且触感舒适，不易沾染指纹和油污。边框部分采用航空级铝合金材质，经过阳极氧化处理，与背板颜色完美融合，整体质感高级。这种工艺在保持美观的同时，也提升了手机的抗刮擦能力，日常使用更耐用。"
+                      "question": "M5芯片的256GB Wi-Fi版iPad Pro，同时运行Procreate、Pr移动版和多台云文档后台会不会卡顿？",
+                      "answer": "完全不会出现卡顿的情况，M5芯片的CPU性能比上一代M4提升了足足35%，还有统一内存架构加持，256GB版本的内存带宽也做了升级，你同时在Procreate里开带上百个图层的大尺寸画布，后台挂着正在渲染的短视频剪辑工程，再开十几个网页云文档查参考资料，切换的时候都不会有后台进程被刷掉的情况。就算你直接在平板上导出时长10分钟的4K 60fps视频，速度也比上一代机型快近一倍，专业创作者重度用也完全够用。"
                     },
                     {
-                      "question": "256GB版本是否足够日常使用？",
-                      "answer": "256GB版本适合大多数用户的日常需求，可存储约6万张高清照片、150小时4K视频或500款常用应用。如果您是普通用户，不经常拍摄4K视频或存储大量大型游戏，256GB完全足够。但如果您是专业摄影师或视频创作者，需要存储大量原始素材，建议选择512GB或1TB版本，避免因存储不足影响创作。"
+                      "question": "不同配置的13英寸M5 iPad Pro，除了存储和蜂窝功能，还有其他硬件上的区别吗？",
+                      "answer": "没有其他硬件差异，不管是256GB Wi-Fi深空黑款、512GB Wi-Fi银色款，还是512GB蜂窝网络深空黑款，用的都是完全一致的M5芯片、同款Liquid视网膜XDR显示屏，扬声器、摄像头、支持的Apple Pencil和妙控键盘配件参数也完全相同，只是存储容量和网络模块有区别。你如果平时只在家或者有稳定Wi-Fi的场景用，选256GB Wi-Fi版完全足够，经常外出跑线下拍摄场地需要随时传素材的话，选蜂窝版就更方便。"
                     },
                     {
-                      "question": "iPhone 17 Pro的摄像头系统有哪些升级？",
-                      "answer": "iPhone 17 Pro配备了4800万像素主摄、1200万像素超广角和1200万像素长焦镜头，支持5倍光学变焦和25倍数字变焦。主摄采用更大的传感器，进光量提升30%，夜景拍摄更清晰。新增的ProRes视频录制功能，支持4K 60fps，适合专业视频制作。同时，摄像头系统还支持杜比视界HDR拍摄，色彩还原更准确，细节更丰富。"
-                    },
-                    {
-                      "question": "iPhone 17 Pro的续航能力如何？",
-                      "answer": "iPhone 17 Pro内置4500mAh电池，支持27W有线快充和15W MagSafe无线充电。在日常使用中，轻度用户可使用1.5天，重度用户可使用1天。开启低电量模式后，续航时间可延长约20%。同时，iOS 19系统的智能优化功能，能根据用户使用习惯调整功耗，进一步提升续航表现。如果您经常外出，建议搭配MagSafe充电宝使用，方便随时充电。"
-                    },
-                    {
-                      "question": "不同存储版本的价格差异主要体现在哪里？",
-                      "answer": "iPhone 17 Pro的存储版本价格差异主要在于存储容量和成本。256GB版本售价8999元，512GB版本售价10499元，1TB版本售价12499元。存储容量越大，成本越高，因此价格差异明显。此外，1TB版本还支持更高级的存储技术，读写速度更快，适合需要大量存储的专业用户。选购时，建议根据自身存储需求和预算选择合适的版本，避免不必要的浪费。"
+                      "question": "这款支持蜂窝网络的512GB版本iPad Pro，可以直接插国内的普通SIM卡用流量吗？",
+                      "answer": "可以正常使用国内三大运营商的普通Nano-SIM卡，不需要额外办理特殊的物联网卡，插卡之后就能直接接入5G网络，在外景地没有Wi-Fi的时候随时传几个G的 RAW格式设计稿都很快。不过要注意这个蜂窝版是不支持传统的语音通话功能的，只能走流量使用网络服务，你如果需要接打电话可以用FaceTime或者第三方通讯APP实现。它的eSIM功能国内三大运营商大部分地区也都支持办理，不用带实体卡也能随时联网。"
                     }
                   ],
                   "reviews": [
                     {
-                      "nickname": "林小雨",
-                      "rating": 4,
-                      "content": "手机整体性能不错，A19 Pro芯片确实很强大，玩游戏几乎没有卡顿。宇宙橙的颜色也很特别，拿在手里很有质感。不过续航方面有点失望，重度使用一天下来需要充电两次，而且充电速度也没有宣传的那么快。另外，价格确实有点贵，如果能再优惠一点就好了。总的来说，还是值得入手的，但希望后续能优化续航和充电速度。"
-                    },
-                    {
-                      "nickname": "张小明",
-                      "rating": 5,
-                      "content": "iPhone 17 Pro真的太香了！A19 Pro芯片让我的工作效率提升了不少，剪辑视频比之前快了一倍。摄像头系统也很给力，拍出来的照片色彩鲜艳，细节丰富，尤其是夜景模式，简直绝了。宇宙橙的外观很时尚，朋友见了都问我在哪里买的。续航方面也比上一代好很多，轻度使用两天都没问题。总之，这是我用过的最好的iPhone，强烈推荐！"
-                    },
-                    {
-                      "nickname": "王大锤",
+                      "nickname": "阿凯",
                       "rating": 1,
-                      "content": "太失望了！刚买的iPhone 17 Pro用了不到一周就出现了问题，屏幕偶尔会闪烁，而且指纹识别经常失灵。联系客服后，他们让我寄回检测，但检测结果说没问题，让我重启试试。重启后问题依然存在，客服态度也不好，一直推脱责任。花了这么多钱买的手机，竟然出现这种质量问题，真的很生气。以后再也不会买苹果手机了！"
+                      "content": "收到拆封才发现屏幕左下角有一个肉眼可见的亮斑，联系客服来回踢皮球，说要我自己拿到苹果官方售后出检测报告才能换，我来回跑检测点花了快两天时间，耽误了我要交的设计项目交稿时间。本来冲着M5芯片的性能想提升工作效率，结果刚拿到手就出问题，折腾这么久体验实在太差，完全不值近九千的价格，真的不建议大家没验机就直接激活。"
+                    },
+                    {
+                      "nickname": "小雯",
+                      "rating": 1,
+                      "content": "我本来以为256GB的存储空间足够我用来存插画工程，结果买完才发现系统自带的预留空间就占了快30GB，我装完Procreate、PS移动版几个常用软件，再存了几十张未导出的分层插画，内存直接红了大半。问了客服才知道这个版本没有对外扩展存储的功能，我平时要存的素材多根本不够用，当初要是提前知道这个情况绝对不会选256GB的版本，太坑了。"
+                    },
+                    {
+                      "nickname": "阿泽",
+                      "rating": 2,
+                      "content": "用了半个月整体体验不算好也不算坏，M5芯片的性能确实流畅，但是13英寸的机身太重了，单手握持刷半小时网课手腕就酸得不行，放在包里带出门比我之前的旧款iPad重了快半斤，出门上课背着特别累。而且原装的妙控键盘还要额外花两千多买，不搭配的话输入文字效率特别低，零零总总配下来花的钱远超预期，性价比实在不高，只能勉强给个两星。"
+                    },
+                    {
+                      "nickname": "星子",
+                      "rating": 5,
+                      "content": "做短视频后期的我直接吹爆这款iPad Pro！Liquid视网膜XDR屏的色彩真的太准了，我在外景地剪样片，导出之后传到电脑上看色彩几乎没差，M5芯片导出10分钟的4K视频几分钟就搞定，一点都不卡。13英寸的大小拿在手里画画刚好，用Apple Pencil画线条延迟特别低，就跟在纸上画一样顺手，256GB的容量存我平时的工程完全够用，这段时间用它外出办公效率提升了好多，太满意了。"
+                    },
+                    {
+                      "nickname": "大强",
+                      "rating": 1,
+                      "content": "我之前的老iPad充电器还能凑合用，结果这款13英寸M5的iPad Pro完全不支持旧的20W快充头，充电速度慢得离谱，从零充到满要三个多小时，我赶项目的时候没电了急得要死，客服还说要我额外买原装的45W充电器，一个充电器就要四百多，本来机子价格就不便宜，各种配件还要单独花钱，太不实在了，这个体验真的让人很生气。"
                     }
                   ],
-                  "review_count": 3,
-                  "rating_avg": 3.33,
+                  "review_count": 5,
+                  "rating_avg": 2.0,
                   "best_for": [
                     "参数对比",
                     "预算筛选",
                     "使用场景匹配",
-                    "智能手机",
+                    "平板电脑",
+                    "学生党",
                     "上班通勤"
                   ],
                   "not_good_for": [],
@@ -914,77 +1016,71 @@
                     "digital_purchase",
                     "device_comparison",
                     "productivity",
-                    "智能手机"
+                    "平板电脑"
                   ],
                   "tags": [
-                    "Apple 苹果",
+                    "苹果",
                     "数码电子",
-                    "智能手机",
-                    "户外",
+                    "平板电脑",
                     "办公",
-                    "续航",
-                    "游戏",
+                    "13英寸",
                     "256GB",
-                    "宇宙橙 Cosmic Orange",
-                    "全网通版",
-                    "远峰蓝",
+                    "Wi‑Fi",
                     "深空黑",
-                    "512GB",
-                    "1TB"
+                    "银色",
+                    "蜂窝网络",
+                    "512GB"
                   ],
                   "metadata": {
                     "source": "ecommerce_agent_dataset_供参考.zip",
-                    "source_image_path": "2_数码电子/images/p_digital_001_live.jpg"
+                    "source_image_path": "2_数码电子/images/p_digital_013_live.jpg"
                   },
                   "pricing_note": "传统电商商品价格，按当前 SKU 标价汇总，不代表实时库存。",
                   "risk_notes": []
                 },
-                "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.9725，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0323；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0320；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#faq 召回分 0.0317。",
+                "reason": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于 数码电子/平板电脑，综合分 0.8220，参考价 8999-11499 CNY。 评价均分 2/5。",
                 "score": {
-                  "scenario_match": 0.808,
-                  "attribute_match": 0.998,
+                  "scenario_match": 0.6,
+                  "attribute_match": 0.85,
                   "price_fit": 1.0,
-                  "reputation_fit": 0.816,
+                  "reputation_fit": 0.65,
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.94,
-                  "final_score": 0.9725,
+                  "final_score": 0.822,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
-                    "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于用户关注的 数码电子 类目。",
-                    "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
-                    "用户评价均分 3.33/5，参与口碑评分。",
-                    "商品提供 6 条官方 FAQ，可作为回答证据。",
-                    "商品知识证据命中：p_digital_001 召回分 0.0323; p_digital_001 召回分 0.0320。"
+                    "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于用户关注的 数码电子 类目。",
+                    "用户评价均分 2/5，参与口碑评分。",
+                    "商品提供 4 条官方 FAQ，可作为回答证据。",
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_digital_001::profile::0",
-                  "p_digital_001::review::3",
-                  "p_digital_001::faq::2"
+                  "p_digital_013"
                 ],
                 "quantity": 1,
-                "selected_sku_id": "s_p_digital_001_1"
+                "selected_sku_id": "s_p_digital_013_1"
               }
             ],
             "cost_estimate": {
               "total_price_min": 8999.0,
-              "total_price_max": 12499.0,
+              "total_price_max": 11499.0,
               "currency": "CNY",
               "assumptions": [
                 "价格来自本地电商商品数据集 SKU 标价，库存数量未在数据集中提供，不输出精确库存数字。",
-                "p_digital_001 未提供精确库存数量，仅按已上架商品参与推荐。"
+                "p_digital_013 未提供精确库存数量，仅按已上架商品参与推荐。"
               ],
               "breakdown": {
-                "p_digital_001": {
+                "p_digital_013": {
                   "role": "digital",
                   "pricing_model": "sku_price",
                   "currency": "CNY",
                   "quantity": 1,
                   "base_price": 8999.0,
                   "min_price": 8999.0,
-                  "max_price": 12499.0,
-                  "selected_sku_id": "s_p_digital_001_1",
+                  "max_price": 11499.0,
+                  "selected_sku_id": "s_p_digital_013_1",
                   "selected_price": 8999.0,
                   "selected_total_price": 8999.0
                 }
@@ -1007,31 +1103,30 @@
               "数据集未提供实时库存和优惠券，进入交易前需要刷新价格与库存。"
             ],
             "evidence": [
-              "p_digital_001: Apple iPhone 17 Pro搭载全新A19 Pro芯片，带来颠覆性性能提升，无论是大型3A游戏还是专业视频剪辑都能流畅运行。6.3英寸超视网膜XDR显示屏，支持ProMotion自适应刷新率，户外强光下依然清晰。256GB起步的存储容量，满足摄影爱好者和商务人士的存储需求。宇宙橙、远峰蓝、深空黑三色可选，其中宇宙橙采用独特的哑光玻璃工艺，握感舒适且不易留指纹。适合追求极致体验的科技爱好者、内容创作者以及需要高效办公的商务人群。",
-              "p_digital_001: FAQ - iPhone 17 Pro的A19 Pro芯片相比上一代有哪些提升？",
+              "p_digital_013: 这款搭载M5芯片的13英寸iPad Pro，配备Liquid视网膜XDR显示屏，峰值亮度最高可达1600尼特，阳光下看设计稿、剪4K影片都能看清暗部细节。256GB起步的存储容量，存满上百个专业绘图工程、几十部4K剪辑素材都毫无压力，Wi-Fi版完全能覆盖居家办公、画室创作、大学生做课设的日常需求，深空黑和银色两个配色适配不同使用场景。特别适合平面设计师、短视频创作者、高校美术生这类专业用户，日常用Apple Pencil写画延迟几乎感",
+              "p_digital_013: FAQ - 这款13英寸M5版iPad Pro的Liquid视网膜XDR屏，和上一代12.9英寸机型的显示效果差别大吗？",
               "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
-              "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于用户关注的 数码电子 类目。"
+              "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于用户关注的 数码电子 类目。"
             ],
             "score_table": [
               {
                 "role": "digital",
-                "product_id": "p_digital_001",
-                "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-                "final_score": 0.9725,
-                "scenario_match": 0.808,
-                "attribute_match": 0.998,
+                "product_id": "p_digital_013",
+                "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+                "final_score": 0.822,
+                "scenario_match": 0.6,
+                "attribute_match": 0.85,
                 "price_fit": 1.0,
-                "reputation_fit": 0.816,
+                "reputation_fit": 0.65,
                 "availability_fit": 0.95,
                 "sku_fit": 0.95,
                 "detail_quality": 0.94,
                 "reasons": [
                   "价格匹配：当前最低 SKU 约 8999 CNY，已用于预算适配评分。",
-                  "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于用户关注的 数码电子 类目。",
-                  "商品标题、标签、FAQ 或详情与用户场景匹配度较高。",
-                  "用户评价均分 3.33/5，参与口碑评分。",
-                  "商品提供 6 条官方 FAQ，可作为回答证据。",
-                  "商品知识证据命中：p_digital_001 召回分 0.0323; p_digital_001 召回分 0.0320。"
+                  "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于用户关注的 数码电子 类目。",
+                  "用户评价均分 2/5，参与口碑评分。",
+                  "商品提供 4 条官方 FAQ，可作为回答证据。",
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1040,28 +1135,28 @@
         "candidate_count": 100,
         "product_cards": [
           {
-            "product_id": "p_digital_001",
-            "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "name": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "brand": "Apple 苹果",
+            "product_id": "p_digital_013",
+            "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+            "name": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+            "brand": "苹果",
             "category": "digital",
             "category_name": "数码电子",
-            "sub_category": "智能手机",
+            "sub_category": "平板电脑",
             "price": 8999.0,
             "price_range": [
               8999.0,
-              12499.0
+              11499.0
             ],
             "currency": "CNY",
-            "image_url": "/product-images/p_digital_001_live.jpg",
+            "image_url": "/product-images/p_digital_013_live.jpg",
             "stock_status": "available_for_demo",
             "stock_quantity": null,
-            "rating_avg": 3.33,
-            "review_count": 3,
-            "reason": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 属于 数码电子/智能手机，综合分 0.9725，参考价 8999-12499 CNY。 评价均分 3.33/5。 检索证据：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#profile 召回分 0.0323；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#review 召回分 0.0320；Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机#faq 召回分 0.0317。",
-            "score": 0.9725,
+            "rating_avg": 2.0,
+            "review_count": 5,
+            "reason": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 属于 数码电子/平板电脑，综合分 0.8220，参考价 8999-11499 CNY。 评价均分 2/5。",
+            "score": 0.822,
             "source": "single_product",
-            "selected_sku_id": "s_p_digital_001_1"
+            "selected_sku_id": "s_p_digital_013_1"
           }
         ],
         "candidate_scope": {
@@ -1071,10 +1166,12 @@
             ],
             "price_min": null,
             "price_max": null,
-            "brands": [],
+            "brands": [
+              "苹果"
+            ],
             "excluded_brands": [],
             "must_have_terms": [
-              "续航"
+              "iPhone 17 Pro"
             ],
             "excluded_terms": [],
             "preferences": [
@@ -1089,10 +1186,10 @@
               "within_budget_count": 1,
               "top_candidates": [
                 {
-                  "product_id": "p_digital_001",
-                  "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
+                  "product_id": "p_digital_013",
+                  "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
                   "price": 8999.0,
-                  "score": 0.9725
+                  "score": 0.822
                 }
               ]
             }
@@ -1104,21 +1201,21 @@
         "comparison_table": [
           {
             "rank": 1,
-            "product_id": "p_digital_001",
-            "title": "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机",
-            "brand": "Apple 苹果",
+            "product_id": "p_digital_013",
+            "title": "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑",
+            "brand": "苹果",
             "category": "digital",
             "category_name": "数码电子",
             "price": 8999.0,
             "price_range": [
               8999.0,
-              12499.0
+              11499.0
             ],
             "currency": "CNY",
-            "rating_avg": 3.33,
-            "review_count": 3,
-            "score": 0.9725,
-            "strength": "综合分 0.9725，评分 3.33/5，FAQ 信息较完整。",
+            "rating_avg": 2.0,
+            "review_count": 5,
+            "score": 0.822,
+            "strength": "综合分 0.8220，评分 2/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": true
           }
@@ -1152,7 +1249,7 @@
           "推荐链路先把自然语言购物需求解析为类目、预算、偏好、否定条件和是否需要套装，再只从本地商品库召回候选。",
           "评分不会让模型凭空决定，而是基于商品标题、SKU、价格、FAQ、评价和用户约束做可解释排序。",
           "价格与库存口径保持谨慎：价格使用数据集 SKU 标价，库存只标注演示上架状态，不输出未提供的精确库存数。",
-          "当前推荐包含：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机。"
+          "当前推荐包含：Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑。"
         ],
         "follow_up_questions": [
           "预算上限大概是多少？这会明显影响推荐排序和套装总价。",
@@ -1182,10 +1279,10 @@
           ],
           "grounded_explanation": {
             "why_recommended": [
-              "已从商品库候选中选择：Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机"
+              "已从商品库候选中选择：Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑"
             ],
             "evidence_points": [
-              "Apple iPhone 17 Pro 6.3英寸 A19 Pro 256GB 全网通旗舰手机 - 价格：8999.0"
+              "Apple iPad Pro 13英寸 (M5) Liquid视网膜 XDR 显示屏 256GB Wi‑Fi 平板电脑 - 价格：8999.0"
             ],
             "constraint_explanation": "商品卡片与解释均基于 catalog、结构化筛选和评分结果。",
             "tradeoff": "具体取舍请结合价格、适用场景和不适合场景查看。",
@@ -1204,9 +1301,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }

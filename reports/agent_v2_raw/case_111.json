@@ -10,7 +10,7 @@
       "arguments": {
         "query": "推荐一双跑步鞋",
         "budget": null,
-        "category": "",
+        "category": "跑步鞋",
         "usage": [],
         "preferences": {},
         "product_ids": [],
@@ -19,7 +19,15 @@
         "quantity": null,
         "action": "",
         "topic": "",
-        "need_full_pc_build": false
+        "need_full_pc_build": false,
+        "brands": [],
+        "exclude_brands": [],
+        "sort_order": null,
+        "price_min": null,
+        "price_max": null,
+        "must_have_terms": [],
+        "excluded_terms": [],
+        "target_sub_categories": []
       },
       "confidence": 0.9,
       "reason": "路由器未提供原因。",
@@ -90,9 +98,9 @@
         "llm": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "跑步鞋",
+            "query": "推荐一双跑步鞋",
             "budget": null,
-            "category": "",
+            "category": "跑步鞋",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -101,7 +109,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -111,7 +127,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 790,
+            "elapsed_ms": 1858,
             "has_error": false,
             "provider": "openai_compatible"
           }
@@ -119,9 +135,9 @@
         "chosen_before_guard": {
           "name": "recommend_shopping_products",
           "arguments": {
-            "query": "跑步鞋",
+            "query": "推荐一双跑步鞋",
             "budget": null,
-            "category": "",
+            "category": "跑步鞋",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -130,7 +146,15 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           },
           "confidence": 0.9,
           "reason": "",
@@ -140,7 +164,7 @@
             "configured": true,
             "success": true,
             "status_code": 200,
-            "elapsed_ms": 790,
+            "elapsed_ms": 1858,
             "has_error": false,
             "provider": "openai_compatible"
           },
@@ -151,7 +175,7 @@
           "arguments": {
             "query": "推荐一双跑步鞋",
             "budget": null,
-            "category": "",
+            "category": "跑步鞋",
             "usage": [],
             "preferences": {},
             "product_ids": [],
@@ -160,11 +184,19 @@
             "quantity": null,
             "action": "",
             "topic": "",
-            "need_full_pc_build": false
+            "need_full_pc_build": false,
+            "brands": [],
+            "exclude_brands": [],
+            "sort_order": null,
+            "price_min": null,
+            "price_max": null,
+            "must_have_terms": [],
+            "excluded_terms": [],
+            "target_sub_categories": []
           }
         },
         "route_overridden": false,
-        "arguments_changed": true,
+        "arguments_changed": false,
         "guard_overridden": false,
         "llm_skipped": false,
         "llm_skipped_reason": "",
@@ -181,7 +213,7 @@
         "llm_router_success": true,
         "llm_router_failure_reason": "",
         "llm_router_error_class": "none",
-        "llm_router_elapsed_ms": 791
+        "llm_router_elapsed_ms": 1860
       },
       "topic_memory": {
         "topic_id": "",
@@ -232,7 +264,7 @@
     "done"
   ],
   "error": "",
-  "elapsed_ms": 1016,
+  "elapsed_ms": 1893,
   "raw_events": [
     {
       "event": "runtime_mode",
@@ -316,7 +348,7 @@
         "arguments": {
           "query": "推荐一双跑步鞋",
           "budget": null,
-          "category": "",
+          "category": "跑步鞋",
           "usage": [],
           "preferences": {},
           "product_ids": [],
@@ -325,7 +357,15 @@
           "quantity": null,
           "action": "",
           "topic": "",
-          "need_full_pc_build": false
+          "need_full_pc_build": false,
+          "brands": [],
+          "exclude_brands": [],
+          "sort_order": null,
+          "price_min": null,
+          "price_max": null,
+          "must_have_terms": [],
+          "excluded_terms": [],
+          "target_sub_categories": []
         },
         "confidence": 0.9,
         "reason": "路由器未提供原因。",
@@ -396,9 +436,9 @@
           "llm": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "跑步鞋",
+              "query": "推荐一双跑步鞋",
               "budget": null,
-              "category": "",
+              "category": "跑步鞋",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -407,7 +447,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -417,7 +465,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 790,
+              "elapsed_ms": 1858,
               "has_error": false,
               "provider": "openai_compatible"
             }
@@ -425,9 +473,9 @@
           "chosen_before_guard": {
             "name": "recommend_shopping_products",
             "arguments": {
-              "query": "跑步鞋",
+              "query": "推荐一双跑步鞋",
               "budget": null,
-              "category": "",
+              "category": "跑步鞋",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -436,7 +484,15 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             },
             "confidence": 0.9,
             "reason": "",
@@ -446,7 +502,7 @@
               "configured": true,
               "success": true,
               "status_code": 200,
-              "elapsed_ms": 790,
+              "elapsed_ms": 1858,
               "has_error": false,
               "provider": "openai_compatible"
             },
@@ -457,7 +513,7 @@
             "arguments": {
               "query": "推荐一双跑步鞋",
               "budget": null,
-              "category": "",
+              "category": "跑步鞋",
               "usage": [],
               "preferences": {},
               "product_ids": [],
@@ -466,11 +522,19 @@
               "quantity": null,
               "action": "",
               "topic": "",
-              "need_full_pc_build": false
+              "need_full_pc_build": false,
+              "brands": [],
+              "exclude_brands": [],
+              "sort_order": null,
+              "price_min": null,
+              "price_max": null,
+              "must_have_terms": [],
+              "excluded_terms": [],
+              "target_sub_categories": []
             }
           },
           "route_overridden": false,
-          "arguments_changed": true,
+          "arguments_changed": false,
           "guard_overridden": false,
           "llm_skipped": false,
           "llm_skipped_reason": "",
@@ -487,7 +551,7 @@
           "llm_router_success": true,
           "llm_router_failure_reason": "",
           "llm_router_error_class": "none",
-          "llm_router_elapsed_ms": 791
+          "llm_router_elapsed_ms": 1860
         },
         "topic_memory": {
           "topic_id": "",
@@ -569,7 +633,7 @@
       "event": "progress",
       "data": {
         "label": "RAG 证据检索完成",
-        "detail": "检索到 12 条证据，命中 6 个商品。"
+        "detail": "检索到 0 条证据，命中 0 个商品。"
       }
     },
     {
@@ -583,28 +647,28 @@
       "event": "progress",
       "data": {
         "label": "命中候选 1",
-        "detail": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋；约 899 CNY；评分 1.00"
+        "detail": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋；约 899 CNY；评分 0.98"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 2",
-        "detail": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋；约 999 CNY；评分 1.00"
+        "detail": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋；约 999 CNY；评分 0.96"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 3",
-        "detail": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋；约 1099 CNY；评分 0.96"
+        "detail": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋；约 1099 CNY；评分 0.93"
       }
     },
     {
       "event": "progress",
       "data": {
         "label": "命中候选 4",
-        "detail": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋；约 1399 CNY；评分 0.91"
+        "detail": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋；约 1399 CNY；评分 0.87"
       }
     },
     {
@@ -656,8 +720,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
-            "score": 1.0,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9805，参考价 899-949 CNY。 评价均分 3.75/5。",
+            "score": 0.9805,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_007_1"
           },
@@ -680,8 +744,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0313；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0294；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0292。",
-            "score": 1.0,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9615，参考价 999-999 CNY。 评价均分 3.75/5。",
+            "score": 0.9615,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_010_1"
           },
@@ -704,8 +768,8 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 5,
-            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9633，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0284；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0284。",
-            "score": 0.9633,
+            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9280，参考价 1099-1119 CNY。 评价均分 3/5。",
+            "score": 0.928,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_009_1"
           }
@@ -742,25 +806,25 @@
                 "product_id": "p_clothes_007",
                 "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
                 "price": 899.0,
-                "score": 1.0
+                "score": 0.9805
               },
               {
                 "product_id": "p_clothes_010",
                 "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
                 "price": 999.0,
-                "score": 1.0
+                "score": 0.9615
               },
               {
                 "product_id": "p_clothes_009",
                 "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
                 "price": 1099.0,
-                "score": 0.9633
+                "score": 0.928
               },
               {
                 "product_id": "p_clothes_008",
                 "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
                 "price": 1399.0,
-                "score": 0.9079
+                "score": 0.8725
               }
             ]
           }
@@ -1155,7 +1219,7 @@
                     "追求极致轻薄用户需谨慎"
                   ]
                 },
-                "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
+                "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9805，参考价 899-949 CNY。 评价均分 3.75/5。",
                 "score": {
                   "scenario_match": 1.0,
                   "attribute_match": 1.0,
@@ -1164,7 +1228,7 @@
                   "availability_fit": 0.95,
                   "sku_fit": 0.95,
                   "detail_quality": 0.91,
-                  "final_score": 1.0,
+                  "final_score": 0.9805,
                   "reasons": [
                     "价格匹配：当前最低 SKU 约 899 CNY，已用于预算适配评分。",
                     "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于用户关注的 服饰运动 类目。",
@@ -1172,13 +1236,11 @@
                     "用户评价均分 3.75/5，参与口碑评分。",
                     "商品提供 4 条官方 FAQ，可作为回答证据。",
                     "不适用提示：追求极致轻薄用户需谨慎。",
-                    "商品知识证据命中：p_clothes_007 召回分 0.0310; p_clothes_007 召回分 0.0276。"
+                    "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                   ]
                 },
                 "evidence_doc_ids": [
-                  "p_clothes_007::profile::0",
-                  "p_clothes_007::sku::1",
-                  "p_clothes_007::review::3"
+                  "p_clothes_007"
                 ],
                 "quantity": 1,
                 "selected_sku_id": "s_p_clothes_007_1"
@@ -1235,7 +1297,7 @@
                 "role": "clothing",
                 "product_id": "p_clothes_007",
                 "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
-                "final_score": 1.0,
+                "final_score": 0.9805,
                 "scenario_match": 1.0,
                 "attribute_match": 1.0,
                 "price_fit": 1.0,
@@ -1250,7 +1312,7 @@
                   "用户评价均分 3.75/5，参与口碑评分。",
                   "商品提供 4 条官方 FAQ，可作为回答证据。",
                   "不适用提示：追求极致轻薄用户需谨慎。",
-                  "商品知识证据命中：p_clothes_007 召回分 0.0310; p_clothes_007 召回分 0.0276。"
+                  "当前主要依据结构化商品详情、FAQ、SKU 与用户评价评分。"
                 ]
               }
             ]
@@ -1277,8 +1339,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 899-949 CNY。 评价均分 3.75/5。 检索证据：Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#profile 召回分 0.0310；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#sku 召回分 0.0276；Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋#review 召回分 0.0251。",
-            "score": 1.0,
+            "reason": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 属于 服饰运动/跑步鞋，综合分 0.9805，参考价 899-949 CNY。 评价均分 3.75/5。",
+            "score": 0.9805,
             "source": "single_product",
             "selected_sku_id": "s_p_clothes_007_1"
           },
@@ -1301,8 +1363,8 @@
             "stock_quantity": null,
             "rating_avg": 3.75,
             "review_count": 4,
-            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 1.0000，参考价 999-999 CNY。 评价均分 3.75/5。 检索证据：特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#profile 召回分 0.0313；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#review 召回分 0.0294；特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋#sku 召回分 0.0292。",
-            "score": 1.0,
+            "reason": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋 属于 服饰运动/跑步鞋，综合分 0.9615，参考价 999-999 CNY。 评价均分 3.75/5。",
+            "score": 0.9615,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_010_1"
           },
@@ -1325,8 +1387,8 @@
             "stock_quantity": null,
             "rating_avg": 3.0,
             "review_count": 5,
-            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9633，参考价 1099-1119 CNY。 评价均分 3/5。 检索证据：HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#review 召回分 0.0284；HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋#profile 召回分 0.0284。",
-            "score": 0.9633,
+            "reason": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋 属于 服饰运动/跑步鞋，综合分 0.9280，参考价 1099-1119 CNY。 评价均分 3/5。",
+            "score": 0.928,
             "source": "alternative_candidate",
             "selected_sku_id": "s_p_clothes_009_1"
           }
@@ -1359,25 +1421,25 @@
                   "product_id": "p_clothes_007",
                   "title": "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋",
                   "price": 899.0,
-                  "score": 1.0
+                  "score": 0.9805
                 },
                 {
                   "product_id": "p_clothes_010",
                   "title": "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
                   "price": 999.0,
-                  "score": 1.0
+                  "score": 0.9615
                 },
                 {
                   "product_id": "p_clothes_009",
                   "title": "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
                   "price": 1099.0,
-                  "score": 0.9633
+                  "score": 0.928
                 },
                 {
                   "product_id": "p_clothes_008",
                   "title": "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑训练鞋",
                   "price": 1399.0,
-                  "score": 0.9079
+                  "score": 0.8725
                 }
               ]
             }
@@ -1402,8 +1464,8 @@
             "currency": "CNY",
             "rating_avg": 3.75,
             "review_count": 4,
-            "score": 1.0,
-            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "score": 0.9805,
+            "strength": "综合分 0.9805，评分 3.75/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": true
           },
@@ -1422,8 +1484,8 @@
             "currency": "CNY",
             "rating_avg": 3.75,
             "review_count": 4,
-            "score": 1.0,
-            "strength": "综合分 1.0000，评分 3.75/5，FAQ 信息较完整。",
+            "score": 0.9615,
+            "strength": "综合分 0.9615，评分 3.75/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           },
@@ -1442,8 +1504,8 @@
             "currency": "CNY",
             "rating_avg": 3.0,
             "review_count": 5,
-            "score": 0.9633,
-            "strength": "综合分 0.9633，评分 3/5，FAQ 信息较完整。",
+            "score": 0.928,
+            "strength": "综合分 0.9280，评分 3/5，FAQ 信息较完整。",
             "tradeoff": "需要注意：追求极致轻薄用户需谨慎。",
             "recommendation": false
           },
@@ -1462,8 +1524,8 @@
             "currency": "CNY",
             "rating_avg": 4.25,
             "review_count": 4,
-            "score": 0.9079,
-            "strength": "综合分 0.9079，评分 4.25/5，FAQ 信息较完整。",
+            "score": 0.8725,
+            "strength": "综合分 0.8725，评分 4.25/5，FAQ 信息较完整。",
             "tradeoff": "真实下单前仍需刷新实时价格、库存和优惠。",
             "recommendation": false
           }
@@ -1554,9 +1616,8 @@
           "fallback_used": false,
           "use_milvus_retrieval": true,
           "use_rag_query_expansion": false,
-          "retrieval_status": "ok",
-          "milvus_status": "ok",
-          "candidate_count": 12,
+          "retrieval_status": "failed",
+          "milvus_status": "failed",
           "image_retrieval_status": "skipped",
           "llm_used": false
         }
