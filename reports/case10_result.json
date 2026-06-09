@@ -1,0 +1,45 @@
+[
+  {
+    "turn": 1,
+    "input": "帮我找一个能装下16寸笔记本电脑的双肩包。",
+    "tool": "recommend_shopping_products",
+    "src": "guard",
+    "card_count": 3,
+    "card_titles": [
+      "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
+      "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
+      "联想 ThinkPad X1 Carbon Aura AI 元启版20"
+    ],
+    "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "args": {
+      "category": "数码电子"
+    },
+    "elapsed_ms": 2569
+  },
+  {
+    "turn": 2,
+    "input": "要轻便一点，最好有防水功能。",
+    "tool": "general_chat",
+    "src": "hallucination_guard",
+    "card_count": 0,
+    "card_titles": [],
+    "reply": "听起来你对装备要求挺高的呀！方便告诉我你想买什么类型的商品吗？比如是背包、鞋子还是电子产品？知道具体需求我才能帮你找到最合适的。",
+    "args": {},
+    "elapsed_ms": 3685
+  },
+  {
+    "turn": 3,
+    "input": "外观不要太花哨，黑色或灰色。",
+    "tool": "recommend_shopping_products",
+    "src": "followup_guard",
+    "card_count": 3,
+    "card_titles": [
+      "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
+      "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
+      "联想 ThinkPad X1 Carbon Aura AI 元启版20"
+    ],
+    "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+    "args": {},
+    "elapsed_ms": 2976
+  }
+]

@@ -48,6 +48,12 @@ class ShoppingSession:
     recent_turns: List[Dict[str, Any]] = field(default_factory=list)
     recent_turns_summary: str = ""
     failure_state: Dict[str, Any] = field(default_factory=dict)
+    # ── 新版统一 session 字段 ──
+    chat_topic: str = ""
+    topic_history: List[Dict[str, Any]] = field(default_factory=list)
+    recent_queries: List[Dict[str, Any]] = field(default_factory=list)
+    current: Dict[str, Any] = field(default_factory=dict)
+    current_pc_build: Dict[str, Any] = field(default_factory=dict)
 
 
 class BaseSessionStore(Protocol):
@@ -327,6 +333,16 @@ def session_from_dict(data: Any) -> ShoppingSession:
         kwargs["recent_turns_summary"] = ""
     if kwargs.get("last_result") is None:
         kwargs["last_result"] = {}
+    # ── 新版统一 session 字段 ──
+    if not isinstance(kwargs.get("chat_topic"), str):
+        kwargs["chat_topic"] = ""
+    for key in ("topic_history", "recent_queries"):
+        if not isinstance(kwargs.get(key), list):
+            kwargs[key] = []
+    if not isinstance(kwargs.get("current"), dict):
+        kwargs["current"] = {}
+    if not isinstance(kwargs.get("current_pc_build"), dict):
+        kwargs["current_pc_build"] = {}
     try:
         kwargs["updated_at"] = float(kwargs.get("updated_at") or _now_seconds())
     except (TypeError, ValueError):
@@ -347,7 +363,6 @@ def default_topic_memory() -> Dict[str, Any]:
             "preferences": {},
             "product_ids": [],
         },
-        "confidence": 0.0,
         "source": "init",
         "reason": "",
         "updated_at": "",
@@ -391,7 +406,6 @@ def update_topic_memory(session: ShoppingSession, tool_call: Dict[str, Any], *, 
         "route": route,
         "category": arguments.get("category") or ("pc_build" if topic_type == "pc_build" else previous.get("category") or ""),
         "slots": slots,
-        "confidence": float(tool_call.get("confidence") or 0.0),
         "source": tool_call.get("source") or "rules",
         "reason": tool_call.get("reason") or "",
         "updated_at": now,
@@ -405,7 +419,6 @@ def remember_tool_call(session: ShoppingSession, tool_call: Dict[str, Any], *, r
     entry = {
         "name": tool_call.get("name"),
         "arguments": tool_call.get("arguments") or {},
-        "confidence": tool_call.get("confidence"),
         "source": tool_call.get("source"),
         "reason": tool_call.get("reason"),
         "routing_trace": tool_call.get("routing_trace") or {},
@@ -415,6 +428,175 @@ def remember_tool_call(session: ShoppingSession, tool_call: Dict[str, Any], *, r
     session.tool_history.append(entry)
     del session.tool_history[:-12]
     save_session(session)
+
+
+def update_session_from_router(session: ShoppingSession, message: str, tool_call: Dict[str, Any]) -> None:
+    """Update unified session JSON after LLM router returns.
+
+    Updates current (accumulated state), recent_queries (sliding window of 5),
+    topic_history, and chat_topic.  Handles brand conflict resolution.
+    """
+
+    args = dict(tool_call.get("arguments") or {})
+    tool_name = str(tool_call.get("name") or "")
+
+    # ── chat_topic ──
+    if tool_name == "general_chat":
+        session.chat_topic = "chat"
+    elif tool_name in {"recommend_shopping_products", "generate_pc_build_plan", "compare_products", "apply_cart_instruction"}:
+        session.chat_topic = "recommendation"
+    else:
+        session.chat_topic = "off_topic"
+
+    # ── recent_queries: sliding window of 5 ──
+    session.recent_queries.append({
+        "turn": len(session.recent_queries) + 1,
+        "query": str(message or "").strip(),
+    })
+    if len(session.recent_queries) > 5:
+        session.recent_queries = session.recent_queries[-5:]
+
+    # ── current: merge router arguments into accumulated state ──
+    prev = dict(session.current or {})
+    new_current = {
+        "tool_call": tool_name,
+        "query": str(args.get("query") or message or "").strip(),
+        "category": str(args.get("category") or prev.get("category") or "").strip(),
+        "catalog_scope": str(args.get("catalog_scope") or prev.get("catalog_scope") or "ecommerce").strip(),
+    }
+
+    # ── brands / exclude_brands ──
+    # 区分"LLM 未输出"（保留累积值）和"LLM 输出空列表"（清空累积值）
+    # 例如用户说"替代品"→ LLM 输出 brands=[] 表示不限品牌
+    prev_brands = list(prev.get("brands") or [])
+    prev_exclude = list(prev.get("exclude_brands") or [])
+
+    if "brands" in args:
+        # LLM 明确输出了 brands 字段
+        new_brands_raw = args.get("brands") or []
+        new_brands = [str(b) for b in new_brands_raw if str(b).strip()]
+        if new_brands:
+            # 有新品牌 → 累积
+            prev_brands = _dedupe([*prev_brands, *new_brands])
+        else:
+            # brands=[] → 清空累积值（不限品牌）
+            prev_brands = []
+    # else: LLM 未输出 brands → 保留累积值
+
+    if "exclude_brands" in args:
+        new_exclude_raw = args.get("exclude_brands") or []
+        new_exclude = [str(b) for b in new_exclude_raw if str(b).strip()]
+        if new_exclude:
+            prev_exclude = _dedupe([*prev_exclude, *new_exclude])
+        else:
+            prev_exclude = []
+    # else: LLM 未输出 exclude_brands → 保留累积值
+
+    # 品牌冲突处理：brands 与 exclude_brands 同时存在时，exclude 优先移除
+    if prev_brands and prev_exclude:
+        prev_brands = [b for b in prev_brands if b not in set(prev_exclude)]
+
+    new_current["brands"] = prev_brands
+    new_current["exclude_brands"] = prev_exclude
+
+    # remove from brands if now in exclude_brands
+    if new_current["exclude_brands"]:
+        new_current["brands"] = [b for b in new_current["brands"] if b not in set(new_current["exclude_brands"])]
+
+    # price: new values override old
+    for key in ("price_min", "price_max", "budget"):
+        val = args.get(key)
+        if val is not None:
+            new_current[key] = val
+        elif key not in new_current:
+            new_current[key] = prev.get(key)
+
+    # preferences: merge
+    prefs = dict(prev.get("preferences") or {})
+    prefs.update(args.get("preferences") or {})
+    new_current["preferences"] = prefs
+
+    # ── PC 配件场景：组件级约束每轮替换，不累积 ──
+    # 用户每轮修改不同配件（显卡/机箱/散热），旧配件的 sub_category 和
+    # must_have_terms 不应污染新配件的搜索。
+    is_pc_part = new_current.get("catalog_scope") == "pc_parts"
+
+    # must_have_terms: PC 配件场景替换，普通商品场景累积
+    new_terms = [str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()]
+    if is_pc_part:
+        new_current["must_have_terms"] = new_terms
+    else:
+        new_current["must_have_terms"] = _dedupe([*list(prev.get("must_have_terms") or []), *new_terms])
+
+    # sub_category: PC 配件场景替换（不降级到累积值），普通商品场景降级到累积值
+    sub_cat = str(args.get("sub_category") or "").strip()
+    if is_pc_part:
+        new_current["sub_category"] = sub_cat
+    else:
+        new_current["sub_category"] = sub_cat if sub_cat else str(prev.get("sub_category") or "").strip()
+
+    # product_ids: 路由器优先，降级到累积值
+    pids = [str(pid) for pid in (args.get("product_ids") or []) if str(pid).strip()]
+    new_current["product_ids"] = pids if pids else list(prev.get("product_ids") or [])
+
+    session.current = new_current
+
+    # ── topic_history ──
+    session.topic_history.append({
+        "turn": len(session.recent_queries),
+        "tool_call": tool_name,
+        "category": new_current.get("category", ""),
+        "query": new_current.get("query", ""),
+    })
+    if len(session.topic_history) > 20:
+        session.topic_history = session.topic_history[-20:]
+
+    save_session(session)
+
+
+def save_pc_build_to_session(session: ShoppingSession, plan: Dict[str, Any]) -> None:
+    """Extract components from a PC build plan and store in session.current_pc_build."""
+
+    parts = plan.get("parts") or plan.get("items") or []
+    build: Dict[str, Any] = {
+        "total_price": plan.get("total_price"),
+        "budget": plan.get("budget"),
+        "usage": plan.get("usage") or [],
+        "preferences": plan.get("preferences") or {},
+    }
+    for part in parts:
+        role = str(part.get("role") or part.get("component_type") or "")
+        if not role:
+            continue
+        build[role] = {
+            "product_id": str(part.get("product_id") or ""),
+            "title": str(part.get("title") or part.get("name") or ""),
+            "price": part.get("price"),
+        }
+    session.current_pc_build = build
+    save_session(session)
+
+
+def _dedupe(items: list) -> list:
+    seen = set()
+    result = []
+    for item in items:
+        key = str(item)
+        if key and key not in seen:
+            seen.add(key)
+            result.append(item)
+    return result
+
+
+def session_to_json(session: ShoppingSession) -> Dict[str, Any]:
+    """Return the unified session JSON for debugging / SSE emission."""
+    return {
+        "session_id": session.session_id,
+        "chat_topic": session.chat_topic,
+        "topic_history": session.topic_history[-5:],
+        "recent_queries": session.recent_queries,
+        "current": session.current,
+    }
 
 
 def build_contextual_goal(session: ShoppingSession, message: str) -> str:

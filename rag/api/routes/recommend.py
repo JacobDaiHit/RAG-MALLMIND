@@ -14,8 +14,7 @@ from rag.api.app_context import (
 )
 from rag.api.attachments import prepare_attachments_for_recommendation
 from rag.api.request_models import GoalRequest, PromptFinalizeRequest
-from rag.api.runtime_context import apply_runtime_trace, build_adaptive_runtime_context, runtime_event_payload
-from rag.api.routes.common import has_image_data, is_test_env, stream_llm_enabled, system_degraded
+from rag.api.routes.common import stream_llm_enabled
 from rag.api.sse import sse_event
 from rag.recommendation import InvalidGoalError, parse_requirement, parse_requirement_rule_based, recommend_shopping_products
 from rag.recommendation.input_preprocessor import preprocess_user_input
@@ -71,45 +70,26 @@ def finalize_prompt(request: PromptFinalizeRequest) -> Dict[str, Any]:
 
 @router.post("/api/recommend")
 def recommend(request: GoalRequest) -> Dict[str, Any]:
-    """Non-streaming test endpoint for the recommendation pipeline.
-
-    The production chat flow is /api/chat/stream; this route is kept for tests,
-    smoke checks, and clients that need one complete recommendation payload.
-    """
+    """Non-streaming test endpoint for the recommendation pipeline."""
 
     session = get_session(request.session_id) if request.session_id else None
-    llm_configured = stream_llm_enabled()
-    route_session = session or get_session(None)
-    runtime_context = build_adaptive_runtime_context(
-        request.goal,
-        route_session,
-        requested_mode=getattr(request, "mode", None) or "auto",
-        has_attachments=bool(request.attachments),
-        has_image_data=has_image_data(request.attachments),
-        llm_configured=llm_configured,
-        is_test_env=is_test_env(),
-        system_degraded=system_degraded(),
-    )
-    decision = runtime_context["decision"]
-    policy = runtime_context["policy"]
-    if session is not None:
-        session.runtime_mode = decision.selected_mode
+    use_llm = stream_llm_enabled()
     goal, attachments, attachment_report = prepare_recommendation_context(
         request.goal,
         request.attachments,
         session,
-        use_vision_llm=policy.use_vision_llm,
+        use_vision_llm=True,
     )
     try:
         validate_goal(goal)
-        catalog_scope = infer_recommend_catalog_scope(request.goal, session, local_route=runtime_context["local_route"])
+        catalog_scope = infer_recommend_catalog_scope(request.goal, session)
         result = recommend_shopping_products(
             goal,
-            use_llm=policy.use_requirement_llm,
-            use_llm_guidance=policy.use_guidance_llm,
+            use_llm=use_llm,
+            use_llm_guidance=_env_bool("MALLMIND_GUIDANCE_LLM", False),
             catalog_scope=catalog_scope,
-            use_milvus_retrieval=policy.use_milvus_retrieval,
-            use_rag_query_expansion=policy.use_rag_query_expansion,
+            use_milvus_retrieval=_env_bool("MALLMIND_MILVUS_RETRIEVAL", True),
+            use_rag_query_expansion=_env_bool("MALLMIND_RAG_QUERY_EXPANSION", False),
         )
     except InvalidGoalError as exc:
         raise HTTPException(status_code=400, detail=public_error(exc)) from exc
@@ -117,31 +97,29 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
     trace = payload.setdefault("trace", {})
     trace["attachments"] = attachments
     trace["attachment_analysis"] = sanitize_report(attachment_report)
-    apply_runtime_trace(
-        trace,
-        decision=decision,
-        policy=policy,
-        requested_mode=getattr(request, "mode", None) or "auto",
-        llm_configured=llm_configured,
-        has_attachments=bool(request.attachments),
-        has_image_data=has_image_data(request.attachments),
-        is_test_env=is_test_env(),
-        system_degraded=system_degraded(),
-    )
+    trace["runtime_mode"] = "balanced"
+    trace["llm_configured"] = use_llm
     trace["llm_used_for_parse"] = bool(trace.get("llm_requirement_parse_used"))
     trace.setdefault("llm_used_for_explanation", False)
     return payload
 
 
-def infer_recommend_catalog_scope(goal: str, session: Any = None, *, local_route: Optional[Dict[str, Any]] = None) -> str:
+def infer_recommend_catalog_scope(goal: str, session: Any = None) -> str:
     """Use the same router rules as chat to choose the recommendation catalog."""
 
     route_session = session or get_session(None)
-    tool_call = local_route or route_shopping_tool_call(goal, route_session, use_llm=False)
+    tool_call = route_shopping_tool_call(goal, route_session, use_llm=False)
     if tool_call.get("name") != "recommend_shopping_products":
         return "ecommerce"
     scope = (tool_call.get("arguments") or {}).get("catalog_scope") or "ecommerce"
     return scope if scope in {"ecommerce", "pc_parts", "combined"} else "ecommerce"
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 @router.get("/api/stream-recommend")
@@ -149,36 +127,16 @@ def stream_recommend(
     goal: str = Query(...),
     attachments: Optional[str] = Query(default=None),
     session_id: Optional[str] = Query(default=None),
-    mode: Optional[str] = Query(default="fast"),
 ) -> StreamingResponse:
-    """Debug endpoint for the graph-style recommendation demo stream.
-
-    This exposes RecommendationGraph events for inspection and should not be
-    treated as the main conversational business entrypoint.
-    """
+    """Debug endpoint for the graph-style recommendation demo stream."""
 
     session = get_session(session_id) if session_id else None
-    llm_configured = stream_llm_enabled()
-    route_session = session or get_session(None)
-    runtime_context = build_adaptive_runtime_context(
-        goal,
-        route_session,
-        requested_mode=mode,
-        has_attachments=bool(attachments),
-        has_image_data=has_image_data(attachments),
-        llm_configured=llm_configured,
-        is_test_env=is_test_env(),
-        system_degraded=system_degraded(),
-    )
-    decision = runtime_context["decision"]
-    policy = runtime_context["policy"]
-    if session is not None:
-        session.runtime_mode = decision.selected_mode
+    use_llm = stream_llm_enabled()
     parse_goal, attachment_items, attachment_report = prepare_recommendation_context(
         goal,
         attachments,
         session,
-        use_vision_llm=policy.use_vision_llm,
+        use_vision_llm=True,
     )
     try:
         validate_goal(parse_goal)
@@ -192,33 +150,21 @@ def stream_recommend(
         return StreamingResponse(validation_error_stream(), media_type="text/event-stream", headers={"content-type": "text/event-stream"})
 
     def generate():
-        yield sse_event(
-            "runtime_mode",
-            runtime_event_payload(
-                decision=decision,
-                policy=policy,
-                requested_mode=mode,
-                llm_configured=llm_configured,
-                has_attachments=bool(attachments),
-                has_image_data=has_image_data(attachments),
-                is_test_env=is_test_env(),
-                system_degraded=system_degraded(),
-            ),
-        )
+        yield sse_event("runtime_mode", {"mode": "balanced", "use_llm": use_llm})
         yield sse_event(
             "step",
             {
-                "label": "正在调用生成式模型" if policy.use_requirement_llm else "使用快速规则解析",
-                "detail": "按 runtime policy 增强需求理解" if policy.use_requirement_llm else "调试流式接口默认不等待外部模型，优先保证演示稳定",
+                "label": "正在调用生成式模型" if use_llm else "使用快速规则解析",
+                "detail": "大模型参与需求理解" if use_llm else "规则解析",
             },
         )
         for item in stream_recommendation_graph(
             parse_goal,
             attachments=attachment_items,
-            use_llm=policy.use_requirement_llm,
-            use_guidance_llm=policy.use_guidance_llm,
-            use_milvus_retrieval=policy.use_milvus_retrieval,
-            use_rag_query_expansion=policy.use_rag_query_expansion,
+            use_llm=use_llm,
+            use_guidance_llm=_env_bool("MALLMIND_GUIDANCE_LLM", False),
+            use_milvus_retrieval=_env_bool("MALLMIND_MILVUS_RETRIEVAL", True),
+            use_rag_query_expansion=_env_bool("MALLMIND_RAG_QUERY_EXPANSION", False),
         ):
             payload = dict(item.data or {})
             if item.event in {"plans", "result"}:
@@ -226,17 +172,8 @@ def stream_recommend(
                 trace["attachments"] = attachment_items
                 trace["attachment_analysis"] = sanitize_report(attachment_report)
                 trace["preprocessed_input"] = preprocess_user_input(goal, attachment_items).to_trace()
-                apply_runtime_trace(
-                    trace,
-                    decision=decision,
-                    policy=policy,
-                    requested_mode=mode,
-                    llm_configured=llm_configured,
-                    has_attachments=bool(attachments),
-                    has_image_data=has_image_data(attachments),
-                    is_test_env=is_test_env(),
-                    system_degraded=system_degraded(),
-                )
+                trace["runtime_mode"] = "balanced"
+                trace["llm_configured"] = use_llm
                 payload["trace"] = trace
                 payload = sanitize_result_for_response(payload)
             yield sse_event(item.event, payload)

@@ -403,11 +403,22 @@ def score_scenario_match(
     score = 0.25
     if product.category in set(requirement.desired_categories or requirement.required_components):
         score += 0.35
-    if product.sub_category and product.sub_category in query:
-        score += 0.20
-    if product.brand and product.brand in query:
-        score += 0.15
-    term_hits = sum(1 for term in requirement.preferences + requirement.must_have_terms if term and term.lower() in text)
+    if product.sub_category:
+        if requirement.target_sub_categories:
+            if product.sub_category in requirement.target_sub_categories:
+                score += 0.20
+        elif product.sub_category in query:
+            score += 0.20
+    if product.brand:
+        if requirement.brands:
+            if product.brand in requirement.brands:
+                score += 0.15
+        elif product.brand in query:
+            score += 0.15
+    router_terms = [t for t in requirement.must_have_terms if t]
+    fallback_terms = [t for t in requirement.preferences + requirement.must_have_terms if t]
+    match_terms = router_terms if router_terms else fallback_terms
+    term_hits = sum(1 for term in match_terms if term and term.lower() in text)
     score += min(term_hits * 0.08, 0.24)
     if requirement.occasion and requirement.occasion.lower() in text:
         score += 0.12
@@ -432,14 +443,23 @@ def score_attribute_match(
     score = 0.45
     if product.category in set(requirement.desired_categories or requirement.required_components):
         score += 0.25
-    if product.sub_category in requirement.target_sub_categories:
+    if requirement.target_sub_categories:
+        if product.sub_category in requirement.target_sub_categories:
+            score += 0.15
+    elif product.sub_category and product.sub_category in requirement.raw_query.lower():
         score += 0.15
-    if product.brand in requirement.brands:
+    if requirement.brands:
+        if product.brand in requirement.brands:
+            score += 0.10
+    elif product.brand and product.brand in requirement.raw_query.lower():
         score += 0.10
     text = _collect_product_text(product)
-    if requirement.must_have_terms:
-        hits = sum(1 for term in requirement.must_have_terms if term and term.lower() in text)
-        score += min(hits / max(len(requirement.must_have_terms), 1) * 0.20, 0.20)
+    router_terms = [t for t in requirement.must_have_terms if t]
+    fallback_terms = [t for t in requirement.preferences + requirement.must_have_terms if t]
+    match_terms = router_terms if router_terms else fallback_terms
+    if match_terms:
+        hits = sum(1 for term in match_terms if term and term.lower() in text)
+        score += min(hits / max(len(match_terms), 1) * 0.20, 0.20)
     if product.skus:
         score += 0.05
     # evidence 属性信号：仅匹配 query 中的核心属性词，不用泛词

@@ -132,7 +132,6 @@ TOOL_SCHEMAS_FOR_PROMPT: List[Dict[str, Any]] = [
 TOOL_SCHEMAS = TOOL_SCHEMAS_FOR_PROMPT
 ROUTED_CALL_SCHEMA: Dict[str, Any] = {
     "name": "工具名",
-    "confidence": "0到1",
     "reason": "选择依据",
     "arguments": {
         "query": "",
@@ -592,10 +591,8 @@ class RoutedToolCall(BaseModel):
 
     name: str
     arguments: RoutedArguments = Field(default_factory=RoutedArguments)
-    confidence: float = Field(ge=0.0, le=1.0)
     reason: str = ""
     source: str = "llm"
-    needs_clarification: bool = False
 
     @field_validator("name")
     @classmethod
@@ -606,185 +603,55 @@ class RoutedToolCall(BaseModel):
 
 
 def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm: bool = True) -> Dict[str, Any]:
-    """Return one validated tool-call JSON for the current shopping turn."""
+    """Return one validated tool-call JSON for the current shopping turn.
+
+    LLM-first: always try LLM router first.  Fall back to local rules only when
+    LLM is unavailable or fails.  No guard layer — the LLM decision is final.
+    """
 
     local = local_route_tool_call(message, session)
-    llm_call: Optional[Dict[str, Any]] = None
-    mode = _runtime_mode_from_session(session)
-    llm_skipped = False
-    llm_skipped_reason = ""
-    router_attempted = False
-    router_failure_reason = ""
-    if not _router_llm_globally_enabled():
-        llm_skipped = True
-        llm_skipped_reason = "global_llm_disabled"
-    elif not use_llm:
-        llm_skipped = True
-        llm_skipped_reason = "use_llm_false"
-    elif should_skip_llm_route(message, session, local):
-        llm_skipped = True
-        llm_skipped_reason = "fast_mode" if mode == "fast" else "high_confidence_local"
-    elif _router_llm_circuit_open():
-        llm_skipped = True
-        llm_skipped_reason = "circuit_open"
 
-    if llm_skipped:
-        final = validate_and_guard_tool_call(message, session, local, local)
-        final["routing_trace"] = {
-            "runtime_mode": mode,
+    if not use_llm or not _router_llm_globally_enabled():
+        local["routing_trace"] = {
             **get_llm_provider_trace(),
-            "local": local,
-            "local_route_scores": local.get("route_scores"),
+            "local": _trace_identity(local),
             "llm": None,
-            "chosen_before_guard": local,
-            "final": _trace_identity(final),
-            "route_overridden": final.get("name") != local.get("name"),
-            "arguments_changed": (final.get("arguments") or {}) != (local.get("arguments") or {}),
-            "guard_overridden": final.get("name") != local.get("name"),
-            "llm_skipped": True,
-            "llm_skipped_reason": llm_skipped_reason,
-            "router_skipped_by_policy": llm_skipped_reason in {"global_llm_disabled", "use_llm_false", "fast_mode", "circuit_open"},
-            "router_skipped_high_confidence_local": llm_skipped_reason == "high_confidence_local",
-            "router_attempted": False,
-            "router_timeout": False,
-            "router_json_invalid": False,
-            "router_success": False,
-            "router_applied": False,
-            "router_final_source": str(final.get("source") or "rules"),
-            "router_failure_reason": "",
-            # ── 标准化 LLM router trace 字段 ──
             "llm_router_attempted": False,
             "llm_router_success": False,
-            "llm_router_failure_reason": llm_skipped_reason,
-            "llm_router_error_class": _router_error_class(llm_skipped_reason),
-            "llm_router_elapsed_ms": 0,
+            "llm_router_failure_reason": "llm_disabled",
+            "router_final_source": "rules",
         }
-        return final
+        return local
 
     _router_start = time.perf_counter()
     llm_call, llm_failure_reason = try_llm_route_tool_call(message, session)
     _router_elapsed_ms = int((time.perf_counter() - _router_start) * 1000)
-    router_attempted = llm_failure_reason not in {"concurrency_limit", "llm_not_configured"}
-    if llm_call is None:
-        llm_skipped = True
-        router_failure_reason = llm_failure_reason or "llm_unavailable"
-        llm_skipped_reason = router_failure_reason if not router_attempted else ""
-    # ── 改动5: 非对称置信度阈值 ──
-    # LLM 升级到购物工具 → 低门槛 (0.50)；LLM 降级到 general_chat → 高门槛 (0.80)
-    _llm_conf = float((llm_call or {}).get("confidence") or 0)
-    _llm_name = (llm_call or {}).get("name") or ""
-    _local_name = local.get("name") or ""
-    if llm_call is None:
-        chosen = local
-    elif _llm_name == "general_chat" and _local_name != "general_chat":
-        chosen = llm_call if _llm_conf >= 0.80 else local
-    else:
-        chosen = llm_call if _llm_conf >= 0.50 else local
-    # ── 改动1: 显式标记 LLM 选择结果，供 Guard 层识别 ──
-    if chosen is llm_call and chosen is not None:
-        chosen = dict(chosen)  # 避免修改原始 dict
-        chosen["_llm_chosen"] = True
-    final = validate_and_guard_tool_call(message, session, chosen, local)
-    route_overridden = final.get("name") != (chosen or {}).get("name")
-    arguments_changed = (final.get("arguments") or {}) != ((chosen or {}).get("arguments") or {})
-    llm_router_success = bool(llm_call)
-    llm_router_failure_reason = router_failure_reason if not llm_router_success else ""
-    final["routing_trace"] = {
-        "runtime_mode": mode,
+
+    if llm_call is not None:
+        llm_call["routing_trace"] = {
+            **get_llm_provider_trace(),
+            "local": _trace_identity(local),
+            "llm": _trace_identity(llm_call),
+            "llm_router_attempted": True,
+            "llm_router_success": True,
+            "llm_router_failure_reason": "",
+            "llm_router_elapsed_ms": _router_elapsed_ms,
+            "router_final_source": "llm",
+        }
+        return llm_call
+
+    # LLM failed — fallback to local
+    local["routing_trace"] = {
         **get_llm_provider_trace(),
-        "local": local,
-        "local_route_scores": local.get("route_scores"),
-        "llm": llm_call,
-        "chosen_before_guard": chosen,
-        "final": _trace_identity(final),
-        "route_overridden": route_overridden,
-        "arguments_changed": arguments_changed,
-        "guard_overridden": route_overridden,
-        "llm_skipped": llm_skipped,
-        "llm_skipped_reason": llm_skipped_reason,
-        "router_skipped_by_policy": bool(not router_attempted and llm_skipped),
-        "router_skipped_high_confidence_local": False,
-        "router_attempted": router_attempted,
-        "router_timeout": router_failure_reason in {"llm_timeout", "llm_timeout_or_error"},
-        "router_json_invalid": router_failure_reason in {"llm_json_invalid", "llm_validation_error"},
-        "router_success": llm_router_success,
-        "router_applied": bool(llm_call and chosen is llm_call and final.get("name") == llm_call.get("name") and not route_overridden),
-        "router_final_source": str(final.get("source") or ("llm" if llm_call else "rules")),
-        "router_failure_reason": router_failure_reason,
-        # ── 标准化 LLM router trace 字段 ──
-        "llm_router_attempted": router_attempted,
-        "llm_router_success": llm_router_success,
-        "llm_router_failure_reason": llm_router_failure_reason,
-        "llm_router_error_class": _router_error_class(llm_router_failure_reason),
+        "local": _trace_identity(local),
+        "llm": None,
+        "llm_router_attempted": True,
+        "llm_router_success": False,
+        "llm_router_failure_reason": llm_failure_reason or "llm_unavailable",
         "llm_router_elapsed_ms": _router_elapsed_ms,
+        "router_final_source": "rules_fallback",
     }
-    return final
-
-
-def should_skip_llm_route(message: str, session: ShoppingSession, local_call: Dict[str, Any]) -> bool:
-    """Avoid expensive LLM routing only when local rules are already decisive.
-
-    Key heuristic: ``general_chat`` is the most common misroute (local rules
-    miss product terms like "篮球鞋" / "运动裤"), so we ALWAYS double-check
-    it with LLM.  Likewise, low-confidence or low-margin local routes are
-    handed off to LLM instead of being locked in by rules.
-    """
-
-    mode = _runtime_mode_from_session(session)
-    score_info = local_call.get("route_scores") or {}
-    confidence = float(score_info.get("confidence") or local_call.get("confidence") or 0)
-    margin = float(score_info.get("margin") or 0.0)
-    name = str(local_call.get("name") or "")
-
-    # ── general_chat is the most frequent misroute — always let LLM verify ──
-    if name == "general_chat":
-        return False
-
-    # ── 本地 extract_budget 仅提取单一上限值，会丢失区间信息 ──
-    # 当本地规则提取了 budget 时，不跳过 LLM 路由，让 LLM 正确解析
-    # price_min / price_max / budget 的完整语义（区间型、上下型等）。
-    _local_args = local_call.get("arguments") or {}
-    if _local_args.get("budget") is not None:
-        return False
-
-    if mode == "fast":
-        return confidence >= 0.95 and margin >= 0.50 and name in {"recommend_shopping_products", "apply_cart_instruction"}
-
-    if mode == "balanced":
-        # 低置信度或边界模糊时交给 LLM
-        if confidence < 0.70 or margin < 0.25:
-            return False
-        if name == "apply_cart_instruction" and confidence >= 0.85:
-            return True
-        return confidence >= 0.85 and margin >= 0.35
-
-    if mode == "full":
-        if confidence < 0.80 or margin < 0.30:
-            return False
-        if name == "apply_cart_instruction" and confidence >= 0.90:
-            return True
-        return confidence >= 0.92 and margin >= 0.40
-
-    return confidence >= 0.85 and margin >= 0.35
-
-
-def is_fast_deterministic_case(message: str, session: ShoppingSession) -> bool:
-    text = message or ""
-    lowered = text.lower()
-    topic = current_topic_json(session)
-    if _is_general_chat(text, lowered, topic):
-        return True
-    if _has_cart_intent(text):
-        return True
-    if _has_pc_intent(text, lowered) or _has_single_pc_part_intent(text, lowered):
-        return True
-    if detect_normal_product_category(text):
-        return True
-    if any(term in text for term in PRODUCT_DETAIL_QUERY_TERMS + PRODUCT_DETAIL_FOLLOWUP_TERMS):
-        return True
-    if any(term in text for term in BRAND_OR_PRODUCT_TERMS):
-        return True
-    return len(text.strip()) <= 18 and bool(re.search(r"推荐|看看|有哪些|多少钱|价格|参数|库存|有货", text))
+    return local
 
 
 def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]:
@@ -830,31 +697,12 @@ def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]
     ranked = sorted(scores.items(), key=lambda item: item[1], reverse=True)
     top_name, top_score = ranked[0]
     second_name, second_score = ranked[1]
-    margin = top_score - second_score
-    if margin >= 0.50:
-        margin_bonus = 0.08
-    elif margin >= 0.30:
-        margin_bonus = 0.05
-    elif margin >= 0.20:
-        margin_bonus = 0.03
-    else:
-        margin_bonus = 0.0
-    ambiguity_penalty = 0.0
-    if top_score < 0.55:
-        ambiguity_penalty += 0.15
-    if margin < 0.15:
-        ambiguity_penalty += 0.12
-    confidence = _clamp(top_score + margin_bonus - ambiguity_penalty, 0.0, 0.99)
     return {
         "scores": scores,
         "top_name": top_name,
         "top_score": top_score,
         "second_name": second_name,
         "second_score": second_score,
-        "margin": margin,
-        "margin_bonus": margin_bonus,
-        "ambiguity_penalty": ambiguity_penalty,
-        "confidence": confidence,
     }
 
 
@@ -869,18 +717,18 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
         # 组合意图（推荐+加购）让 LLM 路由，本地规则仅处理纯购物车操作
         has_recommend_intent = bool(detect_normal_product_category(text)) or _has_product_query_intent(text, lowered)
         if not has_recommend_intent:
-            return _attach_route_scores(_tool_call("apply_cart_instruction", slots, 0.80, "本地规则识别到购物车操作。", "rules"), score_info)
+            return _attach_route_scores(_tool_call("apply_cart_instruction", slots, "本地规则识别到购物车操作。", "rules"), score_info)
     if is_pc_build_followup(text, session):
         slots["followup"] = True
         slots["source"] = "pc_build_history_guard"
-        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, 0.94, "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard"), score_info)
+        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard"), score_info)
     if _looks_like_compare_request(text):
         slots["compare_with_previous"] = _mentions_previous(text)
-        return _attach_route_scores(_tool_call("compare_products", slots, 0.88, "本地规则识别到商品或历史方案对比请求。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("compare_products", slots, "本地规则识别到商品或历史方案对比请求。", "rules"), score_info)
     if _has_pc_intent(text, lowered):
-        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, 0.92, "本地规则识别到整机、装机或多配件组合需求。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, "本地规则识别到整机、装机或多配件组合需求。", "rules"), score_info)
     if topic.get("topic_type") == "pc_build" and _looks_like_pc_followup(text, lowered):
-        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, 0.88, "当前主题仍是 PC 整机，用户补充的是颜色、预算或性能偏好。", "topic_memory"), score_info)
+        return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, "当前主题仍是 PC 整机，用户补充的是颜色、预算或性能偏好。", "topic_memory"), score_info)
     followup_call = resolve_followup_message(text, session)
     if followup_call:
         return _attach_route_scores(followup_call, score_info)
@@ -889,16 +737,16 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
     if category:
         slots["category"] = category
         slots["catalog_scope"] = "ecommerce"
-        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, 0.86, f"用户明确提出普通商品品类：{category}。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, f"用户明确提出普通商品品类：{category}。", "rules"), score_info)
     if _has_single_pc_part_intent(text, lowered):
         slots["category"] = "pc_part"
         slots["catalog_scope"] = "pc_parts"
-        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, 0.84, "用户只提到单个 PC 配件，按普通商品推荐处理。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, "用户只提到单个 PC 配件，按普通商品推荐处理。", "rules"), score_info)
     if _has_product_query_intent(text, lowered):
-        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, 0.84, "本地规则识别到商品搜索、场景购物或事实型商品查询。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("recommend_shopping_products", slots, "本地规则识别到商品搜索、场景购物或事实型商品查询。", "rules"), score_info)
     if _is_general_chat(text, lowered, topic):
-        return _attach_route_scores(_tool_call("general_chat", slots, 0.9, "本地规则识别到系统说明、身份或推荐逻辑类问题。", "rules"), score_info)
-    return _attach_route_scores(_tool_call("recommend_shopping_products", slots, 0.7, "默认进入普通本地商品推荐。", "rules"), score_info)
+        return _attach_route_scores(_tool_call("general_chat", slots, "本地规则识别到系统说明、身份或推荐逻辑类问题。", "rules"), score_info)
+    return _attach_route_scores(_tool_call("recommend_shopping_products", slots, "默认进入普通本地商品推荐。", "rules"), score_info)
 
 
 def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Optional[Dict[str, Any]], str]:
@@ -922,80 +770,7 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
             client = OpenAICompatibleChatClient(replace(client.config, timeout_seconds=_router_socket_timeout))
         payload, report = run_with_hard_timeout(
             lambda: client.chat_json_with_report(
-                [
-                    {
-                        "role": "system",
-                            "content": (
-                                "你是电商导购系统的工具路由器。你的唯一职责是根据用户输入选择正确的工具并提取参数，输出严格的 JSON。\n"
-                                "不要编造商品、价格、库存或优惠信息。\n\n"
-                                "## 可用工具及路由规则\n\n"
-                                "### 1. recommend_shopping_products\n"
-                                "用途：商品搜索、推荐、筛选。\n"
-                                "使用场景（满足任一即选用此工具）：\n"
-                                "- 用户在询问、寻找、评价任何商品（包括药品、保健品、食品等非典型品类）\n"
-                                "- 用户提到具体商品名并询问属性（如\"iPhone续航怎么样\"\"MacBook有几个配置\"\"这款手机防水吗\"）——这属于商品查询，不是闲聊\n"
-                                "- 用户要求多商品或场景化推荐（\"配一套\"\"开学要用的东西\"）\n"
-                                "- 用户表达属性偏好（\"哪个更轻\"\"哪款更适合学生\"）——这是筛选，不是对比\n"
-                                "- 用户说\"买XX\"\"帮我买\"且指定了具体商品/SKU——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
-                                "- 用户同时要求推荐和加购（\"推荐XX并加到购物车\"）——在 arguments 中加入 \"action\": \"add_to_cart\"\n"
-                                "参数说明（重点 — 价格和预算字段）：\n"
-                                "- query: 用户原始查询\n"
-                                "- category: 商品品类（如手机、耳机、跑步鞋）\n"
-                                "- exclude_brands: 用户明确排除的品牌（如'不要华为' → ['华为']）\n"
-                                "- price_min / price_max: 价格区间下界和上界\n"
-                                "- budget: 总预算或上限金额\n"
-                                "- sort_order: 排序方式（如 price_asc, price_desc, rating_desc）\n"
-                                "- brands: 用户明确想要的品牌\n"
-                                "- must_have_terms: 必须满足的属性关键词\n\n"
-                                "【价格提取规则】— 严格按以下类型分别处理 budget / price_min / price_max：\n"
-                                "① 价格区间型（'3000到5000''预算3000-5000''价格在200~800之间'）→ price_min=下界, price_max=上界, budget=null\n"
-                                "② 某价格以下型（'不超过5000''500以内''预算3000以内''最多花1万'）→ price_max=该价格, budget=该价格, price_min=null\n"
-                                "③ 某价格以上型（'3000以上''至少5000起''不低于2000'）→ price_min=该价格, price_max=null, budget=null\n"
-                                "④ 某价格左右型（'5000左右''大概3000上下''差不多2000'）→ 按 ±20% 计算区间: price_min=该价格×0.8, price_max=该价格×1.2, budget=null\n"
-                                "⑤ 总预算型（'总共不超过1万''一共预算5000'）→ budget=该金额, price_max=该金额\n"
-                                "注意：一个查询只匹配一种类型，不要同时填 budget 和 price_min。区间型绝不提取 budget。\n\n"
-                                "【示例】\n"
-                                "1. '推荐3000到5000的手机' → {name: recommend_shopping_products, arguments: {category: '手机', price_min: 3000, price_max: 5000, budget: null}}\n"
-                                "2. '500以内的耳机' → {name: recommend_shopping_products, arguments: {category: '耳机', price_max: 500, budget: 500, price_min: null}}\n"
-                                "3. '推荐耳机，不要华为的，500到2000之间' → {name: recommend_shopping_products, arguments: {category: '耳机', exclude_brands: ['华为'], price_min: 500, price_max: 2000, budget: null}}\n"
-                                "4. '3000以上的手机' → {name: recommend_shopping_products, arguments: {category: '手机', price_min: 3000, price_max: null, budget: null}}\n"
-                                "5. '5000左右的笔记本' → {name: recommend_shopping_products, arguments: {category: '笔记本', price_min: 4000, price_max: 6000, budget: null}}\n"
-                                "6. '总共不超过1万，买手机和耳机' → {name: recommend_shopping_products, arguments: {budget: 10000, price_max: 10000, price_min: null}}\n"
-                                "7. '性价比高的跑步鞋，按价格从低到高排' → {name: recommend_shopping_products, arguments: {category: '跑步鞋', sort_order: 'price_asc'}}\n\n"
-                                "### 2. compare_products\n"
-                                "用途：两个具体商品的规格对比。\n"
-                                "使用场景：仅当用户明确提到两个具体商品名并要求比较时使用。\n"
-                                "注意：\"哪个更适合学生\"这种属性偏好问题属于 recommend_shopping_products，不属于对比。\n\n"
-                                "### 3. apply_cart_instruction\n"
-                                "用途：购物车操作。\n"
-                                "使用场景（满足任一即选用此工具）：\n"
-                                "- 用户明确说\"加到购物车\"\"加入购物车\"且没有要求先推荐商品\n"
-                                "- 用户查看购物车：\"看看购物车\"\"我的购物车\"\n"
-                                "- 用户修改购物车：\"改成2台\"\"数量改成3\"\"不要第一个了\"\"删掉第二个\"\n"
-                                "- 用户结账：\"结账\"\"去结算\"\"下单\"\n"
-                                "- 用户清空购物车：\"清空购物车\"\"全部删除\"\n"
-                                "参数可包含：query, product_ids, action, quantity。\n\n"
-                                "### 4. generate_pc_build_plan\n"
-                                "用途：PC 整机配置单生成。\n"
-                                "使用场景：用户要求\"配一台电脑\"\"组装一台游戏主机\"等多配件整机方案。\n\n"
-                                "### 5. general_chat\n"
-                                "用途：仅用于与商品完全无关的系统元问题。\n"
-                                "使用场景（极其有限）：\n"
-                                "- \"你是谁\"\"你叫什么\"\"怎么用\"\"推荐逻辑是什么\"等关于系统本身的问题\n"
-                                "- 与购物完全无关的问题：\"今天天气怎么样\"\"帮我写一段代码\"\n"
-                                "- 纯寒暄：\"你好\"\"谢谢\"\"再见\"\n"
-                                "注意：任何涉及具体商品名（iPhone、MacBook、华为、小米等）的问题，即使看起来像FAQ，也应该使用 recommend_shopping_products 而非 general_chat。\n\n"
-                                "## 输出格式\n"
-                                "严格输出 JSON，必须包含 \"source\": \"llm\" 字段。\n"
-                                "arguments 中可包含：query, budget, category, product_ids, catalog_scope, action, exclude_brands, brands, price_min, price_max, sort_order, must_have_terms, excluded_terms, usage。\n"
-                                "只输出 JSON，不要任何额外解释。"
-                            ),
-                    },
-                    {
-                        "role": "user",
-                        "content": build_route_prompt(message, current_topic_json(session), session),
-                    },
-                ],
+                build_router_messages(message, session),
                 model=os.getenv("MALLMIND_ROUTER_MODEL") or client.config.fast_model,
                 temperature=0,
                 max_tokens=_env_int("RECOMMENDATION_ROUTER_LLM_MAX_TOKENS", 320),
@@ -1054,151 +829,6 @@ def _record_router_llm_failure() -> None:
 def _record_router_llm_success() -> None:
     with _ROUTER_LLM_CIRCUIT_LOCK:
         _ROUTER_LLM_FAILURE_TIMES.clear()
-
-
-def validate_and_guard_tool_call(
-    message: str,
-    session: ShoppingSession,
-    tool_call: Dict[str, Any],
-    local_call: Optional[Dict[str, Any]] = None,
-) -> Dict[str, Any]:
-    local_call = local_call or local_route_tool_call(message, session)
-    call = _parse_or_fallback(tool_call, local_call)
-    arguments = merge_route_arguments(call.get("arguments") or {}, extract_slots_rule_based(message))
-    call["arguments"] = arguments
-    call["confidence"] = _confidence(call.get("confidence"))
-    call["reason"] = str(call.get("reason") or "路由器未提供原因。")
-    call["source"] = str(call.get("source") or "llm")
-
-    # ── 改动: LLM 权威保护（组合意图安全网）──
-    # 当 LLM 已明确选择工具时，guard 层通常跳过规则覆盖，信任大模型的路由决策。
-    # 但组合意图（品类推荐 + 购物车）下，LLM 可能非确定性地选择 cart，
-    # 而 cart 操作在无推荐结果时必然失败。此时 guard 覆盖为 recommend，
-    # 让推荐先行、cart 在后续多轮或 handler 内部自动完成。
-    if call.get("_llm_chosen"):
-        text = message or ""
-        lowered = text.lower()
-        # 防幻觉 guard：当 local 规则高置信度判定为 general_chat 且无商品品类信号时，
-        # 阻止 LLM 将路由覆盖到购物工具（避免对目录中不存在的商品强行推荐无关结果）。
-        _local_scores = (local_call or {}).get("route_scores") or {}
-        if (
-            _local_scores.get("top_name") == "general_chat"
-            and float(_local_scores.get("confidence") or 0) >= 0.85
-            and call["name"] != "general_chat"
-            and not detect_normal_product_category(text)
-        ):
-            call.update(_tool_call(
-                "general_chat",
-                call.get("arguments") or {},
-                max(call["confidence"], 0.9),
-                "防幻觉 guard：local 高置信 general_chat 且无商品品类，拒绝 LLM 覆盖。",
-                "hallucination_guard",
-            ))
-            call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
-            return call
-        if (
-            call["name"] == "apply_cart_instruction"
-            and _has_cart_intent(text)
-            and detect_normal_product_category(text)
-        ):
-            # 纯购物车修改操作（改数量、去掉、清空）不应被组合意图 guard 拦到推荐，
-            # 只有"加购"类操作才需要推荐先行。
-            _cart_modify = ("数量", "改成", "改为", "去掉", "删除", "移除", "清空", "换成")
-            _cart_add = ("加入", "加到", "加购", "放进", "添加")
-            _is_pure_modify = any(t in text for t in _cart_modify) and not any(t in text for t in _cart_add)
-            if not _is_pure_modify:
-                call.update(_tool_call(
-                    "recommend_shopping_products",
-                    merge_route_arguments(call.get("arguments") or {}, extract_slots_rule_based(text)),
-                    max(call["confidence"], 0.88),
-                    "组合意图 guard：品类推荐 + 购物车操作，推荐先行。",
-                    "combined_intent_guard",
-                ))
-        call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
-        return call
-
-    text = message or ""
-    lowered = text.lower()
-    topic = current_topic_json(session)
-    strong_pc = _has_pc_intent(text, lowered)
-    single_pc_part = _has_single_pc_part_intent(text, lowered)
-    active_pc_followup = topic.get("topic_type") == "pc_build" and _looks_like_pc_followup(text, lowered)
-    explicit_normal = detect_normal_product_category(text)
-    product_query_intent = _has_product_query_intent(text, lowered)
-    followup_call = resolve_followup_message(text, session)
-
-    # 购物车 guard：仅在纯购物车意图时覆盖（无明确商品品类）。
-    # 组合意图（品类推荐 + 购物车）下，推荐先行，guard 不覆盖。
-    if _has_cart_intent(text) and not explicit_normal:
-        call.update(
-            local_call
-            if local_call.get("name") == "apply_cart_instruction"
-            else _tool_call("apply_cart_instruction", arguments, 0.85, "后端兜底：购物车指令优先。", "guard")
-        )
-    elif (
-        call["name"] == "apply_cart_instruction"
-        and not has_last_recommendation(session)
-        and (explicit_normal or product_query_intent or _has_product_query_intent(text, lowered))
-    ):
-        # 购物车回退 guard：用户要把某商品加入购物车但会话中尚无推荐结果，
-        # 此时 cart handler 无法定位商品，先走推荐搜索目标商品。
-        _slots = merge_route_arguments(arguments, extract_slots_rule_based(text))
-        call.update(_tool_call(
-            "recommend_shopping_products",
-            _slots,
-            max(call["confidence"], 0.85),
-            "购物车回退 guard：会话无推荐历史，先搜索目标商品再加购。",
-            "cart_fallback_guard",
-        ))
-    elif is_pc_build_followup(text, session):
-        arguments["followup"] = True
-        arguments["source"] = "pc_build_history_guard"
-        guarded = _tool_call("generate_pc_build_plan", arguments, max(call["confidence"], 0.94), "PC build history guard: current turn adjusts or compares the previous build plan.", "pc_build_history_guard")
-        call.update(guarded)
-    elif _looks_like_compare_request(text) and not call.get("_llm_chosen"):
-        arguments["compare_with_previous"] = _mentions_previous(text)
-        guarded = _tool_call("compare_products", arguments, max(call["confidence"], 0.88), "后端兜底：明确对比请求走 compare_products。", "guard")
-        call.update(guarded)
-    elif active_pc_followup and not explicit_normal:
-        guarded = _tool_call("generate_pc_build_plan", arguments, max(call["confidence"], 0.9), "后端兜底：PC 主题追问继续调整整机方案。", "guard")
-        call.update(guarded)
-    elif strong_pc:
-        guarded = _tool_call("generate_pc_build_plan", arguments, max(call["confidence"], 0.9), "后端兜底：PC 强意图或 PC 主题追问优先走整机方案。", "guard")
-        call.update(guarded)
-    elif followup_call:
-        merged_followup_args = merge_route_arguments(arguments, followup_call.get("arguments") or {})
-        followup_call["arguments"] = merged_followup_args
-        followup_call["confidence"] = max(float(followup_call.get("confidence") or 0), call["confidence"], 0.9)
-        call.update(followup_call)
-    elif explicit_normal or single_pc_part:
-        arguments["category"] = explicit_normal or "pc_part"
-        arguments["catalog_scope"] = "ecommerce" if explicit_normal else "pc_parts"
-        guarded = _tool_call("recommend_shopping_products", arguments, max(call["confidence"], 0.86), f"后端兜底：用户明确切换到普通商品品类 {arguments['category']}。", "guard")
-        call.update(guarded)
-    elif product_query_intent:
-        guarded = _tool_call("recommend_shopping_products", arguments, max(call["confidence"], 0.84), "后端兜底：商品搜索、场景购物或事实型商品查询必须走商品工具。", "guard")
-        call.update(guarded)
-    elif _is_general_chat(text, lowered, topic):
-        # 改动2b: 用 _llm_chosen 标记代替 source 字段判断
-        # 如果路由层已通过 LLM 选择了购物工具，Guard 不再用负匹配覆盖回 general_chat
-        if not call.get("_llm_chosen"):
-            call.update(_tool_call("general_chat", arguments, max(call["confidence"], 0.9), "后端兜底：非购物执行问题走 general_chat。", "guard"))
-
-    call["arguments"] = normalize_tool_arguments(call["name"], call.get("arguments") or {})
-    return call
-
-
-def build_route_prompt(message: str, topic_memory: Dict[str, Any]) -> str:
-    return (
-        "可用工具（标准 OpenAI function tools schema）：\n"
-        f"{json.dumps(TOOL_SCHEMAS_FOR_PROMPT, ensure_ascii=False, indent=2)}\n\n"
-        "当前短期主题 JSON：\n"
-        f"{json.dumps(topic_memory, ensure_ascii=False, indent=2)}\n\n"
-        "用户本轮输入：\n"
-        f"{message}\n\n"
-        "只输出 JSON，格式："
-        f"{json.dumps(ROUTED_CALL_SCHEMA, ensure_ascii=False)}"
-    )
 
 
 def extract_slots_rule_based(text: str) -> Dict[str, Any]:
@@ -1412,31 +1042,6 @@ def merge_route_arguments(llm_args: Dict[str, Any], rule_args: Dict[str, Any]) -
     return merged
 
 
-def _parse_or_fallback(tool_call: Dict[str, Any], local_call: Dict[str, Any]) -> Dict[str, Any]:
-    raw = dict(tool_call or {})
-    if "tool" in raw and "name" not in raw:
-        raw["name"] = raw["tool"]
-    if "extracted_slots" in raw and "arguments" not in raw:
-        raw["arguments"] = raw["extracted_slots"]
-    try:
-        return RoutedToolCall.model_validate(raw).model_dump(mode="json")
-    except ValidationError:
-        return dict(local_call)
-
-
-def _runtime_mode_from_session(session: ShoppingSession) -> str:
-    value = (
-        getattr(session, "runtime_mode", None)
-        or getattr(session, "selected_mode", None)
-        or getattr(session, "mode", None)
-        or "balanced"
-    )
-    value = str(value).lower()
-    if value == "auto":
-        return "balanced"
-    return value if value in {"fast", "balanced", "full", "degraded_fast"} else "balanced"
-
-
 def _has_pc_intent(text: str, lowered: str) -> bool:
     raw = text or ""
 
@@ -1643,7 +1248,6 @@ def resolve_followup_message(message: str, session: ShoppingSession) -> Optional
         return _tool_call(
             "apply_cart_instruction",
             {"query": query or str(message or "")},
-            0.9,
             "购物车主题下的追问，继续走购物车工具。",
             "followup_guard",
         )
@@ -1655,7 +1259,6 @@ def resolve_followup_message(message: str, session: ShoppingSession) -> Optional
             "catalog_scope": current_topic_json(session).get("slots", {}).get("catalog_scope") or "ecommerce",
             "preferences": {"followup_type": "product_detail"},
         },
-        0.9,
         "用户在上一轮推荐后追问商品详情。",
         "followup_guard",
     )
@@ -1728,21 +1331,8 @@ def _gpu_model_hits(text: str) -> List[str]:
     return re.findall(r"\b(?:rtx\s*)?40[0-9]{2}(?:\s*ti)?\b|\brx\s?\d{4}(?:\s?xt)?\b", lowered)
 
 
-def _confidence(value: Any) -> float:
-    try:
-        return min(max(float(value), 0.0), 1.0)
-    except (TypeError, ValueError):
-        return 0.0
-
-
-def _clamp(value: float, minimum: float, maximum: float) -> float:
-    return min(max(float(value), minimum), maximum)
-
-
 def _attach_route_scores(call: Dict[str, Any], score_info: Dict[str, Any]) -> Dict[str, Any]:
     call["route_scores"] = score_info
-    call["local_rule_confidence"] = float(call.get("confidence") or 0)
-    call["route_score_confidence"] = float(score_info.get("confidence") or 0)
     return call
 
 
@@ -1766,68 +1356,111 @@ def _trace_identity(call: Optional[Dict[str, Any]]) -> Dict[str, Any]:
     }
 
 
-def _tool_call(name: str, arguments: Dict[str, Any], confidence: float, reason: str, source: str) -> Dict[str, Any]:
+def _tool_call(name: str, arguments: Dict[str, Any], reason: str, source: str) -> Dict[str, Any]:
     return {
         "name": name,
         "arguments": dict(arguments or {}),
-        "confidence": confidence,
         "reason": reason,
         "source": source,
     }
 
 
-def _router_error_class(failure_reason: str) -> str:
-    """Classify router LLM failure into a stable error class for trace/metrics."""
-    if not failure_reason:
-        return "none"
-    if failure_reason in {"llm_timeout", "llm_timeout_or_error"}:
-        return "timeout"
-    if failure_reason in {"llm_json_invalid", "llm_validation_error"}:
-        return "json_invalid"
-    if failure_reason == "llm_provider_error":
-        return "provider_error"
-    return "skipped"
 
 
-def build_route_prompt(message: str, topic_memory: Dict[str, Any], session=None) -> str:
-    """Build the user-message prompt for the LLM router, including session context."""
-    topic = {
-        "topic_type": (topic_memory or {}).get("topic_type", ""),
-        "route": (topic_memory or {}).get("route", ""),
-        "category": (topic_memory or {}).get("category", ""),
-    }
-    # ── 购物车上下文注入 ──
-    # 将当前购物车状态作为 LLM 决策的辅助信息，
-    # 帮助 LLM 理解 "看看购物车""改成2台" 等短语的购物车操作意图。
-    cart_context = ""
+def build_router_messages(message: str, session=None) -> List[Dict[str, str]]:
+    """Build the full [system, user] message list for the LLM router."""
+
+    return [
+        {"role": "system", "content": _build_router_system_prompt()},
+        {"role": "user", "content": _build_router_user_prompt(message, session)},
+    ]
+
+
+def _build_router_system_prompt() -> str:
+    """System prompt: role, tool definitions, routing rules, output format."""
+
+    return (
+        "你是电商导购系统的工具路由器。根据用户输入选择正确的工具并提取参数，输出严格 JSON。\n"
+        "不要编造商品、价格、库存或优惠信息。\n\n"
+        "## 可用工具\n\n"
+        "### 1. recommend_shopping_products\n"
+        "商品搜索、推荐、筛选。满足以下任一条件时使用：\n"
+        "- 用户在寻找、询问、评价任何商品\n"
+        "- 用户提到具体商品名并询问属性（如\"iPhone续航怎么样\"）\n"
+        "- 用户要求场景化推荐（\"配一套\"\"开学要用的东西\"）\n"
+        "- 用户表达属性偏好（\"哪个更轻\"\"哪款更适合学生\"）\n"
+        "- 用户说\"买XX\"且指定了商品——arguments 中加 \"action\": \"add_to_cart\"\n"
+        "### 2. compare_products\n"
+        "两个具体商品的规格对比。仅当用户明确提到两个商品名并要求比较时使用。\n"
+        "\"哪个更适合学生\"属于 recommend_shopping_products，不属于对比。\n"
+        "### 3. apply_cart_instruction\n"
+        "购物车操作：加购、查看、修改数量、删除、清空。\n"
+        "### 4. generate_pc_build_plan\n"
+        "PC 整机配置单生成。用户要求\"配一台电脑\"\"组装游戏主机\"时使用。\n"
+        "注意：如果用户在已有配置基础上要求更换某个配件（如\"CPU要Intel的\"\"显卡换成NVIDIA\"\"内存加到32G\"），"
+        "应使用 recommend_shopping_products 而非 generate_pc_build_plan。"
+        "此时 catalog_scope=pc_parts，sub_category=对应配件类型（CPU/显卡/内存/主板/固态硬盘/电源/机箱/散热器），"
+        "must_have_terms 中加入用户的品牌或型号要求。\n"
+        "### 5. general_chat\n"
+        "仅用于与购物完全无关的问题（天气、写代码、你是谁）。\n"
+        "涉及具体商品名的问题必须用 recommend_shopping_products。\n\n"
+        "## 参数说明\n"
+        "- query: 用户原始查询\n"
+        "- category: 枚举值。beauty=美妆护肤（面霜/精华/面膜/眉笔），digital=数码电子（手机/平板/笔记本/耳机），clothing=服饰运动/箱包/户外（背包/跑鞋/衣服/帽子），food=食品饮料（牛奶/咖啡/零食/饮料）。用户说双肩包→clothing，手机→digital，面霜→beauty，咖啡→food\n"
+        "- sub_category: 用户想买的具体商品类型。必须使用以下标准值之一（用户说双肩包→背包，跑步鞋→跑鞋，笔记本→笔记本电脑，耳机→真无线耳机，手机→智能手机，显卡→显卡，CPU→CPU，内存条→内存，SSD→固态硬盘）：\n"
+        "  普通商品：背包、跑步鞋、徒步鞋、篮球鞋、运动短裤、运动长裤、速干T恤、卫衣、瑜伽裤、户外裤、帽子、防晒、面霜、精华、眼霜、面膜、洁面、化妆水、卸妆、唇釉、粉底液、蜜粉、眉笔、牛奶、酸奶、咖啡、功能饮料、茶饮、碳酸饮料、坚果/零食、方便食品、调味品、智能手机、平板电脑、笔记本电脑、真无线耳机\n"
+        "  PC配件：显卡、CPU、主板、内存、固态硬盘、电源、机箱、散热器\n"
+        "- catalog_scope: 普通商品用 ecommerce，PC配件必须用 pc_parts。当用户要单个PC配件（显卡/CPU/主板/内存/SSD/电源/机箱/散热）时，category=digital 但 catalog_scope 必须设为 pc_parts\n"
+        "- brands: 商品制造商品牌（如华为、小米、Nike、ASRock、MSI）。注意：芯片厂商（如NVIDIA、AMD、Intel、Gore-Tex）不是商品品牌，应放 must_have_terms。当用户要替换品牌、要替代品、说\"其他品牌都可以\"时，必须输出 brands:[] 表示不限品牌\n"
+        "- exclude_brands: 用户排除的品牌。当用户说\"不要X\"时输出 exclude_brands:[\"X\"]\n"
+        "- price_min / price_max: 仅当用户明确提到预算约束时输出（如\"预算8000\"\"不超过5000\"\"3000到5000之间\"）。回答商品价格问题（\"多少钱\"\"价格\"\"比官网便宜吗\"）时不输出 price_min/price_max\n"
+        "- budget: 用户明确的总预算或上限\n"
+        "- must_have_terms: 必须出现在商品描述中的属性词、技术标准。注意芯片厂商要转换为商品名：NVIDIA→GeForce或RTX，AMD→Radeon或RX，Intel→Core或酷睿。其他如 Gore-Tex、DDR5、32G、防水、降噪、静音\n"
+        "- sort_order: price_asc / price_desc / rating_desc\n\n"
+        "## 价格提取规则\n"
+        "① 区间型（'3000到5000'）→ price_min=下界, price_max=上界, budget=null\n"
+        "② 上限型（'不超过5000'）→ price_max=该价格, budget=该价格, price_min=null\n"
+        "③ 下限型（'3000以上'）→ price_min=该价格, price_max=null, budget=null\n"
+        "④ 左右型（'5000左右'）→ price_min=×0.8, price_max=×1.2, budget=null\n"
+        "⑤ 总预算型（'总共不超过1万'）→ budget=该金额, price_max=该金额\n"
+        "一个查询只匹配一种类型。区间型绝不提取 budget。\n\n"
+        "## 品牌冲突处理\n"
+        "如果 Accumulated state 中 exclude_brands 包含品牌 X，而本轮用户明确想要品牌 X，"
+        "则从 exclude_brands 中删除 X，加入 brands。\n\n"
+        "## 输出格式\n"
+        "严格输出 JSON：{\"name\":\"...\",\"arguments\":{...}}\n"
+        "必须包含 \"source\": \"llm\"。只输出 JSON，不要额外解释。"
+    )
+
+
+def _build_router_user_prompt(message: str, session=None) -> str:
+    """User prompt: session context + user message. No tool definitions."""
+
+    parts = []
+
     if session is not None:
+        current = getattr(session, "current", None) or {}
+        recent_queries = getattr(session, "recent_queries", None) or []
+        chat_topic = getattr(session, "chat_topic", "")
+
+        if current:
+            # PC 配件场景：不注入 sub_category 和 must_have_terms，避免 LLM 从累积状态继承
+            # 这些字段是组件级约束，每轮应由 LLM 根据当前查询重新判断
+            prompt_current = dict(current)
+            if prompt_current.get("catalog_scope") == "pc_parts":
+                prompt_current.pop("sub_category", None)
+                prompt_current.pop("must_have_terms", None)
+            parts.append(f"Accumulated state: {json.dumps(prompt_current, ensure_ascii=False)}")
+        if recent_queries:
+            queries_str = "; ".join(q.get("query", "") for q in recent_queries[-3:])
+            parts.append(f"Recent queries: {queries_str}")
+        if chat_topic:
+            parts.append(f"Chat topic: {chat_topic}")
+
         cart = getattr(session, "cart", None) or {}
         if cart:
-            items_summary = []
-            for pid, item in list(cart.items())[:5]:
-                items_summary.append(f"{pid} x{item.quantity}")
-            cart_context = f"当前购物车({len(cart)}件): {', '.join(items_summary)}"
-        else:
-            cart_context = "当前购物车: 空"
-        # 最近工具调用历史（帮助 LLM 理解追问语境）
-        tool_hist = getattr(session, "tool_history", None) or []
-        if tool_hist:
-            recent = tool_hist[-3:]
-            hist_names = [t.get("name", "?") for t in recent]
-            cart_context += f"\n最近操作: {' -> '.join(hist_names)}"
+            items = [f"{pid} x{item.quantity}" for pid, item in list(cart.items())[:5]]
+            parts.append(f"Cart({len(cart)}): {', '.join(items)}")
 
-    parts = [
-        "You are a lightweight shopping tool router. Output strict JSON only.",
-        "Tools: recommend_shopping_products, generate_pc_build_plan, compare_products, apply_cart_instruction, general_chat.",
-        "Return only these fields: name, arguments, confidence, needs_clarification.",
-        "Arguments may include query, budget, category, product_ids, catalog_scope, compare_with_previous, action, quantity.",
-        "Do not explain products, recommend products, invent prices, or expand long history.",
-        f"Topic summary: {json.dumps(topic, ensure_ascii=False)}",
-    ]
-    if cart_context:
-        parts.append(f"Session state: {cart_context}")
     parts.append(f"User: {str(message or '')[:500]}")
-    parts.append(
-        'Example: {"name":"recommend_shopping_products","arguments":{"query":"...","catalog_scope":"ecommerce"},"confidence":0.8,"needs_clarification":false}'
-    )
     return "\n".join(parts)

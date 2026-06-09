@@ -1,7 +1,6 @@
 import inspect
 import logging
-from dataclasses import asdict
-from typing import Any, Dict, Iterable, List
+from typing import Any, Dict, Iterable, List, Optional
 
 from rag.api.app_context import VALIDATION_VERSION, model_to_dict, validate_goal
 from rag.api.sse import sse_event
@@ -16,6 +15,8 @@ from rag.recommendation.session_state import (
     last_recommended_product_ids,
     remember_pc_build_plan,
     remember_recommendation,
+    save_pc_build_to_session,
+    save_session,
     update_topic_memory,
 )
 from rag.utils.catalog_scope import normalize_catalog_scope
@@ -159,6 +160,7 @@ def handle_pc_build(session: Any, message: str, contextual_goal: str, tool_call:
 
     if not plan.get("_transient_comparison"):
         remember_pc_build_plan(session, contextual_goal, plan)
+        save_pc_build_to_session(session, plan)
     topic_memory = update_topic_memory(session, tool_call, result_type="pc_build_plan")
     plan["tool_call"] = tool_call
     plan["topic_memory"] = topic_memory
@@ -197,8 +199,6 @@ def handle_recommend(
     use_llm_guidance: bool = False,
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
-    runtime_mode_decision: Any = None,
-    runtime_mode_policy: Any = None,
 ) -> Iterable[str]:
     recommendation_fn = recommendation_fn or recommend_shopping_products
     image_retrieval_fn = image_retrieval_fn or retrieve_image_evidence
@@ -228,6 +228,8 @@ def handle_recommend(
             catalog_scope=catalog_scope,
             use_milvus_retrieval=use_milvus_retrieval,
             use_rag_query_expansion=use_rag_query_expansion,
+            router_arguments=tool_call.get("arguments") or {},
+            session=session,
         )
     except InvalidGoalError as exc:
         logger.warning("Recommendation goal validation failed: %s", exc)
@@ -243,39 +245,9 @@ def handle_recommend(
     result.trace["tool_call"] = tool_call
     result.trace["catalog_scope"] = catalog_scope
     result.trace["recommendation_domain"] = recommendation_domain
-    if runtime_mode_decision is not None:
-        result.trace["runtime_mode"] = runtime_mode_decision.mode
-        result.trace["requested_mode"] = (runtime_mode_decision.signals or {}).get("requested_mode", "auto")
-        result.trace["requested_runtime_mode"] = (runtime_mode_decision.signals or {}).get("requested_mode", "auto")
-        result.trace["selected_mode"] = runtime_mode_decision.mode
-        result.trace["selected_runtime_mode"] = runtime_mode_decision.mode
-        result.trace["llm_configured"] = bool((runtime_mode_decision.signals or {}).get("llm_configured", llm_stream_enabled))
-        adaptive_decision = (runtime_mode_decision.signals or {}).get("adaptive_decision") or {}
-        result.trace["adaptive_decision"] = adaptive_decision
-        result.trace["reason_codes"] = list((runtime_mode_decision.signals or {}).get("reason_codes") or adaptive_decision.get("reason_codes") or [])
-        result.trace["route_confidence"] = adaptive_decision.get("route_confidence")
-        result.trace["route_margin"] = adaptive_decision.get("route_margin")
-        result.trace["requirement_completeness"] = adaptive_decision.get("requirement_completeness")
-        result.trace["query_complexity"] = adaptive_decision.get("query_complexity")
-        result.trace["history_dependency"] = adaptive_decision.get("history_dependency")
-        result.trace["fallback_used"] = bool(adaptive_decision.get("fallback_used"))
-        result.trace["fallback_reason"] = adaptive_decision.get("fallback_reason")
-        result.trace["llm_used_for_route"] = bool(((tool_call.get("routing_trace") or {}).get("llm") or {}).get("name"))
-        result.trace["runtime_mode_decision"] = {
-            "mode": runtime_mode_decision.mode,
-            "reason": runtime_mode_decision.reason,
-            "signals": runtime_mode_decision.signals,
-        }
-    if runtime_mode_policy is not None:
-        result.trace["runtime_policy"] = asdict(runtime_mode_policy)
-        result.trace["use_milvus_retrieval"] = runtime_mode_policy.use_milvus_retrieval
-        result.trace["use_rag_query_expansion"] = runtime_mode_policy.use_rag_query_expansion
-    result.trace["runtime_mode_policy"] = {
-        "use_requirement_llm": llm_stream_enabled,
-        "use_guidance_llm": use_llm_guidance,
-        "use_milvus_retrieval": use_milvus_retrieval,
-        "use_rag_query_expansion": use_rag_query_expansion,
-    }
+    result.trace["runtime_mode"] = "balanced"
+    result.trace["llm_configured"] = llm_stream_enabled
+    result.trace["llm_used_for_route"] = bool(((tool_call.get("routing_trace") or {}).get("llm") or {}).get("name"))
     result.trace["clarification_required"] = bool(result.trace.get("clarification_required"))
     result.trace["catalog_guard_result"] = result.trace.get("no_match_reason") or result.trace.get("fallback_blocked_reason") or "ok"
     result.trace["retrieval_used"] = bool((result.trace.get("retrieval") or {}).get("retrieved_chunk_count"))
@@ -288,6 +260,9 @@ def handle_recommend(
     result.trace["session_updated"] = True
     payload = model_to_dict(result)
     remember_recommendation(session, contextual_goal, payload)
+    # ── PC 配件替换：当 catalog_scope=pc_parts 且有当前配置时，更新对应组件 ──
+    if catalog_scope == "pc_parts" and session.current_pc_build:
+        _apply_pc_component_update(session, payload, tool_call)
     topic_memory = update_topic_memory(session, tool_call, result_type=payload.get("type") or "")
     payload.setdefault("trace", {})["topic_memory"] = topic_memory
     response_payload = sanitize_result_for_response(payload)
@@ -338,6 +313,48 @@ def handle_recommend(
     yield sse_event("done", {"session_id": session.session_id})
 
 
+def _apply_pc_component_update(session: Any, payload: Dict[str, Any], _tool_call: Dict[str, Any]) -> None:
+    """Update session.current_pc_build when a single PC part is recommended.
+
+    Matches the recommended product's category to the corresponding role in
+    the current build and replaces that component.
+    """
+
+    cards = payload.get("product_cards") or []
+    if not cards:
+        return
+    top_card = cards[0]
+    product_id = str(top_card.get("product_id") or "")
+    if not product_id:
+        return
+
+    # 从 product_id 推断角色（如 pc_gpu_xxx → pc_gpu）
+    role = ""
+    for prefix in ("pc_cpu", "pc_gpu", "pc_motherboard", "pc_memory", "pc_storage", "pc_psu", "pc_case", "pc_cooler"):
+        if product_id.startswith(prefix):
+            role = prefix
+            break
+    if not role:
+        return
+
+    build = dict(session.current_pc_build or {})
+    build[role] = {
+        "product_id": product_id,
+        "title": str(top_card.get("title") or top_card.get("name") or ""),
+        "price": top_card.get("price"),
+    }
+    # 重新计算总价
+    total = 0.0
+    for key in ("pc_cpu", "pc_gpu", "pc_motherboard", "pc_memory", "pc_storage", "pc_psu", "pc_case", "pc_cooler"):
+        part = build.get(key) or {}
+        price = part.get("price")
+        if price is not None:
+            total += float(price)
+    build["total_price"] = round(total, 2)
+    session.current_pc_build = build
+    save_session(session)
+
+
 def call_recommendation_fn(
     recommendation_fn: Any,
     contextual_goal: str,
@@ -348,6 +365,8 @@ def call_recommendation_fn(
     catalog_scope: str = "ecommerce",
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
+    router_arguments: Optional[Dict[str, Any]] = None,
+    session: Any = None,
 ) -> Any:
     kwargs = {
         "use_llm": use_llm,
@@ -369,6 +388,10 @@ def call_recommendation_fn(
         kwargs["use_rag_query_expansion"] = use_rag_query_expansion
     if "skip_keyword_check" in parameters:
         kwargs["skip_keyword_check"] = True
+    if "router_arguments" in parameters and router_arguments:
+        kwargs["router_arguments"] = router_arguments
+    if "session" in parameters and session is not None:
+        kwargs["session"] = session
     return recommendation_fn(contextual_goal, **kwargs)
 
 

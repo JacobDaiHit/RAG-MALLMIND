@@ -30,6 +30,22 @@ def build_pc_plan_for_message(message: str, session: Any) -> Dict[str, Any]:
     budget = parse_pc_build_budget(message, default=float(previous.get("budget") or 7000))
     preferences = parse_pc_preferences(message)
     usage = parse_pc_usage(message)
+
+    # ── 注入 session.current 中路由器累积的信号 ──
+    current = getattr(session, "current", None) or {}
+    if current.get("brands"):
+        preferences["brands"] = current["brands"]
+    if current.get("exclude_brands"):
+        preferences["exclude_brands"] = current["exclude_brands"]
+    if current.get("must_have_terms"):
+        preferences["must_have_terms"] = current["must_have_terms"]
+    if current.get("price_max") is not None:
+        budget = current["price_max"]
+    accumulated_prefs = current.get("preferences") or {}
+    if isinstance(accumulated_prefs, dict):
+        for key, val in accumulated_prefs.items():
+            if key not in preferences and val:
+                preferences[key] = val
     comparison_offset = comparison_baseline_offset(message)
     comparison_baseline = get_previous_pc_build_plan(session, comparison_offset) if previous else None
     comparison_label = "上上一个方案" if comparison_offset == 2 else "上一个方案"

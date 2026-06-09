@@ -164,6 +164,87 @@ BRAND_HINTS = [
 BUNDLE_KEYWORDS = ["一套", "全套", "搭配", "组合", "套装", "方案", "穿搭", "配齐", "整套"]
 
 
+def build_requirement_from_router_args(user_goal: str, args: Dict[str, Any], session: Any = None) -> RequirementSpec:
+    """Build RequirementSpec directly from LLM router arguments, skipping re-parsing.
+
+    Merges session.current (accumulated state from previous turns) with the
+    router's current output.  Router values take priority; when the router
+    does not output a field, the accumulated value is used as fallback.
+    """
+
+    # ── 读取累积状态 ──
+    accumulated = dict(getattr(session, "current", None) or {}) if session is not None else {}
+
+    raw_query = str(args.get("query") or user_goal or "").strip()
+
+    # category: 路由器优先，降级到累积值
+    category_str = str(args.get("category") or accumulated.get("category") or "").strip().lower()
+    catalog_scope = str(args.get("catalog_scope") or accumulated.get("catalog_scope") or "ecommerce").strip()
+
+    # sub_category: 路由器优先，降级到累积值
+    sub_category = str(args.get("sub_category") or accumulated.get("sub_category") or "").strip()
+    target_sub_categories = [sub_category] if sub_category else []
+
+    # ── PC 配件品类映射：sub_category 直接映射到 ComponentCategory ──
+    _PC_SUB_CATEGORY_MAP = {
+        "显卡": ComponentCategory.pc_gpu,
+        "GPU": ComponentCategory.pc_gpu,
+        "CPU": ComponentCategory.pc_cpu,
+        "处理器": ComponentCategory.pc_cpu,
+        "主板": ComponentCategory.pc_motherboard,
+        "内存": ComponentCategory.pc_memory,
+        "固态硬盘": ComponentCategory.pc_storage,
+        "SSD": ComponentCategory.pc_storage,
+        "电源": ComponentCategory.pc_psu,
+        "机箱": ComponentCategory.pc_case,
+        "散热器": ComponentCategory.pc_cooler,
+    }
+    desired_categories = []
+    if catalog_scope == "pc_parts" and sub_category:
+        pc_cat = _PC_SUB_CATEGORY_MAP.get(sub_category)
+        if pc_cat:
+            desired_categories = [pc_cat]
+    if not desired_categories and category_str in ComponentCategory.__members__:
+        desired_categories = [ComponentCategory[category_str]]
+
+    # price: 路由器优先，降级到累积值
+    price_max = args.get("price_max") if args.get("price_max") is not None else accumulated.get("price_max")
+    price_min = args.get("price_min") if args.get("price_min") is not None else accumulated.get("price_min")
+    budget = args.get("budget") if args.get("budget") is not None else accumulated.get("budget")
+    if price_max is None and budget is not None:
+        price_max = budget
+
+    # brands / exclude_brands: 区分"未输出"（用累积值）和"输出空列表"（清空）
+    if "brands" in args:
+        brands = [str(b) for b in (args.get("brands") or []) if str(b).strip()]
+    else:
+        brands = [str(b) for b in (accumulated.get("brands") or []) if str(b).strip()]
+    if "exclude_brands" in args:
+        excluded_brands = [str(b) for b in (args.get("exclude_brands") or []) if str(b).strip()]
+    else:
+        excluded_brands = [str(b) for b in (accumulated.get("exclude_brands") or []) if str(b).strip()]
+
+    # must_have_terms: 路由器优先，降级到累积值
+    must_have_terms = [str(t) for t in (args.get("must_have_terms") or accumulated.get("must_have_terms") or []) if str(t).strip()]
+
+    # preferences: 累积值 + 路由器新值合并
+    prefs = dict(accumulated.get("preferences") or {})
+    prefs.update(args.get("preferences") or {})
+
+    return RequirementSpec(
+        raw_query=raw_query,
+        desired_categories=desired_categories,
+        required_components=desired_categories,
+        target_sub_categories=target_sub_categories,
+        brands=brands,
+        excluded_brands=excluded_brands,
+        must_have_terms=must_have_terms,
+        price_min=price_min,
+        price_max=price_max,
+        preferences=prefs if isinstance(prefs, list) else [],
+    )
+
+
 def recommend_shopping_products(
     user_goal: str,
     use_llm: bool = True,
@@ -174,11 +255,16 @@ def recommend_shopping_products(
     use_rag_query_expansion: bool = False,
     use_llm_explanation: Optional[bool] = None,
     skip_keyword_check: bool = False,
+    router_arguments: Optional[Dict[str, Any]] = None,
+    session: Any = None,
 ) -> RecommendationResult:
     """Recommend ecommerce products and bundles from a shopping goal."""
 
     validate_business_goal(user_goal, skip_keyword_check=skip_keyword_check)
-    requirement = parse_requirement(user_goal, use_llm=use_llm, skip_keyword_check=skip_keyword_check)
+    if router_arguments:
+        requirement = build_requirement_from_router_args(user_goal, router_arguments, session=session)
+    else:
+        requirement = parse_requirement(user_goal, use_llm=use_llm, skip_keyword_check=skip_keyword_check)
     requirement_parse_trace = build_requirement_parse_trace(requirement, use_llm=use_llm)
     if is_pc_query(user_goal) and catalog_scope != "pc_parts":
         catalog_scope = "pc_parts"

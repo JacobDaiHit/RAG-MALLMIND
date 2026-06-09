@@ -96,7 +96,11 @@ def filter_products_for_requirement(
     if not target_filtered:
         target_filtered = exclusion_filtered
 
-    inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
+    # 当 LLM 路由器已明确设定 desired_categories 时，信任路由器的品类决策，
+    # 跳过 infer_product_type 的品类交叉拒绝。避免"笔记本电脑"关键词
+    # 覆盖路由器对"双肩包→clothing"的正确判断。
+    has_explicit_category = bool(requirement.desired_categories or requirement.required_components)
+    inferred_product_type = None if category.value.startswith("pc_") or has_explicit_category else infer_product_type(requirement.raw_query)
     product_type_category = category_for_product_type(inferred_product_type)
     if product_type_category and category.value != product_type_category:
         allow_cross_category_bundle = bool(
@@ -234,11 +238,14 @@ def matches_all_required_terms(requirement: RequirementSpec, product: ApiProduct
 
 
 def matches_target_sub_category(requirement: RequirementSpec, product: ApiProduct) -> bool:
+    """Exact field match: product.sub_category against target_sub_categories.
+
+    Uses the structured sub_category field, not keyword matching against text.
+    """
     terms = [term for term in requirement.target_sub_categories if term]
     if not terms:
         return True
-    text = collect_product_text(product)
-    return any(normalize(term) in text for term in terms)
+    return product.sub_category in terms
 
 
 def matches_budget(requirement: RequirementSpec, product: ApiProduct) -> bool:

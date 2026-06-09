@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional
 
 from rag.api.app_context import dedupe_strings, model_to_dict, prepare_recommendation_context
 from rag.api.request_models import ChatStreamRequest
-from rag.api.routes.common import has_image_data, request_product_ids
+from rag.api.routes.common import request_product_ids
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.pc_session_flow import build_pc_plan_for_message
 from rag.recommendation.product_loader import load_combined_product_catalog
@@ -28,8 +28,6 @@ from rag.recommendation.session_state import (
     save_session,
     update_topic_memory,
 )
-from rag.recommendation.runtime_mode import runtime_policy_for_mode
-from rag.recommendation.runtime_mode_selector import choose_runtime_mode
 from rag.recommendation.tool_router import route_shopping_tool_call
 from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_report, sanitize_result_for_response
 
@@ -44,17 +42,9 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
     if direct is not None:
         return direct
 
-    llm_configured = _stream_llm_enabled()
+    use_llm = _stream_llm_enabled()
     raw_attachments = [*request.attachments, *request.images]
-    decision = choose_runtime_mode(
-        raw_message,
-        requested_mode=getattr(request, "mode", None),
-        has_attachments=bool(raw_attachments),
-        has_image_data=has_image_data(raw_attachments),
-        llm_configured=llm_configured,
-    )
-    policy = runtime_policy_for_mode(decision.mode, llm_configured=llm_configured)
-    tool_call = route_shopping_tool_call(raw_message, session, use_llm=policy.use_router_llm)
+    tool_call = route_shopping_tool_call(raw_message, session, use_llm=use_llm)
     remember_tool_call(session, tool_call)
     name = tool_call.get("name")
 
@@ -104,17 +94,17 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
         raw_message,
         raw_attachments,
         session,
-        use_vision_llm=policy.use_vision_llm,
+        use_vision_llm=True,
     )
     catalog_scope = (tool_call.get("arguments") or {}).get("catalog_scope") or "ecommerce"
     try:
         result = _recommendation_fn()(
             contextual_goal,
-            use_llm=policy.use_requirement_llm,
-            use_llm_guidance=policy.use_guidance_llm,
+            use_llm=use_llm,
+            use_llm_guidance=False,
             catalog_scope=catalog_scope,
-            use_milvus_retrieval=policy.use_milvus_retrieval,
-            use_rag_query_expansion=policy.use_rag_query_expansion,
+            use_milvus_retrieval=True,
+            use_rag_query_expansion=False,
         )
     except InvalidGoalError:
         update_topic_memory(session, tool_call, result_type="invalid_goal")

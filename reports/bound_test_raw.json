@@ -7,7 +7,7 @@
         "turn": 1,
         "input": "你好，我最近皮肤有点干，能推荐一款面霜吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 2,
         "card_titles": [
           "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
@@ -15,35 +15,44 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "护肤"
+          "category": "beauty",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3907,
+        "elapsed_ms": 3771,
         "error": ""
       },
       {
         "turn": 2,
         "input": "我是敏感肌，不能有酒精和香精。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "敏感肌确实需要特别注意成分呢！我可以帮你筛选不含酒精和香精的商品。请问你想找什么类型的产品呢？比如护肤品、洗护用品还是彩妆？",
-        "args": {},
-        "elapsed_ms": 4191,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+          "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "beauty"
+        },
+        "elapsed_ms": 3358,
         "error": ""
       },
       {
         "turn": 3,
         "input": "价位在300元左右。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "没问题，300元这个价位有不少好选择呢！你是想买什么类型的商品呀？比如耳机、护肤品还是生活用品？告诉我具体需求，我帮你挑几款性价比高的~",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml，参考价约 260 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 300.0
+          "category": "beauty",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 5232,
+        "elapsed_ms": 3216,
         "error": ""
       }
     ]
@@ -56,16 +65,17 @@
         "turn": 1,
         "input": "我想买一个跑步用的耳机，有什么推荐？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 1,
         "card_titles": [
           "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版，参考价约 1799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "耳机"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3313,
+        "elapsed_ms": 3507,
         "error": ""
       },
       {
@@ -73,15 +83,16 @@
         "input": "需要防水，续航要长一点的。",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 3,
+        "card_count": 2,
         "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
           "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
           "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 3815,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2707,
         "error": ""
       }
     ]
@@ -101,8 +112,11 @@
           "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 3645,
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3618,
         "error": ""
       },
       {
@@ -112,11 +126,12 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 5000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
         "args": {
-          "budget": 5000.0
+          "budget": 5000.0,
+          "category": "digital"
         },
-        "elapsed_ms": 5165,
+        "elapsed_ms": 4400,
         "error": ""
       }
     ]
@@ -134,17 +149,16 @@
         "card_titles": [],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 黑神话 生成一套本地可审计 PC 方案，总价约 8232 CNY，核心为 Ryzen 5 7600 + Radeon RX 7800 XT 16G。推荐理由：总价 8232 CNY，预算 8000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Ryzen 5 7600 + Radeon RX 7800 XT 16G。",
         "args": {
-          "budget": 8000.0,
-          "category": "pc_build"
+          "budget": 8000.0
         },
-        "elapsed_ms": 4185,
+        "elapsed_ms": 5040,
         "error": ""
       },
       {
         "turn": 2,
         "input": "CPU要Intel的，不要AMD。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "Intel Core i3-12100F 处理器",
@@ -153,9 +167,13 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Intel Core i3-12100F 处理器，参考价约 449 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "category": "digital",
+          "exclude_brands": [
+            "AMD"
+          ],
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3218,
+        "elapsed_ms": 8351,
         "error": ""
       }
     ]
@@ -168,18 +186,17 @@
         "turn": 1,
         "input": "有适合夏天喝的0糖饮料吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 1,
         "card_titles": [
-          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
-          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡",
-          "农夫山泉 东方树叶 无糖茉莉花茶饮料 500ml×15 瓶装茶饮"
+          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品，参考价约 4.5 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡，参考价约 48 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "食品"
+          "category": "food",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2479,
+        "elapsed_ms": 2249,
         "error": ""
       },
       {
@@ -191,9 +208,12 @@
         "card_titles": [
           "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡，参考价约 48 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4605,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡，参考价约 48 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2302,
         "error": ""
       }
     ]
@@ -206,19 +226,19 @@
         "turn": 1,
         "input": "我平时喜欢拍风景，哪个手机拍照好？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 4,
+        "src": "llm",
+        "card_count": 3,
         "card_titles": [
           "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
           "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
+          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2296,
+        "elapsed_ms": 1692,
         "error": ""
       },
       {
@@ -226,20 +246,20 @@
         "input": "不要苹果，其他品牌都可以。",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 3,
         "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
           "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
+          "category": "digital",
           "exclude_brands": [
             "苹果"
           ]
         },
-        "elapsed_ms": 3670,
+        "elapsed_ms": 5132,
         "error": ""
       }
     ]
@@ -252,44 +272,50 @@
         "turn": 1,
         "input": "有没有便携的速溶咖啡推荐？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 1,
         "card_titles": [
           "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡，参考价约 58 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "食品"
+          "category": "food",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2233,
+        "elapsed_ms": 1566,
         "error": ""
       },
       {
         "turn": 2,
         "input": "不要三合一，要纯黑咖啡。",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
+        "src": "llm",
         "card_count": 1,
         "card_titles": [
           "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡，参考价约 58 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "食品"
+          "category": "food"
         },
-        "elapsed_ms": 2578,
+        "elapsed_ms": 1975,
         "error": ""
       },
       {
         "turn": 3,
         "input": "最好是冷泡也能溶解的。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "你是想找能冷泡的咖啡粉或茶包吗？可以告诉我具体想买什么类型的，我帮你搜搜看。",
-        "args": {},
-        "elapsed_ms": 5384,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡，参考价约 58 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2148,
         "error": ""
       }
     ]
@@ -307,35 +333,51 @@
         "card_titles": [
           "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
           "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-          "安踏 KT9 氮科技实战篮球鞋中帮缓震支撑外场内场训练比赛鞋"
+          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 6791,
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1959,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要大码的，45码左右。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "没问题，大码鞋子确实需要多留意。为了能精准推荐，请问您是想找运动鞋、皮鞋还是休闲鞋呢？",
-        "args": {},
-        "elapsed_ms": 4195,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing"
+        },
+        "elapsed_ms": 2541,
         "error": ""
       },
       {
         "turn": 3,
         "input": "品牌无所谓，舒适就行。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "好的，舒适是第一位的！请问您是想找什么类型的商品呢？比如衣服、鞋子还是家居用品？告诉我具体需求，我帮您筛选推荐。",
-        "args": {},
-        "elapsed_ms": 4093,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
+          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2934,
         "error": ""
       }
     ]
@@ -352,12 +394,15 @@
         "card_count": 3,
         "card_titles": [
           "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
-          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡",
-          "三顿半 数字星球系列 超即溶精品咖啡1-6号 18颗装精品速溶咖啡"
+          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品，参考价约 4.5 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4966,
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2632,
         "error": ""
       },
       {
@@ -367,13 +412,15 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
-          "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
-          "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料"
+          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品，参考价约 9 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4108,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品，参考价约 4.5 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food"
+        },
+        "elapsed_ms": 2689,
         "error": ""
       },
       {
@@ -381,16 +428,18 @@
         "input": "哪个口味评价最好？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 5,
+        "card_count": 3,
         "card_titles": [
-          "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品",
-          "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品",
-          "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案",
-          "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心"
+          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
+          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品，参考价约 9 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4443,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品，参考价约 4.5 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2229,
         "error": ""
       }
     ]
@@ -403,46 +452,52 @@
         "turn": 1,
         "input": "帮我找一个能装下16寸笔记本电脑的双肩包。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
-          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
+          "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩",
+          "The North Face Borealis 28L 多功能通勤户外"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包，参考价约 699 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "数码电子"
+          "category": "clothing"
         },
-        "elapsed_ms": 1986,
+        "elapsed_ms": 2897,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要轻便一点，最好有防水功能。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "听起来你对商品有明确的要求呢！不过，你是想找什么类型的商品呢？比如背包、外套还是鞋子？告诉我具体品类，我就能帮你精准推荐啦。",
-        "args": {},
-        "elapsed_ms": 5728,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩",
+          "The North Face Borealis 28L 多功能通勤户外"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包，参考价约 699 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing"
+        },
+        "elapsed_ms": 2417,
         "error": ""
       },
       {
         "turn": 3,
         "input": "外观不要太花哨，黑色或灰色。",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
-          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
+          "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩",
+          "The North Face Borealis 28L 多功能通勤户外"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 2376,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包，参考价约 699 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1977,
         "error": ""
       }
     ]
@@ -461,22 +516,29 @@
           "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml，参考价约 520 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4078,
+        "args": {
+          "category": "beauty"
+        },
+        "elapsed_ms": 2657,
         "error": ""
       },
       {
         "turn": 2,
         "input": "我是混油皮，不要太油腻的。",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 1,
+        "src": "llm",
+        "card_count": 3,
         "card_titles": [
+          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
+          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml",
           "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml，参考价约 520 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 2616,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "beauty",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3332,
         "error": ""
       },
       {
@@ -484,15 +546,18 @@
         "input": "预算800元以内。",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
+        "card_count": 2,
         "card_titles": [
-          "科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml"
+          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
+          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 科颜氏新集焕白均衡亮肤淡斑精华液提亮肤色淡化斑点精华30ml，参考价约 520 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 800.0
+          "budget": 800.0,
+          "category": "beauty",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 4334,
+        "elapsed_ms": 2639,
         "error": ""
       },
       {
@@ -500,15 +565,21 @@
         "input": "之前用过科颜氏，效果一般，有其他推荐吗？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 3,
+        "card_count": 2,
         "card_titles": [
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
           "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
-          "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml"
+          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 5047,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "budget": 800.0,
+          "category": "beauty",
+          "exclude_brands": [
+            "科颜氏"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 5696,
         "error": ""
       }
     ]
@@ -526,35 +597,35 @@
         "card_titles": [],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 剪辑 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。",
         "args": {
-          "budget": 12000.0,
-          "category": "pc_build"
+          "budget": 12000.0
         },
-        "elapsed_ms": 6252,
+        "elapsed_ms": 5494,
         "error": ""
       },
       {
         "turn": 2,
         "input": "需要NVIDIA的显卡，内存32G以上。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "Kingston FURY Beast DDR4 32GB 3600 ",
-          "Kingston FURY Beast DDR4 32GB 3600 ",
-          "Kingston FURY Beast DDR4 32GB 3600 "
+          "MSI GeForce GTX 1650 D6 VENTUS 显卡",
+          "MSI GeForce GTX 1650 D6 VENTUS OC 显",
+          "MSI GeForce GTX 1650 D6 VENTUS Edit"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Kingston FURY Beast DDR4 32GB 3600 内存套装，参考价约 399 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 MSI GeForce GTX 1650 D6 VENTUS 显卡，参考价约 999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 5166,
+        "elapsed_ms": 2830,
         "error": ""
       },
       {
         "turn": 3,
         "input": "机箱要白色的，好看一点。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "SAMA Quzao Air M-ATX 机箱",
@@ -563,23 +634,31 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 SAMA Quzao Air M-ATX 机箱，参考价约 159 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "budget": 12000.0,
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3427,
+        "elapsed_ms": 2211,
         "error": ""
       },
       {
         "turn": 4,
         "input": "散热用风冷就行，不想要水冷。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库缺少可推荐候选，无法生成完整购物建议。",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "AMD Wraith Stealth CPU 散热器",
+          "AMD Wraith Stealth V2 CPU 散热器",
+          "AMD Wraith Stealth V3 CPU 散热器"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 AMD Wraith Stealth CPU 散热器，参考价约 49 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "budget": 12000.0,
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3209,
+        "elapsed_ms": 1423,
         "error": ""
       },
       {
@@ -589,13 +668,17 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
+          "ASUS Dual GeForce RTX 4060 O8G 显卡",
+          "ASUS Dual GeForce RTX 4060 O8G OC 显",
+          "ASUS Dual GeForce RTX 4060 O8G Edit"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 3681,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 ASUS Dual GeForce RTX 4060 O8G 显卡，参考价约 2199 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "budget": 12000.0,
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3284,
         "error": ""
       },
       {
@@ -607,16 +690,16 @@
         "card_titles": [],
         "reply": "",
         "args": {
-          "category": "pc_part"
+          "category": "digital"
         },
-        "elapsed_ms": 1503,
+        "elapsed_ms": 1124,
         "error": ""
       },
       {
         "turn": 7,
         "input": "那选第二套吧，帮我看看电源够不够。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "Great Wall HOPE 5000DS 500W 电源",
@@ -625,9 +708,11 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Great Wall HOPE 5000DS 500W 电源，参考价约 249 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "budget": 12000.0,
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2910,
+        "elapsed_ms": 2535,
         "error": ""
       }
     ]
@@ -640,7 +725,7 @@
         "turn": 1,
         "input": "我想买个降噪耳机，在办公室用。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 2,
         "card_titles": [
           "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
@@ -648,9 +733,9 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "耳机"
+          "category": "digital"
         },
-        "elapsed_ms": 2128,
+        "elapsed_ms": 3462,
         "error": ""
       },
       {
@@ -658,61 +743,72 @@
         "input": "预算1500左右。",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机"
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 1500.0
+          "category": "digital"
         },
-        "elapsed_ms": 5014,
+        "elapsed_ms": 4079,
         "error": ""
       },
       {
         "turn": 3,
         "input": "最好是入耳式的，头戴式太热了。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "入耳式确实更清爽，夏天戴也不会闷热。你是想找蓝牙耳机还是有线的？平时主要用来听歌、打游戏还是运动呢？",
-        "args": {},
-        "elapsed_ms": 4360,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2545,
         "error": ""
       },
       {
         "turn": 4,
         "input": "我手机是华为的，能无缝连接吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创",
-          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生"
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2848,
+        "elapsed_ms": 2662,
         "error": ""
       },
       {
         "turn": 5,
         "input": "那华为自己的耳机有哪些型号？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 1,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机"
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "耳机"
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2214,
+        "elapsed_ms": 1955,
         "error": ""
       },
       {
@@ -724,23 +820,35 @@
         "card_titles": [
           "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4867,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ]
+        },
+        "elapsed_ms": 3285,
         "error": ""
       },
       {
         "turn": 7,
         "input": "好，就这个吧。对了，它支持无线充电吗？",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 1,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
           "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版，参考价约 1799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 2794,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1977,
         "error": ""
       },
       {
@@ -748,13 +856,19 @@
         "input": "我需要单独买充电器吗？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
+        "card_count": 2,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机"
+          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3347,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ]
+        },
+        "elapsed_ms": 1901,
         "error": ""
       }
     ]
@@ -768,57 +882,65 @@
         "input": "我要给家里老人买牛奶，哪种比较好？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 1,
         "card_titles": [
-          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品",
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
-          "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
-          "蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品"
+          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品，参考价约 85 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4286,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2342,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要无糖的，老人血糖有点高。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "没问题，为了家人的健康，选无糖的确实更放心。您是想找无糖的食品，还是适合老人的保健品呢？告诉我具体想找哪一类，我马上帮您筛选。",
-        "args": {},
-        "elapsed_ms": 4631,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1900,
         "error": ""
       },
       {
         "turn": 3,
         "input": "最好是常温奶，方便储存。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "没问题，常温奶确实好储存，买一箱放家里随时喝。你是想找纯牛奶还是风味酸奶？或者告诉我你和家人的口味偏好，我帮你挑几款合适的。",
-        "args": {},
-        "elapsed_ms": 4959,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
+          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3515,
         "error": ""
       },
       {
         "turn": 4,
         "input": "特仑苏和金典哪个更适合？",
-        "tool": "recommend_shopping_products",
+        "tool": "compare_products",
         "src": "llm",
-        "card_count": 8,
-        "card_titles": [
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4697,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "food"
+        },
+        "elapsed_ms": 1744,
         "error": ""
       },
       {
@@ -826,55 +948,53 @@
         "input": "那有机款和非有机款区别大吗？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
+        "card_count": 2,
         "card_titles": [
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶"
+          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
+          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4017,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "food",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2680,
         "error": ""
       },
       {
         "turn": 6,
         "input": "好，买一箱24盒的。",
-        "tool": "recommend_shopping_products",
+        "tool": "apply_cart_instruction",
         "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，参考价约 72 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "已将 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 5237,
+        "elapsed_ms": 1437,
         "error": ""
       },
       {
         "turn": 7,
         "input": "顺便帮我加一箱纯甄酸奶，要原味的。",
-        "tool": "recommend_shopping_products",
+        "tool": "apply_cart_instruction",
         "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品，参考价约 55 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "已将 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 4736,
+        "elapsed_ms": 1631,
         "error": ""
       },
       {
         "turn": 8,
         "input": "两个一起买有优惠吗？",
-        "tool": "recommend_shopping_products",
+        "tool": "apply_cart_instruction",
         "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品，参考价约 55 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "已将 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 5914,
+        "elapsed_ms": 2011,
         "error": ""
       }
     ]
@@ -895,54 +1015,16 @@
           "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4721,
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3241,
         "error": ""
       },
       {
         "turn": 2,
         "input": "我是正常足弓，体重75公斤。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "了解啦！你是正常足弓、75公斤的体重。想找什么类型的鞋子呢？跑步鞋、休闲鞋还是其他？我可以帮你推荐几款适合的。",
-        "args": {},
-        "elapsed_ms": 2701,
-        "error": ""
-      },
-      {
-        "turn": 3,
-        "input": "预算600-1000元。",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {
-          "budget": 600.0
-        },
-        "elapsed_ms": 5186,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "要缓震好一点的，保护膝盖。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "想找缓震好、保护膝盖的鞋子，这很关键呢！我帮你看看有哪些款式，你主要是想买跑步鞋还是日常穿的运动鞋？",
-        "args": {},
-        "elapsed_ms": 11892,
-        "error": ""
-      },
-      {
-        "turn": 5,
-        "input": "耐克、阿迪、HOKA、特步这几个品牌哪个更适合？",
         "tool": "recommend_shopping_products",
         "src": "llm",
         "card_count": 3,
@@ -951,9 +1033,65 @@
           "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
           "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4414,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2873,
+        "error": ""
+      },
+      {
+        "turn": 3,
+        "input": "预算600-1000元。",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing"
+        },
+        "elapsed_ms": 3427,
+        "error": ""
+      },
+      {
+        "turn": 4,
+        "input": "要缓震好一点的，保护膝盖。",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3612,
+        "error": ""
+      },
+      {
+        "turn": 5,
+        "input": "耐克、阿迪、HOKA、特步这几个品牌哪个更适合？",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1854,
         "error": ""
       },
       {
@@ -963,12 +1101,14 @@
         "src": "llm",
         "card_count": 2,
         "card_titles": [
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4060,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing"
+        },
+        "elapsed_ms": 3070,
         "error": ""
       },
       {
@@ -978,29 +1118,29 @@
         "src": "llm",
         "card_count": 2,
         "card_titles": [
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
+          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
+          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4793,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3312,
         "error": ""
       },
       {
         "turn": 8,
         "input": "能不能对比一下这两款的鞋底耐磨性？",
-        "tool": "recommend_shopping_products",
+        "tool": "compare_products",
         "src": "llm",
-        "card_count": 4,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3833,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "clothing"
+        },
+        "elapsed_ms": 3051,
         "error": ""
       }
     ]
@@ -1013,25 +1153,26 @@
         "turn": 1,
         "input": "你好，我想买一台平板电脑，主要用来画画和看网课。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
           "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
+          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
           "Apple iPad Air 11英寸 2026款 M4 芯片 128"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "数码电子"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 4095,
+        "elapsed_ms": 3793,
         "error": ""
       },
       {
         "turn": 2,
         "input": "预算4000-6000元。",
         "tool": "recommend_shopping_products",
-        "src": "rules",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "Apple iPad Air 11英寸 2026款 M4 芯片 128",
@@ -1040,9 +1181,10 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑，参考价约 4799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 4000.0
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 4171,
+        "elapsed_ms": 3106,
         "error": ""
       },
       {
@@ -1052,13 +1194,15 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
+          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4822,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑，参考价约 4799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2198,
         "error": ""
       },
       {
@@ -1066,34 +1210,36 @@
         "input": "苹果iPad和华为MatePad怎么选？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 5,
+        "card_count": 3,
         "card_titles": [
           "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑"
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4125,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2778,
         "error": ""
       },
       {
         "turn": 5,
         "input": "我平时也用华为手机，是不是生态更好？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
+          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital"
         },
-        "elapsed_ms": 2764,
+        "elapsed_ms": 2128,
         "error": ""
       },
       {
@@ -1104,8 +1250,10 @@
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {},
-        "elapsed_ms": 1478,
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 3914,
         "error": ""
       },
       {
@@ -1115,29 +1263,40 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
+          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创",
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4946,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2016,
         "error": ""
       },
       {
         "turn": 8,
         "input": "那个星闪键盘套装版包含手写笔吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 1,
+        "src": "llm",
+        "card_count": 3,
         "card_titles": [
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
+          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创",
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑，参考价约 5199 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "键盘"
+          "category": "digital",
+          "brands": [
+            "华为"
+          ]
         },
-        "elapsed_ms": 6770,
+        "elapsed_ms": 5159,
         "error": ""
       },
       {
@@ -1147,12 +1306,17 @@
         "src": "llm",
         "card_count": 2,
         "card_titles": [
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
+          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创",
+          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑，参考价约 4799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 5058,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑，参考价约 5199 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ]
+        },
+        "elapsed_ms": 3090,
         "error": ""
       },
       {
@@ -1162,9 +1326,9 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "好的，没关系！你随时可以再来看看，有需要随时找我～ 😊",
+        "reply": "好的，不着急，您慢慢想。有需要随时找我，我随时在的！😊",
         "args": {},
-        "elapsed_ms": 3374,
+        "elapsed_ms": 12972,
         "error": ""
       }
     ]
@@ -1176,66 +1340,88 @@
       {
         "turn": 1,
         "input": "我最近迷上了露营，需要一款户外徒步鞋。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "太棒了，露营真的超治愈！一双好鞋是户外体验的关键。你是更看重防水性能，还是透气轻便呢？",
-        "args": {},
-        "elapsed_ms": 5213,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 5611,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要防水的，Gore-Tex的最好。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "没问题，Gore-Tex确实是防水界的扛把子！你是想找徒步鞋、冲锋衣还是其他户外装备呀？告诉我具体品类，我帮你搜搜看。",
-        "args": {},
-        "elapsed_ms": 6391,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3596,
         "error": ""
       },
       {
         "turn": 3,
         "input": "预算1000-1500元。",
         "tool": "recommend_shopping_products",
-        "src": "rules",
+        "src": "llm",
         "card_count": 2,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多"
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 1000.0
+          "category": "clothing"
         },
-        "elapsed_ms": 5260,
+        "elapsed_ms": 3112,
         "error": ""
       },
       {
         "turn": 4,
         "input": "萨洛蒙和迈乐哪个抓地力更好？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "这两个品牌的抓地力都很不错呢！萨洛蒙的Contagrip大底在湿滑岩石和山路上表现很稳，迈乐的Vibram大底在耐磨和多地形适应上也很强。具体哪个更好，其实要看你主要在什么环境下使用。你是打算徒步、越野跑还是日常穿搭呢？告诉我你的需求，我可以帮你找到更合适的推荐~",
-        "args": {},
-        "elapsed_ms": 7343,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2607,
         "error": ""
       },
       {
         "turn": 5,
         "input": "我平时也会走一些碎石路和泥地。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "听起来您经常户外活动呢！这种路况确实需要一双防滑耐磨的鞋子。您是想找适合徒步或越野的鞋款吗？我可以帮您推荐一些防滑性能好的鞋子。",
-        "args": {},
-        "elapsed_ms": 4442,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3770,
         "error": ""
       },
       {
@@ -1243,16 +1429,17 @@
         "input": "那迈乐MOAB 3 GTX和萨洛蒙X ULTRA 4哪个更轻？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 8,
+        "card_count": 2,
         "card_titles": [
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-          "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品"
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 5171,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2959,
         "error": ""
       },
       {
@@ -1260,28 +1447,41 @@
         "input": "42码的迈乐有货吗？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 2,
         "card_titles": [
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋",
-          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑"
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋，参考价约 999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3922,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "brands": [
+            "迈乐"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2756,
         "error": ""
       },
       {
         "turn": 8,
         "input": "我看评论有人说鞋舌磨脚，是真的吗？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "看来你很细心呢！不同人的脚型和感受确实会有差异。为了稳妥起见，建议你把具体的商品链接发给我，我帮你看看大家的具体反馈，或者找找有没有更适合你的款式？",
-        "args": {},
-        "elapsed_ms": 5088,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 2,
+        "card_titles": [
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "brands": [
+            "迈乐"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2292,
         "error": ""
       },
       {
@@ -1289,16 +1489,19 @@
         "input": "有没有宽楦版本？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 2,
         "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-          "adidas Ultraboost 5 男子缓震跑步鞋针织鞋面日常慢跑",
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
+          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
+          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4766,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，参考价约 1099 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "clothing",
+          "brands": [
+            "迈乐"
+          ]
+        },
+        "elapsed_ms": 4368,
         "error": ""
       },
       {
@@ -1308,9 +1511,9 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "已将 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 加入购物车，数量 1。",
+        "reply": "已将 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 6142,
+        "elapsed_ms": 1570,
         "error": ""
       }
     ]
@@ -1329,48 +1532,59 @@
           "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4804,
+        "args": {
+          "category": "beauty",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2831,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要自然色的，不要黑的。",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
+        "src": "llm",
         "card_count": 1,
         "card_titles": [
           "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 2302,
+        "args": {
+          "category": "beauty",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2477,
         "error": ""
       },
       {
         "turn": 3,
         "input": "好上手的那种，他是新手。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "明白啦，给新手选东西确实得挑简单易用的！不过具体是想看哪一类商品呢？比如电子产品、厨房用品还是其他？告诉我品类，我帮你挑几款上手快、评价好的~",
-        "args": {},
-        "elapsed_ms": 5212,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "花西子和方里哪个更细？",
         "tool": "recommend_shopping_products",
         "src": "llm",
         "card_count": 1,
         "card_titles": [
           "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4594,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "beauty",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2249,
+        "error": ""
+      },
+      {
+        "turn": 4,
+        "input": "花西子和方里哪个更细？",
+        "tool": "compare_products",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "beauty"
+        },
+        "elapsed_ms": 1820,
         "error": ""
       },
       {
@@ -1382,21 +1596,34 @@
         "card_titles": [
           "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3600,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "beauty",
+          "brands": [
+            "花西子"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3014,
         "error": ""
       },
       {
         "turn": 6,
         "input": "我看有人说容易断，是不是真的？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "您是指哪款商品呢？方便告诉我商品名称或链接，我帮您看看用户评价和质量情况～",
-        "args": {},
-        "elapsed_ms": 3163,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "beauty",
+          "brands": [
+            "花西子"
+          ]
+        },
+        "elapsed_ms": 1738,
         "error": ""
       },
       {
@@ -1404,29 +1631,28 @@
         "input": "那有没有推荐的替代品？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 5730,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库缺少可推荐候选，无法生成完整购物建议。",
+        "args": {
+          "category": "beauty",
+          "exclude_brands": [
+            "花西子"
+          ]
+        },
+        "elapsed_ms": 4896,
         "error": ""
       },
       {
         "turn": 8,
         "input": "算了，还是买花西子吧，加点运费险。",
-        "tool": "recommend_shopping_products",
+        "tool": "apply_cart_instruction",
         "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
-          "花西子空气蜜粉轻盈定妆控油提亮肤色细腻粉质散粉8.5g",
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "没有找到可操作的商品，请先推荐商品或指定 product_id。",
         "args": {},
-        "elapsed_ms": 4753,
+        "elapsed_ms": 1587,
         "error": ""
       }
     ]
@@ -1439,25 +1665,23 @@
         "turn": 1,
         "input": "我想换一部手机，平时打王者荣耀和原神。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 1,
         "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital"
         },
-        "elapsed_ms": 3168,
+        "elapsed_ms": 1718,
         "error": ""
       },
       {
         "turn": 2,
         "input": "要散热好一点，不发热降频的。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "AMD Wraith Stealth CPU 散热器",
@@ -1466,16 +1690,94 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 AMD Wraith Stealth CPU 散热器，参考价约 49 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "category": "digital"
         },
-        "elapsed_ms": 2211,
+        "elapsed_ms": 2976,
         "error": ""
       },
       {
         "turn": 3,
         "input": "预算5000-7000元。",
         "tool": "recommend_shopping_products",
-        "src": "rules",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "vivo X300 Ultra 旗舰影像2K护眼屏长续航高性能5G智能"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2745,
+        "error": ""
+      },
+      {
+        "turn": 4,
+        "input": "小米17 Ultra和OPPO Find X9 Ultra哪个游戏表现好？",
+        "tool": "compare_products",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 1815,
+        "error": ""
+      },
+      {
+        "turn": 5,
+        "input": "那屏幕方面，谁的刷新率更高？",
+        "tool": "compare_products",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2037,
+        "error": ""
+      },
+      {
+        "turn": 6,
+        "input": "电池续航呢？",
+        "tool": "compare_products",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 1716,
+        "error": ""
+      },
+      {
+        "turn": 7,
+        "input": "小米17 Ultra的12+256和16+512差多少钱？",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 7000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ]
+        },
+        "elapsed_ms": 2588,
+        "error": ""
+      },
+      {
+        "turn": 8,
+        "input": "512G版本有现货吗？",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
@@ -1484,83 +1786,12 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 5000.0
+          "category": "digital",
+          "brands": [
+            "小米"
+          ]
         },
-        "elapsed_ms": 5096,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "小米17 Ultra和OPPO Find X9 Ultra哪个游戏表现好？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 5338,
-        "error": ""
-      },
-      {
-        "turn": 5,
-        "input": "那屏幕方面，谁的刷新率更高？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4283,
-        "error": ""
-      },
-      {
-        "turn": 6,
-        "input": "电池续航呢？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 5,
-        "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3257,
-        "error": ""
-      },
-      {
-        "turn": 7,
-        "input": "小米17 Ultra的12+256和16+512差多少钱？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 5386,
-        "error": ""
-      },
-      {
-        "turn": 8,
-        "input": "512G版本有现货吗？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "你好！请问你想了解的是哪款产品的512G版本呢？告诉我具体型号，我帮你查一下库存情况~",
-        "args": {},
-        "elapsed_ms": 4736,
+        "elapsed_ms": 2115,
         "error": ""
       },
       {
@@ -1568,27 +1799,35 @@
         "input": "你说我买这个还是等双十一？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 1,
+        "card_count": 3,
         "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12"
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4011,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ]
+        },
+        "elapsed_ms": 2109,
         "error": ""
       },
       {
         "turn": 10,
         "input": "算了，我要不要考虑一下折叠屏？",
         "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 1,
-        "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 2131,
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 7000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 5186,
         "error": ""
       },
       {
@@ -1598,13 +1837,16 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
           "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3482,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1637,
         "error": ""
       },
       {
@@ -1612,16 +1854,18 @@
         "input": "那有什么折叠屏推荐？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 3,
         "card_titles": [
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
           "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-          "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品"
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4197,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2200,
         "error": ""
       },
       {
@@ -1629,26 +1873,31 @@
         "input": "小米MIX Fold 5和OPPO Find N6哪个更轻？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "OPPO Find N6 内折柔性大屏旗舰折叠屏手机多任务办公影音体验",
-          "小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Find N6 内折柔性大屏旗舰折叠屏手机多任务办公影音体验，参考价约 9699 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3420,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 7000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2761,
         "error": ""
       },
       {
         "turn": 14,
         "input": "折叠屏的内屏容易坏吗？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "现在的折叠屏技术已经很成熟啦，只要不是故意暴力使用，内屏通常都很耐用哦。如果你担心耐用性，我可以帮你筛选几款经过高强度测试或者口碑好的机型，要不要看看？",
-        "args": {},
-        "elapsed_ms": 5063,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机",
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2669,
         "error": ""
       },
       {
@@ -1656,39 +1905,57 @@
         "input": "好，我还是买直板机吧，就小米17 Ultra。",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4571,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 7000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2229,
         "error": ""
       },
       {
         "turn": 16,
         "input": "颜色有哪几种？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "哎呀，这个问题太宽泛啦，我没法直接回答。你是想问某个特定商品的颜色选项吗？告诉我商品名称，我帮你看看有哪些颜色可选！",
-        "args": {},
-        "elapsed_ms": 4036,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 7000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2386,
         "error": ""
       },
       {
         "turn": 17,
         "input": "我要宇宙橙，256G够用吗？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "256G对于大多数人来说完全够用啦，存照片、下APP、缓存视频都挺充裕的。不过如果你喜欢存大量高清电影或者玩很多大型游戏，可以考虑更大容量。你平时主要用来做什么呢？",
-        "args": {},
-        "elapsed_ms": 5465,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 3,
+        "card_titles": [
+          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2739,
         "error": ""
       },
       {
@@ -1698,13 +1965,19 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
           "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑"
+          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
+          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，参考价约 7499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4467,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "小米"
+          ],
+          "sort_order": "price_asc"
+        },
+        "elapsed_ms": 2998,
         "error": ""
       },
       {
@@ -1714,9 +1987,9 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "已将 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB 加入购物车，数量 1。",
+        "reply": "已将 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 1883,
+        "elapsed_ms": 957,
         "error": ""
       }
     ]
@@ -1729,16 +2002,19 @@
         "turn": 1,
         "input": "我经常出差，想买一个轻便的笔记本电脑。",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 1,
+        "src": "llm",
+        "card_count": 3,
         "card_titles": [
-          "Apple MacBook Pro 16英寸 M5 Pro 芯片 32"
+          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
+          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
+          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Pro 16英寸 M5 Pro 芯片 32GB 1TB 创意设计师笔记本电脑，参考价约 21999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "数码电子"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 2642,
+        "elapsed_ms": 1797,
         "error": ""
       },
       {
@@ -1748,15 +2024,15 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监",
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128"
+          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
+          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
+          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 10.0
+          "category": "digital"
         },
-        "elapsed_ms": 4443,
+        "elapsed_ms": 1791,
         "error": ""
       },
       {
@@ -1766,27 +2042,32 @@
         "src": "llm",
         "card_count": 3,
         "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
+          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
+          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
+          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 3511,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 1667,
         "error": ""
       },
       {
         "turn": 4,
         "input": "预算8000-10000元。",
         "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 8000.0
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3994,
+        "elapsed_ms": 2899,
         "error": ""
       },
       {
@@ -1794,34 +2075,36 @@
         "input": "华为MateBook 14和苹果MacBook Air哪个更适合？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 5,
+        "card_count": 1,
         "card_titles": [
-          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生",
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
-          "联想 ThinkPad X1 Carbon Aura AI 元启版20",
           "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 4272,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2004,
         "error": ""
       },
       {
         "turn": 6,
         "input": "我用的是华为手机，是不是选华为更方便？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 1,
         "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 华为 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3003,
+        "elapsed_ms": 2468,
         "error": ""
       },
       {
@@ -1831,35 +2114,53 @@
         "src": "llm",
         "card_count": 1,
         "card_titles": [
-          "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生"
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本，参考价约 6299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 3545,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 华为 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 2194,
         "error": ""
       },
       {
         "turn": 8,
         "input": "鸿蒙版能安装Windows软件吗？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "鸿蒙系统主要运行自己的应用生态，直接安装Windows软件是不行的哦。不过有些软件可能有鸿蒙版本，或者可以通过云电脑之类的方案来使用。你是想找什么具体的软件吗？我可以帮你看看有没有替代方案。",
-        "args": {},
-        "elapsed_ms": 8008,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 华为 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "华为"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1796,
         "error": ""
       },
       {
         "turn": 9,
         "input": "不能的话有点麻烦，我有些专业软件只有Win版。",
-        "tool": "general_chat",
+        "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我理解你的困扰！专业软件确实是个重要考虑因素。如果你需要找兼容性好的Windows设备，我可以帮你推荐一些笔记本或台式机，你主要用哪些软件呢？",
-        "args": {},
-        "elapsed_ms": 3681,
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital"
+        },
+        "elapsed_ms": 2205,
         "error": ""
       },
       {
@@ -1872,20 +2173,31 @@
           "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 7092,
+        "args": {
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1866,
         "error": ""
       },
       {
         "turn": 11,
         "input": "不能用的话，我还是选联想ThinkBook 14+吧。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "好的，联想ThinkBook 14+确实是个不错的选择，性能和便携性都很均衡。需要我帮你看看目前的价格或者对比一下配置吗？",
-        "args": {},
-        "elapsed_ms": 6122,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1497,
         "error": ""
       },
       {
@@ -1893,14 +2205,17 @@
         "input": "联想那个高配版32G+1TB多少钱？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
-          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑，参考价约 6999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 3290,
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 10000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ],
+          "sort_order": "price_asc"
+        },
+        "elapsed_ms": 2239,
         "error": ""
       },
       {
@@ -1910,11 +2225,16 @@
         "src": "llm",
         "card_count": 1,
         "card_titles": [
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习"
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑，参考价约 6999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。我也放了候选对比表，方便直接看价格、评分和取舍。",
-        "args": {},
-        "elapsed_ms": 5274,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ]
+        },
+        "elapsed_ms": 2672,
         "error": ""
       },
       {
@@ -1922,44 +2242,54 @@
         "input": "有没有送办公软件？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 2,
+        "card_count": 1,
         "card_titles": [
-          "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习",
-          "联想 ThinkPad X1 Carbon Aura AI 元启版20"
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑，参考价约 6999 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 4829,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ]
+        },
+        "elapsed_ms": 3337,
         "error": ""
       },
       {
         "turn": 15,
         "input": "那保修多久？",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "不好意思，我不太确定你指的是哪款商品呢？不同产品的保修政策可能不一样哦。你可以告诉我具体是哪个商品，我帮你查查看～",
-        "args": {},
-        "elapsed_ms": 3790,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ]
+        },
+        "elapsed_ms": 2019,
         "error": ""
       },
       {
         "turn": 16,
         "input": "可以加内存吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
-        "card_titles": [
-          "Kingbank Silver DDR4 16GB 3200 内存套装",
-          "Kingbank Silver DDR4 16GB 3200 Kit ",
-          "Kingbank Silver DDR4 16GB 3200 Kit "
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Kingbank Silver DDR4 16GB 3200 内存套装，参考价约 189 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "src": "llm",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。当前商品库没有找到 该品类 10000 CNY 以内的合适商品，可以试试调高预算或换个关键词。",
         "args": {
-          "category": "pc_part"
+          "category": "digital",
+          "brands": [
+            "联想"
+          ]
         },
-        "elapsed_ms": 2534,
+        "elapsed_ms": 3626,
         "error": ""
       },
       {
@@ -1967,42 +2297,58 @@
         "input": "不能加的话，16G够用吗？",
         "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 4,
+        "card_count": 1,
         "card_titles": [
-          "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-          "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品"
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g，参考价约 89 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
-        "args": {},
-        "elapsed_ms": 8038,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ]
+        },
+        "elapsed_ms": 2171,
         "error": ""
       },
       {
         "turn": 18,
         "input": "我经常同时开十几个Chrome标签和微信、PPT。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "听起来你的工作节奏很快，经常需要多任务处理呢！如果你是在找能流畅应对这种高强度使用的笔记本电脑，我可以帮你推荐几款性能强劲的型号。",
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "pc_part"
+          "category": "digital",
+          "brands": [
+            "联想"
+          ],
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 5100,
+        "elapsed_ms": 2402,
         "error": ""
       },
       {
         "turn": 19,
         "input": "那还是选32G版本吧。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "好的，32G版本确实是个不错的选择！不过我需要确认一下，您是在挑选哪款产品呢？可以告诉我具体是什么商品，我帮您看看有没有更优惠的价格或者其他选择。",
-        "args": {},
-        "elapsed_ms": 5769,
+        "tool": "recommend_shopping_products",
+        "src": "llm",
+        "card_count": 1,
+        "card_titles": [
+          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没有找到 联想 品牌的在售商品，下面推荐了其他品牌的候选。我优先推荐 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，参考价约 8499 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "category": "digital",
+          "brands": [
+            "联想"
+          ],
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 3243,
         "error": ""
       },
       {
@@ -2012,9 +2358,9 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "已将 薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g 加入购物车，数量 1。\n已将 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑 加入购物车，数量 1。\n已将 优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣 加入购物车，数量 1。\n已将 李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品 加入购物车，数量 1。",
+        "reply": "已将 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 加入购物车，数量 1。",
         "args": {},
-        "elapsed_ms": 895,
+        "elapsed_ms": 2068,
         "error": ""
       }
     ]
@@ -2027,7 +2373,7 @@
         "turn": 1,
         "input": "我最近打球把手机搞坏了，你们有什么推荐吗？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
+        "src": "llm",
         "card_count": 3,
         "card_titles": [
           "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
@@ -2036,9 +2382,10 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "category": "digital",
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3076,
+        "elapsed_ms": 2294,
         "error": ""
       },
       {
@@ -2054,11 +2401,13 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
+          "category": "digital",
           "exclude_brands": [
             "华为"
-          ]
+          ],
+          "sort_order": "rating_desc"
         },
-        "elapsed_ms": 3496,
+        "elapsed_ms": 5487,
         "error": ""
       },
       {
@@ -2072,27 +2421,35 @@
         ],
         "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "budget": 4000.0
+          "budget": 4000.0,
+          "category": "digital",
+          "exclude_brands": [
+            "华为"
+          ],
+          "sort_order": "price_asc"
         },
-        "elapsed_ms": 4331,
+        "elapsed_ms": 3242,
         "error": ""
       },
       {
         "turn": 4,
         "input": "你说我不买手机买智能手表怎么样？",
         "tool": "recommend_shopping_products",
-        "src": "guard",
-        "card_count": 3,
+        "src": "llm",
+        "card_count": 2,
         "card_titles": [
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公",
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
+          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监",
+          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公"
         ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑，参考价约 3299 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版，参考价约 1799 CNY。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
         "args": {
-          "category": "手机"
+          "budget": 4000.0,
+          "category": "digital",
+          "exclude_brands": [
+            "华为"
+          ]
         },
-        "elapsed_ms": 3903,
+        "elapsed_ms": 5095,
         "error": ""
       },
       {
@@ -2102,11 +2459,11 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 6982 CNY，核心为 Core i3-12100F + GeForce RTX 4060 Ti 16G Twin Edge。推荐理由：总价 6982 CNY，预算 7000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4060 Ti 16G Twin Edge。",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 4222 CNY，核心为 Ryzen 5 5500 + Dual GeForce RTX 4060 O8G。推荐理由：总价 4222 CNY，预算 4000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Ryzen 5 5500 + Dual GeForce RTX 4060 O8G。",
         "args": {
-          "category": "pc_build"
+          "category": "digital"
         },
-        "elapsed_ms": 3091,
+        "elapsed_ms": 2744,
         "error": ""
       },
       {
@@ -2116,36 +2473,47 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案增加 3400 CNY。 发生变化的配件：主板、显卡。\n主要变化：主板: MSI PRO B760M-A WIFI DDR5 主板 -> ASUS ROG STRIX B760-G GAMING WIFI 主板；结构化字段未显示明确参数差异，主要由预算、偏好或兼容性筛选导致。。；显卡: ZOTAC GeForce RTX 4060 Ti 16G Twi",
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案增加 6160 CNY。 发生变化的配件：处理器、主板、显卡、内存、电源。\n主要变化：处理器: AMD Ryzen 5 5500 处理器 -> Intel Core i3-12100F 处理器；socket: AM4 -> LGA1700；cores: 6 -> 4；threads: 12 -> 8；tdp_w: 65 -> 58。；主板: ASUS ",
         "args": {
           "budget": 10000.0,
-          "category": "pc_build"
+          "category": "digital"
         },
-        "elapsed_ms": 4837,
+        "elapsed_ms": 4945,
         "error": ""
       },
       {
         "turn": 7,
         "input": "我主要玩各种2a大作。",
-        "tool": "general_chat",
-        "src": "hallucination_guard",
+        "tool": "generate_pc_build_plan",
+        "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "听起来你是位硬核玩家呀！玩3A大作最考验设备性能了。你是想找能流畅运行这些大作的游戏本，还是PS5这类主机？或者是趁手的键盘鼠标？",
-        "args": {},
-        "elapsed_ms": 4891,
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
+        "args": {
+          "budget": 10000.0,
+          "category": "digital"
+        },
+        "elapsed_ms": 5506,
         "error": ""
       },
       {
         "turn": 8,
         "input": "你推荐的两个装机配置有什么区别？",
-        "tool": "general_chat",
+        "tool": "recommend_shopping_products",
         "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "抱歉，我这边没有找到之前推荐的配置记录呢。你能告诉我具体是哪两个配置吗？或者告诉我你的预算和用途，我可以帮你重新对比推荐一下。",
-        "args": {},
-        "elapsed_ms": 3852,
+        "card_count": 3,
+        "card_titles": [
+          "Integrated No discrete GPU / use CP",
+          "ASRock Radeon RX 6500 XT 4GB 显卡",
+          "ASRock Radeon RX 6500 XT 4GB Editio"
+        ],
+        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我优先推荐 Integrated No discrete GPU / use CPU iGPU 显卡。下面保留了候选商品卡片，你可以继续对比或加入购物车。",
+        "args": {
+          "budget": 10000.0,
+          "category": "digital",
+          "sort_order": "rating_desc"
+        },
+        "elapsed_ms": 1882,
         "error": ""
       },
       {
@@ -2155,11 +2523,9 @@
         "src": "llm",
         "card_count": 0,
         "card_titles": [],
-        "reply": "已将 Intel Core i3-12100F 处理器 加入购物车，数量 1。\n已将 ASUS ROG STRIX B760-G GAMING WIFI 主板 加入购物车，数量 1。\n已将 Colorful GeForce RTX 4070 Ti SUPER 16G 显卡 加入购物车，数量 1。\n已将 Kingston FURY Beast DDR5 32GB 6000 Kit 5 内存套装 加入购物车，数量 1。\n已将 Kioxia EXCERIA G2 RC20 500GB NVMe SSD 加入购物车，数量 1。\n已将 Great Wall GX850 ATX3.0 电源 加入购物车，数量 1。\n已将 SAMA Quzao Air M-ATX 机箱 加入购物车，数量 1。\n已将 AMD Wraith Stealth CPU 散热器 加入购物车，数量 1。",
-        "args": {
-          "category": "pc_part"
-        },
-        "elapsed_ms": 1185,
+        "reply": "已将 Integrated No discrete GPU / use CPU iGPU 显卡 加入购物车，数量 1。",
+        "args": {},
+        "elapsed_ms": 1055,
         "error": ""
       }
     ]

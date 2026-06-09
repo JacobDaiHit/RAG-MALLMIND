@@ -6,17 +6,16 @@ from fastapi.responses import StreamingResponse
 
 from rag.api.app_context import prepare_recommendation_context
 from rag.api.request_models import CartActionRequest, ChatStreamRequest, ProductCompareRequest
-from rag.api.runtime_context import build_adaptive_runtime_context, decision_reason, decision_signals, runtime_event_payload
-from rag.api.routes.common import has_image_data, is_test_env, request_product_ids, stream_llm_enabled, system_degraded
+from rag.api.routes.common import request_product_ids, stream_llm_enabled
 from rag.api.routes.legacy_chat_compat import chat_compat_response
 from rag.api.sse import safe_stream, sse_event
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.product_loader import load_combined_product_catalog
 from rag.recommendation.session_state import (
     apply_cart_instruction,
-    current_topic_json,
     get_session,
-    remember_tool_call,
+    session_to_json,
+    update_session_from_router,
 )
 from rag.recommendation.tool_handlers import (
     build_chat_opening,
@@ -26,7 +25,6 @@ from rag.recommendation.tool_handlers import (
     handle_pc_build,
     handle_recommend,
 )
-from rag.recommendation.runtime_mode_selector import RuntimeModeDecision
 from rag.recommendation.tool_router import route_shopping_tool_call
 from rag.utils.runtime_errors import sanitize_report
 
@@ -62,58 +60,22 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
         raise HTTPException(status_code=400, detail="message cannot be empty")
 
     def unsafe_generate():
-        llm_configured = stream_llm_enabled()
-        runtime_context = build_adaptive_runtime_context(
-            raw_message,
-            session,
-            requested_mode=getattr(request, "mode", None),
-            has_attachments=bool(raw_attachments),
-            has_image_data=has_image_data(raw_attachments),
-            llm_configured=llm_configured,
-            is_test_env=is_test_env(),
-            system_degraded=system_degraded(),
-        )
-        adaptive_decision = runtime_context["decision"]
-        policy = runtime_context["policy"]
-        session.runtime_mode = adaptive_decision.selected_mode
-        decision = RuntimeModeDecision(
-            mode=adaptive_decision.selected_mode,  # type: ignore[arg-type]
-            reason=decision_reason(adaptive_decision),
-            signals=decision_signals(
-                adaptive_decision,
-                requested_mode=getattr(request, "mode", None),
-                llm_configured=llm_configured,
-                has_attachments=bool(raw_attachments),
-                has_image_data=has_image_data(raw_attachments),
-                is_test_env=is_test_env(),
-                system_degraded=system_degraded(),
-            ),
-        )
-        yield sse_event(
-            "runtime_mode",
-            runtime_event_payload(
-                decision=adaptive_decision,
-                policy=policy,
-                requested_mode=getattr(request, "mode", None),
-                llm_configured=llm_configured,
-                has_attachments=bool(raw_attachments),
-                has_image_data=has_image_data(raw_attachments),
-                is_test_env=is_test_env(),
-                system_degraded=system_degraded(),
-            ),
-        )
-        tool_call = route_shopping_tool_call(raw_message, session, use_llm=policy.use_router_llm)
-        remember_tool_call(session, tool_call)
+        use_llm = stream_llm_enabled()
+
+        yield sse_event("runtime_mode", {"mode": "balanced", "use_llm": use_llm})
+
+        tool_call = route_shopping_tool_call(raw_message, session, use_llm=use_llm)
+        # cart 操作不更新 session.current，避免清空累积的 product_ids
+        if tool_call.get("name") != "apply_cart_instruction":
+            update_session_from_router(session, raw_message, tool_call)
         yield sse_event(
             "tool_call",
             {
                 "name": tool_call.get("name"),
                 "arguments": tool_call.get("arguments") or {},
-                "confidence": tool_call.get("confidence"),
                 "reason": tool_call.get("reason"),
                 "source": tool_call.get("source"),
                 "routing_trace": tool_call.get("routing_trace") or {},
-                "topic_memory": current_topic_json(session),
             },
         )
 
@@ -136,7 +98,7 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             raw_message,
             raw_attachments,
             session,
-            use_vision_llm=policy.use_vision_llm,
+            use_vision_llm=True,
         )
         yield sse_event("delta", {"text": build_chat_opening(raw_message, session)})
         yield sse_event("progress", {"label": "已收到需求", "detail": "开始整理预算、品类、颜色和功能约束。"})
@@ -162,7 +124,7 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             "progress",
             {
                 "label": "正在解析条件",
-                "detail": "大模型会参与需求理解。" if policy.use_requirement_llm else "当前使用规则解析需求。",
+                "detail": "大模型会参与需求理解。" if use_llm else "当前使用规则解析需求。",
             },
         )
 
@@ -177,15 +139,13 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             contextual_goal,
             attachments,
             attachment_report,
-            policy.use_requirement_llm,
+            use_llm,
             tool_call,
             recommendation_fn=recommendation_fn(),
             image_retrieval_fn=image_retrieval_fn(),
-            use_llm_guidance=policy.use_guidance_llm,
-            use_milvus_retrieval=policy.use_milvus_retrieval,
-            use_rag_query_expansion=policy.use_rag_query_expansion,
-            runtime_mode_decision=decision,
-            runtime_mode_policy=policy,
+            use_llm_guidance=_env_bool("MALLMIND_GUIDANCE_LLM", False),
+            use_milvus_retrieval=_env_bool("MALLMIND_MILVUS_RETRIEVAL", True),
+            use_rag_query_expansion=_env_bool("MALLMIND_RAG_QUERY_EXPANSION", False),
         )
 
     return StreamingResponse(
@@ -193,6 +153,13 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
         media_type="text/event-stream",
         headers={"content-type": "text/event-stream"},
     )
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 @router.post("/api/cart/actions")
