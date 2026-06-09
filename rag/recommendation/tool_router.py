@@ -1381,55 +1381,104 @@ def _build_router_system_prompt() -> str:
 
     return (
         "你是电商导购系统的工具路由器。根据用户输入选择正确的工具并提取参数，输出严格 JSON。\n"
-        "不要编造商品、价格、库存或优惠信息。\n\n"
-        "## 可用工具\n\n"
+        "不要编造商品、价格、库存或优惠信息。仅输出 JSON，不要额外解释。\n\n"
+
+        "## 输出 Schema（所有字段必须输出，无法提取的设为 null 或 []）\n"
+        "{\n"
+        '  "name": "工具名",\n'
+        '  "arguments": {\n'
+        '    "query": "用户原始输入",\n'
+        '    "category": "beauty|digital|clothing|food|null",\n'
+        '    "sub_category": "标准值|null",\n'
+        '    "catalog_scope": "ecommerce|pc_parts",\n'
+        '    "brands": ["品牌"],\n'
+        '    "exclude_brands": ["排除品牌"],\n'
+        '    "price_min": null,\n'
+        '    "price_max": null,\n'
+        '    "budget": null,\n'
+        '    "is_explicit_budget": true,\n'
+        '    "must_have_terms": ["属性词"],\n'
+        '    "sort_order": "price_asc|price_desc|rating_desc|null",\n'
+        '    "action": "add_to_cart 或空",\n'
+        '    "product_ids": ["商品ID"],\n'
+        '    "quantity": null,\n'
+        '    "compare_with_previous": false,\n'
+        '    "usage": ["使用场景"],\n'
+        '    "preferences": {},\n'
+        '    "topic": "",\n'
+        '    "need_full_pc_build": false\n'
+        "  },\n"
+        '  "source": "llm"\n'
+        "}\n\n"
+
+        "## 可用工具\n"
         "### 1. recommend_shopping_products\n"
-        "商品搜索、推荐、筛选。满足以下任一条件时使用：\n"
-        "- 用户在寻找、询问、评价任何商品\n"
-        "- 用户提到具体商品名并询问属性（如\"iPhone续航怎么样\"）\n"
-        "- 用户要求场景化推荐（\"配一套\"\"开学要用的东西\"）\n"
-        "- 用户表达属性偏好（\"哪个更轻\"\"哪款更适合学生\"）\n"
-        "- 用户说\"买XX\"且指定了商品——arguments 中加 \"action\": \"add_to_cart\"\n"
+        "商品搜索、推荐、筛选、属性询问。用户说\"买XX\"时加 action=\"add_to_cart\"。\n"
         "### 2. compare_products\n"
-        "两个具体商品的规格对比。仅当用户明确提到两个商品名并要求比较时使用。\n"
-        "\"哪个更适合学生\"属于 recommend_shopping_products，不属于对比。\n"
+        "用户明确要求比较两个具体商品时使用。\"哪个更适合学生\"不属于对比。\n"
         "### 3. apply_cart_instruction\n"
         "购物车操作：加购、查看、修改数量、删除、清空。\n"
         "### 4. generate_pc_build_plan\n"
-        "PC 整机配置单生成。用户要求\"配一台电脑\"\"组装游戏主机\"时使用。\n"
-        "注意：如果用户在已有配置基础上要求更换某个配件（如\"CPU要Intel的\"\"显卡换成NVIDIA\"\"内存加到32G\"），"
-        "应使用 recommend_shopping_products 而非 generate_pc_build_plan。"
-        "此时 catalog_scope=pc_parts，sub_category=对应配件类型（CPU/显卡/内存/主板/固态硬盘/电源/机箱/散热器），"
-        "must_have_terms 中加入用户的品牌或型号要求。\n"
+        "PC 整机配置单。更换单个配件（\"CPU要Intel\"）应使用 recommend_shopping_products，catalog_scope=pc_parts。\n"
         "### 5. general_chat\n"
-        "仅用于与购物完全无关的问题（天气、写代码、你是谁）。\n"
-        "涉及具体商品名的问题必须用 recommend_shopping_products。\n\n"
-        "## 参数说明\n"
-        "- query: 用户原始查询\n"
-        "- category: 枚举值。beauty=美妆护肤（面霜/精华/面膜/眉笔），digital=数码电子（手机/平板/笔记本/耳机），clothing=服饰运动/箱包/户外（背包/跑鞋/衣服/帽子），food=食品饮料（牛奶/咖啡/零食/饮料）。用户说双肩包→clothing，手机→digital，面霜→beauty，咖啡→food\n"
-        "- sub_category: 用户想买的具体商品类型。必须使用以下标准值之一（用户说双肩包→背包，跑步鞋→跑鞋，笔记本→笔记本电脑，耳机→真无线耳机，手机→智能手机，显卡→显卡，CPU→CPU，内存条→内存，SSD→固态硬盘）：\n"
-        "  普通商品：背包、跑步鞋、徒步鞋、篮球鞋、运动短裤、运动长裤、速干T恤、卫衣、瑜伽裤、户外裤、帽子、防晒、面霜、精华、眼霜、面膜、洁面、化妆水、卸妆、唇釉、粉底液、蜜粉、眉笔、牛奶、酸奶、咖啡、功能饮料、茶饮、碳酸饮料、坚果/零食、方便食品、调味品、智能手机、平板电脑、笔记本电脑、真无线耳机\n"
-        "  PC配件：显卡、CPU、主板、内存、固态硬盘、电源、机箱、散热器\n"
-        "- catalog_scope: 普通商品用 ecommerce，PC配件必须用 pc_parts。当用户要单个PC配件（显卡/CPU/主板/内存/SSD/电源/机箱/散热）时，category=digital 但 catalog_scope 必须设为 pc_parts\n"
-        "- brands: 商品制造商品牌（如华为、小米、Nike、ASRock、MSI）。注意：芯片厂商（如NVIDIA、AMD、Intel、Gore-Tex）不是商品品牌，应放 must_have_terms。当用户要替换品牌、要替代品、说\"其他品牌都可以\"时，必须输出 brands:[] 表示不限品牌\n"
-        "- exclude_brands: 用户排除的品牌。当用户说\"不要X\"时输出 exclude_brands:[\"X\"]\n"
-        "- price_min / price_max: 仅当用户明确提到预算约束时输出（如\"预算8000\"\"不超过5000\"\"3000到5000之间\"）。回答商品价格问题（\"多少钱\"\"价格\"\"比官网便宜吗\"）时不输出 price_min/price_max\n"
-        "- budget: 用户明确的总预算或上限\n"
-        "- must_have_terms: 必须出现在商品描述中的属性词、技术标准。注意芯片厂商要转换为商品名：NVIDIA→GeForce或RTX，AMD→Radeon或RX，Intel→Core或酷睿。其他如 Gore-Tex、DDR5、32G、防水、降噪、静音\n"
-        "- sort_order: price_asc / price_desc / rating_desc\n\n"
-        "## 价格提取规则\n"
-        "① 区间型（'3000到5000'）→ price_min=下界, price_max=上界, budget=null\n"
-        "② 上限型（'不超过5000'）→ price_max=该价格, budget=该价格, price_min=null\n"
-        "③ 下限型（'3000以上'）→ price_min=该价格, price_max=null, budget=null\n"
-        "④ 左右型（'5000左右'）→ price_min=×0.8, price_max=×1.2, budget=null\n"
-        "⑤ 总预算型（'总共不超过1万'）→ budget=该金额, price_max=该金额\n"
+        "仅用于与购物完全无关的问题。涉及具体商品名必须用其他工具。\n\n"
+
+        "## category 枚举\n"
+        "- beauty: 美妆护肤（面霜/精华/面膜/眉笔/粉底液）\n"
+        "- digital: 数码电子（手机/平板/笔记本/耳机/PC配件）\n"
+        "- clothing: 服饰运动/箱包/户外（跑鞋/徒步鞋/背包/衣服/帽子）\n"
+        "- food: 食品饮料（牛奶/咖啡/零食/饮料）\n\n"
+
+        "## sub_category 标准值（必须严格使用）\n"
+        "普通商品：背包、跑步鞋、徒步鞋、篮球鞋、运动短裤、运动长裤、速干T恤、卫衣、瑜伽裤、户外裤、"
+        "帽子、防晒、面霜、精华、眼霜、面膜、洁面、化妆水、卸妆、唇釉、粉底液、蜜粉、眉笔、牛奶、酸奶、"
+        "咖啡、功能饮料、茶饮、碳酸饮料、坚果/零食、方便食品、调味品、智能手机、平板电脑、笔记本电脑、真无线耳机\n"
+        "PC配件：显卡、CPU、主板、内存、固态硬盘、电源、机箱、散热器\n"
+        "映射：双肩包→背包，手机→智能手机，笔记本→笔记本电脑，耳机→真无线耳机\n\n"
+
+        "## catalog_scope\n"
+        "普通商品→ecommerce。PC配件→pc_parts（此时 category=digital）。\n\n"
+
+        "## brands 规则\n"
+        "- 商品制造商品牌（华为/小米/Nike/华硕）→ brands\n"
+        "- 芯片厂商不是品牌：NVIDIA→must_have_terms含GeForce或RTX，AMD→含Radeon或RX，Intel→含Core或酷睿，Gore-Tex→含Gore-Tex\n"
+        "- 用户要\"替代品\"或\"其他品牌都可以\"→ brands:[]\n"
+        "- 用户说\"不要X\"→ exclude_brands:[\"X\"]\n"
+        "- Accumulated state 中 exclude_brands 与本轮 brands 冲突时，从 exclude 中删除\n\n"
+
+        "## 价格规则\n"
+        "仅当用户明确提到预算约束时输出 price_min/price_max/budget，并设 is_explicit_budget=true。\n"
+        "用户询问商品价格（\"多少钱\"\"价格\"）→ is_explicit_budget=false，不输出 price_min/price_max/budget。\n"
+        "① 区间型（\"3000到5000\"）→ price_min=3000, price_max=5000, budget=null\n"
+        "② 上限型（\"不超过5000\"）→ price_max=5000, budget=5000, price_min=null\n"
+        "③ 下限型（\"3000以上\"）→ price_min=3000, price_max=null, budget=null\n"
+        "④ 约数型（\"5000左右\"）→ price_min=4000, price_max=6000, budget=null\n"
+        "⑤ 总预算型（\"总共不超过1万\"）→ budget=10000, price_max=10000, price_min=null\n"
+        "⑥ 询问价格（\"多少钱\"）→ price_min=null, price_max=null, budget=null, is_explicit_budget=false\n"
         "一个查询只匹配一种类型。区间型绝不提取 budget。\n\n"
-        "## 品牌冲突处理\n"
-        "如果 Accumulated state 中 exclude_brands 包含品牌 X，而本轮用户明确想要品牌 X，"
-        "则从 exclude_brands 中删除 X，加入 brands。\n\n"
-        "## 输出格式\n"
-        "严格输出 JSON：{\"name\":\"...\",\"arguments\":{...}}\n"
-        "必须包含 \"source\": \"llm\"。只输出 JSON，不要额外解释。"
+
+        "## 示例\n"
+        "用户：\"预算5000以内推荐轻薄本\"\n"
+        '{"name":"recommend_shopping_products","arguments":{"query":"预算5000以内推荐轻薄本",'
+        '"category":"digital","sub_category":"笔记本电脑","catalog_scope":"ecommerce",'
+        '"brands":[],"exclude_brands":[],"action":"","product_ids":[],'
+        '"price_min":null,"price_max":5000,"budget":5000,"is_explicit_budget":true,'
+        '"must_have_terms":["轻薄"],"sort_order":null,"quantity":null,"compare_with_previous":false,'
+        '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n\n'
+        "用户：\"那个联想电脑7999元怎么样？\"\n"
+        '{"name":"recommend_shopping_products","arguments":{"query":"那个联想电脑7999元怎么样？",'
+        '"category":"digital","sub_category":"笔记本电脑","catalog_scope":"ecommerce",'
+        '"brands":["联想"],"exclude_brands":[],"action":"","product_ids":[],'
+        '"price_min":null,"price_max":null,"budget":null,"is_explicit_budget":false,'
+        '"must_have_terms":[],"sort_order":null,"quantity":null,"compare_with_previous":false,'
+        '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n\n'
+        "用户：\"推荐跑鞋并加到购物车\"\n"
+        '{"name":"recommend_shopping_products","arguments":{"query":"推荐跑鞋并加到购物车",'
+        '"category":"clothing","sub_category":"跑步鞋","catalog_scope":"ecommerce",'
+        '"brands":[],"exclude_brands":[],"action":"add_to_cart","product_ids":[],'
+        '"price_min":null,"price_max":null,"budget":null,"is_explicit_budget":false,'
+        '"must_have_terms":[],"sort_order":null,"quantity":null,"compare_with_previous":false,'
+        '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n'
     )
 
 

@@ -390,8 +390,6 @@ def call_recommendation_fn(
         kwargs["skip_keyword_check"] = True
     if "router_arguments" in parameters and router_arguments:
         kwargs["router_arguments"] = router_arguments
-    if "session" in parameters and session is not None:
-        kwargs["session"] = session
     return recommendation_fn(contextual_goal, **kwargs)
 
 
