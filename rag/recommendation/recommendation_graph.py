@@ -75,35 +75,6 @@ class RecommendationGraph:
             yield RecommendationGraphEvent("result", _model_to_dict(state.result))
         yield RecommendationGraphEvent("done", {"label": "推荐完成"})
 
-    def run(
-        self,
-        goal: str,
-        *,
-        attachments: Optional[List[Dict[str, Any]]] = None,
-        use_llm: bool = True,
-        use_guidance_llm: bool = False,
-        use_milvus_retrieval: bool = True,
-        use_rag_query_expansion: bool = False,
-    ) -> RecommendationResult:
-        state = RecommendationGraphState(
-            goal=goal,
-            attachments=list(attachments or []),
-            use_llm=use_llm,
-            use_guidance_llm=use_guidance_llm,
-            use_milvus_retrieval=use_milvus_retrieval,
-            use_rag_query_expansion=use_rag_query_expansion,
-        )
-        validate_business_goal(state.goal)
-        state.requirement = parse_requirement(state.goal, use_llm=state.use_llm)
-        state.catalog = load_product_catalog()
-        state.result = build_recommendation_result(
-            state.requirement,
-            catalog=state.catalog,
-            use_milvus_retrieval=state.use_milvus_retrieval,
-            use_rag_query_expansion=state.use_rag_query_expansion,
-        )
-        return enrich_recommendation_result(state.result, use_llm=state.use_guidance_llm and LLM_GUIDANCE_ENABLED)
-
     def _validate_goal(self, state: RecommendationGraphState) -> Iterator[RecommendationGraphEvent]:
         yield _step("正在校验业务目标", state.goal)
         validate_business_goal(state.goal)

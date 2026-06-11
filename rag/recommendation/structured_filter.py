@@ -34,6 +34,9 @@ class FilterDiagnostics:
     raw_count: int = 0
     after_stock_count: int = 0
     after_exclusion_count: int = 0
+    after_brand_whitelist_count: int = 0
+    brand_whitelist_applied: bool = False
+    brand_whitelist_relaxed: bool = False
     after_target_count: int = 0
     after_must_have_count: int = 0
     after_budget_count: int = 0
@@ -56,6 +59,9 @@ class FilterDiagnostics:
             "raw_count": self.raw_count,
             "after_stock_count": self.after_stock_count,
             "after_exclusion_count": self.after_exclusion_count,
+            "after_brand_whitelist_count": self.after_brand_whitelist_count,
+            "brand_whitelist_applied": self.brand_whitelist_applied,
+            "brand_whitelist_relaxed": self.brand_whitelist_relaxed,
             "after_target_count": self.after_target_count,
             "after_must_have_count": self.after_must_have_count,
             "after_budget_count": self.after_budget_count,
@@ -88,6 +94,25 @@ def filter_products_for_requirement(
         for product in stock_filtered
         if not violates_brand_or_text_exclusion(requirement, product)
     ]
+
+    # ── 品牌白名单硬过滤 ──
+    # requirement.brands 此前仅做 scorer 加分（soft boost），不做硬过滤，
+    # 导致 brands=["华为"] 时仍可能返回 MacBook Air。
+    # 新增：品牌白名单硬过滤 + 安全降级（过滤后为空则保留过滤前结果）。
+    brand_whitelist_applied = False
+    brand_whitelist_relaxed = False
+    if requirement.brands:
+        brand_filtered = [
+            product for product in exclusion_filtered
+            if _matches_brand_requirement(product, requirement.brands)
+        ]
+        if brand_filtered:
+            exclusion_filtered = brand_filtered
+            brand_whitelist_applied = True
+        else:
+            # 安全降级：品牌过滤后为空，保留过滤前结果
+            brand_whitelist_relaxed = True
+
     target_filtered = [
         product
         for product in exclusion_filtered
@@ -188,6 +213,9 @@ def filter_products_for_requirement(
         raw_count=len(raw),
         after_stock_count=len(stock_filtered),
         after_exclusion_count=len(exclusion_filtered),
+        after_brand_whitelist_count=len(exclusion_filtered) if brand_whitelist_applied else len(exclusion_filtered),
+        brand_whitelist_applied=brand_whitelist_applied,
+        brand_whitelist_relaxed=brand_whitelist_relaxed,
         after_target_count=len(target_filtered),
         after_must_have_count=len(must_have_filtered),
         after_budget_count=len(budget_filtered),
@@ -277,6 +305,25 @@ def collect_product_text(product: ApiProduct) -> str:
 
 def normalize(value: object) -> str:
     return "".join(ch.lower() for ch in str(value or "") if ch.isalnum() or "\u4e00" <= ch <= "\u9fff")
+
+
+def _matches_brand_requirement(product: ApiProduct, brands: List[str]) -> bool:
+    """Check if a product's brand matches any of the required brands.
+
+    Uses normalized comparison to handle sub-brands and aliases.
+    E.g. brands=["华为"] matches product.brand="HUAWEI" or "华为".
+    """
+    if not product.brand:
+        return False
+    product_brand_norm = normalize(product.brand)
+    for required_brand in brands:
+        required_norm = normalize(required_brand)
+        if not required_norm:
+            continue
+        # 双向子串匹配：处理子品牌和别名
+        if required_norm in product_brand_norm or product_brand_norm in required_norm:
+            return True
+    return False
 
 
 # ── LLM filter layer ────────────────────────────────────────────────────

@@ -98,16 +98,6 @@ def merge_requirement_memory(session: Any, requirement: Any, message: str) -> Di
     return merged
 
 
-def session_context_for_llm(session: Any) -> Dict[str, Any]:
-    """Return compact, bounded memory safe to pass to LLM prompts."""
-
-    return {
-        "last_requirement": dict(getattr(session, "last_requirement", {}) or {}),
-        "recent_turns_summary": str(getattr(session, "recent_turns_summary", "") or ""),
-        "recent_turns": list(getattr(session, "recent_turns", []) or [])[-RECENT_TURN_LIMIT:],
-        "last_result_product_ids": _last_result_ids(getattr(session, "last_result", {}) or {}),
-        "failure_state": dict(getattr(session, "failure_state", {}) or {}),
-    }
 
 
 def _starts_new_topic(message: str, current: Dict[str, Any], previous: Dict[str, Any]) -> bool:

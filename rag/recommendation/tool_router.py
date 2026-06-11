@@ -19,6 +19,7 @@ from rag.recommendation.session_state import (
     extract_product_ids,
     last_recommended_product_ids,
 )
+from rag.schemas.recommendation import CATEGORY_NAME_TO_KEY, ComponentCategory
 from rag.utils.catalog_scope import normalize_catalog_scope
 
 
@@ -28,6 +29,9 @@ ALLOWED_TOOL_NAMES = {
     "compare_products",
     "apply_cart_instruction",
     "general_chat",
+    "parameter_query",
+    "sku_detail",
+    "price_comparison",
 }
 LOCAL_ROUTE_NAMES = [
     "recommend_shopping_products",
@@ -35,6 +39,9 @@ LOCAL_ROUTE_NAMES = [
     "compare_products",
     "apply_cart_instruction",
     "general_chat",
+    "parameter_query",
+    "sku_detail",
+    "price_comparison",
 ]
 
 TOOL_SCHEMAS_FOR_PROMPT: List[Dict[str, Any]] = [
@@ -116,6 +123,53 @@ TOOL_SCHEMAS_FOR_PROMPT: List[Dict[str, Any]] = [
     {
         "type": "function",
         "function": {
+            "name": "parameter_query",
+            "description": "查询特定商品的具体参数/规格，如功耗、重量、尺寸、是否支持某功能等。用户已明确指向某款商品且只问一个属性。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string"},
+                    "product_mentions": {"type": "array", "items": {"type": "string"}, "description": "用户提到的具体商品型号"},
+                    "attribute": {"type": "string", "description": "用户询问的属性（功耗/重量/尺寸/NFC等）"},
+                },
+                "required": ["query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "sku_detail",
+            "description": "查询同一商品不同 SKU 变体（如不同存储/内存配置）之间的价格差异。用户消息中包含具体配置参数对比（如'12+256和16+512差多少'）。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string"},
+                    "product_mentions": {"type": "array", "items": {"type": "string"}, "description": "用户提到的商品型号"},
+                    "sku_criteria": {"type": "string", "description": "SKU 筛选条件（如'12+256'、'32G+1TB'）"},
+                },
+                "required": ["query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "price_comparison",
+            "description": "价格比较/价格确认类问题，如'比官网便宜吗'、'京东上这款多少钱'。用户关心的是价格而非推荐新商品。",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string"},
+                    "product_mentions": {"type": "array", "items": {"type": "string"}, "description": "用户提到的商品型号"},
+                },
+                "required": ["query"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
             "name": "general_chat",
             "description": "回答与购物执行无关的系统说明、身份、使用方式、推荐逻辑、路由原因或闲聊问题。",
             "parameters": {
@@ -130,20 +184,6 @@ TOOL_SCHEMAS_FOR_PROMPT: List[Dict[str, Any]] = [
     },
 ]
 TOOL_SCHEMAS = TOOL_SCHEMAS_FOR_PROMPT
-ROUTED_CALL_SCHEMA: Dict[str, Any] = {
-    "name": "工具名",
-    "reason": "选择依据",
-    "arguments": {
-        "query": "",
-        "budget": None,
-        "category": "",
-        "usage": [],
-        "preferences": {},
-        "product_ids": [],
-        "catalog_scope": "ecommerce",
-    },
-}
-
 PC_STRONG_TERMS = [
     "整机",
     "主机",
@@ -552,6 +592,32 @@ BRAND_OR_PRODUCT_TERMS = [
 
 PC_BUILD_TERMS_ZH = PC_BUILD_STRONG_TERMS_ZH
 
+# ── 新增意图检测词表 ──
+# 参数查询：用户问某个具体属性
+PARAMETER_QUERY_TERMS = [
+    "功耗多少", "功率多少", "重量多少", "多重", "多大", "尺寸多少",
+    "支持NFC", "有没有NFC", "防水", "防尘", "刷新率",
+    "屏幕尺寸", "电池容量", "内存多大", "存储多大",
+    "散热怎么样", "噪音多少",
+]
+# SKU 查询：用户对比同一商品不同配置
+SKU_DETAIL_PATTERNS = [
+    r"\d+\+\d+.*差",           # "12+256和16+512差多少"
+    r"\d+[gG].*\d+[gG].*差",   # "16G和32G差多少"
+    r"\d+[tT].*差",             # "1T和2T差多少"
+    r"标准版.*Pro.*差",         # "标准版和Pro版差价"
+    r"差价",                     # 直接提到"差价"
+    r"差多少钱",                 # "差多少钱"
+    r"哪个配置",                 # "哪个配置更划算"
+]
+# 价格比较/确认：用户在确认价格而非搜索新商品
+PRICE_COMPARISON_TERMS = [
+    "比官网便宜", "比官网贵", "比京东", "比天猫",
+    "官方价", "官网价", "市场价", "零售价",
+    "这个价格怎么样", "值不值", "划算吗",
+    "便宜吗", "贵吗",
+]
+
 
 class RoutedArguments(BaseModel):
     model_config = ConfigDict(extra="allow")
@@ -562,6 +628,9 @@ class RoutedArguments(BaseModel):
     usage: List[str] = Field(default_factory=list)
     preferences: Dict[str, Any] = Field(default_factory=dict)
     product_ids: List[str] = Field(default_factory=list)
+    product_mentions: List[str] = Field(default_factory=list)
+    attribute: str = ""
+    sku_criteria: str = ""
     catalog_scope: str = "ecommerce"
     compare_with_previous: bool = False
     quantity: Optional[int] = None
@@ -569,7 +638,7 @@ class RoutedArguments(BaseModel):
     topic: str = ""
     need_full_pc_build: bool = False
 
-    @field_validator("usage", "product_ids", mode="before")
+    @field_validator("usage", "product_ids", "product_mentions", mode="before")
     @classmethod
     def _coerce_string_list(cls, value: Any) -> List[str]:
         if value is None:
@@ -654,6 +723,124 @@ def route_shopping_tool_call(message: str, session: ShoppingSession, *, use_llm:
     return local
 
 
+# ── 🟢 新增: 路由输出校验层 (②.5) ──
+
+_CATEGORY_WHITELIST = {c.value for c in ComponentCategory}
+_MAX_PRICE = 500000
+_MIN_SANE_PRICE = 50
+_MAX_BRANDS = 50
+# 闲聊信号词（LLM 误判推荐时的降级依据）
+_GENERAL_CHAT_SIGNALS = {"你好", "谢谢", "再见", "帮助", "怎么用", "你是谁", "hello", "hi", "hey", "thanks"}
+
+
+def validate_tool_call(
+    tool_call: Dict[str, Any],
+    local_result: Dict[str, Any],
+    message: str,
+    session: ShoppingSession,
+) -> Dict[str, Any]:
+    """Validate and sanitize a routed tool call before dispatch.
+
+    Returns the validated (possibly downgraded) tool_call dict.  Adds
+    ``validation`` metadata to the routing_trace so the caller can
+    inspect guard decisions.
+
+    校验步骤:
+    1. 工具名白名单
+    2. 入参值域裁剪
+    3. 路由争议检测（LLM vs 本地规则）
+    """
+    name = tool_call.get("name", "general_chat")
+    args = dict(tool_call.get("arguments") or {})
+    trace = dict(tool_call.get("routing_trace") or {})
+    validation: Dict[str, Any] = {"passed": True, "issues": []}
+    downgraded = False
+    downgrade_reason = ""
+
+    # ── 白名单校验 ──
+    if name not in ALLOWED_TOOL_NAMES:
+        validation["issues"].append(f"unknown_tool:{name}")
+        validation["passed"] = False
+        name = "general_chat"
+        args = {"query": message}
+        downgraded = True
+        downgrade_reason = f"unknown_tool:{name}"
+
+    # ── 值域裁剪 ──
+    price_key = next((k for k in ("price_max", "budget") if k in args and args[k] is not None), None)
+    if price_key is not None:
+        try:
+            price_val = float(args[price_key])
+        except (TypeError, ValueError):
+            price_val = 0.0
+        if price_val > _MAX_PRICE:
+            args[price_key] = _MAX_PRICE
+            validation["issues"].append(f"price_clamped:{price_val}->{_MAX_PRICE}")
+        if price_val < _MIN_SANE_PRICE and name not in {"generate_pc_build_plan"} and price_val > 0:
+            validation["issues"].append(f"budget_insane:{price_val}")
+
+    # ── category 枚举校验 ──
+    if args.get("category") and args["category"] not in _CATEGORY_WHITELIST:
+        # 也接受非 PC 的中文分类名
+        if args["category"] not in CATEGORY_NAME_TO_KEY and args["category"] not in {"pc_build", "pc_part"}:
+            validation["issues"].append(f"unknown_category:{args['category']}")
+            # 不清除 category — 下游 structured_filter 会忽略未知值
+
+    # ── brands 列表截断 ──
+    for list_key in ("brands", "exclude_brands"):
+        if list_key in args and isinstance(args[list_key], list) and len(args[list_key]) > _MAX_BRANDS:
+            args[list_key] = args[list_key][:_MAX_BRANDS]
+            validation["issues"].append(f"{list_key}_truncated:>{_MAX_BRANDS}")
+
+    # ── LLM vs 本地规则争议检测 ──
+    local_name = local_result.get("name", "")
+    source = trace.get("router_final_source", "")
+    llm_vs_local_conflict = False
+
+    if source == "llm" and local_name and local_name != name:
+        # LLM 说 recommend 但 message 包含闲聊信号
+        if name in {"recommend_shopping_products", "compare_products"} and any(
+            signal in (message or "").lower() for signal in _GENERAL_CHAT_SIGNALS
+        ):
+            validation["issues"].append("llm_recommend_on_chat_signal")
+            validation["passed"] = False
+            name = local_name
+            downgraded = True
+            downgrade_reason = "llm_recommend_on_chat_signal"
+            llm_vs_local_conflict = True
+        # LLM 说 general_chat 但 message 含明确购物信号 + 本地规则识别到
+        elif name == "general_chat" and local_name in {
+            "recommend_shopping_products",
+            "compare_products",
+            "generate_pc_build_plan",
+        }:
+            validation["issues"].append("llm_chat_on_shopping_signal")
+            validation["passed"] = False
+            name = local_name
+            args = dict(local_result.get("arguments") or args)
+            downgraded = True
+            downgrade_reason = "llm_chat_on_shopping_signal"
+            llm_vs_local_conflict = True
+
+    if llm_vs_local_conflict:
+        validation["conflict"] = {"llm": name, "local": local_name, "resolved_to": name}
+
+    # ── 组装返回 ──
+    validated: Dict[str, Any] = {
+        **tool_call,
+        "name": name,
+        "arguments": args,
+    }
+    if downgraded:
+        validated["downgraded"] = True
+        validated["downgrade_reason"] = downgrade_reason
+    validated["routing_trace"] = {
+        **trace,
+        "validation": validation,
+    }
+    return validated
+
+
 def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]:
     text = message or ""
     lowered = text.lower()
@@ -725,6 +912,12 @@ def local_route_tool_call(message: str, session: ShoppingSession) -> Dict[str, A
     if _looks_like_compare_request(text):
         slots["compare_with_previous"] = _mentions_previous(text)
         return _attach_route_scores(_tool_call("compare_products", slots, "本地规则识别到商品或历史方案对比请求。", "rules"), score_info)
+    if _has_sku_detail_intent(text):
+        return _attach_route_scores(_tool_call("sku_detail", slots, "本地规则识别到 SKU 配置级价格查询。", "rules"), score_info)
+    if _has_price_comparison_intent(text):
+        return _attach_route_scores(_tool_call("price_comparison", slots, "本地规则识别到价格比较/确认请求。", "rules"), score_info)
+    if _has_parameter_query_intent(text):
+        return _attach_route_scores(_tool_call("parameter_query", slots, "本地规则识别到商品参数/规格查询。", "rules"), score_info)
     if _has_pc_intent(text, lowered):
         return _attach_route_scores(_tool_call("generate_pc_build_plan", slots, "本地规则识别到整机、装机或多配件组合需求。", "rules"), score_info)
     if topic.get("topic_type") == "pc_build" and _looks_like_pc_followup(text, lowered):
@@ -790,9 +983,11 @@ def try_llm_route_tool_call(message: str, session: ShoppingSession) -> tuple[Opt
     except (ValidationError, json.JSONDecodeError):
         _record_router_llm_failure()
         return None, "llm_json_invalid"
-    except LLMClientError as exc:
+    except (LLMClientError, ConnectionError, PermissionError, OSError) as exc:
         _record_router_llm_failure()
         text = str(exc).lower()
+        if isinstance(exc, (ConnectionError, PermissionError, OSError)):
+            return None, "network_error"
         return None, "llm_timeout" if "timeout" in text or "timed out" in text else "llm_provider_error"
     except (ValueError, TypeError):
         _record_router_llm_failure()
@@ -844,26 +1039,6 @@ def extract_slots_rule_based(text: str) -> Dict[str, Any]:
     return slots
 
 
-def normalize_tool_arguments(name: str, arguments: Dict[str, Any]) -> Dict[str, Any]:
-    args = dict(arguments or {})
-    if name == "generate_pc_build_plan":
-        args["need_full_pc_build"] = True
-        args["category"] = "pc_build"
-        args.pop("catalog_scope", None)
-        args["domain"] = "pc_build"
-    elif name in {"compare_products", "apply_cart_instruction"}:
-        args["catalog_scope"] = "combined"
-    elif name == "recommend_shopping_products":
-        args["catalog_scope"] = normalize_catalog_scope(args.get("catalog_scope"))
-        if args.get("category") == "pc_part":
-            args["catalog_scope"] = "pc_parts"
-    if name in {"recommend_shopping_products", "general_chat", "compare_products", "apply_cart_instruction"}:
-        args.setdefault("query", "")
-    if name == "compare_products":
-        product_ids = args.get("product_ids")
-        args["product_ids"] = product_ids if isinstance(product_ids, list) else []
-        args["compare_with_previous"] = bool(args.get("compare_with_previous"))
-    return args
 
 
 def extract_budget(text: str) -> Optional[float]:
@@ -970,78 +1145,6 @@ def infer_catalog_scope_for_message(text: str) -> str:
     return "ecommerce"
 
 
-def merge_route_arguments(llm_args: Dict[str, Any], rule_args: Dict[str, Any]) -> Dict[str, Any]:
-    """Merge LLM router output with rule-based extraction.
-
-    Priority: LLM values take precedence for fields the LLM extracts more
-    accurately (budget, price_min/max, exclude_brands, brands, etc.).
-    Rule-based extraction fills gaps when the LLM did not produce a value.
-    """
-    merged = dict(llm_args or {})
-    merged["query"] = rule_args.get("query") or merged.get("query") or ""
-
-    # ── product_ids: union of both ──
-    rule_ids = rule_args.get("product_ids") if isinstance(rule_args.get("product_ids"), list) else []
-    llm_ids = merged.get("product_ids") if isinstance(merged.get("product_ids"), list) else []
-    merged["product_ids"] = _dedupe_strings([*llm_ids, *rule_ids])
-
-    # ── category: LLM first, rule fills gap ──
-    if not merged.get("category") and rule_args.get("category"):
-        merged["category"] = rule_args["category"]
-
-    merged["catalog_scope"] = normalize_catalog_scope(
-        rule_args.get("catalog_scope") or merged.get("catalog_scope") or "ecommerce"
-    )
-
-    # ── budget: LLM value takes priority ──
-    # LLM 能区分 price_min/price_max/budget 的完整语义；
-    # extract_budget 仅作为 LLM 不可用时的 fallback。
-    if "budget" not in llm_args or llm_args["budget"] is None:
-        if rule_args.get("budget") is not None:
-            merged["budget"] = rule_args["budget"]
-    # else: keep LLM value (already in merged from dict(llm_args))
-
-    # ── usage: union of both ──
-    merged_usage = []
-    if isinstance(merged.get("usage"), list):
-        merged_usage.extend(str(item) for item in merged["usage"] if str(item).strip())
-    if isinstance(rule_args.get("usage"), list):
-        merged_usage.extend(str(item) for item in rule_args["usage"] if str(item).strip())
-    merged["usage"] = _dedupe_strings(merged_usage)
-
-    # ── preferences: rule fills gaps in LLM ──
-    preferences = {}
-    if isinstance(merged.get("preferences"), dict):
-        preferences.update(merged["preferences"])
-    if isinstance(rule_args.get("preferences"), dict):
-        preferences.update(rule_args["preferences"])
-    merged["preferences"] = preferences
-
-    # ── LLM-exclusive structured fields ──
-    # These are extracted by the LLM with full context; rule layer does not produce them.
-    # Only carry forward if the LLM provided a non-empty value.
-    for field in ("price_min", "price_max", "exclude_brands", "brands",
-                  "must_have_terms", "excluded_terms", "target_sub_categories"):
-        llm_val = llm_args.get(field)
-        if llm_val is not None and llm_val != [] and llm_val != "":
-            merged[field] = llm_val
-        elif field not in llm_args:
-            rule_val = rule_args.get(field)
-            if rule_val is not None and rule_val != [] and rule_val != "":
-                merged[field] = rule_val
-
-    # ── sort_order: LLM first, rule fills gap ──
-    _llm_priority_simple = ("sort_order",)
-    for field in _llm_priority_simple:
-        llm_val = llm_args.get(field)
-        if llm_val is not None and llm_val != "":
-            merged[field] = llm_val
-        elif field not in llm_args and rule_args.get(field):
-            merged[field] = rule_args[field]
-
-    return merged
-
-
 def _has_pc_intent(text: str, lowered: str) -> bool:
     raw = text or ""
 
@@ -1116,7 +1219,8 @@ def is_pc_build_followup(message: str, session: ShoppingSession) -> bool:
         return False
 
     previous_plan_terms = ["上一套", "上套", "刚才那套", "之前那套", "这套", "现在这套", "方案", "配置", "整机", "装机", "主机"]
-    adjust_terms = ["换成", "换强", "换", "升级", "降到", "降低", "加到", "减到", "压到", "预算", "保留", "其他配件", "强一点", "更强", "便宜点"]
+    adjust_terms = ["换成", "换强", "换", "升级", "降到", "降低", "加到", "减到", "压到", "预算", "保留", "其他配件", "强一点", "更强", "便宜点",
+                    "不要", "只要", "改成", "不用", "要Intel", "要AMD", "要NVIDIA"]  # 🟢 扩展品牌拒绝/偏好词
     pc_part_terms = ["显卡", "gpu", "cpu", "处理器", "主板", "内存", "硬盘", "ssd", "电源", "机箱", "散热", "风冷", "水冷"]
     compare_terms = ["差别", "区别", "对比", "比较", "哪里不一样", "提升在哪"]
 
@@ -1124,6 +1228,10 @@ def is_pc_build_followup(message: str, session: ShoppingSession) -> bool:
     has_adjustment = any(term in text or term in lowered for term in adjust_terms)
     has_pc_part = any(term in text or term in lowered for term in pc_part_terms)
     has_compare = any(term in text for term in compare_terms)
+
+    # 🟢 新增分支 D：有PC配件词 + session中有PC构建历史 → 直接判为followup
+    if has_pc_part and bool(getattr(session, "pc_build_history", None)):
+        return True
 
     if has_previous_reference and (has_adjustment or has_compare or has_pc_part):
         return True
@@ -1156,23 +1264,26 @@ def _has_cart_intent(text: str) -> bool:
     return bool(re.search(r"把(这个|它|这套|以上|第?\d+个).{0,8}(加入|加到|放进).{0,4}(车|购物车)", text or ""))
 
 
+def _has_sku_detail_intent(text: str) -> bool:
+    """Detect SKU-level queries: price differences between configurations."""
+    import re as _re
+    return any(_re.search(pat, text) for pat in SKU_DETAIL_PATTERNS)
+
+
+def _has_parameter_query_intent(text: str) -> bool:
+    """Detect parameter/spec queries about a specific product."""
+    return any(term in text for term in PARAMETER_QUERY_TERMS)
+
+
+def _has_price_comparison_intent(text: str) -> bool:
+    """Detect price comparison/confirmation queries (not product search)."""
+    return any(term in text for term in PRICE_COMPARISON_TERMS)
+
+
 def _looks_like_compare_request(text: str) -> bool:
     return any(term in text for term in COMPARE_TERMS)
 
 
-def _should_compare_products(text: str, topic: Dict[str, Any], arguments: Dict[str, Any], session: ShoppingSession) -> bool:
-    product_ids = arguments.get("product_ids") if isinstance(arguments.get("product_ids"), list) else []
-    if len(product_ids) >= 2:
-        return True
-    if _compare_entity_count(text) >= 2:
-        return True
-    if _last_result_product_count(session) >= 2 and _looks_like_contextual_compare(text):
-        return True
-    if _mentions_previous(text) and topic.get("topic_type") in {"pc_build", "comparison", "normal_product", "ecommerce_recommendation", "single_pc_part"}:
-        return True
-    if any(term in text.lower() for term in [" vs ", "vs", "pk"]):
-        return True
-    return False
 
 
 def _mentions_previous(text: str) -> bool:
@@ -1383,6 +1494,25 @@ def _build_router_system_prompt() -> str:
         "你是电商导购系统的工具路由器。根据用户输入选择正确的工具并提取参数，输出严格 JSON。\n"
         "不要编造商品、价格、库存或优惠信息。仅输出 JSON，不要额外解释。\n\n"
 
+        # 🟢 新增: 推荐模式选择规则
+        "## 推荐模式选择规则\n"
+        "系统支持三种推荐模式，请根据用户需求和上下文选择:\n\n"
+        "1. **单品推荐** (recommend_shopping_products, need_bundle=false)\n"
+        "   - 用户只需要单个品类的一个商品（面霜、耳机、手机）\n"
+        "   - 用户提到单个 PC 配件（\"推荐一款显卡\"）→ catalog_scope=pc_parts\n\n"
+        "2. **组合推荐** (recommend_shopping_products, need_bundle=true)\n"
+        "   - 用户需要多个互补商品（\"去三亚的防晒一套\"、\"配齐护肤套装\"）\n"
+        "   - 触发词：一套、全套、搭配、组合、套装、穿搭、配齐、旅行装备\n\n"
+        "3. **PC 整机方案** (generate_pc_build_plan)\n"
+        "   - 用户要配完整的电脑主机\n"
+        "   - 触发词：配电脑、装机、整机、配置单、配一台\n"
+        "   - 如果已在 PC 构建话题中，后续修改也继续使用此工具\n\n"
+        "## 话题切换判断\n"
+        "- 如果 Accumulated state 显示 PC 构建话题，用户说\"换个话题，推荐手机\"→ 切换为单品推荐\n"
+        "- 如果当前是商品推荐话题，用户说\"配台电脑\"→ 切换为 PC 整机方案\n"
+        "- 用户说\"不要了\"\"算了\"\"看看别的\"→ 可能是话题切换，根据后续内容重新判断\n"
+        "- 不确定时，优先保持当前话题\n\n"
+
         "## 输出 Schema（所有字段必须输出，无法提取的设为 null 或 []）\n"
         "{\n"
         '  "name": "工具名",\n'
@@ -1401,6 +1531,9 @@ def _build_router_system_prompt() -> str:
         '    "sort_order": "price_asc|price_desc|rating_desc|null",\n'
         '    "action": "add_to_cart 或空",\n'
         '    "product_ids": ["商品ID"],\n'
+        '    "product_mentions": ["用户提到的具体商品型号"],\n'
+        '    "attribute": "用户询问的属性（仅 parameter_query）",\n'
+        '    "sku_criteria": "SKU筛选条件（仅 sku_detail）",\n'
         '    "quantity": null,\n'
         '    "compare_with_previous": false,\n'
         '    "usage": ["使用场景"],\n'
@@ -1419,9 +1552,24 @@ def _build_router_system_prompt() -> str:
         "### 3. apply_cart_instruction\n"
         "购物车操作：加购、查看、修改数量、删除、清空。\n"
         "### 4. generate_pc_build_plan\n"
-        "PC 整机配置单。更换单个配件（\"CPU要Intel\"）应使用 recommend_shopping_products，catalog_scope=pc_parts。\n"
+        "PC 整机配置单。用于：(1) 新装机需求，(2) 对已有PC方案的修改（换CPU品牌、加内存、改预算、换显卡等）。\n"
+        "如果 Accumulated state 显示上一轮使用了 generate_pc_build_plan，且用户新消息是对已有方案的修改，"
+        "必须继续使用 generate_pc_build_plan，不得切换到 recommend_shopping_products。\n"
+        "PC方案修改的例子：\"CPU要Intel的，不要AMD\"、\"内存升级到32G\"、\"显卡换成RTX 4070\"、\"预算加到一万\"。\n"
         "### 5. general_chat\n"
-        "仅用于与购物完全无关的问题。涉及具体商品名必须用其他工具。\n\n"
+        "仅用于与购物完全无关的问题。涉及具体商品名必须用其他工具。\n"
+        "### 6. parameter_query\n"
+        "用户已明确指向某款商品，只问一个具体参数/规格（功耗、重量、尺寸、是否支持某功能）。\n"
+        "必须提取 product_mentions（商品型号）和 attribute（属性名）。\n"
+        "示例：\"这个显卡功耗多少\"→ product_mentions:[\"该显卡\"], attribute:\"功耗\"\n\n"
+        "### 7. sku_detail\n"
+        "用户询问同一商品不同配置/变体之间的价格差异。\n"
+        "触发模式：\"12+256和16+512差多少\"、\"32G+1TB什么价\"、\"标准版和Pro版差价\"。\n"
+        "必须提取 product_mentions 和 sku_criteria。\n\n"
+        "### 8. price_comparison\n"
+        "用户关心的是价格信息而非推荐新商品。\n"
+        "触发模式：\"比官网便宜吗\"、\"京东上这款多少钱\"、\"这个价格怎么样\"。\n"
+        "与 recommend_shopping_products 的区别：用户不是在搜索新商品，而是在确认/比较已知商品的价格。\n\n"
 
         "## category 枚举\n"
         "- beauty: 美妆护肤（面霜/精华/面膜/眉笔/粉底液）\n"
@@ -1505,6 +1653,14 @@ def _build_router_user_prompt(message: str, session=None) -> str:
             parts.append(f"Recent queries: {queries_str}")
         if chat_topic:
             parts.append(f"Chat topic: {chat_topic}")
+
+        # 🟢 注入 topic_memory 的关键上下文（话题类型 + 路由来源）
+        topic = getattr(session, "topic_memory", None) or {}
+        topic_type = topic.get("topic_type", "")
+        if topic_type == "pc_build":
+            parts.append("当前话题: PC装机方案。用户可能在修改或追问已生成的配置。如有新硬件需求，继续使用 generate_pc_build_plan。")
+        elif topic_type == "ecommerce_recommendation":
+            parts.append("当前话题: 商品推荐。用户在筛选或追问商品细节。")
 
         cart = getattr(session, "cart", None) or {}
         if cart:

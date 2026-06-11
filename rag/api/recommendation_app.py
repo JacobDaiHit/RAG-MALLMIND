@@ -22,8 +22,6 @@ from rag.api.app_context import (
 from rag.api.attachments import (
     MAX_ATTACHMENT_ANALYSIS_BYTES,
     VISION_MODEL_NAME,
-    goal_with_attachment_context,
-    normalize_attachments,
 )
 from rag.api.pc_build import router as pc_build_router
 from rag.api.products import router as product_router
@@ -35,7 +33,6 @@ from rag.api.sse import sse_event
 from rag.recommendation import recommend_shopping_products
 from rag.recommendation.image_retrieval import retrieve_image_evidence
 from rag.recommendation.llm_client import OpenAICompatibleChatClient, get_llm_provider_trace, is_llm_configured, report_to_dict
-from rag.recommendation.pc_session_flow import parse_adjustment_amount
 from rag.recommendation.product_loader import load_catalog_for_scope, load_combined_product_catalog
 from rag.recommendation.session_state import get_session
 from rag.utils.runtime_errors import is_debug_mode, sanitize_report, sanitize_text

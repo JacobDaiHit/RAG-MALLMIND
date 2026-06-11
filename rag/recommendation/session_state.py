@@ -1,6 +1,7 @@
 """Session state for multi-turn shopping, topic memory, and cart actions."""
 from __future__ import annotations
 
+import copy
 import json
 import logging
 import re
@@ -19,6 +20,7 @@ DEFAULT_SESSION_TTL_SECONDS = 7200
 DEFAULT_MAX_IN_MEMORY_SESSIONS = 500
 SESSION_CLEANUP_INTERVAL_SECONDS = 60
 SESSION_KEY_PREFIX = "mallmind:session:"
+SCHEMA_VERSION = 2  # incremented on breaking session shape changes
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +33,70 @@ def _now_seconds() -> float:
 class CartItem:
     product_id: str
     quantity: int = 1
+
+
+# ── 分层子状态（Phase 4: 架构治理） ──────────────────────────────────────
+# 这些 dataclass 是 ShoppingSession 的结构化视图，方便按职责读写。
+# 它们与 ShoppingSession 的扁平字段保持同步（通过 to_/from_ 方法）。
+
+
+@dataclass
+class ConversationState:
+    """对话级状态：消息历史、查询窗口、话题标签。"""
+    session_id: str = ""
+    messages: List[str] = field(default_factory=list)
+    recent_queries: List[Dict[str, Any]] = field(default_factory=list)
+    chat_topic: str = ""
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class RecommendationState:
+    """推荐级状态：累积路由参数、最近一次目标和结果。"""
+    current: Dict[str, Any] = field(default_factory=dict)
+    last_goal: str = ""
+    last_result: Any = field(default_factory=dict)
+    last_requirement: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class CartState:
+    """购物车级状态。"""
+    cart: Dict[str, CartItem] = field(default_factory=dict)
+    pending_cart_action: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "cart": {k: asdict(v) for k, v in self.cart.items()},
+            "pending_cart_action": self.pending_cart_action,
+        }
+
+
+@dataclass
+class PCBuildState:
+    """PC 构建级状态。"""
+    pc_build_history: List[Dict[str, Any]] = field(default_factory=list)
+    current_pc_build: Dict[str, Any] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ObservabilityState:
+    """可观测级状态。"""
+    topic_memory: Dict[str, Any] = field(default_factory=dict)
+    topic_history: List[Dict[str, Any]] = field(default_factory=list)
+    llm_call_log: List[Dict[str, Any]] = field(default_factory=list)
+    last_fact_check_status: str = "passed"
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass
@@ -54,6 +120,62 @@ class ShoppingSession:
     recent_queries: List[Dict[str, Any]] = field(default_factory=list)
     current: Dict[str, Any] = field(default_factory=dict)
     current_pc_build: Dict[str, Any] = field(default_factory=dict)
+    # ── 链路改造字段 ──
+    pending_cart_action: Dict[str, Any] = field(default_factory=dict)
+    last_fact_check_status: str = "passed"
+    llm_call_log: List[Dict[str, Any]] = field(default_factory=list)
+    # ── Phase 4: schema versioning ──
+    schema_version: int = SCHEMA_VERSION
+
+    # ── 分层状态视图方法 ──
+
+    def conversation_state(self) -> ConversationState:
+        """Extract a ConversationState view."""
+        return ConversationState(
+            session_id=self.session_id,
+            messages=list(self.messages),
+            recent_queries=list(self.recent_queries),
+            chat_topic=self.chat_topic,
+        )
+
+    def recommendation_state(self) -> RecommendationState:
+        """Extract a RecommendationState view."""
+        return RecommendationState(
+            current=dict(self.current or {}),
+            last_goal=self.last_goal,
+            last_result=self.last_result,
+            last_requirement=dict(self.last_requirement or {}),
+        )
+
+    def cart_state(self) -> CartState:
+        """Extract a CartState view."""
+        return CartState(
+            cart=dict(self.cart),
+            pending_cart_action=dict(self.pending_cart_action or {}),
+        )
+
+    def pc_build_state(self) -> PCBuildState:
+        """Extract a PCBuildState view."""
+        return PCBuildState(
+            pc_build_history=list(self.pc_build_history),
+            current_pc_build=dict(self.current_pc_build or {}),
+        )
+
+    def observability_state(self) -> ObservabilityState:
+        """Extract an ObservabilityState view."""
+        return ObservabilityState(
+            topic_memory=dict(self.topic_memory or {}),
+            topic_history=list(self.topic_history),
+            llm_call_log=list(self.llm_call_log),
+            last_fact_check_status=self.last_fact_check_status,
+        )
+
+    def snapshot(self) -> Dict[str, Any]:
+        """Return an immutable snapshot of the session for async ops and logging."""
+        try:
+            return copy.deepcopy(session_to_dict(self))
+        except Exception:
+            return {"session_id": self.session_id, "schema_version": self.schema_version}
 
 
 class BaseSessionStore(Protocol):
@@ -85,9 +207,6 @@ class InMemorySessionStore(SessionStore):
     def save(self, session: ShoppingSession) -> None:
         with self._lock:
             self.sessions[session.session_id] = session
-
-    def set(self, session: ShoppingSession) -> None:
-        self.save(session)
 
     def delete(self, session_id: str) -> None:
         with self._lock:
@@ -186,19 +305,6 @@ def get_session(session_id: Optional[str]) -> ShoppingSession:
 def save_session(session: ShoppingSession) -> None:
     session.updated_at = _now_seconds()
     get_session_store().save(session)
-
-
-def reset_session(session_id: Optional[str]) -> ShoppingSession:
-    key = _normalize_session_id(session_id)
-    get_session_store().delete(key)
-    session = ShoppingSession(session_id=key, topic_memory=default_topic_memory())
-    save_session(session)
-    return session
-
-
-def clear_session(session_id: Optional[str]) -> None:
-    key = _normalize_session_id(session_id)
-    get_session_store().delete(key)
 
 
 def cleanup_expired_sessions(now: Optional[float] = None) -> int:
@@ -343,6 +449,16 @@ def session_from_dict(data: Any) -> ShoppingSession:
         kwargs["current"] = {}
     if not isinstance(kwargs.get("current_pc_build"), dict):
         kwargs["current_pc_build"] = {}
+    # ── 新增字段向后兼容 ──
+    if not isinstance(kwargs.get("pending_cart_action"), dict):
+        kwargs["pending_cart_action"] = {}
+    if not isinstance(kwargs.get("last_fact_check_status"), str):
+        kwargs["last_fact_check_status"] = "passed"
+    if not isinstance(kwargs.get("llm_call_log"), list):
+        kwargs["llm_call_log"] = []
+    # ── schema_version: default to current if missing ──
+    if not isinstance(kwargs.get("schema_version"), int):
+        kwargs["schema_version"] = SCHEMA_VERSION
     try:
         kwargs["updated_at"] = float(kwargs.get("updated_at") or _now_seconds())
     except (TypeError, ValueError):
@@ -503,10 +619,14 @@ def update_session_from_router(session: ShoppingSession, message: str, tool_call
     if new_current["exclude_brands"]:
         new_current["brands"] = [b for b in new_current["brands"] if b not in set(new_current["exclude_brands"])]
 
-    # price: new values override old
+    # price: new values override old; __CLEAR__ explicitly clears
+    _CLEAR = "__CLEAR__"
     for key in ("price_min", "price_max", "budget"):
         val = args.get(key)
-        if val is not None:
+        if val == _CLEAR:
+            # 显式清除：不继承历史值（等同于该约束不存在）
+            pass
+        elif val is not None:
             new_current[key] = val
         elif key not in new_current:
             new_current[key] = prev.get(key)
@@ -538,6 +658,19 @@ def update_session_from_router(session: ShoppingSession, message: str, tool_call
     # product_ids: 路由器优先，降级到累积值
     pids = [str(pid) for pid in (args.get("product_ids") or []) if str(pid).strip()]
     new_current["product_ids"] = pids if pids else list(prev.get("product_ids") or [])
+
+    # ── 品牌切换检测：用户明确更换品牌时，清除品类级累积约束 ──
+    # 旧的 sub_category 和 must_have_terms 可能是针对上一个品牌的，
+    # 切换品牌后继续累积会导致过滤条件过严。
+    new_brands = new_current.get("brands") or []
+    prev_brands_raw = list(prev.get("brands") or [])
+    if new_brands and prev_brands_raw and set(new_brands) != set(prev_brands_raw):
+        if not is_pc_part:
+            # 品牌发生了明确变化 → 清除 sub_category 和 must_have_terms
+            new_current["sub_category"] = str(args.get("sub_category") or "").strip()
+            new_current["must_have_terms"] = [
+                str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()
+            ]
 
     session.current = new_current
 
@@ -615,9 +748,25 @@ def build_contextual_goal(session: ShoppingSession, message: str) -> str:
 
 def should_start_new_product_topic(session: ShoppingSession, message: str) -> bool:
     topic = current_topic_json(session).get("topic_type")
+    text = message or ""
+
+    # 🟢 显式话题切换信号优先检测
+    if _has_explicit_topic_switch(text):
+        return True
+
+    # 🟢 扩展: ecommerce_recommendation 场景下的切换检测
+    if topic == "ecommerce_recommendation":
+        last_category = session.current.get("category", "")
+        new_category = _detect_category_from_message(text)
+        if new_category and new_category != last_category:
+            return True
+        # 包含"不要了""算了""换个话题"等 → 切换
+        return False
+
+    # 原有 PC 场景逻辑
     if topic not in {"pc_build", "single_pc_part"}:
         return False
-    text = message or ""
+
     if topic == "pc_build" and "显示器" in text and any(term in text for term in ["再加", "加一个", "总预算", "主机", "2K", "4K"]):
         return False
     if topic == "pc_build" and any(term in text for term in ["保留显卡", "其他配件", "压低"]):
@@ -641,6 +790,37 @@ def should_start_new_product_topic(session: ShoppingSession, message: str) -> bo
     ]
     pc_build_terms = ["整机", "主机", "装机", "配置单", "配电脑", "配一台", "游戏主机"]
     return any(term in text for term in product_terms) and not any(term in text for term in pc_build_terms)
+
+
+# ── 🟢 新增: 显式话题切换信号 ──
+
+_EXPLICIT_SWITCH_SIGNALS = [
+    "换个话题", "不要了", "算了", "不买了", "不看这个了",
+    "帮我推荐", "推荐一下", "有什么推荐", "我想买",
+]
+
+_CATEGORY_SIGNALS = {
+    "beauty": ["面霜", "精华", "护肤", "面膜", "防晒", "粉底", "眉笔", "口红", "化妆"],
+    "digital": ["手机", "耳机", "电脑", "笔记本", "平板", "键盘", "鼠标", "显示器", "充电"],
+    "clothing": ["衣服", "外套", "鞋", "裤", "裙", "帽", "包", "穿搭"],
+    "food": ["饮料", "咖啡", "牛奶", "零食", "茶", "水", "食品", "糖"],
+}
+
+
+def _has_explicit_topic_switch(text: str) -> bool:
+    """用户明确表达了切换意图."""
+    # 短消息以这些开头 → 可能是新话题
+    if any(text.startswith(s) for s in ["帮我", "我想", "推荐", "我要", "换个", "算了"]):
+        return True
+    return any(s in text for s in _EXPLICIT_SWITCH_SIGNALS)
+
+
+def _detect_category_from_message(text: str) -> str:
+    """从消息中检测品类，返回 ComponentCategory 值或空字符串."""
+    for cat, signals in _CATEGORY_SIGNALS.items():
+        if any(s in text for s in signals):
+            return cat
+    return ""
 
 
 def remember_recommendation(session: ShoppingSession, goal: str, result_payload: Dict[str, Any]) -> None:
@@ -685,41 +865,20 @@ def get_previous_pc_build_plan(session: ShoppingSession, offset: int = 1) -> Opt
 
 
 def looks_like_followup(message: str) -> bool:
-    if len(message) <= 12:
+    # 🟢 收紧: 短消息不再一律视为 followup，只检测明确的追问模式
+    text = message.strip()
+    followup_patterns = [
+        "还有", "另外", "再加", "顺便", "对了",
+        "那", "这个", "这款",
+        "能", "可以", "有没有", "能不能",
+        "多", "少", "够",
+    ]
+    if any(text.startswith(p) for p in followup_patterns):
         return True
-    return any(
-        keyword in message
-        for keyword in [
-            "再",
-            "换",
-            "不要",
-            "改成",
-            "改为",
-            "便宜",
-            "贵",
-            "第二个",
-            "这个",
-            "刚才",
-            "加购",
-            "加入购物车",
-            "对比",
-            "比较",
-            "显卡",
-            "机箱",
-            "预算",
-            "颜色",
-            "色系",
-            "黑色",
-            "白色",
-            "低噪",
-            "静音",
-            "降",
-            "换",
-            "预算",
-            "显卡",
-            "机箱",
-        ]
-    )
+    # 极短消息（≤6字符）且不含新话题信号 → 很可能是追问
+    if len(text) <= 6 and not _has_explicit_topic_switch(text):
+        return True
+    return False
 
 
 def apply_cart_instruction(

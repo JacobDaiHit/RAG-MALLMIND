@@ -82,22 +82,6 @@ def attach_cost_estimates(requirement: RequirementSpec, plans: List[Recommendati
     return plans
 
 
-def product_currency(product: ApiProduct) -> str:
-    return product.currency or "CNY"
-
-
-def pricing_confidence(product: ApiProduct) -> Optional[str]:
-    return "dataset"
-
-
-def pricing_rule(product: ApiProduct) -> Dict[str, Any]:
-    return {
-        "currency": product.currency,
-        "base_price": product.base_price,
-        "min_price": product.min_price,
-        "max_price": product.max_price,
-    }
-
 
 def choose_selected_sku(product: ApiProduct, sku_id: Optional[str]) -> Any:
     if sku_id:

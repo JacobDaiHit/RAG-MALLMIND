@@ -89,10 +89,12 @@ def build_evidence_grounded_explanation(
     except TimeoutError:
         trace["llm_explanation_failure_reason"] = "llm_timeout"
         return {"mode": "fallback", "fallback_reason": "llm_timeout", "llm_input": llm_input, "explanation": template_explanation(llm_input), "_trace": trace}
-    except (LLMClientError, ValueError, TypeError) as exc:
+    except (LLMClientError, ValueError, TypeError, ConnectionError, PermissionError, OSError) as exc:
         text = str(exc).lower()
         if "timeout" in text or "timed out" in text:
             trace["llm_explanation_failure_reason"] = "llm_timeout"
+        elif isinstance(exc, (ConnectionError, PermissionError, OSError)):
+            trace["llm_explanation_failure_reason"] = "network_error"
         elif isinstance(exc, (ValueError, TypeError)):
             trace["llm_explanation_failure_reason"] = "llm_json_invalid"
         else:

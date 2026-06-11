@@ -12,7 +12,6 @@ from rag.recommendation.pc_types import (
     PC_ROLE_TO_LEGACY,
     REQUIRED_PC_ROLES,
     base_model_key,
-    legacy_pc_component_type,
     normalize_pc_component_type,
     pc_component_name_zh,
 )
@@ -656,9 +655,6 @@ def format_delta(value: float) -> str:
         return f"降低 {abs(value):.0f} CNY"
     return "持平"
 
-
-def role_name(role: str) -> str:
-    return pc_component_name_zh(role)
 
 
 _PC_MONEY_TOKEN = r"(\d+(?:[\s,，]\d{3})*(?:\.\d+)?)\s*(k|K|w|W|千|万|元|块|cny|CNY)?"

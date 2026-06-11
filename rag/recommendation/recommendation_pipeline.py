@@ -15,6 +15,7 @@ from rag.recommendation.package_builder import build_recommendation_result
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, get_llm_provider_trace, report_to_dict, run_with_hard_timeout
 from rag.recommendation.query_guards import is_pc_query
 from rag.schemas import BudgetLevel, ComponentCategory, RecommendationResult, RequirementLevel, RequirementSpec
+from rag.schemas.recommendation import CATEGORY_NAME_TO_KEY
 from rag.utils.runtime_errors import public_error
 
 
@@ -221,6 +222,101 @@ def _requirement_from_args(args: Dict[str, Any], user_goal: str) -> RequirementS
     )
 
 
+# ── 🟢 新增: session 感知版需求构建 (⑤.5) ──
+
+_CLEAR_SENTINEL = "__CLEAR__"
+
+
+def _requirement_from_args_v2(
+    args: Dict[str, Any],
+    user_goal: str,
+    session: Optional[Any] = None,
+) -> RequirementSpec:
+    """Map LLM router arguments to RequirementSpec, merging session.current history.
+
+    与 v1 的区别:
+    - 若 router_arguments 中某字段为 None → 从 session.current 继承
+    - 若 router_arguments 中某字段为 __CLEAR__ → 显式清空
+    """
+    session_current: Dict[str, Any] = getattr(session, "current", {}) if session else {}
+
+    raw_query = str(args.get("query") or user_goal or "").strip()
+    category_str = str(args.get("category") or "").strip().lower()
+    sub_category = str(args.get("sub_category") or "").strip()
+    catalog_scope = str(args.get("catalog_scope") or "").strip()
+
+    # 🟢 继承 session.current 中未覆盖的字段
+    # category
+    if not category_str and session_current.get("category"):
+        category_str = str(session_current["category"] or "").strip().lower()
+    # sub_category
+    if not sub_category and session_current.get("sub_category"):
+        sub_category = str(session_current["sub_category"] or "").strip()
+    # catalog_scope
+    if not catalog_scope and session_current.get("catalog_scope"):
+        catalog_scope = str(session_current["catalog_scope"] or "").strip()
+    # price
+    price_max = args.get("price_max")
+    price_min = args.get("price_min")
+    budget = args.get("budget")
+    if price_max is None:
+        price_max = session_current.get("price_max")
+    if price_min is None:
+        price_min = session_current.get("price_min")
+    if budget is None and price_max is None:
+        budget = session_current.get("budget")
+    if price_max is None and budget is not None:
+        price_max = budget
+    # brands — __CLEAR__ 主动清空
+    if "brands" in args:
+        if args["brands"] == _CLEAR_SENTINEL:
+            brands = []
+        else:
+            brands = [str(b) for b in (args.get("brands") or []) if str(b).strip()]
+    elif session_current.get("brands"):
+        brands = [str(b) for b in session_current["brands"] if str(b).strip()]
+    else:
+        brands = []
+    # exclude_brands
+    if "exclude_brands" in args:
+        if args["exclude_brands"] == _CLEAR_SENTINEL:
+            excluded_brands = []
+        else:
+            excluded_brands = [str(b) for b in (args.get("exclude_brands") or []) if str(b).strip()]
+    elif session_current.get("exclude_brands"):
+        excluded_brands = [str(b) for b in session_current["exclude_brands"] if str(b).strip()]
+    else:
+        excluded_brands = []
+
+    # category → ComponentCategory
+    desired_categories = []
+    if catalog_scope == "pc_parts" and sub_category:
+        pc_cat = _PC_SUB_CATEGORY_MAP.get(sub_category)
+        if pc_cat:
+            desired_categories = [pc_cat]
+    if not desired_categories and category_str in ComponentCategory.__members__:
+        desired_categories = [ComponentCategory[category_str]]
+    # 🟢 校验 category 是否存在于产品库枚举中
+    if not desired_categories and category_str:
+        # 尝试 CATEGORY_NAME_TO_KEY 中文映射
+        mapped = CATEGORY_NAME_TO_KEY.get(category_str)
+        if mapped:
+            desired_categories = [mapped]
+
+    return RequirementSpec(
+        raw_query=raw_query,
+        desired_categories=desired_categories,
+        required_components=desired_categories,
+        target_sub_categories=[sub_category] if sub_category else [],
+        brands=brands,
+        excluded_brands=excluded_brands,
+        must_have_terms=[str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()],
+        price_min=price_min,
+        price_max=price_max,
+        preferences=[str(p) for p in (args.get("preferences") or []) if str(p).strip()] if isinstance(args.get("preferences"), list) else [],
+    )
+
+
 def recommend_shopping_products(
     user_goal: str,
     use_llm: bool = True,
@@ -232,12 +328,14 @@ def recommend_shopping_products(
     use_llm_explanation: Optional[bool] = None,
     skip_keyword_check: bool = False,
     router_arguments: Optional[Dict[str, Any]] = None,
+    session: Optional[Any] = None,  # 🟢 新增: session 感知
 ) -> RecommendationResult:
     """Recommend ecommerce products and bundles from a shopping goal."""
 
     validate_business_goal(user_goal, skip_keyword_check=skip_keyword_check)
     if router_arguments:
-        requirement = _requirement_from_args(router_arguments, user_goal)
+        # 🟢 使用 v2 版本（session 感知）
+        requirement = _requirement_from_args_v2(router_arguments, user_goal, session=session)
     else:
         requirement = parse_requirement(user_goal, use_llm=use_llm, skip_keyword_check=skip_keyword_check)
     requirement_parse_trace = build_requirement_parse_trace(requirement, use_llm=use_llm)
@@ -249,6 +347,7 @@ def recommend_shopping_products(
         image_retrieval_evidence=image_retrieval_evidence,
         use_milvus_retrieval=use_milvus_retrieval,
         use_rag_query_expansion=use_rag_query_expansion,
+        session=session,
     )
     result.trace["requirement_parsing"] = requirement_parse_trace
     result.trace.update(get_llm_provider_trace())
@@ -378,12 +477,15 @@ def parse_requirement(user_goal: str, use_llm: bool = True, *, skip_keyword_chec
         logger.warning("LLM requirement parsing timed out; falling back to rules")
         rule_requirement.assumptions.append("生成式大模型需求解析超时，已降级为规则解析。")
         return rule_requirement
-    except (LLMClientError, ValueError, TypeError) as exc:
+    except (LLMClientError, ValueError, TypeError, ConnectionError, PermissionError, OSError) as exc:
         _pt["llm_parse_elapsed_ms"] = int((time.perf_counter() - _parse_start) * 1000)
         text = str(exc).lower()
         if "timeout" in text or "timed out" in text:
             _pt["llm_parse_failure_reason"] = "llm_timeout"
             _pt["llm_parse_error_class"] = "timeout"
+        elif isinstance(exc, (ConnectionError, PermissionError, OSError)):
+            _pt["llm_parse_failure_reason"] = "network_error"
+            _pt["llm_parse_error_class"] = type(exc).__name__.lower()
         elif isinstance(exc, (ValueError, TypeError)):
             _pt["llm_parse_failure_reason"] = "llm_json_invalid"
             _pt["llm_parse_error_class"] = "json_invalid"
@@ -654,7 +756,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
         logger.warning("LLM guidance timed out; using rule-based guidance")
         result.trace["llm_guidance"] = "fallback"
         result.trace["llm_guidance_failure_reason"] = "llm_timeout"
-    except (LLMClientError, ValueError, TypeError) as exc:
+    except (LLMClientError, ValueError, TypeError, ConnectionError, PermissionError, OSError) as exc:
         logger.warning("LLM guidance failed; using rule-based guidance: %s", exc)
         result.trace["llm_guidance"] = "fallback"
         result.trace["llm_guidance_failure_reason"] = _classify_llm_exception(exc)
@@ -668,6 +770,8 @@ def _classify_llm_exception(exc: Exception) -> str:
     text = str(exc).lower()
     if "timeout" in text or "timed out" in text:
         return "llm_timeout"
+    if isinstance(exc, (ConnectionError, PermissionError, OSError)):
+        return "network_error"
     if isinstance(exc, (ValueError, TypeError)):
         return "llm_json_invalid"
     return "llm_provider_error"
@@ -1129,3 +1233,87 @@ def model_to_dict(value: Any) -> Dict[str, Any]:
 
 def json_dumps(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, indent=2)
+
+
+# ── 🟢 新增: 事实校验层 (⑥.5) ──
+
+_PRICE_DEVIATION_THRESHOLD = 0.30  # 价格偏差超过 30% 自动修正
+_FACT_FAILURE_THRESHOLD = 0.50     # 失败率超过 50% 降级
+
+
+def fact_check_result(
+    payload: Dict[str, Any],
+    catalog: Any,
+) -> Dict[str, Any]:
+    """Validate recommendation results against the real product catalog.
+
+    Returns enriched payload with ``fact_check`` metadata.  Corrections
+    are applied in-place to the payload.
+
+    校验项:
+    1. product_id 是否存在于真实商品库
+    2. 价格与 catalog 真实售价偏差 ≤ 30%，否则自动修正
+    3. 库存状态标记（不剔除，仅记录）
+    """
+    cards = payload.get("product_cards") or []
+    catalog_get = getattr(catalog, "get", None)
+    if not catalog_get or not callable(catalog_get):
+        return {**payload, "fact_check": {"passed": True, "product_count": len(cards), "issues": [], "note": "catalog_not_available"}}
+
+    total = len(cards)
+    if total == 0:
+        return {**payload, "fact_check": {"passed": True, "product_count": 0, "issues": []}}
+
+    issues: List[Dict[str, Any]] = []
+    fixed = 0
+    removed = 0
+    valid_cards = []
+
+    for i, card in enumerate(cards):
+        pid = card.get("product_id", "")
+        product = catalog_get(pid)
+        if not product:
+            issues.append({"index": i, "product_id": pid, "issue": "not_found_in_catalog"})
+            removed += 1
+            continue
+
+        # 价格校验
+        real_price = getattr(product, "base_price", None)
+        card_price = card.get("price")
+        if real_price is not None and card_price is not None:
+            try:
+                rp, cp = float(real_price), float(card_price)
+            except (TypeError, ValueError):
+                rp, cp = None, None
+            if rp is not None and cp is not None and rp > 0:
+                deviation = abs(cp - rp) / rp
+                if deviation > _PRICE_DEVIATION_THRESHOLD:
+                    card["price"] = rp
+                    card["_original_price"] = cp
+                    fixed += 1
+                    issues.append({"index": i, "product_id": pid, "issue": "price_corrected", "from": cp, "to": rp})
+
+        # 库存标记
+        stock_status = getattr(product, "stock_status", None)
+        if stock_status in {"sold_out", "out_of_stock"}:
+            issues.append({"index": i, "product_id": pid, "issue": "out_of_stock", "status": stock_status})
+        valid_cards.append(card)
+
+    payload["product_cards"] = valid_cards
+    failure_rate = (removed + fixed) / total if total > 0 else 0.0
+    passed = failure_rate <= _FACT_FAILURE_THRESHOLD and removed == 0
+
+    payload["fact_check"] = {
+        "passed": passed,
+        "product_count": total,
+        "valid_count": len(valid_cards),
+        "removed": removed,
+        "fixed": fixed,
+        "issues": issues,
+        "failure_rate": round(failure_rate, 2),
+    }
+
+    if failure_rate > _FACT_FAILURE_THRESHOLD:
+        payload["fact_check"]["degraded"] = True
+        # 降级标记：调用方可据此选择返回通用回复
+    return payload

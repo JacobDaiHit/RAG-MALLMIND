@@ -574,11 +574,6 @@ def normalize_weights(weights: Dict[str, float]) -> Dict[str, float]:
     return {name: value / total for name, value in cleaned.items()}
 
 
-def score_modality_fit(requirement: RequirementSpec, product: ApiProduct) -> Optional[float]:
-    if not requirement.need_multimodal:
-        return None
-    return 1.0 if product.image_url else 0.35
-
 
 def _collect_product_text(product: ApiProduct) -> str:
     values = [

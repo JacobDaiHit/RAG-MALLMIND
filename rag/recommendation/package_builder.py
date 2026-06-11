@@ -11,6 +11,7 @@ from rag.recommendation.intent_router import route_shopping_intent
 from rag.recommendation.product_loader import ProductCatalog, load_catalog_for_scope
 from rag.recommendation.query_guards import budget_relaxation_allowed, clarification_required, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
 from rag.recommendation.retrieval import RetrievalEvidence, evidence_summary, retrieve_requirement_evidence
+from rag.recommendation.retrieval_fusion import FusionResult, fuse_candidates
 from rag.recommendation.scorer import ProductScore, score_products
 from rag.recommendation.structured_filter import filter_products_for_requirement
 from rag.schemas import (
@@ -40,6 +41,7 @@ def build_recommendation_result(
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
     image_retrieval_evidence: Optional[ImageRetrievalEvidence] = None,
+    session: Optional[object] = None,
 ) -> RecommendationResult:
     """Build one ecommerce-native recommendation plan from catalog candidates."""
 
@@ -49,6 +51,17 @@ def build_recommendation_result(
         normalized_scope = "pc_parts"
     catalog = catalog or load_catalog_for_scope(normalized_scope)
     recommendation_domain = recommendation_domain_for_scope(normalized_scope)
+    # ── query rewriter: enhance retrieval query with session context ──
+    retrieval_query_trace: Dict[str, object] = {}
+    if session is not None:
+        try:
+            from rag.recommendation.query_rewriter import rewrite_query
+            rewrite_result = rewrite_query(requirement.raw_query, session, use_llm=False)
+            if rewrite_result.query != requirement.raw_query:
+                requirement = requirement.model_copy(update={"raw_query": rewrite_result.query})
+            retrieval_query_trace = rewrite_result.to_trace()
+        except Exception:
+            pass  # graceful degradation: use original query
     # ── clarification merge: rule + LLM ──
     rule_clarification = clarification_required(requirement.raw_query)
     llm_clarification_q = requirement.clarification_question or ""
@@ -179,6 +192,7 @@ def build_recommendation_result(
                 "use_milvus_retrieval": use_milvus_retrieval,
                 "use_rag_query_expansion": use_rag_query_expansion,
             },
+            "query_rewriter": retrieval_query_trace,
             "image_retrieval": (image_retrieval_evidence or ImageRetrievalEvidence()).to_trace(),
             "fused_retrieval": fused_evidence.to_trace(),
             "desired_categories": [item.value for item in requirement.desired_categories],
@@ -454,8 +468,29 @@ def score_required_components(
             products=catalog.products,
             category=category,
         )
+        # ── Layer 2: vector recall fusion (additive, graceful degradation) ──
+        fusion = fuse_candidates(
+            rule_filtered=products,
+            requirement=requirement,
+            category=category,
+            catalog_products=catalog.products,
+        )
+        fusion_trace = fusion.to_trace()
+        if fusion.status not in {"disabled", "vector_empty"}:
+            products = fusion.fused_products
         diagnostics_by_category[category] = diagnostics
         grouped[category] = score_products(requirement, products, evidence_by_product_id=evidence_by_id)
+        # Attach fusion trace to the diagnostics trace for observability
+        diag_trace = dict(diagnostics.to_trace()) if hasattr(diagnostics, "to_trace") else {}
+        diag_trace["vector_fusion"] = fusion_trace
+        budget_gap_reason = getattr(diagnostics, "budget_gap_reason", "")
+        # Use a closure-based wrapper so to_trace() returns the dict, not the instance.
+        def _make_diag(trace_dict, gap_reason):
+            obj = object.__new__(type("_DiagWithFusion", (), {}))
+            obj.budget_gap_reason = gap_reason
+            obj.to_trace = lambda: dict(trace_dict)
+            return obj
+        diagnostics_by_category[category] = _make_diag(diag_trace, budget_gap_reason)
     return grouped, diagnostics_by_category
 
 
@@ -719,15 +754,42 @@ def relevant_alternative_scores(
         return []
     best_score = ranked[0].score.final_score
     threshold = max(0.55, best_score - 0.12)
+    # ── MMR diversity control ──
+    # Track brand streaks to prevent same-brand consecutive recommendations.
     alternatives: List[ProductScore] = []
+    brand_streak: Dict[str, int] = {}
+    max_consecutive_same_brand = 2
     for score in ranked:
         if score.product.product_id in selected_ids:
             continue
         if score.score.final_score < threshold:
             continue
+        brand = score.product.brand or "_unknown"
+        # Count consecutive appearances of this brand in the result so far
+        streak_count = brand_streak.get(brand, 0)
+        if streak_count >= max_consecutive_same_brand:
+            # Skip to maintain diversity; will be revisited if slots remain
+            continue
+        brand_streak[brand] = streak_count + 1
+        # Reset streak counts for other brands when this brand appears
+        for other_brand in brand_streak:
+            if other_brand != brand:
+                brand_streak[other_brand] = 0
         alternatives.append(score)
         if len(alternatives) >= limit:
             break
+    # Fill remaining slots with skipped candidates if diversity pruning left gaps
+    if len(alternatives) < limit:
+        seen_ids = {s.product.product_id for s in alternatives} | selected_ids
+        for score in ranked:
+            if score.product.product_id in seen_ids:
+                continue
+            if score.score.final_score < threshold:
+                continue
+            alternatives.append(score)
+            seen_ids.add(score.product.product_id)
+            if len(alternatives) >= limit:
+                break
     return alternatives
 
 

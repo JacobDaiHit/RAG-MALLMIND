@@ -77,10 +77,6 @@ def maybe_normalize_pc_component_type(value: object) -> Optional[str]:
         return None
 
 
-def legacy_pc_component_type(value: object) -> str:
-    normalized = normalize_pc_component_type(value)
-    return PC_ROLE_TO_LEGACY[normalized]
-
 
 def pc_component_name_zh(value: object) -> str:
     normalized = normalize_pc_component_type(value)
