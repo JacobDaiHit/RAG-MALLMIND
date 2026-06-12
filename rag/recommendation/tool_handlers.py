@@ -15,7 +15,9 @@ from rag.recommendation.product_loader import load_catalog_for_scope, load_combi
 from rag.recommendation.session_state import (
     apply_cart_instruction,
     current_topic_json,
+    extract_item_index,
     last_recommended_product_ids,
+    references_previous_item,
     remember_pc_build_plan,
     remember_recommendation,
     save_pc_build_to_session,
@@ -61,7 +63,28 @@ def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call
     """
     args = dict(tool_call.get("arguments") or {})
     catalog = load_combined_product_catalog()
-    plan_product_id = (product_ids or [])[0] if product_ids else str(args.get("product_ids", [])[0] if isinstance(args.get("product_ids"), list) and args["product_ids"] else "")
+
+    # 1) 显式 product_ids（请求级或路由参数）
+    plan_product_id = ""
+    if product_ids:
+        plan_product_id = product_ids[0]
+    else:
+        arg_ids = args.get("product_ids")
+        if isinstance(arg_ids, list) and arg_ids:
+            plan_product_id = str(arg_ids[0])
+
+    # 2) 如果没有显式 id，尝试从 session 上轮推荐结果中解析（"第一部手机"、"第一款"等）
+    if not plan_product_id:
+        recommended_ids = last_recommended_product_ids(session)
+        if recommended_ids:
+            index = extract_item_index(message)
+            if index is not None and 0 <= index < len(recommended_ids):
+                plan_product_id = recommended_ids[index]
+            elif references_previous_item(message):
+                plan_product_id = recommended_ids[0]
+            else:
+                # 用户说"加入购物车"但没指定第几个，默认取第一个推荐
+                plan_product_id = recommended_ids[0]
 
     # 🟢 真实 catalog 校验
     product = catalog.get(plan_product_id) if plan_product_id else None
@@ -73,8 +96,9 @@ def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call
     product_title = getattr(product, "title", plan_product_id) if product else plan_product_id
     unit_price = getattr(product, "base_price", None) if product else None
 
-    operation = args.get("operation", "add")
-    quantity = max(int(args.get("quantity", 1)), 1)
+    operation = args.get("operation", "add") or "add"
+    raw_qty = args.get("quantity", 1)
+    quantity = max(int(raw_qty) if raw_qty is not None else 1, 1)
     estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
 
     now = _now_seconds()

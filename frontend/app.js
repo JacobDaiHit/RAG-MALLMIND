@@ -16,7 +16,7 @@ const catalogSearchInput = document.querySelector("#catalogSearchInput");
 const screens = Array.from(document.querySelectorAll(".screen"));
 const stageButtons = Array.from(document.querySelectorAll("[data-nav-screen]"));
 
-const SESSION_ID = `web-${Date.now()}`;
+let SESSION_ID = `web-${Date.now()}`;
 const CATEGORY_LABELS = {
   beauty: "美妆护肤",
   digital: "数码电子",
@@ -95,6 +95,36 @@ document.querySelectorAll("[data-category]").forEach((button) => {
     showScreen("products");
     loadProducts(true);
   });
+});
+
+// ── 新建对话 ──
+document.querySelector("#newChatButton")?.addEventListener("click", () => {
+  if (isBusy) return;
+  SESSION_ID = `web-${Date.now()}`;
+  cartState = { items: [], total_price: 0, count: 0, currency: "CNY" };
+  lastProductCards = [];
+  lastComparisonRows = [];
+  currentPcBuildPlan = null;
+  selectedProductDetail = null;
+  selectedAttachments = [];
+  goalInput.value = "";
+  attachmentInput.value = "";
+  renderAttachments();
+  renderInitialChat();
+  resetRecommendationPanel();
+  recommendedProducts.className = "recommendation-strip empty-state";
+  recommendedProducts.textContent = "推荐商品和对比表会显示在这里。";
+  renderCart();
+  setStatus("等待需求", "");
+  showScreen("demand");
+});
+
+// ── Enter 发送，Shift+Enter 换行 ──
+goalInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    if (!isBusy && goalInput.value.trim()) sendDemand();
+  }
 });
 
 renderInitialChat();
@@ -260,6 +290,27 @@ function parseSseBlock(block) {
 }
 
 function handleChatEvent(event, data, assistantNode) {
+  if (event === "tool_call") {
+    const name = data.name || "";
+    const src = data.source || "";
+    const TOOL_LABELS = {
+      recommend_shopping_products: "商品推荐",
+      compare_products: "商品对比",
+      generate_pc_build_plan: "PC 装机",
+      apply_cart_instruction: "购物车操作",
+      general_chat: "闲聊",
+      parameter_query: "参数查询",
+      sku_detail: "SKU 详情",
+      price_comparison: "比价",
+    };
+    const label = TOOL_LABELS[name] || name;
+    const badge = document.createElement("div");
+    badge.className = "tool-badge";
+    badge.style.cssText = "display:inline-block;font-size:11px;padding:2px 8px;border-radius:6px;background:#e8f0fe;color:#1a73e8;margin:4px 0;font-family:monospace;";
+    badge.textContent = `⚙ ${label}${src ? ` (${src})` : ""}`;
+    assistantNode.parentElement?.insertBefore(badge, assistantNode);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
   if (event === "delta") {
     assistantNode.textContent += `${data.text || ""}\n`;
   }
@@ -291,7 +342,6 @@ function handleChatEvent(event, data, assistantNode) {
   if (event === "cart") {
     cartState = data.cart || cartState;
     renderCart();
-    showScreen("cart");
   }
   if (event === "pc_build_plan") {
     currentPcBuildPlan = data;

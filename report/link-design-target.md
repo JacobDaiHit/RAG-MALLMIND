@@ -15,13 +15,13 @@
 | **接入层** | `sanitize_input()` 仅做长度校验和非空校验 | 无频控、无认证、无请求级超时 | 接入网关：认证 + 频控 + 请求取消 |
 | **意图识别** | LLM 路由 → 5 个工具（recommend/compare/pc_build/cart/chat） | 意图粒度粗，SKU 查询、参数咨询、比价查询全部落入 recommend | 7+ 意图分类，含概率置信度，低置信度走澄清 |
 | **查询改写** | `build_contextual_goal()` 拼接字符串 | 无代词消解、无属性继承、无隐含条件补全 | 独立查询改写器：消解 + 继承 + 补全 |
-| **路由分发** | if/elif 硬编码分发链 | 无路由置信度，无争议解决策略 | 置信度加权路由 + 争议仲裁 |
+| **路由分发** | `_LIGHTWEIGHT_TOOLS` 注册表 + `_dispatch_lightweight()` 统一分发（P4 已完成） | 无路由置信度，无争议解决策略 | 置信度加权路由 + 争议仲裁 |
 | **检索管道** | 规则过滤 → 7 维评分 → top-N 选择 | `brands` 白名单未做硬过滤；无向量检索；无混合检索融合 | 确定性过滤 + 向量检索 + 评分重排 三层管道 |
 | **结果融合** | 无 | 单一检索源，无多源融合 | 多源融合（规则 + 向量 + 图谱）+ MMR 多样性控制 |
-| **LLM 推理** | 3 处独立实例化 `OpenAICompatibleChatClient` | 无统一 LLM 编排层，各调用点超时/模型/温度各自为政 | 统一 LLM 网关：共享配置、并发控制、熔断 |
+| **LLM 推理** | `LLMGateway` 统一编排层已创建（P4），调用点逐步迁移中 | 11 处调用点尚未全部迁移 | 统一 LLM 网关：共享配置、并发控制、熔断 |
 | **输出处理** | `generate_natural_response()` LLM 或模板 | 无合规检查；LLM 文本可能与实际卡片数不一致 | 合规过滤 + 一致性校验 + 格式化 |
-| **会话管理** | 21 字段可变 dataclass，全局模块变量存储 | 无封装、无版本迁移、无并发保护 | 分层状态对象 + 版本化 + 存储抽象 |
-| **可观测性** | `_end_span()` 记录 20 条日志 + `routing_trace` | 无链路追踪、无降级路径日志、无指标聚合 | OpenTelemetry 链路追踪 + 结构化指标 |
+| **会话管理** | 分层子状态 dataclass + schema_version v2（P4 已完成） | 无并发保护、无存储抽象 | 分层状态对象 + 版本化 + 存储抽象 |
+| **可观测性** | `trace_span` 上下文管理器 + `_end_span()` 日志（P4 已集成） | 无 OpenTelemetry 集成、无指标聚合 | OpenTelemetry 链路追踪 + 结构化指标 |
 
 ---
 
@@ -580,16 +580,19 @@ def handle_price_comparison(session, tool_call, **context):
 | 查询改写器（规则 + LLM） | 新增 `query_rewriter.py` | 多轮对话理解增强 |
 | MMR 多样性控制 | `package_builder.py` | 推荐多样性 |
 
-### 第四阶段：架构治理（7-10 天）
+### 第四阶段：架构治理（7-10 天） ✅ 已完成
 
-| 任务 | 涉及文件 | 影响 |
-|---|---|---|
-| LLM Gateway 统一编排 | 新增 `llm_gateway.py` + 迁移各调用点 | LLM 调用统一管理 |
-| Session 状态分层 | `session_state.py` | 降低耦合 |
-| Handler 公共逻辑提取 | `tool_handlers.py` | 减少重复代码 |
-| 链路追踪（trace_span） | `chat.py` + 各 handler | 可观测性增强 |
-| LLM 异常兜底完善 | `recommendation_pipeline.py` 等 | 增加 ConnectionError/PermissionError 捕获 |
-| 回归测试覆盖 | `tests/` | 防止问题复发 |
+| 任务 | 涉及文件 | 影响 | 状态 |
+|---|---|---|---|
+| LLM Gateway 统一编排 | 新增 `llm_gateway.py` + 迁移各调用点 | LLM 调用统一管理 | ✅ 已创建，逐步迁移中 |
+| Session 状态分层 | `session_state.py` | 降低耦合 | ✅ 5 个子状态 + schema v2 |
+| Handler 公共逻辑提取 | 新增 `handler_base.py` | 减少重复代码 | ✅ trace_span + 公共工具函数 |
+| 链路追踪（trace_span） | `chat.py` + `handler_base.py` | 可观测性增强 | ✅ 三节点集成 |
+| LLM 异常兜底完善 | `recommendation_pipeline.py` / `tool_router.py` / `explanation_builder.py` | 增加 ConnectionError/PermissionError 捕获 | ✅ network_error 分类 |
+| chat.py 注册表模式 | `chat.py` | 替换 if/elif 分发链 | ✅ _LIGHTWEIGHT_TOOLS + _dispatch_lightweight |
+| 回归测试覆盖 | `tests/test_phase4_architecture.py` | 防止问题复发 | ✅ 35/35 测试通过 |
+
+**边界测试（2026-06-11）:** 21 cases / 136 turns 全部通过，路由成功率 100%，SSE 错误 0。详见 [bound_test_phase4.md](../reports/bound_test_phase4.md)。
 
 ---
 
