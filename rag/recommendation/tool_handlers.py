@@ -16,6 +16,9 @@ from rag.recommendation.session_state import (
     apply_cart_instruction,
     current_topic_json,
     extract_item_index,
+    extract_quantity,
+    fuzzy_match_cart_item,
+    infer_cart_action,
     last_recommended_product_ids,
     references_previous_item,
     remember_pc_build_plan,
@@ -52,59 +55,278 @@ _CART_CONFIRM_TTL_SECONDS = 60
 
 
 def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
-    """Shopping cart v2: generate a plan first, then wait for user confirmation.
+    """🟣 v4: 购物车 v2 统一入口——解析操作类型后分流到子处理器。
 
-    Instead of immediately executing the cart instruction, this handler:
-    1. Plans the cart action (add/remove/update/clear)
-    2. Stores the plan in session.pending_cart_action
-    3. Sends a ``cart_confirmation`` SSE event
-
-    The front-end should then call ``POST /api/cart/confirm`` to execute.
+    支持 add / remove / set_quantity / clear 四种操作，
+    每种操作都走 plan → confirm 模式（clear 直接执行）。
     """
     args = dict(tool_call.get("arguments") or {})
     catalog = load_combined_product_catalog()
+    action = _resolve_cart_action(args, message)
 
-    # 1) 显式 product_ids（请求级或路由参数）
-    plan_product_id = ""
+    if action == "clear":
+        yield from _handle_cart_clear(session, catalog)
+        return
+
+    if action in ("remove", "set_quantity"):
+        yield from _handle_cart_modify(session, message, catalog, action, product_ids, tool_call)
+        return
+
+    # 默认: add
+    yield from _handle_cart_add(session, message, product_ids, catalog, tool_call)
+
+
+# ── 🟣 v4: 内部子处理器 ──
+
+
+def _resolve_cart_action(args: Dict[str, Any], message: str) -> str:
+    """从 tool_call arguments 或用户消息中推断操作类型。"""
+    # 优先用 router 传入的 operation 参数
+    op = args.get("operation")
+    if op and op in ("add", "remove", "set_quantity", "clear"):
+        return op
+    # 其次从消息文本推断
+    return infer_cart_action(message)
+
+
+def _resolve_product_for_cart(
+    session: Any,
+    message: str,
+    product_ids: List[str],
+    args: Dict[str, Any],
+    catalog: Any,
+    action: str,
+) -> str:
+    """🟣 v4: 通用产品 ID 解析——add 从推荐结果取，remove/set_quantity 从购物车取。"""
+    # 1) 显式 product_ids
     if product_ids:
-        plan_product_id = product_ids[0]
-    else:
-        arg_ids = args.get("product_ids")
-        if isinstance(arg_ids, list) and arg_ids:
-            plan_product_id = str(arg_ids[0])
+        return product_ids[0]
+    arg_ids = args.get("product_ids")
+    if isinstance(arg_ids, list) and arg_ids:
+        return str(arg_ids[0])
 
-    # 2) 如果没有显式 id，尝试从 session 上轮推荐结果中解析（"第一部手机"、"第一款"等）
-    if not plan_product_id:
-        recommended_ids = last_recommended_product_ids(session)
-        if recommended_ids:
-            index = extract_item_index(message)
-            if index is not None and 0 <= index < len(recommended_ids):
-                plan_product_id = recommended_ids[index]
-            elif references_previous_item(message):
-                plan_product_id = recommended_ids[0]
-            else:
-                # 用户说"加入购物车"但没指定第几个，默认取第一个推荐
-                plan_product_id = recommended_ids[0]
+    cart_ids = list(session.cart.keys())
 
-    # 🟢 真实 catalog 校验
+    # 2) 名称模糊匹配（从购物车中定位）
+    if cart_ids:
+        fuzzy_hit = fuzzy_match_cart_item(message, cart_ids, catalog)
+        if fuzzy_hit:
+            return fuzzy_hit
+
+    # 3) remove/set_quantity: 优先在购物车内定位
+    if action in ("remove", "set_quantity") and cart_ids:
+        index = extract_item_index(message)
+        if index is not None and 0 <= index < len(cart_ids):
+            return cart_ids[index]
+        if references_previous_item(message):
+            return cart_ids[0]
+        return cart_ids[0]  # 兜底：购物车第一个
+
+    # 4) add: 从上次推荐结果中定位
+    recommended_ids = last_recommended_product_ids(session)
+    if recommended_ids:
+        index = extract_item_index(message)
+        if index is not None and 0 <= index < len(recommended_ids):
+            return recommended_ids[index]
+        if references_previous_item(message):
+            return recommended_ids[0]
+        return recommended_ids[0]
+
+    return ""
+
+
+def _build_confirmation_message(plan: Dict[str, Any], operation: str) -> str:
+    """🟣 v4: 根据操作类型生成确认文案。"""
+    title = plan.get("product_title", "")
+    qty = plan.get("quantity", 1)
+    price = plan.get("estimated_unit_price")
+
+    if operation == "remove":
+        return f"确认从购物车移除 {title}？"
+    if operation == "set_quantity":
+        return f"确认将 {title} 的数量修改为 {qty}？"
+    # add
+    price_hint = f"（预估 ¥{price * qty:.0f}）" if price else ""
+    return f"确认将 {title} x{qty} 加入购物车{price_hint}？"
+
+
+def _cart_item_list(session: Any, catalog: Any) -> List[Dict[str, Any]]:
+    """🟣 v4: 构建购物车商品列表，供追问事件前端渲染。"""
+    items = []
+    for i, (pid, cart_item) in enumerate(session.cart.items()):
+        product = catalog.get(pid) if catalog else None
+        title = getattr(product, "title", pid) if product else pid
+        price = getattr(product, "base_price", None) if product else None
+        items.append({
+            "index": i + 1,
+            "product_id": pid,
+            "title": title,
+            "price": price,
+            "quantity": getattr(cart_item, "quantity", 1),
+        })
+    return items
+
+
+def _check_cart_ambiguity(
+    session: Any, message: str, cart_ids: List[str], catalog: Any,
+) -> Optional[str]:
+    """🟣 v4: 检查购物车操作是否有歧义，返回追问文本或 None。
+
+    检测场景：
+    - 同品类多商品 + 品类模糊引用（"删掉那个手机"但有两个手机）
+    - 序数越界（"删除第五个"但只有 3 个商品）
+    """
+    if not cart_ids or not catalog:
+        return None
+
+    # 序数越界检查
+    index = extract_item_index(message)
+    if index is not None and index >= len(cart_ids):
+        items = _cart_item_list(session, catalog)
+        names = "、".join(item["title"] for item in items)
+        return f"购物车里只有 {len(cart_ids)} 个商品，没有第 {index + 1} 个。当前有：{names}，你要操作哪一个？"
+
+    # 同品类歧义检查：仅当用户提到品类词但没指定名称/序数时触发
+    if len(cart_ids) < 2:
+        return None
+
+    # 如果用户已指定了名称（模糊匹配能命中）或序数，则无歧义
+    fuzzy_hit = fuzzy_match_cart_item(message, cart_ids, catalog)
+    if fuzzy_hit:
+        return None
+    if index is not None:
+        return None
+
+    # 按品类分组
+    category_groups: Dict[str, List[str]] = {}
+    for pid in cart_ids:
+        product = catalog.get(pid)
+        if not product:
+            continue
+        cat = getattr(product, "sub_category", "") or getattr(product, "category", "") or ""
+        if cat:
+            category_groups.setdefault(cat, []).append(pid)
+
+    # 检查是否有品类被模糊引用（消息包含品类关键词但没具体指定）
+    for cat, group_ids in category_groups.items():
+        if len(group_ids) >= 2 and cat and cat in message:
+            names = "、".join(
+                getattr(catalog.get(pid), "title", pid) for pid in group_ids if catalog.get(pid)
+            )
+            return f"购物车里有多个{cat}商品：{names}，你要操作哪一个？可以说名称或'第几个'。"
+
+    return None
+
+
+def _handle_cart_add(
+    session: Any, message: str, product_ids: List[str], catalog: Any, tool_call: Dict[str, Any],
+) -> Iterable[str]:
+    """🟣 v4: 加入购物车——从推荐结果中定位商品。"""
+    args = dict(tool_call.get("arguments") or {})
+    plan_product_id = _resolve_product_for_cart(session, message, product_ids, args, catalog, "add")
+
     product = catalog.get(plan_product_id) if plan_product_id else None
     if not product and plan_product_id:
         yield sse_event("error", {"label": "商品不存在", "detail": f"product_id {plan_product_id} 不在商品库中。"})
         yield sse_event("done", {"session_id": session.session_id})
         return
+    if not product:
+        yield sse_event("error", {"label": "未找到商品", "detail": "没有找到可加入购物车的商品，请先推荐商品。"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
 
-    product_title = getattr(product, "title", plan_product_id) if product else plan_product_id
-    unit_price = getattr(product, "base_price", None) if product else None
-
-    operation = args.get("operation", "add") or "add"
+    product_title = getattr(product, "title", plan_product_id)
+    unit_price = getattr(product, "base_price", None)
     raw_qty = args.get("quantity", 1)
     quantity = max(int(raw_qty) if raw_qty is not None else 1, 1)
     estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
 
+    plan = _make_plan(plan_product_id, product_title, "add", quantity, unit_price, estimated_total)
+    session.pending_cart_action = plan
+
+    yield sse_event("cart_confirmation", {
+        "plan": plan,
+        "message": _build_confirmation_message(plan, "add"),
+    })
+    yield sse_event("done", {"session_id": session.session_id})
+
+
+def _handle_cart_modify(
+    session: Any, message: str, catalog: Any, action: str,
+    product_ids: List[str], tool_call: Dict[str, Any],
+) -> Iterable[str]:
+    """🟣 v4: 删除/修改数量——从购物车中定位商品，含歧义追问。"""
+    args = dict(tool_call.get("arguments") or {})
+    cart_ids = list(session.cart.keys())
+
+    if not cart_ids:
+        yield sse_event("delta", {"text": "购物车是空的，没有可操作的商品。"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+
+    # 🟣 歧义追问：同品类多商品 + 模糊引用
+    ambiguity = _check_cart_ambiguity(session, message, cart_ids, catalog)
+    if ambiguity:
+        yield sse_event("cart_clarification", {
+            "text": ambiguity,
+            "cart_items": _cart_item_list(session, catalog),
+            "action": action,
+        })
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+
+    plan_product_id = _resolve_product_for_cart(session, message, product_ids, args, catalog, action)
+
+    product = catalog.get(plan_product_id) if plan_product_id else None
+    if not product:
+        yield sse_event("cart_clarification", {
+            "text": "没找到要操作的商品。你可以说商品名称或'第几个'来指定。",
+            "cart_items": _cart_item_list(session, catalog),
+            "action": action,
+        })
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+
+    product_title = getattr(product, "title", plan_product_id)
+    unit_price = getattr(product, "base_price", None)
+
+    if action == "set_quantity":
+        raw_qty = extract_quantity(message) or args.get("quantity", 1)
+        quantity = max(int(raw_qty) if raw_qty is not None else 1, 1)
+    else:
+        quantity = 1
+
+    estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
+    plan = _make_plan(plan_product_id, product_title, action, quantity, unit_price, estimated_total)
+    session.pending_cart_action = plan
+
+    yield sse_event("cart_confirmation", {
+        "plan": plan,
+        "message": _build_confirmation_message(plan, action),
+    })
+    yield sse_event("done", {"session_id": session.session_id})
+
+
+def _handle_cart_clear(session: Any, catalog: Any) -> Iterable[str]:
+    """🟣 v4: 清空购物车——直接执行，不走确认。"""
+    count = len(session.cart)
+    session.cart.clear()
+    save_session(session)
+    from rag.recommendation.session_state import cart_snapshot
+    yield sse_event("delta", {"text": f"已清空购物车（移除了 {count} 件商品）。"})
+    yield sse_event("cart", cart_snapshot(session, catalog))
+    yield sse_event("done", {"session_id": session.session_id})
+
+
+def _make_plan(
+    product_id: str, product_title: str, operation: str,
+    quantity: int, unit_price: Optional[float], estimated_total: Optional[float],
+) -> Dict[str, Any]:
+    """🟣 v4: 构建通用 CartActionPlan。"""
     now = _now_seconds()
-    plan: Dict[str, Any] = {
+    return {
         "operation": operation,
-        "product_id": plan_product_id,
+        "product_id": product_id,
         "product_title": product_title,
         "quantity": quantity,
         "estimated_unit_price": unit_price,
@@ -112,13 +334,6 @@ def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call
         "created_at": now,
         "expires_at": now + _CART_CONFIRM_TTL_SECONDS,
     }
-    session.pending_cart_action = plan
-
-    yield sse_event("cart_confirmation", {
-        "plan": plan,
-        "message": f"确认将 {product_title} x{quantity} {'加入' if operation == 'add' else operation}购物车{'（预估 ¥' + str(estimated_total) + '）' if estimated_total else ''}？",
-    })
-    yield sse_event("done", {"session_id": session.session_id})
 
 
 def _now_seconds() -> float:

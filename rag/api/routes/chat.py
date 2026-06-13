@@ -305,22 +305,31 @@ def cart_confirm(request: Dict[str, Any]) -> Dict[str, Any]:
         save_session(session)
         return {"status": "cancelled", "cart": session.cart}
 
-    # 执行真实购物车写操作
+    # 🟣 v4: 执行真实购物车写操作——根据 plan.operation 分支
     adjusted_qty = request.get("adjusted_quantity")
     quantity = max(int(adjusted_qty), 1) if adjusted_qty is not None else plan.get("quantity", 1)
     catalog = load_combined_product_catalog()
-    product = catalog.get(plan.get("product_id", ""))
+    pid = plan.get("product_id", "")
+    product = catalog.get(pid)
     title = getattr(product, "title", plan.get("product_title", "")) if product else plan.get("product_title", "")
+    operation = plan.get("operation", "add")
+
+    if operation == "remove":
+        instruction = f"删除 {pid} {title}"
+    elif operation == "set_quantity":
+        instruction = f"把 {pid} {title} 数量改为 {quantity}"
+    else:
+        instruction = f"把 {pid} {title} 加入购物车，数量 {quantity}"
 
     result = apply_cart_instruction(
         session=session,
-        instruction=f"把 {plan.get('product_id')} {title} 加入购物车，数量 {quantity}",
+        instruction=instruction,
         catalog=catalog,
-        product_ids=[plan.get("product_id")],
+        product_ids=[pid],
     )
     session.pending_cart_action = {}
     save_session(session)
-    return {"status": "applied", "cart": result.get("cart", session.cart), "action": result.get("action", "add"), "messages": result.get("messages", [])}
+    return {"status": "applied", "cart": result.get("cart", session.cart), "action": result.get("action", operation), "messages": result.get("messages", [])}
 
 
 @router.post("/api/products/compare")

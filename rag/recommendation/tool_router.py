@@ -463,7 +463,10 @@ CART_STRONG_TERMS = [
     "加入购物车",
     "下单",
     "删除",
+    "删掉",
+    "删了",
     "移除",
+    "去掉",
     "数量",
     "清空",
     "把这套",
@@ -821,6 +824,25 @@ def validate_tool_call(
             downgraded = True
             downgrade_reason = "llm_chat_on_shopping_signal"
             llm_vs_local_conflict = True
+
+    # ── 🟣 v4: 购物车意图保护 ──
+    # LLM 常将含商品关键词的购物车操作消息（如"把手机加入购物车"、"删除购物车里的OPPO"）
+    # 误判为 recommend_shopping_products。当消息包含明确购物车操作词时，
+    # 无论 LLM 如何路由，强制纠正为 apply_cart_instruction。
+    if (
+        name != "apply_cart_instruction"
+        and _has_cart_intent(message or "")
+    ):
+        validation["issues"].append("llm_overridden_cart_intent")
+        validation["passed"] = False
+        name = "apply_cart_instruction"
+        args = {
+            "query": message,
+            "product_ids": args.get("product_ids") or [],
+        }
+        downgraded = True
+        downgrade_reason = "llm_overridden_cart_intent"
+        llm_vs_local_conflict = True
 
     if llm_vs_local_conflict:
         validation["conflict"] = {"llm": name, "local": local_name, "resolved_to": name}

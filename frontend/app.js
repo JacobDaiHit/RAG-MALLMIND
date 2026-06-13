@@ -139,6 +139,13 @@ function renderInitialChat() {
   );
 }
 
+// 🟣 v4: 直接发送一条消息（供追问按钮等场景调用）
+function sendGoalMessage(message) {
+  if (!message || isBusy) return;
+  goalInput.value = message;
+  sendDemand();
+}
+
 async function sendDemand() {
   const message = goalInput.value.trim();
   if (!message || isBusy) return;
@@ -342,6 +349,14 @@ function handleChatEvent(event, data, assistantNode) {
   if (event === "cart") {
     cartState = data.cart || cartState;
     renderCart();
+  }
+  // 🟣 v4: 购物车确认事件——展示操作计划，等待用户确认
+  if (event === "cart_confirmation") {
+    renderCartConfirmation(data, assistantNode);
+  }
+  // 🟣 v4: 购物车追问事件——操作不明确时展示选项
+  if (event === "cart_clarification") {
+    renderCartClarification(data, assistantNode);
   }
   if (event === "pc_build_plan") {
     currentPcBuildPlan = data;
@@ -1067,6 +1082,94 @@ function renderCart() {
     button.addEventListener("click", () => updateCart(`数量改成 ${next}`, [button.dataset.cartDec]));
   });
   cartContent.querySelector("[data-cart-clear]")?.addEventListener("click", () => updateCart("清空购物车"));
+}
+
+// ── 🟣 v4: 购物车确认 UI ──
+
+function renderCartConfirmation(data, assistantNode) {
+  const plan = data.plan || {};
+  const message = data.message || "确认操作？";
+  const operation = plan.operation || "add";
+
+  const container = document.createElement("div");
+  container.className = "cart-confirm-box";
+  const borderColor = operation === "remove" ? "#e74c3c" : "#1a73e8";
+  const actionLabel = operation === "remove" ? "移除" : operation === "set_quantity" ? "修改数量" : "加入购物车";
+  const confirmColor = operation === "remove" ? "#e74c3c" : "#1a73e8";
+
+  container.style.cssText = `border:1px solid ${borderColor};border-radius:10px;padding:12px 16px;margin:8px 0;background:#fafbfc;`;
+  container.innerHTML = `
+    <div style="font-size:13px;color:#555;margin-bottom:6px;">${escapeHtml(message)}</div>
+    <div style="display:flex;gap:8px;">
+      <button class="primary-button cart-confirm-yes" type="button"
+        style="font-size:12px;padding:5px 16px;border-radius:6px;background:${confirmColor};color:#fff;border:none;cursor:pointer;">
+        确认${actionLabel}
+      </button>
+      <button class="secondary-button cart-confirm-no" type="button"
+        style="font-size:12px;padding:5px 16px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer;">
+        取消
+      </button>
+    </div>
+  `;
+  assistantNode.parentElement?.insertBefore(container, assistantNode);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  container.querySelector(".cart-confirm-yes").addEventListener("click", async () => {
+    try {
+      const result = await postJson("/api/cart/confirm", { session_id: SESSION_ID, confirmed: true });
+      cartState = result.cart || cartState;
+      renderCart();
+      container.innerHTML = `<div style="font-size:13px;color:#2e7d32;">✓ ${escapeHtml((result.messages || []).join(" ") || "操作已执行。")}</div>`;
+    } catch (e) {
+      container.innerHTML = `<div style="font-size:13px;color:#c62828;">✗ 操作失败：${escapeHtml(String(e.message || e))}</div>`;
+    }
+  });
+  container.querySelector(".cart-confirm-no").addEventListener("click", async () => {
+    try {
+      await postJson("/api/cart/confirm", { session_id: SESSION_ID, confirmed: false });
+    } catch (_) { /* ignore */ }
+    container.innerHTML = `<div style="font-size:13px;color:#888;">已取消。</div>`;
+  });
+}
+
+// ── 🟣 v4: 购物车追问 UI ──
+
+function renderCartClarification(data, assistantNode) {
+  const text = data.text || "请指定要操作的商品。";
+  const items = data.cart_items || [];
+
+  const container = document.createElement("div");
+  container.className = "cart-clarify-box";
+  container.style.cssText = "border:1px solid #f0ad4e;border-radius:10px;padding:12px 16px;margin:8px 0;background:#fffbf0;";
+
+  let itemsHtml = "";
+  if (items.length) {
+    itemsHtml = `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">` +
+      items.map((item) =>
+        `<button class="cart-clarify-btn" type="button" data-clarify-pid="${escapeHtml(item.product_id)}"
+          style="font-size:12px;padding:4px 12px;border-radius:6px;border:1px solid #f0ad4e;background:#fff;cursor:pointer;">
+          ${escapeHtml(item.title)}（x${item.quantity}）
+        </button>`
+      ).join("") +
+      `</div>`;
+  }
+  container.innerHTML = `
+    <div style="font-size:13px;color:#856404;">${escapeHtml(text)}</div>
+    ${itemsHtml}
+  `;
+  assistantNode.parentElement?.insertBefore(container, assistantNode);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  container.querySelectorAll(".cart-clarify-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const pid = btn.dataset.clarifyPid;
+      const action = data.action || "remove";
+      const actionWord = action === "remove" ? "删除" : "数量改成";
+      // 发送一条带 product_id 的精确指令
+      sendGoalMessage(`${actionWord} ${pid}`);
+      container.innerHTML = `<div style="font-size:13px;color:#555;">已选择：${escapeHtml(btn.textContent.trim())}</div>`;
+    });
+  });
 }
 
 function showScreen(screen) {

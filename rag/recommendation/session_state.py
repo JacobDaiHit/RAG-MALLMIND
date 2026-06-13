@@ -889,8 +889,8 @@ def apply_cart_instruction(
 ) -> Dict[str, Any]:
     instruction = " ".join(str(instruction or "").split())
     action = infer_cart_action(instruction)
-    index = None if action == "set_quantity" else extract_item_index(instruction)
-    ids = resolve_cart_product_ids(session, instruction, action, product_ids=product_ids, index=index)
+    index = extract_item_index(instruction)  # 🟣 v4: 所有操作均支持序数定位
+    ids = resolve_cart_product_ids(session, instruction, action, product_ids=product_ids, index=index, catalog=catalog)
     quantity = extract_quantity(instruction) or 1
     changed: List[str] = []
 
@@ -991,6 +991,33 @@ def extract_product_ids(text: str) -> List[str]:
     return re.findall(pattern, text)
 
 
+def fuzzy_match_cart_item(instruction: str, cart_ids: List[str], catalog: ProductCatalog) -> Optional[str]:
+    """🟣 v4: 从购物车中模糊匹配商品标题/品牌，返回最佳匹配的 product_id。"""
+    if not cart_ids or not catalog:
+        return None
+    matched: List[tuple] = []
+    for pid in cart_ids:
+        product = catalog.get(pid)
+        if not product:
+            continue
+        title = getattr(product, "title", "") or ""
+        brand = getattr(product, "brand", "") or ""
+        combined = f"{brand} {title}".strip()
+        if not combined:
+            continue
+        # 分词：中文字符串 + ASCII 词，过滤 <2 字符的碎片
+        keywords = set(re.findall(r'[\u4e00-\u9fff]{2,}|[A-Za-z]{2,}', combined))
+        if not keywords:
+            continue
+        hits = sum(1 for kw in keywords if kw in instruction)
+        if hits >= 1:
+            matched.append((hits, pid))
+    if matched:
+        matched.sort(key=lambda x: x[0], reverse=True)
+        return matched[0][1]
+    return None
+
+
 def resolve_cart_product_ids(
     session: ShoppingSession,
     instruction: str,
@@ -998,15 +1025,31 @@ def resolve_cart_product_ids(
     *,
     product_ids: Optional[List[str]] = None,
     index: Optional[int] = None,
+    catalog: Optional[ProductCatalog] = None,
 ) -> List[str]:
+    # 1) 显式 product_id（请求参数或正则提取）
     explicit_ids = product_ids or extract_product_ids(instruction)
     if explicit_ids:
         return select_by_index(explicit_ids, index)
-    if action == "remove":
-        cart_ids = list(session.cart.keys())
+
+    cart_ids = list(session.cart.keys())
+
+    # 2) 🟣 v4: 商品名称/品牌模糊匹配（从购物车中定位）
+    if cart_ids and catalog is not None:
+        fuzzy_hit = fuzzy_match_cart_item(instruction, cart_ids, catalog)
+        if fuzzy_hit:
+            return [fuzzy_hit]
+
+    # 3) remove / set_quantity：优先在购物车内定位
+    if action in ("remove", "set_quantity") and cart_ids:
         if index is not None:
             return [cart_ids[index]] if 0 <= index < len(cart_ids) else []
-        return cart_ids[:1] if references_previous_item(instruction) else last_recommended_product_ids(session)
+        if references_previous_item(instruction):
+            return cart_ids[:1]
+        # 兜底：购物车第一个商品
+        return cart_ids[:1] if cart_ids else []
+
+    # 4) add：从上次推荐结果中定位
     recommended_ids = last_recommended_product_ids(session)
     if index is not None:
         return select_by_index(recommended_ids, index)
