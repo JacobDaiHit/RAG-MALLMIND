@@ -1,8 +1,8 @@
 # 后端链路架构说明
 
 **最后更新：** 2026-06-12  
-**版本：** v4.1（🟢 v2改造 + 🔵 v3新增 + 🟣 v4架构治理 + 🔒 硬编码审计）  
-**关联文档：** [v2 链路改造方案](link-transformation-plan.md) · [死代码审计报告](dead-code-audit-rag.md) · [v3 问题报告](bound_test_v3_issues.md) · [Phase 4 回归测试报告](bound_test_phase4.md) · [改造建议文档](improvement-proposals.md)
+**版本：** v4.2（🟢 v2改造 + 🔵 v3新增 + 🟣 v4架构治理 + 🔒 硬编码审计）  
+**关联文档：** [v2 链路改造方案](link-transformation-plan.md) · [死代码审计报告](dead-code-audit-rag.md) · [v3 问题报告](bound_test_v3_issues.md) · [Phase 4 回归测试报告](bound_test_phase4.md) · [改造建议文档](improvement-proposals.md) · [硬编码修正方案](hardcoded-fix-plan.md) · [LLM 调用链路报告](llm-call-chain.md) · [设计目标评估](link-design-target-evaluation.md)
 
 > ⚠️ 本文档为链路架构的**权威说明**。后续如有链路改动，必须同步更新此文档。
 
@@ -272,7 +272,7 @@ structured_filter.py              ~5           🟢 低
 - 购物车：计划+确认模式（v2），防止误操作；🟣 session 上下文解析序数指代
 - 回复：LLM 多样化生成 + 模板变体兜底（v3）
 - 话题切换：显式信号 + 品类感知 + topic_memory 注入（v3）
-- 🟣 LLM 调用：统一经 LLMGateway 注册表，9 种场景独立配置（模型/温度/超时/并发/熔断）
+- 🟣 LLM 调用：LLMGateway 注册表已创建（9 种场景），⚠️ 调用点尚未迁移，仍使用直接实例化
 - 🟣 可观测性：trace_span 树形上下文管理器，自动记录 duration_ms + 异常
 - 🟣 Session 分层：5 个子状态 dataclass（Conversation / Recommendation / Cart / PCBuild / Observability）
 - 🟣 轻量分发：`_LIGHTWEIGHT_TOOLS` 注册表模式，跳过重量级上下文准备
@@ -848,7 +848,9 @@ generate_natural_response(payload, session, message)
     │       └─ 失败 → 降级模板
     │
     └─ 否则 → naturalize_response(payload)
-         └─ 6种开场 × 5种推荐语 × 4种结尾 = 120种组合
+         └─ 6种开场 × 5种推荐语（含 3种无价格变体） × 4种结尾
+            + 超预算(2种) / 品牌未命中(2种) / 无匹配(3种) 条件分支
+            = happy path 120 种，含分支 >120 种组合
 ```
 
 ### 模板变体清单
@@ -1001,7 +1003,9 @@ LLMGateway._call_log（独立于 trace_span）:
 ## 十二、LLM Gateway 统一调用层 🟣 ✅
 
 **文件：** [rag/recommendation/llm_gateway.py](rag/recommendation/llm_gateway.py)  
-**状态：** ✅
+**状态：** ✅（Gateway 已创建并注册 9 种场景，⚠️ 但 0/9 调用点完成迁移）
+
+> ⚠️ **迁移现状：** Gateway 类已完成设计（熔断器 + 并发控制 + 调用日志），9 种场景配置已注册。但所有调用点仍直接使用 `OpenAICompatibleChatClient` 实例化，尚未切换到 `LLMGateway.call()`。Router 有独立的熔断器和信号量实现（`tool_router.py`），与 Gateway 的实现并存。详见 [LLM 调用链路报告](llm-call-chain.md)。
 
 ### 设计思路
 
@@ -1095,7 +1099,7 @@ LLMGateway.call("router", messages)
 | 路由 | [rag/recommendation/tool_router.py](rag/recommendation/tool_router.py) | LLM+本地路由 + 🟢校验 + 🔵模式感知/PC修复 + 🟣 LLM Gateway 集成 | ✅ ⚠️ |
 | 处理器 | [rag/recommendation/tool_handlers.py](rag/recommendation/tool_handlers.py) | 8 工具处理器（🟢v2 + 🔵响应生成 + 🟣session ID 解析修复） | ✅ |
 | 处理基础 | [rag/recommendation/handler_base.py](rag/recommendation/handler_base.py) | 🟣 trace_span 上下文管理器 + 共享工具函数（catalog 加载、ID 解析） | ✅ |
-| LLM网关 | [rag/recommendation/llm_gateway.py](rag/recommendation/llm_gateway.py) | 🟣 统一 LLM 调用注册表（9 场景配置 + 熔断 + 并发 + 日志） | ✅ |
+| LLM网关 | [rag/recommendation/llm_gateway.py](rag/recommendation/llm_gateway.py) | 🟣 统一 LLM 调用注册表（9 场景配置 + 熔断 + 并发 + 日志）⚠️ 调用点尚未迁移 | ✅ ⚠️ |
 | 响应生成 | [rag/recommendation/response_generator.py](rag/recommendation/response_generator.py) | 🔵 LLM多样+模板变体（happy path 120+，含分支 >120） + 🟣 LLM Gateway 集成 | ✅ ⚠️ |
 | 管道 | [rag/recommendation/recommendation_pipeline.py](rag/recommendation/recommendation_pipeline.py) | 推荐主管道 + 🟢v2需求+事实校验 | ✅ |
 | 过滤 | [rag/recommendation/structured_filter.py](rag/recommendation/structured_filter.py) | 12步过滤链（含 LLM 语义过滤层） | ✅ |
@@ -1107,6 +1111,16 @@ LLMGateway.call("router", messages)
 | PC流 | [rag/recommendation/pc_session_flow.py](rag/recommendation/pc_session_flow.py) | PC构建对话流 | ✅ |
 | Session | [rag/recommendation/session_state.py](rag/recommendation/session_state.py) | 会话存储+话题切换🔵 + 🟣子状态视图dataclass + schema_version v2 | ✅ |
 | LLM | [rag/recommendation/llm_client.py](rag/recommendation/llm_client.py) | LLM客户端（mimo/dashscope） | ✅ ⚠️ |
+| 查询改写 | [rag/recommendation/query_rewriter.py](rag/recommendation/query_rewriter.py) | 多轮对话查询改写（代词消解+属性继承） | ✅ |
+| 会话上下文 | [rag/recommendation/session_context.py](rag/recommendation/session_context.py) | 多轮上下文记忆管理（滑动窗口+压缩） | ✅ |
+| 解释生成 | [rag/recommendation/explanation_builder.py](rag/recommendation/explanation_builder.py) | 基于证据的推荐理由生成（字段白名单防幻觉） | ✅ |
+| 意图路由 | [rag/recommendation/intent_router.py](rag/recommendation/intent_router.py) | 需求→推荐模式映射（7种路由） | ✅ |
+| 查询守卫 | [rag/recommendation/query_guards.py](rag/recommendation/query_guards.py) | 确定性品类/产品类型推断 | ✅ |
+| 检索 | [rag/recommendation/retrieval.py](rag/recommendation/retrieval.py) | 向量检索 + 多变体查询扩展 | ✅ |
+| 检索融合 | [rag/recommendation/retrieval_fusion.py](rag/recommendation/retrieval_fusion.py) | RRF 多源结果融合 | ✅ |
+| 附件处理 | [rag/api/attachments.py](rag/api/attachments.py) | 图片/附件上传 + VLM 多模态分析 | ✅ |
+| 图像检索 | [rag/recommendation/image_retrieval.py](rag/recommendation/image_retrieval.py) | 像素直方图嵌入 + 相似商品检索 | ✅ |
+| 输入预处理 | [rag/recommendation/input_preprocessor.py](rag/recommendation/input_preprocessor.py) | 多模态信号处理（音频转录+附件） | ✅ |
 | 模型 | [rag/schemas/recommendation.py](rag/schemas/recommendation.py) | Pydantic数据模型 | ✅ |
 | 存储 | [rag/storage/](rag/storage/) | 向量存储（Milvus+缓存） | ✅ |
 | 摄入 | [rag/ingestion/](rag/ingestion/) | 商品索引构建（仅离线） | ✅ |
@@ -1116,4 +1130,16 @@ LLMGateway.call("router", messages)
 
 ---
 
-*文档完（v4.1）。如有链路改动，请同步更新此文档。*
+## 十五、补充报告索引（v4.2 新增）
+
+| 报告 | 文件 | 内容 |
+|------|------|------|
+| 硬编码修正方案 | [report/hardcoded-fix-plan.md](hardcoded-fix-plan.md) | Top 10 优先修复项，含 before/after 代码示例，分 3 阶段实施 |
+| LLM 调用链路报告 | [report/llm-call-chain.md](llm-call-chain.md) | 9 个 LLM 调用场景完整追踪，含 prompt 模板、参数配置、降级策略 |
+| 设计目标评估 | [report/link-design-target-evaluation.md](link-design-target-evaluation.md) | 9 个链路设计目标逐项评估，整体达成率 ~67% |
+| 面试题准备 | [report/interview-qa.md](interview-qa.md) | 42 个技术面试题 + 参考答案 + 追问预警，覆盖 RAG/Agent/LLM/工程 |
+| 购物车改进评估 | [report/cart-improvement-evaluation.md](cart-improvement-evaluation.md) | 4 个购物车改进提案实施评估，49/49 测试通过 |
+
+---
+
+*文档完（v4.2）。如有链路改动，请同步更新此文档。*

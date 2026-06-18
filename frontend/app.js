@@ -335,7 +335,7 @@ function handleChatEvent(event, data, assistantNode) {
     setStatus(data.label || "需求无法识别", "error");
   }
   if (event === "product_cards") {
-    lastProductCards = data.products || [];
+    lastProductCards = data.cards || data.products || [];
     renderRecommendedProducts(lastProductCards, lastComparisonRows);
   }
   if (event === "comparison_table") {
@@ -407,6 +407,7 @@ function renderRecommendedProducts(products, rows) {
   recommendedProducts.innerHTML = `
     ${cards.length ? `<div class="product-card-grid">${cards.map(renderProductCard).join("")}</div>` : ""}
     ${(rows || []).length ? renderComparisonTable(rows) : ""}
+    ${selectedProductDetail ? renderProductDetailPanel(selectedProductDetail) : ""}
   `;
   bindProductButtons(recommendedProducts);
 }
@@ -422,36 +423,9 @@ function renderProductCard(product) {
   const title = product.title || product.name || id || "未命名商品";
   const price = product.price ?? product.min_price ?? product.base_price;
   const tags = normalizeTags(product.tags || product.best_for || product.supported_scenarios).slice(0, 3);
-  return `
-    <article class="product-card market-product-card">
-      ${renderProductVisual(product, title)}
-      <div class="product-card-body">
-        <div class="product-card-head">
-          <span>${formatPrice(price, product.currency || "CNY")}</span>
-          <small>${escapeHtml(CATEGORY_LABELS[product.category] || product.category_name || product.category || "商品")}</small>
-        </div>
-        <h3>${escapeHtml(title)}</h3>
-        <p class="description">${escapeHtml(product.reason || product.description || product.brand || "")}</p>
-        <div class="product-tags">
-          ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
-        </div>
-        <div class="product-actions">
-          <button class="secondary-button" type="button" data-compare="${escapeHtml(id)}">对比</button>
-          <button class="primary-button" type="button" data-add-cart="${escapeHtml(id)}">加入购物车</button>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderProductCard(product) {
-  const id = product.product_id || "";
-  const title = product.title || product.name || id || "未命名商品";
-  const price = product.price ?? product.min_price ?? product.base_price;
-  const tags = normalizeTags(product.tags || product.best_for || product.supported_scenarios).slice(0, 3);
   const brand = product.brand || "未知品牌";
   const stock = product.stock_status || (product.stock_quantity > 0 ? "available" : "demo");
-  const skuCount = Array.isArray(product.skus) ? product.skus.length : 0;
+  const skuCount = product.sku_count ?? (Array.isArray(product.skus) ? product.skus.length : 0);
   const rating = product.rating_avg ? `${Number(product.rating_avg).toFixed(1)} 分` : "暂无评分";
   const selected = selectedProductDetail?.product_id === id ? " selected" : "";
   return `
@@ -465,108 +439,7 @@ function renderProductCard(product) {
         <h3>${escapeHtml(title)}</h3>
         <dl class="product-basic-info">
           <div><dt>品牌</dt><dd>${escapeHtml(brand)}</dd></div>
-          <div><dt>库存</dt><dd>${escapeHtml(stock)}</dd></div>
-          <div><dt>SKU</dt><dd>${skuCount || 1}</dd></div>
-          <div><dt>评分</dt><dd>${escapeHtml(rating)}</dd></div>
-        </dl>
-        <div class="product-tags">
-          ${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
-        </div>
-        <div class="product-actions">
-          <button class="secondary-button" type="button" data-compare="${escapeHtml(id)}">对比</button>
-          <button class="secondary-button" type="button" data-open-detail="${escapeHtml(id)}">详情</button>
-          <button class="primary-button" type="button" data-add-cart="${escapeHtml(id)}">加入购物车</button>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderProductDetailPanel(product) {
-  if (!product) return "";
-  const id = product.product_id || "";
-  const title = product.title || product.name || id || "商品详情";
-  const price = product.price ?? product.min_price ?? product.base_price;
-  const tags = normalizeTags(product.tags || product.best_for || product.supported_scenarios).slice(0, 8);
-  const skus = Array.isArray(product.skus) ? product.skus.slice(0, 4) : [];
-  const reviews = Array.isArray(product.reviews) ? product.reviews.slice(0, 2) : [];
-  const faqs = Array.isArray(product.faqs) ? product.faqs.slice(0, 2) : [];
-  const specs = product.metadata?.specs && typeof product.metadata.specs === "object"
-    ? Object.entries(product.metadata.specs).filter(([, value]) => value !== "" && value !== null && value !== undefined).slice(0, 10)
-    : [];
-  return `
-    <aside class="product-detail-panel" aria-label="商品详情">
-      <div class="product-detail-head">
-        <div>
-          <span class="section-eyebrow">Product Detail</span>
-          <h3>${escapeHtml(title)}</h3>
-        </div>
-        <button class="detail-close-button" type="button" data-close-product-detail aria-label="关闭详情">×</button>
-      </div>
-      ${renderProductVisual(product, title)}
-      <div class="product-detail-price">${formatPrice(price, product.currency || "CNY")}</div>
-      <dl class="product-detail-facts">
-        <div><dt>品牌</dt><dd>${escapeHtml(product.brand || "-")}</dd></div>
-        <div><dt>分类</dt><dd>${escapeHtml(CATEGORY_LABELS[product.category] || product.category_name || product.category || "-")}</dd></div>
-        <div><dt>库存</dt><dd>${escapeHtml(product.stock_status || "-")}${product.stock_quantity != null ? ` · ${product.stock_quantity}` : ""}</dd></div>
-        <div><dt>评分</dt><dd>${escapeHtml(String(product.rating_avg ?? "-"))}${product.review_count ? ` · ${product.review_count} 条评价` : ""}</dd></div>
-      </dl>
-      ${product.description ? `<p class="product-detail-description">${escapeHtml(product.description)}</p>` : ""}
-      ${tags.length ? `<div class="product-tags">${tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>` : ""}
-      ${skus.length ? `
-        <section class="product-detail-section">
-          <strong>SKU</strong>
-          ${skus.map((sku) => `<p>${escapeHtml(sku.sku_id || "SKU")} · ${formatPrice(sku.price ?? price, product.currency || "CNY")} ${sku.properties ? `· ${escapeHtml(Object.values(sku.properties).join(" / "))}` : ""}</p>`).join("")}
-        </section>
-      ` : ""}
-      ${specs.length ? `
-        <section class="product-detail-section">
-          <strong>关键参数</strong>
-          ${specs.map(([key, value]) => `<p>${escapeHtml(key)}: ${escapeHtml(String(value))}</p>`).join("")}
-        </section>
-      ` : ""}
-      ${reviews.length ? `
-        <section class="product-detail-section">
-          <strong>评价摘要</strong>
-          ${reviews.map((review) => `<p>${escapeHtml(review.nickname || "用户")}：${escapeHtml(review.content || "")}</p>`).join("")}
-        </section>
-      ` : ""}
-      ${faqs.length ? `
-        <section class="product-detail-section">
-          <strong>常见问题</strong>
-          ${faqs.map((faq) => `<p>${escapeHtml(faq.question || "")} ${escapeHtml(faq.answer || "")}</p>`).join("")}
-        </section>
-      ` : ""}
-      <div class="product-detail-actions">
-        <button class="secondary-button" type="button" data-compare="${escapeHtml(id)}">对比</button>
-        <button class="primary-button" type="button" data-add-cart="${escapeHtml(id)}">加入购物车</button>
-      </div>
-    </aside>
-  `;
-}
-
-function renderProductCard(product) {
-  const id = product.product_id || "";
-  const title = product.title || product.name || id || "未命名商品";
-  const price = product.price ?? product.min_price ?? product.base_price;
-  const tags = normalizeTags(product.tags || product.best_for || product.supported_scenarios).slice(0, 3);
-  const brand = product.brand || "未知品牌";
-  const stock = product.stock_status || (product.stock_quantity > 0 ? "available" : "demo");
-  const skuCount = Array.isArray(product.skus) ? product.skus.length : 0;
-  const rating = product.rating_avg ? `${Number(product.rating_avg).toFixed(1)} 分` : "暂无评分";
-  const selected = selectedProductDetail?.product_id === id ? " selected" : "";
-  return `
-    <article class="product-card market-product-card${selected}" data-product-detail="${escapeHtml(id)}" tabindex="0" role="button" aria-label="查看 ${escapeHtml(title)} 详情">
-      ${renderProductVisual(product, title)}
-      <div class="product-card-body">
-        <div class="product-card-head">
-          <span>${formatPrice(price, product.currency || "CNY")}</span>
-          <small>${escapeHtml(CATEGORY_LABELS[product.category] || product.category_name || product.category || "商品")}</small>
-        </div>
-        <h3>${escapeHtml(title)}</h3>
-        <dl class="product-basic-info">
-          <div><dt>品牌</dt><dd>${escapeHtml(brand)}</dd></div>
-          <div><dt>库存</dt><dd>${escapeHtml(stock)}</dd></div>
+          <div><dt>库存</dt><dd>${escapeHtml(stockStatusLabel(stock))}</dd></div>
           <div><dt>SKU</dt><dd>${skuCount || 1}</dd></div>
           <div><dt>评分</dt><dd>${escapeHtml(rating)}</dd></div>
         </dl>
@@ -944,21 +817,6 @@ function bindProductMarketControls() {
 }
 
 function bindProductButtons(root) {
-  root.querySelectorAll("[data-add-cart]").forEach((button) => {
-    button.addEventListener("click", async () => {
-      await updateCart("加入购物车", [button.dataset.addCart]);
-      button.textContent = "已加入";
-      setTimeout(() => {
-        button.textContent = "加入购物车";
-      }, 1200);
-    });
-  });
-  root.querySelectorAll("[data-compare]").forEach((button) => {
-    button.addEventListener("click", () => compareProduct(button.dataset.compare));
-  });
-}
-
-function bindProductButtons(root) {
   root.querySelectorAll("[data-product-detail]").forEach((card) => {
     const open = () => openProductDetail(card.dataset.productDetail);
     card.addEventListener("click", open);
@@ -978,7 +836,7 @@ function bindProductButtons(root) {
   root.querySelector("[data-close-product-detail]")?.addEventListener("click", (event) => {
     event.stopPropagation();
     selectedProductDetail = null;
-    renderProductMarket();
+    renderActiveProductSurface();
   });
   root.querySelectorAll("[data-add-cart]").forEach((button) => {
     button.addEventListener("click", async (event) => {
@@ -998,9 +856,27 @@ function bindProductButtons(root) {
   });
 }
 
-function openProductDetail(productId) {
+async function openProductDetail(productId) {
   const sourceCards = lastProductCards.length ? lastProductCards : productCatalog;
   selectedProductDetail = sourceCards.find((item) => item.product_id === productId) || productCatalog.find((item) => item.product_id === productId) || null;
+  renderActiveProductSurface();
+
+  if (selectedProductDetail && needsFullProductDetail(selectedProductDetail)) {
+    try {
+      const detail = await getJson(`/api/products/${encodeURIComponent(productId)}`);
+      selectedProductDetail = { ...selectedProductDetail, ...detail };
+    } catch (error) {
+      console.warn("Product detail loading failed", error);
+    }
+  }
+  renderActiveProductSurface();
+}
+
+function needsFullProductDetail(product) {
+  return !Array.isArray(product?.skus) || !Object.prototype.hasOwnProperty.call(product || {}, "description");
+}
+
+function renderActiveProductSurface() {
   if (document.querySelector("#screen-products").classList.contains("active")) {
     renderProductMarket();
   } else {
@@ -1375,15 +1251,23 @@ function renderImage(src, alt) {
   return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt || "商品图片")}" loading="lazy" />`;
 }
 
-function renderImage(src, alt) {
-  if (!src) return `<div class="image-placeholder" role="img" aria-label="${escapeHtml(alt || "商品图片")}"></div>`;
-  return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt || "商品图片")}" loading="lazy" />`;
-}
-
 function formatPrice(value, currency = "CNY") {
   if (value === undefined || value === null || Number.isNaN(Number(value))) return "-";
   const amount = Number(value).toLocaleString("zh-CN", { maximumFractionDigits: 0 });
   return `${currency === "CNY" ? "¥" : ""}${amount}${currency && currency !== "CNY" ? ` ${currency}` : ""}`;
+}
+
+function stockStatusLabel(value) {
+  const labels = {
+    available: "有货",
+    in_stock: "有货",
+    limited: "库存有限",
+    low_stock: "库存有限",
+    sold_out: "已售罄",
+    out_of_stock: "无货",
+    demo: "库存待确认",
+  };
+  return labels[String(value || "").toLowerCase()] || "库存待确认";
 }
 
 function normalizeTags(value) {

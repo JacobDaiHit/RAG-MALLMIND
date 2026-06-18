@@ -590,5 +590,7 @@ def test_recommend_endpoint_infers_pc_parts_scope_for_pc_part_catalog():
 
 
 def test_parse_adjustment_amount_ignores_gpu_model_numbers():
-    assert recommendation_app.parse_adjustment_amount("换 4070，预算别变", default=500) == 500
-    assert recommendation_app.parse_adjustment_amount("预算降 800 元", default=500) == 800
+    from rag.recommendation.pc_session_flow import parse_adjustment_amount
+
+    assert parse_adjustment_amount("换 4070，预算别变", default=500) == 500
+    assert parse_adjustment_amount("预算降 800 元", default=500) == 800

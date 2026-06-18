@@ -323,25 +323,7 @@ class MilvusManager:
         formatted_results = []
         for hits in results:
             for hit in hits:
-                formatted_results.append({
-                    "id": hit.get("id"),
-                    "text": hit.get("text", ""),
-                    "filename": hit.get("filename", ""),
-                    "file_type": hit.get("file_type", ""),
-                    "page_number": hit.get("page_number", 0),
-                    "chunk_id": hit.get("chunk_id", ""),
-                    "parent_chunk_id": hit.get("parent_chunk_id", ""),
-                    "root_chunk_id": hit.get("root_chunk_id", ""),
-                    "chunk_level": hit.get("chunk_level", 0),
-                    "chunk_idx": hit.get("chunk_idx", 0),
-                    "product_id": hit.get("product_id", ""),
-                    "doc_type": hit.get("doc_type", ""),
-                    "chunk_type": hit.get("chunk_type", ""),
-                    "category": hit.get("category", ""),
-                    "brand": hit.get("brand", ""),
-                    "title": hit.get("title", ""),
-                    "score": hit.get("distance", 0.0)
-                })
+                formatted_results.append(_normalize_search_hit(hit))
         
         return formatted_results
 
@@ -380,25 +362,7 @@ class MilvusManager:
         formatted_results = []
         for hits in results:
             for hit in hits:
-                formatted_results.append({
-                    "id": hit.get("id"),
-                    "text": hit.get("entity", {}).get("text", ""),
-                    "filename": hit.get("entity", {}).get("filename", ""),
-                    "file_type": hit.get("entity", {}).get("file_type", ""),
-                    "page_number": hit.get("entity", {}).get("page_number", 0),
-                    "chunk_id": hit.get("entity", {}).get("chunk_id", ""),
-                    "parent_chunk_id": hit.get("entity", {}).get("parent_chunk_id", ""),
-                    "root_chunk_id": hit.get("entity", {}).get("root_chunk_id", ""),
-                    "chunk_level": hit.get("entity", {}).get("chunk_level", 0),
-                    "chunk_idx": hit.get("entity", {}).get("chunk_idx", 0),
-                    "product_id": hit.get("entity", {}).get("product_id", ""),
-                    "doc_type": hit.get("entity", {}).get("doc_type", ""),
-                    "chunk_type": hit.get("entity", {}).get("chunk_type", ""),
-                    "category": hit.get("entity", {}).get("category", ""),
-                    "brand": hit.get("entity", {}).get("brand", ""),
-                    "title": hit.get("entity", {}).get("title", ""),
-                    "score": hit.get("distance", 0.0)
-                })
+                formatted_results.append(_normalize_search_hit(hit))
         
         return formatted_results
 
@@ -431,6 +395,40 @@ def _parse_positive_int(value: object, default: int) -> int:
     except (TypeError, ValueError):
         return default
     return parsed if parsed > 0 else default
+
+
+def _normalize_search_hit(hit: object) -> dict:
+    """Normalize MilvusClient search hits across flat and nested response shapes."""
+
+    raw = hit if isinstance(hit, dict) else {}
+    entity = raw.get("entity") if isinstance(raw.get("entity"), dict) else {}
+
+    def value(name: str, default=None):
+        direct = raw.get(name)
+        if direct is not None:
+            return direct
+        nested = entity.get(name)
+        return default if nested is None else nested
+
+    return {
+        "id": value("id"),
+        "text": value("text", ""),
+        "filename": value("filename", ""),
+        "file_type": value("file_type", ""),
+        "page_number": value("page_number", 0),
+        "chunk_id": value("chunk_id", ""),
+        "parent_chunk_id": value("parent_chunk_id", ""),
+        "root_chunk_id": value("root_chunk_id", ""),
+        "chunk_level": value("chunk_level", 0),
+        "chunk_idx": value("chunk_idx", 0),
+        "product_id": value("product_id", ""),
+        "doc_type": value("doc_type", ""),
+        "chunk_type": value("chunk_type", ""),
+        "category": value("category", ""),
+        "brand": value("brand", ""),
+        "title": value("title", ""),
+        "score": float(value("distance", value("score", 0.0)) or 0.0),
+    }
 
 
 def _field_value(field: object, key: str):

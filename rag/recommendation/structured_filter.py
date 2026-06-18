@@ -125,8 +125,11 @@ def filter_products_for_requirement(
     # 跳过 infer_product_type 的品类交叉拒绝。避免"笔记本电脑"关键词
     # 覆盖路由器对"双肩包→clothing"的正确判断。
     has_explicit_category = bool(requirement.desired_categories or requirement.required_components)
-    inferred_product_type = None if category.value.startswith("pc_") or has_explicit_category else infer_product_type(requirement.raw_query)
+    inferred_product_type = None if category.value.startswith("pc_") else infer_product_type(requirement.raw_query)
     product_type_category = category_for_product_type(inferred_product_type)
+    if has_explicit_category and product_type_category and category.value != product_type_category:
+        inferred_product_type = None
+        product_type_category = None
     if product_type_category and category.value != product_type_category:
         allow_cross_category_bundle = bool(
             requirement.need_bundle

@@ -410,6 +410,31 @@ class EmbeddingService:
             self._avg_doc_len = 1.0
             self._persist_unlocked()
 
+    def snapshot_state(self) -> dict[str, Any]:
+        """Return a copy of persistent BM25 statistics for failure rollback."""
+
+        with self._lock:
+            return {
+                "vocab": dict(self._vocab),
+                "vocab_counter": self._vocab_counter,
+                "doc_freq": Counter(self._doc_freq),
+                "total_docs": self._total_docs,
+                "sum_token_len": self._sum_token_len,
+                "avg_doc_len": self._avg_doc_len,
+            }
+
+    def restore_state(self, snapshot: dict[str, Any]) -> None:
+        """Restore and persist a state produced by :meth:`snapshot_state`."""
+
+        with self._lock:
+            self._vocab = dict(snapshot.get("vocab") or {})
+            self._vocab_counter = int(snapshot.get("vocab_counter") or 0)
+            self._doc_freq = Counter(snapshot.get("doc_freq") or {})
+            self._total_docs = int(snapshot.get("total_docs") or 0)
+            self._sum_token_len = int(snapshot.get("sum_token_len") or 0)
+            self._avg_doc_len = float(snapshot.get("avg_doc_len") or 1.0)
+            self._persist_unlocked()
+
     def increment_add_documents(self, texts: list[str]) -> None:
         """
         将每个 text 视为 BM25 中的一篇文档（与当前 chunk 写入粒度一致），增量更新 N / df / 长度和。

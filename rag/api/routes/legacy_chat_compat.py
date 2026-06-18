@@ -28,7 +28,7 @@ from rag.recommendation.session_state import (
     save_session,
     update_topic_memory,
 )
-from rag.recommendation.tool_router import route_shopping_tool_call
+from rag.recommendation.tool_router import local_route_tool_call, route_shopping_tool_call, validate_tool_call
 from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_report, sanitize_result_for_response
 
 
@@ -44,7 +44,13 @@ def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
 
     use_llm = _stream_llm_enabled()
     raw_attachments = [*request.attachments, *request.images]
-    tool_call = route_shopping_tool_call(raw_message, session, use_llm=use_llm)
+    local_route = local_route_tool_call(raw_message, session)
+    tool_call = validate_tool_call(
+        route_shopping_tool_call(raw_message, session, use_llm=use_llm),
+        local_route,
+        raw_message,
+        session,
+    )
     remember_tool_call(session, tool_call)
     name = tool_call.get("name")
 

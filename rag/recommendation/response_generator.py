@@ -9,6 +9,7 @@ from __future__ import annotations
 import logging
 import os
 import random
+import re
 from typing import Any, Dict, List, Optional
 
 from rag.recommendation.llm_client import (
@@ -157,8 +158,8 @@ def _llm_diverse_response(payload: Dict[str, Any], message: str) -> Optional[str
     timeout_s = float(os.getenv("RECOMMENDATION_RESPONSE_TIMEOUT_SECONDS", "5.0"))
 
     try:
-        payload_data, _report = run_with_hard_timeout(
-            lambda: client.chat_json_with_report(
+        text, _report = run_with_hard_timeout(
+            lambda: client.chat_text_with_report(
                 [{"role": "user", "content": prompt}],
                 model=model,
                 temperature=0.9,
@@ -170,14 +171,46 @@ def _llm_diverse_response(payload: Dict[str, Any], message: str) -> Optional[str
     except (TimeoutError, LLMClientError, Exception):
         return None
 
-    # chat_json_with_report returns a dict; extract the text
-    if isinstance(payload_data, dict):
-        text = payload_data.get("content") or payload_data.get("text") or ""
-        if not text and "choices" in payload_data:
-            text = (payload_data["choices"][0].get("message", {}).get("content", ""))
-        if text:
-            return str(text).strip()[:300]
-    return None
+    cleaned = str(text or "").strip()[:300]
+    if not cleaned or not _response_facts_are_allowed(cleaned, cards, budget):
+        return None
+    return cleaned
+
+
+def _response_facts_are_allowed(text: str, cards: List[Dict[str, Any]], budget: Optional[float]) -> bool:
+    """Reject generated claims that are not supported by the compact fact input."""
+
+    # Stock and promotion data are deliberately absent from the response prompt.
+    unsupported_claims = ("现货", "库存充足", "缺货", "售罄", "优惠券", "满减", "历史最低")
+    if any(claim in text for claim in unsupported_claims):
+        return False
+
+    allowed_numbers = set()
+    for card in cards:
+        for key in ("price", "min_price", "max_price", "base_price"):
+            value = card.get(key)
+            if value is not None:
+                try:
+                    allowed_numbers.add(round(float(value), 2))
+                except (TypeError, ValueError):
+                    continue
+    if budget is not None:
+        allowed_numbers.add(round(float(budget), 2))
+
+    price_patterns = re.findall(
+        r"(?:[¥￥]\s*([\d,.]+)|([\d,.]+)\s*(?:元|块|CNY))",
+        text,
+        flags=re.IGNORECASE,
+    )
+    for groups in price_patterns:
+        raw = next((item for item in groups if item), "").replace(",", "")
+        try:
+            mentioned = round(float(raw), 2)
+        except ValueError:
+            return False
+        if mentioned not in allowed_numbers:
+            return False
+    return True
 
 
 # ── 模板变体 ──

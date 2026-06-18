@@ -36,6 +36,10 @@ class MilvusWriter:
         if not documents:
             return
 
+        bm25_snapshot = None
+        snapshot_state = getattr(self.embedding_service, "snapshot_state", None)
+        if callable(snapshot_state):
+            bm25_snapshot = snapshot_state()
         try:
             dense_dim = _embedding_service_dim(self.embedding_service)
             configured_dim = get_configured_embedding_dim()
@@ -98,6 +102,12 @@ class MilvusWriter:
             self.milvus_manager.flush()
         except Exception as exc:
             logger.exception("Milvus indexing failed")
+            restore_state = getattr(self.embedding_service, "restore_state", None)
+            if bm25_snapshot is not None and callable(restore_state):
+                try:
+                    restore_state(bm25_snapshot)
+                except Exception:
+                    logger.exception("BM25 state rollback failed")
             if "dimension mismatch" in str(exc).lower() or "dense_embedding dim" in str(exc):
                 raise RuntimeError(str(exc)) from exc
             raise RuntimeError(

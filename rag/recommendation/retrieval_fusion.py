@@ -79,6 +79,7 @@ def fuse_candidates(
     catalog_products: List[ApiProduct],
     *,
     enabled: bool = True,
+    retrieved_product_ids: Optional[List[str]] = None,
 ) -> FusionResult:
     """Fuse rule-filtered candidates with vector-retrieved candidates.
 
@@ -108,11 +109,25 @@ def fuse_candidates(
         )
 
     # ── Step 1: Vector recall ──
-    vector_products = _vector_recall(
-        requirement=requirement,
-        category=category,
-        catalog_products=catalog_products,
-    )
+    if retrieved_product_ids is None:
+        vector_products = _vector_recall(
+            requirement=requirement,
+            category=category,
+            catalog_products=catalog_products,
+        )
+    else:
+        catalog_index = {product.product_id: product for product in catalog_products}
+        vector_products = [
+            catalog_index[product_id]
+            for product_id in retrieved_product_ids
+            if product_id in catalog_index
+        ]
+
+    # Vector retrieval may improve ordering, but it must never bypass the
+    # deterministic hard-constraint filter. Restrict recalled products to the
+    # already validated candidate set before fusion.
+    allowed_ids = {product.product_id for product in rule_filtered}
+    vector_products = [product for product in vector_products if product.product_id in allowed_ids]
 
     if not vector_products:
         return FusionResult(

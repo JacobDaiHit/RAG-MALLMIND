@@ -66,6 +66,13 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     try:
         manager = MilvusManager()
+        if manager.has_collection() and not args.recreate:
+            print("status=failed", flush=True)
+            print(
+                "error=Collection already exists; rerun with --recreate to avoid duplicate chunks and BM25 drift.",
+                flush=True,
+            )
+            return 1
         MilvusWriter(embedding_service=embedding_service, milvus_manager=manager).write_documents(
             chunks,
             batch_size=batch_size,

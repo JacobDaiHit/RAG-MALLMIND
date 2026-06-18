@@ -461,6 +461,7 @@ def score_required_components(
     grouped: Dict[ComponentCategory, List[ProductScore]] = {}
     diagnostics_by_category: Dict[ComponentCategory, object] = {}
     evidence_by_id = retrieval_evidence.by_product_id if retrieval_evidence else {}
+    retrieved_product_ids = list(evidence_by_id.keys())
     categories = requirement.desired_categories or requirement.required_components
     for category in categories:
         products, diagnostics = filter_products_for_requirement(
@@ -474,6 +475,7 @@ def score_required_components(
             requirement=requirement,
             category=category,
             catalog_products=catalog.products,
+            retrieved_product_ids=retrieved_product_ids,
         )
         fusion_trace = fusion.to_trace()
         if fusion.status not in {"disabled", "vector_empty"}:
@@ -725,6 +727,10 @@ def build_product_cards(
             product = score.product
             seen.add(product.product_id)
             cards.append(product_card_from_score(score, "alternative_candidate"))
+    for rank, card in enumerate(cards, 1):
+        card["schema_version"] = "product_card.v2"
+        card["rank"] = rank
+        card["role"] = "primary" if rank == 1 else "alternative"
     return cards
 
 
@@ -796,6 +802,10 @@ def relevant_alternative_scores(
 def product_card_from_component(component: SelectedComponent, source: str) -> Dict[str, object]:
     product = component.product
     score = component.score.final_score if component.score else None
+    selected_sku = next(
+        (sku for sku in product.skus if sku.sku_id == component.selected_sku_id),
+        None,
+    )
     card = {
         "product_id": product.product_id,
         "title": product.title,
@@ -813,9 +823,23 @@ def product_card_from_component(component: SelectedComponent, source: str) -> Di
         "rating_avg": product.rating_avg,
         "review_count": product.review_count,
         "reason": component.reason,
+        "why_it_fits": list(component.score.reasons[:3]) if component.score else [],
+        "highlights": dedupe([*product.best_for[:2], *product.tags[:2]])[:3],
+        "tradeoffs": list(product.not_good_for[:2]),
+        "tags": dedupe([*product.tags, *product.best_for, *product.supported_scenarios])[:6],
         "score": score,
         "source": source,
         "selected_sku_id": component.selected_sku_id,
+        "sku_count": len(product.skus),
+        "selected_sku": (
+            {
+                "sku_id": selected_sku.sku_id,
+                "price": selected_sku.price,
+                "properties": dict(selected_sku.properties),
+            }
+            if selected_sku
+            else None
+        ),
     }
     if product.category.value.startswith("pc_"):
         card.pop("image_url", None)

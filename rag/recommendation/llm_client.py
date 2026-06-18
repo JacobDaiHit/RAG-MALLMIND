@@ -204,6 +204,24 @@ class OpenAICompatibleChatClient:
         )
         return _extract_message_content(data)
 
+    def chat_text_with_report(
+        self,
+        messages: List[Dict[str, Any]],
+        *,
+        model: Optional[str] = None,
+        temperature: float = 0.2,
+        max_tokens: int = 1200,
+    ) -> Tuple[str, LLMCallReport]:
+        """Return plain assistant text together with the provider call report."""
+
+        data, report = self.chat_completion(
+            messages,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return _extract_message_content(data), report
+
     def chat_json(
         self,
         messages: List[Dict[str, Any]],

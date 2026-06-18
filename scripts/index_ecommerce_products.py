@@ -29,6 +29,11 @@ def main() -> None:
         return
 
     manager = MilvusManager()
+    if manager.has_collection() and not args.rebuild:
+        raise SystemExit(
+            "Refusing to append a full catalog into an existing auto-id collection. "
+            "Rerun with --rebuild to avoid duplicate chunks and BM25 drift."
+        )
     MilvusWriter(embedding_service=embedding_service, milvus_manager=manager).write_documents(
         chunks,
         batch_size=max(1, args.batch_size),

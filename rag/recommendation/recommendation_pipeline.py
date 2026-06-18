@@ -239,8 +239,12 @@ def _requirement_from_args_v2(
     - 若 router_arguments 中某字段为 __CLEAR__ → 显式清空
     """
     session_current: Dict[str, Any] = getattr(session, "current", {}) if session else {}
+    # The router is an orchestration hint, not a second incompatible intent
+    # schema. Start from the canonical rule parser so attachment context,
+    # exclusions, bundle intent and modalities cannot be lost.
+    fallback = parse_requirement_rule_based(user_goal, skip_keyword_check=True)
 
-    raw_query = str(args.get("query") or user_goal or "").strip()
+    raw_query = str(user_goal or args.get("query") or "").strip()
     category_str = str(args.get("category") or "").strip().lower()
     sub_category = str(args.get("sub_category") or "").strip()
     catalog_scope = str(args.get("catalog_scope") or "").strip()
@@ -303,18 +307,85 @@ def _requirement_from_args_v2(
         if mapped:
             desired_categories = [mapped]
 
+    if not desired_categories:
+        desired_categories = list(fallback.desired_categories)
+
+    target_sub_categories = dedupe_strings(
+        ([sub_category] if sub_category else []) + list(fallback.target_sub_categories)
+    )
+    must_have_terms = [str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()]
+    must_have_terms = dedupe_strings([*must_have_terms, *fallback.must_have_terms])
+    excluded_terms = [str(t) for t in (args.get("excluded_terms") or []) if str(t).strip()]
+    excluded_terms = dedupe_strings([*excluded_terms, *fallback.excluded_terms])
+    preference_terms = _router_preference_terms(args.get("preferences"), args.get("usage"))
+    preference_terms = dedupe_strings([*preference_terms, *fallback.preferences])
+
+    need_bundle = bool(args.get("need_bundle", fallback.need_bundle))
+    need_comparison = bool(args.get("need_comparison", fallback.need_comparison))
+    need_cart_action = bool(args.get("need_cart_action", fallback.need_cart_action))
+    need_multimodal = bool(args.get("need_multimodal", fallback.need_multimodal))
+    task_type = fallback.task_type
+    if need_bundle:
+        task_type = "bundle_recommendation"
+    elif need_comparison:
+        task_type = "comparison"
+
     return RequirementSpec(
         raw_query=raw_query,
+        scenario=fallback.scenario,
+        task_type=task_type,
         desired_categories=desired_categories,
         required_components=desired_categories,
-        target_sub_categories=[sub_category] if sub_category else [],
-        brands=brands,
-        excluded_brands=excluded_brands,
-        must_have_terms=[str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()],
+        target_sub_categories=target_sub_categories,
+        brands=(brands if "brands" in args or session_current.get("brands") else list(fallback.brands)),
+        excluded_brands=(
+            excluded_brands
+            if "exclude_brands" in args or session_current.get("exclude_brands")
+            else list(fallback.excluded_brands)
+        ),
+        must_have_terms=must_have_terms,
+        excluded_terms=excluded_terms,
         price_min=price_min,
         price_max=price_max,
-        preferences=[str(p) for p in (args.get("preferences") or []) if str(p).strip()] if isinstance(args.get("preferences"), list) else [],
+        preferences=preference_terms,
+        occasion=fallback.occasion,
+        target_user=fallback.target_user,
+        budget_level=fallback.budget_level,
+        need_bundle=need_bundle,
+        need_comparison=need_comparison,
+        need_cart_action=need_cart_action,
+        need_multimodal=need_multimodal,
+        input_modalities=list(fallback.input_modalities),
+        output_modalities=list(fallback.output_modalities),
+        languages=list(fallback.languages),
+        missing_fields=list(fallback.missing_fields),
+        assumptions=list(fallback.assumptions),
+        clarification_question=fallback.clarification_question,
     )
+
+
+def _router_preference_terms(preferences: Any, usage: Any) -> List[str]:
+    """Flatten router preference objects into RequirementSpec string terms."""
+
+    terms: List[str] = []
+    if isinstance(preferences, dict):
+        for key, value in preferences.items():
+            if isinstance(value, bool):
+                if value:
+                    terms.append(str(key))
+            elif isinstance(value, list):
+                terms.extend(str(item) for item in value if str(item).strip())
+            elif value not in (None, ""):
+                terms.append(str(value))
+    elif isinstance(preferences, list):
+        terms.extend(str(item) for item in preferences if str(item).strip())
+    elif isinstance(preferences, str) and preferences.strip():
+        terms.append(preferences.strip())
+    if isinstance(usage, list):
+        terms.extend(str(item) for item in usage if str(item).strip())
+    elif isinstance(usage, str) and usage.strip():
+        terms.append(usage.strip())
+    return dedupe_strings(terms)
 
 
 def recommend_shopping_products(
@@ -334,7 +405,9 @@ def recommend_shopping_products(
 
     validate_business_goal(user_goal, skip_keyword_check=skip_keyword_check)
     if router_arguments:
-        # 🟢 使用 v2 版本（session 感知）
+        parse_trace = _reset_parse_trace()
+        parse_trace["llm_parse_failure_reason"] = "router_arguments_applied"
+        parse_trace["llm_parse_error_class"] = "skipped"
         requirement = _requirement_from_args_v2(router_arguments, user_goal, session=session)
     else:
         requirement = parse_requirement(user_goal, use_llm=use_llm, skip_keyword_check=skip_keyword_check)
@@ -1300,6 +1373,20 @@ def fact_check_result(
         valid_cards.append(card)
 
     payload["product_cards"] = valid_cards
+    valid_ids = {str(card.get("product_id") or "") for card in valid_cards}
+    comparison_rows = payload.get("comparison_table") or []
+    synchronized_rows = []
+    for row in comparison_rows:
+        product_id = str(row.get("product_id") or "")
+        if product_id not in valid_ids:
+            continue
+        product = catalog_get(product_id)
+        if product is not None:
+            real_price = getattr(product, "base_price", None)
+            if real_price is not None:
+                row["price"] = real_price
+        synchronized_rows.append(row)
+    payload["comparison_table"] = synchronized_rows
     failure_rate = (removed + fixed) / total if total > 0 else 0.0
     passed = failure_rate <= _FACT_FAILURE_THRESHOLD and removed == 0
 

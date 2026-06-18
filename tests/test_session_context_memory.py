@@ -1,4 +1,4 @@
-from rag.recommendation.session_context import merge_requirement_memory, record_turn, session_context_for_llm
+from rag.recommendation.session_context import merge_requirement_memory, record_turn
 from rag.recommendation.session_state import CartItem, ShoppingSession, resolve_cart_product_ids
 
 
@@ -49,6 +49,5 @@ def test_recent_turns_are_compacted_after_eight_turns():
     for index in range(10):
         record_turn(session, role="user", content=f"turn {index}", tool_name="recommend_shopping_products")
 
-    context = session_context_for_llm(session)
-    assert len(context["recent_turns"]) == 8
-    assert context["recent_turns_summary"]
+    assert len(session.recent_turns) == 8
+    assert session.recent_turns_summary

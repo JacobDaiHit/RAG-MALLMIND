@@ -35,18 +35,19 @@ from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatCl
 logger = logging.getLogger(__name__)
 
 
-def handle_cart(session: Any, message: str, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
-    cart_result = apply_cart_instruction(
-        session=session,
-        instruction=message,
-        catalog=load_combined_product_catalog(),
-        product_ids=product_ids,
-    )
-    update_topic_memory(session, tool_call, result_type="cart")
-    text = "\n".join(str(item) for item in cart_result.get("messages") or [] if str(item).strip())
-    yield sse_event("delta", {"text": text or "购物车已更新。"})
-    yield sse_event("cart", cart_result)
-    yield sse_event("done", {"session_id": session.session_id})
+def product_cards_payload(cards: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Build the versioned product-card SSE payload.
+
+    ``products`` remains as a temporary compatibility alias for older clients;
+    new consumers must use ``cards``.
+    """
+
+    normalized = list(cards or [])
+    return {
+        "schema_version": "product_cards.v2",
+        "cards": normalized,
+        "products": normalized,
+    }
 
 
 # ── 🟢 新增: 购物车 v2（计划+确认模式） ──
@@ -413,24 +414,6 @@ def _generate_general_chat_fallback(query: str) -> str:
     )
 
 
-def handle_compare(session: Any, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
-    if not product_ids:
-        product_ids = last_recommended_product_ids(session)
-    if not product_ids:
-        product_ids = comparison_candidate_ids((tool_call.get("arguments") or {}).get("query") or "")
-    compare_result = compare_products(load_combined_product_catalog(), product_ids) if product_ids else {
-        "count": 0,
-        "rows": [],
-        "recommendation": {},
-        "message": "请指定要对比的 product_id，或先让系统推荐一组商品。",
-    }
-    topic_memory = update_topic_memory(session, tool_call, result_type="comparison")
-    yield sse_event("intent_route", {"route": "comparison", "task_type": "compare_products", "tool_call": tool_call, "topic_memory": topic_memory})
-    yield sse_event("comparison_table", {"rows": compare_result.get("rows") or []})
-    yield sse_event("result", {"type": "comparison", "comparison": compare_result, "tool_call": tool_call, "topic_memory": topic_memory})
-    yield sse_event("done", {"session_id": session.session_id})
-
-
 # ── 🟢 新增: 对比 v2（加入事实校验） ──
 
 def handle_compare_v2(session: Any, product_ids: List[str], tool_call: Dict[str, Any]) -> Iterable[str]:
@@ -498,7 +481,7 @@ def handle_compare_v2(session: Any, product_ids: List[str], tool_call: Dict[str,
                 payload = model_to_dict(result)
                 cards = payload.get("product_cards") or []
                 if cards:
-                    yield sse_event("product_cards", {"cards": cards})
+                    yield sse_event("product_cards", product_cards_payload(cards))
                     response_text = generate_natural_response(payload, session, query)
                     for line in response_text:
                         yield sse_event("delta", {"text": line})
@@ -666,7 +649,7 @@ def handle_parameter_query(session: Any, tool_call: Dict[str, Any]) -> Iterable[
         detail_parts.append(f"参考价：¥{product.base_price}")
 
     yield sse_event("delta", {"text": "\n".join(detail_parts)})
-    yield sse_event("product_cards", {"cards": [model_to_dict(product)]})
+    yield sse_event("product_cards", product_cards_payload([model_to_dict(product)]))
     yield sse_event("done", {"session_id": session.session_id})
 
 
@@ -747,7 +730,7 @@ def handle_price_comparison(session: Any, tool_call: Dict[str, Any]) -> Iterable
     lines.append("\n以上为商品库中的参考价格，实际价格请以购买页面为准。")
 
     yield sse_event("delta", {"text": "\n".join(lines)})
-    yield sse_event("product_cards", {"cards": [model_to_dict(product)]})
+    yield sse_event("product_cards", product_cards_payload([model_to_dict(product)]))
     yield sse_event("done", {"session_id": session.session_id})
 
 
@@ -820,6 +803,7 @@ def handle_recommend(
     use_llm_guidance: bool = False,
     use_milvus_retrieval: bool = True,
     use_rag_query_expansion: bool = False,
+    runtime_mode: str = "balanced",
 ) -> Iterable[str]:
     recommendation_fn = recommendation_fn or recommend_shopping_products
     image_retrieval_fn = image_retrieval_fn or retrieve_image_evidence
@@ -871,7 +855,8 @@ def handle_recommend(
     result.trace["tool_call"] = tool_call
     result.trace["catalog_scope"] = catalog_scope
     result.trace["recommendation_domain"] = recommendation_domain
-    result.trace["runtime_mode"] = "balanced"
+    result.trace["runtime_mode"] = runtime_mode
+    result.trace["selected_runtime_mode"] = runtime_mode
     result.trace["llm_configured"] = llm_stream_enabled
     result.trace["llm_used_for_route"] = bool(((tool_call.get("routing_trace") or {}).get("llm") or {}).get("name"))
     result.trace["clarification_required"] = bool(result.trace.get("clarification_required"))
@@ -906,7 +891,7 @@ def handle_recommend(
     natural_lines = generate_natural_response(payload, session, message)
     for text in natural_lines:
         yield sse_event("delta", {"text": text})
-    yield sse_event("product_cards", {"products": response_payload.get("product_cards") or []})
+    yield sse_event("product_cards", product_cards_payload(response_payload.get("product_cards") or []))
     yield sse_event("candidate_scope", response_payload.get("candidate_scope") or {})
     comparison_rows = payload.get("comparison_table") or []
     if not (payload.get("requirement") or {}).get("need_comparison"):
@@ -1027,92 +1012,6 @@ def call_recommendation_fn(
     if "session" in parameters and session is not None:
         kwargs["session"] = session
     return recommendation_fn(contextual_goal, **kwargs)
-
-
-def build_chat_opening(message: str, session: Any = None) -> str:
-    return "我先按你的需求筛一遍商品库，优先找最相关的真实商品。"
-
-
-def build_chat_delta_lines(payload: Dict[str, Any]) -> List[str]:
-    requirement = payload.get("requirement") or {}
-    cards = payload.get("product_cards") or []
-    plans = payload.get("plans") or []
-    trace = payload.get("trace") or {}
-    llm_guidance = payload.get("teaching_guidance") or []
-    lines: List[str] = []
-
-    # ── clarification_question takes priority ──
-    clarification_q = (
-        trace.get("clarification_question")
-        or requirement.get("clarification_question")
-        or ""
-    )
-    if clarification_q:
-        lines.append(str(clarification_q))
-
-    # ── product cards ──
-    if cards:
-        lead = cards[0]
-        lead_title = lead.get("title") or lead.get("name") or "候选商品"
-        lead_price = lead.get("price")
-        lead_brand = lead.get("brand") or ""
-        price_max = requirement.get("price_max")
-
-        # brand mismatch prefix
-        requested_brands = requirement.get("brands") or []
-        if requested_brands and lead_brand:
-            _norm = lambda s: "".join(
-                ch.lower() for ch in str(s or "")
-                if ch.isalnum() or "\u4e00" <= ch <= "\u9fff"
-            )
-            if not any(_norm(b) in _norm(lead_brand) for b in requested_brands):
-                brands_text = "、".join(requested_brands)
-                lines.append(
-                    f"没有找到 {brands_text} 品牌的在售商品，下面推荐了其他品牌的候选。"
-                )
-
-        if price_max is not None and lead_price and lead_price > price_max:
-            lines.append(
-                f"商品库里没有找到 {price_max:g} CNY 内且足够相关的候选，下面给出同类最近备选。"
-            )
-        if lead_price:
-            lines.append(f"我优先推荐 {lead_title}，参考价约 {lead_price:g} CNY。")
-        else:
-            lines.append(f"我优先推荐 {lead_title}。")
-        lines.append("下面保留了候选商品卡片，你可以继续对比或加入购物车。")
-    elif plans:
-        summary = str((plans[0] or {}).get("summary") or "").strip()
-        lines.append(summary or "已生成一组推荐方案。")
-    else:
-        # ── smart no-match response using structured data ──
-        price_max = requirement.get("price_max")
-        price_min = requirement.get("price_min")
-        category_list = requirement.get("desired_categories") or requirement.get("target_sub_categories") or []
-        excluded_brands = requirement.get("excluded_brands") or []
-
-        if price_max is not None:
-            cat_hint = "该品类" if category_list else ""
-            lines.append(
-                f"当前商品库没有找到 {cat_hint} {price_max:g} CNY 以内的合适商品，"
-                "可以试试调高预算或换个关键词。"
-            )
-        elif price_min is not None:
-            lines.append(
-                f"当前商品库没有找到 {price_min:g} CNY 以上的合适商品，可以试试调整价格区间。"
-            )
-        elif excluded_brands:
-            brands_text = "、".join(excluded_brands)
-            lines.append(
-                f"排除 {brands_text} 后没有找到足够匹配的商品，可以放宽品牌限制或调整其他条件。"
-            )
-        else:
-            lines.append("这次没有找到足够贴合的商品，可以换个预算、品类或关键词再试。")
-
-    if trace.get("llm_guidance") == "enabled":
-        lines.extend(str(item).strip() for item in llm_guidance[:2] if str(item).strip())
-    if requirement.get("need_comparison"):
-        lines.append("我也放了候选对比表，方便直接看价格、评分和取舍。")
-    return [line for line in lines if line]
 
 
 def build_chat_progress_events(payload: Dict[str, Any]) -> List[Dict[str, Any]]:

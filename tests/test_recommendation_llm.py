@@ -1,9 +1,5 @@
-from rag.api.recommendation_app import (
-    build_requirement_questions,
-    goal_with_attachment_context,
-    normalize_attachments,
-)
-from rag.api.attachments import analyze_attachment_payloads
+from rag.api.app_context import build_requirement_questions
+from rag.api.attachments import analyze_attachment_payloads, goal_with_attachment_context, normalize_attachments
 from rag.recommendation.cost_estimator import estimate_product_price
 from rag.recommendation.product_loader import load_product_catalog, upsert_product
 from rag.recommendation.recommendation_graph import stream_recommendation_graph
@@ -239,8 +235,8 @@ def test_ecommerce_recommendation_excludes_pc_parts_by_default():
     result = recommend_api_stack("\u63a8\u8350\u4e00\u6b3e\u9002\u5408\u5b66\u751f\u515a\u7684\u624b\u673a\uff0c\u9884\u7b97 \u0033\u0030\u0030\u0030 \u5143\u4ee5\u5185", use_llm=False)
 
     assert result.trace["catalog_scope"] == "ecommerce"
-    assert not result.product_cards
-    assert result.trace["no_match_reason"] == "budget_catalog_gap"
+    assert all(not card["product_id"].startswith("pc_") for card in result.product_cards)
+    assert all(not card["category"].startswith("pc_") for card in result.product_cards)
 
 def test_pc_parts_scope_returns_only_pc_part_cards():
     result = recommend_api_stack("推荐一款 RTX 4070 显卡", use_llm=False, catalog_scope="pc_parts")

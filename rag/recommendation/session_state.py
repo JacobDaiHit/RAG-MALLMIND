@@ -875,6 +875,8 @@ def looks_like_followup(message: str) -> bool:
     ]
     if any(text.startswith(p) for p in followup_patterns):
         return True
+    if text.lower() in {"battery", "price", "budget", "color", "size", "weight", "续航", "价格", "预算", "颜色", "尺寸", "重量"}:
+        return True
     # 极短消息（≤6字符）且不含新话题信号 → 很可能是追问
     if len(text) <= 6 and not _has_explicit_topic_switch(text):
         return True

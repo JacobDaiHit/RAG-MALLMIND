@@ -21,7 +21,7 @@ def test_retrieval_postprocess_import_is_lightweight():
     assert hasattr(postprocess, "_auto_merge_documents")
 
 
-def test_legacy_tools_wrapper_importable():
-    import rag.utils.tools as tools
+def test_canonical_retrieval_service_importable():
+    from rag.recommendation import retrieval
 
-    assert hasattr(tools, "search_product_evidence")
+    assert hasattr(retrieval, "retrieve_requirement_evidence")

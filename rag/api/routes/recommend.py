@@ -15,6 +15,7 @@ from rag.api.app_context import (
 from rag.api.attachments import prepare_attachments_for_recommendation
 from rag.api.request_models import GoalRequest, PromptFinalizeRequest
 from rag.api.routes.common import stream_llm_enabled
+from rag.api.runtime_context import build_runtime_policy
 from rag.api.sse import sse_event
 from rag.recommendation import InvalidGoalError, parse_requirement, parse_requirement_rule_based, recommend_shopping_products
 from rag.recommendation.input_preprocessor import preprocess_user_input
@@ -73,12 +74,20 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
     """Non-streaming test endpoint for the recommendation pipeline."""
 
     session = get_session(request.session_id) if request.session_id else None
-    use_llm = stream_llm_enabled()
+    runtime_policy = build_runtime_policy(
+        request.mode,
+        request.goal,
+        session,
+        llm_configured=stream_llm_enabled(),
+        has_attachments=bool(request.attachments),
+        has_image_data=any(item.get("data_url") or item.get("dataUrl") for item in request.attachments),
+    )
+    use_llm = runtime_policy["use_llm"]
     goal, attachments, attachment_report = prepare_recommendation_context(
         request.goal,
         request.attachments,
         session,
-        use_vision_llm=True,
+        use_vision_llm=runtime_policy["use_vision_llm"],
     )
     try:
         validate_goal(goal)
@@ -86,10 +95,10 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
         result = recommend_shopping_products(
             goal,
             use_llm=use_llm,
-            use_llm_guidance=_env_bool("MALLMIND_GUIDANCE_LLM", False),
+            use_llm_guidance=runtime_policy["use_llm_guidance"],
             catalog_scope=catalog_scope,
-            use_milvus_retrieval=_env_bool("MALLMIND_MILVUS_RETRIEVAL", True),
-            use_rag_query_expansion=_env_bool("MALLMIND_RAG_QUERY_EXPANSION", False),
+            use_milvus_retrieval=runtime_policy["use_milvus_retrieval"],
+            use_rag_query_expansion=runtime_policy["use_rag_query_expansion"],
         )
     except InvalidGoalError as exc:
         raise HTTPException(status_code=400, detail=public_error(exc)) from exc
@@ -97,8 +106,7 @@ def recommend(request: GoalRequest) -> Dict[str, Any]:
     trace = payload.setdefault("trace", {})
     trace["attachments"] = attachments
     trace["attachment_analysis"] = sanitize_report(attachment_report)
-    trace["runtime_mode"] = "balanced"
-    trace["llm_configured"] = use_llm
+    trace.update(runtime_policy)
     trace["llm_used_for_parse"] = bool(trace.get("llm_requirement_parse_used"))
     trace.setdefault("llm_used_for_explanation", False)
     return payload

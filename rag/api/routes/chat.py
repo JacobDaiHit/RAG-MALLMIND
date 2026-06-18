@@ -1,7 +1,6 @@
 import logging
-import os
 import time as _time_module
-from typing import Any, Callable, Dict, Iterable, List, Optional
+from typing import Any, Dict, Iterable, List, Optional
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -10,6 +9,7 @@ from rag.api.app_context import prepare_recommendation_context
 from rag.api.request_models import CartActionRequest, ChatStreamRequest, ProductCompareRequest
 from rag.api.routes.common import request_product_ids, stream_llm_enabled
 from rag.api.routes.legacy_chat_compat import chat_compat_response
+from rag.api.runtime_context import build_runtime_policy
 from rag.api.sse import safe_stream, sse_event
 from rag.recommendation.comparison import compare_products
 from rag.recommendation.handler_base import generate_trace_id, trace_span
@@ -18,14 +18,10 @@ from rag.recommendation.session_state import (
     apply_cart_instruction,
     get_session,
     save_session,
-    session_to_json,
     update_session_from_router,
 )
 from rag.recommendation.tool_handlers import (
-    build_chat_opening,
-    handle_cart,
     handle_cart_v2,
-    handle_compare,
     handle_compare_v2,
     handle_general_chat,
     handle_parameter_query,
@@ -127,9 +123,16 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
         span_id = f"{session.session_id}-{int(span_start * 1000) % 100000}"
         tool_name = ""
         fact_check_passed = None
-        use_llm = stream_llm_enabled()
+        runtime_policy = resolve_runtime_policy(
+            request.mode,
+            message=raw_message,
+            session=session,
+            has_attachments=bool(raw_attachments),
+            has_image_data=any(item.get("data_url") or item.get("dataUrl") for item in raw_attachments),
+        )
+        use_llm = runtime_policy["use_llm"]
 
-        yield sse_event("runtime_mode", {"mode": "balanced", "use_llm": use_llm})
+        yield sse_event("runtime_mode", runtime_policy)
 
         with trace_span("route_tool_call", trace_id=trace_id) as route_span:
             tool_call = route_shopping_tool_call(raw_message, session, use_llm=use_llm)
@@ -171,9 +174,8 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             raw_message,
             raw_attachments,
             session,
-            use_vision_llm=True,
+            use_vision_llm=runtime_policy["use_vision_llm"],
         )
-        yield sse_event("delta", {"text": build_chat_opening(raw_message, session)})
         yield sse_event("progress", {"label": "已收到需求", "detail": "开始整理预算、品类、颜色和功能约束。"})
         if attachments:
             public_attachment_report = sanitize_report(attachment_report)
@@ -221,9 +223,10 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
                 tool_call,
                 recommendation_fn=recommendation_fn(),
                 image_retrieval_fn=image_retrieval_fn(),
-                use_llm_guidance=_env_bool("MALLMIND_GUIDANCE_LLM", False),
-                use_milvus_retrieval=_env_bool("MALLMIND_MILVUS_RETRIEVAL", True),
-                use_rag_query_expansion=_env_bool("MALLMIND_RAG_QUERY_EXPANSION", False),
+                use_llm_guidance=runtime_policy["use_llm_guidance"],
+                use_milvus_retrieval=runtime_policy["use_milvus_retrieval"],
+                use_rag_query_expansion=runtime_policy["use_rag_query_expansion"],
+                runtime_mode=runtime_policy["selected_mode"],
             )
         fact_check_passed = getattr(session, "last_fact_check_status", "passed") == "passed"
         _end_span(session, span_start, span_id, tool_name, True, fact_check_passed)
@@ -235,11 +238,23 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
     )
 
 
-def _env_bool(name: str, default: bool) -> bool:
-    raw = os.getenv(name)
-    if raw is None:
-        return default
-    return raw.strip().lower() in {"1", "true", "yes", "on"}
+def resolve_runtime_policy(
+    requested_mode: str,
+    *,
+    message: str = "",
+    session: Any = None,
+    has_attachments: bool = False,
+    has_image_data: bool = False,
+) -> Dict[str, Any]:
+    """Resolve one truthful runtime policy for the main chat entrypoint."""
+    return build_runtime_policy(
+        requested_mode,
+        message,
+        session,
+        llm_configured=stream_llm_enabled(),
+        has_attachments=has_attachments,
+        has_image_data=has_image_data,
+    )
 
 
 # ── 🟢 ⑱ span 结束日志 ──

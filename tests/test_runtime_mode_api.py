@@ -49,8 +49,7 @@ def test_recommend_endpoint_default_is_stable_fast_mode():
 
     assert response.status_code == 200
     payload = response.json()
-    assert payload["product_cards"] == []
-    assert payload["trace"]["clarification_required"] is True
+    assert payload["product_cards"]
     trace = payload["trace"]
     assert trace["runtime_mode"] == "degraded_fast"
     assert trace["requested_mode"] == "auto"
