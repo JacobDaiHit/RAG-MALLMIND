@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from rag.recommendation.pc_compatibility import check_pc_build_compatibility
+from rag.recommendation.pc_media import resolve_pc_product_media
 from rag.recommendation.pc_types import (
     PC_ROLE_TO_LEGACY,
     REQUIRED_PC_ROLES,
@@ -337,6 +338,12 @@ def soft_score_breakdown(selected: Dict[str, PcPart], total: float, budget: floa
 
 
 def part_to_payload(role: str, part: PcPart, usage_terms: List[str]) -> Dict[str, Any]:
+    media = resolve_pc_product_media(
+        title=part.title,
+        brand=part.brand,
+        model=part.model,
+        source=part.source,
+    )
     return {
         "role": role,
         "role_name": pc_component_name_zh(role),
@@ -354,6 +361,8 @@ def part_to_payload(role: str, part: PcPart, usage_terms: List[str]) -> Dict[str
         "reason": build_part_reason(role, part, usage_terms),
         "warnings": part.limitations[:1],
         "source": part.source,
+        "image_path": media["image_path"],
+        "image_url": media["image_url"],
     }
 
 

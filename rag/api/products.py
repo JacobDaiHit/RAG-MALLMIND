@@ -162,9 +162,6 @@ def product_to_response(product: ApiProduct) -> Dict[str, Any]:
         "tags": product.tags,
         "metadata": product.metadata,
     }
-    if product.category.value.startswith("pc_"):
-        payload.pop("image_path", None)
-        payload.pop("image_url", None)
     return payload
 
 

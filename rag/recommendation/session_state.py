@@ -959,9 +959,8 @@ def cart_snapshot(session: ShoppingSession, catalog: ProductCatalog) -> Dict[str
             "currency": product.currency,
             "quantity": item.quantity,
             "line_total": round(price * item.quantity, 2),
+            "image_url": product.image_url,
         }
-        if not product.category.value.startswith("pc_"):
-            payload["image_url"] = product.image_url
         items.append(payload)
     return {
         "items": items,

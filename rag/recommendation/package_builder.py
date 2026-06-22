@@ -841,8 +841,6 @@ def product_card_from_component(component: SelectedComponent, source: str) -> Di
             else None
         ),
     }
-    if product.category.value.startswith("pc_"):
-        card.pop("image_url", None)
     return card
 
 

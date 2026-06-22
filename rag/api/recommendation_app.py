@@ -12,6 +12,7 @@ from rag.api.app_context import (
     ALLOWED_ORIGINS,
     CORS_ALLOW_CREDENTIALS,
     FRONTEND_DIR,
+    PC_IMAGES_DIR,
     PRODUCT_IMAGES_DIR,
     STREAM_LLM_ENABLED,
     VALIDATION_VERSION,
@@ -48,6 +49,8 @@ def create_app() -> FastAPI:
         app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
     if PRODUCT_IMAGES_DIR.is_dir():
         app.mount("/product-images", StaticFiles(directory=PRODUCT_IMAGES_DIR), name="product-images")
+    if PC_IMAGES_DIR.is_dir():
+        app.mount("/pc-images", StaticFiles(directory=PC_IMAGES_DIR), name="pc-images")
 
     app.include_router(product_router)
     app.include_router(pc_build_router)
@@ -114,7 +117,7 @@ def runtime_diagnostics(x_admin_token: Optional[str] = Header(default=None)) -> 
         "indexes": {
             "image_vectors": (Path(__file__).resolve().parents[2] / "data" / "image_vectors.json").is_file(),
             "product_images_mounted": PRODUCT_IMAGES_DIR.is_dir(),
-            "pc_product_assets_mounted": False,
+            "pc_product_assets_mounted": PC_IMAGES_DIR.is_dir(),
         },
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }

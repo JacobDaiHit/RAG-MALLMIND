@@ -12,6 +12,7 @@ from pydantic import ValidationError
 
 from rag.schemas import ApiProduct, ComponentCategory
 from rag.utils.runtime_errors import public_error
+from rag.recommendation.pc_media import resolve_pc_product_media
 from rag.recommendation.pc_types import normalize_pc_component_type, pc_component_name_zh
 
 
@@ -269,6 +270,12 @@ def _load_pc_products_as_api_products(path: Path) -> List[ApiProduct]:
             "；".join(spec_lines[:12]),
         ]
         price = max(float(part.price or 0), 0)
+        media = resolve_pc_product_media(
+            title=part.title,
+            brand=part.brand,
+            model=part.model,
+            source=part.source,
+        )
         products.append(
             ApiProduct(
                 product_id=part.product_id,
@@ -283,8 +290,8 @@ def _load_pc_products_as_api_products(path: Path) -> List[ApiProduct]:
                 currency=part.currency,
                 stock_status=part.stock_status or "available_for_demo",
                 stock_quantity=part.stock_quantity,
-                image_path="",
-                image_url="",
+                image_path=media["image_path"],
+                image_url=media["image_url"],
                 skus=[
                     {
                         "sku_id": part.source.get("sku") or part.product_id,

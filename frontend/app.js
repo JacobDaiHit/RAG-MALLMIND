@@ -1138,6 +1138,8 @@ function isPcProduct(product) {
 }
 
 function renderPcProductVisual(product, alt) {
+  const image = product?.image_url || product?.image_path;
+  if (image) return renderImage(image, alt);
   const type = normalizePcComponentType(product);
   const label = pcComponentLabel(type);
   const brand = product?.brand || product?.metadata?.specs?.brand || label;

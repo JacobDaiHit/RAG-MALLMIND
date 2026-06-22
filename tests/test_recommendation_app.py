@@ -539,7 +539,7 @@ def test_cart_action_messages_are_specific_for_update_and_remove():
     assert "移除" in "\n".join(remove.json()["messages"])
 
 
-def test_products_endpoint_exposes_pc_parts_without_static_images():
+def test_products_endpoint_exposes_pc_parts_with_static_images():
     response = client.get("/api/products", params={"category": "pc_cpu"})
 
     assert response.status_code == 200
@@ -547,8 +547,12 @@ def test_products_endpoint_exposes_pc_parts_without_static_images():
     assert data["count"] > 0
     product = data["products"][0]
     assert product["product_id"].startswith("pc_cpu_")
-    assert "image_url" not in product
-    assert "image_path" not in product
+    assert product["image_url"].startswith("/pc-images/cpu/screenshots/")
+    assert product["image_path"].startswith("data/jd_pc_products/cpu/screenshots/")
+
+    image_response = client.get(product["image_url"])
+    assert image_response.status_code == 200
+    assert image_response.headers["content-type"].startswith("image/svg+xml")
 
 
 def test_product_compare_returns_structured_rows():

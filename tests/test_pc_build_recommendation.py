@@ -11,7 +11,7 @@ def test_7000_white_quiet_gaming_build_returns_complete_plan():
     assert plan["compatibility"]["valid"] is True
     assert len(plan["parts"]) == 8
     assert plan["total_price"] <= 7000
-    assert all("image_url" not in item and "screenshot_path" not in item for item in plan["parts"])
+    assert all(item["image_url"].startswith("/pc-images/") for item in plan["parts"])
     assert plan["trace"]["structured_compatibility_validation_applied"] is True
 
 

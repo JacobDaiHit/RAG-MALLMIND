@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Tuple
 
 from rag.api.attachments import goal_with_attachment_context, prepare_attachments_for_recommendation
 from rag.recommendation import InvalidGoalError, validate_business_goal
+from rag.recommendation.pc_media import PC_IMAGES_DIR
 from rag.recommendation.session_state import build_contextual_goal
 
 

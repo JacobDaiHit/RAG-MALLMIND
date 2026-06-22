@@ -62,8 +62,6 @@ def product_to_comparison_row(product: ApiProduct) -> Dict[str, Any]:
         ],
         "evidence": [product.description[:180]] + [faq.answer[:120] for faq in product.faqs[:2]],
     }
-    if product.category.value.startswith("pc_"):
-        row.pop("image_url", None)
     return row
 
 
