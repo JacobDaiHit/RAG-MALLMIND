@@ -1,6 +1,6 @@
-# MallMind 电商 AI Agent 项目 -- 面试问答手册
+# MallMind 电商 AI Agent 项目
 
-> 适用场景：华为 2012 实验室技术面试（Agent 方向）
+
 > 项目代码路径：`D:\github\tripmind\trad_rag`
 > 最后更新：2026-06-13
 
@@ -45,7 +45,7 @@ RAG（Retrieval-Augmented Generation）是"检索增强生成"的缩写。核心
 
 **参考答案：**
 
-我们的向量检索基于 Milvus 向量数据库，embedding 模型使用的是 `BAAI/bge-m3`（默认配置），向量维度 1024。这个模型的特点是同时支持 dense embedding（稠密向量）和 sparse embedding（稀疏向量，即 BM25），这也是我们能做混合检索的基础。
+我们的向量检索基于 Milvus 向量数据库，embedding 模型使用的是 `BAAI/bge-m3`（默认配置，后续已改为qwen-embedding-v4），向量维度 1024。这个模型的特点是同时支持 dense embedding（稠密向量）和 sparse embedding（稀疏向量，即 BM25），这也是我们能做混合检索的基础。
 
 embedding 服务封装在 `rag/ingestion/embedding.py` 文件中。`LocalEmbeddingProvider` 类使用 HuggingFace 的 `HuggingFaceEmbeddings` 加载本地模型，调用 `embed_documents()` 做批量向量化。同时我们也实现了 `OpenAICompatibleEmbeddingProvider`，可以对接 DashScope 等远程 embedding API，通过环境变量 `EMBEDDING_PROVIDER` 切换。
 
@@ -53,9 +53,6 @@ embedding 服务封装在 `rag/ingestion/embedding.py` 文件中。`LocalEmbeddi
 
 检索时，在 `retrieval.py` 的 `_retrieve_variant()` 方法中，我们先调用 `embedding_service.get_embeddings([query])` 获取稠密向量，再调用 `embedding_service.get_sparse_embedding(query)` 获取稀疏向量，然后调用 `manager.hybrid_retrieve()` 做混合检索。如果混合检索失败，会降级到纯稠密检索 `manager.dense_retrieve()`。
 
-**追问预警：**
-1. bge-m3 模型相比于其他 embedding 模型（如 text-embedding-ada-002）有什么优势？
-2. 你的 BM25 是自己实现的还是用 Milvus 内置的？为什么这样选择？
 
 ---
 

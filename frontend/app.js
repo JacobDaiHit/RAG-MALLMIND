@@ -45,6 +45,7 @@ let lastProductCards = [];
 let lastComparisonRows = [];
 let currentPcBuildPlan = null;
 let selectedProductDetail = null;
+let productDetailRequestId = 0;
 let isBusy = false;
 
 chatForm.addEventListener("submit", (event) => {
@@ -102,10 +103,8 @@ document.querySelector("#newChatButton")?.addEventListener("click", () => {
   if (isBusy) return;
   SESSION_ID = `web-${Date.now()}`;
   cartState = { items: [], total_price: 0, count: 0, currency: "CNY" };
-  lastProductCards = [];
-  lastComparisonRows = [];
+  clearRecommendationState();
   currentPcBuildPlan = null;
-  selectedProductDetail = null;
   selectedAttachments = [];
   goalInput.value = "";
   attachmentInput.value = "";
@@ -153,7 +152,7 @@ async function sendDemand() {
   setBusy(true, "正在生成导购回复");
   appendMessage("user", message);
   goalInput.value = "";
-  lastComparisonRows = [];
+  clearRecommendationState();
   resetRecommendationPanel();
   const assistantNode = appendMessage("assistant", "");
 
@@ -336,6 +335,10 @@ function handleChatEvent(event, data, assistantNode) {
   }
   if (event === "product_cards") {
     lastProductCards = data.cards || data.products || [];
+    if (selectedProductDetail && !lastProductCards.some((item) => item.product_id === selectedProductDetail.product_id)) {
+      selectedProductDetail = null;
+      productDetailRequestId += 1;
+    }
     renderRecommendedProducts(lastProductCards, lastComparisonRows);
   }
   if (event === "comparison_table") {
@@ -379,6 +382,13 @@ function resetRecommendationPanel() {
   `;
 }
 
+function clearRecommendationState() {
+  lastProductCards = [];
+  lastComparisonRows = [];
+  selectedProductDetail = null;
+  productDetailRequestId += 1;
+}
+
 function appendProgress(item) {
   const list = recommendedProducts.querySelector("#progressList");
   if (!list) return;
@@ -398,6 +408,10 @@ function appendProgress(item) {
 
 function renderRecommendedProducts(products, rows) {
   const cards = products || [];
+  const visibleDetail = selectedProductDetail
+    && cards.some((item) => item.product_id === selectedProductDetail.product_id)
+    ? selectedProductDetail
+    : null;
   if (!cards.length && !(rows || []).length) {
     recommendedProducts.className = "recommendation-strip empty-state";
     recommendedProducts.textContent = "暂时没有候选商品。";
@@ -407,7 +421,7 @@ function renderRecommendedProducts(products, rows) {
   recommendedProducts.innerHTML = `
     ${cards.length ? `<div class="product-card-grid">${cards.map(renderProductCard).join("")}</div>` : ""}
     ${(rows || []).length ? renderComparisonTable(rows) : ""}
-    ${selectedProductDetail ? renderProductDetailPanel(selectedProductDetail) : ""}
+    ${visibleDetail ? renderProductDetailPanel(visibleDetail) : ""}
   `;
   bindProductButtons(recommendedProducts);
 }
@@ -836,6 +850,7 @@ function bindProductButtons(root) {
   root.querySelector("[data-close-product-detail]")?.addEventListener("click", (event) => {
     event.stopPropagation();
     selectedProductDetail = null;
+    productDetailRequestId += 1;
     renderActiveProductSurface();
   });
   root.querySelectorAll("[data-add-cart]").forEach((button) => {
@@ -857,6 +872,7 @@ function bindProductButtons(root) {
 }
 
 async function openProductDetail(productId) {
+  const requestId = ++productDetailRequestId;
   const sourceCards = lastProductCards.length ? lastProductCards : productCatalog;
   selectedProductDetail = sourceCards.find((item) => item.product_id === productId) || productCatalog.find((item) => item.product_id === productId) || null;
   renderActiveProductSurface();
@@ -864,11 +880,13 @@ async function openProductDetail(productId) {
   if (selectedProductDetail && needsFullProductDetail(selectedProductDetail)) {
     try {
       const detail = await getJson(`/api/products/${encodeURIComponent(productId)}`);
+      if (requestId !== productDetailRequestId || selectedProductDetail?.product_id !== productId) return;
       selectedProductDetail = { ...selectedProductDetail, ...detail };
     } catch (error) {
       console.warn("Product detail loading failed", error);
     }
   }
+  if (requestId !== productDetailRequestId || selectedProductDetail?.product_id !== productId) return;
   renderActiveProductSurface();
 }
 
