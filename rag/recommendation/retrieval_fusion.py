@@ -34,6 +34,9 @@ RRF_K = int(os.getenv("RECOMMENDATION_RRF_K", "60"))
 VECTOR_RECALL_WEIGHT = float(os.getenv("RECOMMENDATION_VECTOR_RECALL_WEIGHT", "0.4"))
 RULE_FILTER_WEIGHT = float(os.getenv("RECOMMENDATION_RULE_FILTER_WEIGHT", "0.6"))
 MILVUS_CONNECT_TIMEOUT_SECONDS = float(os.getenv("MILVUS_CONNECT_TIMEOUT_SECONDS", "0.75"))
+VECTOR_RESCUE_ENABLED = os.getenv("VECTOR_RESCUE_ENABLED", "true").lower() == "true"
+VECTOR_RESCUE_MAX = int(os.getenv("VECTOR_RESCUE_MAX", "3"))
+VECTOR_RESCUE_RANK_CUTOFF = int(os.getenv("VECTOR_RESCUE_RANK_CUTOFF", "5"))
 
 
 @dataclass(frozen=True)
@@ -47,6 +50,8 @@ class FusionResult:
     rrf_scores: Dict[str, float] = field(default_factory=dict)
     vector_candidates_count: int = 0
     rule_candidates_count: int = 0
+    rescued_ids: Set[str] = field(default_factory=set)
+    vector_recall_ranks: Dict[str, int] = field(default_factory=dict)
     status: str = "ok"
     error: str = ""
 
@@ -59,6 +64,8 @@ class FusionResult:
             "overlap_count": len(self.overlap_ids),
             "vector_only_count": len(self.vector_only_ids),
             "rule_only_count": len(self.rule_only_ids),
+            "rescued_count": len(self.rescued_ids),
+            "rescued_ids": sorted(self.rescued_ids),
             "fused_count": len(self.fused_products),
             "rrf_k": RRF_K,
             "vector_recall_weight": VECTOR_RECALL_WEIGHT,
@@ -80,6 +87,7 @@ def fuse_candidates(
     *,
     enabled: bool = True,
     retrieved_product_ids: Optional[List[str]] = None,
+    hard_constraint_passed_ids: Optional[Set[str]] = None,
 ) -> FusionResult:
     """Fuse rule-filtered candidates with vector-retrieved candidates.
 
@@ -109,7 +117,7 @@ def fuse_candidates(
         )
 
     # ── Step 1: Vector recall ──
-    if retrieved_product_ids is None:
+    if not retrieved_product_ids:
         vector_products = _vector_recall(
             requirement=requirement,
             category=category,
@@ -123,23 +131,45 @@ def fuse_candidates(
             if product_id in catalog_index
         ]
 
-    # Vector retrieval may improve ordering, but it must never bypass the
-    # deterministic hard-constraint filter. Restrict recalled products to the
-    # already validated candidate set before fusion.
-    allowed_ids = {product.product_id for product in rule_filtered}
-    vector_products = [product for product in vector_products if product.product_id in allowed_ids]
+    # ── Soft Rescue: allow vector recall to expand candidates beyond rule_filtered ──
+    # Products that passed hard constraints (category + stock + exclusion) but were
+    # dropped by soft constraints (budget, preference, sub-category) can be "rescued"
+    # if Milvus retrieval ranks them highly.
+    rule_ids = {product.product_id for product in rule_filtered}
+    hard_passed = hard_constraint_passed_ids or rule_ids
 
-    if not vector_products:
+    vector_in_rule = [p for p in vector_products if p.product_id in rule_ids]
+    rescued: List[ApiProduct] = []
+    if VECTOR_RESCUE_ENABLED and hard_constraint_passed_ids is not None:
+        # Only rescue products in the top VECTOR_RESCUE_RANK_CUTOFF of vector recall.
+        # Products ranked below this cutoff are not confident enough to override
+        # the deterministic soft-constraint filter.
+        vector_rescuable = [
+            p for i, p in enumerate(vector_products)
+            if p.product_id not in rule_ids
+            and p.product_id in hard_passed
+            and i < VECTOR_RESCUE_RANK_CUTOFF
+        ]
+        rescued = vector_rescuable[:VECTOR_RESCUE_MAX]
+
+    all_vector = vector_in_rule + rescued
+
+    # Compute vector recall ranks (1-based) for all vector-recalled products.
+    # These ranks feed into the scorer as a direct Milvus signal.
+    vector_recall_ranks = {p.product_id: i for i, p in enumerate(vector_products, 1)}
+
+    if not all_vector:
         return FusionResult(
             fused_products=rule_filtered,
             rule_only_ids={p.product_id for p in rule_filtered},
             rule_candidates_count=len(rule_filtered),
             vector_candidates_count=0,
+            vector_recall_ranks=vector_recall_ranks,
             status="vector_empty",
         )
 
     # ── Step 2: RRF fusion ──
-    return _rrf_fuse(rule_filtered, vector_products)
+    return _rrf_fuse(rule_filtered, all_vector, rescued_ids={p.product_id for p in rescued}, vector_recall_ranks=vector_recall_ranks)
 
 
 def _vector_recall(
@@ -252,6 +282,8 @@ def _build_vector_filter(category: ComponentCategory, requirement: RequirementSp
 def _rrf_fuse(
     rule_filtered: List[ApiProduct],
     vector_products: List[ApiProduct],
+    rescued_ids: Optional[Set[str]] = None,
+    vector_recall_ranks: Optional[Dict[str, int]] = None,
 ) -> FusionResult:
     """Merge two ranked lists using Reciprocal Rank Fusion.
 
@@ -299,6 +331,8 @@ def _rrf_fuse(
         rrf_scores=rrf_scores,
         vector_candidates_count=len(vector_products),
         rule_candidates_count=len(rule_filtered),
+        rescued_ids=rescued_ids or set(),
+        vector_recall_ranks=vector_recall_ranks or {},
         status="ok" if fused_products else "empty",
     )
 

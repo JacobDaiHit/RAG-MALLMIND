@@ -12,7 +12,7 @@ import logging
 import os
 import re
 from dataclasses import dataclass, field
-from typing import Any, Dict, Iterable, List
+from typing import Any, Dict, Iterable, List, Set
 
 from rag.recommendation.query_guards import (
     category_for_product_type,
@@ -52,6 +52,7 @@ class FilterDiagnostics:
     relaxed_constraints: List[str] = field(default_factory=list)
     budget_filter_strict: bool = True
     budget_gap_reason: str = ""
+    hard_constraint_passed_ids: Set[str] = field(default_factory=set)
 
     def to_trace(self) -> Dict[str, object]:
         return {
@@ -94,6 +95,8 @@ def filter_products_for_requirement(
         for product in stock_filtered
         if not violates_brand_or_text_exclusion(requirement, product)
     ]
+
+    hard_passed_ids = {p.product_id for p in exclusion_filtered}
 
     # ── 品牌白名单硬过滤 ──
     # requirement.brands 此前仅做 scorer 加分（soft boost），不做硬过滤，
@@ -149,6 +152,7 @@ def filter_products_for_requirement(
                 product_type_candidate_count=0,
                 pc_part_constraints={},
                 returned_count=0,
+                hard_constraint_passed_ids=hard_passed_ids,
             )
             return [], diagnostics
         inferred_product_type = None
@@ -234,6 +238,7 @@ def filter_products_for_requirement(
         relaxed_constraints=relaxed,
         budget_filter_strict=budget_filter_strict,
         budget_gap_reason=budget_gap_reason,
+        hard_constraint_passed_ids=hard_passed_ids,
     )
     return llm_filtered, diagnostics
 

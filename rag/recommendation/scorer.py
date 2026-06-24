@@ -1,6 +1,7 @@
 """Explainable scoring for traditional ecommerce products."""
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
@@ -98,6 +99,7 @@ def score_products(
     requirement: RequirementSpec,
     products: Iterable[ApiProduct],
     evidence_by_product_id: Optional[Dict[str, List[Dict[str, Any]]]] = None,
+    vector_recall_ranks: Optional[Dict[str, int]] = None,
 ) -> List[ProductScore]:
     evidence_by_product_id = evidence_by_product_id or {}
     scored = [
@@ -111,6 +113,7 @@ def score_products(
     ]
     scored = apply_price_aware_price_fit(requirement, scored)
     scored = apply_pc_constraint_boost(requirement, scored)
+    scored = apply_vector_recall_signal(requirement, scored, vector_recall_ranks)
     return sorted(scored, key=lambda item: item.score.final_score, reverse=True)
 
 
@@ -159,6 +162,66 @@ def apply_pc_constraint_boost(requirement: RequirementSpec, scored: List[Product
             update={
                 "final_score": round(clamp(old.final_score + bonus), 4),
                 "reasons": [*old.reasons, "结构化规格与用户明确 PC 配件属性更匹配。"],
+            }
+        )
+        adjusted.append(
+            ProductScore(
+                product=item.product,
+                score=new_score,
+                weights=item.weights,
+                weight_reasons=item.weight_reasons,
+                evidence=item.evidence,
+                evidence_boost=item.evidence_boost,
+                evidence_match=item.evidence_match,
+            )
+        )
+    return adjusted
+
+
+_VECTOR_RANK_SIGNAL_MAX: float = float(os.getenv("VECTOR_RANK_SIGNAL_MAX", "0.04"))
+
+
+def apply_vector_recall_signal(
+    requirement: RequirementSpec,
+    scored: List[ProductScore],
+    vector_recall_ranks: Optional[Dict[str, int]] = None,
+) -> List[ProductScore]:
+    """Apply a subtle vector recall rank bonus to reward Milvus-verified products.
+
+    This is a TIE-BREAKING signal only: it adds at most VECTOR_RANK_SIGNAL_MAX
+    (default 0.04) to a product's final score.  Products not found by vector
+    recall are unaffected.
+
+    The intent is for Milvus to nudge semantically-similar products slightly
+    ahead of equally-scored alternatives, NOT to override the deterministic
+    scorer's judgment.
+    """
+    if not vector_recall_ranks:
+        return scored
+
+    total_recalled = max(vector_recall_ranks.values()) if vector_recall_ranks else 1
+
+    adjusted: List[ProductScore] = []
+    for item in scored:
+        rank = vector_recall_ranks.get(item.product.product_id)
+        if rank is None:
+            adjusted.append(item)
+            continue
+
+        # Small additive bonus: top rank gets full VECTOR_RANK_SIGNAL_MAX,
+        # decaying to 0 at bottom rank
+        rank_factor = 1.0 - (rank - 1) / max(total_recalled, 1)
+        bonus = round(_VECTOR_RANK_SIGNAL_MAX * rank_factor, 4)
+
+        if bonus <= 0.001:
+            adjusted.append(item)
+            continue
+
+        old = item.score
+        new_score = old.model_copy(
+            update={
+                "final_score": round(clamp(old.final_score + bonus), 4),
+                "reasons": [*old.reasons, f"向量语义召回排名 #{rank}，微调 +{bonus:.3f}"],
             }
         )
         adjusted.append(

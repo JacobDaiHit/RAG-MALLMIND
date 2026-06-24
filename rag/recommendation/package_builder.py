@@ -476,12 +476,18 @@ def score_required_components(
             category=category,
             catalog_products=catalog.products,
             retrieved_product_ids=retrieved_product_ids,
+            hard_constraint_passed_ids=diagnostics.hard_constraint_passed_ids,
         )
         fusion_trace = fusion.to_trace()
         if fusion.status not in {"disabled", "vector_empty"}:
             products = fusion.fused_products
         diagnostics_by_category[category] = diagnostics
-        grouped[category] = score_products(requirement, products, evidence_by_product_id=evidence_by_id)
+        grouped[category] = score_products(
+            requirement,
+            products,
+            evidence_by_product_id=evidence_by_id,
+            vector_recall_ranks=fusion.vector_recall_ranks if fusion.vector_recall_ranks else None,
+        )
         # Attach fusion trace to the diagnostics trace for observability
         diag_trace = dict(diagnostics.to_trace()) if hasattr(diagnostics, "to_trace") else {}
         diag_trace["vector_fusion"] = fusion_trace

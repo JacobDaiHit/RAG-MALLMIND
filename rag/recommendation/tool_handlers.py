@@ -90,6 +90,148 @@ def _resolve_cart_action(args: Dict[str, Any], message: str) -> str:
     return infer_cart_action(message)
 
 
+def _match_recommended_by_name(
+    message: str,
+    recommended_ids: List[str],
+    catalog: Any,
+) -> Optional[str]:
+    """Match a user message against recommended product titles and brands.
+
+    Returns the product_id if exactly one recommended product's brand or title
+    keywords appear in the message.  Returns None when zero or multiple products
+    match (ambiguous — requires LLM disambiguation).
+    """
+    if not recommended_ids:
+        return None
+
+    msg_lower = message.lower()
+    brand_hits: List[str] = []
+    title_hits: List[str] = []
+
+    for pid in recommended_ids:
+        product = catalog.by_id.get(pid) if hasattr(catalog, "by_id") else None
+        if product is None:
+            continue
+
+        brand = (getattr(product, "brand", None) or "").strip().lower()
+        title = (getattr(product, "title", None) or "").strip().lower()
+
+        # Brand match: the user mentioned the brand name
+        if brand and brand in msg_lower:
+            brand_hits.append(pid)
+            continue
+
+        # Title keyword match: only if no brand was matched
+        if title and _title_keyword_hit(title, msg_lower):
+            title_hits.append(pid)
+
+    # Brand matches are more reliable than title keyword matches.
+    # When any brand is matched, ignore ambiguous title hits to avoid
+    # false positives from generic terms like "手机"/"耳机" appearing in
+    # multiple product titles.
+    if brand_hits:
+        if len(brand_hits) == 1:
+            return brand_hits[0]
+        return None  # multiple brands matched → ambiguous
+
+    # No brand matched — fall back to title keyword hits
+    if len(title_hits) == 1:
+        return title_hits[0]
+    return None
+
+
+def _title_keyword_hit(title: str, msg_lower: str) -> bool:
+    """Check if any meaningful keyword from the title appears in the message.
+
+    Handles both space-separated (English) and unsegmented (Chinese) text.
+    """
+    # 1) Space-separated tokens (English titles like "OPPO Find X9 Ultra")
+    tokens = [t for t in title.split() if len(t) >= 2]
+    if any(token.lower() in msg_lower for token in tokens if len(token) >= 3):
+        return True
+
+    # 2) Character-window substrings for Chinese/unsegmented text.
+    # Extract 2-5 char windows from compact regions (no spaces, no digits-only)
+    compact = "".join(ch for ch in title if ch.isalpha() or "一" <= ch <= "鿿")
+    if len(compact) >= 2:
+        for window_len in (5, 4, 3, 2):
+            for i in range(len(compact) - window_len + 1):
+                sub = compact[i:i + window_len]
+                if sub.lower() in msg_lower:
+                    # Avoid matching trivial bigrams that happen to collide
+                    if window_len >= 3 or not sub.isascii():
+                        return True
+    return False
+
+
+def _llm_resolve_cart_product(
+    session: Any,
+    message: str,
+    recommended_ids: List[str],
+    catalog: Any,
+) -> Optional[str]:
+    """Use LLM to disambiguate which recommended product the user wants.
+
+    Called when rule-based matching (_match_recommended_by_name) can't determine
+    the target product.  The LLM receives the last recommendation's product
+    titles and the user message, and returns the 1-based index of the target.
+    """
+    if len(recommended_ids) <= 1:
+        return recommended_ids[0] if recommended_ids else None
+
+    # Build product list for the LLM prompt
+    product_lines: List[str] = []
+    for i, pid in enumerate(recommended_ids, 1):
+        product = catalog.by_id.get(pid) if hasattr(catalog, "by_id") else None
+        title = getattr(product, "title", pid) if product else pid
+        brand = getattr(product, "brand", "") if product else ""
+        price = getattr(product, "base_price", "") if product else ""
+        label = f"{title}"
+        if brand:
+            label = f"{brand} {label}"
+        if price:
+            label = f"{label} (¥{price})"
+        product_lines.append(f"{i}. {label}")
+
+    prompt = (
+        f"用户上一轮看到了以下商品：\n"
+        + "\n".join(product_lines)
+        + f"\n\n用户当前说：\"{message}\"\n\n"
+        + "请返回用户想加入购物车的商品编号（1/2/3等）。\n"
+        + "注意：如果品牌名同时匹配多个商品（如\"华为\"同时匹配手机和耳机），"
+        + "且用户未指定类别，必须返回 0。\n"
+        + "如果无法确定就返回 0，宁可追问也不要猜。\n"
+        + "只输出数字。"
+    )
+
+    try:
+        from rag.recommendation.llm_client import OpenAICompatibleChatClient
+        client = OpenAICompatibleChatClient()
+        if not client.configured:
+            return None
+
+        payload, _report = client.chat_json_with_report(
+            [
+                {"role": "system", "content": "你是购物车助手，只输出数字。"},
+                {"role": "user", "content": prompt},
+            ],
+            temperature=0.0,
+            max_tokens=8,
+        )
+        # Extract the first integer from the response
+        import re
+        response_text = str(payload) if not isinstance(payload, str) else payload
+        match = re.search(r"\d+", response_text)
+        if match:
+            index = int(match.group()) - 1  # 1-based → 0-based
+            if 0 <= index < len(recommended_ids):
+                return recommended_ids[index]
+    except Exception:
+        pass  # LLM unavailable — fall through to [0] default
+
+    return None
+
+
 def _resolve_product_for_cart(
     session: Any,
     message: str,
@@ -131,6 +273,14 @@ def _resolve_product_for_cart(
             return recommended_ids[index]
         if references_previous_item(message):
             return recommended_ids[0]
+        # 4b) 品牌/产品名模糊匹配：用户提到了具体品牌或产品名
+        name_match = _match_recommended_by_name(message, recommended_ids, catalog)
+        if name_match:
+            return name_match
+        # 4c) LLM 消歧：规则无法确定时，让 LLM 从推荐列表中选出用户所指的商品
+        llm_match = _llm_resolve_cart_product(session, message, recommended_ids, catalog)
+        if llm_match:
+            return llm_match
         return recommended_ids[0]
 
     return ""

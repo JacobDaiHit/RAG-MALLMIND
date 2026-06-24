@@ -782,7 +782,7 @@ def build_default_recommend_fn(*, use_llm: bool, catalog_name: str, with_milvus:
             requirement,
             catalog=active_catalog,
             catalog_scope=scope,
-            use_milvus_retrieval=False,
+            use_milvus_retrieval=with_milvus,
         )
         return result, (time.perf_counter() - started) * 1000.0
 

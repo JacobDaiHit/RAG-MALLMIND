@@ -20,17 +20,17 @@
       "returned_ids": [
         "p_digital_015",
         "p_digital_016",
-        "p_digital_003"
+        "p_digital_014"
       ],
       "returned_product_ids": [
         "p_digital_015",
         "p_digital_016",
-        "p_digital_003"
+        "p_digital_014"
       ],
       "returned_titles": [
         "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机",
         "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
-        "Apple iPhone 17 Pro Max 6.9英寸 A19 Pro 256GB 大屏旗舰手机"
+        "OPPO Find N6 内折柔性大屏旗舰折叠屏手机多任务办公影音体验"
       ],
       "returned_categories": [
         "digital",
@@ -52,7 +52,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 2223.82,
+      "latency_ms": 2693.0,
       "trace_debug": {
         "route_tool_name": "multimodal_product_recommendation",
         "parsed_category": [
@@ -77,7 +77,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 2223.82,
+        "latency_ms": 2693.0,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -85,21 +85,21 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 1.0,
+        "precision@3": 0.6666666666666666,
         "strict_recall@3": 0.3333333333333333,
-        "relaxed_recall@3": 0.5,
+        "relaxed_recall@3": 0.3333333333333333,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.6,
+        "precision@5": 0.4,
         "strict_recall@5": 0.3333333333333333,
-        "relaxed_recall@5": 0.5,
+        "relaxed_recall@5": 0.3333333333333333,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.3,
+        "precision@10": 0.2,
         "strict_recall@10": 0.3333333333333333,
-        "relaxed_recall@10": 0.5,
+        "relaxed_recall@10": 0.3333333333333333,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -135,15 +135,19 @@
       ],
       "acceptable_product_ids": [],
       "returned_ids": [
-        "p_digital_016"
+        "p_digital_016",
+        "p_digital_005"
       ],
       "returned_product_ids": [
-        "p_digital_016"
+        "p_digital_016",
+        "p_digital_005"
       ],
       "returned_titles": [
-        "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB"
+        "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑"
       ],
       "returned_categories": [
+        "digital",
         "digital"
       ],
       "expected_titles": [
@@ -156,10 +160,10 @@
       "top1_title": "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
       "top1_category": "digital",
       "miss_reasons": [
-        "low rank or partial match"
+        "constraint violation"
       ],
-      "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.39,
+      "miss_stage_guess": "constraint_filter_error",
+      "latency_ms": 223.95,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -167,7 +171,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 1,
+        "final_count": 2,
         "inferred_product_type": "phone",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 10,
@@ -184,7 +188,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.39,
+        "latency_ms": 223.95,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 1.0,
@@ -196,22 +200,22 @@
         "strict_recall@3": 1.0,
         "relaxed_recall@3": 1.0,
         "hit@3": 1,
-        "constraint_violation@3": 0,
+        "constraint_violation@3": 1,
         "category_accuracy@3": 1,
         "precision@5": 0.2,
         "strict_recall@5": 1.0,
         "relaxed_recall@5": 1.0,
         "hit@5": 1,
-        "constraint_violation@5": 0,
+        "constraint_violation@5": 1,
         "category_accuracy@5": 1,
         "precision@10": 0.1,
         "strict_recall@10": 1.0,
         "relaxed_recall@10": 1.0,
         "hit@10": 1,
-        "constraint_violation@10": 0,
+        "constraint_violation@10": 1,
         "category_accuracy@10": 1,
         "category_accuracy_top1": 1,
-        "constraint_violation": 0,
+        "constraint_violation": 1,
         "negative_violation": 0,
         "negative_returned_any": null,
         "negative_no_recommendation": null,
@@ -219,14 +223,24 @@
         "catalog_gap_returned_any": null,
         "catalog_gap_no_recommendation": null
       },
-      "constraint_violation_reasons": {},
+      "constraint_violation_reasons": {
+        "3": [
+          "price_above_max(p_digital_005): 4999.0"
+        ],
+        "5": [
+          "price_above_max(p_digital_005): 4999.0"
+        ],
+        "10": [
+          "price_above_max(p_digital_005): 4999.0"
+        ]
+      },
       "category_match_by_k": {
         "1": true,
         "3": true,
         "5": true,
         "10": true
       },
-      "miss_reason": "low rank or partial match",
+      "miss_reason": "constraint violation",
       "error": "",
       "retrieval_status": "not_requested"
     },
@@ -244,15 +258,15 @@
       "acceptable_product_ids": [],
       "returned_ids": [
         "p_digital_007",
-        "p_clothes_001"
+        "p_clothes_019"
       ],
       "returned_product_ids": [
         "p_digital_007",
-        "p_clothes_001"
+        "p_clothes_019"
       ],
       "returned_titles": [
         "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
-        "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣"
+        "Nike Heritage86 Futura Logo 经典刺绣棒球帽 可调节帽围"
       ],
       "returned_categories": [
         "digital",
@@ -272,7 +286,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 12.63,
+      "latency_ms": 410.48,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -298,7 +312,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 12.63,
+        "latency_ms": 410.48,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -362,21 +376,17 @@
       ],
       "returned_ids": [
         "p_digital_019",
-        "p_digital_011",
-        "p_digital_025"
+        "p_digital_011"
       ],
       "returned_product_ids": [
         "p_digital_019",
-        "p_digital_011",
-        "p_digital_025"
+        "p_digital_011"
       ],
       "returned_titles": [
         "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-        "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑",
-        "Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑"
+        "小米平板 8 Pro 12.1英寸高刷大屏影音娱乐学习办公平板电脑"
       ],
       "returned_categories": [
-        "digital",
         "digital",
         "digital"
       ],
@@ -396,7 +406,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.6,
+      "latency_ms": 225.44,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -404,7 +414,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 3,
+        "final_count": 2,
         "inferred_product_type": "tablet",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 7,
@@ -421,7 +431,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.6,
+        "latency_ms": 225.44,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -429,21 +439,21 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 1.0,
-        "strict_recall@3": 0.75,
-        "relaxed_recall@3": 0.6,
+        "precision@3": 0.6666666666666666,
+        "strict_recall@3": 0.5,
+        "relaxed_recall@3": 0.4,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.6,
-        "strict_recall@5": 0.75,
-        "relaxed_recall@5": 0.6,
+        "precision@5": 0.4,
+        "strict_recall@5": 0.5,
+        "relaxed_recall@5": 0.4,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.3,
-        "strict_recall@10": 0.75,
-        "relaxed_recall@10": 0.6,
+        "precision@10": 0.2,
+        "strict_recall@10": 0.5,
+        "relaxed_recall@10": 0.4,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -482,18 +492,22 @@
         "p_digital_022"
       ],
       "returned_ids": [
+        "p_digital_005",
         "p_digital_004",
         "p_digital_023"
       ],
       "returned_product_ids": [
+        "p_digital_005",
         "p_digital_004",
         "p_digital_023"
       ],
       "returned_titles": [
+        "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
         "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
         "联想 ThinkBook 14+ 2026 全面屏高性能轻薄本商务学习笔记本电脑"
       ],
       "returned_categories": [
+        "digital",
         "digital",
         "digital"
       ],
@@ -504,14 +518,14 @@
       "expected_categories": [
         "digital"
       ],
-      "top1_id": "p_digital_004",
-      "top1_title": "华为HUAWEI MateBook 14 鸿蒙版 14英寸轻薄高性能生产力笔记本",
+      "top1_id": "p_digital_005",
+      "top1_title": "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑",
       "top1_category": "digital",
       "miss_reasons": [
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 1855.83,
+      "latency_ms": 1997.48,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -519,7 +533,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 2,
+        "final_count": 3,
         "inferred_product_type": "laptop",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 3,
@@ -534,14 +548,14 @@
         "pc_route_detected": false
       },
       "metrics": {
-        "mrr": 1.0,
+        "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 1855.83,
+        "latency_ms": 1997.48,
         "metric_eligible": true,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5,
-        "relaxed_recall@1": 0.3333333333333333,
-        "hit@1": 1,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
         "precision@3": 0.6666666666666666,
@@ -598,17 +612,21 @@
       ],
       "returned_ids": [
         "p_beauty_007",
-        "p_beauty_008"
+        "p_beauty_008",
+        "p_beauty_010"
       ],
       "returned_product_ids": [
         "p_beauty_007",
-        "p_beauty_008"
+        "p_beauty_008",
+        "p_beauty_010"
       ],
       "returned_titles": [
         "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-        "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g"
+        "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+        "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml"
       ],
       "returned_categories": [
+        "beauty",
         "beauty",
         "beauty"
       ],
@@ -626,7 +644,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3.69,
+      "latency_ms": 332.33,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -634,7 +652,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 2,
+        "final_count": 3,
         "inferred_product_type": "cream",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 3,
@@ -651,7 +669,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 3.69,
+        "latency_ms": 332.33,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -712,15 +730,15 @@
       "acceptable_product_ids": [],
       "returned_ids": [
         "p_beauty_010",
-        "p_clothes_024"
+        "p_clothes_001"
       ],
       "returned_product_ids": [
         "p_beauty_010",
-        "p_clothes_024"
+        "p_clothes_001"
       ],
       "returned_titles": [
         "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
-        "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽"
+        "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣"
       ],
       "returned_categories": [
         "beauty",
@@ -741,7 +759,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 8.99,
+      "latency_ms": 443.03,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -767,7 +785,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 8.99,
+        "latency_ms": 443.03,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -855,7 +873,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3.18,
+      "latency_ms": 205.43,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -880,7 +898,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 3.18,
+        "latency_ms": 205.43,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -946,17 +964,17 @@
       "returned_ids": [
         "p_beauty_018",
         "p_beauty_009",
-        "p_beauty_024"
+        "p_beauty_025"
       ],
       "returned_product_ids": [
         "p_beauty_018",
         "p_beauty_009",
-        "p_beauty_024"
+        "p_beauty_025"
       ],
       "returned_titles": [
         "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml",
         "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml",
-        "珀莱雅赋能鲜颜淡纹紧致精华液抗皱紧致提升弹润淡化细纹30ml"
+        "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
       ],
       "returned_categories": [
         "beauty",
@@ -979,7 +997,7 @@
         "strict recall@5 is 0"
       ],
       "miss_stage_guess": "recall_or_candidate_generation_error",
-      "latency_ms": 3.18,
+      "latency_ms": 188.84,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1004,7 +1022,7 @@
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 3.18,
+        "latency_ms": 188.84,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -1012,21 +1030,21 @@
         "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.6666666666666666,
+        "precision@3": 0.3333333333333333,
         "strict_recall@3": 0.0,
-        "relaxed_recall@3": 0.3333333333333333,
+        "relaxed_recall@3": 0.16666666666666666,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.4,
+        "precision@5": 0.2,
         "strict_recall@5": 0.0,
-        "relaxed_recall@5": 0.3333333333333333,
+        "relaxed_recall@5": 0.16666666666666666,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.2,
+        "precision@10": 0.1,
         "strict_recall@10": 0.0,
-        "relaxed_recall@10": 0.3333333333333333,
+        "relaxed_recall@10": 0.16666666666666666,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -1060,7 +1078,6 @@
       "expected_relevant_product_ids": [
         "p_beauty_007",
         "p_beauty_012",
-        "p_beauty_019",
         "p_beauty_022"
       ],
       "acceptable_product_ids": [
@@ -1069,17 +1086,17 @@
       ],
       "returned_ids": [
         "p_beauty_007",
-        "p_beauty_008",
+        "p_beauty_010",
         "p_beauty_011"
       ],
       "returned_product_ids": [
         "p_beauty_007",
-        "p_beauty_008",
+        "p_beauty_010",
         "p_beauty_011"
       ],
       "returned_titles": [
         "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
-        "玉兰油新生塑颜金纯面霜紧致提拉淡纹保湿抗初老大红瓶50g",
+        "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
         "珊珂洗颜专科绵润泡沫洁面乳细腻丰富泡沫温和清洁洁面120g"
       ],
       "returned_categories": [
@@ -1090,7 +1107,6 @@
       "expected_titles": [
         "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
         "理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml",
-        "兰蔻清滢柔肤水大粉水保湿舒缓干性肌肤柔润爽肤水400ml",
         "薇诺娜极润保湿面膜密集补水舒缓修护肌肤屏障涂抹式面膜75g"
       ],
       "expected_categories": [
@@ -1103,7 +1119,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3212.99,
+      "latency_ms": 2613.65,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1128,29 +1144,29 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 3212.99,
+        "latency_ms": 2613.65,
         "metric_eligible": true,
         "precision@1": 1.0,
-        "strict_recall@1": 0.25,
-        "relaxed_recall@1": 0.16666666666666666,
+        "strict_recall@1": 0.3333333333333333,
+        "relaxed_recall@1": 0.2,
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
         "precision@3": 0.3333333333333333,
-        "strict_recall@3": 0.25,
-        "relaxed_recall@3": 0.16666666666666666,
+        "strict_recall@3": 0.3333333333333333,
+        "relaxed_recall@3": 0.2,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
         "precision@5": 0.2,
-        "strict_recall@5": 0.25,
-        "relaxed_recall@5": 0.16666666666666666,
+        "strict_recall@5": 0.3333333333333333,
+        "relaxed_recall@5": 0.2,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
         "precision@10": 0.1,
-        "strict_recall@10": 0.25,
-        "relaxed_recall@10": 0.16666666666666666,
+        "strict_recall@10": 0.3333333333333333,
+        "relaxed_recall@10": 0.2,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -1189,15 +1205,15 @@
       ],
       "acceptable_product_ids": [],
       "returned_ids": [
-        "p_digital_007",
+        "p_digital_018",
         "p_food_002"
       ],
       "returned_product_ids": [
-        "p_digital_007",
+        "p_digital_018",
         "p_food_002"
       ],
       "returned_titles": [
-        "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+        "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
         "雀巢咖啡 1+2原味 三合一速溶咖啡粉100条装即冲奶香咖啡饮品"
       ],
       "returned_categories": [
@@ -1213,14 +1229,14 @@
       "expected_categories": [
         "food"
       ],
-      "top1_id": "p_digital_007",
-      "top1_title": "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质",
+      "top1_id": "p_digital_018",
+      "top1_title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
       "top1_category": "digital",
       "miss_reasons": [
         "low rank or partial match"
       ],
       "miss_stage_guess": "category_routing_or_filter_error",
-      "latency_ms": 16.0,
+      "latency_ms": 413.65,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -1246,7 +1262,7 @@
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 16.0,
+        "latency_ms": 413.65,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -1310,16 +1326,16 @@
         "p_food_025"
       ],
       "returned_ids": [
-        "p_digital_019",
-        "p_food_003"
+        "p_digital_018",
+        "p_food_014"
       ],
       "returned_product_ids": [
-        "p_digital_019",
-        "p_food_003"
+        "p_digital_018",
+        "p_food_014"
       ],
       "returned_titles": [
-        "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-        "农夫山泉 东方树叶 无糖乌龙茶饮料500ml 瓶装茶饮低糖替代方案"
+        "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
+        "农夫山泉 东方树叶 无糖茉莉花茶饮料 500ml×15 瓶装茶饮"
       ],
       "returned_categories": [
         "digital",
@@ -1335,14 +1351,14 @@
       "expected_categories": [
         "food"
       ],
-      "top1_id": "p_digital_019",
-      "top1_title": "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
+      "top1_id": "p_digital_018",
+      "top1_title": "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版",
       "top1_category": "digital",
       "miss_reasons": [
         "low rank or partial match"
       ],
       "miss_stage_guess": "category_routing_or_filter_error",
-      "latency_ms": 22.53,
+      "latency_ms": 437.24,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -1368,7 +1384,7 @@
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 22.53,
+        "latency_ms": 437.24,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -1430,17 +1446,21 @@
       ],
       "returned_ids": [
         "p_food_010",
-        "p_food_009"
+        "p_food_009",
+        "p_food_024"
       ],
       "returned_product_ids": [
         "p_food_010",
-        "p_food_009"
+        "p_food_009",
+        "p_food_024"
       ],
       "returned_titles": [
         "良品铺子 肉松饼1000g/箱 松软糕点休闲零食早餐代餐点心",
-        "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装"
+        "三只松鼠 每日坚果750g/30袋 混合坚果仁干果礼盒独立小包装",
+        "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
       ],
       "returned_categories": [
+        "food",
         "food",
         "food"
       ],
@@ -1458,7 +1478,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.55,
+      "latency_ms": 225.81,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1466,7 +1486,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 2,
+        "final_count": 3,
         "inferred_product_type": "nuts_snack",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 3,
@@ -1483,7 +1503,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 6.55,
+        "latency_ms": 225.81,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.0,
@@ -1544,19 +1564,19 @@
       ],
       "acceptable_product_ids": [],
       "returned_ids": [
+        "p_food_013",
         "p_food_021",
-        "p_food_011",
-        "p_food_012"
+        "p_food_011"
       ],
       "returned_product_ids": [
+        "p_food_013",
         "p_food_021",
-        "p_food_011",
-        "p_food_012"
+        "p_food_011"
       ],
       "returned_titles": [
+        "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
         "康师傅 红烧牛肉面 方便面袋装 114g×5 袋 五连包整袋",
-        "康师傅 经典红烧牛肉面110g*12桶装方便面泡面速食面整箱装",
-        "统一 老坛酸菜牛肉面来一桶121g*12桶方便面泡面酸辣风味整箱"
+        "康师傅 经典红烧牛肉面110g*12桶装方便面泡面速食面整箱装"
       ],
       "returned_categories": [
         "food",
@@ -1572,14 +1592,14 @@
       "expected_categories": [
         "food"
       ],
-      "top1_id": "p_food_021",
-      "top1_title": "康师傅 红烧牛肉面 方便面袋装 114g×5 袋 五连包整袋",
+      "top1_id": "p_food_013",
+      "top1_title": "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料",
       "top1_category": "food",
       "miss_reasons": [
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 2.8,
+      "latency_ms": 216.28,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1602,31 +1622,31 @@
         "pc_route_detected": false
       },
       "metrics": {
-        "mrr": 1.0,
+        "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 2.8,
+        "latency_ms": 216.28,
         "metric_eligible": true,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.25,
-        "relaxed_recall@1": 0.25,
-        "hit@1": 1,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 1.0,
-        "strict_recall@3": 0.75,
-        "relaxed_recall@3": 0.75,
+        "precision@3": 0.6666666666666666,
+        "strict_recall@3": 0.5,
+        "relaxed_recall@3": 0.5,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.6,
-        "strict_recall@5": 0.75,
-        "relaxed_recall@5": 0.75,
+        "precision@5": 0.4,
+        "strict_recall@5": 0.5,
+        "relaxed_recall@5": 0.5,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.3,
-        "strict_recall@10": 0.75,
-        "relaxed_recall@10": 0.75,
+        "precision@10": 0.2,
+        "strict_recall@10": 0.5,
+        "relaxed_recall@10": 0.5,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -1665,18 +1685,18 @@
       "acceptable_product_ids": [],
       "returned_ids": [
         "p_food_005",
-        "p_food_006",
-        "p_food_025"
+        "p_food_004",
+        "p_food_006"
       ],
       "returned_product_ids": [
         "p_food_005",
-        "p_food_006",
-        "p_food_025"
+        "p_food_004",
+        "p_food_006"
       ],
       "returned_titles": [
         "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-        "红牛 维生素功能饮料250ml*24罐整箱补充能量含牛磺酸咖啡因",
-        "农夫山泉 水溶C100 柠檬味饮料 445ml×15 瓶装 维生素C饮品"
+        "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
+        "红牛 维生素功能饮料250ml*24罐整箱补充能量含牛磺酸咖啡因"
       ],
       "returned_categories": [
         "food",
@@ -1698,7 +1718,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3.05,
+      "latency_ms": 205.3,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1723,7 +1743,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 3.05,
+        "latency_ms": 205.3,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -1731,21 +1751,21 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 1.0,
-        "strict_recall@3": 1.0,
-        "relaxed_recall@3": 1.0,
+        "precision@3": 0.6666666666666666,
+        "strict_recall@3": 0.6666666666666666,
+        "relaxed_recall@3": 0.6666666666666666,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.6,
-        "strict_recall@5": 1.0,
-        "relaxed_recall@5": 1.0,
+        "precision@5": 0.4,
+        "strict_recall@5": 0.6666666666666666,
+        "relaxed_recall@5": 0.6666666666666666,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.3,
-        "strict_recall@10": 1.0,
-        "relaxed_recall@10": 1.0,
+        "precision@10": 0.2,
+        "strict_recall@10": 0.6666666666666666,
+        "relaxed_recall@10": 0.6666666666666666,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -1819,7 +1839,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 5.03,
+      "latency_ms": 213.45,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -1844,7 +1864,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 5.03,
+        "latency_ms": 213.45,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -1904,15 +1924,15 @@
       "acceptable_product_ids": [],
       "returned_ids": [
         "p_clothes_020",
-        "p_clothes_001"
+        "p_clothes_002"
       ],
       "returned_product_ids": [
         "p_clothes_020",
-        "p_clothes_001"
+        "p_clothes_002"
       ],
       "returned_titles": [
         "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
-        "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣"
+        "优衣库 DRY-EX 超快干圆领短袖T恤 男装 运动训练上衣"
       ],
       "returned_categories": [
         "clothing",
@@ -1929,10 +1949,10 @@
       "top1_title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
       "top1_category": "clothing",
       "miss_reasons": [
-        "low rank or partial match"
+        "constraint violation"
       ],
-      "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 4.66,
+      "miss_stage_guess": "constraint_filter_error",
+      "latency_ms": 226.75,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -1957,7 +1977,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 4.66,
+        "latency_ms": 226.75,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.5,
@@ -1965,26 +1985,26 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 1.0,
-        "relaxed_recall@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "strict_recall@3": 0.5,
+        "relaxed_recall@3": 0.5,
         "hit@3": 1,
-        "constraint_violation@3": 0,
+        "constraint_violation@3": 1,
         "category_accuracy@3": 1,
-        "precision@5": 0.4,
-        "strict_recall@5": 1.0,
-        "relaxed_recall@5": 1.0,
+        "precision@5": 0.2,
+        "strict_recall@5": 0.5,
+        "relaxed_recall@5": 0.5,
         "hit@5": 1,
-        "constraint_violation@5": 0,
+        "constraint_violation@5": 1,
         "category_accuracy@5": 1,
-        "precision@10": 0.2,
-        "strict_recall@10": 1.0,
-        "relaxed_recall@10": 1.0,
+        "precision@10": 0.1,
+        "strict_recall@10": 0.5,
+        "relaxed_recall@10": 0.5,
         "hit@10": 1,
-        "constraint_violation@10": 0,
+        "constraint_violation@10": 1,
         "category_accuracy@10": 1,
         "category_accuracy_top1": 1,
-        "constraint_violation": 0,
+        "constraint_violation": 1,
         "negative_violation": 0,
         "negative_returned_any": null,
         "negative_no_recommendation": null,
@@ -1992,14 +2012,24 @@
         "catalog_gap_returned_any": null,
         "catalog_gap_no_recommendation": null
       },
-      "constraint_violation_reasons": {},
+      "constraint_violation_reasons": {
+        "3": [
+          "price_above_max(p_clothes_002): 129.0"
+        ],
+        "5": [
+          "price_above_max(p_clothes_002): 129.0"
+        ],
+        "10": [
+          "price_above_max(p_clothes_002): 129.0"
+        ]
+      },
       "category_match_by_k": {
         "1": true,
         "3": true,
         "5": true,
         "10": true
       },
-      "miss_reason": "low rank or partial match",
+      "miss_reason": "constraint violation",
       "error": "",
       "retrieval_status": "not_requested"
     },
@@ -2022,18 +2052,18 @@
       ],
       "returned_ids": [
         "p_clothes_001",
-        "p_clothes_020",
-        "p_clothes_023"
+        "p_clothes_023",
+        "p_clothes_020"
       ],
       "returned_product_ids": [
         "p_clothes_001",
-        "p_clothes_020",
-        "p_clothes_023"
+        "p_clothes_023",
+        "p_clothes_020"
       ],
       "returned_titles": [
         "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-        "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
-        "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤"
+        "优衣库 男装 DRY 速干运动短裤 轻薄透气训练裤",
+        "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣"
       ],
       "returned_categories": [
         "clothing",
@@ -2057,7 +2087,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 2841.32,
+      "latency_ms": 3160.07,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2082,7 +2112,7 @@
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 2841.32,
+        "latency_ms": 3160.07,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -2146,17 +2176,21 @@
       ],
       "returned_ids": [
         "p_clothes_025",
+        "p_clothes_015",
         "p_clothes_018"
       ],
       "returned_product_ids": [
         "p_clothes_025",
+        "p_clothes_015",
         "p_clothes_018"
       ],
       "returned_titles": [
         "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包",
+        "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋",
         "The North Face Borealis 28L 多功能通勤户外双肩背包"
       ],
       "returned_categories": [
+        "clothing",
         "clothing",
         "clothing"
       ],
@@ -2176,7 +2210,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.22,
+      "latency_ms": 227.09,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2184,7 +2218,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 2,
+        "final_count": 3,
         "inferred_product_type": "shoes",
         "product_type_filter_applied": false,
         "product_type_candidate_count": 0,
@@ -2201,7 +2235,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.22,
+        "latency_ms": 227.09,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.25,
@@ -2209,21 +2243,21 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 0.5,
-        "relaxed_recall@3": 0.4,
+        "precision@3": 1.0,
+        "strict_recall@3": 0.75,
+        "relaxed_recall@3": 0.6,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.4,
-        "strict_recall@5": 0.5,
-        "relaxed_recall@5": 0.4,
+        "precision@5": 0.6,
+        "strict_recall@5": 0.75,
+        "relaxed_recall@5": 0.6,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.2,
-        "strict_recall@10": 0.5,
-        "relaxed_recall@10": 0.4,
+        "precision@10": 0.3,
+        "strict_recall@10": 0.75,
+        "relaxed_recall@10": 0.6,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -2262,17 +2296,21 @@
       "acceptable_product_ids": [],
       "returned_ids": [
         "p_clothes_012",
-        "p_clothes_013"
+        "p_clothes_013",
+        "p_clothes_007"
       ],
       "returned_product_ids": [
         "p_clothes_012",
-        "p_clothes_013"
+        "p_clothes_013",
+        "p_clothes_007"
       ],
       "returned_titles": [
         "安踏 KT9 氮科技实战篮球鞋中帮缓震支撑外场内场训练比赛鞋",
-        "李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋"
+        "李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋",
+        "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋"
       ],
       "returned_categories": [
+        "clothing",
         "clothing",
         "clothing"
       ],
@@ -2291,7 +2329,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 4.97,
+      "latency_ms": 245.93,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2299,7 +2337,7 @@
         ],
         "candidate_count": 342,
         "filtered_count": null,
-        "final_count": 2,
+        "final_count": 3,
         "inferred_product_type": "basketball_shoes",
         "product_type_filter_applied": true,
         "product_type_candidate_count": 3,
@@ -2316,7 +2354,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 4.97,
+        "latency_ms": 245.93,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -2383,15 +2421,15 @@
         "p_clothes_013"
       ],
       "returned_ids": [
-        "p_clothes_001",
+        "p_clothes_020",
         "p_food_005"
       ],
       "returned_product_ids": [
-        "p_clothes_001",
+        "p_clothes_020",
         "p_food_005"
       ],
       "returned_titles": [
-        "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+        "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
         "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因"
       ],
       "returned_categories": [
@@ -2411,14 +2449,14 @@
         "clothing",
         "food"
       ],
-      "top1_id": "p_clothes_001",
-      "top1_title": "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
+      "top1_id": "p_clothes_020",
+      "top1_title": "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
       "top1_category": "clothing",
       "miss_reasons": [
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 16.34,
+      "latency_ms": 487.07,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2444,7 +2482,7 @@
       "metrics": {
         "mrr": 0.5,
         "empty_result": false,
-        "latency_ms": 16.34,
+        "latency_ms": 487.07,
         "metric_eligible": true,
         "precision@1": 0.0,
         "strict_recall@1": 0.0,
@@ -2540,7 +2578,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 17.95,
+      "latency_ms": 389.61,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2566,7 +2604,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 17.95,
+        "latency_ms": 389.61,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.2,
@@ -2633,22 +2671,22 @@
         "p_beauty_020"
       ],
       "returned_ids": [
-        "p_beauty_025",
-        "p_digital_019",
-        "p_clothes_001",
-        "p_food_018"
+        "p_beauty_007",
+        "p_digital_016",
+        "p_clothes_020",
+        "p_food_013"
       ],
       "returned_product_ids": [
-        "p_beauty_025",
-        "p_digital_019",
-        "p_clothes_001",
-        "p_food_018"
+        "p_beauty_007",
+        "p_digital_016",
+        "p_clothes_020",
+        "p_food_013"
       ],
       "returned_titles": [
-        "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
-        "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公平板电脑",
-        "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-        "李锦记 特级草菇老抽 1.65L 瓶装酱油 家庭厨房调味品"
+        "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
+        "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB",
+        "迪卡侬 KALENJI 男子跑步速干T恤轻薄透气基础训练短袖上衣",
+        "海天 金标生抽1.9L 瓶装酱油 家用厨房调味料酱香鲜味佐餐蘸料"
       ],
       "returned_categories": [
         "beauty",
@@ -2666,14 +2704,14 @@
       "expected_categories": [
         "beauty"
       ],
-      "top1_id": "p_beauty_025",
-      "top1_title": "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g",
+      "top1_id": "p_beauty_007",
+      "top1_title": "薇诺娜舒敏保湿特护霜敏感肌修护屏障舒缓干痒保湿面霜50g",
       "top1_category": "beauty",
       "miss_reasons": [
         "strict recall@5 is 0"
       ],
       "miss_stage_guess": "recall_or_candidate_generation_error",
-      "latency_ms": 20.7,
+      "latency_ms": 963.01,
       "trace_debug": {
         "route_tool_name": "bundle_recommendation",
         "parsed_category": [
@@ -2699,32 +2737,32 @@
         "pc_route_detected": false
       },
       "metrics": {
-        "mrr": 1.0,
+        "mrr": 0.0,
         "empty_result": false,
-        "latency_ms": 20.7,
+        "latency_ms": 963.01,
         "metric_eligible": true,
-        "precision@1": 1.0,
+        "precision@1": 0.0,
         "strict_recall@1": 0.0,
-        "relaxed_recall@1": 0.1111111111111111,
-        "hit@1": 1,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.3333333333333333,
+        "precision@3": 0.0,
         "strict_recall@3": 0.0,
-        "relaxed_recall@3": 0.1111111111111111,
-        "hit@3": 1,
+        "relaxed_recall@3": 0.0,
+        "hit@3": 0,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.2,
+        "precision@5": 0.0,
         "strict_recall@5": 0.0,
-        "relaxed_recall@5": 0.1111111111111111,
-        "hit@5": 1,
+        "relaxed_recall@5": 0.0,
+        "hit@5": 0,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.1,
+        "precision@10": 0.0,
         "strict_recall@10": 0.0,
-        "relaxed_recall@10": 0.1111111111111111,
-        "hit@10": 1,
+        "relaxed_recall@10": 0.0,
+        "hit@10": 0,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
         "category_accuracy_top1": 1,
@@ -2767,17 +2805,17 @@
       ],
       "returned_ids": [
         "p_clothes_001",
-        "p_clothes_003",
+        "p_clothes_019",
         "p_clothes_005"
       ],
       "returned_product_ids": [
         "p_clothes_001",
-        "p_clothes_003",
+        "p_clothes_019",
         "p_clothes_005"
       ],
       "returned_titles": [
         "优衣库 U AIRism 棉质宽松圆领短袖T恤 男装 基础纯色上衣",
-        "Nike Dri-FIT 男子训练短袖T恤 速干透气运动上衣",
+        "Nike Heritage86 Futura Logo 经典刺绣棒球帽 可调节帽围",
         "李宁 运动生活系列 男子连帽套头卫衣 基础Logo印花上衣"
       ],
       "returned_categories": [
@@ -2804,7 +2842,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 7.42,
+      "latency_ms": 219.83,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -2829,7 +2867,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 7.42,
+        "latency_ms": 219.83,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.2,
@@ -2900,7 +2938,7 @@
         "category mismatch"
       ],
       "miss_stage_guess": "empty_result",
-      "latency_ms": 0.39,
+      "latency_ms": 0.53,
       "trace_debug": {
         "route_tool_name": null,
         "parsed_category": [
@@ -2925,7 +2963,7 @@
       "metrics": {
         "mrr": null,
         "empty_result": true,
-        "latency_ms": 0.39,
+        "latency_ms": 0.53,
         "metric_eligible": false,
         "precision@1": null,
         "strict_recall@1": null,
@@ -2993,7 +3031,7 @@
         "empty result"
       ],
       "miss_stage_guess": "empty_result",
-      "latency_ms": 0.33,
+      "latency_ms": 1.22,
       "trace_debug": {
         "route_tool_name": null,
         "parsed_category": [
@@ -3021,7 +3059,7 @@
       "metrics": {
         "mrr": null,
         "empty_result": true,
-        "latency_ms": 0.33,
+        "latency_ms": 1.22,
         "metric_eligible": false,
         "precision@1": null,
         "strict_recall@1": null,
@@ -3123,7 +3161,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3.2,
+      "latency_ms": 177.41,
       "trace_debug": {
         "route_tool_name": "pc_build_plan",
         "parsed_category": [
@@ -3150,7 +3188,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 3.2,
+        "latency_ms": 177.41,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.14285714285714285,
@@ -3213,23 +3251,15 @@
         "pc_gpu_pc_seed_gpu_xfx_radeon_rx_7600_xt_16g"
       ],
       "returned_ids": [
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g",
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_oc",
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_edition_4"
+        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g"
       ],
       "returned_product_ids": [
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g",
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_oc",
-        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g_edition_4"
+        "pc_gpu_pc_seed_gpu_asus_dual_geforce_rtx_4060_o8g"
       ],
       "returned_titles": [
-        "ASUS Dual GeForce RTX 4060 O8G 显卡",
-        "ASUS Dual GeForce RTX 4060 O8G OC 显卡",
-        "ASUS Dual GeForce RTX 4060 O8G Edition 4 显卡"
+        "ASUS Dual GeForce RTX 4060 O8G 显卡"
       ],
       "returned_categories": [
-        "pc_gpu",
-        "pc_gpu",
         "pc_gpu"
       ],
       "expected_titles": [
@@ -3247,7 +3277,7 @@
         "low rank or partial match"
       ],
       "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 6.67,
+      "latency_ms": 230.31,
       "trace_debug": {
         "route_tool_name": "single_product_recommendation",
         "parsed_category": [
@@ -3255,7 +3285,7 @@
         ],
         "candidate_count": 242,
         "filtered_count": null,
-        "final_count": 3,
+        "final_count": 1,
         "inferred_product_type": null,
         "product_type_filter_applied": false,
         "product_type_candidate_count": 40,
@@ -3278,7 +3308,7 @@
       "metrics": {
         "mrr": 1.0,
         "empty_result": false,
-        "latency_ms": 6.67,
+        "latency_ms": 230.31,
         "metric_eligible": true,
         "precision@1": 1.0,
         "strict_recall@1": 0.3333333333333333,
@@ -3286,21 +3316,21 @@
         "hit@1": 1,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 0.6666666666666666,
-        "relaxed_recall@3": 0.4,
+        "precision@3": 0.3333333333333333,
+        "strict_recall@3": 0.3333333333333333,
+        "relaxed_recall@3": 0.2,
         "hit@3": 1,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.4,
-        "strict_recall@5": 0.6666666666666666,
-        "relaxed_recall@5": 0.4,
+        "precision@5": 0.2,
+        "strict_recall@5": 0.3333333333333333,
+        "relaxed_recall@5": 0.2,
         "hit@5": 1,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.2,
-        "strict_recall@10": 0.6666666666666666,
-        "relaxed_recall@10": 0.4,
+        "precision@10": 0.1,
+        "strict_recall@10": 0.3333333333333333,
+        "relaxed_recall@10": 0.2,
         "hit@10": 1,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
@@ -3340,19 +3370,19 @@
         "pc_storage_pc_seed_ssd_wd_blue_sn580_1tb"
       ],
       "returned_ids": [
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb",
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2",
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev3"
+        "pc_storage_pc_seed_ssd_zhitai_tiplus7100_1tb_rev4",
+        "pc_storage_pc_seed_ssd_zhitai_tiplus7100_1tb_rev3",
+        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev4"
       ],
       "returned_product_ids": [
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb",
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2",
-        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev3"
+        "pc_storage_pc_seed_ssd_zhitai_tiplus7100_1tb_rev4",
+        "pc_storage_pc_seed_ssd_zhitai_tiplus7100_1tb_rev3",
+        "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev4"
       ],
       "returned_titles": [
-        "WD BLACK SN850X 2TB NVMe SSD",
-        "WD BLACK SN850X 2TB Rev2 NVMe SSD",
-        "WD BLACK SN850X 2TB Rev3 NVMe SSD"
+        "ZHITAI TiPlus7100 1TB Rev4 NVMe SSD",
+        "ZHITAI TiPlus7100 1TB Rev3 NVMe SSD",
+        "WD BLACK SN850X 2TB Rev4 NVMe SSD"
       ],
       "returned_categories": [
         "pc_storage",
@@ -3366,14 +3396,14 @@
       "expected_categories": [
         "pc_storage"
       ],
-      "top1_id": "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb",
-      "top1_title": "WD BLACK SN850X 2TB NVMe SSD",
+      "top1_id": "pc_storage_pc_seed_ssd_zhitai_tiplus7100_1tb_rev4",
+      "top1_title": "ZHITAI TiPlus7100 1TB Rev4 NVMe SSD",
       "top1_category": "pc_storage",
       "miss_reasons": [
-        "low rank or partial match"
+        "strict recall@5 is 0"
       ],
-      "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 4.97,
+      "miss_stage_guess": "recall_or_candidate_generation_error",
+      "latency_ms": 249.41,
       "trace_debug": {
         "route_tool_name": "condition_filter",
         "parsed_category": [
@@ -3398,32 +3428,32 @@
         "pc_route_detected": true
       },
       "metrics": {
-        "mrr": 1.0,
+        "mrr": 0.0,
         "empty_result": false,
-        "latency_ms": 4.97,
+        "latency_ms": 249.41,
         "metric_eligible": true,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5,
-        "relaxed_recall@1": 0.25,
-        "hit@1": 1,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.3333333333333333,
-        "strict_recall@3": 0.5,
-        "relaxed_recall@3": 0.25,
-        "hit@3": 1,
+        "precision@3": 0.0,
+        "strict_recall@3": 0.0,
+        "relaxed_recall@3": 0.0,
+        "hit@3": 0,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.2,
-        "strict_recall@5": 0.5,
-        "relaxed_recall@5": 0.25,
-        "hit@5": 1,
+        "precision@5": 0.0,
+        "strict_recall@5": 0.0,
+        "relaxed_recall@5": 0.0,
+        "hit@5": 0,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.1,
-        "strict_recall@10": 0.5,
-        "relaxed_recall@10": 0.25,
-        "hit@10": 1,
+        "precision@10": 0.0,
+        "strict_recall@10": 0.0,
+        "relaxed_recall@10": 0.0,
+        "hit@10": 0,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
         "category_accuracy_top1": 1,
@@ -3442,7 +3472,7 @@
         "5": true,
         "10": true
       },
-      "miss_reason": "low rank or partial match",
+      "miss_reason": "strict recall@5 is 0",
       "error": "",
       "retrieval_status": "not_requested"
     },
@@ -3461,19 +3491,19 @@
         "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600"
       ],
       "returned_ids": [
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000",
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000_kit_2",
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000_kit_3"
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_2",
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_3",
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_4"
       ],
       "returned_product_ids": [
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000",
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000_kit_2",
-        "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000_kit_3"
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_2",
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_3",
+        "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_4"
       ],
       "returned_titles": [
-        "Kingston FURY Beast DDR5 32GB 6000 内存套装",
-        "Kingston FURY Beast DDR5 32GB 6000 Kit 2 内存套装",
-        "Kingston FURY Beast DDR5 32GB 6000 Kit 3 内存套装"
+        "Crucial DDR5 16GB 5600 Kit 2 内存套装",
+        "Crucial DDR5 16GB 5600 Kit 3 内存套装",
+        "Crucial DDR5 16GB 5600 Kit 4 内存套装"
       ],
       "returned_categories": [
         "pc_memory",
@@ -3487,14 +3517,14 @@
       "expected_categories": [
         "pc_memory"
       ],
-      "top1_id": "pc_memory_pc_seed_memory_kingston_fury_beast_ddr5_32gb_6000",
-      "top1_title": "Kingston FURY Beast DDR5 32GB 6000 内存套装",
+      "top1_id": "pc_memory_pc_seed_memory_crucial_ddr5_16gb_5600_kit_2",
+      "top1_title": "Crucial DDR5 16GB 5600 Kit 2 内存套装",
       "top1_category": "pc_memory",
       "miss_reasons": [
-        "low rank or partial match"
+        "strict recall@5 is 0"
       ],
-      "miss_stage_guess": "ok_or_label_review",
-      "latency_ms": 3.39,
+      "miss_stage_guess": "recall_or_candidate_generation_error",
+      "latency_ms": 223.31,
       "trace_debug": {
         "route_tool_name": "pc_build_plan",
         "parsed_category": [
@@ -3520,32 +3550,32 @@
         "pc_route_detected": true
       },
       "metrics": {
-        "mrr": 1.0,
+        "mrr": 0.0,
         "empty_result": false,
-        "latency_ms": 3.39,
+        "latency_ms": 223.31,
         "metric_eligible": true,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5,
-        "relaxed_recall@1": 0.3333333333333333,
-        "hit@1": 1,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0,
         "constraint_violation@1": 0,
         "category_accuracy@1": 1,
-        "precision@3": 0.3333333333333333,
-        "strict_recall@3": 0.5,
-        "relaxed_recall@3": 0.3333333333333333,
-        "hit@3": 1,
+        "precision@3": 0.0,
+        "strict_recall@3": 0.0,
+        "relaxed_recall@3": 0.0,
+        "hit@3": 0,
         "constraint_violation@3": 0,
         "category_accuracy@3": 1,
-        "precision@5": 0.2,
-        "strict_recall@5": 0.5,
-        "relaxed_recall@5": 0.3333333333333333,
-        "hit@5": 1,
+        "precision@5": 0.0,
+        "strict_recall@5": 0.0,
+        "relaxed_recall@5": 0.0,
+        "hit@5": 0,
         "constraint_violation@5": 0,
         "category_accuracy@5": 1,
-        "precision@10": 0.1,
-        "strict_recall@10": 0.5,
-        "relaxed_recall@10": 0.3333333333333333,
-        "hit@10": 1,
+        "precision@10": 0.0,
+        "strict_recall@10": 0.0,
+        "relaxed_recall@10": 0.0,
+        "hit@10": 0,
         "constraint_violation@10": 0,
         "category_accuracy@10": 1,
         "category_accuracy_top1": 1,
@@ -3564,7 +3594,7 @@
         "5": true,
         "10": true
       },
-      "miss_reason": "low rank or partial match",
+      "miss_reason": "strict recall@5 is 0",
       "error": "",
       "retrieval_status": "not_requested"
     }
@@ -3574,214 +3604,214 @@
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 429.74,
-    "avg_latency_ms": 429.74,
+    "latency_ms": 706.86,
+    "avg_latency_ms": 706.86,
     "metric_eligible_count": 24,
-    "mrr": 0.8958333333333334,
-    "constraint_violation_rate": 0.0,
+    "mrr": 0.8125,
+    "constraint_violation_rate": 0.08333333333333333,
     "category_accuracy_top1": 0.9166666666666666,
-    "precision@1": 0.7916666666666666,
-    "strict_recall@1": 0.26319444444444445,
-    "relaxed_recall@1": 0.24599867724867724,
-    "hit@1": 0.7916666666666666,
+    "precision@1": 0.6666666666666666,
+    "strict_recall@1": 0.23541666666666666,
+    "relaxed_recall@1": 0.21845238095238095,
+    "hit@1": 0.6666666666666666,
     "category_accuracy@1": 0.9166666666666666,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5694444444444444,
-    "strict_recall@3": 0.4816468253968254,
-    "relaxed_recall@3": 0.46660052910052907,
-    "hit@3": 1.0,
+    "precision@3": 0.4861111111111111,
+    "strict_recall@3": 0.4399801587301587,
+    "relaxed_recall@3": 0.40433201058201057,
+    "hit@3": 0.9583333333333334,
     "category_accuracy@3": 1.0,
-    "constraint_violation@3": 0.0,
-    "precision@5": 0.3416666666666667,
-    "strict_recall@5": 0.4816468253968254,
-    "relaxed_recall@5": 0.46660052910052907,
-    "hit@5": 1.0,
+    "constraint_violation@3": 0.08333333333333333,
+    "precision@5": 0.2916666666666667,
+    "strict_recall@5": 0.4399801587301587,
+    "relaxed_recall@5": 0.40433201058201057,
+    "hit@5": 0.9583333333333334,
     "category_accuracy@5": 1.0,
-    "constraint_violation@5": 0.0,
-    "precision@10": 0.17083333333333334,
-    "strict_recall@10": 0.4816468253968254,
-    "relaxed_recall@10": 0.46660052910052907,
-    "hit@10": 1.0,
+    "constraint_violation@5": 0.08333333333333333,
+    "precision@10": 0.14583333333333334,
+    "strict_recall@10": 0.4399801587301587,
+    "relaxed_recall@10": 0.40433201058201057,
+    "hit@10": 0.9583333333333334,
     "category_accuracy@10": 1.0,
-    "constraint_violation@10": 0.0
+    "constraint_violation@10": 0.08333333333333333
   },
   "main_summary": {
     "case_count": 24,
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 429.74,
-    "avg_latency_ms": 429.74,
+    "latency_ms": 706.86,
+    "avg_latency_ms": 706.86,
     "metric_eligible_count": 24,
-    "mrr": 0.8958333333333334,
-    "constraint_violation_rate": 0.0,
+    "mrr": 0.8125,
+    "constraint_violation_rate": 0.08333333333333333,
     "category_accuracy_top1": 0.9166666666666666,
-    "precision@1": 0.7916666666666666,
-    "strict_recall@1": 0.26319444444444445,
-    "relaxed_recall@1": 0.24599867724867724,
-    "hit@1": 0.7916666666666666,
+    "precision@1": 0.6666666666666666,
+    "strict_recall@1": 0.23541666666666666,
+    "relaxed_recall@1": 0.21845238095238095,
+    "hit@1": 0.6666666666666666,
     "category_accuracy@1": 0.9166666666666666,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5694444444444444,
-    "strict_recall@3": 0.4816468253968254,
-    "relaxed_recall@3": 0.46660052910052907,
-    "hit@3": 1.0,
+    "precision@3": 0.4861111111111111,
+    "strict_recall@3": 0.4399801587301587,
+    "relaxed_recall@3": 0.40433201058201057,
+    "hit@3": 0.9583333333333334,
     "category_accuracy@3": 1.0,
-    "constraint_violation@3": 0.0,
-    "precision@5": 0.3416666666666667,
-    "strict_recall@5": 0.4816468253968254,
-    "relaxed_recall@5": 0.46660052910052907,
-    "hit@5": 1.0,
+    "constraint_violation@3": 0.08333333333333333,
+    "precision@5": 0.2916666666666667,
+    "strict_recall@5": 0.4399801587301587,
+    "relaxed_recall@5": 0.40433201058201057,
+    "hit@5": 0.9583333333333334,
     "category_accuracy@5": 1.0,
-    "constraint_violation@5": 0.0,
-    "precision@10": 0.17083333333333334,
-    "strict_recall@10": 0.4816468253968254,
-    "relaxed_recall@10": 0.46660052910052907,
-    "hit@10": 1.0,
+    "constraint_violation@5": 0.08333333333333333,
+    "precision@10": 0.14583333333333334,
+    "strict_recall@10": 0.4399801587301587,
+    "relaxed_recall@10": 0.40433201058201057,
+    "hit@10": 0.9583333333333334,
     "category_accuracy@10": 1.0,
-    "constraint_violation@10": 0.0
+    "constraint_violation@10": 0.08333333333333333
   },
   "global_all_cases_summary": {
     "case_count": 30,
     "success_count": 30,
     "empty_result_count": 2,
     "empty_result_rate": 0.06666666666666667,
-    "latency_ms": 344.43,
-    "avg_latency_ms": 344.43,
+    "latency_ms": 594.9,
+    "avg_latency_ms": 594.9,
     "metric_eligible_count": 28,
-    "mrr": 0.9107142857142857,
-    "constraint_violation_rate": 0.0,
+    "mrr": 0.7678571428571429,
+    "constraint_violation_rate": 0.06666666666666667,
     "category_accuracy_top1": 0.9,
-    "precision@1": 0.8214285714285714,
-    "strict_recall@1": 0.2783163265306122,
-    "relaxed_recall@1": 0.24393424036281178,
-    "hit@1": 0.8214285714285714,
+    "precision@1": 0.6428571428571429,
+    "strict_recall@1": 0.21879251700680272,
+    "relaxed_recall@1": 0.19948979591836735,
+    "hit@1": 0.6428571428571429,
     "category_accuracy@1": 0.9,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5714285714285714,
-    "strict_recall@3": 0.48767006802721086,
-    "relaxed_recall@3": 0.4503684807256236,
-    "hit@3": 1.0,
+    "precision@3": 0.46428571428571425,
+    "strict_recall@3": 0.40433673469387754,
+    "relaxed_recall@3": 0.36901927437641724,
+    "hit@3": 0.8928571428571429,
     "category_accuracy@3": 0.9666666666666667,
-    "constraint_violation@3": 0.0,
-    "precision@5": 0.34285714285714286,
-    "strict_recall@5": 0.48767006802721086,
-    "relaxed_recall@5": 0.4503684807256236,
-    "hit@5": 1.0,
+    "constraint_violation@3": 0.06666666666666667,
+    "precision@5": 0.2785714285714286,
+    "strict_recall@5": 0.40433673469387754,
+    "relaxed_recall@5": 0.36901927437641724,
+    "hit@5": 0.8928571428571429,
     "category_accuracy@5": 0.9666666666666667,
-    "constraint_violation@5": 0.0,
-    "precision@10": 0.17142857142857143,
-    "strict_recall@10": 0.48767006802721086,
-    "relaxed_recall@10": 0.4503684807256236,
-    "hit@10": 1.0,
+    "constraint_violation@5": 0.06666666666666667,
+    "precision@10": 0.1392857142857143,
+    "strict_recall@10": 0.40433673469387754,
+    "relaxed_recall@10": 0.36901927437641724,
+    "hit@10": 0.8928571428571429,
     "category_accuracy@10": 0.9666666666666667,
-    "constraint_violation@10": 0.0
+    "constraint_violation@10": 0.06666666666666667
   },
   "all_cases_summary": {
     "case_count": 30,
     "success_count": 30,
     "empty_result_count": 2,
     "empty_result_rate": 0.06666666666666667,
-    "latency_ms": 344.43,
-    "avg_latency_ms": 344.43,
+    "latency_ms": 594.9,
+    "avg_latency_ms": 594.9,
     "metric_eligible_count": 28,
-    "mrr": 0.9107142857142857,
-    "constraint_violation_rate": 0.0,
+    "mrr": 0.7678571428571429,
+    "constraint_violation_rate": 0.06666666666666667,
     "category_accuracy_top1": 0.9,
-    "precision@1": 0.8214285714285714,
-    "strict_recall@1": 0.2783163265306122,
-    "relaxed_recall@1": 0.24393424036281178,
-    "hit@1": 0.8214285714285714,
+    "precision@1": 0.6428571428571429,
+    "strict_recall@1": 0.21879251700680272,
+    "relaxed_recall@1": 0.19948979591836735,
+    "hit@1": 0.6428571428571429,
     "category_accuracy@1": 0.9,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5714285714285714,
-    "strict_recall@3": 0.48767006802721086,
-    "relaxed_recall@3": 0.4503684807256236,
-    "hit@3": 1.0,
+    "precision@3": 0.46428571428571425,
+    "strict_recall@3": 0.40433673469387754,
+    "relaxed_recall@3": 0.36901927437641724,
+    "hit@3": 0.8928571428571429,
     "category_accuracy@3": 0.9666666666666667,
-    "constraint_violation@3": 0.0,
-    "precision@5": 0.34285714285714286,
-    "strict_recall@5": 0.48767006802721086,
-    "relaxed_recall@5": 0.4503684807256236,
-    "hit@5": 1.0,
+    "constraint_violation@3": 0.06666666666666667,
+    "precision@5": 0.2785714285714286,
+    "strict_recall@5": 0.40433673469387754,
+    "relaxed_recall@5": 0.36901927437641724,
+    "hit@5": 0.8928571428571429,
     "category_accuracy@5": 0.9666666666666667,
-    "constraint_violation@5": 0.0,
-    "precision@10": 0.17142857142857143,
-    "strict_recall@10": 0.48767006802721086,
-    "relaxed_recall@10": 0.4503684807256236,
-    "hit@10": 1.0,
+    "constraint_violation@5": 0.06666666666666667,
+    "precision@10": 0.1392857142857143,
+    "strict_recall@10": 0.40433673469387754,
+    "relaxed_recall@10": 0.36901927437641724,
+    "hit@10": 0.8928571428571429,
     "category_accuracy@10": 0.9666666666666667,
-    "constraint_violation@10": 0.0
+    "constraint_violation@10": 0.06666666666666667
   },
   "ecommerce_summary": {
     "case_count": 24,
     "success_count": 24,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 429.74,
-    "avg_latency_ms": 429.74,
+    "latency_ms": 706.86,
+    "avg_latency_ms": 706.86,
     "metric_eligible_count": 24,
-    "mrr": 0.8958333333333334,
-    "constraint_violation_rate": 0.0,
+    "mrr": 0.8125,
+    "constraint_violation_rate": 0.08333333333333333,
     "category_accuracy_top1": 0.9166666666666666,
-    "precision@1": 0.7916666666666666,
-    "strict_recall@1": 0.26319444444444445,
-    "relaxed_recall@1": 0.24599867724867724,
-    "hit@1": 0.7916666666666666,
+    "precision@1": 0.6666666666666666,
+    "strict_recall@1": 0.23541666666666666,
+    "relaxed_recall@1": 0.21845238095238095,
+    "hit@1": 0.6666666666666666,
     "category_accuracy@1": 0.9166666666666666,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5694444444444444,
-    "strict_recall@3": 0.4816468253968254,
-    "relaxed_recall@3": 0.46660052910052907,
-    "hit@3": 1.0,
+    "precision@3": 0.4861111111111111,
+    "strict_recall@3": 0.4399801587301587,
+    "relaxed_recall@3": 0.40433201058201057,
+    "hit@3": 0.9583333333333334,
     "category_accuracy@3": 1.0,
-    "constraint_violation@3": 0.0,
-    "precision@5": 0.3416666666666667,
-    "strict_recall@5": 0.4816468253968254,
-    "relaxed_recall@5": 0.46660052910052907,
-    "hit@5": 1.0,
+    "constraint_violation@3": 0.08333333333333333,
+    "precision@5": 0.2916666666666667,
+    "strict_recall@5": 0.4399801587301587,
+    "relaxed_recall@5": 0.40433201058201057,
+    "hit@5": 0.9583333333333334,
     "category_accuracy@5": 1.0,
-    "constraint_violation@5": 0.0,
-    "precision@10": 0.17083333333333334,
-    "strict_recall@10": 0.4816468253968254,
-    "relaxed_recall@10": 0.46660052910052907,
-    "hit@10": 1.0,
+    "constraint_violation@5": 0.08333333333333333,
+    "precision@10": 0.14583333333333334,
+    "strict_recall@10": 0.4399801587301587,
+    "relaxed_recall@10": 0.40433201058201057,
+    "hit@10": 0.9583333333333334,
     "category_accuracy@10": 1.0,
-    "constraint_violation@10": 0.0
+    "constraint_violation@10": 0.08333333333333333
   },
   "pc_summary": {
     "case_count": 4,
     "success_count": 4,
     "empty_result_count": 0,
     "empty_result_rate": 0.0,
-    "latency_ms": 4.56,
-    "avg_latency_ms": 4.56,
+    "latency_ms": 220.11,
+    "avg_latency_ms": 220.11,
     "metric_eligible_count": 4,
-    "mrr": 1.0,
+    "mrr": 0.5,
     "constraint_violation_rate": 0.0,
     "category_accuracy_top1": 1.0,
-    "precision@1": 1.0,
-    "strict_recall@1": 0.36904761904761907,
-    "relaxed_recall@1": 0.23154761904761906,
-    "hit@1": 1.0,
+    "precision@1": 0.5,
+    "strict_recall@1": 0.11904761904761904,
+    "relaxed_recall@1": 0.08571428571428572,
+    "hit@1": 0.5,
     "category_accuracy@1": 1.0,
     "constraint_violation@1": 0.0,
-    "precision@3": 0.5833333333333333,
-    "strict_recall@3": 0.5238095238095238,
-    "relaxed_recall@3": 0.35297619047619044,
-    "hit@3": 1.0,
+    "precision@3": 0.3333333333333333,
+    "strict_recall@3": 0.19047619047619047,
+    "relaxed_recall@3": 0.15714285714285714,
+    "hit@3": 0.5,
     "category_accuracy@3": 1.0,
     "constraint_violation@3": 0.0,
-    "precision@5": 0.35,
-    "strict_recall@5": 0.5238095238095238,
-    "relaxed_recall@5": 0.35297619047619044,
-    "hit@5": 1.0,
+    "precision@5": 0.2,
+    "strict_recall@5": 0.19047619047619047,
+    "relaxed_recall@5": 0.15714285714285714,
+    "hit@5": 0.5,
     "category_accuracy@5": 1.0,
     "constraint_violation@5": 0.0,
-    "precision@10": 0.175,
-    "strict_recall@10": 0.5238095238095238,
-    "relaxed_recall@10": 0.35297619047619044,
-    "hit@10": 1.0,
+    "precision@10": 0.1,
+    "strict_recall@10": 0.19047619047619047,
+    "relaxed_recall@10": 0.15714285714285714,
+    "hit@10": 0.5,
     "category_accuracy@10": 1.0,
     "constraint_violation@10": 0.0
   },
@@ -3844,8 +3874,8 @@
     "negative_returned_any_rate": 0.0,
     "constraint_violation_rate": 0.0,
     "category_accuracy@5": 0.5,
-    "avg_latency_ms": 0.36,
-    "latency_ms": 0.36
+    "avg_latency_ms": 0.88,
+    "latency_ms": 0.88
   },
   "grouped_summaries": {
     "case_scope": {
@@ -3854,44 +3884,44 @@
         "success_count": 28,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 369.0,
-        "avg_latency_ms": 369.0,
+        "latency_ms": 637.33,
+        "avg_latency_ms": 637.33,
         "metric_eligible_count": 28,
-        "mrr": 0.9107142857142857,
-        "constraint_violation_rate": 0.0,
+        "mrr": 0.7678571428571429,
+        "constraint_violation_rate": 0.07142857142857142,
         "category_accuracy_top1": 0.9285714285714286,
-        "precision@1": 0.8214285714285714,
-        "strict_recall@1": 0.2783163265306122,
-        "relaxed_recall@1": 0.24393424036281178,
-        "hit@1": 0.8214285714285714,
+        "precision@1": 0.6428571428571429,
+        "strict_recall@1": 0.21879251700680272,
+        "relaxed_recall@1": 0.19948979591836735,
+        "hit@1": 0.6428571428571429,
         "category_accuracy@1": 0.9285714285714286,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.5714285714285714,
-        "strict_recall@3": 0.48767006802721086,
-        "relaxed_recall@3": 0.4503684807256236,
-        "hit@3": 1.0,
+        "precision@3": 0.46428571428571425,
+        "strict_recall@3": 0.40433673469387754,
+        "relaxed_recall@3": 0.36901927437641724,
+        "hit@3": 0.8928571428571429,
         "category_accuracy@3": 1.0,
-        "constraint_violation@3": 0.0,
-        "precision@5": 0.34285714285714286,
-        "strict_recall@5": 0.48767006802721086,
-        "relaxed_recall@5": 0.4503684807256236,
-        "hit@5": 1.0,
+        "constraint_violation@3": 0.07142857142857142,
+        "precision@5": 0.2785714285714286,
+        "strict_recall@5": 0.40433673469387754,
+        "relaxed_recall@5": 0.36901927437641724,
+        "hit@5": 0.8928571428571429,
         "category_accuracy@5": 1.0,
-        "constraint_violation@5": 0.0,
-        "precision@10": 0.17142857142857143,
-        "strict_recall@10": 0.48767006802721086,
-        "relaxed_recall@10": 0.4503684807256236,
-        "hit@10": 1.0,
+        "constraint_violation@5": 0.07142857142857142,
+        "precision@10": 0.1392857142857143,
+        "strict_recall@10": 0.40433673469387754,
+        "relaxed_recall@10": 0.36901927437641724,
+        "hit@10": 0.8928571428571429,
         "category_accuracy@10": 1.0,
-        "constraint_violation@10": 0.0
+        "constraint_violation@10": 0.07142857142857142
       },
       "negative_or_impossible": {
         "case_count": 2,
         "success_count": 2,
         "empty_result_count": 2,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.36,
-        "avg_latency_ms": 0.36,
+        "latency_ms": 0.88,
+        "avg_latency_ms": 0.88,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -3928,44 +3958,44 @@
         "success_count": 24,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 429.74,
-        "avg_latency_ms": 429.74,
+        "latency_ms": 706.86,
+        "avg_latency_ms": 706.86,
         "metric_eligible_count": 24,
-        "mrr": 0.8958333333333334,
-        "constraint_violation_rate": 0.0,
+        "mrr": 0.8125,
+        "constraint_violation_rate": 0.08333333333333333,
         "category_accuracy_top1": 0.9166666666666666,
-        "precision@1": 0.7916666666666666,
-        "strict_recall@1": 0.26319444444444445,
-        "relaxed_recall@1": 0.24599867724867724,
-        "hit@1": 0.7916666666666666,
+        "precision@1": 0.6666666666666666,
+        "strict_recall@1": 0.23541666666666666,
+        "relaxed_recall@1": 0.21845238095238095,
+        "hit@1": 0.6666666666666666,
         "category_accuracy@1": 0.9166666666666666,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.5694444444444444,
-        "strict_recall@3": 0.4816468253968254,
-        "relaxed_recall@3": 0.46660052910052907,
-        "hit@3": 1.0,
+        "precision@3": 0.4861111111111111,
+        "strict_recall@3": 0.4399801587301587,
+        "relaxed_recall@3": 0.40433201058201057,
+        "hit@3": 0.9583333333333334,
         "category_accuracy@3": 1.0,
-        "constraint_violation@3": 0.0,
-        "precision@5": 0.3416666666666667,
-        "strict_recall@5": 0.4816468253968254,
-        "relaxed_recall@5": 0.46660052910052907,
-        "hit@5": 1.0,
+        "constraint_violation@3": 0.08333333333333333,
+        "precision@5": 0.2916666666666667,
+        "strict_recall@5": 0.4399801587301587,
+        "relaxed_recall@5": 0.40433201058201057,
+        "hit@5": 0.9583333333333334,
         "category_accuracy@5": 1.0,
-        "constraint_violation@5": 0.0,
-        "precision@10": 0.17083333333333334,
-        "strict_recall@10": 0.4816468253968254,
-        "relaxed_recall@10": 0.46660052910052907,
-        "hit@10": 1.0,
+        "constraint_violation@5": 0.08333333333333333,
+        "precision@10": 0.14583333333333334,
+        "strict_recall@10": 0.4399801587301587,
+        "relaxed_recall@10": 0.40433201058201057,
+        "hit@10": 0.9583333333333334,
         "category_accuracy@10": 1.0,
-        "constraint_violation@10": 0.0
+        "constraint_violation@10": 0.08333333333333333
       },
       "negative": {
         "case_count": 2,
         "success_count": 2,
         "empty_result_count": 2,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.36,
-        "avg_latency_ms": 0.36,
+        "latency_ms": 0.88,
+        "avg_latency_ms": 0.88,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -4000,34 +4030,34 @@
         "success_count": 4,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 4.56,
-        "avg_latency_ms": 4.56,
+        "latency_ms": 220.11,
+        "avg_latency_ms": 220.11,
         "metric_eligible_count": 4,
-        "mrr": 1.0,
+        "mrr": 0.5,
         "constraint_violation_rate": 0.0,
         "category_accuracy_top1": 1.0,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.36904761904761907,
-        "relaxed_recall@1": 0.23154761904761906,
-        "hit@1": 1.0,
+        "precision@1": 0.5,
+        "strict_recall@1": 0.11904761904761904,
+        "relaxed_recall@1": 0.08571428571428572,
+        "hit@1": 0.5,
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.5833333333333333,
-        "strict_recall@3": 0.5238095238095238,
-        "relaxed_recall@3": 0.35297619047619044,
-        "hit@3": 1.0,
+        "precision@3": 0.3333333333333333,
+        "strict_recall@3": 0.19047619047619047,
+        "relaxed_recall@3": 0.15714285714285714,
+        "hit@3": 0.5,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.35,
-        "strict_recall@5": 0.5238095238095238,
-        "relaxed_recall@5": 0.35297619047619044,
-        "hit@5": 1.0,
+        "precision@5": 0.2,
+        "strict_recall@5": 0.19047619047619047,
+        "relaxed_recall@5": 0.15714285714285714,
+        "hit@5": 0.5,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.175,
-        "strict_recall@10": 0.5238095238095238,
-        "relaxed_recall@10": 0.35297619047619044,
-        "hit@10": 1.0,
+        "precision@10": 0.1,
+        "strict_recall@10": 0.19047619047619047,
+        "relaxed_recall@10": 0.15714285714285714,
+        "hit@10": 0.5,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
       }
@@ -4038,70 +4068,70 @@
         "success_count": 6,
         "empty_result_count": 1,
         "empty_result_rate": 0.16666666666666666,
-        "latency_ms": 684.28,
-        "avg_latency_ms": 684.28,
+        "latency_ms": 925.15,
+        "avg_latency_ms": 925.15,
         "metric_eligible_count": 5,
-        "mrr": 1.0,
-        "constraint_violation_rate": 0.0,
+        "mrr": 0.9,
+        "constraint_violation_rate": 0.16666666666666666,
         "category_accuracy_top1": 0.8333333333333334,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5166666666666666,
-        "relaxed_recall@1": 0.44,
-        "hit@1": 1.0,
+        "precision@1": 0.8,
+        "strict_recall@1": 0.4166666666666667,
+        "relaxed_recall@1": 0.37333333333333335,
+        "hit@1": 0.8,
         "category_accuracy@1": 0.8333333333333334,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 0.7166666666666667,
-        "relaxed_recall@3": 0.6533333333333333,
+        "precision@3": 0.5333333333333333,
+        "strict_recall@3": 0.6666666666666666,
+        "relaxed_recall@3": 0.58,
         "hit@3": 1.0,
         "category_accuracy@3": 0.8333333333333334,
-        "constraint_violation@3": 0.0,
-        "precision@5": 0.4,
-        "strict_recall@5": 0.7166666666666667,
-        "relaxed_recall@5": 0.6533333333333333,
+        "constraint_violation@3": 0.16666666666666666,
+        "precision@5": 0.32,
+        "strict_recall@5": 0.6666666666666666,
+        "relaxed_recall@5": 0.58,
         "hit@5": 1.0,
         "category_accuracy@5": 0.8333333333333334,
-        "constraint_violation@5": 0.0,
-        "precision@10": 0.2,
-        "strict_recall@10": 0.7166666666666667,
-        "relaxed_recall@10": 0.6533333333333333,
+        "constraint_violation@5": 0.16666666666666666,
+        "precision@10": 0.16,
+        "strict_recall@10": 0.6666666666666666,
+        "relaxed_recall@10": 0.58,
         "hit@10": 1.0,
         "category_accuracy@10": 0.8333333333333334,
-        "constraint_violation@10": 0.0
+        "constraint_violation@10": 0.16666666666666666
       },
       "beauty": {
         "case_count": 7,
         "success_count": 7,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 467.24,
-        "avg_latency_ms": 467.24,
+        "latency_ms": 733.7,
+        "avg_latency_ms": 733.7,
         "metric_eligible_count": 7,
-        "mrr": 0.9285714285714286,
+        "mrr": 0.7857142857142857,
         "constraint_violation_rate": 0.0,
         "category_accuracy_top1": 1.0,
-        "precision@1": 0.8571428571428571,
-        "strict_recall@1": 0.23095238095238094,
-        "relaxed_recall@1": 0.19444444444444445,
-        "hit@1": 0.8571428571428571,
+        "precision@1": 0.7142857142857143,
+        "strict_recall@1": 0.24285714285714285,
+        "relaxed_recall@1": 0.18333333333333332,
+        "hit@1": 0.7142857142857143,
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.38095238095238093,
-        "strict_recall@3": 0.23095238095238094,
-        "relaxed_recall@3": 0.24206349206349206,
-        "hit@3": 1.0,
+        "precision@3": 0.2857142857142857,
+        "strict_recall@3": 0.24285714285714285,
+        "relaxed_recall@3": 0.20714285714285713,
+        "hit@3": 0.8571428571428571,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.2285714285714286,
-        "strict_recall@5": 0.23095238095238094,
-        "relaxed_recall@5": 0.24206349206349206,
-        "hit@5": 1.0,
+        "precision@5": 0.17142857142857143,
+        "strict_recall@5": 0.24285714285714285,
+        "relaxed_recall@5": 0.20714285714285713,
+        "hit@5": 0.8571428571428571,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.1142857142857143,
-        "strict_recall@10": 0.23095238095238094,
-        "relaxed_recall@10": 0.24206349206349206,
-        "hit@10": 1.0,
+        "precision@10": 0.08571428571428572,
+        "strict_recall@10": 0.24285714285714285,
+        "relaxed_recall@10": 0.20714285714285713,
+        "hit@10": 0.8571428571428571,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
       },
@@ -4110,33 +4140,33 @@
         "success_count": 5,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 10.19,
-        "avg_latency_ms": 10.19,
+        "latency_ms": 299.66,
+        "avg_latency_ms": 299.66,
         "metric_eligible_count": 5,
-        "mrr": 0.8,
+        "mrr": 0.7,
         "constraint_violation_rate": 0.0,
         "category_accuracy_top1": 0.6,
-        "precision@1": 0.6,
-        "strict_recall@1": 0.11666666666666667,
-        "relaxed_recall@1": 0.18333333333333332,
-        "hit@1": 0.6,
+        "precision@1": 0.4,
+        "strict_recall@1": 0.06666666666666667,
+        "relaxed_recall@1": 0.13333333333333333,
+        "hit@1": 0.4,
         "category_accuracy@1": 0.6,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 0.54,
-        "relaxed_recall@3": 0.5666666666666667,
+        "precision@3": 0.5333333333333333,
+        "strict_recall@3": 0.42333333333333334,
+        "relaxed_recall@3": 0.44999999999999996,
         "hit@3": 1.0,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.4,
-        "strict_recall@5": 0.54,
-        "relaxed_recall@5": 0.5666666666666667,
+        "precision@5": 0.32,
+        "strict_recall@5": 0.42333333333333334,
+        "relaxed_recall@5": 0.44999999999999996,
         "hit@5": 1.0,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.2,
-        "strict_recall@10": 0.54,
-        "relaxed_recall@10": 0.5666666666666667,
+        "precision@10": 0.16,
+        "strict_recall@10": 0.42333333333333334,
+        "relaxed_recall@10": 0.44999999999999996,
         "hit@10": 1.0,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
@@ -4146,11 +4176,11 @@
         "success_count": 5,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 572.64,
-        "avg_latency_ms": 572.64,
+        "latency_ms": 814.66,
+        "avg_latency_ms": 814.66,
         "metric_eligible_count": 5,
         "mrr": 0.9,
-        "constraint_violation_rate": 0.0,
+        "constraint_violation_rate": 0.2,
         "category_accuracy_top1": 1.0,
         "precision@1": 0.8,
         "strict_recall@1": 0.26666666666666666,
@@ -4159,31 +4189,31 @@
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
         "precision@3": 0.7333333333333333,
-        "strict_recall@3": 0.6633333333333333,
-        "relaxed_recall@3": 0.63,
+        "strict_recall@3": 0.6133333333333333,
+        "relaxed_recall@3": 0.57,
         "hit@3": 1.0,
         "category_accuracy@3": 1.0,
-        "constraint_violation@3": 0.0,
+        "constraint_violation@3": 0.2,
         "precision@5": 0.44,
-        "strict_recall@5": 0.6633333333333333,
-        "relaxed_recall@5": 0.63,
+        "strict_recall@5": 0.6133333333333333,
+        "relaxed_recall@5": 0.57,
         "hit@5": 1.0,
         "category_accuracy@5": 1.0,
-        "constraint_violation@5": 0.0,
+        "constraint_violation@5": 0.2,
         "precision@10": 0.22,
-        "strict_recall@10": 0.6633333333333333,
-        "relaxed_recall@10": 0.63,
+        "strict_recall@10": 0.6133333333333333,
+        "relaxed_recall@10": 0.57,
         "hit@10": 1.0,
         "category_accuracy@10": 1.0,
-        "constraint_violation@10": 0.0
+        "constraint_violation@10": 0.2
       },
       "clothing,food": {
         "case_count": 1,
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 16.34,
-        "avg_latency_ms": 16.34,
+        "latency_ms": 487.07,
+        "avg_latency_ms": 487.07,
         "metric_eligible_count": 1,
         "mrr": 0.5,
         "constraint_violation_rate": 0.0,
@@ -4218,8 +4248,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 7.42,
-        "avg_latency_ms": 7.42,
+        "latency_ms": 219.83,
+        "avg_latency_ms": 219.83,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4254,8 +4284,8 @@
         "success_count": 1,
         "empty_result_count": 1,
         "empty_result_rate": 1.0,
-        "latency_ms": 0.33,
-        "avg_latency_ms": 0.33,
+        "latency_ms": 1.22,
+        "avg_latency_ms": 1.22,
         "metric_eligible_count": 0,
         "mrr": 0.0,
         "constraint_violation_rate": 0.0,
@@ -4290,8 +4320,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 3.2,
-        "avg_latency_ms": 3.2,
+        "latency_ms": 177.41,
+        "avg_latency_ms": 177.41,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4326,8 +4356,8 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 6.67,
-        "avg_latency_ms": 6.67,
+        "latency_ms": 230.31,
+        "avg_latency_ms": 230.31,
         "metric_eligible_count": 1,
         "mrr": 1.0,
         "constraint_violation_rate": 0.0,
@@ -4338,21 +4368,21 @@
         "hit@1": 1.0,
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.6666666666666666,
-        "strict_recall@3": 0.6666666666666666,
-        "relaxed_recall@3": 0.4,
+        "precision@3": 0.3333333333333333,
+        "strict_recall@3": 0.3333333333333333,
+        "relaxed_recall@3": 0.2,
         "hit@3": 1.0,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.4,
-        "strict_recall@5": 0.6666666666666666,
-        "relaxed_recall@5": 0.4,
+        "precision@5": 0.2,
+        "strict_recall@5": 0.3333333333333333,
+        "relaxed_recall@5": 0.2,
         "hit@5": 1.0,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.2,
-        "strict_recall@10": 0.6666666666666666,
-        "relaxed_recall@10": 0.4,
+        "precision@10": 0.1,
+        "strict_recall@10": 0.3333333333333333,
+        "relaxed_recall@10": 0.2,
         "hit@10": 1.0,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
@@ -4362,34 +4392,34 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 4.97,
-        "avg_latency_ms": 4.97,
+        "latency_ms": 249.41,
+        "avg_latency_ms": 249.41,
         "metric_eligible_count": 1,
-        "mrr": 1.0,
+        "mrr": 0.0,
         "constraint_violation_rate": 0.0,
         "category_accuracy_top1": 1.0,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5,
-        "relaxed_recall@1": 0.25,
-        "hit@1": 1.0,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0.0,
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.3333333333333333,
-        "strict_recall@3": 0.5,
-        "relaxed_recall@3": 0.25,
-        "hit@3": 1.0,
+        "precision@3": 0.0,
+        "strict_recall@3": 0.0,
+        "relaxed_recall@3": 0.0,
+        "hit@3": 0.0,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.2,
-        "strict_recall@5": 0.5,
-        "relaxed_recall@5": 0.25,
-        "hit@5": 1.0,
+        "precision@5": 0.0,
+        "strict_recall@5": 0.0,
+        "relaxed_recall@5": 0.0,
+        "hit@5": 0.0,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.1,
-        "strict_recall@10": 0.5,
-        "relaxed_recall@10": 0.25,
-        "hit@10": 1.0,
+        "precision@10": 0.0,
+        "strict_recall@10": 0.0,
+        "relaxed_recall@10": 0.0,
+        "hit@10": 0.0,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
       },
@@ -4398,34 +4428,34 @@
         "success_count": 1,
         "empty_result_count": 0,
         "empty_result_rate": 0.0,
-        "latency_ms": 3.39,
-        "avg_latency_ms": 3.39,
+        "latency_ms": 223.31,
+        "avg_latency_ms": 223.31,
         "metric_eligible_count": 1,
-        "mrr": 1.0,
+        "mrr": 0.0,
         "constraint_violation_rate": 0.0,
         "category_accuracy_top1": 1.0,
-        "precision@1": 1.0,
-        "strict_recall@1": 0.5,
-        "relaxed_recall@1": 0.3333333333333333,
-        "hit@1": 1.0,
+        "precision@1": 0.0,
+        "strict_recall@1": 0.0,
+        "relaxed_recall@1": 0.0,
+        "hit@1": 0.0,
         "category_accuracy@1": 1.0,
         "constraint_violation@1": 0.0,
-        "precision@3": 0.3333333333333333,
-        "strict_recall@3": 0.5,
-        "relaxed_recall@3": 0.3333333333333333,
-        "hit@3": 1.0,
+        "precision@3": 0.0,
+        "strict_recall@3": 0.0,
+        "relaxed_recall@3": 0.0,
+        "hit@3": 0.0,
         "category_accuracy@3": 1.0,
         "constraint_violation@3": 0.0,
-        "precision@5": 0.2,
-        "strict_recall@5": 0.5,
-        "relaxed_recall@5": 0.3333333333333333,
-        "hit@5": 1.0,
+        "precision@5": 0.0,
+        "strict_recall@5": 0.0,
+        "relaxed_recall@5": 0.0,
+        "hit@5": 0.0,
         "category_accuracy@5": 1.0,
         "constraint_violation@5": 0.0,
-        "precision@10": 0.1,
-        "strict_recall@10": 0.5,
-        "relaxed_recall@10": 0.3333333333333333,
-        "hit@10": 1.0,
+        "precision@10": 0.0,
+        "strict_recall@10": 0.0,
+        "relaxed_recall@10": 0.0,
+        "hit@10": 0.0,
         "category_accuracy@10": 1.0,
         "constraint_violation@10": 0.0
       }
