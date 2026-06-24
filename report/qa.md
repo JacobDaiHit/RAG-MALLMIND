@@ -45,7 +45,7 @@ RAG（Retrieval-Augmented Generation）是"检索增强生成"的缩写。核心
 
 **参考答案：**
 
-我们的向量检索基于 Milvus 向量数据库，embedding 模型使用的是 `BAAI/bge-m3`（默认配置，后续已改为qwen-embedding-v4），向量维度 1024。这个模型的特点是同时支持 dense embedding（稠密向量）和 sparse embedding（稀疏向量，即 BM25），这也是我们能做混合检索的基础。
+我们的向量检索基于 Milvus 向量数据库，embedding 模型使用的是 DashScope `text-embedding-v4`（远程 API，通过 `EMBEDDING_PROVIDER` 环境变量切换；本地模式可选 `BAAI/bge-m3`），向量维度 1024。稠密向量由 embedding 模型直接产出；稀疏向量由我们自实现的 BM25 模块独立计算（非模型本身输出），两路分别传入 Milvus hybrid search。
 
 embedding 服务封装在 `rag/ingestion/embedding.py` 文件中。`LocalEmbeddingProvider` 类使用 HuggingFace 的 `HuggingFaceEmbeddings` 加载本地模型，调用 `embed_documents()` 做批量向量化。同时我们也实现了 `OpenAICompatibleEmbeddingProvider`，可以对接 DashScope 等远程 embedding API，通过环境变量 `EMBEDDING_PROVIDER` 切换。
 
@@ -202,7 +202,7 @@ MallMind 满足以上所有特征：
 
 **状态记忆：** `session_state.py` 中的 `ShoppingSession` 包含 5 个分层子状态（ConversationState、RecommendationState、CartState、PCBuildState、ObservabilityState），跨多轮对话保持上下文。
 
-**反馈闭环：** 购物车操作有 plan+confirm 模式，推荐后有事实校验层，工具路由有争议检测（LLM vs 本地规则不一致时的降级策略）。
+**反馈闭环：** 购物车操作有 plan+confirm 模式（add/remove/set_quantity 三种操作使用两步确认，clear 直接执行），推荐后有事实校验层，工具路由有校验层覆写规则（LLM 结果与本地规则冲突时的硬规则覆盖）。
 
 **追问预警：**
 1. 你的 Agent 和 ReAct 范式有什么区别？
@@ -229,7 +229,7 @@ MallMind 满足以上所有特征：
    - LLM 失败（超时/JSON 无效/网络错误）-> 使用本地规则结果，`router_final_source="rules_fallback"`
    - LLM 禁用 -> 使用本地规则结果，`router_final_source="rules"`
 
-5. **路由输出校验（`validate_tool_call()`）：** 即使 LLM 成功返回，还要经过校验层：白名单检查（工具名是否在 `ALLOWED_TOOL_NAMES` 中）、值域裁剪（价格不超过 50 万）、争议检测（LLM 判断和规则判断不一致时，检查是否有闲聊信号或购物车意图被误判）。
+5. **路由输出校验（`validate_tool_call()`）：** 即使 LLM 成功返回，还要经过校验层：白名单检查（工具名是否在 `ALLOWED_TOOL_NAMES` 中）、值域裁剪（价格不超过 50 万）、3 条硬规则覆写（LLM 判断和规则判断不一致且符合特定模式时，用本地结果覆盖 LLM 结果）。**注意：这里没有置信度评分或概率阈值，是纯字符串匹配的确定性规则。**
 
 特别值得一提的是**购物车意图保护**机制：当用户说"把手机加入购物车"时，LLM 常常因为有"手机"这个商品关键词而误判为 `recommend_shopping_products`。我们在 `validate_tool_call()` 中加了 `_has_cart_intent()` 检测，如果消息包含明确的购物车操作词，无论 LLM 如何路由，强制纠正为 `apply_cart_instruction`。
 
@@ -335,16 +335,16 @@ MallMind 满足以上所有特征：
 
 工具选择歧义是我们重点处理的场景，有三层防护：
 
-**第一层：评分排序机制。** `score_local_routes()` 函数为每个工具计算一个置信度分数。比如购物车意图 +0.75 分，普通商品品类 +0.55 分，PC 整机 +0.75 分。如果多个工具同时有分数，取最高分的。分数和排名信息通过 `route_scores` 附加到结果中，供观测使用。
+**第一层：本地规则评分。** `score_local_routes()` 函数为每个工具计算一个分数（如购物车意图 +0.75、普通商品品类 +0.55、PC 整机 +0.75）。**注意：该分数仅为诊断元数据，附加在 trace 中供观测使用，并不作为置信度阈值来决定是否采纳 LLM 结果。** 本地规则路由实际决策走的是 `local_route_tool_call()` 中的 if/elif 优先级链，而非取最高分。
 
-**第二层：LLM 路由仲裁。** 本地规则不确定时（比如分数差距小），LLM 路由器能看到更丰富的上下文（session 的累积状态、最近 3 轮查询、购物车内容、当前话题类型），做出更准确的判断。LLM 路由的 prompt 中包含详细的工具选择规则和示例。
+**第二层：LLM 路由优先。** 系统采用 LLM-first 策略——LLM 调用成功则直接采纳其结果，失败（超时/JSON无效/熔断）时降级到本地规则。两者之间**没有置信度比较或概率切换机制**。
 
-**第三层：校验层争议解决。** `validate_tool_call()` 中的争议检测机制会检查 LLM 和本地规则是否一致。如果不一致，根据预定义的降级策略决定：
-- LLM 说 `recommend` 但消息包含闲聊信号 -> 降级为本地规则的 `general_chat`
-- LLM 说 `general_chat` 但消息包含明确购物信号 -> 升级为本地规则的推荐工具
-- LLM 没有识别购物车意图但规则检测到了 -> 强制纠正为 `apply_cart_instruction`
+**第三层：校验层硬规则覆写（validate_tool_call）。** 这是所谓"guard 逻辑"的实质——3 条硬编码的字符串匹配覆写规则：
+- LLM 说 `recommend`/`compare` 但消息包含闲聊信号（你好/谢谢/hi…）→ 覆写为本地规则结果
+- LLM 说 `general_chat` 但本地检测到购物/PC 意图 → 覆写为本地规则结果
+- 消息包含购物车关键词（无论 LLM 判断如何）→ 强制纠正为 `apply_cart_instruction`
 
-每次争议解决都会在 trace 中记录 `validation.issues` 和 `validation.conflict`，便于后续分析 LLM 路由的准确率并迭代 prompt。
+每次覆写都会记录 `validation.conflict` 和 `downgrade_reason`，便于后续分析。**本质是规则硬覆盖，不是基于置信度的仲裁。**
 
 **追问预警：**
 1. 你有没有统计过 LLM 路由 vs 规则路由的一致率？
@@ -606,7 +606,7 @@ LLM Gateway（`llm_gateway.py`）是我设计的一个统一 LLM 调用编排层
 
 **1. 路由阶段：** `_has_cart_intent()` 检测到"删除"（在 `CART_STRONG_TERMS` 中）和"购物车"，路由到 `apply_cart_instruction` 工具。
 
-**2. 工具处理阶段：** `handle_cart_v2()` 被调用，它实现了 plan+confirm 模式。`_resolve_cart_action()` 从消息中推断操作类型为 `"remove"`。
+**2. 工具处理阶段：** `handle_cart_v2()` 被调用，对 add/remove/set_quantity 实现 plan+confirm 模式（clear 操作直接执行，不走确认）。`_resolve_cart_action()` 从消息中推断操作类型为 `"remove"`。
 
 **3. 商品定位阶段：** `_resolve_product_for_cart()` 按优先级尝试：
    - 显式 product_ids（此处无）

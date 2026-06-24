@@ -8,12 +8,12 @@ _Default main summary includes in_catalog_exact and in_catalog_attribute_gap cas
 - Success cases: 24
 - Metric-eligible cases: 24
 - Empty results: 0 (0.000)
-- Average latency: 26.09 ms
-- precision@1: 0.833 / precision@3: 0.667 / precision@5: 0.400 / precision@10: 0.200
-- strict_recall@1: 0.274 / strict_recall@3: 0.568 / strict_recall@5: 0.568 / strict_recall@10: 0.568
-- relaxed_recall@1: 0.256 / relaxed_recall@3: 0.550 / relaxed_recall@5: 0.550 / relaxed_recall@10: 0.550
-- hit@1: 0.833 / hit@3: 1.000 / hit@5: 1.000 / hit@10: 1.000
-- MRR: 0.917
+- Average latency: 3390.06 ms
+- precision@1: 0.875 / precision@3: 0.625 / precision@5: 0.375 / precision@10: 0.188
+- strict_recall@1: 0.303 / strict_recall@3: 0.514 / strict_recall@5: 0.514 / strict_recall@10: 0.514
+- relaxed_recall@1: 0.263 / relaxed_recall@3: 0.499 / relaxed_recall@5: 0.499 / relaxed_recall@10: 0.499
+- hit@1: 0.875 / hit@3: 1.000 / hit@5: 1.000 / hit@10: 1.000
+- MRR: 0.938
 - constraint_violation_rate: 0.000
 - category_accuracy_top1: 1.000
 - category_accuracy@1: 1.000 / category_accuracy@3: 1.000 / category_accuracy@5: 1.000 / category_accuracy@10: 1.000
@@ -26,12 +26,12 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - Success cases: 30
 - Metric-eligible cases: 28
 - Empty results: 2 (0.067)
-- Average latency: 21.94 ms
-- precision@1: 0.857 / precision@3: 0.655 / precision@5: 0.393 / precision@10: 0.196
-- strict_recall@1: 0.287 / strict_recall@3: 0.561 / strict_recall@5: 0.561 / strict_recall@10: 0.561
-- relaxed_recall@1: 0.253 / relaxed_recall@3: 0.522 / relaxed_recall@5: 0.522 / relaxed_recall@10: 0.522
-- hit@1: 0.857 / hit@3: 1.000 / hit@5: 1.000 / hit@10: 1.000
-- MRR: 0.929
+- Average latency: 3466.80 ms
+- precision@1: 0.893 / precision@3: 0.619 / precision@5: 0.371 / precision@10: 0.186
+- strict_recall@1: 0.312 / strict_recall@3: 0.516 / strict_recall@5: 0.516 / strict_recall@10: 0.516
+- relaxed_recall@1: 0.259 / relaxed_recall@3: 0.478 / relaxed_recall@5: 0.478 / relaxed_recall@10: 0.478
+- hit@1: 0.893 / hit@3: 1.000 / hit@5: 1.000 / hit@10: 1.000
+- MRR: 0.946
 - constraint_violation_rate: 0.000
 - category_accuracy_top1: 0.967
 - category_accuracy@1: 0.967 / category_accuracy@3: 0.967 / category_accuracy@5: 0.967 / category_accuracy@10: 0.967
@@ -40,10 +40,10 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 
 - ecommerce_cases: 24
 - hit@5: 1.000
-- relaxed_recall@5: 0.550
+- relaxed_recall@5: 0.499
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 1.000
-- avg_latency_ms: 26.09
+- avg_latency_ms: 3390.06
 
 ## PC Summary
 
@@ -52,7 +52,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - relaxed_recall@5: 0.353
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 1.000
-- avg_latency_ms: 7.83
+- avg_latency_ms: 3625.97
 
 ## Ambiguous Summary
 
@@ -83,7 +83,7 @@ _Mixed summary across all cases; retrieval metrics exclude negative cases but in
 - negative_returned_any_rate: 0.000
 - constraint_violation_rate: 0.000
 - category_accuracy@5: 0.500
-- avg_latency_ms: 0.31
+- avg_latency_ms: 4069.28
 
 ## Worst Cases
 

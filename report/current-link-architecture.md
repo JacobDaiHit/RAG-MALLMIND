@@ -267,9 +267,9 @@ structured_filter.py              ~5           🟢 低
 
 ### 1.4 关键设计原则
 
-- 路由：LLM + 本地规则双通道，本地规则兜底保证可用性
+- 路由：LLM + 本地规则双通道，LLM-first 成功即采纳，失败降级本地规则；validate_tool_call 三条硬规则覆写（闲聊信号/购物信号/购物车关键词）
 - 事实校验：基于真实产品库（RAG），不从 LLM 生成价格/库存
-- 购物车：计划+确认模式（v2），防止误操作；🟣 session 上下文解析序数指代
+- 购物车：计划+确认模式（v2），防止误操作（add/remove/set_quantity 三步确认，clear 直接执行）；🟣 session 上下文解析序数指代
 - 回复：LLM 多样化生成 + 模板变体兜底（v3）
 - 话题切换：显式信号 + 品类感知 + topic_memory 注入（v3）
 - 🟣 LLM 调用：LLMGateway 注册表已创建（9 种场景），⚠️ 调用点尚未迁移，仍使用直接实例化
@@ -503,9 +503,10 @@ validate_tool_call(tool_call, local_result, message, session)
         │     ├─ price_max < 50 且非 PC → 标记 budget_insane
         │     └─ brands/exclude_brands > 50 项 → 截断
         │
-        └─ 3. LLM vs 本地争议检测
+        └─ 3. LLM vs 本地争议检测（⚠️ 无置信度分数，纯规则覆写）
               ├─ LLM 推荐 + message 含闲聊信号 → 用本地结果
               ├─ LLM 闲聊 + message 含购物信号 → 用本地结果
+              ├─ message 含购物车关键词 → 强制 apply_cart_instruction
               └─ 争议记录到 routing_trace.validation.conflict
 ```
 

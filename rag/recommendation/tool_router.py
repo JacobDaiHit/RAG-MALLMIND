@@ -862,7 +862,7 @@ def validate_tool_call(
     }
     return validated
 
-
+# 已弃置，仅作为诊断元数据写入 routing_trace
 def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]:
     text = message or ""
     lowered = text.lower()
