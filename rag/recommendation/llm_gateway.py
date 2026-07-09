@@ -1,8 +1,10 @@
-"""Unified LLM call orchestration layer.
+"""Experimental LLM call orchestration layer.
 
-Replaces scattered ``OpenAICompatibleChatClient()`` instantiations with a
-single registry that centralises model / timeout / temperature / concurrency
-configuration for every caller scenario.
+This module is not wired into the main ``/api/chat/stream`` production chain
+yet. Current router, requirement-parse, guidance, explanation, attachment, and
+general-chat calls still instantiate ``OpenAICompatibleChatClient`` directly.
+Keep this module as a tested migration target, not as the factual source for
+the current LLM call chain.
 
 Usage::
 
@@ -14,7 +16,7 @@ Usage::
     # Override any parameter per-call.
     payload, report = LLMGateway.call("guidance", messages, temperature=0.5)
 
-The return format is identical to ``client.chat_json_with_report()`` so
+The return format is identical to ``client.chat_json_with_report()`` so future
 migration can be done one call-site at a time.
 """
 from __future__ import annotations
@@ -35,6 +37,7 @@ from rag.recommendation.llm_client import (
 )
 
 logger = logging.getLogger(__name__)
+EXPERIMENTAL_NOT_MAINLINE = True
 
 
 # ── caller config ──────────────────────────────────────────────────────────

@@ -148,6 +148,16 @@ SUB_CATEGORY_KEYWORDS = [
     "方便食品",
 ]
 
+# Aliases: bare product terms that should map to canonical SUB_CATEGORY_KEYWORDS.
+# For example, "手机" (bare) → "智能手机" (canonical).
+SUB_CATEGORY_ALIASES: Dict[str, str] = {
+    "手机": "智能手机",
+    "电脑": "笔记本电脑",
+    "笔记本": "笔记本电脑",
+    "平板": "平板电脑",
+    "耳机": "蓝牙耳机",
+}
+
 BRAND_HINTS = [
     "雅诗兰黛",
     "科颜氏",
@@ -785,9 +795,8 @@ def requirement_from_llm_payload(payload: Dict[str, Any], fallback: RequirementS
 
 def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = True) -> RecommendationResult:
     fallback = build_rule_based_guidance(result)
-    clarification_questions = list((result.trace or {}).get("clarification_questions") or [])
     result.teaching_guidance = fallback["teaching_guidance"]
-    result.follow_up_questions = clarification_questions or fallback["follow_up_questions"]
+    result.follow_up_questions = fallback["follow_up_questions"]
     result.optimization_suggestions = fallback["optimization_suggestions"]
     result.feedback_summary = fallback["feedback_summary"]
 
@@ -823,7 +832,7 @@ def enrich_recommendation_result(result: RecommendationResult, use_llm: bool = T
             "guidance",
         )
         result.teaching_guidance = normalize_string_list(payload.get("teaching_guidance"), fallback["teaching_guidance"])[:6]
-        result.follow_up_questions = clarification_questions or normalize_string_list(payload.get("follow_up_questions"), fallback["follow_up_questions"])[:6]
+        result.follow_up_questions = normalize_string_list(payload.get("follow_up_questions"), fallback["follow_up_questions"])[:6]
         result.optimization_suggestions = normalize_string_list(payload.get("optimization_suggestions"), fallback["optimization_suggestions"])[:6]
         result.trace["llm_guidance"] = "enabled"
         result.trace["llm_guidance_success"] = True
@@ -952,7 +961,11 @@ def infer_desired_categories(raw: str, lower: str) -> List[ComponentCategory]:
 
 
 def infer_target_sub_categories(raw: str) -> List[str]:
-    return [item for item in SUB_CATEGORY_KEYWORDS if item.lower() in raw.lower()]
+    results = [item for item in SUB_CATEGORY_KEYWORDS if item.lower() in raw.lower()]
+    for alias, canonical in SUB_CATEGORY_ALIASES.items():
+        if alias.lower() in raw.lower() and canonical not in results:
+            results.append(canonical)
+    return results
 
 
 def _cn_unit_to_float(value_str: str, unit_str: str = "") -> float:

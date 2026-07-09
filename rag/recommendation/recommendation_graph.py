@@ -1,9 +1,9 @@
-"""Graph-style orchestration for the ecommerce recommendation workflow.
+"""Debug graph-style orchestration for the ecommerce recommendation workflow.
 
-The older RAG pipeline already proved useful as a node-based workflow. This
-module applies the same shape to the guided-selling path without making the LLM
-the decision maker: parsing, evidence retrieval, scoring, package building, and
-guidance remain explicit nodes with streamable events.
+The main conversational business flow is ``/api/chat/stream`` ->
+``handle_recommend`` -> ``recommend_shopping_products``. This module is kept
+for the separate ``/api/stream-recommend`` graph/debug endpoint and tests, so
+it should not be described as the primary chat or cart chain.
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ from rag.schemas import RecommendationResult, RequirementSpec
 # Guidance is optional because the main recommendation path must remain usable
 # even when no generation model is configured.
 LLM_GUIDANCE_ENABLED = os.getenv("RECOMMENDATION_LLM_GUIDANCE", "false").lower() == "true"
+DEBUG_GRAPH_NOT_MAINLINE = True
 
 
 @dataclass(frozen=True)

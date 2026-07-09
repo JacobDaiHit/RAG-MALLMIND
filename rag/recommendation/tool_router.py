@@ -272,6 +272,10 @@ NORMAL_PRODUCT_TERMS = {
     "显示器": "显示器",
     "外套": "外套",
     "衣服": "服饰",
+    "鞋": "服饰",
+    "运动鞋": "服饰",
+    "跑鞋": "服饰",
+    "篮球鞋": "服饰",
     "护肤": "护肤",
     "面霜": "护肤",
     "零食": "食品",
@@ -572,6 +576,10 @@ NORMAL_PRODUCT_ALIASES = {
     "T恤": "服饰",
     "衣服": "服饰",
     "外套": "服饰",
+    "鞋": "服饰",
+    "运动鞋": "服饰",
+    "跑鞋": "服饰",
+    "篮球鞋": "服饰",
     "护肤": "护肤",
     "面霜": "护肤",
 }
@@ -863,6 +871,20 @@ def validate_tool_call(
     }
     return validated
 
+
+def validate_and_guard_tool_call(
+    message: str,
+    session: ShoppingSession,
+    tool_call: Dict[str, Any],
+) -> Dict[str, Any]:
+    """Backward-compatible wrapper for older tests and scripts."""
+    local_result = local_route_tool_call(message, session)
+    call = dict(tool_call or {})
+    trace = dict(call.get("routing_trace") or {})
+    trace.setdefault("router_final_source", call.get("source") or "llm")
+    call["routing_trace"] = trace
+    return validate_tool_call(call, local_result, message, session)
+
 # 已弃置，仅作为诊断元数据写入 routing_trace
 def score_local_routes(message: str, session: ShoppingSession) -> Dict[str, Any]:
     text = message or ""
@@ -1049,11 +1071,34 @@ def _record_router_llm_success() -> None:
         _ROUTER_LLM_FAILURE_TIMES.clear()
 
 
+# Maps bare product terms detected by the local router to canonical sub_category values.
+# This ensures _requirement_from_args_v2 receives sub_category even without LLM routing.
+_LOCAL_SUB_CATEGORY_MAP: Dict[str, str] = {
+    "手机": "智能手机",
+    "耳机": "蓝牙耳机",
+    "蓝牙耳机": "蓝牙耳机",
+    "平板": "平板电脑",
+    "笔记本": "笔记本电脑",
+    "笔记本电脑": "笔记本电脑",
+    "电脑": "笔记本电脑",
+}
+
+
 def extract_slots_rule_based(text: str) -> Dict[str, Any]:
+    category = detect_normal_product_category(text) or detect_pc_part_category(text)
+    # Infer sub_category from detected category for known product terms
+    sub_category = ""
+    if category:
+        lowered = text.lower()
+        for term, sub_cat in _LOCAL_SUB_CATEGORY_MAP.items():
+            if term.lower() in lowered:
+                sub_category = sub_cat
+                break
     slots: Dict[str, Any] = {
         "query": " ".join(str(text or "").split()),
         "budget": extract_budget(text),
-        "category": detect_normal_product_category(text) or detect_pc_part_category(text),
+        "category": category,
+        "sub_category": sub_category,
         "usage": extract_usage(text),
         "preferences": extract_preferences(text),
         "product_ids": extract_product_ids(text),

@@ -1,5 +1,4 @@
 from rag.recommendation.adaptive_runtime import select_adaptive_runtime
-from rag.recommendation.query_guards import clarification_required
 from rag.recommendation.session_state import ShoppingSession
 from rag.recommendation.tool_router import route_shopping_tool_call
 from rag.recommendation.recommendation_pipeline import recommend_shopping_products
@@ -14,22 +13,6 @@ def test_high_confidence_sunscreen_query_does_not_upgrade_full():
 
     assert decision.selected_mode in {"fast", "balanced"}
     assert decision.selected_mode != "full"
-
-
-def test_broad_phone_query_requires_clarification():
-    guard = clarification_required("推荐一款手机")
-
-    assert guard is not None
-    assert guard["clarification_required"] is True
-    assert guard["no_match_reason"] == "clarification_required"
-
-
-def test_clarification_questions_are_top_level_followups():
-    result = recommend_shopping_products("推荐一款手机", use_llm=False, use_milvus_retrieval=False)
-
-    assert result.trace["clarification_required"] is True
-    assert result.follow_up_questions == result.trace["clarification_questions"]
-    assert "clarification_required" not in result.follow_up_questions
 
 
 def test_compare_request_routes_to_compare_and_is_at_least_balanced():

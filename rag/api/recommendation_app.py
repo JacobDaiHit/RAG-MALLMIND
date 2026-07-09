@@ -79,22 +79,30 @@ def create_app() -> FastAPI:
         load_combined_product_catalog(use_cache=True)
         _log.info("product catalog warmed in %.1fs", time.monotonic() - started)
 
-        # 2) 嵌入服务（触发 _LazyEmbeddingService 创建 + 模型/API 连接）
-        try:
-            from rag.ingestion.embedding import embedding_service
-            _ = embedding_service.provider  # 触发懒代理
-            _log.info("embedding service warmed in %.1fs", time.monotonic() - started)
-        except Exception as exc:
-            _log.warning("embedding warm-up skipped: %s", exc)
+        milvus_enabled = os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false").strip().lower() == "true"
 
-        # 3) Milvus 连接（触发 TCP 建连）
-        try:
-            from rag.storage.milvus_client import MilvusManager
-            mgr = MilvusManager()
-            mgr.has_collection()
-            _log.info("milvus warmed in %.1fs", time.monotonic() - started)
-        except Exception as exc:
-            _log.warning("milvus warm-up skipped: %s", exc)
+        # 2) 嵌入服务（Milvus 检索开启时才触发模型/API 连接）
+        if milvus_enabled:
+            try:
+                from rag.ingestion.embedding import embedding_service
+                _ = embedding_service.provider  # 触发懒代理
+                _log.info("embedding service warmed in %.1fs", time.monotonic() - started)
+            except Exception as exc:
+                _log.warning("embedding warm-up skipped: %s", exc)
+        else:
+            _log.info("embedding warm-up skipped: milvus disabled")
+
+        # 3) Milvus 连接（仅在显式开启向量检索时触发 TCP 建连）
+        if milvus_enabled:
+            try:
+                from rag.storage.milvus_client import MilvusManager
+                mgr = MilvusManager()
+                mgr.has_collection()
+                _log.info("milvus warmed in %.1fs", time.monotonic() - started)
+            except Exception as exc:
+                _log.warning("milvus warm-up skipped: %s", exc)
+        else:
+            _log.info("milvus warm-up skipped: disabled")
 
         # 4) 会话存储（触发 Redis 连接或内存存储初始化）
         try:

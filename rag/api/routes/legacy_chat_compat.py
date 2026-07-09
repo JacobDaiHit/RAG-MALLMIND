@@ -31,6 +31,8 @@ from rag.recommendation.session_state import (
 from rag.recommendation.tool_router import local_route_tool_call, route_shopping_tool_call, validate_tool_call
 from rag.utils.runtime_errors import is_debug_mode, public_error, sanitize_report, sanitize_result_for_response
 
+LEGACY_COMPAT_NOT_MAINLINE = True
+
 
 def chat_compat_response(request: ChatStreamRequest) -> Dict[str, Any]:
     raw_message = request.message.strip()

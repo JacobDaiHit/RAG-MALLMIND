@@ -488,42 +488,6 @@ def normalize_text(value: object) -> str:
     return "".join(ch.lower() for ch in str(value or "") if ch.isalnum() or "\u4e00" <= ch <= "\u9fff")
 
 
-def clarification_required(query: str) -> Optional[Dict[str, Any]]:
-    """Return a proactive clarification payload for broad covered requests."""
-
-    text = normalize_text(query)
-    raw = str(query or "")
-    if not text or _allows_loose_recommendation(raw):
-        return None
-    if any(term in text for term in ["礼物", "送礼", "送女朋友", "送男朋友", "gift"]) and not any(
-        term in text
-        for term in ["预算", "以内", "以下", "护肤", "美妆", "数码", "衣服", "鞋", "零食", "咖啡", "香水", "口红"]
-    ):
-        return {
-            "no_match_reason": "clarification_required",
-            "clarification_required": True,
-            "clarification_questions": [
-                "预算上限大概是多少？",
-                "更偏美妆护肤、数码小物、穿搭配饰还是食品饮料？",
-                "收礼人的年龄、风格或忌讳品牌有没有需要避开的？",
-            ],
-            "requested_product_type": "gift",
-        }
-    product_type = infer_product_type(raw)
-    if product_type == "phone" and _is_broad_single_recommendation(text):
-        return {
-            "no_match_reason": "clarification_required",
-            "clarification_required": True,
-            "clarification_questions": [
-                "预算大概是多少？",
-                "更看重拍照、续航、性能还是性价比？",
-                "是否有品牌、系统或尺寸偏好？",
-            ],
-            "requested_product_type": "phone",
-        }
-    return None
-
-
 def budget_relaxation_allowed(query: str) -> bool:
     text = normalize_text(query)
     return any(
@@ -531,16 +495,6 @@ def budget_relaxation_allowed(query: str) -> bool:
         for term in ["可以贵一点", "预算可放宽", "预算可以放宽", "看看相近", "附近价位", "差不多也行", "相近价位"]
     )
 
-
-def _is_broad_single_recommendation(text: str) -> bool:
-    return any(term in text for term in ["推荐一款手机", "推荐个手机", "推荐手机", "买个手机"]) and not any(
-        term in text
-        for term in ["预算", "以内", "以下", "拍照", "续航", "性能", "游戏", "老人", "学生", "性价比", "旗舰", "小屏", "大屏"]
-    )
-
-
-def _allows_loose_recommendation(query: str) -> bool:
-    return any(term in str(query or "") for term in ["先随便推荐", "直接推荐", "不用问", "随便推荐"])
 
 
 def _get(value: Any, key: str) -> Any:

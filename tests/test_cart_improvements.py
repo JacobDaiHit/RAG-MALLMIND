@@ -218,6 +218,10 @@ class TestInferCartAction:
     def test_add_default(self):
         from rag.recommendation.session_state import infer_cart_action
         assert infer_cart_action("把这个加入购物车") == "add"
+
+    def test_add_with_quantity_instruction_stays_add(self):
+        from rag.recommendation.session_state import infer_cart_action
+        assert infer_cart_action("把 p_beauty_010 加入购物车，数量 1") == "add"
         assert infer_cart_action("推荐个手机") == "add"
 
 
@@ -593,6 +597,24 @@ class TestHandleCartV2Dispatch:
         plan = confirm_event.get("data", {}).get("plan", {})
         assert plan.get("operation") == "set_quantity"
         assert plan.get("quantity") == 3
+
+    def test_pending_cart_plan_is_saved_for_confirm_request(self, monkeypatch):
+        """The confirm endpoint may run in a later request, so the plan must be persisted."""
+        monkeypatch.setenv("SESSION_BACKEND", "memory")
+        from rag.recommendation.session_state import get_session
+        from rag.recommendation.tool_handlers import handle_cart_v2
+
+        session = _make_session("cart-pending-save-test")
+        tool_call = {"arguments": {"quantity": 2}}
+        events = self._collect_sse_events(
+            handle_cart_v2(session, "把这个加入购物车", ["p_digital_001"], tool_call)
+        )
+
+        assert "cart_confirmation" in [e.get("event") for e in events]
+        reloaded = get_session("cart-pending-save-test")
+        assert reloaded.pending_cart_action.get("operation") == "add"
+        assert reloaded.pending_cart_action.get("product_id") == "p_digital_001"
+        assert reloaded.pending_cart_action.get("quantity") == 2
 
 
 # ════════════════════════════════════════════════════════════════════════════

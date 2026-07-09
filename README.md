@@ -177,7 +177,7 @@ python scripts/run_recommendation_api.py
 也可以直接：
 
 ```bash
-uvicorn rag.api.recommendation_app:app --reload --host 0.0.0.0 --port 8000
+python -m uvicorn rag.api.recommendation_app:app --host 127.0.0.1 --port 8000
 ```
 
 或者

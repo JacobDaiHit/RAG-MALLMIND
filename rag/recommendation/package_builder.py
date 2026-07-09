@@ -5,11 +5,19 @@ import os
 from concurrent.futures import ThreadPoolExecutor, TimeoutError
 from typing import Dict, Iterable, List, Optional
 
+try:
+    from dotenv import load_dotenv
+except Exception:  # pragma: no cover - dotenv is optional in some deploys.
+    load_dotenv = None
+
+if load_dotenv:
+    load_dotenv()
+
 from rag.recommendation.cost_estimator import estimate_plan_cost
 from rag.recommendation.image_retrieval import ImageRetrievalEvidence
 from rag.recommendation.intent_router import route_shopping_intent
 from rag.recommendation.product_loader import ProductCatalog, load_catalog_for_scope
-from rag.recommendation.query_guards import budget_relaxation_allowed, clarification_required, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
+from rag.recommendation.query_guards import budget_relaxation_allowed, detect_no_match_reason, infer_product_type, is_pc_query, requested_missing_subcategory
 from rag.recommendation.retrieval import RetrievalEvidence, evidence_summary, retrieve_requirement_evidence
 from rag.recommendation.retrieval_fusion import FusionResult, fuse_candidates
 from rag.recommendation.scorer import ProductScore, score_products
@@ -62,9 +70,7 @@ def build_recommendation_result(
             retrieval_query_trace = rewrite_result.to_trace()
         except Exception:
             pass  # graceful degradation: use original query
-    # ── clarification merge: rule + LLM ──
-    rule_clarification = clarification_required(requirement.raw_query)
-    llm_clarification_q = requirement.clarification_question or ""
+    # ── no-match / missing-subcategory detection ──
     if normalized_scope == "pc_parts":
         requirement = ensure_pc_part_requirement(requirement, catalog)
     no_match_reason = detect_no_match_reason(requirement.raw_query, price_max=requirement.price_max)
@@ -206,8 +212,7 @@ def build_recommendation_result(
             "evidence_match_max": _evidence_match_max(grouped_scores),
             "evidence_boost_any": _evidence_boost_any(grouped_scores),
             "evidence_boost_per_category": _evidence_boost_per_category(grouped_scores),
-            "clarification_question": llm_clarification_q,
-            "rule_clarification": rule_clarification,
+            "clarification_question": requirement.clarification_question or "",
         },
     )
 
@@ -254,16 +259,12 @@ def build_no_recommendation_result(
     }
     if trace_extras:
         trace.update(trace_extras)
-    # ── clarification merge for no-recommendation path ──
-    rule_clarify = clarification_required(requirement.raw_query)
+    # ── follow-up questions for no-recommendation path ──
     llm_clarify_q = requirement.clarification_question or ""
     rule_questions = list((trace_extras or {}).get("clarification_questions") or [])
-    if rule_clarify and rule_clarify.get("clarification_questions"):
-        rule_questions.extend(rule_clarify["clarification_questions"])
     follow_up_questions = rule_questions if rule_questions else [no_match_reason]
     # Inject LLM clarification_question into trace
     trace["clarification_question"] = llm_clarify_q
-    trace["rule_clarification"] = rule_clarify
     if llm_clarify_q and llm_clarify_q not in follow_up_questions:
         follow_up_questions.insert(0, llm_clarify_q)
     return RecommendationResult(

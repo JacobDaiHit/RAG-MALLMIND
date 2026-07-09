@@ -975,6 +975,8 @@ def infer_cart_action(instruction: str) -> str:
         return "clear"
     if any(keyword in instruction for keyword in ["删除", "删掉", "删了", "移除", "不要了"]):
         return "remove"
+    if any(keyword in instruction for keyword in ["加入", "加到", "放入", "加进", "添加"]):
+        return "add"
     if any(keyword in instruction for keyword in ["数量", "改成", "改为", "修改"]):
         return "set_quantity"
     return "add"

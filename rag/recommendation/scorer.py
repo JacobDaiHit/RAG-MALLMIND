@@ -6,9 +6,25 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from rag.recommendation.cost_estimator import estimate_product_price
-from rag.recommendation.query_guards import parse_pc_part_constraints, product_pc_constraint_bonus
+from rag.recommendation.query_guards import (
+    infer_product_type,
+    parse_pc_part_constraints,
+    product_pc_constraint_bonus,
+)
 from rag.schemas import ApiProduct, BudgetLevel, ComponentCategory, RequirementLevel, RequirementSpec, ScoreBreakdown
 from rag.schemas.recommendation import price_to_price_tier, rating_to_quality_tier
+
+# ── Product-type penalty mapping: maps detected query product type to the
+# sub_category terms that should be considered a MATCH.  Products whose
+# sub_category / title do NOT contain any of these terms receive a penalty.
+_PRODUCT_TYPE_MATCH_TERMS: Dict[str, List[str]] = {
+    "phone": ["智能手机", "手机"],
+    "earphone": ["真无线耳机", "蓝牙耳机", "耳机"],
+    "laptop": ["笔记本电脑", "笔记本"],
+    "tablet": ["平板电脑", "平板"],
+}
+
+_PRODUCT_TYPE_PENALTY: float = float(os.getenv("PRODUCT_TYPE_PENALTY", "0.25"))
 
 
 BASE_WEIGHTS: Dict[str, float] = {
@@ -33,6 +49,7 @@ class ProductScore:
     evidence: List[Dict[str, Any]] = field(default_factory=list)
     evidence_boost: float = 0.0
     evidence_match: float = 0.0
+    type_penalty: float = 0.0
 
 
 def score_product(
@@ -56,6 +73,15 @@ def score_product(
         "detail_quality": score_detail_quality(product),
     }
     base_score = sum(components[name] * weights[name] for name in weights)
+    # ── Product-type penalty: penalize products whose type mismatches query intent ──
+    query_product_type = infer_product_type(requirement.raw_query)
+    type_penalty = 0.0
+    if query_product_type and query_product_type in _PRODUCT_TYPE_MATCH_TERMS:
+        match_terms = _PRODUCT_TYPE_MATCH_TERMS[query_product_type]
+        product_text_for_type = (product.sub_category or "") + " " + (product.title or "")
+        if not any(term.lower() in product_text_for_type.lower() for term in match_terms):
+            type_penalty = _PRODUCT_TYPE_PENALTY
+            base_score = clamp(base_score - type_penalty)
     final_score = apply_evidence_boost(base_score, evidence, query=query)
     # ── 跨品类证据惩罚：当查询品类明确时，抑制非目标品类的 evidence boost ──
     desired_cats = requirement.desired_categories or requirement.required_components
@@ -74,6 +100,8 @@ def score_product(
     evidence_match = round((scenario - scenario_no_ev) + (attribute - attribute_no_ev), 4)
     reasons = build_score_reasons(requirement=requirement, product=product, components=components)
     reasons.extend(build_evidence_reasons(evidence))
+    if type_penalty > 0:
+        reasons.append(f"品类不匹配惩罚：用户意图为 {query_product_type}，商品子品类 {product.sub_category or '未知'} 不属于该品类，扣 {_PRODUCT_TYPE_PENALTY:.2f}。")
     return ProductScore(
         product=product,
         score=ScoreBreakdown(
@@ -92,6 +120,7 @@ def score_product(
         evidence=evidence,
         evidence_boost=evidence_boost,
         evidence_match=evidence_match,
+        type_penalty=type_penalty,
     )
 
 
@@ -305,6 +334,7 @@ def rebuild_product_score_with_price_fit(
         evidence=item.evidence,
         evidence_boost=evidence_boost,
         evidence_match=item.evidence_match,
+        type_penalty=item.type_penalty,
     )
 
 

@@ -115,9 +115,3 @@ def test_capability_conclusions_mark_unexercised_router_and_rag():
     assert "RAG 未有效测到" in conclusions["capability_eval"]["RAG_B"]
 
 
-def test_ambiguous_gift_request_returns_clarification_not_invalid_goal():
-    result = recommend_shopping_products("送女朋友礼物", use_llm=False, use_milvus_retrieval=False)
-
-    assert result.trace["no_match_reason"] == "clarification_required"
-    assert result.trace["clarification_required"] is True
-    assert result.follow_up_questions

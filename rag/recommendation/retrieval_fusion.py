@@ -268,6 +268,15 @@ def _build_vector_filter(category: ComponentCategory, requirement: RequirementSp
     conditions = [f'chunk_level == {leaf_level}']
     conditions.append(f'category == "{category.value}"')
 
+    # Sub-category filter: narrow vector search to matching sub-categories only.
+    # This prevents cross-sub-category contamination (e.g., earphones for phone queries).
+    if requirement.target_sub_categories:
+        sub_conditions = []
+        for sub in requirement.target_sub_categories:
+            sub_conditions.append(f'sub_category == "{sub}"')
+        if sub_conditions:
+            conditions.append("(" + " || ".join(sub_conditions) + ")")
+
     # Add brand filter if specified (narrow vector search scope)
     if requirement.brands and len(requirement.brands) <= 3:
         brand_conditions = []

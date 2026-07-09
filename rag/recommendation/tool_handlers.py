@@ -400,6 +400,7 @@ def _handle_cart_add(
 
     plan = _make_plan(plan_product_id, product_title, "add", quantity, unit_price, estimated_total)
     session.pending_cart_action = plan
+    save_session(session)
 
     yield sse_event("cart_confirmation", {
         "plan": plan,
@@ -456,6 +457,7 @@ def _handle_cart_modify(
     estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
     plan = _make_plan(plan_product_id, product_title, action, quantity, unit_price, estimated_total)
     session.pending_cart_action = plan
+    save_session(session)
 
     yield sse_event("cart_confirmation", {
         "plan": plan,
@@ -1017,7 +1019,6 @@ def handle_recommend(
     result.trace["selected_runtime_mode"] = runtime_mode
     result.trace["llm_configured"] = llm_stream_enabled
     result.trace["llm_used_for_route"] = bool(((tool_call.get("routing_trace") or {}).get("llm") or {}).get("name"))
-    result.trace["clarification_required"] = bool(result.trace.get("clarification_required"))
     result.trace["catalog_guard_result"] = result.trace.get("no_match_reason") or result.trace.get("fallback_blocked_reason") or "ok"
     result.trace["retrieval_used"] = bool((result.trace.get("retrieval") or {}).get("retrieved_chunk_count"))
     result.trace["milvus_used"] = bool((result.trace.get("milvus_retrieval") or {}).get("retrieval_backend") == "milvus")
@@ -1059,9 +1060,9 @@ def handle_recommend(
         yield sse_event("follow_up_questions", {"questions": response_payload.get("follow_up_questions")})
     yield sse_event("result", response_payload)
 
-    # ── 组合意图：推荐后自动加购物车 ──
-    # 当 LLM 路由选择了 recommend_shopping_products 并附带 action="add_to_cart" 时，
-    # 在推荐完成后自动将首个推荐商品加入购物车，实现"推荐并加购"的链式操作。
+    # ── 组合意图：推荐后进入统一购物车确认链路 ──
+    # 当路由参数带 action="add_to_cart" 时，不直接写购物车；
+    # 先生成 pending_cart_action，由 /api/cart/confirm 统一执行真实变更。
     tool_args = tool_call.get("arguments") or {}
     pending_cart_action = tool_args.get("action") == "add_to_cart"
     if pending_cart_action:
@@ -1071,13 +1072,27 @@ def handle_recommend(
             if card.get("product_id")
         ][:1]
         if top_ids:
-            cart_result = apply_cart_instruction(
-                session=session,
-                instruction=f"把 {top_ids[0]} 加到购物车",
-                catalog=load_combined_product_catalog(),
-                product_ids=top_ids,
-            )
-            yield sse_event("cart", cart_result)
+            catalog = load_combined_product_catalog()
+            product = catalog.get(top_ids[0])
+            if product is not None:
+                unit_price = getattr(product, "base_price", None)
+                quantity = max(int(tool_args.get("quantity") or 1), 1)
+                estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
+                plan = _make_plan(top_ids[0], getattr(product, "title", top_ids[0]), "add", quantity, unit_price, estimated_total)
+                session.pending_cart_action = plan
+                save_session(session)
+                yield sse_event("cart_confirmation", {
+                    "plan": plan,
+                    "message": _build_confirmation_message(plan, "add"),
+                })
+            else:
+                yield sse_event("cart", {
+                    "action": "add",
+                    "items": [],
+                    "total_price": 0.0,
+                    "count": 0,
+                    "messages": ["推荐商品不在当前商品库，无法生成购物车确认。"],
+                })
         else:
             yield sse_event("cart", {
                 "action": "add",
