@@ -6,6 +6,7 @@ import os
 from typing import Any, Dict, Iterable, List, Optional
 
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, run_with_hard_timeout
+from rag.security.prompt_guard import defense_prefix, defense_suffix
 from rag.utils.runtime_errors import public_error
 
 
@@ -73,7 +74,7 @@ def build_evidence_grounded_explanation(
         payload = run_with_hard_timeout(
             lambda: client.chat_json(
                 [
-                    {"role": "system", "content": "Only output strict JSON. Explain only from the provided evidence. Do not invent product facts."},
+                    {"role": "system", "content": f"{defense_prefix('en')}\nOnly output strict JSON. Explain only from the provided evidence. Do not invent product facts.\n{defense_suffix('en')}"},
                     {"role": "user", "content": json.dumps(llm_input, ensure_ascii=False)},
                 ],
                 model=os.getenv("MALLMIND_GUIDANCE_MODEL") or client.config.fast_model,

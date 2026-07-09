@@ -27,6 +27,7 @@ from rag.recommendation.session_state import (
     save_session,
     update_topic_memory,
 )
+from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
 from rag.utils.catalog_scope import normalize_catalog_scope
 from rag.utils.runtime_errors import public_error, sanitize_result_for_response
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient
@@ -134,8 +135,11 @@ def _match_recommended_by_name(
             return brand_hits[0]
         return None  # multiple brands matched → ambiguous
 
-    # No brand matched — fall back to title keyword hits
-    if len(title_hits) == 1:
+    # No brand matched — use title keyword hits.
+    # If multiple products matched the same keyword (e.g. "平板" matching
+    # two tablet models), return the first match rather than falling back
+    # to recommended_ids[0] which could be an entirely different product type.
+    if title_hits:
         return title_hits[0]
     return None
 
@@ -194,14 +198,16 @@ def _llm_resolve_cart_product(
         product_lines.append(f"{i}. {label}")
 
     prompt = (
+        f"{defense_prefix()}\n\n"
         f"用户上一轮看到了以下商品：\n"
         + "\n".join(product_lines)
-        + f"\n\n用户当前说：\"{message}\"\n\n"
+        + f"\n\n{wrap_user_input(message, max_len=300)}\n\n"
         + "请返回用户想加入购物车的商品编号（1/2/3等）。\n"
         + "注意：如果品牌名同时匹配多个商品（如\"华为\"同时匹配手机和耳机），"
         + "且用户未指定类别，必须返回 0。\n"
         + "如果无法确定就返回 0，宁可追问也不要猜。\n"
-        + "只输出数字。"
+        + "只输出数字。\n\n"
+        + f"{defense_suffix()}"
     )
 
     try:
@@ -212,7 +218,7 @@ def _llm_resolve_cart_product(
 
         payload, _report = client.chat_json_with_report(
             [
-                {"role": "system", "content": "你是购物车助手，只输出数字。"},
+                {"role": "system", "content": f"{defense_prefix()}\n你是购物车助手，只输出数字。\n{defense_suffix()}"},
                 {"role": "user", "content": prompt},
             ],
             temperature=0.0,
@@ -519,6 +525,7 @@ def _generate_general_chat_llm_response(query: str) -> str:
             {
                 "role": "system",
                 "content": (
+                    f"{defense_prefix()}\n\n"
                     "你是一个电商智能导购助手。用户问了一个与具体商品推荐无关的问题，请你用自然、友好、多样的方式回复。\n"
                     "回复规则：\n"
                     "1. 如果是问候（你好、hi、hello），友好回应并简短介绍自己的能力（搜索商品、推荐、对比、购物车）\n"
@@ -526,10 +533,11 @@ def _generate_general_chat_llm_response(query: str) -> str:
                     "3. 如果是购物无关的问题（天气、写代码、新闻），委婉说明自己专注购物领域，并引导用户提出购物需求\n"
                     "4. 如果是感谢或告别，礼貌回应\n"
                     "5. 回复要简短（1-3句话），自然口语化，不要每次都一模一样\n"
-                    "直接输出回复文本，不要加引号或前缀。"
+                    "直接输出回复文本，不要加引号或前缀。\n\n"
+                    f"{defense_suffix()}"
                 ),
             },
-            {"role": "user", "content": query},
+            {"role": "user", "content": wrap_user_input(query, max_len=300)},
         ]
         result = client.chat_text(messages, temperature=0.7, max_tokens=200)
         result = result.strip().strip('"').strip("'")

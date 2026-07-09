@@ -6,6 +6,7 @@ from rag.api.attachments import goal_with_attachment_context, prepare_attachment
 from rag.recommendation import InvalidGoalError, validate_business_goal
 from rag.recommendation.pc_media import PC_IMAGES_DIR
 from rag.recommendation.session_state import build_contextual_goal
+from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
 
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -70,7 +71,13 @@ def build_requirement_questions(requirement: Any, attachments: List[Dict[str, An
 
 
 def build_complete_prompt(goal: str, attachments: List[Dict[str, Any]], answers: List[Dict[str, str]]) -> str:
-    lines = ["请根据以下完整需求推荐传统电商商品或套装方案，并说明价格、风险、推荐依据和取舍理由。", "", "原始需求：", goal.strip()]
+    lines = [
+        defense_prefix(),
+        "",
+        "请根据以下完整需求推荐传统电商商品或套装方案，并说明价格、风险、推荐依据和取舍理由。",
+        "",
+        wrap_user_input(goal, max_len=600),
+    ]
     if attachments:
         lines.extend(["", "附件输入："])
         for item in attachments:
@@ -85,6 +92,8 @@ def build_complete_prompt(goal: str, attachments: List[Dict[str, Any]], answers:
         for index, item in enumerate(cleaned_answers, 1):
             lines.append(f"{index}. {item.get('question') or f'追问 {index}'}")
             lines.append(f"   用户回答：{item.get('answer')}")
+    lines.append("")
+    lines.append(defense_suffix())
     return "\n".join(lines)
 
 

@@ -24,6 +24,7 @@ from rag.recommendation.query_guards import (
     budget_relaxation_allowed,
 )
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
+from rag.security.prompt_guard import defense_prefix, defense_suffix
 
 logger = logging.getLogger(__name__)
 
@@ -392,6 +393,7 @@ def _llm_filter_products(
     constraint_text = "\n".join(f"- {c}" for c in constraints)
 
     prompt = (
+        f"{defense_prefix()}\n\n"
         "你是商品筛选助手。根据用户的筛选条件，判断以下每个商品是否符合条件。\n\n"
         f"【筛选条件】\n{constraint_text}\n\n"
         f"【商品列表】\n{product_text}\n\n"
@@ -399,7 +401,8 @@ def _llm_filter_products(
         "注意：\n"
         "- 排除品牌时，其子品牌、关联品牌、贴牌产品也应排除\n"
         "- 如果无法确定是否属于排除品牌，保留该商品\n"
-        "- 只输出 JSON，不要解释"
+        "- 只输出 JSON，不要解释\n\n"
+        f"{defense_suffix()}"
     )
 
     try:

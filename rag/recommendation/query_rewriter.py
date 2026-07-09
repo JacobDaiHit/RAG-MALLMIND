@@ -11,6 +11,8 @@ import os
 import re
 from typing import Any, Dict, List, Optional
 
+from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
+
 logger = logging.getLogger(__name__)
 
 
@@ -330,15 +332,17 @@ def _llm_rewrite(
     context_text = "\n".join(context_lines) if context_lines else "无历史上下文"
 
     prompt = (
+        f"{defense_prefix()}\n\n"
         "你是电商导购查询改写器。根据对话上下文，将用户的追问改写为一个完整、"
         "明确的搜索查询，用于商品检索。只输出改写后的查询文本，不要解释。\n\n"
         f"【对话上下文】\n{context_text}\n\n"
-        f"【用户追问】\n{message}\n\n"
+        f"{wrap_user_input(message, max_len=500)}\n\n"
         "改写要求：\n"
         "1. 将代词（这个、它、第一个等）替换为具体商品名称\n"
         "2. 补全继承的品类、品牌、预算等约束\n"
         "3. 保留用户本轮新增的条件（颜色、价格调整、排除等）\n"
-        "4. 只输出一行改写文本"
+        "4. 只输出一行改写文本\n\n"
+        f"{defense_suffix()}"
     )
 
     try:

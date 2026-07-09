@@ -1056,7 +1056,14 @@ def resolve_cart_product_ids(
         return select_by_index(recommended_ids, index)
     if references_previous_item(instruction):
         return recommended_ids[:1]
-    return recommended_ids
+    # 4b) 品牌/产品名模糊匹配（复用 tool_handlers 的实现）
+    if recommended_ids and catalog is not None:
+        from rag.recommendation.tool_handlers import _match_recommended_by_name
+        name_match = _match_recommended_by_name(instruction, recommended_ids, catalog)
+        if name_match:
+            return [name_match]
+    # 4c) 兜底：返回第一个
+    return recommended_ids[:1]
 
 
 def select_by_index(ids: List[str], index: Optional[int]) -> List[str]:

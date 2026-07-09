@@ -31,6 +31,7 @@ from rag.recommendation.tool_handlers import (
     handle_sku_query,
 )
 from rag.recommendation.tool_router import route_shopping_tool_call, validate_tool_call
+from rag.security.prompt_guard import detect_injection
 from rag.utils.runtime_errors import sanitize_report
 
 
@@ -41,7 +42,10 @@ MAX_MESSAGE_LENGTH = 2000
 
 
 def sanitize_input(message: str, session_id: str) -> str:
-    """Clean and validate raw user input before routing."""
+    """Clean and validate raw user input before routing.
+
+    Tier 1: Rejects inputs that contain known prompt-injection patterns.
+    """
     if not session_id or not session_id.strip():
         raise HTTPException(status_code=400, detail="session_id is required")
     cleaned = message.strip()
@@ -49,6 +53,20 @@ def sanitize_input(message: str, session_id: str) -> str:
         raise HTTPException(status_code=400, detail="message cannot be empty")
     if len(cleaned) > MAX_MESSAGE_LENGTH:
         cleaned = cleaned[:MAX_MESSAGE_LENGTH]
+
+    # ── Tier 1: Prompt-injection detection ──
+    injection = detect_injection(cleaned)
+    if injection.should_block:
+        logger.warning(
+            "Prompt injection blocked for session %s: %s",
+            session_id,
+            injection.matches,
+        )
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid input — request contains disallowed content.",
+        )
+
     return cleaned
 
 

@@ -20,6 +20,7 @@ from rag.recommendation.session_state import (
     last_recommended_product_ids,
 )
 from rag.schemas.recommendation import CATEGORY_NAME_TO_KEY, ComponentCategory
+from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
 from rag.utils.catalog_scope import normalize_catalog_scope
 
 
@@ -1513,6 +1514,7 @@ def _build_router_system_prompt() -> str:
     """System prompt: role, tool definitions, routing rules, output format."""
 
     return (
+        f"{defense_prefix()}\n\n"
         "你是电商导购系统的工具路由器。根据用户输入选择正确的工具并提取参数，输出严格 JSON。\n"
         "不要编造商品、价格、库存或优惠信息。仅输出 JSON，不要额外解释。\n\n"
 
@@ -1649,6 +1651,7 @@ def _build_router_system_prompt() -> str:
         '"price_min":null,"price_max":null,"budget":null,"is_explicit_budget":false,'
         '"must_have_terms":[],"sort_order":null,"quantity":null,"compare_with_previous":false,'
         '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n'
+        f"\n{defense_suffix()}"
     )
 
 
@@ -1689,5 +1692,5 @@ def _build_router_user_prompt(message: str, session=None) -> str:
             items = [f"{pid} x{item.quantity}" for pid, item in list(cart.items())[:5]]
             parts.append(f"Cart({len(cart)}): {', '.join(items)}")
 
-    parts.append(f"User: {str(message or '')[:500]}")
+    parts.append(wrap_user_input(str(message or ""), max_len=500))
     return "\n".join(parts)

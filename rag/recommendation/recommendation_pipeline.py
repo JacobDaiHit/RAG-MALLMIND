@@ -14,6 +14,7 @@ from rag.recommendation.explanation_builder import build_evidence_grounded_expla
 from rag.recommendation.package_builder import build_recommendation_result
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, get_llm_provider_trace, report_to_dict, run_with_hard_timeout
 from rag.recommendation.query_guards import is_pc_query
+from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
 from rag.schemas import BudgetLevel, ComponentCategory, RecommendationResult, RequirementLevel, RequirementSpec
 from rag.schemas.recommendation import CATEGORY_NAME_TO_KEY
 from rag.utils.runtime_errors import public_error
@@ -708,10 +709,11 @@ def build_requirement_prompt(user_goal: str, fallback: RequirementSpec) -> str:
     category_values = ", ".join(item.value for item in [ComponentCategory.beauty, ComponentCategory.digital, ComponentCategory.clothing, ComponentCategory.food])
     budget_values = ", ".join(item.value for item in BudgetLevel)
     return f"""
+{defense_prefix()}
+
 请从用户购物需求中抽取结构化约束，用于传统电商商品推荐。
 
-用户需求：
-{user_goal}
+{wrap_user_input(user_goal, max_len=600)}
 
 规则解析初稿：
 {json_dumps(model_to_dict(fallback))}
@@ -744,6 +746,7 @@ def build_requirement_prompt(user_goal: str, fallback: RequirementSpec) -> str:
 2. 不要编造商品、价格、优惠券或库存。
 3. 如果用户表达“一整套/搭配/旅行方案”，need_bundle=true，并保留跨类目意图。
 4. 如果有“不要/不含/除了”，必须写入 excluded_terms 或 excluded_brands。
+{defense_suffix()}
 """.strip()
 
 
@@ -1230,6 +1233,8 @@ def build_guidance_prompt(result: RecommendationResult) -> str:
             f"\n\n注意：用户需求尚不明确，建议在追问中包含：{result.requirement.clarification_question}"
         )
     return f"""
+{defense_prefix()}
+
 请基于下面的传统电商推荐结果，输出导购解释、追问和优化建议。{clarification_hint}
 
 推荐结果：
@@ -1241,6 +1246,7 @@ def build_guidance_prompt(result: RecommendationResult) -> str:
   "follow_up_questions": ["围绕预算、品牌、否定条件、场景追问"],
   "optimization_suggestions": ["后端和 Android 体验优化建议"]
 }}
+{defense_suffix()}
 """.strip()
 
 
