@@ -6,50 +6,38 @@
       {
         "turn": 1,
         "input": "你好，我最近皮肤有点干，能推荐一款面霜吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml 挺适合你的，260 左右。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 8729,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "我是敏感肌，不能有酒精和香精。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 优先看看 理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml，260 CNY 性价比很高。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 7326,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "价位在300元左右。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 优先看看 理肤泉特安舒缓修复霜滋润型敏感肌保湿修护屏障面霜40ml，260 CNY 性价比很高。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 7643,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2040,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -60,35 +48,26 @@
       {
         "turn": 1,
         "input": "我想买一个跑步用的耳机，有什么推荐？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版 挺适合你的，1799 左右。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 6749,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2052,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "需要防水，续航要长一点的。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 我觉得 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 不错，约 1499 CNY。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 7373,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -99,32 +78,26 @@
       {
         "turn": 1,
         "input": "你们这有适合学生用的轻薄本吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。商品库里暂时没有完全符合的，调整一下条件再搜搜？",
-        "args": {
-          "budget": 5000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 3925,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2074,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "预算5000以下。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够匹配的商品，可以换个关键词或调一下预算再试试。",
-        "args": {
-          "budget": 5000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 2866,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2032,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -135,35 +108,26 @@
       {
         "turn": 1,
         "input": "我想配一台能玩黑神话悟空的电脑，预算8000左右。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 黑神话 生成一套本地可审计 PC 方案，总价约 9332 CNY，核心为 Core i5-14400F + GeForce RTX 4070 iCraft OC12G。推荐理由：总价 9332 CNY，预算 9600 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i5-14400F + GeForce RTX 4070 iCraft OC12G。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 8000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 21817,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "CPU要Intel的，不要AMD。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 黑神话 生成一套本地可审计 PC 方案，总价约 9332 CNY，核心为 Core i5-14400F + GeForce RTX 4070 iCraft OC12G。推荐理由：总价 9332 CNY，预算 9600 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i5-14400F + GeForce RTX 4070 iCraft OC12G。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 8000.0,
-          "category": "digital",
-          "exclude_brands": [
-            "AMD"
-          ]
-        },
-        "elapsed_ms": 37527,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -174,38 +138,26 @@
       {
         "turn": 1,
         "input": "有适合夏天喝的0糖饮料吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-          "红牛 维生素功能饮料250ml*24罐整箱补充能量含牛磺酸咖啡因",
-          "农夫山泉 水溶C100 柠檬味饮料 445ml×15 瓶装 维生素C饮"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 优先看看 东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因，5 CNY 性价比很高。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 5295,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "整箱买的话哪种口味比较好喝？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因",
-          "红牛 维生素功能饮料250ml*24罐整箱补充能量含牛磺酸咖啡因",
-          "农夫山泉 水溶C100 柠檬味饮料 445ml×15 瓶装 维生素C饮"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 东鹏特饮 维生素功能饮料500ml 经典瓶装补充能量含牛磺酸咖啡因 挺适合你的，5 左右。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 5216,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -216,44 +168,26 @@
       {
         "turn": 1,
         "input": "我平时喜欢拍风景，哪个手机拍照好？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 首推 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，大概 7499 块。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "digital",
-          "exclude_brands": [
-            "苹果"
-          ]
-        },
-        "elapsed_ms": 6807,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "不要苹果，其他品牌都可以。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 首推 小米 17 Ultra 2K高刷屏潜望长焦澎湃芯片影像旗舰5G手机12+256GB，大概 7499 块。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "digital",
-          "exclude_brands": [
-            "苹果"
-          ]
-        },
-        "elapsed_ms": 7316,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2058,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -264,50 +198,38 @@
       {
         "turn": 1,
         "input": "有没有便携的速溶咖啡推荐？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 优先看看 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡，58 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 7105,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2029,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "不要三合一，要纯黑咖啡。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡 挺适合你的，58 左右。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 5807,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "最好是冷泡也能溶解的。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 首推 三顿半 冷萃超即溶 黑咖啡 6颗装 冷泡即溶精品速溶咖啡，大概 58 块。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 8113,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2048,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -318,46 +240,38 @@
       {
         "turn": 1,
         "input": "我想给我爸买个运动鞋，他经常散步。",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 3,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋",
-          "HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 首推 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，大概 899 块。 候选商品卡片就在下面，方便对比挑选。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
         "args": {},
-        "elapsed_ms": 8936,
-        "error": ""
+        "elapsed_ms": 2035,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "要大码的，45码左右。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 挺适合你的，899 左右。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 4279,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "品牌无所谓，舒适就行。",
-        "tool": "general_chat",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "没问题，那咱们就主打一个舒服！你是想找软软糯糯的家居服，还是透气吸汗的运动装？告诉我具体想买什么，我立马帮你搜罗全网好货。",
+        "reply": "",
         "args": {},
-        "elapsed_ms": 7500,
-        "error": ""
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -368,57 +282,38 @@
       {
         "turn": 1,
         "input": "我最近在减肥，想买个无糖的气泡水。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
-          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
-          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 我觉得 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 不错，约 4.5 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 9951,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2052,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "白桃味的喝腻了，有没有其他口味？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
-          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
-          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 我觉得 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品 不错，约 4.5 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 7294,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "哪个口味评价最好？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品",
-          "可口可乐 零度汽水 无糖碳酸饮料 330ml×24 罐装",
-          "元气森林 白葡萄味 苏打气泡水 480ml×12 0糖0脂0卡"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 最推荐 元气森林 0糖0脂0卡 白桃味气泡水480ml 碳酸饮料即饮苏打型饮品，参考价约 4.5 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "food",
-          "sort_order": "rating_desc"
-        },
-        "elapsed_ms": 8045,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -429,52 +324,38 @@
       {
         "turn": 1,
         "input": "帮我找一个能装下16寸笔记本电脑的双肩包。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "The North Face Borealis 28L 多功能通勤户外"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 最推荐 The North Face Borealis 28L 多功能通勤户外双肩背包，参考价约 1098 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 7810,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2067,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "要轻便一点，最好有防水功能。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩",
-          "The North Face Borealis 28L 多功能通勤户外"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 最推荐 Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包，参考价约 699 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 6665,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2063,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "外观不要太花哨，黑色或灰色。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩",
-          "The North Face Borealis 28L 多功能通勤户外"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 最推荐 Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包，参考价约 699 CNY。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 6663,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -485,86 +366,50 @@
       {
         "turn": 1,
         "input": "你好，我想买一款精华液，主要想淡斑和提亮肤色。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
-          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 挺适合你的，59 左右。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "budget": 800.0,
-          "category": "beauty",
-          "exclude_brands": [
-            "科颜氏"
-          ]
-        },
-        "elapsed_ms": 9954,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "我是混油皮，不要太油腻的。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
-          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 最推荐 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml，参考价约 59 CNY。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "budget": 800.0,
-          "category": "beauty",
-          "exclude_brands": [
-            "科颜氏"
-          ]
-        },
-        "elapsed_ms": 9080,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2040,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "预算800元以内。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
-          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 我觉得 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 不错，约 59 CNY。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "budget": 800.0,
-          "category": "beauty",
-          "exclude_brands": [
-            "科颜氏"
-          ]
-        },
-        "elapsed_ms": 5741,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "之前用过科颜氏，效果一般，有其他推荐吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤",
-          "珀莱雅弹润透亮青春精华液双抗精华提亮肤色淡纹保湿精华50ml"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 我觉得 The Ordinary烟酰胺10%锌1%精华液平衡油脂淡化毛孔提亮肤色30ml 不错，约 59 CNY。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "budget": 800.0,
-          "category": "beauty",
-          "exclude_brands": [
-            "科颜氏"
-          ]
-        },
-        "elapsed_ms": 8334,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -575,106 +420,86 @@
       {
         "turn": 1,
         "input": "我想配一台电脑，主要用来做视频剪辑，预算12000。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本轮按“偏好白色机箱/显卡”重新选择。为 剪辑 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 12000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 36379,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "需要NVIDIA的显卡，内存32G以上。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本轮按“偏好白色机箱/显卡”重新选择。为 剪辑 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 12000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 49108,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2057,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "机箱要白色的，好看一点。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本轮按“偏好白色机箱/显卡”重新选择。为 剪辑 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 12000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 49010,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "散热用风冷就行，不想要水冷。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本轮按“偏好白色机箱/显卡”重新选择。为 剪辑 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 12000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 29950,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2030,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "我平时也会玩一些3A游戏。",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 3,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 优先看看 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，1499 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
         "args": {},
-        "elapsed_ms": 6002,
-        "error": ""
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "你推荐的两款主板有什么区别？",
-        "tool": "generate_pc_build_plan",
-        "src": "pc_build_history_guard",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。",
-        "args": {
-          "category": "pc_part"
-        },
-        "elapsed_ms": 34400,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2028,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "那选第二套吧，帮我看看电源够不够。",
-        "tool": "generate_pc_build_plan",
-        "src": "pc_build_history_guard",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 12022 CNY，核心为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：总价 12022 CNY，预算 12000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + Radeon RX 7900 XTX 24G。推荐理由：已把外观偏好作为软约束记录：白色。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "category": "pc_part"
-        },
-        "elapsed_ms": 56597,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -685,146 +510,98 @@
       {
         "turn": 1,
         "input": "我想买个降噪耳机，在办公室用。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 我觉得 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 不错，约 1499 CNY。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 6074,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2040,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "预算1500左右。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 挺适合你的，1499 左右。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 6537,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "最好是入耳式的，头戴式太热了。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 我觉得 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 不错，约 1499 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 6087,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2021,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "我手机是华为的，能无缝连接吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机",
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 最推荐 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质，参考价约 1499 CNY。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 5764,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2048,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "那华为自己的耳机有哪些型号？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 我觉得 华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质 不错，约 1499 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 5204,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2057,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "华为FreeBuds Pro 5和4代相比升级大吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质」\n品牌：华为\n关于升级对比：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥1699.0",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 3031,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2016,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "好，就这个吧。对了，它支持无线充电吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质」\n品牌：华为\n关于无线充电：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥1699.0",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 2769,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2040,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "我需要单独买充电器吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「华为HUAWEI FreeBuds Pro 5 主动降噪真无线蓝牙耳机高解析音质」\n品牌：华为\n关于是否需要单独购买充电器：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥1699.0",
-        "args": {
-          "budget": 1500.0,
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 3221,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2026,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -835,126 +612,98 @@
       {
         "turn": 1,
         "input": "我要给家里老人买牛奶，哪种比较好？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
-          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 首推 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，大概 72 块。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 4993,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2052,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "要无糖的，老人血糖有点高。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
-          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶 挺适合你的，72 左右。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 5839,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2066,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "最好是常温奶，方便储存。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶",
-          "蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 首推 伊利 金典 有机纯牛奶250ml*12盒 甄选有机奶源常温盒装牛奶，大概 72 块。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 4743,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2051,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "特仑苏和金典哪个更适合？",
-        "tool": "compare_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 3910,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "那有机款和非有机款区别大吗？",
-        "tool": "sku_detail",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「蒙牛 特仑苏 纯牛奶 250ml×16 盒装 常温乳制品」的配置信息：\n- 250ml / 16盒 / 家庭装：¥85.0\n- 250ml / 16盒 / 礼盒装：¥89.0\n- 250ml / 24盒 / 家庭装：¥108.0\n- 250ml / 24盒 / 礼盒装：¥118.0\n\n最高配与最低配差价：¥33.0",
-        "args": {
-          "category": "food"
-        },
-        "elapsed_ms": 2896,
-        "error": ""
-      },
-      {
-        "turn": 6,
-        "input": "好，买一箱24盒的。",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 1317,
-        "error": ""
+        "elapsed_ms": 2081,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 6,
+        "input": "好，买一箱24盒的。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2038,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "顺便帮我加一箱纯甄酸奶，要原味的。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品 挺适合你的，55 左右。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "food",
-          "brands": [
-            "纯甄"
-          ]
-        },
-        "elapsed_ms": 3449,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "两个一起买有优惠吗？",
-        "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 1,
-        "card_titles": [
-          "蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 首推 蒙牛 纯甄 常温风味酸牛奶经典原味200g*10盒发酵乳饮品，大概 55 块。 下面保留了候选卡片，可以对比或加购物车～",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
         "args": {},
-        "elapsed_ms": 4245,
-        "error": ""
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -965,135 +714,98 @@
       {
         "turn": 1,
         "input": "我想买一双跑鞋，每天跑5公里左右。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 优先看看 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，899 CNY 性价比很高。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 3799,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2036,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "我是正常足弓，体重75公斤。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 我觉得 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 不错，约 899 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 4379,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "预算600-1000元。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋 挺适合你的，899 左右。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 4840,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "要缓震好一点的，保护膝盖。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 优先看看 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，899 CNY 性价比很高。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 4924,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2038,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "耐克、阿迪、HOKA、特步这几个品牌哪个更适合？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训",
-          "特步 160X 6.0 PRO 碳板竞速跑鞋马拉松训练比赛轻量跑步鞋"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 最推荐 Nike Air Zoom Pegasus 41 男子缓震跑步鞋日常训练公路跑鞋，参考价约 899 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing",
-          "brands": [
-            "耐克",
-            "阿迪",
-            "HOKA",
-            "特步"
-          ]
-        },
-        "elapsed_ms": 5855,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2029,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "那HOKA Clifton 9和Nike Pegasus 41哪个更软？",
-        "tool": "compare_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 3599,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2021,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "我穿42码，你们有货吗？",
-        "tool": "sku_detail",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「HOKA Clifton 9 男子缓震公路跑鞋厚底回弹日常长距离训练鞋」的配置信息：\n- 男款 / 经典黑 / 42码：¥1099.0\n- 男款 / 云朵白 / 42码：¥1099.0\n- 男款 / 雾霾蓝 / 42码：¥1119.0\n\n最高配与最低配差价：¥20.0",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 2874,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "能不能对比一下这两款的鞋底耐磨性？",
-        "tool": "compare_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 2564,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2037,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -1104,157 +816,122 @@
       {
         "turn": 1,
         "input": "你好，我想买一台平板电脑，主要用来画画和看网课。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑 挺适合你的，4799 左右。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4290,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "预算4000-6000元。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 优先看看 Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑，4799 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 6035,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2038,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "要支持手写笔，屏幕大一点。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 首推 华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创作旗舰平板电脑，大概 5199 块。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4018,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "苹果iPad和华为MatePad怎么选？",
-        "tool": "compare_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4008,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2057,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "我平时也用华为手机，是不是生态更好？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 最推荐 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑，参考价约 4999 CNY。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 5392,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "那华为MatePad Pro 13.2和12.6除了屏幕还有啥区别？",
-        "tool": "compare_products",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 4096,
-        "error": ""
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "12.6的版本现在还有货吗？",
-        "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 2,
-        "card_titles": [
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑 挺适合你的，4999 左右。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {},
-        "elapsed_ms": 6389,
-        "error": ""
-      },
-      {
-        "turn": 8,
-        "input": "那个星闪键盘套装版包含手写笔吗？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多任务办公平板电脑」\n品牌：华为\n关于是否包含手写笔：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥4999.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 3675,
-        "error": ""
-      },
-      {
-        "turn": 9,
-        "input": "不包含的话，手写笔单买多少钱？",
-        "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 3,
-        "card_titles": [
-          "Apple iPad Air 11英寸 2026款 M4 芯片 128",
-          "华为HUAWEI MatePad Pro Max 12.6英寸高刷屏多",
-          "华为 MatePad Pro 13.2英寸 柔性OLED高刷屏轻办公创"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 我觉得 Apple iPad Air 11英寸 2026款 M4 芯片 128GB Wi‑Fi 轻薄学习娱乐平板电脑 不错，约 4799 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {},
-        "elapsed_ms": 5311,
-        "error": ""
-      },
-      {
-        "turn": 10,
-        "input": "好，我考虑一下，先不加购物车了。",
-        "tool": "apply_cart_instruction",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 2826,
-        "error": ""
+        "elapsed_ms": 2070,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 8,
+        "input": "那个星闪键盘套装版包含手写笔吗？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2070,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 9,
+        "input": "不包含的话，手写笔单买多少钱？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2031,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 10,
+        "input": "好，我考虑一下，先不加购物车了。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2048,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -1265,152 +942,122 @@
       {
         "turn": 1,
         "input": "我最近迷上了露营，需要一款户外徒步鞋。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
-          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 我觉得 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 不错，约 1099 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 6006,
-        "error": ""
-      },
-      {
-        "turn": 2,
-        "input": "要防水的，Gore-Tex的最好。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
-          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 我觉得 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 不错，约 1099 CNY。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 5281,
-        "error": ""
-      },
-      {
-        "turn": 3,
-        "input": "预算1000-1500元。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
-          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。本地商品库里匹配到了， 优先看看 Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋，1099 CNY 性价比很高。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 4845,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "萨洛蒙和迈乐哪个抓地力更好？",
-        "tool": "compare_products",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 3039,
-        "error": ""
-      },
-      {
-        "turn": 5,
-        "input": "我平时也会走一些碎石路和泥地。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多",
-          "SALOMON X ULTRA 4 GORE-TEX 男子防水徒步鞋轻"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋 挺适合你的，1099 左右。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 7041,
-        "error": ""
-      },
-      {
-        "turn": 6,
-        "input": "那迈乐MOAB 3 GTX和萨洛蒙X ULTRA 4哪个更轻？",
-        "tool": "compare_products",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 2961,
-        "error": ""
+        "elapsed_ms": 2051,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 2,
+        "input": "要防水的，Gore-Tex的最好。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2039,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 3,
+        "input": "预算1000-1500元。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2051,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 4,
+        "input": "萨洛蒙和迈乐哪个抓地力更好？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 5,
+        "input": "我平时也会走一些碎石路和泥地。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2069,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 6,
+        "input": "那迈乐MOAB 3 GTX和萨洛蒙X ULTRA 4哪个更轻？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2033,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "42码的迈乐有货吗？",
-        "tool": "sku_detail",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋」的配置信息：\n- 男款 / 42码 / GORE-TEX：¥1099.0",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 2501,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2045,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "我看评论有人说鞋舌磨脚，是真的吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋」\n品牌：迈乐\n关于鞋舌舒适度：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥1099.0",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 3140,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2058,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 9,
         "input": "有没有宽楦版本？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "「Merrell MOAB 3 GTX 男子防水登山徒步鞋稳定支撑户外多地形鞋」\n品牌：迈乐\n关于宽楦版本：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥1099.0",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 3269,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2028,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 10,
         "input": "那先加购物车，我再看看别的。",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "clothing"
-        },
-        "elapsed_ms": 2264,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2022,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -1421,120 +1068,98 @@
       {
         "turn": 1,
         "input": "我想给我男朋友买一支眉笔，他眉毛比较淡。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 优先看看 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，89 CNY 性价比很高。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 6116,
-        "error": ""
-      },
-      {
-        "turn": 2,
-        "input": "要自然色的，不要黑的。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g 挺适合你的，89 左右。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 7832,
-        "error": ""
-      },
-      {
-        "turn": 3,
-        "input": "好上手的那种，他是新手。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 优先看看 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，89 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 5370,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "花西子和方里哪个更细？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「花西子空气蜜粉轻盈定妆控油提亮肤色细腻粉质散粉8.5g」\n品牌：花西子\n关于笔芯粗细：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥169.0",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 7868,
-        "error": ""
-      },
-      {
-        "turn": 5,
-        "input": "那花西子螺黛生花的经典色号和自然棕哪个适合黑发？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g」\n品牌：花西子\n关于色号适合性：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥89.0",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 3233,
-        "error": ""
-      },
-      {
-        "turn": 6,
-        "input": "我看有人说容易断，是不是真的？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g」\n品牌：花西子\n关于是否容易断：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥89.0",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 2703,
-        "error": ""
-      },
-      {
-        "turn": 7,
-        "input": "那有没有推荐的替代品？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 首推 花西子螺黛生花眉笔细节点描顺滑显色防晕染持久双头眉笔0.08g，大概 89 块。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "beauty"
-        },
-        "elapsed_ms": 4551,
-        "error": ""
-      },
-      {
-        "turn": 8,
-        "input": "算了，还是买花西子吧，加点运费险。",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 1679,
-        "error": ""
+        "elapsed_ms": 2050,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 2,
+        "input": "要自然色的，不要黑的。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2049,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 3,
+        "input": "好上手的那种，他是新手。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2045,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 4,
+        "input": "花西子和方里哪个更细？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 5,
+        "input": "那花西子螺黛生花的经典色号和自然棕哪个适合黑发？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2071,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 6,
+        "input": "我看有人说容易断，是不是真的？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2036,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 7,
+        "input": "那有没有推荐的替代品？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2050,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 8,
+        "input": "算了，还是买花西子吧，加点运费险。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -1545,283 +1170,230 @@
       {
         "turn": 1,
         "input": "我想换一部手机，平时打王者荣耀和原神。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我在商品库里找到了这些， 首推 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，大概 6499 块。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 5620,
-        "error": ""
-      },
-      {
-        "turn": 2,
-        "input": "要散热好一点，不发热降频的。",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。商品库里暂时没有完全符合的，调整一下条件再搜搜？",
-        "args": {
-          "category": "pc_part"
-        },
-        "elapsed_ms": 3821,
-        "error": ""
-      },
-      {
-        "turn": 3,
-        "input": "预算5000-7000元。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， 首推 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，大概 6499 块。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4655,
-        "error": ""
-      },
-      {
-        "turn": 4,
-        "input": "小米17 Ultra和OPPO Find X9 Ultra哪个游戏表现好？",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 首推 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，大概 6499 块。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {},
-        "elapsed_ms": 8499,
-        "error": ""
-      },
-      {
-        "turn": 5,
-        "input": "那屏幕方面，谁的刷新率更高？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机」\n品牌：OPPO\n关于屏幕刷新率：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥6999.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2900,
-        "error": ""
-      },
-      {
-        "turn": 6,
-        "input": "电池续航呢？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5G智能手机」\n品牌：OPPO\n关于电池续航：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥6999.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2647,
-        "error": ""
-      },
-      {
-        "turn": 7,
-        "input": "小米17 Ultra的12+256和16+512差多少钱？",
-        "tool": "sku_detail",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB」的配置信息：\n- 12GB+256GB / 标准版：¥6499.0\n- 12GB+256GB / 高配版：¥6699.0\n- 16GB+512GB / 标准版：¥6899.0\n- 16GB+512GB / 高配版：¥7099.0\n\n最高配与最低配差价：¥600.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2997,
-        "error": ""
-      },
-      {
-        "turn": 8,
-        "input": "512G版本有现货吗？",
-        "tool": "sku_detail",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB」的配置信息：\n- 12GB+256GB / 标准版：¥6499.0\n- 12GB+256GB / 高配版：¥6699.0\n- 16GB+512GB / 标准版：¥6899.0\n- 16GB+512GB / 高配版：¥7099.0\n\n最高配与最低配差价：¥600.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2533,
-        "error": ""
-      },
-      {
-        "turn": 9,
-        "input": "你说我买这个还是等双十一？",
-        "tool": "recommend_shopping_products",
-        "src": "followup_guard",
-        "card_count": 3,
-        "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5",
-          "华为HUAWEI Pura 90 Pro 超感光影像曲面屏轻薄旗舰手机"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 最推荐 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，参考价约 6499 CNY。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {},
-        "elapsed_ms": 4975,
-        "error": ""
-      },
-      {
-        "turn": 10,
-        "input": "算了，我要不要考虑一下折叠屏？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没找到特别贴合的，要不要放宽预算或者换个品类看看？",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2820,
-        "error": ""
-      },
-      {
-        "turn": 11,
-        "input": "折叠屏打游戏手感好吗？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 MIX Fold 5 内折大屏旗舰折叠屏手机多任务办公影音利器」\n品牌：小米\n关于打游戏手感：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥9999.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2520,
-        "error": ""
-      },
-      {
-        "turn": 12,
-        "input": "那有什么折叠屏推荐？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。没找到特别贴合的，要不要放宽预算或者换个品类看看？",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 3446,
-        "error": ""
-      },
-      {
-        "turn": 13,
-        "input": "小米MIX Fold 5和OPPO Find N6哪个更轻？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「OPPO Find N6 内折柔性大屏旗舰折叠屏手机多任务办公影音体验」\n品牌：OPPO\n关于重量：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥9699.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4159,
-        "error": ""
-      },
-      {
-        "turn": 14,
-        "input": "折叠屏的内屏容易坏吗？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2314,
-        "error": ""
-      },
-      {
-        "turn": 15,
-        "input": "好，我还是买直板机吧，就小米17 Ultra。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。【v2】我筛选了一下商品库， 首推 小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB，大概 6499 块。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "小米"
-          ]
-        },
-        "elapsed_ms": 3963,
-        "error": ""
-      },
-      {
-        "turn": 16,
-        "input": "颜色有哪几种？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB」\n品牌：小米\n关于颜色：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥6499.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2438,
-        "error": ""
-      },
-      {
-        "turn": 17,
-        "input": "我要宇宙橙，256G够用吗？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB」\n品牌：小米\n关于存储容量：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥6499.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2514,
-        "error": ""
-      },
-      {
-        "turn": 18,
-        "input": "再加一个碎屏险多少钱？",
-        "tool": "parameter_query",
-        "src": "llm",
-        "card_count": 0,
-        "card_titles": [],
-        "reply": "「小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256GB」\n品牌：小米\n关于碎屏险价格：商品库中暂未收录该参数的具体数据，建议查看商品详情页。\n参考价：¥6499.0",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2992,
-        "error": ""
-      },
-      {
-        "turn": 19,
-        "input": "帮我加入购物车，我还要看看别的。",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 1208,
-        "error": ""
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 2,
+        "input": "要散热好一点，不发热降频的。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2068,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 3,
+        "input": "预算5000-7000元。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 4,
+        "input": "小米17 Ultra和OPPO Find X9 Ultra哪个游戏表现好？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2055,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 5,
+        "input": "那屏幕方面，谁的刷新率更高？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2038,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 6,
+        "input": "电池续航呢？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2053,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 7,
+        "input": "小米17 Ultra的12+256和16+512差多少钱？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2040,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 8,
+        "input": "512G版本有现货吗？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 9,
+        "input": "你说我买这个还是等双十一？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 10,
+        "input": "算了，我要不要考虑一下折叠屏？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2035,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 11,
+        "input": "折叠屏打游戏手感好吗？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 12,
+        "input": "那有什么折叠屏推荐？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 13,
+        "input": "小米MIX Fold 5和OPPO Find N6哪个更轻？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2045,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 14,
+        "input": "折叠屏的内屏容易坏吗？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2043,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 15,
+        "input": "好，我还是买直板机吧，就小米17 Ultra。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2071,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 16,
+        "input": "颜色有哪几种？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2074,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 17,
+        "input": "我要宇宙橙，256G够用吗？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 18,
+        "input": "再加一个碎屏险多少钱？",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
+      },
+      {
+        "turn": 19,
+        "input": "帮我加入购物车，我还要看看别的。",
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -1832,307 +1404,242 @@
       {
         "turn": 1,
         "input": "我经常出差，想买一个轻便的笔记本电脑。",
-        "tool": "recommend_shopping_products",
-        "src": "rules",
-        "card_count": 1,
-        "card_titles": [
-          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 优先看看 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，8499 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "数码电子"
-        },
-        "elapsed_ms": 4692,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "要续航长的，至少10小时以上。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 挺适合你的，8499 左右。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 5103,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2052,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "主要用于办公和偶尔剪短视频。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑 挺适合你的，8499 左右。 更多选择在下方卡片里，随时可以对比。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4300,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2050,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "预算8000-10000元。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "Apple MacBook Air 13英寸 M5 芯片 16GB 5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 优先看看 Apple MacBook Air 13英寸 M5 芯片 16GB 512GB 轻薄便携笔记本电脑，8499 CNY 性价比很高。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 4687,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2048,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "华为MateBook 14和苹果MacBook Air哪个更适合？",
-        "tool": "compare_products",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
         "args": {},
-        "elapsed_ms": 2951,
-        "error": ""
+        "elapsed_ms": 2046,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "我用的是华为手机，是不是选华为更方便？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够匹配的商品，可以换个关键词或调一下预算再试试。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 6021,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "那华为的鸿蒙版和锐龙版有什么区别？",
-        "tool": "sku_detail",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的配置差异？可以告诉我具体型号。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 3247,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "鸿蒙版能安装Windows软件吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 4116,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2038,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 9,
         "input": "不能的话有点麻烦，我有些专业软件只有Win版。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。这次没有找到足够匹配的商品，可以换个关键词或调一下预算再试试。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 5463,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2049,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 10,
         "input": "那苹果的MacBook Air M5芯片能装Windows吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "苹果"
-          ]
-        },
-        "elapsed_ms": 3338,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2057,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 11,
         "input": "不能用的话，我还是选联想ThinkBook 14+吧。",
-        "tool": "general_chat",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "好的，ThinkBook 14+确实是个不错的选择，性能、屏幕和接口都很均衡。需要我帮你查一下最新的价格或者对比一下其他机型吗？",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "联想"
-          ]
-        },
-        "elapsed_ms": 5252,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 12,
         "input": "联想那个高配版32G+1TB多少钱？",
-        "tool": "sku_detail",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的配置差异？可以告诉我具体型号。",
-        "args": {
-          "category": "digital",
-          "brands": [
-            "联想"
-          ]
-        },
-        "elapsed_ms": 3711,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2021,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 13,
         "input": "7999元？比官网便宜吗？",
-        "tool": "price_comparison",
-        "src": "rules",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想比价哪款商品？可以告诉我具体型号。",
+        "reply": "",
         "args": {},
-        "elapsed_ms": 3898,
-        "error": ""
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 14,
         "input": "有没有送办公软件？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 3610,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2039,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 15,
         "input": "那保修多久？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2991,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2047,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 16,
         "input": "可以加内存吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2380,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 17,
         "input": "不能加的话，16G够用吗？",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2308,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2045,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 18,
         "input": "我经常同时开十几个Chrome标签和微信、PPT。",
-        "tool": "parameter_query",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的参数？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2916,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 19,
         "input": "那还是选32G版本吧。",
-        "tool": "sku_detail",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "你想了解哪款商品的配置差异？可以告诉我具体型号。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 2501,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 20,
         "input": "帮我加购物车，我明天再付款。",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 3022,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2056,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   },
@@ -2143,153 +1650,110 @@
       {
         "turn": 1,
         "input": "我最近打球把手机搞坏了，你们有什么推荐吗？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 首推 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，大概 3299 块。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 5644,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2063,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 2,
         "input": "但是我不想要华为。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 3,
-        "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1",
-          "小米 17 Max 大屏长续航高性能影音游戏5G智能手机12+256G",
-          "OPPO Find X9 Ultra 超大底影像旗舰2K高刷屏长续航5"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。按你的需求筛了一下， OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB 挺适合你的，3299 左右。 下面保留了候选卡片，可以对比或加购物车～",
-        "args": {
-          "budget": 10000.0,
-          "category": "digital",
-          "exclude_brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 6567,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2054,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 3,
         "input": "我只有4千的预算。",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 1,
-        "card_titles": [
-          "OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机1"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。我从上架商品里挑了几款， 优先看看 OPPO Reno 16 Pro 轻薄人像摄影高刷屏快充5G智能手机12+256GB，3299 CNY 性价比很高。 还有几个备选在卡片里，你可以翻翻看。",
-        "args": {
-          "budget": 4000.0,
-          "category": "digital",
-          "exclude_brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 7715,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 4,
         "input": "你说我不买手机买智能手表怎么样？",
-        "tool": "recommend_shopping_products",
-        "src": "llm",
-        "card_count": 2,
-        "card_titles": [
-          "Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监",
-          "vivo Pad 6 Pro 12.1英寸高刷全面屏学习娱乐多任务办公"
-        ],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。帮你筛了一遍商品库， 优先看看 Apple AirPods Pro 3 主动降噪真无线蓝牙耳机 心率监测版，1799 CNY 性价比很高。 候选商品卡片就在下面，方便对比挑选。",
-        "args": {
-          "budget": 4000.0,
-          "category": "digital",
-          "exclude_brands": [
-            "华为"
-          ]
-        },
-        "elapsed_ms": 7666,
-        "error": ""
+        "tool": "",
+        "src": "",
+        "card_count": 0,
+        "card_titles": [],
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 5,
         "input": "算了，我不要了。给我一个pc装机单吧。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 4222 CNY，核心为 Ryzen 5 5500 + Dual GeForce RTX 4060 O8G。推荐理由：总价 4222 CNY，预算 4000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Ryzen 5 5500 + Dual GeForce RTX 4060 O8G。",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 6346,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2041,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 6,
         "input": "我的装机预算有一万块。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案增加 6160 CNY。 发生变化的配件：处理器、主板、显卡、内存、电源。\n主要变化：处理器: AMD Ryzen 5 5500 处理器 -> Intel Core i3-12100F 处理器；socket: AM4 -> LGA1700；cores: 6 -> 4；threads: 12 -> 8；tdp_w: 65 -> 58。；主板: ASUS ",
-        "args": {
-          "budget": 10000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 17724,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2058,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 7,
         "input": "我主要玩各种2a大作。",
-        "tool": "generate_pc_build_plan",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
-        "args": {
-          "budget": 10000.0,
-          "category": "digital"
-        },
-        "elapsed_ms": 20437,
-        "error": ""
+        "reply": "",
+        "args": {},
+        "elapsed_ms": 2042,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 8,
         "input": "你推荐的两个装机配置有什么区别？",
-        "tool": "generate_pc_build_plan",
-        "src": "pc_build_history_guard",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
-        "reply": "我先按你的需求筛一遍商品库，优先找最相关的真实商品。为 日常使用 生成一套本地可审计 PC 方案，总价约 10382 CNY，核心为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。推荐理由：总价 10382 CNY，预算 10000 CNY，价格由本地数据逐项求和。推荐理由：先执行 CPU/主板 socket、内存类型、机箱尺寸、散热器、显卡长度和电源功率硬校验，再做软评分排序。推荐理由：RAG/索引只用于证据解释和命中追踪，不替代结构化兼容性判断。推荐理由：核心组合为 Core i3-12100F + GeForce RTX 4070 Ti SUPER 16G。方案对比：总价相对上一个方案持平。 主要配件与对比方案保持一致。",
+        "reply": "",
         "args": {},
-        "elapsed_ms": 2514,
-        "error": ""
+        "elapsed_ms": 2044,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       },
       {
         "turn": 9,
         "input": "你帮我把里面的显卡加入购物车吧",
-        "tool": "apply_cart_instruction",
-        "src": "llm",
+        "tool": "",
+        "src": "",
         "card_count": 0,
         "card_titles": [],
         "reply": "",
-        "args": {
-          "category": "digital"
-        },
-        "elapsed_ms": 3021,
-        "error": ""
+        "args": {},
+        "elapsed_ms": 2045,
+        "error": "HTTPConnectionPool(host='127.0.0.1', port=8000): Max retries exceeded with url: /api/chat/stream (Caused by NewConnectionError(\"HTTPConnection(host='127.0.0.1', port=8000): Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。\"))"
       }
     ]
   }

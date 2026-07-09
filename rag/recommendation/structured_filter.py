@@ -97,7 +97,9 @@ def filter_products_for_requirement(
         if not violates_brand_or_text_exclusion(requirement, product)
     ]
 
-    hard_passed_ids = {p.product_id for p in exclusion_filtered}
+    _brand_ok = False
+    _subcat_ok = False
+    _type_ok = False
 
     # ── 品牌白名单硬过滤 ──
     # requirement.brands 此前仅做 scorer 加分（soft boost），不做硬过滤，
@@ -113,6 +115,7 @@ def filter_products_for_requirement(
         if brand_filtered:
             exclusion_filtered = brand_filtered
             brand_whitelist_applied = True
+            _brand_ok = True
         else:
             # 安全降级：品牌过滤后为空，保留过滤前结果
             brand_whitelist_relaxed = True
@@ -124,6 +127,8 @@ def filter_products_for_requirement(
     ]
     if not target_filtered:
         target_filtered = exclusion_filtered
+    else:
+        _subcat_ok = True
 
     # 当 LLM 路由器已明确设定 desired_categories 时，信任路由器的品类决策，
     # 跳过 infer_product_type 的品类交叉拒绝。避免"笔记本电脑"关键词
@@ -153,7 +158,7 @@ def filter_products_for_requirement(
                 product_type_candidate_count=0,
                 pc_part_constraints={},
                 returned_count=0,
-                hard_constraint_passed_ids=hard_passed_ids,
+                hard_constraint_passed_ids=set(),
             )
             return [], diagnostics
         inferred_product_type = None
@@ -164,6 +169,21 @@ def filter_products_for_requirement(
     ]
     product_type_filter_applied = bool(inferred_product_type and product_type_filtered)
     typed_candidates = product_type_filtered if product_type_filter_applied else target_filtered
+    if product_type_filter_applied:
+        _type_ok = True
+
+    # ── hard_passed_ids: products that survived ALL structural hard constraints ──
+    # Only products that passed brand whitelist + sub_category + product_type are
+    # eligible for vector rescue.  Products eliminated by a successfully-applied
+    # hard constraint (brand, sub_category, product_type) are NOT rescue-eligible.
+    # When a filter relaxes (produces empty → falls back), it is excluded from the
+    # hard-constraint intersection so rescue still works for the remaining dims.
+    _hard_source = exclusion_filtered          # post-brand (or pre-brand if relaxed)
+    if _subcat_ok:
+        _hard_source = target_filtered       # post-sub_category
+    if _type_ok:
+        _hard_source = product_type_filtered  # post-product_type
+    hard_passed_ids = {p.product_id for p in _hard_source}
 
     must_have_filtered = [
         product

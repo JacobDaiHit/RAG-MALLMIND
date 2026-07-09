@@ -37,6 +37,8 @@ from rag.utils.runtime_errors import sanitize_report
 
 router = APIRouter()
 
+logger = logging.getLogger(__name__)
+
 # ── 🟢 输入消毒 ──
 MAX_MESSAGE_LENGTH = 2000
 
