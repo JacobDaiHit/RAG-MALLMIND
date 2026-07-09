@@ -1099,6 +1099,13 @@ def last_recommended_product_ids(session: ShoppingSession) -> List[str]:
     if result.get("type") == "pc_build_plan":
         return [item.get("product_id") for item in result.get("parts") or result.get("items") or [] if item.get("product_id")]
 
+    # Chat/cart follow-ups should resolve "第一款/第二款" against the cards the
+    # user actually saw, not the internal first selected plan.
+    cards = result.get("product_cards") or []
+    card_ids = [card.get("product_id") for card in cards[:5] if card.get("product_id")]
+    if card_ids:
+        return card_ids
+
     plans = result.get("plans") or []
     selected_plan = plans[0] if plans else None
     if selected_plan:
@@ -1107,8 +1114,7 @@ def last_recommended_product_ids(session: ShoppingSession) -> List[str]:
             for component in selected_plan.get("components") or []
             if (component.get("product") or {}).get("product_id")
         ]
-    cards = result.get("product_cards") or []
-    return [card.get("product_id") for card in cards[:3] if card.get("product_id")]
+    return []
 
 
 def _topic_type_for_tool(route: str, result_type: str, arguments: Optional[Dict[str, Any]] = None) -> str:

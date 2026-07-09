@@ -66,6 +66,10 @@ def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call
     catalog = load_combined_product_catalog()
     action = _resolve_cart_action(args, message)
 
+    if action == "view":
+        yield from _handle_cart_view(session, catalog)
+        return
+
     if action == "clear":
         yield from _handle_cart_clear(session, catalog)
         return
@@ -83,12 +87,32 @@ def handle_cart_v2(session: Any, message: str, product_ids: List[str], tool_call
 
 def _resolve_cart_action(args: Dict[str, Any], message: str) -> str:
     """从 tool_call arguments 或用户消息中推断操作类型。"""
-    # 优先用 router 传入的 operation 参数
-    op = args.get("operation")
-    if op and op in ("add", "remove", "set_quantity", "clear"):
+    # 优先用 router 传入的结构化 operation/action 参数。
+    op = _normalize_cart_operation(args.get("operation") or args.get("action"))
+    if op:
         return op
     # 其次从消息文本推断
     return infer_cart_action(message)
+
+
+def _normalize_cart_operation(value: Any) -> str:
+    raw = str(value or "").strip().lower()
+    mapping = {
+        "add": "add",
+        "add_to_cart": "add",
+        "加入购物车": "add",
+        "remove": "remove",
+        "remove_from_cart": "remove",
+        "delete": "remove",
+        "删除": "remove",
+        "set_quantity": "set_quantity",
+        "update_quantity": "set_quantity",
+        "quantity": "set_quantity",
+        "clear": "clear",
+        "clear_cart": "clear",
+        "view": "view",
+    }
+    return mapping.get(raw, "")
 
 
 def _match_recommended_by_name(
@@ -247,14 +271,27 @@ def _resolve_product_for_cart(
     action: str,
 ) -> str:
     """🟣 v4: 通用产品 ID 解析——add 从推荐结果取，remove/set_quantity 从购物车取。"""
-    # 1) 显式 product_ids
+    # 1) 显式 product_ids / target_product_id（LLM router 或请求上下文传入）
     if product_ids:
         return product_ids[0]
-    arg_ids = args.get("product_ids")
-    if isinstance(arg_ids, list) and arg_ids:
-        return str(arg_ids[0])
 
     cart_ids = list(session.cart.keys())
+    recommended_ids = last_recommended_product_ids(session)
+    target_index = _coerce_target_index(args.get("target_product_index"))
+    message_index = extract_item_index(message)
+    effective_index = message_index if message_index is not None else target_index
+
+    arg_candidates = _cart_arg_product_candidates(args)
+    allowed_context_ids = cart_ids if action in ("remove", "set_quantity") else recommended_ids
+    if effective_index is not None and 0 <= effective_index < len(allowed_context_ids):
+        indexed_id = allowed_context_ids[effective_index]
+        # If the LLM emits both an ordinal and a conflicting product_id, trust the
+        # ordinal resolved from the current server-side context.
+        if not arg_candidates or arg_candidates[0] != indexed_id:
+            return indexed_id
+    for candidate_id in arg_candidates:
+        if candidate_id in allowed_context_ids:
+            return candidate_id
 
     # 2) 名称模糊匹配（从购物车中定位）
     if cart_ids:
@@ -264,19 +301,16 @@ def _resolve_product_for_cart(
 
     # 3) remove/set_quantity: 优先在购物车内定位
     if action in ("remove", "set_quantity") and cart_ids:
-        index = extract_item_index(message)
-        if index is not None and 0 <= index < len(cart_ids):
-            return cart_ids[index]
+        if effective_index is not None and 0 <= effective_index < len(cart_ids):
+            return cart_ids[effective_index]
         if references_previous_item(message):
             return cart_ids[0]
         return cart_ids[0]  # 兜底：购物车第一个
 
     # 4) add: 从上次推荐结果中定位
-    recommended_ids = last_recommended_product_ids(session)
     if recommended_ids:
-        index = extract_item_index(message)
-        if index is not None and 0 <= index < len(recommended_ids):
-            return recommended_ids[index]
+        if effective_index is not None and 0 <= effective_index < len(recommended_ids):
+            return recommended_ids[effective_index]
         if references_previous_item(message):
             return recommended_ids[0]
         # 4b) 品牌/产品名模糊匹配：用户提到了具体品牌或产品名
@@ -290,6 +324,34 @@ def _resolve_product_for_cart(
         return recommended_ids[0]
 
     return ""
+
+
+def _cart_arg_product_candidates(args: Dict[str, Any]) -> List[str]:
+    candidates: List[str] = []
+    arg_ids = args.get("product_ids")
+    if isinstance(arg_ids, list):
+        candidates.extend(str(item).strip() for item in arg_ids if str(item).strip())
+    target_id = str(args.get("target_product_id") or args.get("product_id") or "").strip()
+    if target_id:
+        candidates.append(target_id)
+    seen = set()
+    result = []
+    for item in candidates:
+        if item and item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+
+
+def _coerce_target_index(value: Any) -> Optional[int]:
+    if value is None or value == "":
+        return None
+    try:
+        index = int(value)
+    except (TypeError, ValueError):
+        return None
+    # Router prompt uses human-facing 1-based indices.
+    return index - 1 if index > 0 else index
 
 
 def _build_confirmation_message(plan: Dict[str, Any], operation: str) -> str:
@@ -473,6 +535,14 @@ def _handle_cart_clear(session: Any, catalog: Any) -> Iterable[str]:
     save_session(session)
     from rag.recommendation.session_state import cart_snapshot
     yield sse_event("delta", {"text": f"已清空购物车（移除了 {count} 件商品）。"})
+    yield sse_event("cart", cart_snapshot(session, catalog))
+    yield sse_event("done", {"session_id": session.session_id})
+
+
+def _handle_cart_view(session: Any, catalog: Any) -> Iterable[str]:
+    """Return the current cart snapshot without mutating it."""
+    from rag.recommendation.session_state import cart_snapshot
+
     yield sse_event("cart", cart_snapshot(session, catalog))
     yield sse_event("done", {"session_id": session.session_id})
 

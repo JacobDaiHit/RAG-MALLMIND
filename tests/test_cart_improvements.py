@@ -616,6 +616,125 @@ class TestHandleCartV2Dispatch:
         assert reloaded.pending_cart_action.get("product_id") == "p_digital_001"
         assert reloaded.pending_cart_action.get("quantity") == 2
 
+    def test_llm_product_id_argument_selects_add_target(self):
+        from rag.recommendation.tool_handlers import handle_cart_v2
+
+        session = _make_session()
+        session.last_result = {
+            "product_cards": [
+                {"product_id": "p_beauty_010", "title": "安热沙防晒乳"},
+                {"product_id": "p_beauty_006", "title": "巴黎欧莱雅防晒"},
+            ]
+        }
+        tool_call = {
+            "arguments": {
+                "operation": "add",
+                "product_ids": ["p_beauty_006"],
+                "target_product_id": "p_beauty_006",
+                "quantity": 2,
+            }
+        }
+
+        events = self._collect_sse_events(
+            handle_cart_v2(session, "把第二款加入购物车", [], tool_call)
+        )
+
+        confirm_event = next(e for e in events if e.get("event") == "cart_confirmation")
+        plan = confirm_event.get("data", {}).get("plan", {})
+        assert plan.get("operation") == "add"
+        assert plan.get("product_id") == "p_beauty_006"
+        assert plan.get("quantity") == 2
+
+    def test_ordinal_reference_overrides_conflicting_llm_product_id(self):
+        from rag.recommendation.tool_handlers import handle_cart_v2
+
+        session = _make_session()
+        session.last_result = {
+            "product_cards": [
+                {"product_id": "p_beauty_010", "title": "安热沙防晒乳"},
+                {"product_id": "p_beauty_006", "title": "巴黎欧莱雅防晒"},
+            ]
+        }
+        tool_call = {
+            "arguments": {
+                "operation": "add",
+                "product_ids": ["p_beauty_010"],
+                "target_product_id": "p_beauty_010",
+                "target_product_index": 2,
+            }
+        }
+
+        events = self._collect_sse_events(
+            handle_cart_v2(session, "把第二款加入购物车", [], tool_call)
+        )
+
+        confirm_event = next(e for e in events if e.get("event") == "cart_confirmation")
+        plan = confirm_event.get("data", {}).get("plan", {})
+        assert plan.get("product_id") == "p_beauty_006"
+
+    def test_llm_product_id_argument_selects_remove_target(self):
+        from rag.recommendation.session_state import CartItem
+        from rag.recommendation.tool_handlers import handle_cart_v2
+
+        session = _make_session()
+        session.cart = {
+            "p_beauty_010": CartItem(product_id="p_beauty_010", quantity=1),
+            "p_beauty_006": CartItem(product_id="p_beauty_006", quantity=1),
+        }
+        tool_call = {
+            "arguments": {
+                "operation": "remove",
+                "product_ids": ["p_beauty_006"],
+                "target_product_id": "p_beauty_006",
+            }
+        }
+
+        events = self._collect_sse_events(
+            handle_cart_v2(session, "删除第二款", [], tool_call)
+        )
+
+        confirm_event = next(e for e in events if e.get("event") == "cart_confirmation")
+        plan = confirm_event.get("data", {}).get("plan", {})
+        assert plan.get("operation") == "remove"
+        assert plan.get("product_id") == "p_beauty_006"
+
+    def test_router_prompt_exposes_recommended_product_ids_for_cart_resolution(self):
+        from rag.recommendation.tool_router import _build_router_user_prompt
+
+        session = _make_session()
+        session.last_result = {
+            "product_cards": [
+                {"product_id": "p_beauty_010", "title": "安热沙防晒乳"},
+                {"product_id": "p_beauty_006", "title": "理肤泉 B5 修护霜"},
+            ]
+        }
+
+        prompt = _build_router_user_prompt("把理肤泉 B5 加入购物车", session)
+
+        assert "Recommended products for cart resolution" in prompt
+        assert "product_id=p_beauty_006" in prompt
+        assert "理肤泉 B5 修护霜" in prompt
+
+    def test_last_recommended_ids_prefer_visible_product_cards(self):
+        from rag.recommendation.session_state import last_recommended_product_ids
+
+        session = _make_session()
+        session.last_result = {
+            "plans": [
+                {
+                    "components": [
+                        {"product": {"product_id": "p_beauty_999"}},
+                    ]
+                }
+            ],
+            "product_cards": [
+                {"product_id": "p_beauty_010", "title": "安热沙防晒乳"},
+                {"product_id": "p_beauty_006", "title": "巴黎欧莱雅防晒"},
+            ],
+        }
+
+        assert last_recommended_product_ids(session) == ["p_beauty_010", "p_beauty_006"]
+
 
 # ════════════════════════════════════════════════════════════════════════════
 # Edge cases & robustness

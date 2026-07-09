@@ -113,6 +113,10 @@ TOOL_SCHEMAS_FOR_PROMPT: List[Dict[str, Any]] = [
                 "properties": {
                     "query": {"type": "string"},
                     "product_ids": {"type": "array", "items": {"type": "string"}},
+                    "operation": {"type": "string", "enum": ["add", "remove", "set_quantity", "clear", "view"]},
+                    "target_product_id": {"type": "string"},
+                    "target_product_index": {"type": ["integer", "null"], "description": "用户引用的 1-based 商品序号"},
+                    "target_product_mention": {"type": "string", "description": "用户原文里指向商品的短语，如 第一款、理肤泉、这个"},
                     "quantity": {"type": ["integer", "null"]},
                     "action": {"type": "string"},
                     "catalog_scope": {"type": "string", "enum": ["combined"]},
@@ -645,6 +649,10 @@ class RoutedArguments(BaseModel):
     sku_criteria: str = ""
     catalog_scope: str = "ecommerce"
     compare_with_previous: bool = False
+    operation: str = ""
+    target_product_id: str = ""
+    target_product_index: Optional[int] = None
+    target_product_mention: str = ""
     quantity: Optional[int] = None
     action: str = ""
     topic: str = ""
@@ -846,7 +854,8 @@ def validate_tool_call(
         validation["passed"] = False
         name = "apply_cart_instruction"
         args = {
-            "query": message,
+            **args,
+            "query": args.get("query") or message,
             "product_ids": args.get("product_ids") or [],
         }
         downgraded = True
@@ -1600,6 +1609,10 @@ def _build_router_system_prompt() -> str:
         '    "sort_order": "price_asc|price_desc|rating_desc|null",\n'
         '    "action": "add_to_cart 或空",\n'
         '    "product_ids": ["商品ID"],\n'
+        '    "operation": "add|remove|set_quantity|clear|view 或空",\n'
+        '    "target_product_id": "单个目标商品ID或空",\n'
+        '    "target_product_index": null,\n'
+        '    "target_product_mention": "用户原文中指向商品的短语或空",\n'
         '    "product_mentions": ["用户提到的具体商品型号"],\n'
         '    "attribute": "用户询问的属性（仅 parameter_query）",\n'
         '    "sku_criteria": "SKU筛选条件（仅 sku_detail）",\n'
@@ -1620,6 +1633,12 @@ def _build_router_system_prompt() -> str:
         "用户明确要求比较两个具体商品时使用。\"哪个更适合学生\"不属于对比。\n"
         "### 3. apply_cart_instruction\n"
         "购物车操作：加购、查看、修改数量、删除、清空。\n"
+        "- 如果用户要加入购物车，优先从 User prompt 的 Recommended products 中选择目标；必须把精确 product_id 写入 product_ids 和 target_product_id。\n"
+        "- 如果用户要删除/改数量，优先从 User prompt 的 Cart items 中选择目标；必须把精确 product_id 写入 product_ids 和 target_product_id。\n"
+        "- operation 只能是 add/remove/set_quantity/clear/view；action 保持兼容，可写 add_to_cart/remove_from_cart/set_quantity/clear_cart。\n"
+        "- 用户说\"第一款/第二款/这个/理肤泉\"时，结合 Recommended products 或 Cart items 中的序号、标题、品牌解析，target_product_index 使用 1-based 序号。\n"
+        "- 清空购物车：operation=clear，product_ids=[]，quantity=null。\n"
+        "- 如果无法从上下文唯一确定目标商品，不要猜 product_id，product_ids=[]，让下游追问或按规则兜底。\n"
         "### 4. generate_pc_build_plan\n"
         "PC 整机配置单。用于：(1) 新装机需求，(2) 对已有PC方案的修改（换CPU品牌、加内存、改预算、换显卡等）。\n"
         "如果 Accumulated state 显示上一轮使用了 generate_pc_build_plan，且用户新消息是对已有方案的修改，"
@@ -1679,6 +1698,7 @@ def _build_router_system_prompt() -> str:
         '{"name":"recommend_shopping_products","arguments":{"query":"预算5000以内推荐轻薄本",'
         '"category":"digital","sub_category":"笔记本电脑","catalog_scope":"ecommerce",'
         '"brands":[],"exclude_brands":[],"action":"","product_ids":[],'
+        '"operation":"","target_product_id":"","target_product_index":null,"target_product_mention":"",'
         '"price_min":null,"price_max":5000,"budget":5000,"is_explicit_budget":true,'
         '"must_have_terms":["轻薄"],"sort_order":null,"quantity":null,"compare_with_previous":false,'
         '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n\n'
@@ -1686,6 +1706,7 @@ def _build_router_system_prompt() -> str:
         '{"name":"recommend_shopping_products","arguments":{"query":"那个联想电脑7999元怎么样？",'
         '"category":"digital","sub_category":"笔记本电脑","catalog_scope":"ecommerce",'
         '"brands":["联想"],"exclude_brands":[],"action":"","product_ids":[],'
+        '"operation":"","target_product_id":"","target_product_index":null,"target_product_mention":"",'
         '"price_min":null,"price_max":null,"budget":null,"is_explicit_budget":false,'
         '"must_have_terms":[],"sort_order":null,"quantity":null,"compare_with_previous":false,'
         '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n\n'
@@ -1693,6 +1714,7 @@ def _build_router_system_prompt() -> str:
         '{"name":"recommend_shopping_products","arguments":{"query":"推荐跑鞋并加到购物车",'
         '"category":"clothing","sub_category":"跑步鞋","catalog_scope":"ecommerce",'
         '"brands":[],"exclude_brands":[],"action":"add_to_cart","product_ids":[],'
+        '"operation":"add","target_product_id":"","target_product_index":null,"target_product_mention":"",'
         '"price_min":null,"price_max":null,"budget":null,"is_explicit_budget":false,'
         '"must_have_terms":[],"sort_order":null,"quantity":null,"compare_with_previous":false,'
         '"usage":[],"preferences":{},"topic":"","need_full_pc_build":false},"source":"llm"}\n'
@@ -1732,10 +1754,70 @@ def _build_router_user_prompt(message: str, session=None) -> str:
         elif topic_type == "ecommerce_recommendation":
             parts.append("当前话题: 商品推荐。用户在筛选或追问商品细节。")
 
-        cart = getattr(session, "cart", None) or {}
-        if cart:
-            items = [f"{pid} x{item.quantity}" for pid, item in list(cart.items())[:5]]
-            parts.append(f"Cart({len(cart)}): {', '.join(items)}")
+        recommended_context = _format_recommended_product_context(session)
+        if recommended_context:
+            parts.append(recommended_context)
+
+        cart_context = _format_cart_product_context(session)
+        if cart_context:
+            parts.append(cart_context)
 
     parts.append(wrap_user_input(str(message or ""), max_len=500))
     return "\n".join(parts)
+
+
+def _format_recommended_product_context(session: ShoppingSession) -> str:
+    """Expose recent recommendation IDs to the LLM router for cart target selection."""
+    product_ids = last_recommended_product_ids(session)[:5]
+    if not product_ids:
+        return ""
+    catalog = _safe_combined_catalog()
+    card_lookup = _last_result_card_lookup(session)
+    lines = []
+    for index, product_id in enumerate(product_ids, 1):
+        card = card_lookup.get(product_id) or {}
+        product = catalog.get(product_id) if catalog is not None else None
+        title = str(card.get("title") or card.get("name") or getattr(product, "title", "") or product_id)
+        brand = str(card.get("brand") or getattr(product, "brand", "") or "")
+        price = card.get("price")
+        if price is None and product is not None:
+            price = getattr(product, "base_price", None)
+        lines.append(
+            f"{index}. product_id={product_id}; title={title}; brand={brand}; price={price if price is not None else ''}"
+        )
+    return "Recommended products for cart resolution:\n" + "\n".join(lines)
+
+
+def _format_cart_product_context(session: ShoppingSession) -> str:
+    """Expose current cart IDs to the LLM router for remove/set_quantity target selection."""
+    cart = getattr(session, "cart", None) or {}
+    if not cart:
+        return ""
+    catalog = _safe_combined_catalog()
+    lines = []
+    for index, (product_id, item) in enumerate(list(cart.items())[:8], 1):
+        product = catalog.get(product_id) if catalog is not None else None
+        title = getattr(product, "title", product_id) if product is not None else product_id
+        brand = getattr(product, "brand", "") if product is not None else ""
+        quantity = getattr(item, "quantity", 1)
+        lines.append(f"{index}. product_id={product_id}; title={title}; brand={brand}; quantity={quantity}")
+    return f"Cart items for cart resolution ({len(cart)} total):\n" + "\n".join(lines)
+
+
+def _last_result_card_lookup(session: ShoppingSession) -> Dict[str, Dict[str, Any]]:
+    result = getattr(session, "last_result", None) or {}
+    cards = result.get("product_cards") or []
+    lookup: Dict[str, Dict[str, Any]] = {}
+    for card in cards:
+        if isinstance(card, dict) and card.get("product_id"):
+            lookup[str(card["product_id"])] = card
+    return lookup
+
+
+def _safe_combined_catalog():
+    try:
+        from rag.recommendation.product_loader import load_combined_product_catalog
+
+        return load_combined_product_catalog()
+    except Exception:
+        return None

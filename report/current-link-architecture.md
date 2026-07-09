@@ -46,11 +46,298 @@ ChatStreamRequest
 关键点：
 
 - `ChatStreamRequest` 只有 `session_id`、`message`、`images`、`attachments`、`stream`、`mode`。它没有顶层 `product_ids` 字段；chat 链路里的商品上下文来自附件里的 `product_id` 或消息文本中的商品 ID。
+- Router LLM 的 user prompt 会注入上一轮可见 `product_cards` 和当前购物车商品列表，带 `product_id`、标题、品牌、价格/数量，用于让购物车工具下传精确目标。
 - `sanitize_input()` 校验 session、空消息、长度，并用 `prompt_guard.detect_injection()` 拦截明显 prompt injection。
 - `resolve_runtime_policy()` 只生成同一条主链路上的功能开关，不会切换到几套完全不同的业务链路。
 - `route_shopping_tool_call()` 先跑本地规则路由，再按 runtime policy 尝试 LLM 路由。LLM 失败时回退本地规则。
 - `validate_tool_call()` 在 LLM 路由之后继续纠偏，因此“LLM 决策”不是最终无条件生效。明确购物车意图会被纠正到 `apply_cart_instruction`，预算、品类、未知工具名也会被校验。
 - `safe_stream()` 包住 SSE generator；异常会输出 `error` + `done`，避免把服务端堆栈直接暴露给客户端。
+
+### 2.1 单次用户请求生命周期（函数级展开）
+
+这一节按一次真实 `POST /api/chat/stream` 请求展开，重点说明“用户一句话进来，到前端收到实际回复”为止系统做了什么。
+
+#### A. HTTP 请求进入后端
+
+入口函数是 `rag/api/routes/chat.py::chat_stream()`。它不是直接返回一个普通 JSON，而是返回 `StreamingResponse`，媒体类型是 `text/event-stream`。也就是说，后端会一边处理一边向前端推 SSE 事件，例如 `runtime_mode`、`tool_call`、`progress`、`delta`、`product_cards`、`cart_confirmation`、`done`。
+
+`chat_stream()` 外层先做三件事：
+
+```text
+request.attachments + request.images -> raw_attachments
+request.message + request.session_id -> sanitize_input()
+request.session_id -> get_session()
+```
+
+- `sanitize_input()`：做输入清洗。它会检查 `session_id` 是否存在、`message` 是否为空、消息是否超过 `MAX_MESSAGE_LENGTH=2000`，还会调用 `detect_injection()` 拦截明显 prompt injection。这个函数不是理解用户需求的，只负责“请求能不能进主链路”。
+- `get_session()`：从 session store 取 `ShoppingSession`。当前 session 里保存上一轮推荐、购物车、话题记忆、PC 配置历史等。后续“把第二款加入购物车”能生效，就是靠这个 session 记住上一轮展示过哪些商品卡。
+- `safe_stream()`：真正执行 generator 的外层保护。`unsafe_generate()` 里如果有没捕获的异常，它会转成 `error` 事件，再补一个 `done`，避免 SSE 半路断掉。
+
+#### B. 运行策略：决定本轮开哪些能力
+
+进入 `unsafe_generate()` 后，第一步是 `resolve_runtime_policy()`。它只是 `chat.py` 里的薄封装，真实逻辑在 `rag/api/runtime_context.py::build_runtime_policy()`。
+
+`build_runtime_policy()` 会输出本轮能力开关：
+
+- `use_llm`：路由和需求理解是否能用外部 LLM。
+- `use_llm_guidance`：推荐后的导购话术/追问是否能用 LLM。
+- `use_vision_llm`：图片附件是否能走视觉模型。
+- `use_milvus_retrieval`：推荐链路是否启用 Milvus 证据检索。
+- `use_rag_query_expansion`：是否启用 query expansion，目前只在 `full` 且环境变量允许时打开。
+
+这里要注意：`fast/balanced/full/auto` 不是几套业务链路。它们只是同一条主链路上的功能门控。后端会先把这个策略通过 `runtime_mode` SSE 发给前端。
+
+#### C. 工具路由：决定本轮该做推荐、购物车、对比还是闲聊
+
+路由入口是 `rag/recommendation/tool_router.py::route_shopping_tool_call()`。它会先执行本地规则，再尝试 LLM 路由：
+
+```text
+route_shopping_tool_call()
+  -> local_route_tool_call()
+  -> try_llm_route_tool_call()  当 use_llm=true 且 LLM 可用
+  -> 返回一个 tool_call
+```
+
+`local_route_tool_call()` 是规则路由器。它会调用：
+
+- `extract_slots_rule_based()`：用规则抽取预算、品类、商品 ID、使用场景、偏好、`catalog_scope` 等基础 slots。
+- `_has_cart_intent()`：判断是不是购物车操作，比如加入、删除、清空。
+- `_looks_like_compare_request()`：判断是不是对比。
+- `_has_sku_detail_intent()`、`_has_parameter_query_intent()`、`_has_price_comparison_intent()`：判断 SKU、参数、价格类问题。
+- `_has_pc_intent()` / `_has_single_pc_part_intent()`：区分 PC 整机方案和单个 PC 配件推荐。
+- `resolve_followup_message()`：处理上一轮推荐后的追问，比如“这个续航怎么样”“第二款加入购物车”。
+
+`try_llm_route_tool_call()` 是 LLM 路由器。它会调用：
+
+- `build_router_messages()`：组装 system prompt 和 user prompt。
+- `_build_router_system_prompt()`：告诉 LLM 可用工具、输出 JSON schema、类目规则、购物车参数规则。
+- `_build_router_user_prompt()`：把当前用户输入、`current` 累积状态、最近 query、话题、上一轮可见商品卡、当前购物车商品列表一起放进去。
+
+购物车相关的关键改造也在这里：`_build_router_user_prompt()` 会把上一轮 `product_cards` 格式化成带 `product_id/title/brand/price` 的候选列表，把当前购物车格式化成带 `product_id/title/brand/quantity` 的列表。这样 LLM 如果判断进入 `apply_cart_instruction`，可以在 arguments 里传：
+
+```text
+operation
+product_ids
+target_product_id
+target_product_index
+target_product_mention
+quantity
+```
+
+#### D. 路由纠偏：LLM 不是最终裁判
+
+路由结束后，`chat_stream()` 会立刻调用 `validate_tool_call()`。
+
+`validate_tool_call()` 做的是确定性 guard：
+
+- 工具名不在白名单里，就降级到 `general_chat`。
+- `price_max` 或 `budget` 超过 `_MAX_PRICE=500000`，会被裁剪。
+- `brands` / `exclude_brands` 超过 `_MAX_BRANDS=50` 会被截断。
+- LLM 把闲聊误判成推荐时，会按本地规则改回去。
+- LLM 把购物请求误判成闲聊时，会按本地规则改回去。
+- 消息里有明确购物车意图时，无论 LLM 怎么路由，都会强制修正为 `apply_cart_instruction`。
+
+纠偏结果会写到 `routing_trace.validation`。如果发生改路由，还会带 `downgraded` 和 `downgrade_reason`。这里不负责最终选商品，购物车商品 ID 的二次校验在 `handle_cart_v2()` 里。
+
+#### E. 会话状态更新
+
+路由确定后，`chat_stream()` 会判断是否调用 `update_session_from_router()`。
+
+它只对非购物车、非闲聊、非降级工具更新 session。原因是购物车和闲聊不应该污染推荐主题。`update_session_from_router()` 会更新：
+
+- `chat_topic`：当前是推荐、闲聊还是其他话题。
+- `recent_queries`：最近几轮用户 query。
+- `current`：累积的类目、预算、品牌、排除品牌、偏好、`catalog_scope` 等。
+- `topic_history`：历史话题摘要。
+
+然后后端会发出 `tool_call` SSE，让前端知道本轮最终选择了哪个工具。
+
+#### F. 轻量工具链路：购物车、闲聊、对比、参数、SKU、价格
+
+如果工具在 `_LIGHTWEIGHT_TOOLS` 里，`chat_stream()` 直接调用 `_dispatch_lightweight()`，不会进入附件分析和推荐上下文准备。
+
+轻量工具包括：
+
+- `handle_cart_v2()`：购物车主入口。它会把 add/remove/set_quantity 转成待确认计划，`clear` 目前直接执行。
+- `handle_general_chat()`：闲聊入口。它会调用 `_generate_general_chat_llm_response()` 生成简短回复，失败时用 `_generate_general_chat_fallback()` 模板。
+- `handle_compare_v2()`：商品对比。它优先用路由参数里的 `product_ids`，没有就尝试上一轮推荐结果。
+- `handle_parameter_query()`：参数查询，比如“这个显卡功耗多少”。
+- `handle_sku_query()`：SKU 变体查询，比如“12+256 和 16+512 差多少钱”。
+- `handle_price_comparison()`：价格确认，比如“比官网便宜吗”。
+
+这些函数通常输出 `delta`、`cart_confirmation`、`cart`、`comparison_table` 或 `done`。其中购物车链路后面单独展开。
+
+#### G. 重量工具前置：准备多轮上下文和附件
+
+如果工具不是轻量工具，`chat_stream()` 会先调用 `prepare_recommendation_context()`。
+
+这个函数在 `rag/api/app_context.py`，主要做三件事：
+
+```text
+prepare_attachments_for_recommendation()
+build_contextual_goal()
+goal_with_attachment_context()
+```
+
+- `prepare_attachments_for_recommendation()`：解析图片/附件。如果 runtime 允许视觉模型，会在 `attachments.py::analyze_image_attachment()` 里调用视觉 LLM，抽取 OCR、品类、品牌、型号、颜色、场景等。
+- `build_contextual_goal()`：把当前 message 和 session 历史结合。如果用户是在追问上一轮，会拼成“上一轮目标 + User added constraints”；如果检测到新话题，则只用当前 message。
+- `goal_with_attachment_context()`：把附件解析出的摘要、OCR、视觉关键词拼回推荐目标。
+
+这一步完成后，后端会发 `progress`，如果有附件还会发 `attachment_analysis`。
+
+#### H. 推荐链路：怎么解析需求、挑商品、生成回复
+
+推荐入口是 `tool_handlers.handle_recommend()`。它做的是 API 层编排：
+
+```text
+handle_recommend()
+  -> validate_goal()
+  -> retrieve_image_evidence()
+  -> call_recommendation_fn()
+  -> fact_check_result()
+  -> remember_recommendation()
+  -> update_topic_memory()
+  -> generate_natural_response()
+  -> emit product_cards / result / done
+```
+
+几个关键函数的实际作用：
+
+- `validate_goal()`：确认推荐目标不是空，也符合基本业务输入规则。
+- `retrieve_image_evidence()`：如果用户上传图片，从图片向量索引里找相似商品证据。
+- `call_recommendation_fn()`：兼容不同 `recommendation_fn` 参数的调用包装器，实际通常调用 `recommend_shopping_products()`。
+- `fact_check_result()`：用本地 catalog 校验商品 ID、价格等事实，防止响应里出现不存在或价格偏差过大的商品。
+- `remember_recommendation()`：把 `last_goal`、`last_requirement`、`last_result` 写入 session，后续“第二款加入购物车”要靠这里保存的商品卡。
+- `update_topic_memory()`：更新短期话题 JSON。
+- `generate_natural_response()`：把结构化推荐结果转成自然语言 `delta`，不是商品事实源。
+
+推荐核心在 `recommendation_pipeline.py::recommend_shopping_products()`：
+
+```text
+recommend_shopping_products()
+  -> router_arguments 存在：_requirement_from_args_v2()
+  -> router_arguments 不存在：parse_requirement()
+  -> build_recommendation_result()
+  -> enrich_recommendation_result()
+  -> attach_grounded_explanation()
+```
+
+- `_requirement_from_args_v2()`：把 router 给出的结构化参数转成 `RequirementSpec`。主 `/api/chat/stream` 大多数请求会走这里，因为 router 已经抽了 slots。
+- `parse_requirement()`：规则解析 + 可选 LLM parse。旁路接口或没有 router arguments 的请求更容易走这里。
+- `build_recommendation_result()`：真正挑商品的核心函数。
+- `enrich_recommendation_result()`：生成导购建议、追问、优化建议；LLM 不可用时用规则模板。
+- `attach_grounded_explanation()`：基于商品卡和证据生成解释，要求只能从给定 evidence 里说。
+
+真正挑商品在 `package_builder.py::build_recommendation_result()`：
+
+```text
+load_catalog_for_scope()
+rewrite_query(..., use_llm=False)
+detect_no_match_reason()
+retrieve_evidence_with_timeout()
+fuse_text_and_image_evidence()
+score_required_components()
+build_recommendation_plan()
+build_product_cards()
+build_candidate_scope()
+build_comparison_table()
+```
+
+- `load_catalog_for_scope()`：按 `catalog_scope` 选择普通电商 catalog、PC 配件 catalog 或 combined catalog。
+- `rewrite_query(..., use_llm=False)`：用当前 session 做规则型 query 改写，比如补充上下文，不走 LLM。
+- `retrieve_evidence_with_timeout()`：可选 Milvus 检索。失败或超时不阻断推荐。
+- `score_required_components()`：对每个目标类目筛候选并打分。
+- `filter_products_for_requirement()`：结构化过滤，处理品类、预算、品牌、排除词、库存等硬条件。
+- `fuse_candidates()`：把规则候选和向量召回候选融合。
+- `score_products()`：综合场景匹配、属性匹配、价格、口碑、库存、SKU、详情质量、RAG evidence 等分数排序。
+- `build_product_cards()`：把排序后的商品变成前端能展示的商品卡。
+
+推荐结果回到 `handle_recommend()` 后，会按顺序发：
+
+```text
+intent_route
+progress
+delta
+product_cards
+candidate_scope
+comparison_table
+follow_up_questions
+result
+done
+```
+
+如果 router 参数里有 `action=add_to_cart`，推荐结束后不会直接写购物车，而是生成 `cart_confirmation`，等待 `/api/cart/confirm`。
+
+#### I. 购物车链路：怎么根据 query 找到要操作的商品
+
+购物车入口是 `tool_handlers.handle_cart_v2()`。它先调用 `_resolve_cart_action()` 判断动作：
+
+- `operation=add/remove/set_quantity/clear/view`：优先用 LLM 或 router 下传的结构化动作。
+- 没有 `operation` 时，用 `session_state.infer_cart_action()` 从中文关键词判断。
+
+加购走 `_handle_cart_add()`，删除和改数量走 `_handle_cart_modify()`，查看走 `_handle_cart_view()`，清空走 `_handle_cart_clear()`。
+
+真正决定商品的是 `_resolve_product_for_cart()`：
+
+```text
+显式 product_ids（请求附件/消息 ID）
+-> LLM/router 下传 product_ids / target_product_id
+-> target_product_index 或消息里的“第一款/第二款”
+-> 当前购物车或上一轮 product_cards 的服务端顺序校验
+-> 标题/品牌模糊匹配
+-> LLM 消歧 _llm_resolve_cart_product()
+-> 首项兜底
+```
+
+这里有两层保护：
+
+- 加购时，LLM 传下来的 `product_id` 必须属于上一轮用户实际看到的 `product_cards`。
+- 删除/改数量时，LLM 传下来的 `product_id` 必须属于当前 `cart`。
+
+如果 LLM 同时传了 `target_product_index=2` 和错误的 `product_id`，服务端会按用户原文序号和当前可见列表重新解析，优先相信服务端上下文。`last_recommended_product_ids()` 也已经改成优先按 `product_cards` 顺序返回，保证“第二款”对应前端实际展示的第二张卡。
+
+购物车不会马上写入 `cart`。`_handle_cart_add()` / `_handle_cart_modify()` 会先创建 plan：
+
+```text
+_make_plan()
+session.pending_cart_action = plan
+save_session(session)
+emit cart_confirmation
+```
+
+用户点击确认后，`rag/api/routes/chat.py::cart_confirm()` 会：
+
+```text
+读取 session.pending_cart_action
+检查 expires_at
+根据 operation 拼 instruction
+调用 session_state.apply_cart_instruction()
+清空 pending_cart_action
+save_session()
+返回 cart snapshot
+```
+
+`apply_cart_instruction()` 才是真正写购物车的函数。它会再次调用 `infer_cart_action()` 和 `resolve_cart_product_ids()`，然后修改 `session.cart`，最后用 `cart_snapshot()` 生成购物车展示数据。
+
+#### J. 闲聊和其他非推荐链路
+
+如果路由是 `general_chat`，系统走 `handle_general_chat()`：
+
+- 先调用 `update_topic_memory()`，把当前 topic 标成 general chat。
+- 再调用 `_generate_general_chat_llm_response()`，让 LLM 用 1 到 3 句话回答。
+- 如果 LLM 不可用或输出太短，走 `_generate_general_chat_fallback()` 模板。
+- 最后发 `delta` 和 `done`。
+
+如果路由是 `compare_products`，系统走 `handle_compare_v2()`：
+
+- 优先使用 router 或请求里的 `product_ids`。
+- 如果没有，尝试上一轮推荐结果。
+- 调用 `compare_products()` 生成对比行、赢家、价格/参数差异。
+
+如果路由是 `parameter_query`、`sku_detail`、`price_comparison`：
+
+- handler 会根据 router 提取的 `product_mentions`、`attribute`、`sku_criteria`、上一轮商品卡等上下文定位商品。
+- 这些链路主要返回 `delta`，不会进入完整推荐组包。
 
 ### 3. Runtime policy 是功能门控，不是分模式业务链路
 
@@ -90,6 +377,7 @@ try_llm_route_tool_call()
   -> OpenAICompatibleChatClient
   -> MALLMIND_ROUTER_MODEL 或 fast_model
   -> 要求模型返回 JSON tool call
+  -> 购物车工具会尽量输出 operation / product_ids / target_product_id / target_product_index / quantity
   -> 超时、异常、熔断时返回 None
 
 validate_tool_call()
@@ -225,6 +513,7 @@ structured_filter 规则候选
 ```text
 用户："把第一款加入购物车"
   -> route_shopping_tool_call()
+     -> LLM 可输出 operation=add、product_ids、target_product_id、target_product_index
   -> validate_tool_call()
   -> tool = apply_cart_instruction
   -> handle_cart_v2()
@@ -232,8 +521,9 @@ structured_filter 规则候选
   -> _handle_cart_add()
      -> _resolve_product_for_cart()
         -> 显式 product_ids
-        -> tool_call.arguments.product_ids
-        -> 上一轮推荐 last_result 的序号/上一款引用
+        -> tool_call.arguments.product_ids / target_product_id，且必须命中上一轮可见商品卡
+        -> target_product_index 或用户原文序号，按 product_cards 展示顺序解析
+        -> 上一轮推荐 last_result 的上一款引用
         -> 品牌或标题模糊匹配
         -> LLM 推荐列表消歧
         -> 推荐首项兜底
@@ -260,6 +550,7 @@ structured_filter 规则候选
 ```text
 用户："删除第一款" / "把第一个数量改为 2"
   -> route_shopping_tool_call()
+     -> LLM 可输出 operation=remove/set_quantity、product_ids、target_product_id、target_product_index
   -> validate_tool_call()
   -> tool = apply_cart_instruction
   -> handle_cart_v2()
@@ -267,9 +558,9 @@ structured_filter 规则候选
      -> 空购物车直接 delta 提示
      -> _check_cart_ambiguity() 检查同品类歧义、序号越界
      -> _resolve_product_for_cart()
-        -> 显式 id
+        -> 显式 id / LLM 目标 id，且必须命中当前 cart items
         -> 当前 cart 模糊匹配
-        -> 序号
+        -> 序号，按当前购物车顺序解析
         -> previous item 引用
         -> cart 第一项兜底
      -> session.pending_cart_action = plan
@@ -382,7 +673,7 @@ PC 整机方案和单个 PC 配件推荐是两条不同业务处理：
 
 ### 17. 测试与文档漂移问题
 
-- `tests/test_cart_improvements.py` 当前通过：51 passed。
+- `tests/test_cart_improvements.py` 当前通过：56 passed。
 - `scripts.check_llm_provider` 当前通过：chat、json output、router schema 均 success。
 - 真实 API smoke 当前通过：PC 电源推荐、防晒推荐、加购确认、删除确认。
 - `tests/test_tool_router.py` 当前结果为 39 passed / 9 failed，失败主要来自旧测试期望和当前源码不一致，例如期望旧 trace 字段、旧路由名称或旧 category 语义。建议后续单独按“当前真实路由合同”重写这组测试，而不是让代码迎合过期断言。
