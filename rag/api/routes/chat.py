@@ -16,6 +16,7 @@ from rag.recommendation.handler_base import generate_trace_id, trace_span
 from rag.recommendation.product_loader import load_combined_product_catalog
 from rag.recommendation.session_state import (
     apply_cart_instruction,
+    cart_snapshot,
     get_session,
     save_session,
     update_session_from_router,
@@ -349,6 +350,17 @@ def cart_confirm(request: Dict[str, Any]) -> Dict[str, Any]:
     title = getattr(product, "title", plan.get("product_title", "")) if product else plan.get("product_title", "")
     operation = plan.get("operation", "add")
 
+    if operation == "clear":
+        removed_count = len(session.cart)
+        session.cart.clear()
+        session.pending_cart_action = {}
+        save_session(session)
+        return {
+            "status": "applied",
+            "cart": cart_snapshot(session, catalog),
+            "action": "clear",
+            "messages": [f"已清空购物车（移除了 {removed_count} 件商品）。"],
+        }
     if operation == "remove":
         instruction = f"删除 {pid} {title}"
     elif operation == "set_quantity":

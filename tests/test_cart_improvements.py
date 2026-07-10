@@ -554,7 +554,7 @@ class TestHandleCartV2Dispatch:
                 events.append({"event": event_type, "data": data})
         return events
 
-    def test_clear_dispatches_directly(self, session_with_cart, catalog):
+    def test_clear_dispatches_to_confirmation(self, session_with_cart, catalog):
         from rag.recommendation.tool_handlers import handle_cart_v2
         from rag.recommendation.session_state import CartItem
         session = _make_session()
@@ -563,11 +563,10 @@ class TestHandleCartV2Dispatch:
         events = self._collect_sse_events(
             handle_cart_v2(session, "清空购物车", [], tool_call)
         )
-        # Clear should NOT produce cart_confirmation, just delta + cart + done
         event_types = [e.get("event") for e in events]
-        assert "cart_confirmation" not in event_types
-        assert "delta" in event_types
-        assert len(session.cart) == 0
+        assert "cart_confirmation" in event_types
+        assert session.pending_cart_action["operation"] == "clear"
+        assert len(session.cart) == 1
 
     def test_remove_dispatches_to_modify(self, session_with_cart, catalog):
         from rag.recommendation.tool_handlers import handle_cart_v2

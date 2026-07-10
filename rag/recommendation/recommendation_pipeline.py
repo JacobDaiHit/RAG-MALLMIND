@@ -13,6 +13,7 @@ from rag.recommendation.input_preprocessor import clean_text
 from rag.recommendation.explanation_builder import build_evidence_grounded_explanation
 from rag.recommendation.package_builder import build_recommendation_result
 from rag.recommendation.llm_client import LLMClientError, OpenAICompatibleChatClient, get_llm_provider_trace, report_to_dict, run_with_hard_timeout
+from rag.recommendation.brand_normalizer import canonicalize_brand_terms
 from rag.recommendation.query_guards import is_pc_query
 from rag.security.prompt_guard import defense_prefix, defense_suffix, wrap_user_input
 from rag.schemas import BudgetLevel, ComponentCategory, RecommendationResult, RequirementLevel, RequirementSpec
@@ -224,8 +225,8 @@ def _requirement_from_args(args: Dict[str, Any], user_goal: str) -> RequirementS
         desired_categories=desired_categories,
         required_components=desired_categories,
         target_sub_categories=[sub_category] if sub_category else [],
-        brands=[str(b) for b in (args.get("brands") or []) if str(b).strip()],
-        excluded_brands=[str(b) for b in (args.get("exclude_brands") or []) if str(b).strip()],
+        brands=canonicalize_brand_terms(args.get("brands") or []),
+        excluded_brands=canonicalize_brand_terms(args.get("exclude_brands") or []),
         must_have_terms=[str(t) for t in (args.get("must_have_terms") or []) if str(t).strip()],
         price_min=price_min,
         price_max=price_max,
@@ -287,9 +288,9 @@ def _requirement_from_args_v2(
         if args["brands"] == _CLEAR_SENTINEL:
             brands = []
         else:
-            brands = [str(b) for b in (args.get("brands") or []) if str(b).strip()]
+            brands = canonicalize_brand_terms(args.get("brands") or [])
     elif session_current.get("brands"):
-        brands = [str(b) for b in session_current["brands"] if str(b).strip()]
+        brands = canonicalize_brand_terms(session_current["brands"])
     else:
         brands = []
     # exclude_brands
@@ -297,9 +298,9 @@ def _requirement_from_args_v2(
         if args["exclude_brands"] == _CLEAR_SENTINEL:
             excluded_brands = []
         else:
-            excluded_brands = [str(b) for b in (args.get("exclude_brands") or []) if str(b).strip()]
+            excluded_brands = canonicalize_brand_terms(args.get("exclude_brands") or [])
     elif session_current.get("exclude_brands"):
-        excluded_brands = [str(b) for b in session_current["exclude_brands"] if str(b).strip()]
+        excluded_brands = canonicalize_brand_terms(session_current["exclude_brands"])
     else:
         excluded_brands = []
 
@@ -348,11 +349,11 @@ def _requirement_from_args_v2(
         desired_categories=desired_categories,
         required_components=desired_categories,
         target_sub_categories=target_sub_categories,
-        brands=(brands if "brands" in args or session_current.get("brands") else list(fallback.brands)),
+        brands=(brands if "brands" in args or session_current.get("brands") else canonicalize_brand_terms(fallback.brands)),
         excluded_brands=(
             excluded_brands
             if "exclude_brands" in args or session_current.get("exclude_brands")
-            else list(fallback.excluded_brands)
+            else canonicalize_brand_terms(fallback.excluded_brands)
         ),
         must_have_terms=must_have_terms,
         excluded_terms=excluded_terms,
@@ -877,7 +878,7 @@ def parse_requirement_rule_based(user_goal: str, *, skip_keyword_check: bool = F
     need_multimodal = has_any(lower, ["图片", "照片", "拍照", "上传", "同款", "街拍", "截图"])
     scenario = infer_scenario(lower, desired_categories, need_bundle, need_comparison, need_cart_action)
     target_sub_categories = infer_target_sub_categories(normalized)
-    brands = [brand for brand in BRAND_HINTS if brand in normalized and brand not in excluded_brands]
+    brands = canonicalize_brand_terms(brand for brand in BRAND_HINTS if brand in normalized and brand not in excluded_brands)
 
     missing_fields = []
     if not desired_categories:
@@ -900,7 +901,7 @@ def parse_requirement_rule_based(user_goal: str, *, skip_keyword_check: bool = F
         desired_categories=desired_categories,
         target_sub_categories=target_sub_categories,
         brands=brands,
-        excluded_brands=excluded_brands,
+        excluded_brands=canonicalize_brand_terms(excluded_brands),
         must_have_terms=must_have_terms,
         excluded_terms=excluded_terms,
         preferences=preferences,

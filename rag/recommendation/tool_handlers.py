@@ -6,12 +6,19 @@ from rag.api.app_context import VALIDATION_VERSION, model_to_dict, validate_goal
 from rag.api.sse import sse_event
 from rag.recommendation import InvalidGoalError, recommend_shopping_products
 from rag.recommendation.comparison import compare_products
+from rag.recommendation.comparison_summary import summarize_comparison
+from rag.recommendation.comparison_targets import resolve_comparison_product_ids
 from rag.recommendation.image_retrieval import retrieve_image_evidence
 from rag.recommendation.input_preprocessor import preprocess_user_input
 from rag.recommendation.recommendation_pipeline import fact_check_result  # 🟢 新增
 from rag.recommendation.response_generator import generate_natural_response  # 🟢 新增
 from rag.recommendation.pc_session_flow import build_pc_plan_for_message, format_pc_plan_comparison_text
 from rag.recommendation.product_loader import load_catalog_for_scope, load_combined_product_catalog
+from rag.recommendation.product_info_tools import (
+    answer_parameter_query,
+    answer_price_comparison,
+    answer_sku_query,
+)
 from rag.recommendation.session_state import (
     apply_cart_instruction,
     current_topic_json,
@@ -360,6 +367,8 @@ def _build_confirmation_message(plan: Dict[str, Any], operation: str) -> str:
     qty = plan.get("quantity", 1)
     price = plan.get("estimated_unit_price")
 
+    if operation == "clear":
+        return f"确认清空购物车里的 {qty} 件商品？"
     if operation == "remove":
         return f"确认从购物车移除 {title}？"
     if operation == "set_quantity":
@@ -375,7 +384,7 @@ def _cart_item_list(session: Any, catalog: Any) -> List[Dict[str, Any]]:
     for i, (pid, cart_item) in enumerate(session.cart.items()):
         product = catalog.get(pid) if catalog else None
         title = getattr(product, "title", pid) if product else pid
-        price = getattr(product, "base_price", None) if product else None
+        price = _cart_display_price(product) if product else None
         items.append({
             "index": i + 1,
             "product_id": pid,
@@ -384,6 +393,15 @@ def _cart_item_list(session: Any, catalog: Any) -> List[Dict[str, Any]]:
             "quantity": getattr(cart_item, "quantity", 1),
         })
     return items
+
+
+def _cart_display_price(product: Any) -> Optional[float]:
+    """Use the same product-level price that cart_snapshot displays."""
+
+    if product is None:
+        return None
+    price = getattr(product, "min_price", None) or getattr(product, "base_price", None)
+    return float(price) if price is not None else None
 
 
 def _check_cart_ambiguity(
@@ -455,7 +473,7 @@ def _handle_cart_add(
         return
 
     product_title = getattr(product, "title", plan_product_id)
-    unit_price = getattr(product, "base_price", None)
+    unit_price = _cart_display_price(product)
     raw_qty = args.get("quantity", 1)
     quantity = max(int(raw_qty) if raw_qty is not None else 1, 1)
     estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
@@ -508,7 +526,7 @@ def _handle_cart_modify(
         return
 
     product_title = getattr(product, "title", plan_product_id)
-    unit_price = getattr(product, "base_price", None)
+    unit_price = _cart_display_price(product)
 
     if action == "set_quantity":
         raw_qty = extract_quantity(message) or args.get("quantity", 1)
@@ -529,13 +547,19 @@ def _handle_cart_modify(
 
 
 def _handle_cart_clear(session: Any, catalog: Any) -> Iterable[str]:
-    """🟣 v4: 清空购物车——直接执行，不走确认。"""
+    """Create a confirmation plan for clearing the cart."""
     count = len(session.cart)
-    session.cart.clear()
+    if count <= 0:
+        yield sse_event("delta", {"text": "购物车已经是空的。"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    plan = _make_plan("", "购物车全部商品", "clear", count, None, None)
+    session.pending_cart_action = plan
     save_session(session)
-    from rag.recommendation.session_state import cart_snapshot
-    yield sse_event("delta", {"text": f"已清空购物车（移除了 {count} 件商品）。"})
-    yield sse_event("cart", cart_snapshot(session, catalog))
+    yield sse_event("cart_confirmation", {
+        "plan": plan,
+        "message": _build_confirmation_message(plan, "clear"),
+    })
     yield sse_event("done", {"session_id": session.session_id})
 
 
@@ -652,6 +676,10 @@ def handle_compare_v2(session: Any, product_ids: List[str], tool_call: Dict[str,
     fact_issues: List[Dict[str, Any]] = []
     arguments = tool_call.get("arguments") or {}
     fallback_source = "direct"  # router 直接传了 product_ids
+    resolved_ids = resolve_comparison_product_ids(catalog, session, tool_call, product_ids)
+    if resolved_ids:
+        fallback_source = "resolved_context" if not product_ids else fallback_source
+        product_ids = resolved_ids
 
     # ── 三级降级链 ──
     if not product_ids:
@@ -758,9 +786,12 @@ def handle_compare_v2(session: Any, product_ids: List[str], tool_call: Dict[str,
     compare_result = compare_products(catalog, valid_ids)
     compare_result["fact_check_issues"] = fact_issues
     compare_result["missing_product_ids"] = [pid for pid in product_ids if pid not in valid_ids]
+    summary_text = summarize_comparison(str(arguments.get("query") or ""), compare_result)
 
     update_topic_memory(session, tool_call, result_type="comparison")
     yield sse_event("intent_route", {"route": "comparison", "task_type": "compare_products_v2", "tool_call": tool_call})
+    if summary_text:
+        yield sse_event("delta", {"text": summary_text})
     yield sse_event("comparison_table", {"rows": compare_result.get("rows") or []})
     yield sse_event("result", {
         "type": "comparison",
@@ -817,150 +848,30 @@ def _emit_pc_build_comparison(session: Any, tool_call: Dict[str, Any]) -> Iterab
     yield sse_event("done", {"session_id": session.session_id})
 
 
-# ── 新增: 参数查询 / SKU 查询 / 价格比较 处理器 ──
-
-
-def _resolve_product(catalog, product_mentions: List[str], session: Any):
-    """Try to find a product from mentions or session last_result."""
-    # 1. 从 product_mentions 匹配
-    if product_mentions:
-        for mention in product_mentions:
-            mention_lower = mention.lower()
-            for pid, product in catalog.by_id.items():
-                if mention_lower in product.title.lower() or mention_lower in pid.lower():
-                    return product
-    # 2. 降级到 session.last_result 中最近推荐的商品
-    last_ids = last_recommended_product_ids(session)
-    if last_ids:
-        first_id = last_ids[0]
-        product = catalog.get(first_id)
-        if product:
-            return product
-    return None
-
-
 def handle_parameter_query(session: Any, tool_call: Dict[str, Any]) -> Iterable[str]:
     """Answer factual questions about specific product attributes (功耗、重量、尺寸等)."""
-    arguments = tool_call.get("arguments") or {}
-    product_mentions = arguments.get("product_mentions") or []
-    attribute = str(arguments.get("attribute") or "").strip()
-
-    catalog = load_combined_product_catalog()
-    product = _resolve_product(catalog, product_mentions, session)
-
-    if not product:
-        yield sse_event("delta", {"text": "你想了解哪款商品的参数？可以告诉我具体型号。"})
-        yield sse_event("done", {"session_id": session.session_id})
-        return
-
-    # 从产品数据中提取属性信息
-    detail_parts = [f"「{product.title}」"]
-    if product.brand:
-        detail_parts.append(f"品牌：{product.brand}")
-
-    # 尝试从 description 和 tags 中匹配属性
-    desc = product.description or ""
-    tags = " ".join(product.tags) if product.tags else ""
-    all_text = f"{desc} {tags}"
-
-    if attribute and attribute.lower() in all_text.lower():
-        # 简单提取包含属性关键词的句子
-        sentences = desc.replace("。", "。\n").split("\n")
-        matched = [s.strip() for s in sentences if attribute in s]
-        if matched:
-            detail_parts.append(f"关于{attribute}：{'；'.join(matched[:2])}")
-        else:
-            detail_parts.append(f"关于{attribute}：商品描述中提到了相关信息，建议查看详情页。")
-    elif attribute:
-        detail_parts.append(f"关于{attribute}：商品库中暂未收录该参数的具体数据，建议查看商品详情页。")
-
-    # 补充基础信息
-    if product.base_price:
-        detail_parts.append(f"参考价：¥{product.base_price}")
-
-    yield sse_event("delta", {"text": "\n".join(detail_parts)})
-    yield sse_event("product_cards", product_cards_payload([model_to_dict(product)]))
+    answer = answer_parameter_query(session, tool_call)
+    yield sse_event("delta", {"text": answer.text})
+    if answer.product is not None:
+        yield sse_event("product_cards", product_cards_payload([model_to_dict(answer.product)]))
     yield sse_event("done", {"session_id": session.session_id})
 
 
 def handle_sku_query(session: Any, tool_call: Dict[str, Any]) -> Iterable[str]:
     """Answer SKU-level queries: price differences between configurations."""
-    arguments = tool_call.get("arguments") or {}
-    product_mentions = arguments.get("product_mentions") or []
-    sku_criteria = str(arguments.get("sku_criteria") or "").strip()
-
-    catalog = load_combined_product_catalog()
-    product = _resolve_product(catalog, product_mentions, session)
-
-    if not product:
-        yield sse_event("delta", {"text": "你想了解哪款商品的配置差异？可以告诉我具体型号。"})
-        yield sse_event("done", {"session_id": session.session_id})
-        return
-
-    skus = product.skus or []
-    if not skus:
-        yield sse_event("delta", {"text": f"「{product.title}」暂时没有多种配置可选。"})
-        yield sse_event("done", {"session_id": session.session_id})
-        return
-
-    # 如果有 sku_criteria，筛选匹配的 SKU
-    matched_skus = []
-    if sku_criteria:
-        criteria_lower = sku_criteria.lower()
-        for sku in skus:
-            sku_text = " ".join(str(v) for v in sku.properties.values()).lower()
-            if criteria_lower in sku_text:
-                matched_skus.append(sku)
-
-    display_skus = matched_skus if matched_skus else skus
-
-    lines = [f"「{product.title}」的配置信息："]
-    for sku in display_skus:
-        props = " / ".join(str(v) for v in sku.properties.values())
-        price = sku.price or product.base_price or 0
-        lines.append(f"- {props}：¥{price}")
-
-    if len(display_skus) >= 2:
-        prices = [sku.price or product.base_price or 0 for sku in display_skus]
-        diff = max(prices) - min(prices)
-        if diff > 0:
-            lines.append(f"\n最高配与最低配差价：¥{diff}")
-
-    yield sse_event("delta", {"text": "\n".join(lines)})
+    answer = answer_sku_query(session, tool_call)
+    yield sse_event("delta", {"text": answer.text})
+    if answer.product is not None:
+        yield sse_event("product_cards", product_cards_payload([model_to_dict(answer.product)]))
     yield sse_event("done", {"session_id": session.session_id})
 
 
 def handle_price_comparison(session: Any, tool_call: Dict[str, Any]) -> Iterable[str]:
     """Answer price comparison/confirmation queries."""
-    arguments = tool_call.get("arguments") or {}
-    product_mentions = arguments.get("product_mentions") or []
-
-    catalog = load_combined_product_catalog()
-    product = _resolve_product(catalog, product_mentions, session)
-
-    if not product:
-        yield sse_event("delta", {"text": "你想比价哪款商品？可以告诉我具体型号。"})
-        yield sse_event("done", {"session_id": session.session_id})
-        return
-
-    lines = [f"「{product.title}」的价格信息："]
-    if product.base_price:
-        lines.append(f"参考价：¥{product.base_price}")
-    if product.min_price and product.max_price and product.min_price != product.max_price:
-        lines.append(f"价格区间：¥{product.min_price} ~ ¥{product.max_price}")
-
-    skus = product.skus or []
-    if skus:
-        lines.append("\n各配置价格：")
-        for sku in skus:
-            props = " / ".join(str(v) for v in sku.properties.values())
-            price = sku.price or product.base_price or 0
-            lines.append(f"- {props}：¥{price}")
-
-    lines.append("\n以上为商品库中的参考价格，实际价格请以购买页面为准。")
-
-    yield sse_event("delta", {"text": "\n".join(lines)})
-    yield sse_event("product_cards", product_cards_payload([model_to_dict(product)]))
+    answer = answer_price_comparison(session, tool_call)
+    yield sse_event("delta", {"text": answer.text})
+    if answer.product is not None:
+        yield sse_event("product_cards", product_cards_payload([model_to_dict(answer.product)]))
     yield sse_event("done", {"session_id": session.session_id})
 
 
@@ -1145,7 +1056,7 @@ def handle_recommend(
             catalog = load_combined_product_catalog()
             product = catalog.get(top_ids[0])
             if product is not None:
-                unit_price = getattr(product, "base_price", None)
+                unit_price = _cart_display_price(product)
                 quantity = max(int(tool_args.get("quantity") or 1), 1)
                 estimated_total = round(unit_price * quantity, 2) if unit_price is not None else None
                 plan = _make_plan(top_ids[0], getattr(product, "title", top_ids[0]), "add", quantity, unit_price, estimated_total)

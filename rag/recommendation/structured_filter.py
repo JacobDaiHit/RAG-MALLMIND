@@ -23,6 +23,7 @@ from rag.recommendation.query_guards import (
     product_matches_type,
     budget_relaxation_allowed,
 )
+from rag.recommendation.brand_normalizer import expand_brand_terms, normalize_brand_text
 from rag.schemas import ApiProduct, ComponentCategory, RequirementSpec
 from rag.security.prompt_guard import defense_prefix, defense_suffix
 
@@ -342,15 +343,19 @@ def _matches_brand_requirement(product: ApiProduct, brands: List[str]) -> bool:
     Uses normalized comparison to handle sub-brands and aliases.
     E.g. brands=["华为"] matches product.brand="HUAWEI" or "华为".
     """
-    if not product.brand:
+    searchable_identity = normalize_brand_text(" ".join([
+        product.brand,
+        product.title,
+        " ".join(product.tags[:8]),
+    ]))
+    if not searchable_identity:
         return False
-    product_brand_norm = normalize(product.brand)
-    for required_brand in brands:
-        required_norm = normalize(required_brand)
+    for required_brand in expand_brand_terms(brands):
+        required_norm = normalize_brand_text(required_brand)
         if not required_norm:
             continue
-        # 双向子串匹配：处理子品牌和别名
-        if required_norm in product_brand_norm or product_brand_norm in required_norm:
+        # 双向子串匹配：处理子品牌、产品线和别名。
+        if required_norm in searchable_identity or searchable_identity in required_norm:
             return True
     return False
 
