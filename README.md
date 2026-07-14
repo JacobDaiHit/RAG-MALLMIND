@@ -162,46 +162,56 @@ REDIS_URL=redis://localhost:6379/0
 
 ### 3. 启动后端
 
-启动前请先激活虚拟环境
+Windows PowerShell 下请优先使用项目虚拟环境启动。不要直接使用系统 Python，
+否则可能调用到 Python 3.8 等旧版本，导致依赖或类型特性不兼容。
 
-```bash
-d:\github\.venv\Scripts\Activate.ps1
+```powershell
+$venv = "D:\github\.venv\Scripts"
+& "$venv\Activate.ps1"
+python --version
 ```
 
-项目内已有脚本：
+确认版本为项目虚拟环境后，显式绑定本地地址和 8000 端口：
 
-```bash
-python scripts/run_recommendation_api.py
+```powershell
+$env:HOST = "127.0.0.1"
+$env:PORT = "8000"
+python scripts\run_recommendation_api.py
 ```
 
-也可以直接：
+如果 PowerShell 不允许执行 `Activate.ps1`，可以不激活环境，直接调用虚拟环境中的
+Python：
 
-```bash
-python -m uvicorn rag.api.recommendation_app:app --host 127.0.0.1 --port 8000
+```powershell
+$env:HOST = "127.0.0.1"
+$env:PORT = "8000"
+& "D:\github\.venv\Scripts\python.exe" scripts\run_recommendation_api.py
 ```
 
-或者
-```bash
-$env:PORT="8011"; $env:HOST="127.0.0.1"; python scripts\run_recommendation_api.py  
-```
-
-其中：
-
-- `HOST` 可配置
-- `PORT` 可配置
-- `scripts/run_recommendation_api.py` 默认端口是 `8011`
-- `uvicorn` 示例默认端口是 `8000`
-
-### 4. 打开 Web 调试台
+启动成功后访问：
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-或脚本默认端口：
+使用健康检查确认后端和商品目录已加载：
+
+```powershell
+Invoke-WebRequest http://127.0.0.1:8000/health -UseBasicParsing
+```
+
+应返回 HTTP 200，并看到 `status: ok`、`catalog_loaded: true`。
+
+其中：
+
+- `HOST` 建议开发环境使用 `127.0.0.1`；需要局域网访问时可改为 `0.0.0.0`
+- `PORT` 默认使用 `8000`；如果端口被占用，需要先停止占用进程或修改端口
+- 已启动 Milvus 时，健康检查中的 `milvus_enabled` 应为 `true`
+
+### 4. 打开 Web 调试台
 
 ```text
-http://127.0.0.1:8011/
+http://127.0.0.1:8000/
 ```
 
 ## 数据校验与索引构建
