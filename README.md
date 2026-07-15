@@ -277,13 +277,13 @@ python scripts/index_ecommerce_products.py --rebuild
 默认命令不走外部大模型，`use_llm=False`，`runtime_mode=balanced`，适合稳定 CI：
 
 ```bash
-python scripts/eval_user_scenarios.py --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+python scripts/eval_user_scenarios.py --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
 ```
 
 如果要测试 full 链路和外部大模型，可显式开启：
 
 ```bash
-python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
 ```
 
 说明：
@@ -297,13 +297,13 @@ python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-jso
 用于评估商品召回、约束违例、catalog gap 和 negative case 的检索质量。默认更适合离线评估。
 
 ```bash
-python scripts/eval_retrieval.py --output reports/retrieval_eval.json --markdown reports/retrieval_eval.md
+python scripts/eval_retrieval.py --output .pytest_tmp/retrieval_eval.json --markdown .pytest_tmp/retrieval_eval.md
 ```
 
 如果要验证 Milvus 集合和向量索引健康：
 
 ```bash
-python scripts/check_vector_index_health.py --output reports/vector_index_health.json
+python scripts/check_vector_index_health.py --output .pytest_tmp/vector_index_health.json
 ```
 
 ### 6. 模型链路消融评估
@@ -317,8 +317,8 @@ python scripts/eval_model_chain_ablation.py \
   --cases tests/fixtures/capability_challenge_eval_cases.json \
   --groups fast_baseline,rag_only,balanced_demo \
   --limit 12 \
-  --output reports/capability_challenge_quick.json \
-  --markdown reports/capability_challenge_quick.md
+  --output .pytest_tmp/model_chain_ablation.json \
+  --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 **核心 5 组中等规模（约 8 分钟，20 case × 5 组）：**
@@ -328,8 +328,8 @@ python scripts/eval_model_chain_ablation.py \
   --cases tests/fixtures/capability_challenge_eval_cases.json \
   --groups fast_baseline,rag_only,balanced_demo,router_llm_only,parse_llm_only \
   --limit 20 \
-  --output reports/capability_challenge_20.json \
-  --markdown reports/capability_challenge_20.md
+  --output .pytest_tmp/model_chain_ablation.json \
+  --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 **完整 9 组全量评估（约 30 分钟，40 case × 9 组）：**
@@ -338,8 +338,8 @@ python scripts/eval_model_chain_ablation.py \
 python scripts/eval_model_chain_ablation.py \
   --cases tests/fixtures/capability_challenge_eval_cases.json \
   --groups all \
-  --output reports/capability_challenge_eval.json \
-  --markdown reports/capability_challenge_eval.md
+  --output .pytest_tmp/model_chain_ablation.json \
+  --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 **只跑单个 case 调试：**
@@ -349,8 +349,8 @@ python scripts/eval_model_chain_ablation.py \
   --cases tests/fixtures/capability_challenge_eval_cases.json \
   --case-id cap_synonym_commute_noise_beans \
   --groups fast_baseline,rag_only,balanced_demo \
-  --output reports/capability_challenge_single.json \
-  --markdown reports/capability_challenge_single.md
+  --output .pytest_tmp/model_chain_ablation.json \
+  --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 **禁用 router LLM 跑（隔离 RAG + parse 贡献）：**
@@ -360,8 +360,8 @@ python scripts/eval_model_chain_ablation.py \
   --cases tests/fixtures/capability_challenge_eval_cases.json \
   --groups balanced_demo --limit 12 \
   --disable-router-llm \
-  --output reports/capability_challenge_no_router.json \
-  --markdown reports/capability_challenge_no_router.md
+  --output .pytest_tmp/model_chain_ablation.json \
+  --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 关注指标（打开生成的 `.md` 报告）：
@@ -377,7 +377,7 @@ python scripts/eval_model_chain_ablation.py \
 ```bash
 python scripts/validate_pc_dataset.py --strict
 python scripts/index_ecommerce_products.py --dry-run
-python scripts/eval_user_scenarios.py --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
+python scripts/eval_user_scenarios.py --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
 python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
 ```
 
@@ -385,9 +385,9 @@ python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
 
 ```bash
 python scripts/index_ecommerce_products.py --rebuild
-python scripts/check_vector_index_health.py --output reports/vector_index_health.json
-python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json reports/user_scenarios_eval.json --output-md reports/user_scenarios_eval.md
-python scripts/eval_model_chain_ablation.py --cases tests/fixtures/capability_challenge_eval_cases.json --groups all --output reports/capability_challenge_eval.json --markdown reports/capability_challenge_eval.md
+python scripts/check_vector_index_health.py --output .pytest_tmp/vector_index_health.json
+python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
+python scripts/eval_model_chain_ablation.py --cases tests/fixtures/capability_challenge_eval_cases.json --groups all --output .pytest_tmp/model_chain_ablation.json --markdown .pytest_tmp/model_chain_ablation.md
 ```
 
 部分能力若涉及 LLM、Milvus、Redis 或数据库连通性，是否完全通过会受本地环境影响。

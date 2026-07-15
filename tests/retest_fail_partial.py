@@ -88,7 +88,7 @@ def main():
                 print(f"    > {line.strip()}")
 
     # Save
-    out_path = os.path.join(os.path.dirname(__file__), "..", "reports", "retest_results_v4_mimo.json")
+    out_path = os.path.join(os.path.dirname(__file__), "..", ".pytest_tmp", "retest_results.json")
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
     print(f"\n\nResults saved to {out_path}")

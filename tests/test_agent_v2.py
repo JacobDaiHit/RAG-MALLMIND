@@ -26,8 +26,8 @@ from test_agent_v1 import (
 )
 
 # 覆盖报告目录
-REPORT_DIR = Path(__file__).resolve().parents[1] / "reports"
-RAW_DIR = REPORT_DIR / "agent_v2_raw"
+REPORT_DIR = Path(__file__).resolve().parents[1] / ".pytest_tmp"
+RAW_DIR = REPORT_DIR / "agent_eval_raw"
 
 # ======================================================================
 # 测试用例定义 (72 cases, IDs 101-172)
@@ -367,7 +367,7 @@ def main():
 
     report_md = generate_v2_report(results)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
-    report_path = REPORT_DIR / "agent_v2_test_report.md"
+    report_path = REPORT_DIR / "agent_eval.md"
     report_path.write_text(report_md, encoding="utf-8")
     print(f"\n报告已生成: {report_path}")
 

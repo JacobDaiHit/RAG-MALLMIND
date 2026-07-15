@@ -169,15 +169,9 @@
 
 | 文件 | 作用 |
 |------|------|
-| `v2_guard_downgrade_retest_report.md` | **最新报告**：Guard 降级 + Prompt 优化后 25 条案例复测 |
-| `v2_fail_partial_retest_report.md` | FAIL/PARTIAL 案例复测（25 条） |
-| `v2_analysis.md` | V2 测试结果分析（73 条全量） |
-| `v2_llm_field_extraction_diagnosis.md` | LLM 字段提取诊断 |
-| `fail_cases_retest_report.md` | 失败案例复测报告 |
-| `agent_v2_test_report.md` | Agent V2 测试报告 |
-| `capability_challenge*.md/json` | 能力挑战评估系列报告 |
-| `p1_fix*.md/json` | P1 修复评估报告 |
-| `full_chain_ablation.*` | 全链路消融评估 |
+| `README.md` | 评测报告索引，以及报告与 `tests/`、`scripts/` 的对应关系 |
+| `rag_router_eval_report_20260710_123554.md` | 最新 RAG 检索与 LLM 路由合并分析 |
+| `rag_router_eval_20260710.json` | 最新 RAG 检索与 LLM 路由原始评测数据 |
 
 ---
 

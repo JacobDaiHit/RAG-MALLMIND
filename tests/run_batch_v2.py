@@ -141,7 +141,7 @@ def main():
                 print(f"  Error: {r.error}")
 
     # Save JSON results for report generation
-    out_dir = os.path.join(os.path.dirname(__file__), "..", "reports")
+    out_dir = os.path.join(os.path.dirname(__file__), "..", ".pytest_tmp")
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "v2_llm_filter_test_results.json")
     payload = []

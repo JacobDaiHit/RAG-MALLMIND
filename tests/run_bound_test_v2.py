@@ -1,5 +1,6 @@
 """边界测试执行脚本 v2"""
 import json, requests, sys, time, io
+from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
@@ -230,6 +231,8 @@ for case in CASES:
         print(f"      reply: {reply_preview}")
     results.append(case_result)
 
-with open("reports/bound_test_v2_raw.json", "w", encoding="utf-8") as f:
+output_path = Path(".pytest_tmp") / "bound_test.json"
+output_path.parent.mkdir(parents=True, exist_ok=True)
+with output_path.open("w", encoding="utf-8") as f:
     json.dump(results, f, ensure_ascii=False, indent=2)
-print(f"\nDone. {len(results)} cases saved to reports/bound_test_v2_raw.json")
+print(f"\nDone. {len(results)} cases saved to {output_path}")

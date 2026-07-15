@@ -5,7 +5,7 @@
   2. 再运行本脚本:  python tests/test_agent_v1.py
 
 脚本会逐个发送测试用例，解析 SSE 流式响应，记录工具调用链和最终回复，
-最后生成 Markdown 测试报告到 reports/ 目录。
+最后生成 Markdown 测试报告到 `.pytest_tmp/` 目录。
 
 核心原则：QoderWork 自己阅读输出、理解语义、判断每个 case 是否通过。
 """
@@ -36,8 +36,8 @@ BASE_URL = os.getenv("MALLMIND_TEST_BASE_URL", "http://127.0.0.1:8000")
 CHAT_STREAM_URL = f"{BASE_URL}/api/chat/stream"
 HEALTH_URL = f"{BASE_URL}/api/health"
 TIMEOUT_SECONDS = 120
-REPORT_DIR = Path(__file__).resolve().parents[1] / "reports"
-RAW_DIR = REPORT_DIR / "agent_v1_raw"
+REPORT_DIR = Path(__file__).resolve().parents[1] / ".pytest_tmp"
+RAW_DIR = REPORT_DIR / "agent_eval_raw"
 
 # ---------------------------------------------------------------------------
 # 测试用例定义
@@ -525,7 +525,7 @@ def main():
 
     # 生成报告
     report_md = generate_report(results)
-    report_path = REPORT_DIR / "agent_v1_test_report.md"
+    report_path = REPORT_DIR / "agent_eval.md"
     report_path.write_text(report_md, encoding="utf-8")
     print(f"\n报告已生成: {report_path}")
 

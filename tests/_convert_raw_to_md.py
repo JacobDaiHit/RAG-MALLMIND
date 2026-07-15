@@ -1,11 +1,11 @@
-"""Convert bound_test_raw.json to readable markdown."""
+"""Convert the canonical bound test JSON to readable markdown."""
 import json, sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-with open('reports/bound_test_raw.json', encoding='utf-8') as f:
+with open('.pytest_tmp/bound_test.json', encoding='utf-8') as f:
     data = json.load(f)
 
-out_path = 'reports/bound_test_v2_20260611_raw_qa.md'
+out_path = '.pytest_tmp/bound_test.md'
 with open(out_path, 'w', encoding='utf-8') as out:
     out.write('# 边界测试原始对话记录 v2\n\n')
     out.write('**日期:** 2026-06-11 | **LLM:** mimo-v2.5 / mimo-v2.5-pro\n\n')

@@ -3,7 +3,7 @@
 **评测时间:** 2026-07-10 12:35:54 +08:00  
 **评测环境:** Windows / PowerShell / `D:\github\.venv\Scripts\python.exe`  
 **代码基准:** 当前工作区代码，未为本次评测修改业务代码  
-**原始结果:** `reports/rag_eval_20260710_122738.json`、`reports/router_llm_eval_20260710_123340.json`
+**原始结果:** `reports/rag_router_eval_20260710.json`
 
 ## 1. RAG 检索评测
 
@@ -15,7 +15,7 @@
 - 命令:
 
 ```powershell
-D:\github\.venv\Scripts\python.exe scripts\eval_retrieval.py --cases tests\eval\golden_retrieval_cases.jsonl --with-milvus --output reports\rag_eval_20260710_122738.json --markdown reports\rag_eval_20260710_122738.md --top-k 1,3,5,10
+D:\github\.venv\Scripts\python.exe scripts\eval_retrieval.py --cases tests\eval\golden_retrieval_cases.jsonl --with-milvus --output .pytest_tmp\retrieval_eval.json --markdown .pytest_tmp\retrieval_eval.md --top-k 1,3,5,10
 ```
 
 ### 1.2 核心指标

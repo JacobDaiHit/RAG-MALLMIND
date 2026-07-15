@@ -53,7 +53,8 @@ def main():
     print(full_text)
 
     # Save raw JSON
-    out_path = os.path.join(os.path.dirname(__file__), "..", "reports", "diag_126_raw.json")
+    out_path = os.path.join(os.path.dirname(__file__), "..", ".pytest_tmp", "diag_126_raw.json")
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump({
             "query": query,

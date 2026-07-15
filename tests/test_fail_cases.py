@@ -17,7 +17,7 @@ from test_agent_v1 import TestCase, TestResult, send_chat_stream
 
 BASE_URL = os.getenv("MALLMIND_TEST_BASE_URL", "http://127.0.0.1:8000")
 CHAT_STREAM_URL = f"{BASE_URL}/api/chat/stream"
-REPORT_DIR = Path(__file__).resolve().parents[1] / "reports"
+REPORT_DIR = Path(__file__).resolve().parents[1] / ".pytest_tmp"
 
 # ============================================================================
 # 根因分类标签
