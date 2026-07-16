@@ -80,7 +80,7 @@ SessionCore 应该可以直接回答以下问题：
 
 它不是按“有没有复杂关键词”判断，而是按固定顺序做一个小型、确定的解析：先验证前端 card/product/SKU ID 和购物车确认 token，再用与数据库共用的统一词表把分类、品牌、型号、SKU 和属性归一到 canonical ID，最后解析动作句式、卡片序号、包含/排除、预算/数量/容量。`华为/HUAWEI/huawei` 必须得到同一个 `brand_family_id=huawei`；`pad/Pad/平板` 只要在目录词表里唯一登记，就都得到 `product_type_id=tablet`。每次匹配都保留原文位置和来源。否定词必须先计算覆盖范围：`不要给我推荐手机` 中的“手机”处于被否定的“推荐手机”短语内，不能被错误当成正向手机类目。解析结束后，系统检查是否还留下有业务意义但没处理的文字；例如“给妈妈用”“或许”“上一台”都不能当作礼貌词忽略。
 
-只有动作唯一、目标或分类唯一、所有业务片段均已被受控规则处理、没有冲突，且每个字段都能说明来自 UI/SessionCore/目录字典时，才允许本地直通。`推荐手机，3000 元以内，不要小米，拍照优先` 可以直通，因为每段都在白名单规则里有明确去处；`给妈妈买个简单的` 不可以，因为“给妈妈/简单”没有唯一的机器含义；`不要给我推荐手机，3000 元以内，pad不错，来点推荐` 在 `pad -> tablet` 为唯一目录别名时也可以直通：手机被排除、平板是正向类目、3000 是上限、动作是推荐。完整规则、数据结构和测试矩阵以施工说明的 [4.2 节](v3_refactor_implementation_plan.md#42-本地规则只做安全白名单不做中文万能理解器) 为唯一准则。
+只有命中少量受支持的完整 grammar、枚举后只得到一个可执行**语义组**、每个操作符作用域明确、实体/引用唯一、grammar 所需业务 schema 完整，且没有未处理业务片段时，才允许本地直通。`推荐手机，3000 元以内，不要小米，拍照优先` 可以直通，因为它完整匹配 `recommend.category_constraints.v1`；`给妈妈买个简单的` 不可以，因为“给妈妈/简单”没有唯一的机器含义；`不要只推荐小米` 也不可以，尽管每个词都可能命中词表，本地不能把它错组装为“排除小米”。`不要给我推荐手机，3000 元以内，pad不错，来点推荐` 中的 `pad` 会唯一归一为 `tablet`，但该词序和“不错”不属于 V1 grammar；系统应调 SemanticParse 理解推荐意图，却不应反过来问用户“想买什么品类”。完整规则、数据结构和测试矩阵以施工说明的 [4.2 节](v3_refactor_implementation_plan.md#42-本地规则只做安全白名单不做中文万能理解器) 为唯一准则。
 
 每次本地直通都必须带 `safety_proof`。这是一份机器可检查的理由，例如：
 
@@ -90,16 +90,28 @@ SessionCore 应该可以直接回答以下问题：
   "operation": "sku",
   "target": {"card_id": "c_17", "product_id": "p_205"},
   "safety_proof": {
-    "matched_terms": ["第二个", "512G"],
+    "grammar_id": "target.sku.v1",
+    "grammar_version": "1.0",
+    "parse_tree": {"target": "c_17", "storage_gb": 512, "question": "sku"},
+    "valid_parse_count": 1,
+    "semantic_group_count": 1,
+    "semantic_unique": true,
+    "semantic_signature": "sha256:...",
+    "operator_scopes_resolved": true,
+    "unresolved_operators": [],
+    "proof_version": "rule-proof-v1",
     "session_lookup": "display_index=2 -> c_17",
     "unresolved_spans": [],
+    "entities_unique": true,
+    "references_unique": true,
+    "business_schema_complete": true,
     "conflicts": [],
     "allowed": true
   }
 }
 ```
 
-只要有未理解业务片段、多个候选、冲突或目标失效，`allowed=false`，转给 LLM 或直接问一个确定的缺失问题。重点不是列出所有复杂表达，而是默认不放行。
+`unresolved_spans=[]` 只是必要条件，不是放行证明。只要没有完整 grammar、枚举后存在两个不同的可执行语义组、操作符范围不明、多个候选、冲突或目标失效，`allowed=false`，转给 LLM 或直接问一个确定的缺失问题。重点不是列出所有复杂表达，而是默认不放行。
 
 ### 3.4 SemanticParse LLM：只理解复杂人话，输出受限 JSON
 

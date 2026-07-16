@@ -79,10 +79,20 @@ InputGuard 生成：
   "action": "recommend_shopping_products",
   "mode": "product",
   "safety_proof": {
-    "matched_action": "推荐",
-    "matched_taxonomy": "手机 -> digital/phone/智能手机",
-    "consumed_spans": ["推荐", "手机"],
+    "grammar_id": "recommend.category_constraints.v1",
+    "grammar_version": "1.0",
+    "parse_tree": {"action": "recommend", "product_type": "phone", "constraints": []},
+    "valid_parse_count": 1,
+    "semantic_group_count": 1,
+    "semantic_unique": true,
+    "semantic_signature": "sha256:...",
+    "operator_scopes_resolved": true,
+    "unresolved_operators": [],
+    "proof_version": "rule-proof-v1",
     "unresolved_spans": [],
+    "entities_unique": true,
+    "references_unique": true,
+    "business_schema_complete": true,
     "conflicts": [],
     "allowed": true
   }
@@ -91,7 +101,7 @@ InputGuard 生成：
 
 如果用户说的是“推荐手机，3000 元以内，不要小米，拍照优先”，也可以不调语义 LLM，但理由同样必须逐段写出来：`3000 元以内 -> 预算上限`、`不要小米 -> 硬排除`、`拍照优先 -> 受控软偏好`，并且不能有任何剩余业务文字。只要加上“给妈妈用”“比上一台强”“也许华为更合适”这类未被本地规则完整解释的片段，就转 SemanticParse LLM。完整的逐词解析顺序见施工说明 4.2 节。
 
-`不要给我推荐手机，3000 元以内，pad不错，来点推荐` 不是反例。统一词表若已唯一登记 `pad -> product_type_id=tablet`，本地把“不要”覆盖的完整对象识别为“推荐手机”，因此不把“手机”写成正向类目；同时写入 `hard.exclude_product_type_ids=[phone]`、`hard.product_type_ids=[tablet]` 和 `hard.price.max=3000`。`不错` 是允许的泛肯定词，`来点推荐` 是受控动作，所以结果是 `SAFE_DIRECT`：先进入平板 CandidateGate，再在合格平板中 embedding 检索。
+`不要给我推荐手机，3000 元以内，pad不错，来点推荐` 也不该追问“搜哪个品类”：统一词表已唯一登记 `pad -> product_type_id=tablet`，因此 SemanticParse 已有平板候选域；“手机”仍只在否定范围内，`3000 元以内` 是上限。但本地不能因 token 都被标记就直接放行：V1 没有覆盖“类目 + 评价词 + 后置推荐动词”的完整 grammar，`valid_parse_count=0`，所以它必须走 SemanticParse。模型输出受限的 `recommend_shopping_products(category=tablet)` 后，再进入平板 CandidateGate 和 embedding 检索；不需要也不允许再问用户想买手机还是平板。
 
 真正需要澄清的反例是：`不要给我推荐手机，3000 元以内，来点推荐`。手机只处于否定范围，句中没有任何正向、可归一的商品对象。此时系统只可问“你想让我推荐哪一类商品？”，在用户回答前不搜手机也不搜平板。该句澄清发出时，系统同时写入 SessionCore：
 
@@ -121,7 +131,7 @@ InputGuard 生成：
 
 这不是唯一的追问类型。若系统问的是 `choose_category`：`你想买手机、平板还是相机？`，用户答“平板”不是确认，而是 `single_choice`；本地用该 plan 的选项表把“平板”映射为 `product_type=tablet`，随即进入平板候选门。若系统问的是可选偏好：`你更看重拍照、游戏、续航还是轻薄？`，用户点“拍照”只写入 `soft.desired_attributes=[camera]`，在当前合格候选中重排，不把拍照当硬过滤，也不要求重新检索所有商品。若用户答“主要拍娃，晚上也要拍”，文本不等于按钮选项，系统才调用受限 SemanticParse，并且只允许补充当前追问的用途/拍照字段，不能趁机改预算、品牌或类别。
 
-结论：这轮不需要 SemanticParse LLM。注意，这不等于“系统不需要模型”；后面的 embedding 仍可用于商品文本检索。这里只是不用生成式模型猜动作和需求。
+结论：这个严格匹配 `推荐手机` 的场景不需要 SemanticParse LLM。注意，这不等于“系统不需要模型”；后面的 embedding 仍可用于商品文本检索。`pad不错，来点推荐` 这类已经知道类目、但不匹配 V1 完整 grammar 的场景仍需 SemanticParse 理解动作，不能由本地猜。
 
 ### 1.4 第三步：生成本轮需求清单
 
@@ -252,8 +262,20 @@ Redis 不保存完整回答、检索分数和模型 prompt；这些放 TraceStor
     "catalog_version": "cat_20260715"
   },
   "safety_proof": {
-    "matched_terms": ["第二个", "512G", "多少钱"],
+    "grammar_id": "target.sku.v1",
+    "grammar_version": "1.0",
+    "parse_tree": {"target": "c_r1_2", "storage_gb": 512, "question": ["sku", "price"]},
+    "valid_parse_count": 1,
+    "semantic_group_count": 1,
+    "semantic_unique": true,
+    "semantic_signature": "sha256:...",
+    "operator_scopes_resolved": true,
+    "unresolved_operators": [],
+    "proof_version": "rule-proof-v1",
     "unresolved_spans": [],
+    "entities_unique": true,
+    "references_unique": true,
+    "business_schema_complete": true,
     "allowed": true
   }
 }

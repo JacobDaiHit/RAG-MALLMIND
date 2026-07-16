@@ -367,12 +367,54 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
   "consumed_spans": [],
   "unresolved_spans": [],
   "ambiguities": [],
+  "grammar_id": null,
+  "grammar_version": null,
+  "parse_tree": null,
+  "valid_parse_count": 0,
+  "semantic_group_count": 0,
+  "semantic_unique": false,
+  "operator_scopes_resolved": false,
   "safety_proof": {},
   "next_question": null
 }
 ```
 
-`consumed_spans` 是“文本的哪一段被什么规则理解了”，例如第 0--2 个字符是“推荐”、第 2--4 个字符是“手机”。`unresolved_spans` 是无法确认含义的原文片段。后者只要存在业务意义，就不能 `SAFE_DIRECT`。
+`consumed_spans` 是“文本的哪一段被什么规则看见了”，例如第 0--2 个字符是“推荐”、第 2--4 个字符是“手机”。`unresolved_spans` 是无法确认含义的原文片段。它们只能做**覆盖检查**，不能证明句子已经被正确组合：`不要只推荐小米` 可以让“不要/只/推荐/小米”全部命中，但语义是“不要把结果限制为小米”，绝不是“排除小米”。
+
+因此 `SAFE_DIRECT` 必须由完整 `SafetyProof` 决定，而不是由 `unresolved_spans=[]` 决定。`SafetyProof` 不是“系统理解了用户内心”的宣言，而是一张可序列化、可回放的本地执行许可证：它证明输入属于当前封闭 DSL，且在可信词表、目录和会话版本下只有一个可执行语义。
+
+```json
+{
+  "grammar_id": "recommend.category_constraints.v1",
+  "grammar_version": "1.0",
+  "parse_tree": {
+    "action": "recommend",
+    "category": "tablet",
+    "constraints": [{"kind": "price_max", "value": 3000}]
+  },
+  "parse_tree_id": "pt_7f2a",
+  "valid_parse_count": 2,
+  "semantic_group_count": 1,
+  "semantic_unique": true,
+  "semantic_signature": "sha256:...",
+  "operator_scopes_resolved": true,
+  "unresolved_operators": [],
+  "proof_version": "rule-proof-v1",
+  "unresolved_spans": [],
+  "lexical_coverage_complete": true,
+  "entities_unique": true,
+  "references_unique": true,
+  "business_schema_complete": true,
+  "missing_required_fields": [],
+  "registry_version": "norm_20260716_01",
+  "session_version": 42,
+  "allowed": true
+}
+```
+
+`valid_parse_count` 记录 grammar parser 真正枚举到的合法候选树，**不能**因为代码按优先级只返回第一棵树就假装是 1。每棵树先编译成没有 evidence span、键和值已排序、单位已归一的 canonical RequirementSpec，再计算 `semantic_signature`。多棵树若得到同一 signature，属于一个语义组；只有 `semantic_group_count=1` 才是语义唯一。对于推荐和只读查询，语义唯一即可；对购物车等写操作，还必须保证 action、target、SKU、quantity、pending action 都精确唯一。
+
+放行条件必须同时满足：完整匹配受支持 grammar；词法覆盖完整；每个否定、限定、包含、比较等操作符都有明确作用域；语义组唯一；实体、卡片引用和目录别名都唯一；该 grammar 要求的业务 schema 完整；并且没有业务意义的剩余片段。任何一项失败都不是 `SAFE_DIRECT`，交给 SemanticParse 或局部澄清。
 
 不使用一个模糊的 0.82、0.91 置信度阈值来决定是否调 LLM。数字分数可以记录做监控，但放行必须是布尔证明：每项必需条件都满足才放行，否则不放行。
 
@@ -417,38 +459,125 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
 
 “最长匹配”只解决词典重叠，不解决语义。比如“苹果”同时可能是水果和品牌，分类表必须返回多个候选并标记 `ambiguous`；此时不能因为其中一个候选得分更高就本地放行。
 
-#### 4.2.4 每一种允许直通的句式，必须有最小结构
+本地 SAFE_DIRECT 不做“猜测式纠错”。错别字、拼音近似词、谐音、文言文、反讽和罕见口语若不精确命中 registry + grammar，就记为未知/不支持并进入 SemanticParse。例如“不要小迷”“毋荐小米”不能在本地直接写 `exclude=xiaomi`；LLM 可以提出 canonical 候选，但其结果仍要经过实体校验和 HardConstraintPromotionGate。这样允许本地漏放到 LLM，不允许把模糊文本误放行为目录硬条件。
 
-下面是 V3 第一版允许本地直通的白名单。白名单应保持小；需要新增句式时先写测试样例，再加规则。
+#### 4.2.4 SAFE_DIRECT 只认完整 grammar，第一版故意只支持五种
 
-| 本地动作 | 最小可放行结构 | 可以附带的确定字段 | 必须转 LLM 的例子 |
+最长匹配之后不能立刻写 `hard_patch`，而要把 token/span 输入一个很小的 grammar parser，**枚举全部**候选解析树。第一版的目标不是覆盖中文，而是**宁可放权给 SemanticParse，也不把局部词匹配误当完整命令**。除前端已验证的 card/SKU ID、购物车确认 token、澄清选项这类结构化输入外，文本只允许下列五种 grammar 产生 `SAFE_DIRECT`：
+
+| grammar_id | 完整结构 | 输出 | 不属于本 grammar 的例子 |
 |---|---|---|---|
-| 普通推荐 | 明确推荐动词 + 唯一分类，或前端给出已验证分类 | 明确预算、明确品牌包含/排除、受控属性偏好、明确库存/颜色/SKU 条件 | “给妈妈买个简单的”“比上一台续航强”“适合通勤” |
-| SKU 查询 | 唯一商品目标 + 明确 SKU/容量/颜色询问 | `512G`、白色、某个 SKU ID | “哪个版本更适合我”“容量大一点” |
-| 价格查询 | 唯一商品或 SKU 目标 + 明确价格词 | “多少钱”“和上一款差多少” | “最近会不会降价”“值不值这个价” |
-| 参数查询 | 唯一商品目标 + 属性表中的明确字段 | 屏幕、重量、接口、主摄等 | “性能怎么样”“适不适合我” |
-| 比较 | 两个及以上唯一目标 + 明确比较词/比较字段 | “拍照/重量/屏幕哪个更好” | “哪个更适合妈妈”“综合来看哪个好” |
-| 购物车 | 唯一目标 + add/remove/set_quantity，或有效 confirm/cancel token | 数量、明确 SKU | “把便宜一点的加购”“我想买那个”但无目标 |
-| 简单闲聊 | 只有允许的问候/感谢/使用帮助句式，且没有购物实体 | 无 | “你好，帮我找一台…”（已含购物目标） |
+| `recommend.category_constraints.v1` | `REQUEST_CLAUSE + CATEGORY_CLAUSE + CONSTRAINT_CLAUSE*` | `recommend_shopping_products` + 分类 + 已解析的预算/库存/明确排除/受控属性 | “给妈妈买个简单的”“pad 不错，来点推荐”“不要只推荐小米” |
+| `target.price.v1` | `唯一目标 + 明确价格询问` | `parameter_query(operation=price)` | “最近会不会降价”“值不值这个价” |
+| `target.sku.v1` | `唯一目标 + 明确 SKU/容量/颜色询问` | `parameter_query(operation=sku)` | “哪个版本更适合我”“容量大一点” |
+| `compare.two_targets_attribute.v1` | `两个唯一目标 + 明确属性 + 比较问法` | `parameter_query(operation=compare)` | “哪个更适合妈妈”“综合来看哪个好” |
+| `cart.unique_sku_action.v1` | `唯一 SKU + add/remove/set_quantity 动作 + 合法数量` | `apply_cart_instruction` 的待确认计划 | “把便宜一点的加购”“我想买那个” |
 
-这里“明确属性偏好”也要收紧：例如“拍照优先”“续航优先”“轻薄”可在 AttributeRegistry 中定义为软偏好标签；“简单”“耐用”“给妈妈用”“像上一台一样”不应仅靠关键词映射，因为它们需要结合人群、用途或历史商品理解。
+推荐 grammar 不是枚举“推荐 + 品牌 + 类目 + 预算”的所有词序正则，而是少量**子句 + 组合约束**。第一版只定义：
 
-#### 4.2.5 否定范围、品牌和反转必须按完整句式解析，不能只搜关键词
+```text
+REQUEST_CLAUSE     := 推荐/推荐一下/来几款
+CATEGORY_CLAUSE    := 唯一 taxonomy entity
+PRICE_CLAUSE       := 不超过 N 元 | N 元以内 | 最多 N 元
+EXCLUDE_CLAUSE     := 不要 BRAND | 排除 BRAND | 不考虑 BRAND
+ATTRIBUTE_CLAUSE   := 拍照优先 | 续航优先 | 轻薄优先
+CONNECTOR          := 逗号 | 空格 | 然后 | 另外 | 最好
+
+RECOMMEND_COMMAND  := REQUEST_CLAUSE
+                      + CATEGORY_CLAUSE
+                      + (CONNECTOR + CONSTRAINT_CLAUSE)*
+```
+
+若要允许“3000 元以内，推荐手机”这类已验证的倒装，必须作为同一 grammar 的一个明确 `clause_order` 规则加入 AST 和测试；不能仅因最终字段一样就放宽为任意词序。`*` 也不是任意自然语言：它只允许 grammar 明确列出的、作用域可确定的字段。任何用途、人群、比较性形容词、叙事、模态词、转折词，或者未定义连接/词序，都让 `valid_parse_count=0` 并转 SemanticParse。
+
+“简单闲聊”可以走不涉及商品执行的模板分支，但不计为 `SAFE_DIRECT`；泛参数查询也先走 SemanticParse 来确定用户究竟问哪个字段，再由目录查事实。这样第一版没有“中文万能本地路由器”。
+
+前端已提供且已验证的 card/product/SKU ID、购物车 confirm token、以及未过期 `ClarificationPlan` 的结构化选项/纯确认，不属于自由中文 grammar。这三类是协议输入，分别用 `protocol.stable_id.v1`、`protocol.cart_confirm.v1`、`protocol.clarification_answer.v1` 生成同样格式的 proof；它们仍要满足唯一对象、唯一 plan、合法 TTL 和完整 schema，不能因为用户只发了一个“对”就绕过验证。
+
+`不要只推荐小米` 是必须写死的反例：V1 没有 `recommend.brand_diversity.v1`，所以 `valid_parse_count=0`。本地不得把 `不要` 和 `小米`拼成 `exclude=xiaomi`；SemanticParse 应理解为“品牌多样性要求”，最后写 soft diversity 或给出更明确的品牌选择，而不是排除小米。未来若真要支持它，必须新增一个完整 grammar、作用域测试和反例集，不能靠加一个关键词规则。
+
+#### 4.2.4.1 解析唯一是“语义唯一”，不是解析器只返回一棵树
+
+`grammar_parser.parse_all(text)` 必须返回当前 grammar 下所有合法候选，不能写成 `if parse_a: return parse_a; elif parse_b: return parse_b`。每棵树都必须依次通过结构校验、operator scope 解析、实体/会话引用解析，再编译为不带 span 和日志的 canonical 语义对象：
+
+```text
+所有合法 AST
+  -> 校验结构与操作符作用域
+  -> 解析 canonical entity / card / SKU / session 引用
+  -> 编译 RequirementSpec 语义字段
+  -> key 排序、set 排序、单位归一、删除证据字段
+  -> semantic_signature = sha256(canonical_json)
+  -> 按 signature 分组
+```
+
+例如“推荐 3000 元以内的手机”和某个未来明确支持的倒装结构，可能有不同 AST，但若最终都严格得到同一个 `{action=recommend, product_type=phone, price_max=3000}`，它们可以属于同一语义组。对推荐与只读查询，`semantic_group_count=1` 即可继续；对 add/remove/set quantity/confirm，除语义组唯一外，还要对 `action + target + sku + quantity + pending_action_id` 做精确唯一性检查，任一字段多候选就 `LOCAL_CLARIFY` 或 `NEEDS_SEMANTIC_LLM`。
+
+`SafetyProof` 应在代码中定义为不可变强类型，而不是任意 JSON 字典。推荐契约如下（字段可按语言惯例命名，但语义不能省略）：
+
+```python
+@dataclass(frozen=True)
+class SafetyProof:
+    proof_version: str
+    grammar_id: str
+    grammar_version: str
+    parse_tree_id: str
+    semantic_signature: str
+    lexical_coverage_complete: bool
+    unresolved_spans: tuple[Span, ...]
+    operator_scopes_resolved: bool
+    unresolved_operators: tuple[str, ...]
+    entity_resolution_unique: bool
+    reference_resolution_unique: bool
+    valid_parse_count: int
+    semantic_group_count: int
+    semantic_unique: bool
+    action_schema_complete: bool
+    missing_required_fields: tuple[str, ...]
+    registry_version: str
+    session_version: int | None
+```
+
+放行函数只允许是 fail-closed 的逻辑与：任一构建异常、字段缺失、版本不一致或检查失败，均不能回退为关键词路由，而是转 LLM 或局部澄清。
+
+```python
+def can_safe_direct(proof: SafetyProof, *, is_write: bool) -> bool:
+    base_ok = (
+        proof.lexical_coverage_complete
+        and not proof.unresolved_spans
+        and proof.operator_scopes_resolved
+        and not proof.unresolved_operators
+        and proof.entity_resolution_unique
+        and proof.reference_resolution_unique
+        and proof.semantic_unique
+        and proof.semantic_group_count == 1
+        and proof.action_schema_complete
+        and not proof.missing_required_fields
+    )
+    return base_ok and (not is_write or exact_execution_fields_are_unique(proof))
+```
+
+模块权限必须是“共同否决、单点签发”：`GrammarParser`、`EntityResolver`、`ScopeResolver`、`ContextResolver`、`SchemaValidator`、`BusinessPolicy` 都只有否决权；只有 `proof_builder + can_safe_direct` 在收齐全部成功证据后才能签发 `SAFE_DIRECT`。本地分类器、embedding 相似度、文本长度和单个正则都只能增加风险或否决，不能单独放行。
+
+可以维护一份 `SEMANTIC_RISK_MARKERS`（如“可能/或许/虽然/但是/如果/听说/其实/不一定/差不多/适合我/给妈妈/像上次”）：命中即强制进入 LLM；未命中绝不代表可以本地放行，仍必须完整通过 SafetyProof。
+
+#### 4.2.5 否定范围、品牌和反转必须在 grammar 树里解析，不能只搜关键词
 
 本地不能看到“不要”和“手机”就分别记录一个否定词、一个正向手机类目。它必须先识别“不要”覆盖的完整短语，例如 `不要给我推荐手机` 中，被否定的是“推荐手机”这个动作/对象组合；这里的“手机”绝不能变成 `hard.category=phone`。
 
-否定解析分两步：先找明确排除或明确不喜欢的表达，再在它后面/前面按固定短语规则找到它覆盖的品牌、分类、商品、型号、SKU 或属性。覆盖范围找不到、范围跨越逗号后仍不清楚、或同句出现相反命令时，直接停止本地直通。品牌只是其中一种对象：先用统一词表归一到品牌/家族 ID，再看它是否真的处在一个完整、明确的操作短语中。第一步成功不代表第二步成功。
+否定解析分两步：先找明确排除或明确不喜欢的表达，再由已命中的 grammar 为它绑定品牌、分类、商品、型号、SKU 或属性作用域。覆盖范围找不到、范围跨越逗号后仍不清楚、或同句出现相反命令时，`operator_scopes_resolved=false`，直接停止本地直通。品牌只是其中一种对象：先用统一词表归一到品牌/家族 ID，再确认它是 grammar 中完整操作短语的对象。第一步看到词，不代表第二步能组成合法树。
+
+`不/不要/只/至少/最多/除了/也/都/更/比/可能/如果/但是/还是/不一定` 都是 operator 节点，不是“已消费的普通 span”。它们必须在 AST 中带 `scope_node_id`；任何 operator 没有唯一 scope、或 scope 指向的节点不在当前 grammar 中，均写入 `unresolved_operators` 并转 SemanticParse。比如只有完整结构 `除了 ENTITY，其他/其余 都可以` 才可编译为排除该实体；`除了小米便宜一点，其他差不多` 不属于该结构，不能因为“除了”后面有小米就排除小米。
 
 | 原文 | 本地结果 | 为什么 |
 |---|---|---|
-| “不要小米” | hard exclude `xiaomi` | “不要”紧邻品牌，句式明确 |
-| “只要华为” | hard include `huawei` | “只要”紧邻品牌，句式明确 |
-| “小米也可以” | 删除同主题历史的 Xiaomi 硬排除 | 是明确放宽，不能继续沿用旧排除 |
-| “要小米” | 删除历史排除，写 Xiaomi 包含 | 是明确反转命令 |
-| “小米用着不好” | hard exclude `xiaomi` | 是对已归一品牌的直接、无条件负面评价；写入品牌家族黑名单 |
-| “可能华为更合适” | 不本地生成硬包含 | “可能”是推测，不是命令 |
-| “不要小米但华为也不一定” | hard exclude `xiaomi`；华为不写 hard include | 前半句是明确排除；后半句只是对华为的非承诺态度 |
-| “不要给我推荐手机” | `exclude_product_type=phone` 的候选，不生成正向手机类目 | “手机”在否定范围内；还缺用户真正想买什么 |
+| “推荐手机，不要小米” | 可作为推荐 grammar 的 `hard.exclude=xiaomi` | `不要小米` 是该 grammar 的明确约束 slot |
+| “只要华为” | 仅产生候选观察，不是完整执行 grammar | 缺少动作/商品域；交 SemanticParse 或与上文合并 |
+| “小米也可以” | 若绑定当前 topic 且是唯一实体，可释放历史 Xiaomi 黑名单 | 是受控的会话合并，不是独立推荐 grammar |
+| “要小米” | 同上：删除历史排除、写 Xiaomi 包含 | 需要已知 topic 或后续语义解析 |
+| “小米用着不好” | 可作为 hard exclude 的候选证据，但文本路由交 LLM | 直接负面可由 PromotionGate 升级；它本身不是完整执行 grammar |
+| “可能华为更合适” | 不生成 hard 包含 | “可能”是推测，交 LLM |
+| “不要小米但华为也不一定” | 不本地直通 | 前半句可提取证据，整句没有唯一完整 grammar |
+| “不要给我推荐手机” | 可识别 `exclude_product_type=phone` 候选，但不生成正向手机类目 | 仍缺正向对象；交 LLM/澄清 |
 
 明确负面一旦目标可归一，就统一写进类型化硬黑名单：`exclude_category_ids`、`exclude_product_type_ids`、`exclude_brand_family_ids`、`exclude_product_ids`、`exclude_model_ids`、`exclude_sku_ids`、`exclude_attribute_values`。不再存在“soft avoid”这种会在排序时失效的负面分支。只有用户明确释放**同一个 canonical 实体**才删除对应黑名单项：`小米也可以` 只删 `xiaomi`，`手机也可以` 只删 `phone`，`这个型号也可以` 只删当前唯一 model/product；不会顺手清空其它排除条件。带“也许/可能/如果/听说”或同句反转的负面表达不进入黑名单，改为语义解析或澄清，绝不假装它已是用户明确意愿。
 
@@ -460,11 +589,11 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
 
 - 空白、标点、`请/帮我/一下/给我/有没有/谢谢` 等固定礼貌词，可以忽略；
 - 任何品牌、分类、型号、数字、单位、否定词、比较词、代词、情态词、因果词、用途词、人物词仍留下，就记入 `unresolved_spans`；
-- 只要 `unresolved_spans` 非空，状态为 `NEEDS_SEMANTIC_LLM`，不允许安全直通；
+- 只要 `unresolved_spans` 非空，状态为 `NEEDS_SEMANTIC_LLM`，不允许安全直通；即使它为空，只要没有命中完整 grammar、语义组不唯一或操作符范围不明，同样不允许安全直通；
 - 如果消息已经是一个确定动作，但缺目标，例如“帮我加购”，可返回 `LOCAL_CLARIFY`，直接问“请问要加购哪一件？”；不需要为一个明确的缺 ID 问题调 LLM；
 - 如果剩余片段看起来是开放语义，例如“给妈妈用”“别太复杂”“和上一款差不多”，调 SemanticParse LLM，而不是本地连续追问多个问题。
 
-代词要特别严格。`这款/那个/上一台/它` 只有在 SessionCore 的 `focus` 或前端 card ID 能唯一对应时才消耗；否则它不是“可以忽略的词”，而是未解析目标。
+代词要特别严格。`这款/那个/上一台/它` 只有在 SessionCore 的 `focus` 或前端 card ID 能唯一对应时才消耗；否则它不是“可以忽略的词”，而是未解析目标。最后由 grammar parser 检查这些 span 是否刚好组成一棵支持的树；不能把“全部 span 都消费了”误写成“句子正确”。
 
 #### 4.2.7 四个完整例子：证明是怎样产生的
 
@@ -476,8 +605,9 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
 3000 元以内      -> hard.price.max=3000
 不要小米         -> hard.exclude_brand_family_ids=[xiaomi]
 拍照优先         -> soft.desired_attributes=[camera]
-剩余业务片段     -> 无
-结论             -> SAFE_DIRECT；不调语义 LLM，后续可调 embedding 检索
+grammar            -> recommend.category_constraints.v1
+解析树             -> 唯一；每个约束都挂在本次推荐上
+结论               -> SAFE_DIRECT；不调语义 LLM，后续可调 embedding 检索
 ```
 
 **例 2：`第二个有 512G 吗，多少钱`**
@@ -486,8 +616,9 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
 第二个           -> SessionCore.display_index=2 -> c_r1_2 -> p_phone_205
 512G             -> AttributeRegistry.storage_gb=512
 多少钱           -> operation=sku_and_price
-剩余业务片段     -> 无
-结论             -> SAFE_DIRECT；直接目录查询，不调语义 LLM/embedding
+grammar            -> target.sku.v1（再附价格字段）
+解析树             -> 唯一目标 + 唯一规格询问
+结论               -> SAFE_DIRECT；直接目录查询，不调语义 LLM/embedding
 ```
 
 **例 3：`给妈妈买个简单、拍照不错的`**
@@ -517,12 +648,13 @@ SessionCore 的短期澄清状态：pending_clarification（若存在）
 不要给我推荐手机   -> 否定范围覆盖“推荐手机”；手机不能作为正向推荐分类
 3000 元以内        -> hard.price.max=3000
 pad                -> 统一词表中唯一别名 -> hard.product_type_ids=[tablet]
-不错                -> 允许的泛肯定词，不单独产生偏好或过滤条件
-来点推荐           -> 动作：普通推荐
-结论               -> SAFE_DIRECT；进入平板候选门和 embedding 检索，手机在排除范围内
+不错                -> 不是 V1 结构化约束
+来点推荐           -> 有推荐意图，但词序不是 `推荐动词 + 类目 + 约束*`
+grammar            -> valid_parse_count=0
+结论               -> NEEDS_SEMANTIC_LLM；但已知候选域是 tablet，不问“你要什么品类”
 ```
 
-这里没有靠“pad不错”猜意图：`pad` 是目录统一词表中已经注册、唯一指向 `tablet` 的别名，`来点推荐` 是受控推荐动作。如果 registry 中 `pad` 存在冲突或未登记，才转 LLM/追问。真正缺少正向商品对象的例子是“不要给我推荐手机，3000 元以内，来点推荐”；该句只能问用户想买什么，不能擅自搜平板。
+这里没有把 `pad` 当成未知词：它已被统一词表唯一归一为 `tablet`，SemanticParse 会收到这个强证据并输出推荐平板，不应再问“要哪一类商品”。但 `pad不错，来点推荐` 不属于 V1 的完整语法，不能为了省一次 LLM 调用而让本地猜“不错”的句法角色和整个推荐结构。如果 registry 中 `pad` 存在冲突或未登记，LLM 还要进一步澄清。真正缺少正向商品对象的例子仍是“不要给我推荐手机，3000 元以内，来点推荐”；该句才需要问用户想买什么。
 
 #### 4.2.8 建议拆成哪些代码模块，避免把规则继续堆在一个函数里
 
@@ -537,6 +669,8 @@ rag/recommendation/v3_routing/
   brand_matcher.py         品牌别名、家族与明确包含/排除句式
   constraint_parser.py     预算、数量、容量、颜色、受控属性的确定解析
   action_parser.py         推荐/参数/比较/购物车/闲聊的最小句式
+  grammar_parser.py        只识别 V1 五个完整 grammar，产出候选解析树和作用域
+  proof_builder.py         枚举树后的语义分组、实体/引用/schema 校验，生成 rule-proof-v1
   remainder_checker.py     计算未消费业务片段
   deterministic_router.py  固定顺序编排，并只输出 SAFE_DIRECT/NEEDS/CLARIFY
 ```
@@ -549,22 +683,24 @@ rag/recommendation/v3_routing/
 
 | 输入 | 预期状态 | 必须断言 |
 |---|---|---|
-| 推荐手机 | SAFE_DIRECT | 分类唯一、无 unresolved span |
-| 推荐手机 3000 内不要小米拍照优先 | SAFE_DIRECT | 预算/排除/软偏好都被正确消费 |
-| 第二个有 512G 吗 | SAFE_DIRECT | target 是当前有效第二张卡 |
-| 第一和第二个拍照哪个强 | SAFE_DIRECT | 恰好两个目标且 attribute=摄影 |
+| 推荐手机 | SAFE_DIRECT | `recommend.category_constraints.v1`、唯一树、完整 schema |
+| 推荐手机 3000 内不要小米拍照优先 | SAFE_DIRECT | 同一 grammar；预算/排除/偏好均有唯一作用域 |
+| 第二个有 512G 吗 | SAFE_DIRECT | `target.sku.v1`；target 是当前有效第二张卡 |
+| 第一和第二个拍照哪个强 | SAFE_DIRECT | `compare.two_targets_attribute.v1`；恰好两个目标且 attribute=摄影 |
 | 帮我加购 | LOCAL_CLARIFY | 不调 LLM，问题只问缺失目标 |
 | 给妈妈买个简单的 | NEEDS_SEMANTIC_LLM | `给妈妈/简单` 在 unresolved spans |
 | 小米用着不好或许华为适合 | NEEDS_SEMANTIC_LLM | 直接负面的小米写 hard exclude；“或许华为”只写 soft prefer |
 | 不要小米但华为也不一定 | NEEDS_SEMANTIC_LLM | 不能只解析前半句就放行 |
-| 不要给我推荐手机，3000 元以内，pad不错，来点推荐 | SAFE_DIRECT | `pad -> tablet` 是唯一别名；手机在否定范围；无未解释业务片段 |
-| 对（存在唯一未过期的平板澄清草案） | SAFE_DIRECT | 绑定 clarification_id，确认草案字段后清除 pending state |
+| 不要给我推荐手机，3000 元以内，pad不错，来点推荐 | NEEDS_SEMANTIC_LLM | `pad -> tablet` 已确定，但 V1 没有匹配该词序的完整 grammar；不得追问品类 |
+| 不要只推荐小米 | NEEDS_SEMANTIC_LLM | 所有词即使都匹配也必须 `valid_parse_count=0`；绝不能写 `exclude=xiaomi` |
+| 任一输入生成两棵影响业务的候选树 | NEEDS_SEMANTIC_LLM | `valid_parse_count>1` 时一律拒绝本地放行，并记录两棵树及冲突 span |
+| 对（存在唯一未过期的确认草案） | SAFE_DIRECT | `protocol.clarification_answer.v1`；绑定 clarification_id，确认草案字段后清除 pending state |
 | 对，但不要平板（存在澄清草案） | NEEDS_SEMANTIC_LLM | 不能把含新增业务词的句子当纯确认 |
 | 对（没有/已过期澄清草案） | LOCAL_CLARIFY | 不能猜用户在确认什么 |
 | 要小米但不要小米 | LOCAL_CLARIFY 或 NEEDS_SEMANTIC_LLM | 明确记录硬条件冲突 |
 | 第二个 | LOCAL_CLARIFY | 无操作词，不能猜是加购、参数还是比较 |
 
-验收标准不是“规则命中率很高”，而是**不存在 `SAFE_DIRECT` 却仍有未解释业务片段的情况**。宁可多调一次 LLM，也不能把复杂请求错误地当成简单请求。
+验收标准不是“规则命中率很高”，而是**每个 `SAFE_DIRECT` 都有 `grammar_id/version`、已枚举的 `valid_parse_count`、`semantic_group_count=1`、`semantic_signature`、`operator_scopes_resolved=true`、`proof_version=rule-proof-v1`，并且没有未解释业务片段**。购物车等写操作还必须有精确唯一的 action/target/SKU/quantity/pending action。宁可多调一次 LLM，也不能把复杂请求错误地当成简单请求。
 
 #### 4.2.10 不把 token 数量当作唯一开关，但把它当作风险信号
 
@@ -583,11 +719,11 @@ rag/recommendation/v3_routing/
 
 1. 输入总字符数仍由 InputGuard 限制（例如 1--2000）；这是安全和资源限制，不是语义判断。
 2. 对没有 card ID、确认 token、pending clarification 的普通文本，如果有效业务片段少于 2 个，通常无法形成可执行推荐，直接澄清或调 LLM；例如“推荐一下”“哪个好”。
-3. 如果有效业务片段很多，记录 `long_message` trace，并优先检查是否有未消费 span；只有所有片段均被规则消耗时才可直通，不能仅因“太长”强制调 LLM。
+3. 如果有效业务片段很多，记录 `long_message` trace，并优先检查未消费 span、grammar 是否完整、语义组是否唯一；所有片段被消耗仍不足以直通，不能仅因“太长”强制调 LLM。
 4. 稳定 ID、购物车确认和澄清确认是长度豁免项：即使只有“对/确认”，只要绑定了唯一、未过期的 session 状态，也可本地执行。
 5. 监控中可以统计“短文本误直通率”“长文本 LLM 调用率”，未来按真实数据调整；不要先拍一个 token 上下限写死在业务逻辑里。
 
-所以最终判定仍是：`安全证明完整 + 无未解释业务片段 + 状态引用有效` 才能本地直通；长度只帮助系统更早发现可能需要 LLM 的请求。
+所以最终判定仍是：`安全证明完整（含 grammar、scope、语义唯一） + 无未解释业务片段 + 状态引用有效` 才能本地直通；长度只帮助系统更早发现可能需要 LLM 的请求。
 
 ### 4.3 LLM 不能自己生成硬条件：新增“硬条件升级门”
 
@@ -857,6 +993,10 @@ in_stock = true
 |---|---|
 | 路由安全直通 | “推荐手机”“第二个有 512G”“确认加购”都有完整 safety proof |
 | 复杂语义 | “小米不好，也许华为适合”“给妈妈买简单的”不能被本地误直通 |
+| 作用域反例 | “不要只推荐小米”不排除小米；“除了小米其他都可以”排除小米；“除了小米便宜一点，其他差不多”进 LLM |
+| 语义唯一性 | parser 必须枚举所有候选；两棵树同 signature 可读操作放行，两组 signature 必须进 LLM；写操作任一关键执行字段多候选则不执行 |
+| 变异与模糊 | 对安全句插入“不/只/也许/如果/但是/除了/听说”、打乱子句、增加第二品牌或第二动作后，除非命中新增 grammar，否则必须退出 SAFE_DIRECT |
+| Property/fuzz | 用 Hypothesis 或等价工具生成品牌、类目、预算、operator、连接词和词序；性质断言为：任一 SAFE_DIRECT 都有 full match、semantic unique、完整 schema 和无 unresolved span |
 | 统一词表 | “华为/HUAWEI/huawei”同为 `huawei`；“pad/Pad/平板”同为唯一 `tablet`；alias 冲突绝不生成过滤条件 |
 | 负面与释放 | “小米用着不好”写 hard exclude；“小米也可以”只释放 `xiaomi`；“听说小米不好”“如果便宜小米也行”不误写黑名单 |
 | 约束合并 | “不要小米”后“要小米”；新话题手机切 PC；同句冲突 |
@@ -868,9 +1008,11 @@ in_stock = true
 | 索引 | 每个 filter 字段已写入；无孤儿 chunk；商品级去重 |
 | 故障 | Router、embedding、目录、回答 LLM 失败时不编造事实 |
 
+上述用例不能散落在三份文档中各写一遍。实现阶段新增唯一事实源 `tests/fixtures/v3_routing_golden.yaml`：每个 case 有稳定 ID、输入、session/catalog fixture、期望 `parse_status`、`grammar_id`、operator scope、`valid_parse_count`、`semantic_group_count`、semantic signature 和最终 RequirementSpec。文档只引用 case ID；规则变更先更新该 fixture 和测试，再更新说明文字。
+
 ### 9.3 灰度顺序
 
-先不展示结果地“影子运行” V3：同一请求同时生成旧/新 Requirement 和过滤结果，比较差异。确认约束没有漏放后，依次小流量开放普通推荐、参数追问、购物车、PC 装机。每一步都保留索引回滚和指标阈值。不能因为模型输出读起来很自然，就判定上线成功。
+先不展示结果地“影子运行” V3：同一请求同时生成旧/新 Requirement 和过滤结果；对每个 V3 `SAFE_DIRECT` 再影子调用 SemanticParse，仅记录不执行，比较 action、target、hard/soft 条件、否定作用域和 semantic signature。最重要指标是 `False Local Acceptance Rate`：被本地放行、但人工复核或高质量语义审查认为不应本地放行的比例，而不是本地路由率。任何一类不一致样本都应收紧 grammar 或加入强制 LLM 集，不能为了提高本地命中率扩大关键词规则。确认约束没有漏放后，依次小流量开放普通推荐、参数追问、购物车、PC 装机。每一步都保留索引回滚和指标阈值。不能因为模型输出读起来很自然，就判定上线成功。
 
 ## 10. 这一阶段完成的验收清单
 
