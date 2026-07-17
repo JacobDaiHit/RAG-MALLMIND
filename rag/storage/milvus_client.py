@@ -20,11 +20,11 @@ T = TypeVar("T")
 class MilvusManager:
     """Milvus collection manager for dense+sparse product chunk retrieval."""
 
-    def __init__(self):
+    def __init__(self, *, collection_name: str | None = None):
         """初始化对象状态，保存后续方法会复用的配置、连接或依赖实例。"""
         self.host = os.getenv("MILVUS_HOST", "localhost")
         self.port = os.getenv("MILVUS_PORT", "19530")
-        self.collection_name = os.getenv("MILVUS_COLLECTION", "embeddings_collection")
+        self.collection_name = collection_name or os.getenv("MILVUS_COLLECTION", "embeddings_collection")
         self.uri = f"http://{self.host}:{self.port}"
         self.client = None
         self._client_lock = threading.RLock()
@@ -121,6 +121,11 @@ class MilvusManager:
                 schema.add_field("product_id", DataType.VARCHAR, max_length=128)
                 schema.add_field("title", DataType.VARCHAR, max_length=512)
                 schema.add_field("brand", DataType.VARCHAR, max_length=128)
+                schema.add_field("brand_family_id", DataType.VARCHAR, max_length=128)
+                schema.add_field("sub_category", DataType.VARCHAR, max_length=128)
+                schema.add_field("base_price", DataType.DOUBLE)
+                schema.add_field("is_active", DataType.BOOL)
+                schema.add_field("in_stock", DataType.BOOL)
                 schema.add_field("chunk_type", DataType.VARCHAR, max_length=64)
                 schema.add_field("component_type", DataType.VARCHAR, max_length=64)
                 schema.add_field("metadata", DataType.JSON)
@@ -285,7 +290,12 @@ class MilvusManager:
             "chunk_type",
             "category",
             "brand",
+            "brand_family_id",
             "title",
+            "sub_category",
+            "base_price",
+            "is_active",
+            "in_stock",
         ]
         
         # 密集向量搜索请求
@@ -353,7 +363,12 @@ class MilvusManager:
                     "chunk_type",
                     "category",
                     "brand",
+                    "brand_family_id",
                     "title",
+                    "sub_category",
+                    "base_price",
+                    "is_active",
+                    "in_stock",
                 ],
                 filter=filter_expr,
             )

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ROUTE-001",
+    "text": "推荐手机",
+    "expected_status": "safe_direct",
+    "grammar_id": "recommend.category_constraints.v1",
+    "product_type_ids": ["phone"]
+  },
+  {
+    "id": "ROUTE-002",
+    "text": "推荐手机，3000元以内，不要小米，拍照优先",
+    "expected_status": "safe_direct",
+    "grammar_id": "recommend.category_constraints.v1",
+    "product_type_ids": ["phone"],
+    "price_max": 3000.0,
+    "exclude_brand_family_ids": ["xiaomi"],
+    "desired_attributes": ["camera"]
+  },
+  {
+    "id": "ROUTE-017",
+    "text": "不要给我推荐手机，3000元以内，pad不错，来点推荐",
+    "expected_status": "needs_semantic_llm",
+    "reason": "unsupported_grammar"
+  },
+  {
+    "id": "ROUTE-018",
+    "text": "不要只推荐小米",
+    "expected_status": "needs_semantic_llm",
+    "reason": "semantic_risk_marker"
+  },
+  {
+    "id": "ROUTE-019",
+    "text": "推荐手机，不要小迷",
+    "expected_status": "needs_semantic_llm",
+    "reason": "unsupported_grammar"
+  }
+]

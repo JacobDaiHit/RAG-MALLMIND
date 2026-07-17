@@ -39,7 +39,7 @@
     "case_group": "pc_parts",
     "query": "推荐一块 B760 DDR5 主板",
     "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": ["pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5", "pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5"],
+    "expected_product_ids": ["pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5", "pc_motherboard_pc_seed_motherboard_msi_pro_b760m_a_wifi_ddr5"],
     "expected_category": "pc_motherboard",
     "expected_component_type": "pc_motherboard"
   },
@@ -48,7 +48,7 @@
     "case_group": "pc_parts",
     "query": "推荐一个 750W 金牌全模组电源",
     "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": ["pc_seed_psu_super_flower_leadex_g_750w"],
+    "expected_product_ids": ["pc_psu_pc_seed_psu_super_flower_leadex_g_750w"],
     "expected_category": "pc_psu",
     "expected_component_type": "pc_psu"
   },
@@ -57,7 +57,7 @@
     "case_group": "pc_parts",
     "query": "推荐一块 2TB NVMe SSD",
     "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": ["pc_seed_ssd_samsung_990_pro_2tb", "pc_seed_ssd_wd_black_sn850x_2tb"],
+    "expected_product_ids": ["pc_storage_pc_seed_ssd_samsung_990_pro_2tb", "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb"],
     "expected_category": "pc_storage",
     "expected_component_type": "pc_storage"
   },
@@ -66,7 +66,7 @@
     "case_group": "pc_parts",
     "query": "推荐一个能装长显卡的机箱",
     "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": ["pc_seed_case_fractal_design_north", "pc_seed_case_phanteks_p360a", "pc_seed_case_nzxt_h5_flow"],
+    "expected_product_ids": ["pc_case_pc_seed_case_fractal_design_north", "pc_case_pc_seed_case_phanteks_p360a", "pc_case_pc_seed_case_nzxt_h5_flow"],
     "expected_category": "pc_case",
     "expected_component_type": "pc_case"
   },
@@ -79,90 +79,124 @@
     "expected_category": "pc_build"
   },
   {
-    "case_id": "pc_build_video_edit_9000",
-    "case_group": "pc_build",
+    "case_id": "pc_purchase_video_edit_9000_ambiguous",
+    "case_group": "pc_purchase_form",
     "query": "我要一台剪辑视频用的电脑，预算 9000",
+    "expected_outcome": "clarification",
+    "expected_reason": "computer_purchase_kind_unresolved"
+  },
+  {
+    "case_id": "pc_purchase_video_edit_9000_choose_desktop",
+    "case_group": "pc_purchase_form",
+    "turns": [
+      {"query": "我要一台剪辑视频用的电脑，预算 9000"},
+      {"query": "配台主机"}
+    ],
+    "expected_turns": [
+      {
+        "expected_outcome": "clarification",
+        "expected_reason": "computer_purchase_kind_unresolved"
+      },
+      {
+        "expected_tool": "generate_pc_build_plan"
+      }
+    ],
     "expected_tool": "generate_pc_build_plan",
     "expected_product_ids": [],
     "expected_category": "pc_build"
   },
   {
-    "case_id": "pc_build_rtx4070_8000",
-    "case_group": "pc_build",
-    "query": "我要一台带 RTX 4070 的游戏主机，预算 8000",
-    "expected_tool": "generate_pc_build_plan",
+    "case_id": "pc_purchase_video_edit_9000_choose_laptop",
+    "case_group": "pc_purchase_form",
+    "turns": [
+      {"query": "我要一台剪辑视频用的电脑，预算 9000"},
+      {"query": "笔记本"}
+    ],
+    "expected_turns": [
+      {
+        "expected_outcome": "clarification",
+        "expected_reason": "computer_purchase_kind_unresolved"
+      },
+      {
+        "expected_tool": "recommend_shopping_products",
+        "expected_category": "digital"
+      }
+    ],
+    "expected_tool": "recommend_shopping_products",
     "expected_product_ids": [],
-    "expected_category": "pc_build"
+    "expected_category": "digital"
+  },
+  {
+    "case_id": "pc_purchase_rtx4070_8000_ambiguous",
+    "case_group": "pc_purchase_form",
+    "query": "我要一台带 RTX 4070 的游戏主机，预算 8000",
+    "expected_outcome": "clarification",
+    "expected_reason": "computer_purchase_kind_unresolved"
   },
   {
     "case_id": "pc_build_multiturn_adjust",
     "case_group": "pc_build",
-    "expected_tool": "generate_pc_build_plan",
+    "expected_tool": "compare_pc_build_plans",
     "expected_product_ids": [],
     "turns": [
       {"query": "7000 元配一台游戏主机"},
-      {"query": "把显卡换强一点"},
       {"query": "预算降到 6000"},
       {"query": "上一套和现在这套差别在哪里"}
+    ],
+    "expected_turns": [
+      {"expected_tool": "generate_pc_build_plan"},
+      {"expected_tool": "edit_pc_build_plan"},
+      {"expected_tool": "compare_pc_build_plans"}
     ]
   },
   {
     "case_id": "negative_missing_outdoor_jacket",
     "case_group": "negative",
     "query": "推荐户外防风外套",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_no_match_reason": "missing_subcategory",
-    "requested_product_type": "jacket",
-    "must_not_contain_terms": ["户外裤", "背包", "帽子"]
+    "expected_outcome": "rejection",
+    "expected_reason": "catalog_scope_unsupported"
   },
   {
     "case_id": "negative_impossible_iphone_budget",
     "case_group": "negative",
     "query": "100 元以内买 iPhone",
     "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_no_match_reason": "budget_impossible"
+    "expected_outcome": "no_candidates"
   },
   {
     "case_id": "negative_unsupported_car",
     "case_group": "negative",
     "query": "推荐一辆汽车",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_no_match_reason": "unsupported_category"
+    "expected_outcome": "rejection",
+    "expected_reason": "catalog_scope_unsupported"
   },
   {
     "case_id": "negative_prescription_drug",
     "case_group": "negative",
     "query": "推荐处方药",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_no_match_reason": "unsupported"
+    "expected_outcome": "rejection",
+    "expected_reason": "catalog_scope_unsupported"
   },
   {
     "case_id": "ambiguous_gift_girlfriend",
     "case_group": "ecommerce",
     "query": "送女朋友礼物",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_category": "beauty"
+    "expected_outcome": "clarification",
+    "expected_reason": "product_type_unresolved"
   },
   {
     "case_id": "ambiguous_summer_things",
     "case_group": "ecommerce",
     "query": "我想买点适合夏天用的东西",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_category": "beauty"
+    "expected_outcome": "clarification",
+    "expected_reason": "product_type_unresolved"
   },
   {
     "case_id": "ambiguous_value_digital",
     "case_group": "ecommerce",
     "query": "推荐一个性价比高的数码产品",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": [],
-    "expected_category": "digital"
+    "expected_outcome": "clarification",
+    "expected_reason": "product_type_unresolved"
   },
   {
     "case_id": "route_general_hello",
@@ -175,15 +209,15 @@
     "case_id": "route_compare_products",
     "case_group": "routing",
     "query": "帮我比较这两个商品",
-    "expected_tool": "compare_products",
-    "expected_product_ids": []
+    "expected_outcome": "clarification",
+    "expected_reason": "comparison_card_references_unresolved"
   },
   {
     "case_id": "route_add_cart",
     "case_group": "routing",
     "query": "加入购物车",
-    "expected_tool": "apply_cart_instruction",
-    "expected_product_ids": []
+    "expected_outcome": "clarification",
+    "expected_reason": "cart_target_unresolved"
   },
   {
     "case_id": "route_clear_cart",
@@ -196,7 +230,7 @@
     "case_id": "route_session_second_price",
     "case_group": "routing",
     "query": "刚才推荐的第二个多少钱",
-    "expected_tool": "recommend_shopping_products",
-    "expected_product_ids": []
+    "expected_outcome": "clarification",
+    "expected_reason": "card_reference_unresolved"
   }
 ]

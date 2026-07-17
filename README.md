@@ -1,451 +1,119 @@
-# MallMind
+# MallMind V3
 
-MallMind 是一个面向比赛演示的电商智能导购 Demo，后端基于 FastAPI，围绕本地商品库、流式对话、结构化推荐、可选 RAG 检索与 PC 装机链路组织。当前仓库的主交付物是后端服务与 Web 调试台；Android 原生客户端仍属于后续计划，不在本仓库内。
+MallMind 是一个以本地商品目录为事实源的电商导购服务。当前生产入口只有 V3 链路：不再提供 `fast/balanced/full` 模式、8 工具 Router、旧 `/api/chat` 或 `/api/recommend` 兼容接口。
 
-## 当前核心能力
-
-- 自然语言导购对话：已实现。主入口为 `POST /api/chat/stream`。
-- SSE 流式返回：已实现。可持续输出进度、文本、商品卡片、对比表、购物车、PC 方案等事件。
-- 普通商品推荐：已实现。基于本地商品库做结构化筛选与评分，不编造商品卡片。
-- 商品对比：已实现。支持推荐结果内对比，也支持独立 `POST /api/products/compare`。
-- 购物车闭环：已实现。支持流式对话路由到购物车，也保留 `POST /api/cart/actions`。
-- PC 整机配置方案：已实现。使用本地 PC 配件数据集生成结构化方案。
-- PC 兼容性硬校验：已实现。包含 socket、内存类型、机箱兼容、散热兼容、电源功率、显卡输出等检查。
-- Milvus / RAG 商品证据检索：已实现为可选增强层。未启用或不可达时会降级到结构化商品库评分。
-- 多轮会话状态：已实现。用于购物车、推荐追问、PC 装机连续调整。
-- 图片附件分析：已实现为可选能力。当前仅接收图片附件，依赖视觉模型配置。
-- 图片找货：已实现为实验性增强。通过本地 `data/image_vectors.json` 做商品图相似召回。
-- Web 调试台：已实现。用于后端调试和比赛演示，不是最终原生客户端。
-
-## 系统主链路
+## 当前链路
 
 ```text
-用户输入 / 图片附件
-  -> FastAPI POST /api/chat/stream
-  -> runtime mode 选择（auto -> fast / balanced / full）
-  -> tool router（本地规则优先，可选 LLM 路由，再经过 guard 校正）
-  -> 对应 handler
-     - 普通商品推荐
-     - 商品对比
-     - 购物车操作
-     - PC 整机方案
-     - 普通聊天
-  -> 可选附件分析 / 可选 Milvus 检索 / 结构化评分 / 兼容性校验
-  -> SSE 返回 delta、progress、product_cards、comparison_table、pc_build_plan、cart、done 等事件
+POST /api/chat/stream（纯文本）
+  -> InputGuard + NormalizedTurn
+  -> V3Router：完整 SafetyProof 才本地直通
+  -> 否则本地生成 A/B/C 类型候选，并只调用一次 SemanticParse LLM
+  -> ComputerPurchaseKindValidator / TypeResolutionGate / PromotionGate / ClarificationPlan / catalog scope reject
+  -> CandidateGate（目录品类、类型排除、上架、库存、预算、品牌黑名单）
+  -> V3 Milvus evidence retrieval（只在 allowlist 内检索）
+  -> 目录事实排序 / 商品卡 / SessionDelta
 ```
 
-后续 Android 原生端应直接对接 `POST /api/chat/stream`，而不是旧的兼容接口。
+对外动作分为六类：
 
-## 后端接口
+- `recommend_shopping_products`：商品推荐。
+- `parameter_query`：刚展示的商品卡参数、SKU 或价格事实查询。
+- `apply_cart_instruction`：计划 → 用户确认 → 真实购物车变更。
+- `general_chat`：非购物闲聊，不写任何业务状态。
+- `generate_pc_build_plan`：按明确预算与用途生成首套兼容 PC 方案。
+- `edit_pc_build_plan` / `compare_pc_build_plans`：只通过短期方案版本引用调整预算、替换单个配件或比较当前/上一套；不允许 LLM 填写配件 ID。
 
-主要接口如下：
+明确的“不要小米”会被统一为 `brand_family_id=xiaomi`，在目录 CandidateGate、Milvus 召回前 expression 和最终商品卡三处排除。LLM 不能输出可执行的 product ID、SKU ID、目录价格或库存。
 
-- `POST /api/chat/stream`：当前主链路，客户端首选接入点。
-- `POST /api/chat`：legacy 兼容接口，返回旧的非流式结构。
-- `POST /api/recommend`：非流式测试 / smoke check 接口，不是主业务入口。
-- `GET /api/stream-recommend`：图式推荐调试流，不建议客户端接入。
-- `GET /health`
-- `GET /api/health`
-- `GET /api/runtime/diagnostics`：仅 debug 或带管理员 token 时开放。
-- `GET /api/llm/diagnose`
-- `GET /api/products`
-- `GET /api/products/{product_id}`
-- `POST /api/products/compare`
-- `POST /api/cart/actions`
-- `POST /api/pc-build/generate`
-- `POST /api/analyze-attachments`
+## SemanticParse 契约
 
-兼容 / 调试接口说明：
+SemanticParse 使用紧凑目录能力表和本轮 A/B/C 类型候选，而不注入完整商品、SKU、品牌或目录类型表。模型只生成语义观察；目录词表、类型候选、原句证据、价格证据、CardRef、PC 方案版本和真实商品事实均由本地模块校验。`semantic-parse-v5` 增加 `computer_purchase_kind` 与原句 evidence；它不能直接写入 `RequirementSpecV3.product_type_ids`，也不能直接调用 PC 求解器。
 
-- `/api/chat`：保留给旧脚本、测试和兼容调用。
-- `/api/recommend`：保留给单次完整推荐返回场景。
-- `/api/stream-recommend`：主要用于观察 `RecommendationGraph` 事件，不应作为正式对话入口。
+- 明确的推荐/购买/寻找商品请求，即使对象不在目录中，也必须输出 `recommend_shopping_products` 与用户商品名；不能因为目录未覆盖而输出 `general_chat`；
+- 若模型仍把“推荐 + 无目录类目”误标为 `general_chat`，路由层会进行确定性拒绝，返回 `catalog_scope_unsupported`；
+- `general_chat` 仅用于不涉及购物、商品卡、购物车或 PC 装机的问候和知识聊天；
+- 推荐类型必须先通过 TypeResolutionGate：目标/排除候选均要属于本轮 A/B/C 菜单并能回指原句；候选外 ID、伪造证据和目标/排除冲突均澄清或拒绝；
+- 无候选且无目录正式精确匹配的明确商品名返回 `catalog_scope_unsupported`；
+- 推荐链路中 CandidateGate 的 allowlist 为空时，同样返回 `catalog_scope_unsupported`；若 allowlist 非空但 Milvus 无证据，则按目录事实降级，不能伪装为目录范围问题；
+- 普通“加入购物车”缺少目标商品卡时返回 `cart_target_unresolved`，不误报为目录范围问题。
+- “送礼物”“比较这两个”等具有商品意图却缺少可执行字段的请求会写入短期 ClarificationPlan；下一轮只合并该计划，不把全文对话塞进模型。
+- 首次说“电脑/主机 + 用途 + 预算”并不等于要装机：`computer_purchase_kind=unknown` 时先问清是笔记本、成品台式机还是按预算装机，且不调用 Milvus 或 PC 求解器；只在本轮原句明确出现“配/组/装一台、攒机、装机、DIY、配置单”等受控证据时才允许 `desktop_build -> generate_pc_build_plan`。
+- 用户在该澄清后只答“配台主机”或“笔记本”时，SessionCore 只合并未过期的预算、用途和待确认购买形式；改问“推荐篮球鞋”等新话题不继承旧电脑条件。明确选择成品台式机但目录没有对应类型时，才返回 `catalog_scope_unsupported`。
+- PC SessionCore 最多保存 `current/previous` 两份目录验证后的方案 ID、预算、用途和 TTL；显卡等单配件替换会锁定其余旧配件并重新跑兼容校验，无法在原预算内安全完成时明确返回无兼容方案。
 
-## SSE 事件协议
+图片附件暂未迁移到 V3；聊天入口会明确拒绝附件请求，绝不会回退到旧多模态链路。
 
-`POST /api/chat/stream` 当前会按代码实际输出以下事件类型：
+## 启动
 
-- `runtime_mode`
-- `tool_call`
-- `delta`
-- `progress`
-- `attachment_analysis`
-- `validation_error`
-- `intent_route`
-- `product_cards`
-- `candidate_scope`
-- `comparison_table`
-- `follow_up_questions`
-- `result`
-- `cart`
-- `pc_build_plan`
-- `done`
-
-不同 handler 不会输出全部事件。例如购物车链路通常只返回 `delta`、`cart`、`done`。
-
-## 数据集说明
-
-### 普通电商商品库
-
-- 主路径：`data/ecommerce_products/products.json`
-- 由本地结构化商品数据组成
-- 包含商品基础信息、SKU、FAQ、评论、价格、库存、图片路径等字段
-- 商品卡片会从真实本地数据中组装，不会为不存在的商品补造标题、价格或库存
-
-### PC 配件数据
-
-- 主路径：`data/jd_pc_products/products.json`
-- 还包含若干 `parts.json` / `manifest.json` 等辅助数据
-- 覆盖 CPU、主板、显卡、内存、存储、电源、机箱、散热器等类型
-- 当前 PC 配件不提供商品图片，展示时以文本规格卡片 / 方案明细为主
-- 价格是 Demo 标价，不代表实时京东价格
-- 不依赖实时 JD 页面，也不应被解释成实时库存系统
-- 规格字段来自本地结构化数据，推荐链路不会自行编造兼容性参数
-
-## RAG / Milvus
-
-- 商品 chunk 构建入口：`rag/ingestion/product_chunks.py`
-- 索引脚本：`python scripts/index_ecommerce_products.py --dry-run`
-- 重建索引：`python scripts/index_ecommerce_products.py --rebuild`
-- 当前支持 dense / sparse / hybrid retrieval
-- `MilvusManager.hybrid_retrieve(...)` 使用 dense + sparse 检索融合
-- 检索后可选 rerank / auto-merge / postprocess
-- query expansion 仅在相应 runtime mode 与配置开启时使用
-- Milvus 未启用、不可达、无 collection 或超时时，会降级到本地结构化商品库评分
-
-可用的验证方式：
-
-- `GET /api/runtime/diagnostics`
-- 推荐结果 `trace`
-- `/api/chat/stream` 的 `runtime_mode`、`progress`、`result.trace`
-
-## 运行方式
-
-### 1. 安装依赖
-
-```bash
-pip install -r requirements.txt
-```
-
-### 2. 配置环境变量
-
-```powershell
-copy .env.example .env
-```
-
-至少需要关注：
+1. 创建 `.env`（不要提交密钥）：
 
 ```env
-APP_ENV=development
-HOST=0.0.0.0
-PORT=8000
-
-MODEL=
-BASE_URL=
-OPENAI_API_KEY=
-
-RECOMMENDATION_STREAM_USE_LLM=false
-RECOMMENDATION_ENABLE_MILVUS=false
-RECOMMENDATION_QUERY_EXPANSION=false
-
-VISION_MODEL=
-MULTIMODAL_MODEL=
-DATABASE_URL=
-REDIS_URL=redis://localhost:6379/0
+LLM_PROVIDER=dashscope
+DASHSCOPE_API_KEY=your_dashscope_api_key_here
+EMBEDDING_PROVIDER=dashscope
+EMBEDDING_MODEL=text-embedding-v4
+V3_RETRIEVAL_ENABLED=true
+MILVUS_HOST=127.0.0.1
+MILVUS_PORT=19530
+MILVUS_V3_COLLECTION=mallmind_product_evidence_v3
+MILVUS_V3_BM25_STATE_PATH=data/bm25_state_v3.json
+SESSION_BACKEND=memory
+# 生产环境：SESSION_BACKEND=redis，并配置 REDIS_URL
 ```
 
-说明：
-
-- 不配 LLM 时，系统仍可跑 `fast` 路径。
-- `APP_ENV=production` 时，`DATABASE_URL` 现在必须显式设置。
-- Redis、Milvus、PostgreSQL 都不是所有模式下的硬前置，但生产部署要按实际链路补齐。
-
-### 3. 启动后端
-
-Windows PowerShell 下请优先使用项目虚拟环境启动。不要直接使用系统 Python，
-否则可能调用到 Python 3.8 等旧版本，导致依赖或类型特性不兼容。
+2. 启动 Milvus：
 
 ```powershell
-$venv = "D:\github\.venv\Scripts"
-& "$venv\Activate.ps1"
-python --version
+docker compose up -d milvus-standalone
+docker ps
 ```
 
-确认版本为项目虚拟环境后，显式绑定本地地址和 8000 端口：
+确认容器健康且 `127.0.0.1:19530` 可访问。
+
+3. 建立 V3 向量库。先 dry-run 检查，再全量重建：
 
 ```powershell
-$env:HOST = "127.0.0.1"
-$env:PORT = "8000"
-python scripts\run_recommendation_api.py
+python scripts/index_ecommerce_products.py --v3 --dry-run
+python scripts/index_ecommerce_products.py --v3 --rebuild --batch-size 10
+python scripts/check_vector_index_health.py --collection mallmind_product_evidence_v3 --expected-count 884 --count-tolerance 0
 ```
 
-如果 PowerShell 不允许执行 `Activate.ps1`，可以不激活环境，直接调用虚拟环境中的
-Python：
+`--v3` 会写入独立 collection `mallmind_product_evidence_v3`，同时写独立 BM25 状态 `data/bm25_state_v3.json`。不要用旧 collection 或旧 `data/bm25_state.json` 替代它；两者的稀疏向量坐标并不共用。
+
+PC 切片会在 metadata 中写入 `canonical_product_key`；CandidateGate 也会按同一 key 保留一个目录商品，避免同一型号的 `_v2/_revN` 数据版本同时成为候选卡。更新 PC 数据或该规则后必须执行上述 `--rebuild`，不能向旧 collection 追加。
+
+4. 启动 API：
 
 ```powershell
-$env:HOST = "127.0.0.1"
-$env:PORT = "8000"
-& "D:\github\.venv\Scripts\python.exe" scripts\run_recommendation_api.py
+uvicorn rag.api.recommendation_app:app --host 127.0.0.1 --port 8000
 ```
 
-启动成功后访问：
+打开 `http://127.0.0.1:8000/`。
 
-```text
-http://127.0.0.1:8000/
+## API
+
+- `POST /api/chat/stream`：V3 SSE 聊天入口。
+- `POST /api/cart/actions`：创建 V3 购物车待确认计划。
+- `POST /api/cart/confirm`：确认或取消唯一未过期的计划。
+- `POST /api/products/compare`：从当前本地目录读取多商品事实。
+- `GET /api/health`：基础设施、模型和目录健康信息。
+
+示例：
+
+```json
+{
+  "session_id": "demo-1",
+  "message": "推荐 5000 元以内、小米以外的手机，拍照优先"
+}
 ```
-
-使用健康检查确认后端和商品目录已加载：
-
-```powershell
-Invoke-WebRequest http://127.0.0.1:8000/health -UseBasicParsing
-```
-
-应返回 HTTP 200，并看到 `status: ok`、`catalog_loaded: true`。
-
-其中：
-
-- `HOST` 建议开发环境使用 `127.0.0.1`；需要局域网访问时可改为 `0.0.0.0`
-- `PORT` 默认使用 `8000`；如果端口被占用，需要先停止占用进程或修改端口
-- 已启动 Milvus 时，健康检查中的 `milvus_enabled` 应为 `true`
-
-### 4. 打开 Web 调试台
-
-```text
-http://127.0.0.1:8000/
-```
-
-## 数据校验与索引构建
-
-项目当前已有这些脚本：
-
-```bash
-python scripts/validate_pc_dataset.py --strict
-python scripts/index_ecommerce_products.py --dry-run
-python scripts/index_ecommerce_products.py --rebuild
-```
-
-说明：
-
-- `validate_pc_dataset.py` 会检查配件覆盖、兼容字段和 PC 图片残留字段
-- `index_ecommerce_products.py --dry-run` 只构建 chunk，不写入 Milvus
-- `--rebuild` 会重建集合与 BM25 状态，适合重新发版前执行
 
 ## 测试
 
-项目里测试分为“稳定回归测试”和“业务评估报告”两类。前者用于 CI 判断代码是否崩，后者用于暴露推荐链路、数据集和能力边界，不一定要求全部 case 通过。
+不配置外部模型即可运行 V3 合约测试：
 
-### 1. 快速本地回归
-
-用于开发时确认核心 Python 单测是否通过。建议显式指定 `--basetemp`，避免 Windows 默认临时目录权限问题。
-
-```bash
-python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
+```powershell
+python -m pytest tests/test_v3_api.py tests/test_v3_cart.py tests/test_v3_pc_executor.py tests/test_v3_semantic_parse.py tests/test_v3_routing.py tests/test_v3_milvus_ingestion.py tests/test_embedding_sparse.py tests/test_milvus_writer_stability.py -q
 ```
 
-如果只想验证新增的典型用户场景评估脚本结构：
-
-```bash
-python -m pytest tests/test_user_scenarios_eval.py -q --basetemp .pytest_tmp/user_scenarios
-```
-
-### 2. 数据集校验
-
-用于确认本地 PC 配件数据、兼容字段和基础数据结构没有破坏。适合 CI 和发版前执行。
-
-```bash
-python scripts/validate_pc_dataset.py --strict
-```
-
-### 3. 商品索引 dry-run
-
-用于确认普通电商商品能正确构建 RAG chunk，但不写入 Milvus。适合没有外部服务的本地检查。
-
-```bash
-python scripts/index_ecommerce_products.py --dry-run
-```
-
-需要重建 Milvus 索引时再运行：
-
-```bash
-python scripts/index_ecommerce_products.py --rebuild
-```
-
-### 4. 典型用户场景评估
-
-用于覆盖比赛说明中的典型用户场景，包括单轮推荐、条件筛选、多轮细化、对比、主动澄清、反选约束、跨类目组合、购物车 CRUD 和多模态边界。该脚本会先做 catalog probe，把结果区分为业务失败、数据集缺口和能力边界。
-
-默认命令不走外部大模型，`use_llm=False`，`runtime_mode=balanced`，适合稳定 CI：
-
-```bash
-python scripts/eval_user_scenarios.py --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
-```
-
-如果要测试 full 链路和外部大模型，可显式开启：
-
-```bash
-python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
-```
-
-说明：
-
-- `failed` 表示当前业务行为和验收口径不一致，通常需要修代码。
-- `catalog_gap` / `budget_catalog_gap` 表示当前商品库缺品或预算内缺货，不应算普通代码错误。
-- `capability_gap` / `capability_partial` 表示当前能力未实现或只实现了部分能力，例如真实图片语义理解。
-
-### 5. RAG / 检索评估
-
-用于评估商品召回、约束违例、catalog gap 和 negative case 的检索质量。默认更适合离线评估。
-
-```bash
-python scripts/eval_retrieval.py --output .pytest_tmp/retrieval_eval.json --markdown .pytest_tmp/retrieval_eval.md
-```
-
-如果要验证 Milvus 集合和向量索引健康：
-
-```bash
-python scripts/check_vector_index_health.py --output .pytest_tmp/vector_index_health.json
-```
-
-### 6. 模型链路消融评估
-
-用于比较 fast / rag_only / balanced_demo / full 等模式下，路由、RAG、LLM 解析和最终链路的贡献。依赖 Milvus 和 LLM 环境，适合在外部服务就绪后运行。
-
-**快速验证（推荐先跑，约 3 分钟，12 case × 3 组）：**
-
-```bash
-python scripts/eval_model_chain_ablation.py \
-  --cases tests/fixtures/capability_challenge_eval_cases.json \
-  --groups fast_baseline,rag_only,balanced_demo \
-  --limit 12 \
-  --output .pytest_tmp/model_chain_ablation.json \
-  --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-**核心 5 组中等规模（约 8 分钟，20 case × 5 组）：**
-
-```bash
-python scripts/eval_model_chain_ablation.py \
-  --cases tests/fixtures/capability_challenge_eval_cases.json \
-  --groups fast_baseline,rag_only,balanced_demo,router_llm_only,parse_llm_only \
-  --limit 20 \
-  --output .pytest_tmp/model_chain_ablation.json \
-  --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-**完整 9 组全量评估（约 30 分钟，40 case × 9 组）：**
-
-```bash
-python scripts/eval_model_chain_ablation.py \
-  --cases tests/fixtures/capability_challenge_eval_cases.json \
-  --groups all \
-  --output .pytest_tmp/model_chain_ablation.json \
-  --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-**只跑单个 case 调试：**
-
-```bash
-python scripts/eval_model_chain_ablation.py \
-  --cases tests/fixtures/capability_challenge_eval_cases.json \
-  --case-id cap_synonym_commute_noise_beans \
-  --groups fast_baseline,rag_only,balanced_demo \
-  --output .pytest_tmp/model_chain_ablation.json \
-  --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-**禁用 router LLM 跑（隔离 RAG + parse 贡献）：**
-
-```bash
-python scripts/eval_model_chain_ablation.py \
-  --cases tests/fixtures/capability_challenge_eval_cases.json \
-  --groups balanced_demo --limit 12 \
-  --disable-router-llm \
-  --output .pytest_tmp/model_chain_ablation.json \
-  --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-关注指标（打开生成的 `.md` 报告）：
-- `capability_eval` 表：`rag_top1_changed`（RAG 是否改变 top1）、`hit@5`/`p@1`（rag_only vs fast_baseline 差值）
-- `llm_timeout` / `llm_json_invalid` / `llm_provider_error`（LLM 调用失败分类）
-- `LLM diagnostics` 表：`router_failure` / `parse_failure` / `guidance_failure`（各环节失败原因）
-- `vs_fast_delta` 表：`balanced_win`（balanced 相对 fast 的 top1 胜出 case）
-
-### 7. 比赛演示前建议组合
-
-无外部服务的稳定检查：
-
-```bash
-python scripts/validate_pc_dataset.py --strict
-python scripts/index_ecommerce_products.py --dry-run
-python scripts/eval_user_scenarios.py --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
-python -m pytest tests -q --basetemp .pytest_tmp/pytest_all
-```
-
-接近线上增强链路的检查：
-
-```bash
-python scripts/index_ecommerce_products.py --rebuild
-python scripts/check_vector_index_health.py --output .pytest_tmp/vector_index_health.json
-python scripts/eval_user_scenarios.py --use-llm --runtime-mode full --output-json .pytest_tmp/user_scenarios_eval.json --output-md .pytest_tmp/user_scenarios_eval.md
-python scripts/eval_model_chain_ablation.py --cases tests/fixtures/capability_challenge_eval_cases.json --groups all --output .pytest_tmp/model_chain_ablation.json --markdown .pytest_tmp/model_chain_ablation.md
-```
-
-部分能力若涉及 LLM、Milvus、Redis 或数据库连通性，是否完全通过会受本地环境影响。
-
-## 部署说明
-
-服务部署时建议明确配置：
-
-- `HOST=0.0.0.0`
-- `PORT`
-- `APP_ENV`
-- `DATABASE_URL`
-- `REDIS_URL`
-- `MILVUS_HOST`
-- `MILVUS_PORT`
-- `MILVUS_COLLECTION`
-- `OPENAI_API_KEY` / `ARK_API_KEY`
-- `BASE_URL`
-- `MODEL`
-- `VISION_MODEL` / `MULTIMODAL_MODEL`
-
-补充说明：
-
-- SSE 反向代理时需要关闭 response buffering。
-- 生产环境不应依赖本地默认数据库连接串。
-- Android 原生端后续应配置为直接访问部署后的 `/api/chat/stream`。
-
-## Android 原生端计划
-
-后续计划中的原生客户端方向为：
-
-- Kotlin
-- Jetpack Compose
-- Retrofit / OkHttp
-- ViewModel
-- 直接对接 `POST /api/chat/stream`
-
-当前仓库里的 Web 页面只是调试台，不是最终比赛主客户端。
-
-## 已知边界
-
-- Demo 数据不代表实时库存和实时价格。
-- PC 配件当前无商品图片。
-- 图片附件链路当前只接收图片，不接收 PDF 等其他附件。
-- 某些 LLM 能力依赖环境变量，未配置时会自动降级。
-- Milvus、Redis、PostgreSQL 是否必需取决于运行模式和部署目标。
-- `/api/chat`、`/api/recommend`、`/api/stream-recommend` 仍保留用于兼容或调试。
-- shell 中看到的中文显示异常不一定是文件本身乱码，排查时需要结合编码与脚本环境判断。
-
-## 未来展望
-
-- 增加 Kotlin 原生 Android App
-- 完成服务器部署与稳定的外网 base URL
-- 做更清晰的 RAG trace / diagnostics 面板
-- 将商品数据接入更真实的库存 / 价格来源
-- 继续清洗和扩充 PC 配件数据
-- 将图片找货、语音输入等能力作为可选加分项继续完善
-
-## 补充文档
-
-- 后端链路自检报告：`docs/backend_status.md`
+这些测试检查 SafetyProof、语义提升、品牌别名/排除、澄清状态、卡片事实引用、购物车幂等确认、PC 求解输入以及 V3 Milvus 预过滤。外部 LLM 与 Milvus 的真实服务验证需要上述 `.env`、Docker 和索引都可用。

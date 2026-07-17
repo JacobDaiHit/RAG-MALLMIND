@@ -6,6 +6,7 @@ import math
 import os
 import re
 import threading
+import time
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -33,6 +34,10 @@ def _parse_positive_int(value: object, default: int) -> int:
     except (TypeError, ValueError):
         return default
     return parsed if parsed > 0 else default
+
+
+BM25_STATE_REPLACE_RETRIES = _parse_positive_int(os.getenv("BM25_STATE_REPLACE_RETRIES", "5"), 5)
+BM25_STATE_REPLACE_RETRY_SECONDS = float(os.getenv("BM25_STATE_REPLACE_RETRY_SECONDS", "0.2"))
 
 
 def get_configured_embedding_dim() -> int:
@@ -392,7 +397,14 @@ class EmbeddingService:
         }
         tmp = self._state_path.with_suffix(".json.tmp")# 先写入一个临时文件，写入完成后再替换原文件，避免在写入过程中出现数据损坏。 
         tmp.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-        tmp.replace(self._state_path)
+        for attempt in range(BM25_STATE_REPLACE_RETRIES):
+            try:
+                tmp.replace(self._state_path)
+                return
+            except PermissionError:
+                if attempt + 1 == BM25_STATE_REPLACE_RETRIES:
+                    raise
+                time.sleep(BM25_STATE_REPLACE_RETRY_SECONDS)
 
     def _persist(self) -> None:# 获取锁后调用 _persist_unlocked 方法将 BM25 统计数据持久化到 JSON 文件中，确保在多线程环境下的安全性。
         """向量化服务：封装 persist 相关逻辑，供上层流程复用。"""

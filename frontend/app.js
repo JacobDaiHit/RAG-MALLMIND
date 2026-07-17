@@ -141,6 +141,11 @@ function renderInitialChat() {
 // 🟣 v4: 直接发送一条消息（供追问按钮等场景调用）
 function sendGoalMessage(message) {
   if (!message || isBusy) return;
+
+  if (selectedAttachments.length) {
+    appendMessage("assistant", "当前 V3 版本暂不接收图片附件；请用文字描述商品、型号、预算和偏好。图片不会再回退到旧链路处理。");
+    return;
+  }
   goalInput.value = message;
   sendDemand();
 }
@@ -157,12 +162,11 @@ async function sendDemand() {
   const assistantNode = appendMessage("assistant", "");
 
   try {
-    const analyzedAttachments = await analyzeSelectedAttachments();
     await streamChat(
       {
         session_id: SESSION_ID,
         message,
-        attachments: analyzedAttachments,
+        attachments: [],
         images: [],
       },
       (event, data) => handleChatEvent(event, data, assistantNode)
@@ -906,7 +910,7 @@ async function compareProduct(productId) {
   const sourceCards = lastProductCards.length ? lastProductCards : productCatalog;
   const ids = Array.from(new Set([productId, ...sourceCards.map((item) => item.product_id).filter(Boolean)])).slice(0, 4);
   if (ids.length < 2) return;
-  const data = await postJson("/api/products/compare", { product_ids: ids });
+  const data = await postJson("/api/products/compare", { session_id: SESSION_ID, product_ids: ids });
   lastComparisonRows = data.rows || [];
   if (document.querySelector("#screen-products").classList.contains("active")) {
     productMarketContent.insertAdjacentHTML("afterbegin", renderComparisonTable(lastComparisonRows));

@@ -1,0 +1,604 @@
+{
+  "status": "passed_with_warning",
+  "errors": [],
+  "warnings": [
+    "catalog gap warning: 推荐户外防风外套 - 纯向量检索在缺失外套时返回户外相邻商品；端到端 no-match guard 负责最终拦截。"
+  ],
+  "config": {
+    "milvus_host": "127.0.0.1",
+    "milvus_port": "19530",
+    "milvus_collection": "mallmind_product_chunks_qwen_v1",
+    "embedding_provider": "dashscope",
+    "embedding_model": "text-embedding-v4",
+    "embedding_dim": 1024,
+    "milvus_uri": "http://localhost:19530"
+  },
+  "collection": {
+    "name": "mallmind_product_evidence_v3",
+    "exists": true,
+    "entity_count": 884,
+    "dense_vector_dim": 1024,
+    "indexes": [
+      {
+        "M": "16",
+        "efConstruction": "256",
+        "metric_type": "IP",
+        "index_type": "HNSW",
+        "field_name": "dense_embedding",
+        "index_name": "dense_embedding",
+        "total_rows": 884,
+        "indexed_rows": 884,
+        "pending_index_rows": 0,
+        "state": "Finished"
+      },
+      {
+        "drop_ratio_build": "0.2",
+        "metric_type": "IP",
+        "index_type": "SPARSE_INVERTED_INDEX",
+        "field_name": "sparse_embedding",
+        "index_name": "sparse_embedding",
+        "total_rows": 884,
+        "indexed_rows": 884,
+        "pending_index_rows": 0,
+        "state": "Finished"
+      }
+    ],
+    "description": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "dense_embedding",
+          "type": "101",
+          "params": {
+            "dim": 1024
+          }
+        },
+        {
+          "name": "sparse_embedding",
+          "type": "104",
+          "params": {}
+        },
+        {
+          "name": "text",
+          "type": "21",
+          "params": {
+            "max_length": 8192
+          }
+        },
+        {
+          "name": "filename",
+          "type": "21",
+          "params": {
+            "max_length": 255
+          }
+        },
+        {
+          "name": "file_type",
+          "type": "21",
+          "params": {
+            "max_length": 50
+          }
+        },
+        {
+          "name": "file_path",
+          "type": "21",
+          "params": {
+            "max_length": 1024
+          }
+        },
+        {
+          "name": "page_number",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "chunk_idx",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "parent_chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "root_chunk_id",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "chunk_level",
+          "type": "5",
+          "params": {}
+        },
+        {
+          "name": "product_id",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "title",
+          "type": "21",
+          "params": {
+            "max_length": 512
+          }
+        },
+        {
+          "name": "brand",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "brand_family_id",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "sub_category",
+          "type": "21",
+          "params": {
+            "max_length": 128
+          }
+        },
+        {
+          "name": "base_price",
+          "type": "11",
+          "params": {}
+        },
+        {
+          "name": "is_active",
+          "type": "1",
+          "params": {}
+        },
+        {
+          "name": "in_stock",
+          "type": "1",
+          "params": {}
+        },
+        {
+          "name": "chunk_type",
+          "type": "21",
+          "params": {
+            "max_length": 64
+          }
+        },
+        {
+          "name": "component_type",
+          "type": "21",
+          "params": {
+            "max_length": 64
+          }
+        },
+        {
+          "name": "metadata",
+          "type": "23",
+          "params": {}
+        }
+      ]
+    }
+  },
+  "smoke_tests": [
+    {
+      "query": "B760 DDR5 主板",
+      "expected_label": "主板",
+      "kind": "positive_smoke",
+      "status": "ok",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "",
+      "top_k": [
+        {
+          "product_id": "pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5",
+          "title": "GIGABYTE B760M AORUS ELITE AX DDR5 主板",
+          "category": "pc_motherboard",
+          "category_key": "",
+          "component_type": "pc_motherboard",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.7644246816635132,
+          "snippet": "商品ID: pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5\n标题: GIGABYTE B760M AORUS ELITE AX DDR5 主板\n品牌: GIGABYTE\nPC component type: pc_motherboard\n类目: 主板 / B760M AORUS ELITE AX DDR5\n价格: 1199-1199 CNY\nKe"
+        },
+        {
+          "product_id": "pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2",
+          "title": "GIGABYTE B760M AORUS ELITE AX DDR5 V2 主板",
+          "category": "pc_motherboard",
+          "category_key": "",
+          "component_type": "pc_motherboard",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.7590366005897522,
+          "snippet": "商品ID: pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2\n标题: GIGABYTE B760M AORUS ELITE AX DDR5 V2 主板\n品牌: GIGABYTE\nPC component type: pc_motherboard\n类目: 主板 / B760M AORUS ELITE AX DDR5 V2\n价格: 1239-12"
+        },
+        {
+          "product_id": "pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v3",
+          "title": "GIGABYTE B760M AORUS ELITE AX DDR5 V3 主板",
+          "category": "pc_motherboard",
+          "category_key": "",
+          "component_type": "pc_motherboard",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.7554482817649841,
+          "snippet": "商品ID: pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v3\n标题: GIGABYTE B760M AORUS ELITE AX DDR5 V3 主板\n品牌: GIGABYTE\nPC component type: pc_motherboard\n类目: 主板 / B760M AORUS ELITE AX DDR5 V3\n价格: 1279-12"
+        },
+        {
+          "product_id": "pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5",
+          "title": "GIGABYTE B760M AORUS ELITE AX DDR5 主板",
+          "category": "pc_motherboard",
+          "category_key": "",
+          "component_type": "pc_motherboard",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.748960018157959,
+          "snippet": "GIGABYTE B760M AORUS ELITE AX DDR5 主板 SKU 和规格:\n- pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5: 型号: B760M AORUS ELITE AX DDR5，平台: JD，品类: 主板，价格 1199 CNY"
+        },
+        {
+          "product_id": "pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2",
+          "title": "GIGABYTE B760M AORUS ELITE AX DDR5 V2 主板",
+          "category": "pc_motherboard",
+          "category_key": "",
+          "component_type": "pc_motherboard",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.7321091890335083,
+          "snippet": "GIGABYTE B760M AORUS ELITE AX DDR5 V2 主板 SKU 和规格:\n- pc_motherboard_pc_seed_motherboard_gigabyte_b760m_aorus_elite_ax_ddr5_v2: 型号: B760M AORUS ELITE AX DDR5 V2，平台: JD，品类: 主板，价格 1239 CNY"
+        }
+      ]
+    },
+    {
+      "query": "750W 金牌电源",
+      "expected_label": "电源",
+      "kind": "positive_smoke",
+      "status": "ok",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "",
+      "top_k": [
+        {
+          "product_id": "pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v5",
+          "title": "Cooler Master MWE 550 Bronze V5 电源",
+          "category": "pc_psu",
+          "category_key": "",
+          "component_type": "pc_psu",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6768587827682495,
+          "snippet": "Cooler Master MWE 550 Bronze V5 电源 SKU 和规格:\n- pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v5: 型号: MWE 550 Bronze V5，平台: JD，品类: 电源，价格 429 CNY"
+        },
+        {
+          "product_id": "pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v2",
+          "title": "Cooler Master MWE 550 Bronze V2 电源",
+          "category": "pc_psu",
+          "category_key": "",
+          "component_type": "pc_psu",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6728478670120239,
+          "snippet": "Cooler Master MWE 550 Bronze V2 电源 SKU 和规格:\n- pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v2: 型号: MWE 550 Bronze V2，平台: JD，品类: 电源，价格 354 CNY"
+        },
+        {
+          "product_id": "pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v3",
+          "title": "Cooler Master MWE 550 Bronze V3 电源",
+          "category": "pc_psu",
+          "category_key": "",
+          "component_type": "pc_psu",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6721560955047607,
+          "snippet": "Cooler Master MWE 550 Bronze V3 电源 SKU 和规格:\n- pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v3: 型号: MWE 550 Bronze V3，平台: JD，品类: 电源，价格 379 CNY"
+        },
+        {
+          "product_id": "pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v5",
+          "title": "Cooler Master MWE 550 Bronze V5 电源",
+          "category": "pc_psu",
+          "category_key": "",
+          "component_type": "pc_psu",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6640831232070923,
+          "snippet": "商品ID: pc_psu_pc_seed_psu_cooler_master_mwe_550_bronze_v5\n标题: Cooler Master MWE 550 Bronze V5 电源\n品牌: Cooler Master\nPC component type: pc_psu\n类目: 电源 / MWE 550 Bronze V5\n价格: 429-429 CNY\nKey specs: atx_version: ATX 2.52; bra"
+        },
+        {
+          "product_id": "pc_psu_pc_seed_psu_huntkey_wd650k_650w_gold_v5",
+          "title": "Huntkey WD650K 650W Gold V5 电源",
+          "category": "pc_psu",
+          "category_key": "",
+          "component_type": "pc_psu",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6625161170959473,
+          "snippet": "Huntkey WD650K 650W Gold V5 电源 SKU 和规格:\n- pc_psu_pc_seed_psu_huntkey_wd650k_650w_gold_v5: 型号: WD650K 650W Gold V5，平台: JD，品类: 电源，价格 549 CNY"
+        }
+      ]
+    },
+    {
+      "query": "2TB NVMe SSD",
+      "expected_label": "SSD",
+      "kind": "positive_smoke",
+      "status": "ok",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "",
+      "top_k": [
+        {
+          "product_id": "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2",
+          "title": "WD BLACK SN850X 2TB Rev2 NVMe SSD",
+          "category": "pc_storage",
+          "category_key": "",
+          "component_type": "pc_storage",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6601383090019226,
+          "snippet": "商品ID: pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2\n标题: WD BLACK SN850X 2TB Rev2 NVMe SSD\n品牌: WD\nPC component type: pc_storage\n类目: 固态硬盘 / BLACK SN850X 2TB Rev2\n价格: 1024-1024 CNY\nKey specs: brand: WD; capacity_gb: 2000;"
+        },
+        {
+          "product_id": "pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2",
+          "title": "WD BLACK SN850X 2TB Rev2 NVMe SSD",
+          "category": "pc_storage",
+          "category_key": "",
+          "component_type": "pc_storage",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6576837301254272,
+          "snippet": "WD BLACK SN850X 2TB Rev2 NVMe SSD SKU 和规格:\n- pc_storage_pc_seed_ssd_wd_black_sn850x_2tb_rev2: 型号: BLACK SN850X 2TB Rev2，平台: JD，品类: 固态硬盘，价格 1024 CNY"
+        },
+        {
+          "product_id": "pc_storage_pc_seed_ssd_samsung_990_pro_2tb_rev2",
+          "title": "Samsung 990 PRO 2TB Rev2 NVMe SSD",
+          "category": "pc_storage",
+          "category_key": "",
+          "component_type": "pc_storage",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6543064117431641,
+          "snippet": "商品ID: pc_storage_pc_seed_ssd_samsung_990_pro_2tb_rev2\n标题: Samsung 990 PRO 2TB Rev2 NVMe SSD\n品牌: Samsung\nPC component type: pc_storage\n类目: 固态硬盘 / 990 PRO 2TB Rev2\n价格: 1124-1124 CNY\nKey specs: brand: Samsung; capacity_gb: "
+        },
+        {
+          "product_id": "pc_storage_pc_seed_ssd_samsung_990_pro_2tb",
+          "title": "Samsung 990 PRO 2TB NVMe SSD",
+          "category": "pc_storage",
+          "category_key": "",
+          "component_type": "pc_storage",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.653150200843811,
+          "snippet": "Samsung 990 PRO 2TB NVMe SSD SKU 和规格:\n- pc_storage_pc_seed_ssd_samsung_990_pro_2tb: 型号: 990 PRO 2TB，平台: JD，品类: 固态硬盘，价格 1099 CNY"
+        },
+        {
+          "product_id": "pc_storage_pc_seed_ssd_samsung_990_pro_2tb_rev2",
+          "title": "Samsung 990 PRO 2TB Rev2 NVMe SSD",
+          "category": "pc_storage",
+          "category_key": "",
+          "component_type": "pc_storage",
+          "chunk_type": "sku",
+          "source_scope": "",
+          "score": 0.6529396772384644,
+          "snippet": "Samsung 990 PRO 2TB Rev2 NVMe SSD SKU 和规格:\n- pc_storage_pc_seed_ssd_samsung_990_pro_2tb_rev2: 型号: 990 PRO 2TB Rev2，平台: JD，品类: 固态硬盘，价格 1124 CNY"
+        }
+      ]
+    },
+    {
+      "query": "篮球实战鞋 缓震",
+      "expected_label": "篮球鞋",
+      "kind": "positive_smoke",
+      "status": "ok",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "",
+      "top_k": [
+        {
+          "product_id": "p_clothes_011",
+          "title": "Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "review",
+          "source_scope": "",
+          "score": 0.6348647475242615,
+          "snippet": "Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋 用户评价摘要:\n- 5星: 我是穿普通篮球鞋总挤小脚趾的宽脚党，这双EP宽楦版上脚第一天打了3小时野球局完全没磨脚，全掌缓震真的太爽了，抢篮板落地的时候膝盖完全没震感，急停变向也不打滑，中帮高度刚好不卡我以前崴过的脚踝，颜值也在线，打完球直接穿去吃夜宵完全不突兀，不愧是老詹的正代鞋，这个价能拿到实战性能这么顶的款真的太值了。\n- 1星: 我之前穿其他耐克篮"
+        },
+        {
+          "product_id": "p_clothes_011",
+          "title": "Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6238834857940674,
+          "snippet": "商品ID: p_clothes_011\n标题: Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋\n品牌: 耐克\n类目: 服饰运动 / 篮球鞋\n价格: 1499-1599 CNY\n评分: 2.33\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、篮球鞋\n不适合: 追求极致轻薄用户需谨慎\n场景: outfit_bundle、sportswear、commute_style、sports、篮球鞋\n标签: 耐克、"
+        },
+        {
+          "product_id": "p_clothes_011",
+          "title": "Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "faq",
+          "source_scope": "",
+          "score": 0.6109069585800171,
+          "snippet": "Nike LeBron XXI EP 男子中帮实战篮球鞋全掌缓震室内外场地训练鞋 官方 FAQ:\nQ: 这双EP宽楦版的LeBron XXI和普通版本的鞋楦具体差在哪里？脚宽多少的人穿不会挤脚？\nA: 这款EP宽楦版的鞋前掌横向宽度比常规版拓宽了4.2mm，足弓两侧的容纳空间也做了3mm的微调，不会出现常规版压脚面、挤小脚趾的情况。日常穿鞋习惯选宽楦、脚宽在10-12cm的男性都能适配，甚至脚面偏高的球友穿厚款篮球袜也不会有紧绷束缚感，"
+        },
+        {
+          "product_id": "p_clothes_013",
+          "title": "李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "faq",
+          "source_scope": "",
+          "score": 0.6049334406852722,
+          "snippet": "李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋 官方 FAQ:\nQ: 全城12的缓震配置对于体重80公斤以上的锋线球员来说够用吗？\nA: 完全够用，这款鞋的中底做了分区密度调校，后掌的䨻科技模块厚度达到了8mm，专门针对大体重球员落地时的冲击力做了强化，起跳落地的时候不会出现踩穿感，后跟内嵌的硬质抗扭片还能分散落地的压力，哪怕是连续打两三个小时的高强度对局，脚踝和膝盖的负担也会小很多，完全能支撑大体重锋线频繁卡位起跳、落"
+        },
+        {
+          "product_id": "p_clothes_013",
+          "title": "李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.5958110690116882,
+          "snippet": "商品ID: p_clothes_013\n标题: 李宁 韦德之道 全城12 实战篮球专业比赛鞋缓震支撑后卫前锋鞋\n品牌: 李宁\n类目: 服饰运动 / 篮球鞋\n价格: 1199-1299 CNY\n评分: 3.4\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、篮球鞋\n场景: outfit_bundle、sportswear、commute_style、篮球鞋\n标签: 李宁、服饰运动、篮球鞋、男款、白蓝主场色、39码、40码、41码、42码、"
+        }
+      ]
+    },
+    {
+      "query": "油皮 夏天 防晒",
+      "expected_label": "防晒",
+      "kind": "positive_smoke",
+      "status": "ok",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "",
+      "top_k": [
+        {
+          "product_id": "p_beauty_006",
+          "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+          "category": "beauty",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6222391724586487,
+          "snippet": "商品ID: p_beauty_006\n标题: 巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml\n品牌: 巴黎欧莱雅\n类目: 美妆护肤 / 防晒\n价格: 170-190 CNY\n评分: 3.67\n适合: 护肤咨询、肤质匹配、成分与功效问答、防晒\n不适合: 油皮需谨慎、极敏感人群需先试用、追求极致轻薄用户需谨慎\n场景: beauty_routine、skin_care、gift_selection、防晒\n标签: 巴黎欧莱雅、美妆护"
+        },
+        {
+          "product_id": "p_beauty_023",
+          "title": "理肤泉特护清盈防晒乳高倍防晒清爽控油易敏肌适用面部防晒50ml",
+          "category": "beauty",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.6034862995147705,
+          "snippet": "商品ID: p_beauty_023\n标题: 理肤泉特护清盈防晒乳高倍防晒清爽控油易敏肌适用面部防晒50ml\n品牌: 理肤泉\n类目: 美妆护肤 / 防晒\n价格: 268-268 CNY\n评分: 2.83\n适合: 护肤咨询、肤质匹配、成分与功效问答、防晒、旅行出差\n不适合: 油皮需谨慎、极敏感人群需先试用\n场景: beauty_routine、skin_care、gift_selection、travel、防晒\n标签: 理肤泉、美妆护肤、"
+        },
+        {
+          "product_id": "p_beauty_010",
+          "title": "安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml",
+          "category": "beauty",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.5878214836120605,
+          "snippet": "商品ID: p_beauty_010\n标题: 安热沙金灿倍护防晒乳高倍防水防汗清爽户外面部身体防晒60ml\n品牌: 安热沙\n类目: 美妆护肤 / 防晒\n价格: 118-298 CNY\n评分: 3.67\n适合: 护肤咨询、肤质匹配、成分与功效问答、防晒、上班通勤\n不适合: 极敏感人群需先试用\n场景: beauty_routine、skin_care、gift_selection、防晒\n标签: 安热沙、美妆护肤、防晒、敏感肌、保湿、通勤、户"
+        },
+        {
+          "product_id": "p_beauty_023",
+          "title": "理肤泉特护清盈防晒乳高倍防晒清爽控油易敏肌适用面部防晒50ml",
+          "category": "beauty",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "faq",
+          "source_scope": "",
+          "score": 0.5843188762664795,
+          "snippet": "理肤泉特护清盈防晒乳高倍防晒清爽控油易敏肌适用面部防晒50ml 官方 FAQ:\nQ: 清盈型和轻薄无润色款有什么区别？\nA: 清盈型质地更偏向清爽控油，适合油皮或混合皮，上脸后有轻微的哑光效果，能减少面部油光；轻薄无润色款则更注重自然贴合，质地更水润，没有润色效果，适合所有肤质尤其是追求裸妆感的人群。两者都具备高倍防晒力和舒缓成分，主要区别在于肤感和妆效，您可以根据自己的肤质和需求选择。\nQ: 这款防晒乳需要卸妆吗？\nA: 是的，这款防"
+        },
+        {
+          "product_id": "p_beauty_006",
+          "title": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml",
+          "category": "beauty",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "faq",
+          "source_scope": "",
+          "score": 0.5586268305778503,
+          "snippet": "巴黎欧莱雅新多重防护隔离露水感轻薄高倍防晒修护提亮30ml 官方 FAQ:\nQ: 这款隔离露的防晒指数是多少？适合户外长时间使用吗？\nA: 这款隔离露防晒指数为SPF50+ PA++++，属高倍广谱防晒，能抵御98%以上UVB（晒伤）和UVA（晒黑老化）。日常通勤或1-2小时短户外足够，但长时间阳光下（如海边爬山）需每2-3小时补涂。其防水防汗性能一般，遇大量出汗或水需及时补涂，以维持防晒效果。\nQ: 水感轻肌款（30ml）和清爽型（4"
+        }
+      ]
+    },
+    {
+      "query": "推荐户外防风外套",
+      "expected_label": "缺失外套负例",
+      "kind": "catalog_gap_warning",
+      "status": "warning",
+      "passed": true,
+      "failed_reason": "",
+      "warning_reason": "纯向量检索在缺失外套时返回户外相邻商品；端到端 no-match guard 负责最终拦截。",
+      "top_k": [
+        {
+          "product_id": "p_clothes_017",
+          "title": "Arc'teryx Gamma Pant 男子软壳长裤耐磨弹力户外徒步攀爬长裤",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.4533189535140991,
+          "snippet": "商品ID: p_clothes_017\n标题: Arc'teryx Gamma Pant 男子软壳长裤耐磨弹力户外徒步攀爬长裤\n品牌: 始祖鸟\n类目: 服饰运动 / 户外裤\n价格: 1290-1290 CNY\n评分: 4.2\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、户外裤\n场景: outfit_bundle、sportswear、commute_style、户外裤\n标签: 始祖鸟、服饰运动、户外裤、通勤、户外、男款、28码、30"
+        },
+        {
+          "product_id": "p_clothes_024",
+          "title": "The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.445861279964447,
+          "snippet": "商品ID: p_clothes_024\n标题: The North Face Horizon 轻量速干运动鸭舌帽防晒透气户外遮阳帽\n品牌: 北面\n类目: 服饰运动 / 帽子\n价格: 199-199 CNY\n评分: 3.0\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、帽子\n场景: outfit_bundle、sportswear、commute_style、sports、帽子\n标签: 北面、服饰运动、帽子、防晒、轻量、通勤、户外、咖啡"
+        },
+        {
+          "product_id": "p_clothes_022",
+          "title": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.43488046526908875,
+          "snippet": "商品ID: p_clothes_022\n标题: adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣\n品牌: 阿迪达斯\n类目: 服饰运动 / 卫衣\n价格: 459-479 CNY\n评分: 4.33\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、卫衣\n场景: outfit_bundle、sportswear、commute_style、卫衣\n标签: 阿迪达斯、服饰运动、卫衣、通勤、M码、黑色、白logo、L码、X"
+        },
+        {
+          "product_id": "p_clothes_022",
+          "title": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "review",
+          "source_scope": "",
+          "score": 0.4323307275772095,
+          "snippet": "adidas Originals 三叶草 男子连帽卫衣 经典logo套头上衣 用户评价摘要:\n- 5星: 上周刚收到这件黑色L码的，上身太惊喜了！面料是那种厚实质感的毛圈棉，现在十几度的天气单穿刚好，不冷也不闷汗，胸口的三叶草刺绣摸上去凸凸的特别有质感，完全不是廉价胶印的感觉。我178cm150斤，穿L码宽松度刚好，搭运动裤牛仔裤都好看，昨天出门搭工装裤被好几个朋友问链接，洗了一次也没掉色没变形，这个价位买三叶草正品真的太值了。\n- 3"
+        },
+        {
+          "product_id": "p_clothes_025",
+          "title": "Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包",
+          "category": "clothing",
+          "category_key": "",
+          "component_type": "",
+          "chunk_type": "profile",
+          "source_scope": "",
+          "score": 0.4232851266860962,
+          "snippet": "商品ID: p_clothes_025\n标题: Osprey DAYLITE PLUS 日光+ 20L 户外多功能双肩背包轻量通勤包\n品牌: Osprey\n类目: 服饰运动 / 背包\n价格: 699-699 CNY\n评分: 2.83\n适合: 穿搭组合、尺码颜色选择、运动/通勤场景、背包、学生党\n场景: outfit_bundle、sportswear、commute_style、背包\n标签: Osprey、服饰运动、背包、轻量、通勤、户"
+        }
+      ]
+    }
+  ],
+  "latency_ms": 1866.06,
+  "infrastructure_status": "ok",
+  "positive_smoke_status": "ok",
+  "catalog_gap_warning_status": "warning",
+  "overall_status": "passed_with_warning"
+}

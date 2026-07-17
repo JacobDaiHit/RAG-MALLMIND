@@ -8,35 +8,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
-from rag.api.app_context import (
-    ALLOWED_ORIGINS,
-    CORS_ALLOW_CREDENTIALS,
-    FRONTEND_DIR,
-    PC_IMAGES_DIR,
-    PRODUCT_IMAGES_DIR,
-    STREAM_LLM_ENABLED,
-    VALIDATION_VERSION,
-    build_complete_prompt,
-    build_requirement_questions,
-    prepare_recommendation_context,
-)
-from rag.api.attachments import (
-    MAX_ATTACHMENT_ANALYSIS_BYTES,
-    VISION_MODEL_NAME,
-)
-from rag.api.pc_build import router as pc_build_router
 from rag.api.products import router as product_router
-from rag.api.routes.attachments import router as attachment_router
 from rag.api.routes.chat import router as chat_router
 from rag.api.routes.feedback import router as feedback_router
-from rag.api.routes.recommend import router as recommendation_router
-from rag.api.sse import sse_event
-from rag.recommendation import recommend_shopping_products
-from rag.recommendation.image_retrieval import retrieve_image_evidence
 from rag.recommendation.llm_client import OpenAICompatibleChatClient, get_llm_provider_trace, is_llm_configured, report_to_dict
 from rag.recommendation.product_loader import load_catalog_for_scope, load_combined_product_catalog
-from rag.recommendation.session_state import get_session
 from rag.utils.runtime_errors import is_debug_mode, sanitize_report, sanitize_text
+
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+FRONTEND_DIR = ROOT_DIR / "frontend"
+PRODUCT_IMAGES_DIR = ROOT_DIR / "data" / "ecommerce_products" / "images"
+PC_IMAGES_DIR = ROOT_DIR / "data" / "pc_parts" / "images"
+ALLOWED_ORIGINS = [item.strip() for item in os.getenv("RECOMMENDATION_CORS_ORIGINS", "*").split(",") if item.strip()]
+CORS_ALLOW_CREDENTIALS = ALLOWED_ORIGINS != ["*"]
+V3_RETRIEVAL_ENABLED = os.getenv("V3_RETRIEVAL_ENABLED", "false").strip().lower() in {"1", "true", "yes", "on"}
 
 
 def create_app() -> FastAPI:
@@ -53,10 +39,7 @@ def create_app() -> FastAPI:
         app.mount("/pc-images", StaticFiles(directory=PC_IMAGES_DIR), name="pc-images")
 
     app.include_router(product_router)
-    app.include_router(pc_build_router)
-    app.include_router(attachment_router)
     app.include_router(feedback_router)
-    app.include_router(recommendation_router)
     app.include_router(chat_router)
     app.add_middleware(
         CORSMiddleware,
@@ -79,7 +62,7 @@ def create_app() -> FastAPI:
         load_combined_product_catalog(use_cache=True)
         _log.info("product catalog warmed in %.1fs", time.monotonic() - started)
 
-        milvus_enabled = os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false").strip().lower() == "true"
+        milvus_enabled = V3_RETRIEVAL_ENABLED
 
         # 2) 嵌入服务（Milvus 检索开启时才触发模型/API 连接）
         if milvus_enabled:
@@ -148,7 +131,7 @@ def runtime_diagnostics(x_admin_token: Optional[str] = Header(default=None)) -> 
         "status": "ok",
         "app_env": os.getenv("APP_ENV", "development"),
         "runtime": {
-            "stream_llm_enabled": STREAM_LLM_ENABLED,
+            "v3_semantic_parse_enabled": True,
             "recommendation_llm_parse": os.getenv("RECOMMENDATION_LLM_PARSE", "auto"),
             "recommendation_llm_guidance": os.getenv("RECOMMENDATION_LLM_GUIDANCE", "false"),
             "recommendation_enable_milvus": os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false"),
@@ -172,10 +155,9 @@ def runtime_diagnostics(x_admin_token: Optional[str] = Header(default=None)) -> 
     }
     if is_debug_mode():
         payload["debug"] = {
-            "validation_version": VALIDATION_VERSION,
+            "validation_version": "v3-input-guard-v1",
             "app_file": str(Path(__file__).resolve()),
-            "attachment_analysis_max_bytes": MAX_ATTACHMENT_ANALYSIS_BYTES,
-            "vision_model": VISION_MODEL_NAME or "MODEL",
+            "attachment_routing": "rejected_until_v3_attachment_observation_exists",
         }
     return sanitize_report(payload)
 

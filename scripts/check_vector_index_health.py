@@ -58,6 +58,7 @@ SMOKE_QUERIES = [
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--top-k", type=int, default=5)
+    parser.add_argument("--collection", type=str, default="", help="Explicit Milvus collection; use mallmind_product_evidence_v3 for V3 ingestion validation.")
     parser.add_argument("--output", type=Path, default=ROOT_DIR / "reports" / "vector_index_health.json")
     parser.add_argument("--expected-count", type=int, default=884)
     parser.add_argument("--count-tolerance", type=int, default=160)
@@ -75,7 +76,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         "smoke_tests": [],
     }
 
-    manager = MilvusManager()
+    manager = MilvusManager(collection_name=args.collection or None)
     report["collection"]["name"] = manager.collection_name
     report["config"]["milvus_uri"] = os.getenv("MILVUS_URI") or manager.uri
 

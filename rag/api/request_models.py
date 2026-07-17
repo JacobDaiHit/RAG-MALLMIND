@@ -66,6 +66,7 @@ class CartActionRequest(BaseModel):
 class ProductCompareRequest(BaseModel):
     """Request body for comparing product cards."""
 
+    session_id: str = Field(default_factory=lambda: f"session-{uuid4().hex}")
     product_ids: List[str] = Field(default_factory=list)
 
 

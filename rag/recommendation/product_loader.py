@@ -312,6 +312,7 @@ def _load_pc_products_as_api_products(path: Path) -> List[ApiProduct]:
                     "source": str(path.relative_to(ROOT_DIR)),
                     "source_type": "jd_pc_product",
                     "component_type": normalized_role,
+                    "model": part.model,
                     "product_url": part.source.get("product_url", ""),
                     "specs": part.specs,
                 },

@@ -11,6 +11,8 @@ venv/
 .vscode/
 data/__pycache__/
 data/milvus/
+data/bm25_state_v3.json
+volumes/
 data/raw/price_snapshots/
 data/price_rules/price_update_draft.json
 data/price_rules/price_update_review.json

@@ -1,386 +1,226 @@
-import logging
-import time as _time_module
-from typing import Any, Dict, Iterable, List, Optional
+"""V3-only HTTP boundary for chat, cart confirmation, and card comparison."""
+from __future__ import annotations
+
+import time
+from typing import Any, Dict, Iterable
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
 
-from rag.api.app_context import prepare_recommendation_context
 from rag.api.request_models import CartActionRequest, ChatStreamRequest, ProductCompareRequest
-from rag.api.routes.common import request_product_ids, stream_llm_enabled
-from rag.api.routes.legacy_chat_compat import chat_compat_response
-from rag.api.runtime_context import build_runtime_policy
 from rag.api.sse import safe_stream, sse_event
-from rag.recommendation.comparison import compare_products
-from rag.recommendation.handler_base import generate_trace_id, trace_span
 from rag.recommendation.product_loader import load_combined_product_catalog
-from rag.recommendation.session_state import (
-    apply_cart_instruction,
-    cart_snapshot,
-    get_session,
-    save_session,
-    update_session_from_router,
-)
-from rag.recommendation.tool_handlers import (
-    handle_cart_v2,
-    handle_compare_v2,
-    handle_general_chat,
-    handle_parameter_query,
-    handle_pc_build,
-    handle_price_comparison,
-    handle_recommend,
-    handle_sku_query,
-)
-from rag.recommendation.tool_router import route_shopping_tool_call, validate_tool_call
+from rag.recommendation.session_state import get_session, save_session
+from rag.recommendation.v3.cart import CartPlanningError, apply_cart_plan, cart_plan_delta, cart_snapshot, create_cart_plan
+from rag.recommendation.v3.config import CLARIFICATION_TTL_SECONDS
+from rag.recommendation.v3.comparison import compare_catalog_products
+from rag.recommendation.v3.fact_query_executor import execute_certified_fact_query
+from rag.recommendation.v3.general_chat import execute_general_chat
+from rag.recommendation.v3.normalization import normalize_turn
+from rag.recommendation.v3.orchestrator import V3Orchestrator
+from rag.recommendation.v3.pc_executor import execute_v3_pc_plan
+from rag.recommendation.v3.recommendation_executor import execute_certified_recommendation
+from rag.recommendation.v3.session import apply_session_delta, clarification_delta, load_session_core
+from rag.recommendation.v3.types import ClarificationPlan, ParseStatus, V3Action, V3ExecutionDecision
 from rag.security.prompt_guard import detect_injection
-from rag.utils.runtime_errors import sanitize_report
 
 
 router = APIRouter()
-
-logger = logging.getLogger(__name__)
-
-# ── 🟢 输入消毒 ──
 MAX_MESSAGE_LENGTH = 2000
 
 
 def sanitize_input(message: str, session_id: str) -> str:
-    """Clean and validate raw user input before routing.
+    """Reject unsafe or oversized text; never truncate and continue meaningfully."""
 
-    Tier 1: Rejects inputs that contain known prompt-injection patterns.
-    """
     if not session_id or not session_id.strip():
         raise HTTPException(status_code=400, detail="session_id is required")
-    cleaned = message.strip()
+    cleaned = str(message or "").strip()
     if not cleaned:
         raise HTTPException(status_code=400, detail="message cannot be empty")
     if len(cleaned) > MAX_MESSAGE_LENGTH:
-        cleaned = cleaned[:MAX_MESSAGE_LENGTH]
-
-    # ── Tier 1: Prompt-injection detection ──
+        raise HTTPException(status_code=413, detail="message exceeds the 2000-character limit")
     injection = detect_injection(cleaned)
     if injection.should_block:
-        logger.warning(
-            "Prompt injection blocked for session %s: %s",
-            session_id,
-            injection.matches,
-        )
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid input — request contains disallowed content.",
-        )
-
+        raise HTTPException(status_code=400, detail="Invalid input — request contains disallowed content.")
     return cleaned
-
-
-def recommendation_fn():
-    from rag.api import recommendation_app
-
-    return recommendation_app.recommend_shopping_products
-
-
-def image_retrieval_fn():
-    from rag.api import recommendation_app
-
-    return recommendation_app.retrieve_image_evidence
-
-
-# ── 🟢 Handler 注册表（替代 if/elif 分发链） ──
-# 轻量工具：不需要 contextual_goal / attachments 等重上下文
-# 重量工具（pc_build / recommend）在注册表之外单独处理，
-# 因为它们需要先执行 prepare_recommendation_context()。
-
-_LIGHTWEIGHT_TOOLS = {
-    "apply_cart_instruction",
-    "general_chat",
-    "compare_products",
-    "parameter_query",
-    "sku_detail",
-    "price_comparison",
-}
-
-
-def _dispatch_lightweight(
-    tool_name: str,
-    session: Any,
-    tool_call: Dict[str, Any],
-    raw_message: str,
-    request: ChatStreamRequest,
-) -> Iterable[str]:
-    """Dispatch a lightweight tool that doesn't need heavy context preparation."""
-    if tool_name == "apply_cart_instruction":
-        yield from handle_cart_v2(session, raw_message, request_product_ids(request), tool_call)
-    elif tool_name == "general_chat":
-        yield from handle_general_chat(session, tool_call)
-    elif tool_name == "compare_products":
-        product_ids = list((tool_call.get("arguments") or {}).get("product_ids") or request_product_ids(request))
-        if not product_ids:
-            product_ids = request_product_ids(request)
-        yield from handle_compare_v2(session, product_ids, tool_call)
-    elif tool_name == "parameter_query":
-        yield from handle_parameter_query(session, tool_call)
-    elif tool_name == "sku_detail":
-        yield from handle_sku_query(session, tool_call)
-    elif tool_name == "price_comparison":
-        yield from handle_price_comparison(session, tool_call)
-
-
-@router.post("/api/chat")
-def chat_compat(request: ChatStreamRequest) -> Dict[str, Any]:
-    """Legacy compatibility endpoint; /api/chat/stream is the main entrypoint."""
-
-    return chat_compat_response(request)
 
 
 @router.post("/api/chat/stream")
 def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
-    raw_attachments = [*request.attachments, *request.images]
-    raw_message = sanitize_input(request.message, request.session_id)
+    message = sanitize_input(request.message, request.session_id)
     session = get_session(request.session_id)
+    attachments = [*request.attachments, *request.images]
 
-    def unsafe_generate():
-        span_start = _time_module.time()
-        trace_id = generate_trace_id(session.session_id)
-        span_id = f"{session.session_id}-{int(span_start * 1000) % 100000}"
-        tool_name = ""
-        fact_check_passed = None
-        runtime_policy = resolve_runtime_policy(
-            request.mode,
-            message=raw_message,
+    def generate() -> Iterable[str]:
+        if attachments:
+            yield sse_event("error", {"label": "附件导购暂不可用", "detail": "V3 尚未实现附件的受控语义观察，已拒绝请求，不会回退到旧链路。"})
+            yield sse_event("done", {"session_id": session.session_id})
+            return
+        decision = V3Orchestrator().decide(
+            normalize_turn(session_id=session.session_id, message=message),
+            catalog=load_combined_product_catalog(),
             session=session,
-            has_attachments=bool(raw_attachments),
-            has_image_data=any(item.get("data_url") or item.get("dataUrl") for item in raw_attachments),
         )
-        use_llm = runtime_policy["use_llm"]
-
-        yield sse_event("runtime_mode", runtime_policy)
-
-        with trace_span("route_tool_call", trace_id=trace_id) as route_span:
-            tool_call = route_shopping_tool_call(raw_message, session, use_llm=use_llm)
-            local_route = tool_call.get("routing_trace", {}).get("local", {})
-            tool_call = validate_tool_call(tool_call, local_route, raw_message, session)
-            route_span["source"] = tool_call.get("source", "")
-            route_span["result"] = tool_call.get("name", "")
-
-        # 争议路由或闲聊不累积 session 状态
-        _should_update_session = (
-            tool_call.get("name") != "apply_cart_instruction"
-            and not tool_call.get("downgraded")
-            and tool_call.get("name") != "general_chat"
-        )
-        if _should_update_session:
-            update_session_from_router(session, raw_message, tool_call)
+        yield sse_event("v3_routing", _route_payload(decision))
+        if decision.status is ParseStatus.LOCAL_CLARIFY:
+            yield from _save_and_emit_clarification(session, message, decision)
+            return
+        if decision.status is ParseStatus.REJECT:
+            if decision.reason_code == "catalog_scope_unsupported":
+                yield sse_event("error", {"label": "当前商品目录暂不支持该商品", "detail": "当前目录中没有可用于推荐的对应商品。", "reason": decision.reason_code})
+            else:
+                yield sse_event("error", {"label": "需求暂不可安全执行", "detail": "当前无法可靠理解或执行这条请求，请换一种更明确的说法。", "reason": decision.reason_code})
+            yield sse_event("done", {"session_id": session.session_id})
+            return
+        if decision.status not in {ParseStatus.SAFE_DIRECT, ParseStatus.SEMANTIC_EXECUTABLE} or decision.action is None:
+            yield sse_event("error", {"label": "请求状态异常", "detail": "路由没有产生可执行动作。"})
+            yield sse_event("done", {"session_id": session.session_id})
+            return
+        yield sse_event("runtime_mode", {
+            "runtime_mode": "v3_deterministic" if decision.status is ParseStatus.SAFE_DIRECT else "v3_semantic",
+            "reason": decision.reason_code,
+            "semantic_parse_called": decision.semantic is not None,
+        })
         yield sse_event(
             "tool_call",
             {
-                "name": tool_call.get("name"),
-                "arguments": tool_call.get("arguments") or {},
-                "reason": tool_call.get("reason"),
-                "source": tool_call.get("source"),
-                "routing_trace": tool_call.get("routing_trace") or {},
+                "name": decision.action.value,
+                "source": "v3_deterministic" if decision.status is ParseStatus.SAFE_DIRECT else "v3_semantic",
+                "arguments": {"action": decision.action.value},
             },
         )
-
-        tool_name = tool_call.get("name", "")
-
-        # ── 注册表分发：轻量工具 ──
-        if tool_name in _LIGHTWEIGHT_TOOLS:
-            with trace_span(f"handle_{tool_name}", trace_id=trace_id):
-                yield from _dispatch_lightweight(tool_name, session, tool_call, raw_message, request)
-            _end_span(session, span_start, span_id, tool_name, True, None)
-            return
-
-        # ── 重量工具：需要 prepare_recommendation_context ──
-        contextual_goal, attachments, attachment_report = prepare_recommendation_context(
-            raw_message,
-            raw_attachments,
-            session,
-            use_vision_llm=runtime_policy["use_vision_llm"],
-        )
-        yield sse_event("progress", {"label": "已收到需求", "detail": "开始整理预算、品类、颜色和功能约束。"})
-        if attachments:
-            public_attachment_report = sanitize_report(attachment_report)
-            yield sse_event(
-                "attachment_analysis",
-                {
-                    "summary": public_attachment_report["summary"],
-                    "attachments": sanitize_report(attachments),
-                    "status_counts": public_attachment_report["status_counts"],
-                    "vision_model": public_attachment_report.get("vision_model"),
-                },
-            )
-            yield sse_event(
-                "progress",
-                {
-                    "label": "图片解析完成",
-                    "detail": attachment_report["summary"],
-                },
-            )
-        yield sse_event(
-            "progress",
-            {
-                "label": "正在解析条件",
-                "detail": "大模型会参与需求理解。" if use_llm else "当前使用规则解析需求。",
-            },
-        )
-
-        if tool_name == "generate_pc_build_plan":
-            with trace_span("handle_pc_build", trace_id=trace_id):
-                yield from handle_pc_build(session, raw_message, contextual_goal, tool_call)
-            _end_span(session, span_start, span_id, tool_name, True, None)
-            return
-
-        # 默认：recommend_shopping_products
-        tool_name = "recommend_shopping_products"
-        with trace_span("handle_recommend", trace_id=trace_id):
-            yield from handle_recommend(
-                session,
-                raw_message,
-                raw_attachments,
-                contextual_goal,
-                attachments,
-                attachment_report,
-                use_llm,
-                tool_call,
-                recommendation_fn=recommendation_fn(),
-                image_retrieval_fn=image_retrieval_fn(),
-                use_llm_guidance=runtime_policy["use_llm_guidance"],
-                use_milvus_retrieval=runtime_policy["use_milvus_retrieval"],
-                use_rag_query_expansion=runtime_policy["use_rag_query_expansion"],
-                runtime_mode=runtime_policy["selected_mode"],
-            )
-        fact_check_passed = getattr(session, "last_fact_check_status", "passed") == "passed"
-        _end_span(session, span_start, span_id, tool_name, True, fact_check_passed)
+        yield from _execute_decision(session, message, decision)
 
     return StreamingResponse(
-        safe_stream(unsafe_generate, {"session_id": session.session_id}),
+        safe_stream(generate, {"session_id": session.session_id}),
         media_type="text/event-stream",
         headers={"content-type": "text/event-stream"},
     )
 
 
-def resolve_runtime_policy(
-    requested_mode: str,
-    *,
-    message: str = "",
-    session: Any = None,
-    has_attachments: bool = False,
-    has_image_data: bool = False,
-) -> Dict[str, Any]:
-    """Resolve one truthful runtime policy for the main chat entrypoint."""
-    return build_runtime_policy(
-        requested_mode,
-        message,
-        session,
-        llm_configured=stream_llm_enabled(),
-        has_attachments=has_attachments,
-        has_image_data=has_image_data,
-    )
+def _execute_decision(session: Any, message: str, decision: V3ExecutionDecision) -> Iterable[str]:
+    catalog = load_combined_product_catalog()
+    if decision.action is V3Action.RECOMMEND and decision.requirement is not None:
+        yield from execute_certified_recommendation(session=session, message=message, requirement=decision.requirement, proof=decision.rule_signal.safety_proof, catalog=catalog)
+        return
+    if decision.action is V3Action.PARAMETER_QUERY and decision.requirement is not None:
+        yield from execute_certified_fact_query(session=session, requirement=decision.requirement, catalog=catalog)
+        return
+    if decision.action is V3Action.APPLY_CART and decision.semantic and decision.semantic.observation:
+        yield from _stream_cart_plan(session, decision.semantic.observation, catalog)
+        return
+    if decision.action in {V3Action.PC_BUILD, V3Action.PC_PLAN_EDIT, V3Action.PC_PLAN_COMPARE} and decision.requirement is not None and decision.semantic and decision.semantic.observation:
+        yield from execute_v3_pc_plan(session=session, requirement=decision.requirement, observation=decision.semantic.observation, catalog=catalog)
+        return
+    if decision.action is V3Action.GENERAL_CHAT:
+        yield from execute_general_chat(session=session, message=message)
+        return
+    yield sse_event("error", {"label": "V3 动作缺少完整字段", "detail": "当前请求未被执行。"})
+    yield sse_event("done", {"session_id": session.session_id})
 
 
-# ── 🟢 ⑱ span 结束日志 ──
+def _stream_cart_plan(session: Any, observation: Any, catalog: Any) -> Iterable[str]:
+    core = load_session_core(session)
+    try:
+        plan = create_cart_plan(core=core, observation=observation, catalog=catalog)
+    except CartPlanningError as exc:
+        plan = ClarificationPlan(
+            question=str(exc),
+            missing_fields=("cart_target",),
+            expires_at=time.time() + CLARIFICATION_TTL_SECONDS,
+            reason_code="cart_target_unresolved",
+        )
+        apply_session_delta(session, clarification_delta(core, plan=plan, observation=observation, source_text=""))
+        save_session(session)
+        yield sse_event("clarification", {"question": plan.question, "missing_fields": list(plan.missing_fields), "expires_at": plan.expires_at, "reason": plan.reason_code})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    if plan is None:
+        yield sse_event("cart", {"action": "view", **cart_snapshot(core, catalog)})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    apply_session_delta(session, cart_plan_delta(core, plan))
+    save_session(session)
+    yield sse_event("cart_confirmation", {"plan": _cart_plan_payload(plan), "message": _cart_confirmation_message(plan)})
+    yield sse_event("done", {"session_id": session.session_id})
 
-_MAX_LOG_ENTRIES = 20
 
-
-def _end_span(session: Any, span_start: float, span_id: str, tool_name: str, success: bool, fact_check_passed: Optional[bool]) -> None:
-    """Record structured span log into session.llm_call_log."""
-    elapsed_ms = int((_time_module.time() - span_start) * 1000)
-    entry: Dict[str, Any] = {
-        "span_id": span_id,
-        "tool_name": tool_name,
-        "success": success,
-        "fact_check_passed": fact_check_passed,
-        "elapsed_ms": elapsed_ms,
-        "timestamp": int(_time_module.time()),
-    }
-    log = getattr(session, "llm_call_log", None)
-    if isinstance(log, list):
-        log.append(entry)
-        # 滑动窗口 20
-        while len(log) > _MAX_LOG_ENTRIES:
-            log.pop(0)
+def _save_and_emit_clarification(session: Any, message: str, decision: V3ExecutionDecision) -> Iterable[str]:
+    if decision.clarification is None or decision.semantic is None or decision.semantic.observation is None:
+        yield sse_event("error", {"label": "澄清计划异常", "detail": "缺少可持久化的澄清上下文。"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    plan = decision.clarification
+    apply_session_delta(session, clarification_delta(load_session_core(session), plan=plan, observation=decision.semantic.observation, source_text=message))
+    save_session(session)
+    yield sse_event("clarification", {"question": plan.question, "missing_fields": list(plan.missing_fields), "expires_at": plan.expires_at, "reason": plan.reason_code})
+    yield sse_event("done", {"session_id": session.session_id})
 
 
 @router.post("/api/cart/actions")
 def cart_actions(request: CartActionRequest) -> Dict[str, Any]:
-    if not request.instruction.strip():
-        raise HTTPException(status_code=400, detail="instruction cannot be empty")
-    return apply_cart_instruction(
-        session=get_session(request.session_id),
-        instruction=request.instruction,
-        catalog=load_combined_product_catalog(),
-        product_ids=request.product_ids,
-    )
-
-
-# ── 🟢 新增: 购物车确认端点 ──
-
-_CONFIRM_TTL_SECONDS = 60
+    message = sanitize_input(request.instruction, request.session_id)
+    session = get_session(request.session_id)
+    decision = V3Orchestrator().decide(normalize_turn(session_id=session.session_id, message=message), catalog=load_combined_product_catalog(), session=session)
+    if decision.status is not ParseStatus.SEMANTIC_EXECUTABLE or decision.action is not V3Action.APPLY_CART or decision.semantic is None or decision.semantic.observation is None:
+        raise HTTPException(status_code=422, detail="购物车指令未能安全解析，请说明操作和目标。")
+    core = load_session_core(session)
+    try:
+        plan = create_cart_plan(core=core, observation=decision.semantic.observation, catalog=load_combined_product_catalog())
+    except CartPlanningError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    if plan is None:
+        return {"status": "view", "action": "view", "cart": cart_snapshot(core, load_combined_product_catalog())}
+    apply_session_delta(session, cart_plan_delta(core, plan))
+    save_session(session)
+    return {"status": "pending_confirmation", "plan": _cart_plan_payload(plan), "message": _cart_confirmation_message(plan)}
 
 
 @router.post("/api/cart/confirm")
 def cart_confirm(request: Dict[str, Any]) -> Dict[str, Any]:
-    """Confirm or cancel a pending cart action plan."""
     session = get_session(request.get("session_id"))
-    plan = getattr(session, "pending_cart_action", None) or {}
-    if not plan:
-        raise HTTPException(status_code=400, detail="no pending cart action to confirm")
-
-    expires_at = plan.get("expires_at", 0)
-    import time
-
-    if time.time() > expires_at:
-        session.pending_cart_action = {}
-        save_session(session)
-        raise HTTPException(status_code=410, detail="cart confirmation expired")
-
-    confirmed = request.get("confirmed", False)
-    if not confirmed:
-        session.pending_cart_action = {}
-        save_session(session)
-        return {"status": "cancelled", "cart": session.cart}
-
-    # 🟣 v4: 执行真实购物车写操作——根据 plan.operation 分支
-    adjusted_qty = request.get("adjusted_quantity")
-    quantity = max(int(adjusted_qty), 1) if adjusted_qty is not None else plan.get("quantity", 1)
-    catalog = load_combined_product_catalog()
-    pid = plan.get("product_id", "")
-    product = catalog.get(pid)
-    title = getattr(product, "title", plan.get("product_title", "")) if product else plan.get("product_title", "")
-    operation = plan.get("operation", "add")
-
-    if operation == "clear":
-        removed_count = len(session.cart)
-        session.cart.clear()
-        session.pending_cart_action = {}
-        save_session(session)
-        return {
-            "status": "applied",
-            "cart": cart_snapshot(session, catalog),
-            "action": "clear",
-            "messages": [f"已清空购物车（移除了 {removed_count} 件商品）。"],
-        }
-    if operation == "remove":
-        instruction = f"删除 {pid} {title}"
-    elif operation == "set_quantity":
-        instruction = f"把 {pid} {title} 数量改为 {quantity}"
-    else:
-        instruction = f"把 {pid} {title} 加入购物车，数量 {quantity}"
-
-    result = apply_cart_instruction(
-        session=session,
-        instruction=instruction,
-        catalog=catalog,
-        product_ids=[pid],
-    )
-    session.pending_cart_action = {}
+    try:
+        delta, result = apply_cart_plan(core=load_session_core(session), catalog=load_combined_product_catalog(), confirmed=bool(request.get("confirmed", False)))
+    except CartPlanningError as exc:
+        raise HTTPException(status_code=410 if "过期" in str(exc) else 400, detail=str(exc)) from exc
+    apply_session_delta(session, delta)
     save_session(session)
-    return {"status": "applied", "cart": result.get("cart", session.cart), "action": result.get("action", operation), "messages": result.get("messages", [])}
+    return result
 
 
 @router.post("/api/products/compare")
 def compare_product_cards(request: ProductCompareRequest) -> Dict[str, Any]:
-    if not request.product_ids:
-        raise HTTPException(status_code=400, detail="product_ids cannot be empty")
-    return compare_products(load_combined_product_catalog(), request.product_ids)
+    if len(request.product_ids) < 2:
+        raise HTTPException(status_code=400, detail="at least two product_ids are required")
+    return compare_catalog_products(catalog=load_combined_product_catalog(), product_ids=request.product_ids)
+
+
+def _route_payload(decision: V3ExecutionDecision) -> Dict[str, Any]:
+    proof = decision.rule_signal.safety_proof
+    observation = decision.semantic.observation if decision.semantic else None
+    return {
+        "status": decision.status.value,
+        "action": decision.action.value if decision.action else None,
+        "reason": decision.reason_code,
+        "grammar_id": proof.grammar_id if proof else None,
+        "semantic_signature": proof.semantic_signature if proof else None,
+        "proof_version": proof.proof_version if proof else None,
+        "semantic_provider": decision.semantic.provider if decision.semantic else None,
+        "semantic_model": decision.semantic.model if decision.semantic else None,
+        "semantic_parse_called": decision.semantic is not None,
+        "computer_purchase_kind": observation.computer_purchase_kind.value if observation and observation.computer_purchase_kind else None,
+    }
+
+
+def _cart_plan_payload(plan: Any) -> Dict[str, Any]:
+    return {"plan_id": plan.plan_id, "operation": plan.operation.value, "product_id": plan.product_id, "sku_id": plan.sku_id, "quantity": plan.quantity, "expires_at": plan.expires_at, "product_title": plan.title, "estimated_unit_price": plan.unit_price}
+
+
+def _cart_confirmation_message(plan: Any) -> str:
+    if plan.operation.value == "clear":
+        return "确认清空购物车吗？"
+    if plan.operation.value == "remove":
+        return f"确认从购物车移除「{plan.title}」吗？"
+    if plan.operation.value == "set_quantity":
+        return f"确认将「{plan.title}」的数量改为 {plan.quantity} 吗？"
+    return f"确认将「{plan.title}」x{plan.quantity} 加入购物车吗？"

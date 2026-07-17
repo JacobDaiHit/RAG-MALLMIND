@@ -4,19 +4,22 @@ from __future__ import annotations
 from typing import Iterable, List
 
 from rag.recommendation.product_loader import ProductCatalog, load_combined_product_catalog, load_product_catalog
+from rag.recommendation.v3.registry import CatalogNormalizationRegistry
+from rag.recommendation.v3.pc_catalog import canonical_product_key
 from rag.schemas import ApiProduct
 
 
-def build_product_chunks(products: Iterable[ApiProduct]) -> List[dict]:
+def build_product_chunks(products: Iterable[ApiProduct], *, registry: CatalogNormalizationRegistry | None = None) -> List[dict]:
     """Convert catalog products into compact RAG evidence chunks.
 
     The current shopping loop works without Milvus, but when vector retrieval is
     enabled it should index product knowledge, not old PDF/API-document chunks.
     """
 
+    products = list(products)
     chunks: List[dict] = []
     for product in products:
-        chunks.extend(_chunks_for_product(product))
+        chunks.extend(_chunks_for_product(product, registry=registry))
     return chunks
 
 
@@ -24,29 +27,35 @@ def build_catalog_chunks(catalog: ProductCatalog | None = None) -> List[dict]:
     """Load the ecommerce catalog and build product evidence chunks."""
 
     catalog = catalog or load_product_catalog()
-    return build_product_chunks(catalog.products)
+    return build_product_chunks(catalog.products, registry=CatalogNormalizationRegistry.from_catalog(catalog))
 
 
 def build_all_catalog_chunks(catalog: ProductCatalog | None = None) -> List[dict]:
     """Load ecommerce and JD PC products and build evidence chunks."""
 
     catalog = catalog or load_combined_product_catalog()
-    return build_product_chunks(catalog.products)
+    return build_product_chunks(catalog.products, registry=CatalogNormalizationRegistry.from_catalog(catalog))
 
 
-def _chunks_for_product(product: ApiProduct) -> List[dict]:
+def _chunks_for_product(product: ApiProduct, *, registry: CatalogNormalizationRegistry | None = None) -> List[dict]:
     root_chunk_id = f"{product.product_id}::root"
     is_pc_part = product.category.value.startswith("pc_")
     specs = product.metadata.get("specs") if isinstance(product.metadata.get("specs"), dict) else {}
+    brand_entity = registry.brand_by_surface(product.brand) if registry is not None else None
+    stock_status = str(product.stock_status or "").lower()
     base = {
         "product_id": product.product_id,
         "part_id": product.product_id if is_pc_part else "",
         "title": product.title,
         "brand": product.brand,
+        "brand_family_id": brand_entity.canonical_id if brand_entity else "",
         "category": product.category.value,
         "component_type": product.category.value if is_pc_part else "",
         "category_name": product.category_name,
         "sub_category": product.sub_category,
+        "base_price": float(product.base_price),
+        "is_active": stock_status not in {"inactive", "off_shelf"},
+        "in_stock": stock_status not in {"sold_out", "out_of_stock", "inactive", "off_shelf"},
         "filename": product.product_id,
         "file_type": str(product.metadata.get("source_type") or "ecommerce_product"),
         "file_path": str(product.metadata.get("source") or "data/ecommerce_products/products.json"),
@@ -55,6 +64,7 @@ def _chunks_for_product(product: ApiProduct) -> List[dict]:
         "parent_chunk_id": root_chunk_id,
         "chunk_level": 3,
         "structured_compatibility_fields": specs if is_pc_part else {},
+        "metadata": {"canonical_product_key": canonical_product_key(product)} if is_pc_part else {},
     }
 
     texts = [
