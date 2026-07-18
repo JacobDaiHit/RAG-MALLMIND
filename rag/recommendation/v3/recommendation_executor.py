@@ -1,8 +1,10 @@
-"""Native V3 catalog recommendation execution.
+"""Execute one certified product recommendation and emit SSE product cards.
 
-The executor accepts only a promoted RequirementSpecV3 and catalog facts.  It
-does not call the legacy router, requirement parser, ranking pipeline, or
-response generator.
+Entry point ``execute_certified_recommendation`` receives only a promoted
+``RequirementSpecV3``.  It applies CandidateGate before retrieval, optionally
+uses Milvus evidence to order already-allowed products, materializes short-lived
+CardModel references, persists a SessionDelta, and emits the response.  It owns
+neither intent parsing nor catalog facts and has no legacy fallback path.
 """
 from __future__ import annotations
 
@@ -15,16 +17,10 @@ from rag.api.sse import sse_event
 from rag.recommendation.session_state import save_session
 
 from .candidate_gate import CatalogCandidateGate
+from .config import ATTRIBUTE_RANK_TERMS
 from .retrieval import V3EvidenceRetriever
 from .session import CARD_TTL_SECONDS, apply_session_delta, load_session_core, recommendation_delta
 from .types import CardModel, RequirementSpecV3, RetrievalEvidenceV3, RetrievalFilters
-
-
-_ATTRIBUTE_TERMS = {
-    "camera": ("拍照", "影像", "长焦", "相机"),
-    "battery": ("续航", "电池", "快充"),
-    "lightweight": ("轻薄", "轻", "便携"),
-}
 
 
 def execute_certified_recommendation(
@@ -133,7 +129,7 @@ def _rank_key(product: Any, requirement: RequirementSpecV3, evidence_rank: dict[
         " ".join(getattr(product, "tags", ()) or ()),
         " ".join(getattr(product, "best_for", ()) or ()),
     ]).lower()
-    attribute_hits = sum(sum(term in text for term in _ATTRIBUTE_TERMS.get(attribute, ())) for attribute in requirement.desired_attributes)
+    attribute_hits = sum(sum(term in text for term in ATTRIBUTE_RANK_TERMS.get(attribute, ())) for attribute in requirement.desired_attributes)
     price = float(getattr(product, "min_price", 0) or getattr(product, "base_price", 0) or 0)
     product_id = str(getattr(product, "product_id", ""))
     price_distance = abs(price - requirement.price_target) if requirement.price_target is not None else price

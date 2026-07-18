@@ -1,4 +1,10 @@
-"""Validate the semantic computer-purchase form without choosing it locally."""
+"""Validate an LLM-observed computer purchase form without selecting one.
+
+``ComputerPurchaseKindValidator.validate`` checks original-text evidence,
+action/form consistency, and a centralized explicit-build whitelist. It may
+return a clarification but never rewrites a user request into a PC build; this
+protects the boundary between “buy a computer” and “assemble a host”.
+"""
 from __future__ import annotations
 
 import time

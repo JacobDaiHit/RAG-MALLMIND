@@ -1,4 +1,11 @@
-"""Fail-closed conversion from one LLM type choice to catalog IDs."""
+"""Fail-closed conversion of one model type choice into catalog type IDs.
+
+``TypeResolutionGate.resolve`` validates original-text evidence, membership in
+the locally generated candidate menu, explicit type exclusions, and conflicts.
+It permits one narrow format repair for an exact catalog display label copied
+from the menu; it never performs fuzzy type matching or hand-maintained natural
+language aliases.
+"""
 from __future__ import annotations
 
 import time

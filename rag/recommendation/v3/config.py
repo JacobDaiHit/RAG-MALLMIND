@@ -1,4 +1,11 @@
-"""Versioned, centralized V3 routing policy constants."""
+"""Central, versioned policy for the only production recommendation chain.
+
+This module deliberately owns all small, reviewable policy tables: the local
+grammar vocabulary, catalog-backed aliases, clarification TTLs, type-candidate
+limits, PC-build proof signals, and attribute wording.  Business modules import
+these values instead of embedding Chinese keyword checks in their own code.
+Changing a value here changes a named policy; it never creates a second router.
+"""
 from __future__ import annotations
 
 GRAMMAR_VERSION = "1.1"
@@ -28,10 +35,6 @@ SEMANTIC_RISK_MARKERS = frozenset(
         "不要只",
     }
 )
-
-POLITE_PREFIXES = ("请", "麻烦", "帮我")
-POLITE_SUFFIXES = ("谢谢", "一下")
-CONNECTORS = frozenset({"，", ",", "、", "然后", "另外", "最好"})
 
 # This is deliberately tiny.  New aliases require catalog-backed tests.
 PRODUCT_TYPE_ALIASES = {
@@ -89,7 +92,15 @@ SEMANTIC_ATTRIBUTE_ALIASES = {
     "轻薄": "lightweight",
 }
 
-PRICE_MAX_MARKERS = ("以内", "以下", "不超过", "最多", "预算")
+# Ranking may use these words only as a deterministic tie-break after the
+# CandidateGate has already certified catalog eligibility. These are deliberately
+# broader than SemanticParse's accepted surface aliases: they preserve the
+# previous catalog-text match vocabulary without allowing a new hard condition.
+ATTRIBUTE_RANK_TERMS = {
+    "camera": ("拍照", "影像", "长焦", "相机"),
+    "battery": ("续航", "电池", "快充"),
+    "lightweight": ("轻薄", "轻", "便携"),
+}
 EXPLICIT_EXCLUDE_TEMPLATES = (
     "不要{brand}",
     "别要{brand}",

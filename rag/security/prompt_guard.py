@@ -1,5 +1,4 @@
-"""
-Prompt injection defense — Tier 1 & Tier 2 mitigations.
+"""Prompt-injection detection and safe prompt-wrapping primitives.
 
 Tier 1 (Immediate):
   - Injection pattern detection (CN + EN)
@@ -9,6 +8,10 @@ Tier 1 (Immediate):
 Tier 2 (Short-term):
   - Suffix repetition of key constraints (recency-bias hardening)
   - Centralised injection pre-check usable from any entrypoint
+
+``detect_injection`` is called at the chat HTTP boundary before V3 routing;
+``wrap_user_input``/defense text are available to model-facing modules. A hit
+rejects unsafe input rather than trying to reinterpret its purchase request.
 """
 
 from __future__ import annotations

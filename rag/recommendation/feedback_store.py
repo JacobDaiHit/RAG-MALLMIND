@@ -1,6 +1,9 @@
-'''
-把一次“推荐反馈”追加写入一个 .jsonl 文件，方便以后做 FAQ、模板、权重调优等离线分析。
-'''
+"""Append user recommendation feedback to a local JSONL audit file.
+
+``append_feedback_record`` is called only by the feedback endpoint. It records
+an observation for offline evaluation/training and deliberately does not feed
+back into the in-flight recommendation, catalog, SessionCore, or routing rule.
+"""
 
 from __future__ import annotations
 

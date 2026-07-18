@@ -1,8 +1,9 @@
-"""V3 guided-selling routing boundary.
+"""The sole V3 guided-selling implementation package.
 
-Only modules in this package may issue a V3 deterministic execution permit.
-Legacy routing remains a temporary semantic fallback while the V3 vertical
-cuts are migrated; it never overrides a V3 ``SAFE_DIRECT`` decision.
+Public exports expose the orchestrator, deterministic router, actions, and
+decisions used by the HTTP boundary. Files below separate parsing, proof,
+promotion, catalog validation, retrieval, execution, and SessionCore so no
+legacy router or handler can become a second execution authority.
 """
 
 from .orchestrator import V3Orchestrator

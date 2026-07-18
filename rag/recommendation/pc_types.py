@@ -1,4 +1,9 @@
-"""Shared PC component type helpers."""
+"""Normalize PC component roles used by dataset validation and compatibility.
+
+The exported normalizers and ``REQUIRED_PC_ROLES`` give ingestion, the PC
+catalog loader, and solver one vocabulary for CPU/GPU/mainboard/etc. They do
+not resolve user language; that responsibility belongs to V3 registry/prompt.
+"""
 from __future__ import annotations
 
 import re

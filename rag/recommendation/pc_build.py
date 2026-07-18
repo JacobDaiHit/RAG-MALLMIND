@@ -1,4 +1,10 @@
-"""Rule-based PC build planner backed by the local JD PC parts dataset."""
+"""Directory-backed PC compatibility solver and plan payload renderer.
+
+``load_pc_parts`` reads the local PC catalog, ``generate_pc_build_plan`` selects
+one compatible part per required role under a typed budget/use request, and
+``compare_pc_build_plans`` renders directory-backed differences. V3's
+``pc_executor`` is the only chat caller; this file never parses language.
+"""
 from __future__ import annotations
 
 import json

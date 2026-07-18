@@ -1,4 +1,11 @@
-"""文本向量化服务 - 支持密集向量和稀疏向量（BM25），词表与 df 持久化 + 增量更新"""
+"""Dense embedding and sparse BM25 service used by ingestion and V3 retrieval.
+
+``EmbeddingService`` selects the configured external embedding provider and
+validates vector dimension; its sparse helpers build/load the persisted BM25
+state used when writing/searching Milvus hybrid evidence. It is a transport and
+indexing component only: it never interprets user intent or bypasses the V3
+CandidateGate allowlist.
+"""
 from __future__ import annotations
 
 import json
@@ -17,7 +24,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 load_dotenv()
 
-_DEFAULT_STATE_PATH = Path(__file__).resolve().parents[2] / "data" / "bm25_state.json"
+_DEFAULT_STATE_PATH = Path(__file__).resolve().parents[2] / "data" / "bm25_state_v3.json"
 _EMPTY_SPARSE_TOKEN = "__empty_sparse__"
 _EMPTY_SPARSE_WEIGHT = 1e-9
 DEFAULT_DENSE_EMBEDDING_DIM = 1024
@@ -313,7 +320,7 @@ class EmbeddingService:
         """初始化对象状态，保存后续方法会复用的配置、连接或依赖实例。"""
         self.provider = provider or create_embedding_provider()
         self._embedder = None
-        self._state_path = Path(state_path or os.getenv("BM25_STATE_PATH", _DEFAULT_STATE_PATH))# BM25 统计的持久化路径，默认为项目根目录下的 data/bm25_state.json
+        self._state_path = Path(state_path or os.getenv("MILVUS_V3_BM25_STATE_PATH", _DEFAULT_STATE_PATH))
         self._lock = threading.Lock()# 用于保护 BM25 统计数据的线程安全更新
 
         # BM25 参数
@@ -360,7 +367,8 @@ class EmbeddingService:
     def _load_state(self) -> None:
 
         # 加载 BM25 统计数据的设计考虑：
-        # 1. 文件路径：默认路径为项目根目录下的 data/bm25_state.json，用户可以通过环境变量 BM25_STATE_PATH 或构造函数参数 state_path 自定义路径。
+        # 1. 文件路径：默认路径为 V3 collection 对应的 data/bm25_state_v3.json；
+        #    可通过 MILVUS_V3_BM25_STATE_PATH 或构造函数参数 state_path 覆盖。
         # 2. 文件格式：使用 JSON 格式存储，包含 version（版本控制）、vocab（词表）、doc_freq（文档频次）、total_docs（总文档数）、sum_token_len（总词数）等字段。
         # 3. 错误处理：如果文件不存在、无法解析或版本不兼容，服务会自动初始化为一个空的统计状态，确保不会因为持久化问题导致整个服务不可用。
         """向量化服务：读取 state 相关数据并转换成后续流程需要的结构。"""

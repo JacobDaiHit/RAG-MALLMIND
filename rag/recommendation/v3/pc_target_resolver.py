@@ -1,4 +1,10 @@
-"""Resolve a PC follow-up reference only from unexpired SessionCore versions."""
+"""Resolve a PC follow-up reference only from unexpired SessionCore versions.
+
+``resolve_pc_plan`` maps ``current`` or ``previous`` to a typed plan version
+and raises ``PcPlanReferenceError`` for missing or expired state. It is the only
+place that interprets conversational plan references; callers never inspect
+raw session dictionaries.
+"""
 from __future__ import annotations
 
 from .types import PcPlanReference, PcPlanVersion, SessionCore

@@ -1,4 +1,9 @@
-"""Security module — prompt injection defense, input validation, output sanitization."""
+"""Public prompt-injection safeguards for HTTP and model-prompt boundaries.
+
+The exported functions are used by the chat input guard and dormant multimodal
+observer. They block or wrap untrusted text but do not make routing, catalog,
+or execution decisions.
+"""
 
 from rag.security.prompt_guard import (
     INJECTION_DEFENSE_PREFIX,

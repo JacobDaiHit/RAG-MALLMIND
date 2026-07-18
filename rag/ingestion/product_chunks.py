@@ -1,4 +1,10 @@
-"""Build ecommerce product evidence chunks for optional vector indexing."""
+"""Convert verified catalog products into deterministic Milvus evidence chunks.
+
+``build_product_chunks`` and ``build_all_catalog_chunks`` carry real product
+facts, catalog-derived canonical type metadata, and PC duplicate identity into
+the index. They do not invent summaries with an LLM, and the ingestion scripts
+are the only callers that write their output to Milvus.
+"""
 from __future__ import annotations
 
 from typing import Iterable, List

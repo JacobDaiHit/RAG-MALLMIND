@@ -1,4 +1,10 @@
-"""Input normalization for V3 routing; it cleans form, never rewrites intent."""
+"""Create the immutable normalized input consumed by V3 routing.
+
+``normalize_turn`` removes transport-level noise and bounds text formatting
+without translating, correcting, or extracting purchase meaning. The normalized
+text remains the evidence source for grammar, SemanticParse, PromotionGate, and
+trace records.
+"""
 from __future__ import annotations
 
 import re

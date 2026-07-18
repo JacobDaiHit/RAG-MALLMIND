@@ -1,39 +1,22 @@
-"""Database and data schemas."""
+"""Public Pydantic catalog and recommendation data contracts.
+
+The active application imports product/SKU/category models from
+``recommendation.py`` through this module. The obsolete SQLAlchemy chat and
+parent-chunk models were removed with their unused storage stack.
+"""
 
 from rag.schemas.recommendation import (
     ApiProduct,
-    BudgetLevel,
-    CommerceProduct,
     ComponentCategory,
-    CostEstimate,
-    ProductCategory,
     ProductFAQ,
     ProductReview,
     ProductSku,
-    RecommendationPlan,
-    RecommendationResult,
-    RecommendationType,
-    RequirementLevel,
-    RequirementSpec,
-    ScoreBreakdown,
-    SelectedComponent,
 )
 
 __all__ = [
     "ApiProduct",
-    "BudgetLevel",
-    "CommerceProduct",
     "ComponentCategory",
-    "CostEstimate",
-    "ProductCategory",
     "ProductFAQ",
     "ProductReview",
     "ProductSku",
-    "RecommendationPlan",
-    "RecommendationResult",
-    "RecommendationType",
-    "RequirementLevel",
-    "RequirementSpec",
-    "ScoreBreakdown",
-    "SelectedComponent",
 ]

@@ -1,3 +1,9 @@
+"""Pydantic compatibility adapter used only by product-management endpoints.
+
+``parse_model_payload`` accepts a JSON object and invokes the correct Pydantic
+v1/v2 validation method. It is not part of chat routing and never reads the
+catalog or calls an LLM.
+"""
 import logging
 from typing import Any, Dict
 

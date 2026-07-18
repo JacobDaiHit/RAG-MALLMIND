@@ -1,3 +1,9 @@
+"""Bounded public-error and trace-sanitization helpers.
+
+API, LLM, Milvus, and background utilities use these functions to avoid leaking
+secrets, provider payloads, or internal stack traces. They only format errors
+and reports; they do not swallow execution decisions or provide fallbacks.
+"""
 from __future__ import annotations
 
 import logging

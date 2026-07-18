@@ -1,4 +1,10 @@
-"""Render PC plan differences from current catalog facts, never model memory."""
+"""Render PC plan differences from current catalog facts, never model memory.
+
+``compare_pc_versions`` loads two stored plan versions, resolves their part IDs
+against the current directory, and returns structured price/specification
+differences. It is a pure fact renderer: no recommendation, SemanticParse, or
+solver mutation occurs here.
+"""
 from __future__ import annotations
 
 from typing import Any

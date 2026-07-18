@@ -1,4 +1,10 @@
-"""V3 deterministic router.  It can permit only certified local commands."""
+"""Deterministic front gate for the small locally provable language subset.
+
+``V3Router.route`` normalizes the turn against the current catalog/session,
+asks ``GrammarParser`` for all parses, and delegates proof construction to
+``proof.py``. It returns ``SAFE_DIRECT`` only with a complete SafetyProof;
+otherwise the orchestrator performs exactly one SemanticParse call.
+"""
 from __future__ import annotations
 
 from typing import Any, Tuple

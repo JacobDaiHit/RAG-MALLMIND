@@ -1,4 +1,11 @@
-"""One-call V3 semantic parser for inputs outside the certified grammar."""
+"""One external-Chat semantic observation pass for non-grammar user turns.
+
+``SemanticParser.parse`` sends a compact policy, current catalog capability,
+and local type candidates to the configured model, then decodes only typed
+observations. ``_messages`` is the single SemanticParse prompt builder;
+``_decode_observation`` rejects unknown enum/field shapes. This module never
+turns model output into catalog IDs, prices, SKUs, inventory, or side effects.
+"""
 from __future__ import annotations
 
 import time
@@ -70,7 +77,7 @@ def _messages(
     candidate_set: TaxonomyCandidateSet | None = None,
 ) -> list[dict[str, str]]:
     system = (
-        "你是 MallMind 的语义观察器，只输出一个 JSON 对象，不输出解释或 Markdown。"
+        "你是语义观察器，只输出一个 JSON 对象。"
         "你只观察用户意图，绝不输出商品ID、SKU ID、目录价格、库存、推荐结果，也不执行购物车。"
         "action 只能是：recommend_shopping_products、parameter_query、apply_cart_instruction、general_chat、generate_pc_build_plan、edit_pc_build_plan、compare_pc_build_plans。"
         "commerce_intent 只能是 none/recommend/compare/cart/pc_plan；它只表示商品意图，不能执行。"

@@ -1,4 +1,9 @@
-"""Structured hard compatibility checks for local PC build plans."""
+"""Hard compatibility rules for catalog-selected PC component combinations.
+
+``check_pc_build_compatibility`` verifies socket, memory, power, size, and
+other structured constraints used by ``pc_build``. It returns explicit issues
+instead of guessing replacements, and has no HTTP, LLM, or session dependency.
+"""
 from __future__ import annotations
 
 from typing import Any, Dict, Iterable, List, Optional

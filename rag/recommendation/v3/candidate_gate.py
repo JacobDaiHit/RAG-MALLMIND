@@ -1,4 +1,10 @@
-"""Catalog-first eligibility gate for V3 recommendation results."""
+"""Build the catalog allowlist before any product retrieval.
+
+``CatalogCandidateGate.evaluate`` applies certified category, brand, price,
+stock, type-exclusion, and PC duplicate rules to real products. Its
+``RetrievalFilters`` is the only product-level input accepted by V3 Milvus, and
+``rejected_by_reason`` makes each removed candidate traceable.
+"""
 from __future__ import annotations
 
 from collections import defaultdict

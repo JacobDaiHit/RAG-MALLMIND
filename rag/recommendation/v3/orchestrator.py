@@ -1,4 +1,11 @@
-"""V3's single routing authority for deterministic and semantic turns."""
+"""Single authority that turns one user turn into a V3 execution decision.
+
+``V3Orchestrator.decide`` first asks the fail-closed local router; otherwise it
+builds local type candidates, makes exactly one SemanticParse call, validates
+computer form and type choice, merges eligible pending clarification context,
+then promotes a typed RequirementSpecV3 or ClarificationPlan. It executes no
+catalog query, cart mutation, or response generation itself.
+"""
 from __future__ import annotations
 
 from typing import Any

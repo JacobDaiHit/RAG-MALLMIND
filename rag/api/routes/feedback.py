@@ -1,3 +1,9 @@
+"""Feedback HTTP endpoint.
+
+The router validates a small feedback payload and delegates persistence to
+``feedback_store.append_feedback_record``. Feedback is observational data; it
+does not modify catalog facts, SessionCore, or ranking policy during a request.
+"""
 from typing import Any, Dict
 
 from fastapi import APIRouter, HTTPException

@@ -1,4 +1,10 @@
-"""Small fail-closed grammar for the first V3 deterministic slice."""
+"""Closed grammar for the small subset of requests safe to execute locally.
+
+``GrammarParser.parse_all`` recognizes only configured recommendation,
+brand-release, and card-fact forms, returning parse trees plus consumed and
+unresolved spans. It never guesses an interpretation: unsupported wording goes
+to SemanticParse, then SafetyProof decides whether local execution is allowed.
+"""
 from __future__ import annotations
 
 import re

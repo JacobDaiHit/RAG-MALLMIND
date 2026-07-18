@@ -1,4 +1,4 @@
-"""Small persistence boundary for V3 SessionCore.
+"""Runtime persistence adapter for the typed V3 SessionCore.
 
 Business state is typed and owned by :mod:`rag.recommendation.v3.session`.
 This module only selects Redis or in-memory storage and serializes the one

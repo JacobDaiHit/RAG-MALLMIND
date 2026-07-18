@@ -1,4 +1,9 @@
-"""Resolve local PC product screenshots into browser-safe media fields."""
+"""Resolve optional local PC product images into browser-safe media metadata.
+
+``resolve_pc_product_media`` is a presentation helper used when loading and
+rendering PC directory facts. It does not perform image understanding or affect
+compatibility, routing, retrieval, or product eligibility.
+"""
 from __future__ import annotations
 
 import json

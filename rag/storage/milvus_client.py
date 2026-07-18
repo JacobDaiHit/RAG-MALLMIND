@@ -1,4 +1,10 @@
-"""Milvus client for optional ecommerce product evidence retrieval."""
+"""Low-level Milvus collection manager for V3 product evidence.
+
+``MilvusManager`` owns collection schema, connection, hybrid search requests,
+and filter-expression escaping. Higher layers supply only CandidateGate-derived
+product IDs; this adapter does not choose catalog candidates or interpret model
+output. It is also used by index/health-check CLI scripts.
+"""
 from __future__ import annotations
 
 import os

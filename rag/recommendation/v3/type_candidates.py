@@ -1,9 +1,9 @@
-"""Local A/B/C catalog-type candidates for the one SemanticParse call.
+"""Build local A/B/C catalog-type candidates for the one SemanticParse call.
 
-This module searches catalog *types*, never products.  It intentionally does
-not call an embedding API: adding another external model call here would break
-the single-Chat-call routing contract.  Product-level embedding retrieval still
-starts only after TypeResolutionGate has confirmed a type.
+``build_type_candidate_set`` unions every exact type mention (A), full-query
+lexical matches (B), and buying-action-window matches (C). It searches catalog
+*types*, never products, and intentionally makes no external embedding/Chat
+call; product retrieval starts only after TypeResolutionGate confirms a type.
 """
 from __future__ import annotations
 

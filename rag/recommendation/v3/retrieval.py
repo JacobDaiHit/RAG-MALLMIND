@@ -1,4 +1,10 @@
-"""V3 Milvus retrieval constrained by catalog-validated RetrievalFilters."""
+"""Retrieve product evidence from Milvus only inside a certified allowlist.
+
+``V3EvidenceRetriever.retrieve`` embeds the user query, builds a Milvus filter
+from ``RetrievalFilters.product_ids``, and returns ranked evidence metadata for
+trace/ranking. It cannot widen a CandidateGate result, fabricate product facts,
+or choose recommendations by itself.
+"""
 from __future__ import annotations
 
 import os

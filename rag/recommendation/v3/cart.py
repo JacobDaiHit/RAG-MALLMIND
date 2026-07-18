@@ -1,4 +1,10 @@
-"""V3 cart planning and confirmation, isolated from routing and language parsing."""
+"""Create and apply typed, confirmation-gated shopping-cart plans.
+
+``create_cart_plan`` resolves only valid SessionCore card/cart references;
+``apply_cart_plan`` performs the real mutation after confirmation; delta and
+snapshot helpers keep state serialization out of the HTTP route. This module
+never parses language or calls a model.
+"""
 from __future__ import annotations
 
 from dataclasses import replace

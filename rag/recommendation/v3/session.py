@@ -1,4 +1,10 @@
-"""V3 short-term session state and its explicit storage boundary."""
+"""Own typed, short-lived V3 conversational state and its serialization.
+
+``load_session_core``/``apply_session_delta`` are the sole adapter to the
+runtime session store. Delta constructors persist only what the next turn needs:
+current requirement, card references, pending clarification, cart confirmation,
+and current/previous PC plans; full model/retrieval traces do not enter Redis.
+"""
 from __future__ import annotations
 
 from dataclasses import asdict

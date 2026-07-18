@@ -1,4 +1,11 @@
-"""Local promotion gate from untrusted semantic observations to V3 contracts."""
+"""Promote untrusted semantic observations into executable V3 requirements.
+
+``HardConstraintPromotionGate`` is the sole owner of hard-condition admission:
+it validates quoted price evidence, explicit brand inclusion/exclusion, session
+card/PC references, and resolved catalog types before building
+``RequirementSpecV3``. Failure returns a typed clarification or rejection,
+never a guessed constraint.
+"""
 from __future__ import annotations
 
 import re

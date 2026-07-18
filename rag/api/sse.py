@@ -1,3 +1,9 @@
+"""Safe Server-Sent Events helpers shared by active API routes.
+
+``sse_event`` serializes one named event and ``safe_stream`` converts an
+iterator failure into a bounded public error plus a final ``done`` event.
+Business modules yield these helpers but do not own HTTP response creation.
+"""
 import json
 import logging
 from typing import Any, Callable, Dict, Iterable

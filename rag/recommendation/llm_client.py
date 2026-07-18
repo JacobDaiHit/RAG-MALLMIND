@@ -1,4 +1,11 @@
-﻿from __future__ import annotations
+"""Configured OpenAI-compatible client and bounded-call utilities.
+
+``OpenAICompatibleChatClient`` is shared by SemanticParse, general chat, and
+the dormant multimodal observer. It owns provider/model/env configuration, JSON
+response parsing, timing reports, and hard timeouts; it has no V3 action,
+catalog-fact, or business-state authority.
+"""
+from __future__ import annotations
 
 import json
 import logging

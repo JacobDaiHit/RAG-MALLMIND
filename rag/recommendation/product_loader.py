@@ -1,4 +1,10 @@
-"""Load and validate the traditional ecommerce product catalog."""
+"""Load, validate, and update the local ecommerce and PC product directories.
+
+``load_product_catalog`` and ``load_combined_product_catalog`` are the factual
+source for V3 registry, CandidateGate, product cards, and ingestion chunks.
+``ProductCatalog.get`` is the normal lookup path; this module reads JSON data
+and never asks an LLM to fill missing product/SKU/price/inventory facts.
+"""
 from __future__ import annotations
 
 import json

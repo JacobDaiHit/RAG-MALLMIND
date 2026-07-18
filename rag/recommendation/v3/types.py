@@ -1,4 +1,11 @@
-"""Strongly typed cross-module contracts for the V3 routing slice."""
+"""Immutable cross-module contracts for the complete V3 request chain.
+
+This file defines normalized input, grammar/proof results, semantic
+observations, requirements, catalog filters, card references, clarification,
+cart, PC-plan, session, and execution decisions. Modules exchange these typed
+objects rather than nested dictionaries; the HTTP layer serializes only at its
+SSE/API boundary.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass, field

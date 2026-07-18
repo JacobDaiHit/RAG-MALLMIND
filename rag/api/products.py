@@ -1,3 +1,9 @@
+"""Administrative and read-only product catalog HTTP endpoints.
+
+The router exposes catalog listing, lookup, create, and update operations.
+``chat.py`` does not use these endpoints to resolve recommendations: V3 reads
+the same catalog through ``product_loader`` and validates all product facts.
+"""
 import logging
 import os
 from typing import Any, Dict, List, Optional

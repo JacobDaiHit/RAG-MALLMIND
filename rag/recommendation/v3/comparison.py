@@ -1,4 +1,10 @@
-"""Catalog-only comparison; request IDs do not decide facts or recommendation state."""
+"""Compare explicitly supplied catalog product IDs using directory facts only.
+
+``compare_catalog_products`` is the direct HTTP comparison helper. It reads
+title, SKU, price, stock, and parameters from the catalog and returns no model
+generated facts; conversational card-reference comparison instead enters
+``fact_query_executor`` through a certified RequirementSpecV3.
+"""
 from __future__ import annotations
 
 from typing import Any, Iterable

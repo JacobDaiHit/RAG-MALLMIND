@@ -1,3 +1,12 @@
+"""Dormant, isolated multimodal attachment observation utilities.
+
+This module can normalize browser attachment payloads, invoke a vision-capable
+model, and produce bounded observation text. It is deliberately *not* imported
+by the V3 chat route: ``/api/chat/stream`` currently rejects attachments until
+their observations have the same typed validation and provenance guarantees as
+text SemanticParse. The code is retained for that future migration, not as a
+silent fallback around V3 safety gates.
+"""
 import base64
 import json
 import logging

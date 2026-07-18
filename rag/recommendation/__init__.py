@@ -1,4 +1,4 @@
-"""Catalog access shared by the V3 shopping service.
+"""Public catalog-access surface used by API, ingestion, and V3 execution.
 
 Routing, requirement parsing, retrieval and state changes live in
 ``rag.recommendation.v3``.  This package intentionally no longer re-exports

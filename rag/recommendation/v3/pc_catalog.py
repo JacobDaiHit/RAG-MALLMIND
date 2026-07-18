@@ -1,4 +1,9 @@
-"""One canonical key for PC catalog, candidate gating, and evidence metadata."""
+"""Canonical PC product identity shared by ingestion and recommendation.
+
+``canonical_product_key`` removes dataset revision suffix noise from stable
+brand/category/model facts. CandidateGate and evidence-chunk creation use the
+same key so duplicate PC records cannot become duplicate recommendation cards.
+"""
 from __future__ import annotations
 
 from rag.recommendation.pc_types import base_model_key

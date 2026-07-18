@@ -1,30 +1,15 @@
+"""Pydantic request contracts for the active HTTP API.
+
+The V3 chat path consumes ``ChatStreamRequest``, cart endpoints consume
+``CartActionRequest``, and direct card comparison uses
+``ProductCompareRequest``. Attachment/image fields remain intentionally in the
+chat contract for a future controlled multimodal observer; current V3 rejects
+them rather than falling back to an unverified legacy path.
+"""
 from typing import Any, Dict, List, Optional
 from uuid import uuid4
 
 from pydantic import BaseModel, Field
-
-
-class GoalRequest(BaseModel):
-    """Request body for business-goal analysis and recommendation endpoints."""
-
-    goal: str
-    attachments: List[Dict[str, Any]] = Field(default_factory=list)
-    session_id: Optional[str] = None
-    mode: str = "auto"
-
-
-class AttachmentAnalyzeRequest(BaseModel):
-    """Request body for browser-provided attachment data URLs."""
-
-    attachments: List[Dict[str, Any]] = Field(default_factory=list)
-
-
-class PromptFinalizeRequest(BaseModel):
-    """Request body for merging the original goal, attachments, and follow-up answers."""
-
-    goal: str
-    attachments: List[Dict[str, Any]] = Field(default_factory=list)
-    answers: List[Dict[str, str]] = Field(default_factory=list)
 
 
 class ProductUpsertRequest(BaseModel):
@@ -68,11 +53,3 @@ class ProductCompareRequest(BaseModel):
 
     session_id: str = Field(default_factory=lambda: f"session-{uuid4().hex}")
     product_ids: List[str] = Field(default_factory=list)
-
-
-class PcBuildGenerateRequest(BaseModel):
-    """Request body for direct PC build-plan generation."""
-
-    budget: float = Field(..., gt=0)
-    usage: List[str] = Field(default_factory=list)
-    preferences: Dict[str, Any] = Field(default_factory=dict)

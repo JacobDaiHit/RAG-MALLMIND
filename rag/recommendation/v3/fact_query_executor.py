@@ -1,4 +1,9 @@
-"""Catalog-only execution for certified card fact queries."""
+"""Execute certified parameter, SKU, price, and card-comparison requests.
+
+``execute_certified_fact_query`` resolves CardModel references saved in
+SessionCore, reloads current catalog facts, emits SSE, and writes a read trace
+delta. It never accepts product/SKU facts from SemanticParse or model memory.
+"""
 from __future__ import annotations
 
 from typing import Any, Iterable

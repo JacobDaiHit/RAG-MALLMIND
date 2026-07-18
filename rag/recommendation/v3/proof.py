@@ -1,4 +1,10 @@
-"""Compilation and fail-closed proof building for V3 deterministic routing."""
+"""Compile a local grammar parse into a complete SafetyProof and requirement.
+
+``build_proof`` records grammar/version, operator scopes, parse uniqueness, and
+schema completeness; ``can_safe_direct`` grants local execution only when every
+proof condition holds. This is intentionally separate from ``grammar.py`` so a
+matched token span alone can never authorize execution.
+"""
 from __future__ import annotations
 
 import hashlib

@@ -1,4 +1,12 @@
-"""Catalog-backed canonical entity registry used by every V3 parser."""
+"""Build the catalog-backed canonical vocabulary shared by all V3 modules.
+
+``CatalogNormalizationRegistry.from_catalog`` derives product types, PC part
+roles, and brand families from current catalog facts, then supplies exact unique
+lookup to grammar, type candidates, PromotionGate, and CandidateGate. It is not
+a fuzzy synonym engine: high-frequency forms such as ``Huawei/华为`` live in one
+reviewable registry path, while open natural language must pass SemanticParse
+and TypeResolutionGate.
+"""
 from __future__ import annotations
 
 import unicodedata

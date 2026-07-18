@@ -1,3 +1,10 @@
+"""FastAPI application factory and operational health/diagnostic endpoints.
+
+``create_app`` mounts frontend/static assets and registers the chat, product,
+and feedback routers. Its startup hook warms the active catalog, session,
+embedding, and Milvus dependencies; it does not choose recommendation actions.
+``app`` is the ASGI entry used by Uvicorn and the full-chain evaluator.
+"""
 import os
 from datetime import datetime, timezone
 from pathlib import Path
@@ -117,7 +124,7 @@ def health() -> Dict[str, Any]:
         "llm_configured": is_llm_configured(),
         **get_llm_provider_trace(),
         "redis_configured": bool(os.getenv("REDIS_URL")),
-        "milvus_enabled": os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false").strip().lower() == "true",
+        "v3_retrieval_enabled": V3_RETRIEVAL_ENABLED,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -132,9 +139,7 @@ def runtime_diagnostics(x_admin_token: Optional[str] = Header(default=None)) -> 
         "app_env": os.getenv("APP_ENV", "development"),
         "runtime": {
             "v3_semantic_parse_enabled": True,
-            "recommendation_llm_parse": os.getenv("RECOMMENDATION_LLM_PARSE", "auto"),
-            "recommendation_llm_guidance": os.getenv("RECOMMENDATION_LLM_GUIDANCE", "false"),
-            "recommendation_enable_milvus": os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false"),
+            "v3_retrieval_enabled": V3_RETRIEVAL_ENABLED,
         },
         "catalog": {
             "catalog_loaded": catalog_loaded,
@@ -144,7 +149,6 @@ def runtime_diagnostics(x_admin_token: Optional[str] = Header(default=None)) -> 
         "llm": _llm_diagnostics(),
         "redis": _redis_diagnostics(),
         "milvus": _milvus_diagnostics(),
-        "db": _db_diagnostics(),
         "bm25": _bm25_diagnostics(),
         "indexes": {
             "image_vectors": (Path(__file__).resolve().parents[2] / "data" / "image_vectors.json").is_file(),
@@ -209,8 +213,7 @@ def _redis_diagnostics() -> Dict[str, Any]:
 
 
 def _milvus_diagnostics() -> Dict[str, Any]:
-    enabled = os.getenv("RECOMMENDATION_ENABLE_MILVUS", "false").strip().lower() == "true"
-    if not enabled:
+    if not V3_RETRIEVAL_ENABLED:
         return {"enabled": False}
     try:
         from rag.storage.milvus_client import MilvusManager
@@ -221,22 +224,8 @@ def _milvus_diagnostics() -> Dict[str, Any]:
         return {"enabled": True, "status": "failed", "error": sanitize_text(exc)}
 
 
-def _db_diagnostics() -> Dict[str, Any]:
-    if not os.getenv("DATABASE_URL"):
-        return {"configured": False}
-    try:
-        from sqlalchemy import text
-        from rag.storage.database import engine
-
-        with engine.connect() as connection:
-            connection.execute(text("SELECT 1"))
-        return {"configured": True, "reachable": True}
-    except Exception as exc:
-        return {"configured": True, "reachable": False, "error": sanitize_text(exc)}
-
-
 def _bm25_diagnostics() -> Dict[str, Any]:
-    path = Path(os.getenv("BM25_STATE_PATH", Path(__file__).resolve().parents[2] / "data" / "bm25_state.json"))
+    path = Path(os.getenv("MILVUS_V3_BM25_STATE_PATH", Path(__file__).resolve().parents[2] / "data" / "bm25_state_v3.json"))
     return {"state_exists": path.is_file(), "state_path": str(path) if is_debug_mode() else "configured"}
 
 

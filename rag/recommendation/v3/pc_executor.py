@@ -1,4 +1,10 @@
-"""Typed V3 PC build, edit, and comparison execution."""
+"""Execute typed PC build, edit, and comparison requirements.
+
+``execute_v3_pc_plan`` dispatches a promoted PC action to the directory-backed
+solver, edit planner, or comparison renderer, stores current/previous plan
+versions through SessionDelta, and emits SSE. It accepts no LLM-generated part
+ID and never uses the obsolete PC session flow.
+"""
 from __future__ import annotations
 
 from hashlib import sha256

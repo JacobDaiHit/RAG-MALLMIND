@@ -1,4 +1,10 @@
-"""Create a solver input that locks every unchanged PC component to catalog facts."""
+"""Prepare safe single-component PC edit constraints for the compatibility solver.
+
+``locked_parts_for_component_replacement`` converts an existing catalog-backed
+plan into locks for every unchanged part. It intentionally does not select a
+new part: the PC solver must find one compatible catalog candidate or fail
+explicitly.
+"""
 from __future__ import annotations
 
 from rag.recommendation.pc_build import PcPart

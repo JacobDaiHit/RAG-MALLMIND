@@ -1,4 +1,10 @@
-"""Turn untrusted commerce-intent hints into bounded clarification plans."""
+"""Generate fixed clarification plans for missing executable fields.
+
+``ClarificationPolicy.plan`` consumes an already-decoded semantic observation
+and SessionCore; it does not attempt Chinese intent classification. It owns
+stable reasons/questions for missing product type, card references, cart target,
+and ambiguous computer purchase form.
+"""
 from __future__ import annotations
 
 import time

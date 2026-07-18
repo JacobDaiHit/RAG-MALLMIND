@@ -1,4 +1,10 @@
-"""Non-shopping response generation.  It has no write access to business state."""
+"""Generate bounded non-shopping replies with no business-state write access.
+
+``execute_general_chat`` is used only after V3 decides the turn has no commerce
+operation. It calls the configured chat model with a short conversational
+prompt, emits SSE text, and deliberately cannot access catalog, SessionCore,
+cart, or recommendation executors.
+"""
 from __future__ import annotations
 
 from typing import Any, Iterable

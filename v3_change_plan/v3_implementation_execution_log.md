@@ -448,3 +448,29 @@ POST /api/chat/stream
 ### 尚未完成
 
 - PC 求解器的“指定型号必须出现”约束仍未施工；该问题未被本次 fixture 隐藏，仍应作为独立纵向切片实现和验收。
+
+## 22. 2026-07-17：`rag/` 生产代码瘦身与目录说明
+
+### 审计后的删除
+
+- 删除未被当前 FastAPI、V3、入库脚本或测试导入的旧通用 RAG：`rag/utils/rag_utils.py`、`retrieval_postprocess.py`、`catalog_scope.py` 与空 `rag/legacy/`；其中包含 step-back、HyDE、旧 rerank、parent auto-merge 和旧 catalog scope 兼容层；
+- 删除旧 PostgreSQL/Redis parent-chunk 栈：`rag/storage/database.py`、`cache.py`、`parent_chunk_store.py`、`rag/schemas/models.py`，并移除 `/api/runtime/diagnostics` 的数据库检查；当前 SessionCore 使用自己的 Redis/内存适配器，Milvus 是唯一保留的检索存储；
+- 删除未使用的旧 HTTP 请求体（goal/附件分析/prompt finalize/直接 PC build）以及旧 `RecommendationPlan`、`ScoreBreakdown`、旧 `RequirementSpec` 等 schema。保留且只保留真实目录事实模型 `ApiProduct`、SKU、FAQ、Review 和 ComponentCategory；
+- 清理 `rag/` 下所有 `__pycache__`，包括已删除旧 API/Router 的遗留 bytecode。当前 V3 BM25 默认状态统一为 `data/bm25_state_v3.json`；旧 `data/bm25_state.json` 尚未在本阶段删除，因为它位于 rag 外，需在脚本/配置清理切片统一处理。
+
+### 保留、归属与可读性
+
+- 新增 `rag/README.md`，明确 API、ingestion、recommendation/V3、schemas、security、storage 和 utils 的实际职责、入口及请求主链路；
+- 所有保留的 `rag/**/*.py` 首行均改为模块说明：包含文件职责、关键入口函数以及不拥有的职责；`api/routes/__init__.py` 明确说明它只是 Python namespace marker，不注册路由；
+- `v3/config.py` 保留为唯一集中、版本化策略表；`v3/registry.py` 保留为从真实目录构建品牌/品类 canonical 词表的唯一入口。执行器内的 `_ATTRIBUTE_TERMS` 已移入 config 的 `ATTRIBUTE_RANK_TERMS`，表内容不变，只删除重复配置；
+- 多模态 `api/attachments.py` 保留并标注为隔离的未来能力：当前 `/api/chat/stream` 明确拒绝附件，绝不回退旧链路，待其具备 V3 typed observation/provenance 后再接入。
+
+### 语义解析并行化结论
+
+- 未将一次 SemanticParse 拆成多次并行 Chat：意图、价格、类别候选、CardRef 和 PC 购买形态相互依赖，多次调用会重复发送原句/目录候选、增加合并冲突，并不稳定地改善首 token；
+- 后续若要进一步降 token，应先设计“action-first 的单次紧凑 discriminated schema”，仍保持一次外部 Chat 和一个语义执行权，再独立评测延迟、输出 token、字段冲突率和全链路正确率。
+
+### 验证
+
+- 回归：V3 fixture、SemanticParse、API、购物车、PC、路由、Milvus 入库、embedding、切片和兼容性测试共 **87 passed**；
+- `python -m compileall -q rag scripts` 与 `git diff --check` 通过；仅保留既有 `numexpr` 版本和 FastAPI `on_event` 弃用告警，以及工作区 CRLF 提示。

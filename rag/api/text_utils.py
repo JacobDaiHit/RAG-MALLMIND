@@ -1,3 +1,9 @@
+"""Small deterministic text helpers for API payload handling.
+
+Product lookup and the dormant multimodal parser use these functions to bound,
+deduplicate, and normalize client-provided strings. They do not interpret user
+purchase intent and must not be used as a second V3 normalizer.
+"""
 from typing import Any, List
 
 

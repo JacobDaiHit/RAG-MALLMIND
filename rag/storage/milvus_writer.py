@@ -1,4 +1,10 @@
-"""Vectorize ecommerce evidence chunks and write them into Milvus."""
+"""Embed verified evidence chunks and write them to the configured Milvus collection.
+
+``MilvusWriter.upsert_chunks`` validates dense/sparse vector shape and metadata
+before delegating persistence to ``MilvusManager``. It is an ingestion-only
+writer: runtime recommendation queries use ``v3.retrieval`` and never mutate
+the vector collection.
+"""
 from __future__ import annotations
 
 import logging
