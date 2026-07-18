@@ -114,7 +114,7 @@ def _messages(*, text: str, candidate_set: TaxonomyCandidateSet | None = None, b
     """Render a compact discriminated-union contract, not a giant field list."""
 
     system = (
-        "你是电商导购的语义观察器，只输出一个 JSON 对象，不要 markdown。"
+        "你是电商导购的语义观察器，只输出一个 JSON 对象。"
         "你不能输出商品ID、SKU、目录价格、库存、商品卡 token，也不能执行购物车。"
         "action 只能是 recommend/fact_query/cart/pc_build/pc_edit/pc_compare/general_chat。"
         "必须只输出 action 对应 schema 的字段；不能混入其他 action 的字段。"
