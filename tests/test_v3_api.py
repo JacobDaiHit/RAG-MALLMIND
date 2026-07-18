@@ -34,6 +34,7 @@ def test_certified_recommendation_uses_v3_and_writes_only_compact_core():
     response = client.post("/api/chat/stream", json={"session_id": session_id, "message": "推荐手机，10000元以内，不要小米，拍照优先"})
     assert response.status_code == 200
     events = _events(response.text)
+    assert events[0] == ("progress", {"stage": "understanding", "label": "正在理解需求", "detail": "正在确认商品类型、约束和可执行操作。"})
     route = next(data for name, data in events if name == "v3_routing")
     trace = next(data for name, data in events if name == "v3_trace")
     cards = next(data["cards"] for name, data in events if name == "product_cards")

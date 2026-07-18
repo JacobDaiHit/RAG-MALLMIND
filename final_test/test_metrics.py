@@ -17,7 +17,7 @@ def _row(**overrides):
         "route_correct": True, "safe_direct_correct": True, "constraint_expected": {},
         "constraint_checks": {}, "fact_checks": {"product_ids_valid": True, "price_checked": True, "price_consistent": True, "sku_checked": True, "sku_consistent": True, "stock_checked": False, "excluded_brand_reappeared": False},
         "candidate_allowlist_nonempty": True, "retrieval_status": "ok", "recommendation_returned": True,
-        "llm_calls": 1, "total_tokens": 100, "first_event_ms": 20, "total_ms": 80, "expired_card_misuse": 0,
+        "llm_calls": 1, "total_tokens": 100, "first_event_ms": 20, "first_business_event_ms": 60, "total_ms": 80, "expired_card_misuse": 0,
     }
     base.update(overrides)
     return base
@@ -38,3 +38,9 @@ def test_unmeasured_metrics_are_none_not_fake_success():
     assert summary["facts"]["stock_consistency"] is None
     assert summary["engineering"]["redis_failure_recovery"] is None
     assert summary["engineering"]["concurrent_request_correctness"] is None
+
+
+def test_first_display_and_business_latencies_are_kept_separate():
+    summary = summarize([_row(first_event_ms=10, first_business_event_ms=50)])
+    assert summary["engineering"]["first_event_ms"]["mean"] == 10
+    assert summary["engineering"]["first_business_event_ms"]["mean"] == 50

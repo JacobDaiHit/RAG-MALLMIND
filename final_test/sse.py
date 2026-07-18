@@ -1,8 +1,8 @@
 """Minimal dependency-free SSE client used by the fixed live evaluation.
 
-``post_sse`` measures time to the first complete SSE event and time to the
-terminal event.  It records only structured event payloads; it never logs HTTP
-authorization headers or model prompts.
+``post_sse`` separately measures the first displayable SSE event, the first
+business-result event, and the terminal event.  It records only structured
+event payloads; it never logs HTTP authorization headers or model prompts.
 """
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ class SseExchange:
     status_code: int
     events: tuple[tuple[str, dict[str, Any]], ...]
     first_event_ms: int | None
+    first_business_event_ms: int | None
     total_ms: int
     transport_error: str = ""
 
@@ -35,12 +36,12 @@ def post_sse(*, base_url: str, path: str, payload: dict[str, Any], timeout_secon
     )
     try:
         with urlopen(request, timeout=timeout_seconds) as response:
-            events, first_event_ms = _read_events(response, started)
-            return SseExchange(int(response.status), tuple(events), first_event_ms, _elapsed_ms(started))
+            events, first_event_ms, first_business_event_ms = _read_events(response, started)
+            return SseExchange(int(response.status), tuple(events), first_event_ms, first_business_event_ms, _elapsed_ms(started))
     except HTTPError as exc:
-        return SseExchange(exc.code, (), None, _elapsed_ms(started), f"http_{exc.code}")
+        return SseExchange(exc.code, (), None, None, _elapsed_ms(started), f"http_{exc.code}")
     except (URLError, TimeoutError, OSError) as exc:
-        return SseExchange(0, (), None, _elapsed_ms(started), type(exc).__name__)
+        return SseExchange(0, (), None, None, _elapsed_ms(started), type(exc).__name__)
 
 
 def post_json(*, base_url: str, path: str, payload: dict[str, Any], timeout_seconds: float) -> tuple[int, dict[str, Any], int, str]:
@@ -64,11 +65,18 @@ def post_json(*, base_url: str, path: str, payload: dict[str, Any], timeout_seco
         return 0, {}, _elapsed_ms(started), type(exc).__name__
 
 
-def _read_events(response: Any, started: float) -> tuple[list[tuple[str, dict[str, Any]]], int | None]:
+_BUSINESS_RESULT_EVENTS = frozenset({
+    "clarification", "error", "delta", "product_cards", "product_fact",
+    "comparison_table", "cart_confirmation", "cart", "pc_build_plan", "pc_plan_comparison",
+})
+
+
+def _read_events(response: Any, started: float) -> tuple[list[tuple[str, dict[str, Any]]], int | None, int | None]:
     events: list[tuple[str, dict[str, Any]]] = []
     event_name = "message"
     data_lines: list[str] = []
     first_event_ms: int | None = None
+    first_business_event_ms: int | None = None
     for raw_line in response:
         line = raw_line.decode("utf-8").rstrip("\r\n")
         if not line:
@@ -77,6 +85,8 @@ def _read_events(response: Any, started: float) -> tuple[list[tuple[str, dict[st
                 events.append((event_name, data if isinstance(data, dict) else {}))
                 if first_event_ms is None:
                     first_event_ms = _elapsed_ms(started)
+                if first_business_event_ms is None and event_name in _BUSINESS_RESULT_EVENTS:
+                    first_business_event_ms = _elapsed_ms(started)
             event_name = "message"
             data_lines = []
             continue
@@ -89,7 +99,9 @@ def _read_events(response: Any, started: float) -> tuple[list[tuple[str, dict[st
         events.append((event_name, data if isinstance(data, dict) else {}))
         if first_event_ms is None:
             first_event_ms = _elapsed_ms(started)
-    return events, first_event_ms
+        if first_business_event_ms is None and event_name in _BUSINESS_RESULT_EVENTS:
+            first_business_event_ms = _elapsed_ms(started)
+    return events, first_event_ms, first_business_event_ms
 
 
 def _elapsed_ms(started: float) -> int:

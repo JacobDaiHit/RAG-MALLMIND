@@ -57,6 +57,10 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             yield sse_event("error", {"label": "附件导购暂不可用", "detail": "V3 尚未实现附件的受控语义观察，已拒绝请求，不会回退到旧链路。"})
             yield sse_event("done", {"session_id": session.session_id})
             return
+        # This is deliberately only a UI acknowledgement.  It contains no
+        # partial LLM JSON or business conclusion, so a later schema retry or
+        # rejection cannot make the client display an unsafe recommendation.
+        yield sse_event("progress", {"stage": "understanding", "label": "正在理解需求", "detail": "正在确认商品类型、约束和可执行操作。"})
         decision = V3Orchestrator().decide(
             normalize_turn(session_id=session.session_id, message=message),
             catalog=load_combined_product_catalog(),

@@ -642,3 +642,48 @@ POST /api/chat/stream
 - 当前仍无可长期查询的独立 TraceStore；SSE trace 与服务端日志只承担在线调试，不能替代审计库；
 - `CatalogExplorationPlanner` 是目录驱动的受限探索，不是用户偏好学习器；后续若要按“送礼对象/风格”做
   个性化，需要独立的数据与评测切片，不能把 LLM 猜测直接写进 hard constraint。
+
+## 25. 2026-07-18：即时 SSE 反馈与延迟口径拆分
+
+### 修改了哪些模块
+
+- `rag/api/routes/chat.py::chat_stream`：附件检查通过后、Router/Chat 模型/embedding/Milvus 之前，立即
+  发送 `progress(stage=understanding)`；其文案只表示“正在理解需求”，不含模型 JSON、商品、价格、SKU 或
+  任何可执行结论；
+- `final_test/sse.py`：分别记录首个完整 SSE 事件和首个业务结果事件；
+- `final_test/runner.py`、`metrics.py`：报告拆为“首个可显示事件延迟、首个业务结果延迟、总响应延迟”，并保留
+  schema 重试等既有指标；
+- `README.md`、`final_test/README.md`：解释前置 progress 不是模型首 token；旧 61 轮报告的 5--6 秒
+  首事件不能再描述当前 UI 首次反馈；
+- `tests/test_v3_api.py`、`final_test/test_metrics.py`：分别验证第一事件的安全内容，以及显示/业务两种延迟
+  不会混成一个数字。
+
+### 当前实际调用链
+
+```text
+sanitize_input + 附件拒绝检查
+ -> progress(stage=understanding)          # 纯 UI 回执，无业务结论
+ -> SafetyProof 或 SemanticParser
+ -> 约束/目录校验 -> 推荐、事实、购物车、PC 或闲聊执行器
+ -> 首个业务结果（澄清 / error / delta / 卡片 / 事实 / 购物车 / PC）
+ -> done
+```
+
+### 测试与结果
+
+- `python -m pytest tests/test_v3_api.py tests/test_v3_semantic_parse.py tests/test_v3_cart.py final_test -q`：
+  **36 passed**；
+- `python -m compileall -q rag/api/routes/chat.py final_test` 与 `git diff --check`：通过；
+- 真实本地服务两条冒烟：
+  - `推荐手机，10000 元以内，不要小米`：`safe_direct/product`，首个可显示事件 **42 ms**，首个业务结果
+    **1154 ms**，完整 **1161 ms**；
+  - `送女朋友一个礼物，不知道买什么，预算 1000 元`：真实 DeepSeek SemanticParse + DashScope embedding +
+    Milvus，`semantic_executable/explore`，首个可显示事件 **19 ms**，首个业务结果 **8039 ms**，完整
+    **8047 ms**；
+  - N=2 的首个可显示事件均值为 **30.5 ms**；完整记录在
+    `final_test/results/first_visible_event_smoke_20260718.md`。N=2 的 p50/p95 仅用于检查事件是否前置，
+    不可冒充全量性能结论。
+
+### 尚未完成
+
+- 没有重跑完整固定集；新的三段延迟口径会在下一次真实 61 请求轮运行时自动生成稳定统计。

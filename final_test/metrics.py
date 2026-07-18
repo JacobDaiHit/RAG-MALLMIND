@@ -33,6 +33,7 @@ def summarize(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
     semantic_rows = [row for row in rows if row.get("semantic_parse_called")]
     retrieval_rows = [row for row in recommendation_rows if row.get("candidate_allowlist_nonempty")]
     first_event = [row["first_event_ms"] for row in rows if isinstance(row.get("first_event_ms"), int)]
+    first_business_event = [row["first_business_event_ms"] for row in rows if isinstance(row.get("first_business_event_ms"), int)]
     total_latency = [row["total_ms"] for row in rows if isinstance(row.get("total_ms"), int)]
 
     by_constraint: dict[str, dict[str, int | float | None]] = {}
@@ -68,6 +69,7 @@ def summarize(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
         },
         "engineering": {
             "first_event_ms": _latency(first_event),
+            "first_business_event_ms": _latency(first_business_event),
             "total_response_ms": _latency(total_latency),
             "llm_calls_per_request": _average([int(row.get("llm_calls", 0)) for row in rows]),
             "semantic_schema_retry_rate": _rate(sum(bool(row.get("semantic_schema_retry")) for row in semantic_rows), len(semantic_rows)),
@@ -115,7 +117,7 @@ def markdown_report(summary: dict[str, Any], records: Iterable[dict[str, Any]]) 
         "- **歧义句追问率**：期望 clarification 且实际收到 `clarification` 事件的请求 / 全部期望 clarification 请求。",
         "- **各约束保持率**：fixture 明确声明某字段（品牌、价格、卡片序号、数量等）的请求中，该字段在 RequirementSpecV3、购物车计划或比较结果满足预期的数量 / 声明该字段的请求数；未声明该字段的请求不进入分母。",
         "- **商品 ID 有效率**：推荐卡片中所有 product_id 都能在本次加载的本地目录找到的推荐请求 / 全部期望推荐请求。价格、SKU、库存一致率只统计实际返回了对应事实的请求，并逐项与同次加载的目录比较；没有返回事实的请求由端到端通过率和对应 outcome 断言判定，不会被当作“一致”。",
-        "- **首事件延迟**：发起 HTTP 请求到收到第一个完整 SSE event 的时间；**总响应延迟**：到流读取结束的时间。两者只统计收到 SSE event 的请求。mean 为平均值，p50/p95 为样本分位数。",
+        "- **首个可显示事件延迟**：发起 HTTP 请求到收到第一个完整 SSE event 的时间；当前通常是无业务结论的 `progress(stage=understanding)`。**首个业务结果延迟**：到首次收到 `clarification`、`error`、`delta`、商品卡/事实、购物车或 PC 结果事件的时间。**总响应延迟**：到流读取结束的时间。三者只统计对应事件存在的请求；mean 为平均值，p50/p95 为样本分位数。",
         "- **LLM 调用次数 / 请求**：每请求的 SemanticParse 调用（通常 0/1；仅 schema 不合法时最多 2）加上回答生成阶段 `model_usage` 事件数，再对所有请求取平均。`schema retry` 只统计第一次已返回 JSON 但 decoder 拒绝、随后允许一次修复调用的请求；网络错误和超时不计入。平均 token 只统计服务商实际回报 `total_tokens` 的调用；token 覆盖率是有该数值的调用 / 全部实际 LLM 调用。",
         "- **N/A**：该批次没有适用分母。例如 Milvus 故障降级必须先注入 Milvus 故障；普通成功运行不能伪造此指标。",
         "",
@@ -151,7 +153,8 @@ def markdown_report(summary: dict[str, Any], records: Iterable[dict[str, Any]]) 
         "",
         "| 指标 | 结果 |",
         "| --- | --- |",
-        f"| 首事件延迟 | {_latency_text(engineering['first_event_ms'])} |",
+        f"| 首个可显示事件延迟 | {_latency_text(engineering['first_event_ms'])} |",
+        f"| 首个业务结果延迟 | {_latency_text(engineering['first_business_event_ms'])} |",
         f"| 总响应延迟 | {_latency_text(engineering['total_response_ms'])} |",
         f"| LLM 调用次数 / 请求 | {_number(engineering['llm_calls_per_request'])} |",
         f"| SemanticParse schema 重试率 | {_percent(engineering['semantic_schema_retry_rate'])} |",
