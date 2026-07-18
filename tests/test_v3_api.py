@@ -35,8 +35,13 @@ def test_certified_recommendation_uses_v3_and_writes_only_compact_core():
     assert response.status_code == 200
     events = _events(response.text)
     route = next(data for name, data in events if name == "v3_routing")
+    trace = next(data for name, data in events if name == "v3_trace")
     cards = next(data["cards"] for name, data in events if name == "product_cards")
     assert route["grammar_id"] == "recommend.category_constraints.v1"
+    assert route["recommendation_mode"] == "product"
+    assert trace["session_live_card_count"] == 0
+    assert trace["semantic_card_references"] == []
+    assert "card_ids" not in trace
     assert cards and all(card["product_id"] not in {"p_digital_008", "p_digital_009", "p_digital_010"} for card in cards)
     session = get_session(session_id)
     assert set(session.__dict__) == {"session_id", "updated_at", "v3_core"}

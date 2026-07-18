@@ -1,10 +1,11 @@
 """Fail-closed conversion of one model type choice into catalog type IDs.
 
-``TypeResolutionGate.resolve`` validates original-text evidence, membership in
-the locally generated candidate menu, explicit type exclusions, and conflicts.
-It permits one narrow format repair for an exact catalog display label copied
-from the menu; it never performs fuzzy type matching or hand-maintained natural
-language aliases.
+``TypeResolutionGate.resolve`` validates membership in the locally generated
+candidate menu, explicit type exclusions, and conflicts.  A model-selected
+candidate ID is already bounded by a menu built from this turn; a raw surface
+fallback still needs original-text evidence.  It permits one narrow format
+repair for an exact catalog display label copied from the menu; it never
+performs fuzzy type matching or hand-maintained natural-language aliases.
 """
 from __future__ import annotations
 
@@ -12,7 +13,8 @@ import time
 
 from .config import CLARIFICATION_TTL_SECONDS
 from .registry import CatalogNormalizationRegistry
-from .types import ClarificationPlan, SemanticObservation, TaxonomyCandidateSet, TypeResolutionResult
+from .semantic_contracts import RecommendObservation
+from .types import ClarificationPlan, RecommendationMode, TaxonomyCandidateSet, TypeResolutionResult
 
 
 class TypeResolutionGate:
@@ -22,16 +24,19 @@ class TypeResolutionGate:
         self,
         *,
         text: str,
-        observation: SemanticObservation,
+        observation: RecommendObservation,
         candidate_set: TaxonomyCandidateSet,
         registry: CatalogNormalizationRegistry,
     ) -> TypeResolutionResult:
-        if not observation.target_type_surface or observation.target_type_evidence is None:
-            return _clarify("product_type_unresolved", "你想让我推荐哪一类商品？例如手机、咖啡、防晒或篮球鞋。")
-        if not _evidence_matches(text, observation.target_type_evidence):
-            return _clarify("target_type_evidence_unverifiable", "我无法确认你想要的商品类型，请直接说明要推荐的类别。")
         candidate_ids = {candidate.canonical_type_id for candidate in candidate_set.candidates}
         selected = observation.target_type_candidate_id
+        if observation.mode is RecommendationMode.EXPLORE:
+            if selected or observation.target_type_surface:
+                return _clarify("explore_target_conflict", "你已经明确说了商品类别，请按具体类别推荐；否则我可以先帮你探索。")
+            excluded, exclusion_error = _resolve_exclusions(observation, candidate_ids)
+            if exclusion_error:
+                return _clarify(exclusion_error, "我无法确认需要排除的商品类别，请换一种更明确的说法。")
+            return TypeResolutionResult(exclude_product_type_ids=excluded, reason_code="explore_type_exclusions_selected")
         if selected:
             if selected not in candidate_ids:
                 # Models occasionally copy the candidate menu's display label
@@ -46,6 +51,18 @@ class TypeResolutionGate:
                 product_type_ids = (selected,)
                 reason = "type_candidate_selected"
         else:
+            if not observation.target_type_surface or observation.target_type_evidence is None:
+                # For an explicit catalog-outside type, the model may omit the
+                # optional evidence object.  The raw surface is still safe to
+                # reject only when it appears literally in this user turn and
+                # has no exact catalog mapping; a vague request still asks a
+                # clarification instead of being guessed as unsupported.
+                surface = (observation.target_type_surface or "").strip()
+                if surface and surface.casefold() in text.casefold() and registry.product_type_by_surface(surface) is None:
+                    return TypeResolutionResult(reason_code="catalog_scope_unsupported")
+                return _clarify("product_type_unresolved", "你想让我推荐哪一类商品？例如手机、咖啡、防晒或篮球鞋。")
+            if not _evidence_matches(text, observation.target_type_evidence):
+                return _clarify("target_type_evidence_unverifiable", "我无法确认你想要的商品类型，请直接说明要推荐的类别。")
             # Exact rescue is only for a real catalog spelling (e.g. pad), not
             # semantic containment or a hand-maintained natural-language alias.
             entity = registry.product_type_by_surface(observation.target_type_surface)
@@ -53,7 +70,7 @@ class TypeResolutionGate:
                 return TypeResolutionResult(reason_code="catalog_scope_unsupported")
             product_type_ids = (entity.canonical_id,)
             reason = "type_surface_exact_rescue"
-        excluded, exclusion_error = _resolve_exclusions(text, observation, candidate_ids)
+        excluded, exclusion_error = _resolve_exclusions(observation, candidate_ids)
         if exclusion_error:
             return _clarify(exclusion_error, "我无法确认需要排除的商品类别，请换一种更明确的说法。")
         if set(product_type_ids) & set(excluded):
@@ -61,17 +78,14 @@ class TypeResolutionGate:
         return TypeResolutionResult(product_type_ids, excluded, reason_code=reason)
 
 
-def _resolve_exclusions(text: str, observation: SemanticObservation, candidate_ids: set[str]) -> tuple[tuple[str, ...], str]:
+def _resolve_exclusions(observation: RecommendObservation, candidate_ids: set[str]) -> tuple[tuple[str, ...], str]:
     ids = observation.exclude_type_candidate_ids
-    evidences = observation.exclude_type_evidences
-    if not ids and not evidences:
+    if not ids:
         return (), ""
-    if len(ids) != len(evidences) or len(set(ids)) != len(ids):
+    if len(set(ids)) != len(ids):
         return (), "exclude_type_observation_invalid"
     if any(candidate_id not in candidate_ids for candidate_id in ids):
         return (), "exclude_type_candidate_invalid"
-    if any(not _evidence_matches(text, evidence) for evidence in evidences):
-        return (), "exclude_type_evidence_unverifiable"
     return tuple(sorted(ids)), ""
 
 

@@ -13,17 +13,18 @@ import time
 from typing import Any
 
 from .session import CART_CONFIRM_TTL_SECONDS
-from .types import CartLine, CartOperation, CartPlan, SemanticObservation, SessionCore, SessionDelta
+from .semantic_contracts import CartObservation
+from .types import CartLine, CartOperation, CartPlan, CartTargetSource, SessionCore, SessionDelta
 
 
 class CartPlanningError(ValueError):
     """A user-visible cart request lacks one safely resolvable field."""
 
 
-def create_cart_plan(*, core: SessionCore, observation: SemanticObservation, catalog: Any, now: float | None = None) -> CartPlan | None:
+def create_cart_plan(*, core: SessionCore, observation: CartObservation, catalog: Any, now: float | None = None) -> CartPlan | None:
     """Create a catalog-validated proposal; it never mutates the cart."""
 
-    operation = observation.cart_operation
+    operation = observation.operation
     if operation is None:
         raise CartPlanningError("请说明要加入、删除、修改数量、查看还是清空购物车。")
     if operation is CartOperation.VIEW:
@@ -97,20 +98,23 @@ def cart_snapshot(core: SessionCore, catalog: Any) -> dict[str, object]:
     return {"items": items, "count": sum(int(item["quantity"]) for item in items), "total_price": round(total, 2)}
 
 
-def _resolve_target(core: SessionCore, observation: SemanticObservation, catalog: Any, operation: CartOperation) -> tuple[CartLine | None, Any]:
+def _resolve_target(core: SessionCore, observation: CartObservation, catalog: Any, operation: CartOperation) -> tuple[CartLine | None, Any]:
+    target = observation.target_ref
     if operation is CartOperation.ADD:
-        rank = observation.target_card_rank
-        if rank is None or rank > len(core.cards):
+        if target is None or target.source is not CartTargetSource.CARD:
+            raise CartPlanningError("加入购物车时请说明刚才第几个商品卡。")
+        if target.rank > len(core.cards):
             raise CartPlanningError("请说明要加入刚才第几个商品卡；商品卡过期时请先重新推荐。")
-        card = core.cards[rank - 1]
+        card = core.cards[target.rank - 1]
         product = catalog.get(card.product_id)
         if product is None:
             raise CartPlanningError("该商品已无法从当前目录读取，不能加入购物车。")
         return None, product
-    rank = observation.target_cart_rank
-    if rank is None or rank > len(core.cart_lines):
+    if target is None or target.source is not CartTargetSource.CART:
+        raise CartPlanningError("修改或删除时请说明购物车中的第几个商品。")
+    if target.rank > len(core.cart_lines):
         raise CartPlanningError("请说明要操作购物车中的第几个商品。")
-    line = core.cart_lines[rank - 1]
+    line = core.cart_lines[target.rank - 1]
     product = catalog.get(line.product_id)
     if product is None:
         raise CartPlanningError("该购物车商品已无法从当前目录读取，不能继续操作。")

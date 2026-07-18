@@ -20,13 +20,14 @@ from .pc_plan_comparison import PcPlanComparisonError, compare_pc_versions
 from .pc_target_resolver import PcPlanReferenceError, resolve_pc_plan
 from .registry import CatalogNormalizationRegistry
 from .session import apply_session_delta, load_session_core, pc_plan_delta
-from .types import PcPlanOperation, PcPlanVersion, RequirementSpecV3, SemanticObservation, V3Action
+from .semantic_contracts import PcBuildObservation, PcEditObservation, PcObservation
+from .types import PcPlanOperation, PcPlanVersion, RequirementSpecV3, V3Action
 
 
 PC_PLAN_TTL_SECONDS = 30 * 60
 
 
-def execute_v3_pc_plan(*, session: Any, requirement: RequirementSpecV3, observation: SemanticObservation, catalog: Any = None) -> Iterable[str]:
+def execute_v3_pc_plan(*, session: Any, requirement: RequirementSpecV3, observation: PcObservation, catalog: Any = None) -> Iterable[str]:
     """Execute only catalog-validated PC actions; LLM surfaces never select product IDs."""
 
     core = load_session_core(session)
@@ -62,32 +63,32 @@ def execute_v3_pc_plan(*, session: Any, requirement: RequirementSpecV3, observat
     yield sse_event("done", {"session_id": session.session_id})
 
 
-def _build(requirement: RequirementSpecV3, observation: SemanticObservation) -> tuple[dict[str, Any], float, tuple[str, ...]]:
+def _build(requirement: RequirementSpecV3, observation: PcBuildObservation) -> tuple[dict[str, Any], float, tuple[str, ...]]:
     budget = _planning_budget(requirement)
-    usage = tuple(observation.pc_usage_surfaces)
+    usage = tuple(observation.usage_surfaces)
     if budget is None or not usage:
         raise ValueError("V3 PC execution requires an explicit budget and usage")
     return generate_pc_build_plan(budget=budget, usage=list(usage), preferences={}), budget, usage
 
 
-def _edit(requirement: RequirementSpecV3, observation: SemanticObservation, core, catalog: Any) -> tuple[dict[str, Any], float, tuple[str, ...], str]:
-    previous = resolve_pc_plan(core, observation.pc_plan_reference)
-    usage = tuple(observation.pc_usage_surfaces) or previous.usage
+def _edit(requirement: RequirementSpecV3, observation: PcEditObservation, core, catalog: Any) -> tuple[dict[str, Any], float, tuple[str, ...], str]:
+    previous = resolve_pc_plan(core, observation.plan_reference)
+    usage = previous.usage
     budget = _planning_budget(requirement) or previous.budget
-    if observation.pc_operation is PcPlanOperation.ADJUST_BUDGET:
+    if observation.operation is PcPlanOperation.ADJUST_BUDGET:
         return (
             generate_pc_build_plan(budget=budget, usage=list(usage), preferences={"budget_strict": True, "adjustment": "budget"}),
             budget,
             usage,
             previous.plan_id,
         )
-    if observation.pc_operation is not PcPlanOperation.REPLACE_COMPONENT:
+    if observation.operation is not PcPlanOperation.REPLACE_COMPONENT:
         raise ValueError("V3 PC edit requires a supported edit operation")
     if catalog is None:
         from rag.recommendation.product_loader import load_combined_product_catalog
 
         catalog = load_combined_product_catalog()
-    entity = CatalogNormalizationRegistry.from_catalog(catalog).product_type_by_surface(observation.pc_component_category_surface or "")
+    entity = CatalogNormalizationRegistry.from_catalog(catalog).product_types.get(observation.component_candidate_id or "")
     if entity is None or not entity.canonical_id.startswith("pc_category:"):
         raise ValueError("PC component category is not catalog-validated")
     role = entity.canonical_id[len("pc_category:"):]

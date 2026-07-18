@@ -7,8 +7,9 @@ from rag.recommendation.product_loader import load_combined_product_catalog
 from rag.recommendation.v3.pc_executor import execute_v3_pc_plan
 from rag.recommendation.v3.promotion import HardConstraintPromotionGate
 from rag.recommendation.v3.registry import CatalogNormalizationRegistry
+from rag.recommendation.v3.semantic_contracts import PcBuildObservation, PcEditObservation
 from rag.recommendation.v3.session import empty_session_core, load_session_core, pc_plan_delta
-from rag.recommendation.v3.types import PcPlanOperation, PcPlanVersion, RequirementSpecV3, SemanticObservation, V3Action
+from rag.recommendation.v3.types import PcPlanOperation, PcPlanVersion, RequirementSpecV3, V3Action
 
 
 def test_v3_pc_executor_calls_catalog_solver_with_promoted_fields(monkeypatch):
@@ -24,7 +25,7 @@ def test_v3_pc_executor_calls_catalog_solver_with_promoted_fields(monkeypatch):
         execute_v3_pc_plan(
             session=session,
             requirement=RequirementSpecV3(action=V3Action.PC_BUILD, price_max=8000),
-            observation=SemanticObservation(action=V3Action.PC_BUILD, price_max=8000, pc_usage_surfaces=("游戏",)),
+            observation=PcBuildObservation(usage_surfaces=("游戏",)),
         )
     )
     core = load_session_core(session)
@@ -47,7 +48,7 @@ def test_v3_pc_executor_uses_explicit_target_budget_when_no_upper_limit_exists(m
         execute_v3_pc_plan(
             session=session,
             requirement=RequirementSpecV3(action=V3Action.PC_BUILD, price_target=7000),
-            observation=SemanticObservation(action=V3Action.PC_BUILD, pc_usage_surfaces=("游戏",)),
+            observation=PcBuildObservation(usage_surfaces=("游戏",)),
         )
     )
 
@@ -60,7 +61,7 @@ def test_v3_pc_executor_refuses_missing_execution_fields():
         execute_v3_pc_plan(
             session=session,
             requirement=RequirementSpecV3(action=V3Action.PC_BUILD),
-            observation=SemanticObservation(action=V3Action.PC_BUILD),
+            observation=PcBuildObservation(),
         )
     )
     assert any("pc_execution_unavailable" in event for event in events)
@@ -84,10 +85,10 @@ def test_pc_component_edit_requires_live_catalog_plan_and_component():
     ).core
     promoted = HardConstraintPromotionGate().promote(
         text="把显卡换强一点",
-        observation=SemanticObservation(
-            action=V3Action.PC_PLAN_EDIT,
-            pc_operation=PcPlanOperation.REPLACE_COMPONENT,
-            pc_component_category_surface="显卡",
+        observation=PcEditObservation(
+            operation=PcPlanOperation.REPLACE_COMPONENT,
+            plan_reference=None,
+            component_candidate_id="pc_category:pc_gpu",
             upgrade_direction="更强",
         ),
         registry=CatalogNormalizationRegistry.from_catalog(catalog),

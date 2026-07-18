@@ -1,0 +1,18 @@
+[
+  {
+    "case_id": "independent_direct_recommendations",
+    "request": "推荐 5000 元以内、不要小米的手机",
+    "expected_action": "recommend_shopping_products",
+    "expected_status": "safe_direct",
+    "workers": 8,
+    "session_mode": "unique"
+  },
+  {
+    "case_id": "independent_semantic_recommendations",
+    "request": "油皮夏天通勤用的防晒，200 元左右",
+    "expected_action": "recommend_shopping_products",
+    "expected_status": "semantic_executable",
+    "workers": 4,
+    "session_mode": "unique"
+  }
+]

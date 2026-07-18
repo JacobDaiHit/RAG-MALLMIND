@@ -11,8 +11,11 @@ from __future__ import annotations
 GRAMMAR_VERSION = "1.1"
 PROOF_VERSION = "rule-proof-v1"
 REGISTRY_VERSION = "catalog-normalization-v2"
-SEMANTIC_PARSE_POLICY_VERSION = "semantic-parse-v5"
+SEMANTIC_PARSE_POLICY_VERSION = "semantic-parse-v7-action-union"
 SEMANTIC_PARSE_TIMEOUT_SECONDS = 18.0
+# A malformed action object gets one repair attempt. Transport errors and timeouts
+# do not retry here; no request may make a third semantic call.
+SEMANTIC_PARSE_MAX_ATTEMPTS = 2
 CLARIFICATION_TTL_SECONDS = 10 * 60
 
 # These are additional fail-closed guards.  Their absence never authorizes a
@@ -101,18 +104,6 @@ ATTRIBUTE_RANK_TERMS = {
     "battery": ("续航", "电池", "快充"),
     "lightweight": ("轻薄", "轻", "便携"),
 }
-EXPLICIT_EXCLUDE_TEMPLATES = (
-    "不要{brand}",
-    "别要{brand}",
-    "不考虑{brand}",
-    "排除{brand}",
-    "非{brand}",
-    "{brand}以外",
-    "除了{brand}",
-    "不喜欢{brand}",
-    "{brand}不好",
-)
-
 EXCLUDE_OPERATORS = ("不要", "排除", "不考虑")
 RECOMMEND_VERBS = ("推荐", "来几款")
 RECOMMEND_QUANTIFIERS = ("一款", "一个", "一双", "一台")

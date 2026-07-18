@@ -1,5 +1,10 @@
 # V3 最终系统应是什么样：用一条清晰链路解释整个项目
 
+> **历史设计稿，非当前代码说明（2026-07-18 已标注）。** 当前实际链路、函数索引和
+> `recommendation_mode=product/explore` 的执行规则以根目录 `README.md` 为准；本次施工记录和
+> 未完成项以 `v3_implementation_execution_log.md` 为准。本稿中仍有早期的 TraceStore、旧 mode
+> 和预想模块表述，不能据此判断当前生产行为。
+
 > 这份文件不讲改代码的顺序，而是讲改造完成后，一条用户消息会经过哪些模块、哪些模块有权做什么、哪些模块绝对不能做什么。想看施工步骤请读 `v3_refactor_implementation_plan.md`；想看具体对话样例请读 `v3_multiturn_information_flow.md`。
 
 ## 1. 用一句话描述 V3

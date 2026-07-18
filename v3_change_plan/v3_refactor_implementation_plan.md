@@ -1,5 +1,9 @@
 # V3 改造施工说明：要改什么、为什么改、按什么顺序改
 
+> **历史施工计划，非当前代码说明（2026-07-18 已标注）。** 其中保留了当时的备选架构和已废弃的
+> `mode=pc_build` 等设想。当前生产链路只有推荐 `mode=product/explore`，PC 为独立 action；请以根目录
+> `README.md` 和 `v3_implementation_execution_log.md` 为准，不要把本稿的待施工项当成现状。
+
 > 这份文件只讲“怎么把当前项目改成 V3”。它不是效果宣传，也不是代码清单。读完应能回答：要新增什么对象、删什么旧逻辑、每一步完成后怎样证明没有改坏。最终系统长什么样见 `v3_target_architecture.md`；用户连续聊天时数据怎样流转见 `v3_multiturn_information_flow.md`；前后收益见 `v3_before_after_improvement_report.md`。
 
 ## 0. 先把几个词说清楚

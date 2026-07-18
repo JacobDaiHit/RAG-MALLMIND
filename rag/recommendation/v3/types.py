@@ -1,10 +1,11 @@
 """Immutable cross-module contracts for the complete V3 request chain.
 
-This file defines normalized input, grammar/proof results, semantic
-observations, requirements, catalog filters, card references, clarification,
-cart, PC-plan, session, and execution decisions. Modules exchange these typed
-objects rather than nested dictionaries; the HTTP layer serializes only at its
-SSE/API boundary.
+This file defines normalized input, grammar/proof results, requirements,
+catalog filters, card references, clarification, cart, PC-plan, session, and
+execution decisions.  Model-produced semantic observations deliberately live
+in ``semantic_contracts.py`` as an action-specific discriminated union.
+Modules exchange typed objects rather than nested dictionaries; the HTTP layer
+serializes only at its SSE/API boundary.
 """
 from __future__ import annotations
 
@@ -29,16 +30,6 @@ class V3Action(str, Enum):
     PC_BUILD = "generate_pc_build_plan"
     PC_PLAN_EDIT = "edit_pc_build_plan"
     PC_PLAN_COMPARE = "compare_pc_build_plans"
-
-
-class CommerceIntent(str, Enum):
-    """A non-executable semantic hint used only to select clarification."""
-
-    NONE = "none"
-    RECOMMEND = "recommend"
-    COMPARE = "compare"
-    CART = "cart"
-    PC_PLAN = "pc_plan"
 
 
 class PcPlanOperation(str, Enum):
@@ -70,8 +61,23 @@ class CartOperation(str, Enum):
     CLEAR = "clear"
 
 
+class CartTargetSource(str, Enum):
+    """The short-lived list a cart ordinal is allowed to address."""
+
+    CARD = "card"
+    CART = "cart"
+
+
+class RecommendationMode(str, Enum):
+    """Recommendation either has one certified type or explores the catalog."""
+
+    PRODUCT = "product"
+    EXPLORE = "explore"
+
+
 class PriceKind(str, Enum):
     MAX = "max"
+    MIN = "min"
     TARGET = "target"
     RANGE = "range"
 
@@ -116,6 +122,7 @@ class EntityMention:
 @dataclass(frozen=True)
 class RequirementSpecV3:
     action: V3Action
+    recommendation_mode: RecommendationMode = RecommendationMode.PRODUCT
     product_type_ids: Tuple[str, ...] = ()
     exclude_product_type_ids: Tuple[str, ...] = ()
     include_brand_family_ids: Tuple[str, ...] = ()
@@ -128,42 +135,6 @@ class RequirementSpecV3:
     target_card_ids: Tuple[str, ...] = ()
     query_kind: Optional[str] = None
     field_provenance: Mapping[str, str] = field(default_factory=dict)
-
-
-@dataclass(frozen=True)
-class SemanticObservation:
-    """Untrusted semantic reading produced by one external-model call.
-
-    It intentionally carries user-facing surfaces, never catalog identifiers,
-    SKU identifiers, prices from catalog, or executable cart operations.
-    """
-
-    action: V3Action
-    commerce_intent: CommerceIntent = CommerceIntent.NONE
-    target_type_surface: Optional[str] = None
-    target_type_candidate_id: Optional[str] = None
-    target_type_evidence: Optional["TypeSurfaceEvidence"] = None
-    exclude_type_candidate_ids: Tuple[str, ...] = ()
-    exclude_type_evidences: Tuple["TypeSurfaceEvidence", ...] = ()
-    include_brand_surfaces: Tuple[str, ...] = ()
-    exclude_brand_surfaces: Tuple[str, ...] = ()
-    price_max: Optional[float] = None
-    price_constraint: Optional["PriceConstraint"] = None
-    desired_attribute_surfaces: Tuple[str, ...] = ()
-    target_card_rank: Optional[int] = None
-    target_card_ranks: Tuple[int, ...] = ()
-    target_cart_rank: Optional[int] = None
-    query_kind: Optional[str] = None
-    cart_operation: Optional[CartOperation] = None
-    quantity: Optional[int] = None
-    pc_usage_surfaces: Tuple[str, ...] = ()
-    pc_operation: Optional[PcPlanOperation] = None
-    pc_plan_reference: Optional[PcPlanReference] = None
-    pc_component_category_surface: Optional[str] = None
-    upgrade_direction: Optional[str] = None
-    computer_purchase_kind: Optional[ComputerPurchaseKind] = None
-    computer_purchase_evidence: Optional["PurchaseKindEvidence"] = None
-    missing_fields: Tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -237,12 +208,34 @@ class TypeResolutionResult:
 
 
 @dataclass(frozen=True)
+class LLMUsage:
+    """Safe, numeric-only token accounting for one external model call."""
+
+    prompt_tokens: Optional[int] = None
+    completion_tokens: Optional[int] = None
+    total_tokens: Optional[int] = None
+
+
+@dataclass(frozen=True)
+class SemanticParseAttempt:
+    """One observable model attempt; raw prompts and model text stay out of SessionCore."""
+
+    attempt: int
+    outcome: str
+    reason_code: str = ""
+    elapsed_ms: int = 0
+    usage: LLMUsage = LLMUsage()
+
+
+@dataclass(frozen=True)
 class SemanticParseResult:
-    observation: Optional[SemanticObservation]
+    observation: Optional["SemanticObservation"]
     provider: str
     model: str
     elapsed_ms: int
     error_code: str = ""
+    usage: LLMUsage = LLMUsage()
+    attempts: Tuple[SemanticParseAttempt, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -256,7 +249,7 @@ class ClarificationPlan:
 @dataclass(frozen=True)
 class PendingClarification:
     plan: ClarificationPlan
-    observation: SemanticObservation
+    observation: "SemanticObservation"
     source_text: str
 
 
@@ -267,6 +260,14 @@ class CartLine:
     product_id: str
     sku_id: Optional[str]
     quantity: int
+
+
+@dataclass(frozen=True)
+class CartTargetRef:
+    """One unambiguous ordinal pointing to a recommendation card or cart line."""
+
+    source: CartTargetSource
+    rank: int
 
 
 @dataclass(frozen=True)

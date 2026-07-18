@@ -258,6 +258,54 @@ POST /api/chat/stream
 
 没有把“换强显卡”放宽为自动替换电源/机箱等其它部件；那会改变用户的“只换一个配件”语义，必须作为独立的多配件编辑动作与确认策略施工，不能静默扩张本次操作。
 
+## 15. 2026-07-18：Final Test 根因修复与语义契约收敛
+
+### 修改模块
+
+- `semantic_contracts.py`、`types.py`：推荐观察新增 `RecommendationMode(product/explore)`；删除类型排除 evidence；购物车由两个序号字段收敛为 `CartTargetRef(source, rank)`；`SemanticParseResult` 新增逐次 `SemanticParseAttempt`。
+- `semantic_parse.py`：推荐 action 强制要求 `mode`；删除排除类型坐标字段；在 JSON 已返回但 action schema 不合法时最多重试一次，并记录每次原因、耗时、token。超时、网络和目录错误不重试，绝无第三次。Prompt 明确目录外商品不能写 explore，并为“电脑购买形式”待追问提供短 action 指令。
+- `type_resolution_gate.py`：类型排除只接受本轮菜单内、不重复且不与目标冲突的 ID；探索模式不允许携带具体目标类型。
+- `catalog_exploration.py`（新增）、`recommendation_executor.py`：`explore` 从真实目录按 profile 相关性与目录质量挑最多三个不同方向；每个方向仍经过 CandidateGate、embedding/BM25/Milvus 和目录事实复核。PC 部件不进入泛探索。
+- `cart.py`、`clarification_policy.py`、`chat.py`：按 `CartTargetRef` 校验操作来源；SSE trace 记录 cart target 与语义重试尝试，不暴露模型原文。
+- `session.py`：SessionCore schema 升至 v5，持久化 `recommendation_mode`；同一运行的多轮保留上下文，跨运行不复用。
+- `final_test/runner.py`、`metrics.py`、fixtures：每次 runner 生成独立 run ID，修复重复评测继承旧 SessionCore；报告新增 schema 重试率/最大次数；开放式购物 fixture 改为探索推荐，提示词注入 fixture 改为“不能获得额外业务权限”。
+
+### 删除的旧字段与路径
+
+- 已删除推荐 observation、Prompt、pending serialization、TypeResolutionGate 中的 `exclude_type_evidences`；
+- 已删除购物车 observation 中的 `card_references/cart_reference` 双字段；事实查询保留自己的 `card_references`，因为它可能合法地比较两张卡；
+- 没有保留新旧购物车字段双写或新旧探索执行器双跑。当前唯一执行权是 `CartTargetRef` 与 `CatalogExplorationPlanner`。
+
+### 当前实际调用链
+
+```text
+V3Router SafetyProof
+  -> 未直通：SemanticParser（正常一次；schema 不合法时仅一次修复重试）
+  -> mode=product：TypeResolutionGate -> PromotionGate -> CandidateGate -> Milvus/目录卡片
+  -> mode=explore：PromotionGate -> CatalogExplorationPlanner
+                     -> 每个方向 CandidateGate -> Milvus/目录卡片
+  -> 购物车：CartTargetRef -> CartPlan(60 秒) -> confirm 才改 CartLine
+  -> SessionDelta 一次性写入 v3_core
+```
+
+### 验证与结果
+
+| 检查 | 结果 |
+|---|---|
+| `python -m pytest tests/test_v3_semantic_parse.py tests/test_v3_cart.py tests/test_v3_api.py final_test -q` | 通过（35 项；仅既有 numexpr/FastAPI warnings） |
+| `python -m compileall -q rag/recommendation/v3 rag/api/routes/chat.py` | 通过 |
+| `git diff --check` | 通过；仅 Windows CRLF 提示 |
+| 三组真实定向 HTTP（探索、类型排除、购物车确认） | 3/3 通过，真实 DeepSeek、DashScope embedding 与 Milvus |
+| 5 条根因定向 HTTP（汽车/处方药、电脑短回答、提示注入） | 通过 |
+| `python final_test/runner.py --base-url http://127.0.0.1:8000` | 最终隔离运行 61/61 通过；结果见 `final_test/results/v3_fixed_eval_20260718_171016.*` |
+
+### 仍未完成 / 明确限制
+
+1. 附件仍 fail-closed，未恢复旧多模态链路；
+2. schema 重试在最终真实集触发 1 次（首次非法枚举、第二次成功）；仍需要可控故障注入覆盖超时、extra field 和两次均失败等其它分支；
+3. 开放式探索保证目录事实、过滤和类别多样性，尚未有点击/人工偏好评测来证明“方向喜好”质量；
+4. Redis 故障恢复、Milvus 故障降级、并发正确率仍需各自故障注入/并发运行，不在普通成功全量集伪造结果。
+
 ## 15. 2026-07-17：V3 全链路真实重测中止记录
 
 - 以真实 DeepSeek `deepseek-chat`、DashScope embedding 与已重建的 V3 Milvus 重跑 `full_chain_eval_cases.json`；报告 JSON/Markdown 已覆盖 `reports/v3_full_chain_eval_batches/v3_full_chain_batch_01_20260716.*`；
@@ -474,3 +522,123 @@ POST /api/chat/stream
 
 - 回归：V3 fixture、SemanticParse、API、购物车、PC、路由、Milvus 入库、embedding、切片和兼容性测试共 **87 passed**；
 - `python -m compileall -q rag scripts` 与 `git diff --check` 通过；仅保留既有 `numexpr` 版本和 FastAPI `on_event` 弃用告警，以及工作区 CRLF 提示。
+
+## 23. 2026-07-18：SemanticParse 动作小对象与话题切换施工
+
+### 修改了哪些模块
+
+- 新增 `rag/recommendation/v3/semantic_contracts.py`：按动作定义不可变语义对象、品牌候选集、
+  会话摘要以及 pending observation 的序列化；
+- `semantic_parse.py`：一次模型调用改为 action-specific JSON 解码；拒绝跨动作字段；
+- `orchestrator.py`：新增显式 topic transition；仅合并兼容的推荐追问，泛聊/新商品/事实查询/
+  购物车/PC 操作都断开旧上下文；
+- `promotion.py`、`cart.py`、`pc_executor.py`、`type_resolution_gate.py`：只消费各自的类型化
+  observation，不再读取通用可选字段；
+- `session.py`：SessionCore 升为 v4，pending 写入 action 小对象；新增泛聊清理待追问的
+  `general_chat_delta()`；
+- `chat.py`：trace 改为 action variant、卡片序号、购物车序号和 fact kind；
+- `config.py`、`types.py`：删除品牌硬编码模板、旧 `CommerceIntent` 与旧电脑 validator 的配置；
+- 删除 `computer_purchase_kind.py`：其职责已收敛进唯一编排链路，未保留并行 validator。
+
+### 删除的旧路径与当前实际调用链
+
+删除旧“大对象 SemanticObservation”的生产输入、旧品牌中文短语提升、旧电脑 validator 和旧
+pending 序列化；没有新旧 Router、Requirement Builder 或 Session 双写。
+
+```text
+SafetyProof（完整才直通）
+  或
+一次 SemanticParser（一个 action 小对象）
+ -> topic transition / clarification
+ -> TypeResolutionGate + PromotionGate
+ -> 推荐 CandidateGate -> embedding/Milvus -> 目录卡片
+    或事实查询 / CartPlan / PC 求解器 / 泛聊
+ -> 一次 SessionDelta -> SSE
+```
+
+### 多轮边界行为
+
+- “推荐手机”后问“第一个多少钱”：仅 `card_references=[1] + fact_kind=price` 可进入目录事实查询；
+- “加入第一个”：仅 `CartObservation` 可创建确认计划；
+- “送朋友礼物”后“平板”：只合并推荐所需的短期上下文；
+- “不说礼物了，推荐篮球鞋”、任意购物车/PC/卡片查询、以及泛聊插话：不继承旧待追问字段；
+- “电脑+用途+预算”无明确装机表达：只产生购买形式澄清，后续“配台主机”才接管 PC build。
+
+### 新增测试与执行结果
+
+- 新增动作字段互斥、类型/品牌候选、卡片查询、购物车、PC、pending 序列化和 topic transition
+  单测；
+- `python -m pytest tests/test_v3_semantic_parse.py tests/test_v3_api.py tests/test_v3_cart.py
+  tests/test_v3_pc_executor.py tests/test_v3_routing.py final_test -q`：49 passed；
+- `python -m compileall -q rag`：通过；
+- 真实专项：13 个多轮请求从 5/13 提升到 12/13；
+- 真实全量：`final_test/results/v3_fixed_eval_20260718_145713.{json,md}`，37 场景、61 请求轮，
+  52/61 通过（85.25%），错误 SAFE_DIRECT 放行 0%。
+
+### 尚未完成
+
+剩余 9 条失败的准确原因、后续代码切片和验收要求已写入
+`final_test/root_cause_and_solution.md`。它们均被 fail-closed 拦截，未发生
+错误目录事实或购物车副作用；在完成该清单前，不能宣称全量固定集通过。
+
+## 24. 2026-07-18：推荐模式、schema 修复重试与当前链路文档收口
+
+### 修改了哪些模块
+
+- `types.py`、`semantic_contracts.py`、`semantic_parse.py`：推荐语义对象和可执行需求都带
+  `RecommendationMode(product/explore)`；`SemanticParser` 仅在第一次 action JSON schema 无效时
+  允许一次修复重试，并将每次尝试的安全原因、耗时和 token 写进 `SemanticParseResult.attempts`；
+- `type_resolution_gate.py`、`promotion.py`、`recommendation_executor.py`、
+  `catalog_exploration.py`、`session.py`：`product` 必须解析为一个真实目录类型；`explore` 禁止携带
+  目标类型，由 `CatalogExplorationPlanner` 在真实目录中选择最多三个不同大类方向；SessionCore v5
+  持久化当前模式，话题切换时不把探索状态带到新商品或新工具；
+- `cart.py`、`clarification_policy.py`：购物车引用统一为
+  `CartTargetRef(source=card/cart, rank=正整数)`，区分商品卡第几个和购物车第几项；
+- `rag/api/routes/chat.py`：`v3_routing` 新增 `recommendation_mode`，并继续输出
+  `semantic_attempts`；`v3_trace` 输出不含敏感 ID 的卡片/购物车序号信息，便于定位多轮引用问题；
+- `README.md`、`final_test/README.md`：按真实代码重画 `product/explore` 的两条推荐支路，补充模式
+  不变量、多轮状态转移、SSE trace、修复重试上限，以及独立 run_id 的评测会话隔离；
+- `v3_target_architecture.md`、`v3_refactor_implementation_plan.md`、
+  `v3_multiturn_information_flow.md`、`v3_before_after_improvement_report.md`：在文件首行明确标为
+  历史目标/演练/计划稿，避免其中已废弃的 `mode=pc_build`、TraceStore 等设计被误读为当前生产链路；
+- `tests/test_v3_api.py`：新增 SAFE_DIRECT 推荐在 `v3_routing` 中必须公开
+  `recommendation_mode=product` 的断言。
+
+### 删除了哪些旧路径
+
+- 没有新增或保留第二个推荐 Router、第二个 Requirement Builder、第二个 Session 写入器或旧模式翻译；
+- `exclude_type_evidences` 和旧的“全字段大 SemanticObservation”不再是生产契约；`mode` 不会回写为
+  旧 `fast/balanced/full` 运行模式。
+
+### 当前请求实际经过的新调用链
+
+```text
+POST /api/chat/stream
+ -> sanitize_input -> get_session -> normalize_turn -> 读取真实目录
+ -> SafetyProof（完整时直接 product）
+    或 SemanticParser（正常一次；仅 schema 无效时再修复一次）
+ -> topic transition / clarification / TypeResolutionGate / PromotionGate
+ -> RequirementSpecV3(recommendation_mode=product|explore)
+ -> product：CandidateGate 一个 allowlist -> embedding/BM25/Milvus -> 最多三张目录卡
+    explore：CatalogExplorationPlanner 多方向 CandidateGate -> 每方向检索 -> 最多三张目录卡
+    或事实查询 / CartPlan 确认 / PC 求解器 / 受限泛聊
+ -> SessionDelta 一次写入 -> SSE（routing、trace、结果）
+```
+
+### 测试与检查
+
+- `python -m pytest tests/test_v3_api.py tests/test_v3_semantic_parse.py tests/test_v3_cart.py final_test -q`：
+  **35 passed**；
+- `python -m compileall -q rag/api/routes/chat.py rag/recommendation/v3`：通过；
+- `git diff --check -- README.md rag/api/routes/chat.py tests/test_v3_api.py`：通过；仅有 Windows CRLF
+  转换提示，无 whitespace error；
+- 最新真实外部 Chat + embedding + Milvus 固定评测仍为
+  `final_test/results/v3_fixed_eval_20260718_171016.{md,json}`：**61/61 通过**，其中一次 schema
+  修复重试成功，最大模型尝试次数为 2。该轮在本次只读文档/trace 字段更新前完成；本次 API 合约测试
+  已覆盖新增的路由字段，未伪称重跑过完整真实评测。
+
+### 尚未完成
+
+- 当前仍无可长期查询的独立 TraceStore；SSE trace 与服务端日志只承担在线调试，不能替代审计库；
+- `CatalogExplorationPlanner` 是目录驱动的受限探索，不是用户偏好学习器；后续若要按“送礼对象/风格”做
+  个性化，需要独立的数据与评测切片，不能把 LLM 猜测直接写进 hard constraint。

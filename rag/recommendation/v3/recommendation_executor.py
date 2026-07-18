@@ -17,10 +17,11 @@ from rag.api.sse import sse_event
 from rag.recommendation.session_state import save_session
 
 from .candidate_gate import CatalogCandidateGate
+from .catalog_exploration import CatalogExplorationPlanner
 from .config import ATTRIBUTE_RANK_TERMS
 from .retrieval import V3EvidenceRetriever
 from .session import CARD_TTL_SECONDS, apply_session_delta, load_session_core, recommendation_delta
-from .types import CardModel, RequirementSpecV3, RetrievalEvidenceV3, RetrievalFilters
+from .types import CardModel, RecommendationMode, RequirementSpecV3, RetrievalEvidenceV3, RetrievalFilters
 
 
 def execute_certified_recommendation(
@@ -34,6 +35,9 @@ def execute_certified_recommendation(
     """Run one V3 requirement without any legacy recommendation dependency."""
 
     yield sse_event("progress", {"label": "系统已开始检索", "detail": "正在按已验证条件筛选本地商品目录。"})
+    if requirement.recommendation_mode is RecommendationMode.EXPLORE:
+        yield from _execute_catalog_exploration(session=session, message=message, requirement=requirement, catalog=catalog)
+        return
     gate = CatalogCandidateGate().evaluate(requirement, catalog=catalog)
     if not gate.filters.product_ids:
         yield sse_event(
@@ -108,6 +112,62 @@ def execute_certified_recommendation(
     yield sse_event("done", {"session_id": session.session_id})
 
 
+def _execute_catalog_exploration(*, session: Any, message: str, requirement: RequirementSpecV3, catalog: Any) -> Iterable[str]:
+    """Return one fact-checked card per diverse catalog direction, or none."""
+
+    directions = CatalogExplorationPlanner().plan(message=message, requirement=requirement, catalog=catalog)
+    if not directions:
+        yield sse_event("candidate_gate", {"allowed_product_ids": [], "rejected_by_reason": {}, "status": "empty"})
+        yield sse_event("error", {"label": "当前目录没有可推荐商品", "detail": "当前目录没有同时满足库存、预算和排除条件的探索商品。", "reason": "catalog_scope_unsupported"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+
+    raw_cards: list[Dict[str, Any]] = []
+    direction_trace: list[dict[str, object]] = []
+    for direction in directions:
+        evidence = _retrieve_evidence(message, direction.gate.filters)
+        products = [catalog.get(product_id) for product_id in direction.gate.filters.product_ids]
+        evidence_rank = {product_id: index for index, product_id in enumerate(evidence.ranked_product_ids)}
+        ranked = sorted(
+            (product for product in products if product is not None),
+            key=lambda product: _rank_key(product, direction.requirement, evidence_rank),
+        )
+        if not ranked:
+            continue
+        raw_cards.append(_card_payload(ranked[0]))
+        direction_trace.append(
+            {
+                "product_type_id": direction.requirement.product_type_ids[0],
+                "parent_category": direction.parent_category,
+                "allowed_product_ids": list(direction.gate.filters.product_ids),
+                "retrieval_status": evidence.status,
+                "retrieval_error_code": evidence.error_code,
+            }
+        )
+    if not raw_cards:
+        yield sse_event("error", {"label": "目录推荐暂不可用", "detail": "探索候选无法从当前目录读取。", "reason": "catalog_scope_unsupported"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    cards = _materialize_cards(raw_cards, catalog, session.session_id)
+    if len(cards) != len(raw_cards):
+        yield sse_event("error", {"label": "商品卡校验未通过", "detail": "目录商品引用不完整，本次结果未写入会话。"})
+        yield sse_event("done", {"session_id": session.session_id})
+        return
+    for card, card_ref in zip(raw_cards, cards):
+        card["card_id"] = card_ref.card_id
+    apply_session_delta(session, recommendation_delta(requirement, cards, previous=load_session_core(session)))
+    save_session(session)
+    yield sse_event("candidate_gate", {"allowed_product_ids": [card["product_id"] for card in raw_cards], "rejected_by_reason": {}, "status": "ok"})
+    yield sse_event("intent_route", {"route": "v3_catalog_exploration", "action": requirement.action.value})
+    yield sse_event("progress", {"label": "目录探索完成", "detail": f"已从 {len(raw_cards)} 个不同方向各选出一张有货商品卡。"})
+    yield sse_event("delta", {"text": _exploration_response_text(raw_cards)})
+    yield sse_event("product_cards", {"schema_version": "product_cards.v3", "cards": raw_cards})
+    yield sse_event("candidate_scope", {"allowed_product_ids": [card["product_id"] for card in raw_cards]})
+    yield sse_event("comparison_table", {"rows": []})
+    yield sse_event("result", {"type": "recommendation", "requirement_v3": _requirement_payload(requirement), "product_cards": raw_cards, "trace": {"executor": "v3_catalog_exploration", "directions": direction_trace, "v3_session_updated": True, "v3_card_count": len(cards)}})
+    yield sse_event("done", {"session_id": session.session_id})
+
+
 def _materialize_cards(raw_cards: list[Dict[str, Any]], catalog: Any, session_id: str) -> tuple[CardModel, ...]:
     expires_at = time.time() + CARD_TTL_SECONDS
     refs: list[CardModel] = []
@@ -164,7 +224,9 @@ def _card_payload(product: Any) -> Dict[str, Any]:
 def _requirement_payload(requirement: RequirementSpecV3) -> Dict[str, Any]:
     return {
         "action": requirement.action.value,
+        "recommendation_mode": requirement.recommendation_mode.value,
         "product_type_ids": list(requirement.product_type_ids),
+        "exclude_product_type_ids": list(requirement.exclude_product_type_ids),
         "include_brand_family_ids": list(requirement.include_brand_family_ids),
         "exclude_brand_family_ids": list(requirement.exclude_brand_family_ids),
         "price_max": requirement.price_max,
@@ -179,4 +241,11 @@ def _response_text(cards: list[Dict[str, Any]]) -> str:
     lines = ["我按已确认条件从当前目录筛出了这些商品："]
     for index, card in enumerate(cards, start=1):
         lines.append(f"{index}. {card['title']}（{card['brand']}，¥{card['price']:g}）")
+    return "\n".join(lines)
+
+
+def _exploration_response_text(cards: list[Dict[str, Any]]) -> str:
+    lines = ["你还没限定商品类别，我先按不同方向各挑了一件当前有货商品："]
+    lines.extend(f"{index}. {card['title']}（{card['brand']}，¥{card['price']:g}）" for index, card in enumerate(cards, start=1))
+    lines.append("你更偏实用、日常用品/穿搭，还是数码？也可以直接说想看的具体类别。")
     return "\n".join(lines)

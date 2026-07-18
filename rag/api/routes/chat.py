@@ -20,7 +20,8 @@ from rag.recommendation.v3.normalization import normalize_turn
 from rag.recommendation.v3.orchestrator import V3Orchestrator
 from rag.recommendation.v3.pc_executor import execute_v3_pc_plan
 from rag.recommendation.v3.recommendation_executor import execute_certified_recommendation
-from rag.recommendation.v3.session import apply_session_delta, clarification_delta, load_session_core
+from rag.recommendation.v3.semantic_contracts import CartObservation, FactQueryObservation, RecommendObservation
+from rag.recommendation.v3.session import apply_session_delta, clarification_delta, general_chat_delta, load_session_core
 from rag.recommendation.v3.types import ClarificationPlan, ParseStatus, V3Action, V3ExecutionDecision
 from rag.security.prompt_guard import detect_injection
 
@@ -62,6 +63,7 @@ def chat_stream(request: ChatStreamRequest) -> StreamingResponse:
             session=session,
         )
         yield sse_event("v3_routing", _route_payload(decision))
+        yield sse_event("v3_trace", _decision_session_trace(decision, session))
         if decision.status is ParseStatus.LOCAL_CLARIFY:
             yield from _save_and_emit_clarification(session, message, decision)
             return
@@ -107,12 +109,21 @@ def _execute_decision(session: Any, message: str, decision: V3ExecutionDecision)
         yield from execute_certified_fact_query(session=session, requirement=decision.requirement, catalog=catalog)
         return
     if decision.action is V3Action.APPLY_CART and decision.semantic and decision.semantic.observation:
-        yield from _stream_cart_plan(session, decision.semantic.observation, catalog)
+        observation = decision.semantic.observation
+        if not isinstance(observation, CartObservation):
+            yield sse_event("error", {"label": "购物车请求结构异常", "detail": "当前请求未被执行。"})
+            yield sse_event("done", {"session_id": session.session_id})
+            return
+        yield from _stream_cart_plan(session, observation, catalog)
         return
     if decision.action in {V3Action.PC_BUILD, V3Action.PC_PLAN_EDIT, V3Action.PC_PLAN_COMPARE} and decision.requirement is not None and decision.semantic and decision.semantic.observation:
         yield from execute_v3_pc_plan(session=session, requirement=decision.requirement, observation=decision.semantic.observation, catalog=catalog)
         return
     if decision.action is V3Action.GENERAL_CHAT:
+        core = load_session_core(session)
+        if core.pending_clarification is not None:
+            apply_session_delta(session, general_chat_delta(core))
+            save_session(session)
         yield from execute_general_chat(session=session, message=message)
         return
     yield sse_event("error", {"label": "V3 动作缺少完整字段", "detail": "当前请求未被执行。"})
@@ -208,7 +219,51 @@ def _route_payload(decision: V3ExecutionDecision) -> Dict[str, Any]:
         "semantic_provider": decision.semantic.provider if decision.semantic else None,
         "semantic_model": decision.semantic.model if decision.semantic else None,
         "semantic_parse_called": decision.semantic is not None,
-        "computer_purchase_kind": observation.computer_purchase_kind.value if observation and observation.computer_purchase_kind else None,
+        "semantic_usage": {
+            "prompt_tokens": decision.semantic.usage.prompt_tokens,
+            "completion_tokens": decision.semantic.usage.completion_tokens,
+            "total_tokens": decision.semantic.usage.total_tokens,
+            "elapsed_ms": decision.semantic.elapsed_ms,
+        } if decision.semantic else None,
+        "semantic_attempts": [
+            {
+                "attempt": item.attempt,
+                "outcome": item.outcome,
+                "reason": item.reason_code,
+                "elapsed_ms": item.elapsed_ms,
+                "prompt_tokens": item.usage.prompt_tokens,
+                "completion_tokens": item.usage.completion_tokens,
+            }
+            for item in (decision.semantic.attempts if decision.semantic else ())
+        ],
+        "recommendation_mode": decision.requirement.recommendation_mode.value if decision.requirement and decision.action is V3Action.RECOMMEND else None,
+        "computer_purchase_kind": observation.computer_purchase_kind.value if isinstance(observation, RecommendObservation) and observation.computer_purchase_kind else None,
+    }
+
+
+def _decision_session_trace(decision: V3ExecutionDecision, session: Any) -> Dict[str, Any]:
+    """Emit minimal decision evidence needed to diagnose CardRef failures.
+
+    This intentionally exposes card counts and ordinal ranks only. Product IDs,
+    card tokens, model prompts, and raw model JSON stay out of the SSE trace.
+    """
+
+    core = load_session_core(session)
+    observation = decision.semantic.observation if decision.semantic else None
+    fact = observation if isinstance(observation, FactQueryObservation) else None
+    cart = observation if isinstance(observation, CartObservation) else None
+    return {
+        "semantic_action_variant": observation.action.value if observation else None,
+        "semantic_card_references": list(fact.card_references if fact else ()),
+        "semantic_cart_target": {
+            "source": cart.target_ref.source.value,
+            "rank": cart.target_ref.rank,
+        } if cart and cart.target_ref else None,
+        "semantic_query_kind": fact.fact_kind if fact else None,
+        "session_live_card_count": len(core.cards),
+        "session_live_card_ranks": list(range(1, len(core.cards) + 1)),
+        "session_pending_cart_plan": core.pending_cart_plan is not None,
+        "session_cart_line_count": len(core.cart_lines),
     }
 
 

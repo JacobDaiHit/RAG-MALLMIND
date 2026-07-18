@@ -11,10 +11,11 @@ from dataclasses import asdict
 import time
 from typing import Any, Mapping, Optional
 
-from .types import CardModel, CartLine, CartOperation, CartPlan, ClarificationPlan, CommerceIntent, ComputerPurchaseKind, PcPlanHistory, PcPlanReference, PcPlanVersion, PendingClarification, PriceConstraint, PriceKind, PurchaseKindEvidence, RequirementSpecV3, SemanticObservation, SessionCore, SessionDelta, TopicState, TypeSurfaceEvidence, V3Action
+from .semantic_contracts import SemanticObservation, deserialize_observation, serialize_observation
+from .types import CardModel, CartLine, CartOperation, CartPlan, ClarificationPlan, PcPlanHistory, PcPlanVersion, PendingClarification, RecommendationMode, RequirementSpecV3, SessionCore, SessionDelta, TopicState, V3Action
 
 
-SESSION_CORE_VERSION = 3
+SESSION_CORE_VERSION = 5
 CARD_TTL_SECONDS = 15 * 60
 CART_CONFIRM_TTL_SECONDS = 60
 
@@ -36,7 +37,7 @@ def load_session_core(session: Any, *, now: Optional[float] = None) -> SessionCo
     """Read one V3 core from the legacy transport object without trusting it."""
 
     payload = getattr(session, "v3_core", None)
-    if not isinstance(payload, Mapping) or payload.get("schema_version") not in {1, 2, SESSION_CORE_VERSION}:
+    if not isinstance(payload, Mapping) or payload.get("schema_version") not in {1, 2, 3, 4, SESSION_CORE_VERSION}:
         return empty_session_core()
     try:
         topic_raw = payload.get("topic")
@@ -105,7 +106,7 @@ def recommendation_delta(
     updated_at = time.time() if now is None else now
     core = SessionCore(
         schema_version=SESSION_CORE_VERSION,
-        topic=TopicState(topic_id="shopping-recommendation", kind="recommendation", updated_at=updated_at),
+        topic=TopicState(topic_id="shopping-exploration" if requirement.recommendation_mode is RecommendationMode.EXPLORE else "shopping-recommendation", kind="exploration" if requirement.recommendation_mode is RecommendationMode.EXPLORE else "recommendation", updated_at=updated_at),
         active_requirement=requirement,
         cards=cards,
         pending_clarification=None,
@@ -130,6 +131,30 @@ def fact_query_delta(core: SessionCore, *, now: Optional[float] = None) -> Sessi
             pc_plans=core.pc_plans,
         ),
         reason="v3_fact_query_completed",
+    )
+
+
+def general_chat_delta(core: SessionCore, *, now: Optional[float] = None) -> SessionDelta:
+    """Close a stale pending question without discarding useful cards or cart state.
+
+    A non-commerce interlude must not let a later bare "对" accidentally answer
+    an old shopping clarification.  It intentionally retains the previous
+    recommendation and cards, so a later explicit card reference still works.
+    """
+
+    updated_at = time.time() if now is None else now
+    return SessionDelta(
+        core=SessionCore(
+            schema_version=SESSION_CORE_VERSION,
+            topic=TopicState(topic_id="general-chat", kind="general_chat", updated_at=updated_at),
+            active_requirement=core.active_requirement,
+            cards=core.cards,
+            pending_clarification=None,
+            cart_lines=core.cart_lines,
+            pending_cart_plan=core.pending_cart_plan,
+            pc_plans=core.pc_plans,
+        ),
+        reason="v3_general_chat_interlude",
     )
 
 
@@ -167,6 +192,7 @@ def _serialize_requirement(requirement: Optional[RequirementSpecV3]) -> Optional
         return None
     return {
         "action": requirement.action.value,
+        "recommendation_mode": requirement.recommendation_mode.value,
         "product_type_ids": list(requirement.product_type_ids),
         "exclude_product_type_ids": list(requirement.exclude_product_type_ids),
         "include_brand_family_ids": list(requirement.include_brand_family_ids),
@@ -189,6 +215,7 @@ def _deserialize_requirement(raw: object) -> Optional[RequirementSpecV3]:
         raise ValueError("active_requirement must be an object")
     return RequirementSpecV3(
         action=V3Action(str(raw["action"])),
+        recommendation_mode=RecommendationMode(str(raw.get("recommendation_mode") or RecommendationMode.PRODUCT.value)),
         product_type_ids=tuple(str(value) for value in raw.get("product_type_ids", ())),
         exclude_product_type_ids=tuple(str(value) for value in raw.get("exclude_product_type_ids", ())),
         include_brand_family_ids=tuple(str(value) for value in raw.get("include_brand_family_ids", ())),
@@ -226,34 +253,7 @@ def _serialize_pending(pending: Optional[PendingClarification]) -> Optional[dict
         return None
     return {
         "plan": asdict(pending.plan),
-        "observation": {
-            "action": pending.observation.action.value,
-            "commerce_intent": pending.observation.commerce_intent.value,
-            "target_type_surface": pending.observation.target_type_surface,
-            "target_type_candidate_id": pending.observation.target_type_candidate_id,
-            "target_type_evidence": _serialize_type_evidence(pending.observation.target_type_evidence),
-            "exclude_type_candidate_ids": list(pending.observation.exclude_type_candidate_ids),
-            "exclude_type_evidences": [_serialize_type_evidence(item) for item in pending.observation.exclude_type_evidences],
-            "include_brand_surfaces": list(pending.observation.include_brand_surfaces),
-            "exclude_brand_surfaces": list(pending.observation.exclude_brand_surfaces),
-            "price_max": pending.observation.price_max,
-            "price_constraint": _serialize_price_constraint(pending.observation.price_constraint),
-            "desired_attribute_surfaces": list(pending.observation.desired_attribute_surfaces),
-            "target_card_rank": pending.observation.target_card_rank,
-            "target_card_ranks": list(pending.observation.target_card_ranks),
-            "target_cart_rank": pending.observation.target_cart_rank,
-            "query_kind": pending.observation.query_kind,
-            "cart_operation": pending.observation.cart_operation.value if pending.observation.cart_operation else None,
-            "quantity": pending.observation.quantity,
-            "pc_usage_surfaces": list(pending.observation.pc_usage_surfaces),
-            "pc_operation": pending.observation.pc_operation.value if pending.observation.pc_operation else None,
-            "pc_plan_reference": pending.observation.pc_plan_reference.value if pending.observation.pc_plan_reference else None,
-            "pc_component_category_surface": pending.observation.pc_component_category_surface,
-            "upgrade_direction": pending.observation.upgrade_direction,
-            "computer_purchase_kind": pending.observation.computer_purchase_kind.value if pending.observation.computer_purchase_kind else None,
-            "computer_purchase_evidence": _serialize_purchase_kind_evidence(pending.observation.computer_purchase_evidence),
-            "missing_fields": list(pending.observation.missing_fields),
-        },
+        "observation": serialize_observation(pending.observation),
         "source_text": pending.source_text,
     }
 
@@ -273,91 +273,12 @@ def _deserialize_pending(raw: object, *, check_at: float) -> Optional[PendingCla
     )
     if plan.expires_at < check_at:
         return None
-    observation = SemanticObservation(
-        action=V3Action(str(observation_raw["action"])),
-        commerce_intent=CommerceIntent(str(observation_raw.get("commerce_intent") or "none")),
-        # schema v2 migration: old pending state only stored a raw surface and
-        # lacks proof/candidate context, so it cannot become executable by itself.
-        target_type_surface=str(observation_raw.get("target_type_surface") or observation_raw.get("product_type_surface") or "") or None,
-        target_type_candidate_id=str(observation_raw["target_type_candidate_id"]) if observation_raw.get("target_type_candidate_id") else None,
-        target_type_evidence=_deserialize_type_evidence(observation_raw.get("target_type_evidence")),
-        exclude_type_candidate_ids=tuple(str(value) for value in observation_raw.get("exclude_type_candidate_ids", ())),
-        exclude_type_evidences=tuple(
-            item for item in (_deserialize_type_evidence(value) for value in observation_raw.get("exclude_type_evidences", ())) if item is not None
-        ),
-        include_brand_surfaces=tuple(str(value) for value in observation_raw.get("include_brand_surfaces", ())),
-        exclude_brand_surfaces=tuple(str(value) for value in observation_raw.get("exclude_brand_surfaces", ())),
-        price_max=float(observation_raw["price_max"]) if observation_raw.get("price_max") is not None else None,
-        price_constraint=_deserialize_price_constraint(observation_raw.get("price_constraint")),
-        desired_attribute_surfaces=tuple(str(value) for value in observation_raw.get("desired_attribute_surfaces", ())),
-        target_card_rank=int(observation_raw["target_card_rank"]) if observation_raw.get("target_card_rank") is not None else None,
-        target_card_ranks=tuple(int(value) for value in observation_raw.get("target_card_ranks", ())),
-        target_cart_rank=int(observation_raw["target_cart_rank"]) if observation_raw.get("target_cart_rank") is not None else None,
-        query_kind=str(observation_raw["query_kind"]) if observation_raw.get("query_kind") else None,
-        cart_operation=CartOperation(str(observation_raw["cart_operation"])) if observation_raw.get("cart_operation") else None,
-        quantity=int(observation_raw["quantity"]) if observation_raw.get("quantity") is not None else None,
-        pc_usage_surfaces=tuple(str(value) for value in observation_raw.get("pc_usage_surfaces", ())),
-        pc_operation=_optional_pc_operation(observation_raw.get("pc_operation")),
-        pc_plan_reference=_optional_pc_plan_reference(observation_raw.get("pc_plan_reference")),
-        pc_component_category_surface=str(observation_raw["pc_component_category_surface"]) if observation_raw.get("pc_component_category_surface") else None,
-        upgrade_direction=str(observation_raw["upgrade_direction"]) if observation_raw.get("upgrade_direction") else None,
-        computer_purchase_kind=_optional_computer_purchase_kind(observation_raw.get("computer_purchase_kind")),
-        computer_purchase_evidence=_deserialize_purchase_kind_evidence(observation_raw.get("computer_purchase_evidence")),
-        missing_fields=tuple(str(value) for value in observation_raw.get("missing_fields", ())),
-    )
+    observation = deserialize_observation(observation_raw)
+    if observation is None:
+        return None
     return PendingClarification(plan=plan, observation=observation, source_text=str(raw.get("source_text") or ""))
 
 
-def _serialize_type_evidence(evidence: TypeSurfaceEvidence | None) -> Optional[dict[str, object]]:
-    if evidence is None:
-        return None
-    return {
-        "surface": evidence.surface,
-        "evidence_start": evidence.evidence_start,
-        "evidence_end": evidence.evidence_end,
-        "evidence_text": evidence.evidence_text,
-    }
-
-
-def _deserialize_type_evidence(raw: object) -> TypeSurfaceEvidence | None:
-    if not isinstance(raw, Mapping):
-        return None
-    try:
-        surface = str(raw["surface"])
-        start = int(raw["evidence_start"])
-        end = int(raw["evidence_end"])
-        evidence_text = str(raw["evidence_text"])
-    except (KeyError, TypeError, ValueError):
-        return None
-    if not surface or not evidence_text or start < 0 or end <= start:
-        return None
-    return TypeSurfaceEvidence(surface, start, end, evidence_text)
-
-
-def _serialize_purchase_kind_evidence(evidence: PurchaseKindEvidence | None) -> Optional[dict[str, object]]:
-    if evidence is None:
-        return None
-    return {
-        "surface": evidence.surface,
-        "evidence_start": evidence.evidence_start,
-        "evidence_end": evidence.evidence_end,
-        "evidence_text": evidence.evidence_text,
-    }
-
-
-def _deserialize_purchase_kind_evidence(raw: object) -> PurchaseKindEvidence | None:
-    if not isinstance(raw, Mapping):
-        return None
-    try:
-        surface = str(raw["surface"])
-        start = int(raw["evidence_start"])
-        end = int(raw["evidence_end"])
-        evidence_text = str(raw["evidence_text"])
-    except (KeyError, TypeError, ValueError):
-        return None
-    if not surface or not evidence_text or start < 0 or end <= start:
-        return None
-    return PurchaseKindEvidence(surface, start, end, evidence_text)
 
 
 def _serialize_cart_plan(plan: Optional[CartPlan]) -> Optional[dict[str, object]]:
@@ -434,48 +355,3 @@ def _deserialize_pc_plans(payload: Mapping[str, Any], *, check_at: float) -> PcP
     # Schema v1 carried only pc_plan.  Read it once as the current version;
     # the next write uses the v2 pc_plans payload exclusively.
     return PcPlanHistory(current=_deserialize_pc_plan(payload.get("pc_plan"), check_at=check_at, legacy=True))
-
-
-def _optional_pc_operation(value: object):
-    raw = str(value or "")
-    from .types import PcPlanOperation
-
-    return PcPlanOperation(raw) if raw in {item.value for item in PcPlanOperation} else None
-
-
-def _optional_pc_plan_reference(value: object):
-    raw = str(value or "")
-    return PcPlanReference(raw) if raw in {item.value for item in PcPlanReference} else None
-
-
-def _optional_computer_purchase_kind(value: object):
-    raw = str(value or "")
-    return ComputerPurchaseKind(raw) if raw in {item.value for item in ComputerPurchaseKind} else None
-
-
-def _serialize_price_constraint(value: Optional[PriceConstraint]) -> Optional[dict[str, object]]:
-    if value is None:
-        return None
-    return {
-        "kind": value.kind.value,
-        "amount": value.amount,
-        "min_amount": value.min_amount,
-        "currency": value.currency,
-        "evidence_start": value.evidence_start,
-        "evidence_end": value.evidence_end,
-        "evidence_text": value.evidence_text,
-    }
-
-
-def _deserialize_price_constraint(raw: object) -> Optional[PriceConstraint]:
-    if not isinstance(raw, Mapping):
-        return None
-    return PriceConstraint(
-        kind=PriceKind(str(raw["kind"])),
-        amount=float(raw["amount"]),
-        min_amount=float(raw["min_amount"]) if raw.get("min_amount") is not None else None,
-        currency=str(raw.get("currency") or "CNY"),
-        evidence_start=int(raw["evidence_start"]),
-        evidence_end=int(raw["evidence_end"]),
-        evidence_text=str(raw["evidence_text"]),
-    )
